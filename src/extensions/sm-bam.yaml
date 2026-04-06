@@ -1,0 +1,48 @@
+# BAM Extension for BMM Scrum Master
+# Pattern: WDS agent-guides (NO memories: field)
+
+agent:
+  metadata:
+    extends: 'bmad-agent-sm'
+    module: 'bam'
+    description: "Adds multi-tenant sprint planning capabilities"
+
+menu:
+  - trigger: bam-sm-context
+    action: "#load-bam-sm-context-prompt"
+    description: Load BAM sprint planning context
+  - trigger: sprint-tenant-stories
+    action: "#sprint-tenant-stories-prompt"
+    description: Plan tenant-aware sprint stories
+
+prompts:
+  - id: load-bam-sm-context-prompt
+    content: |
+      ## Load BAM SM Context
+
+      Read and internalize the SaaS lifecycle management guide:
+      `{project-root}/_bmad/bam/data/agent-guides/bam/saas-lifecycle.md`
+
+      This guide provides comprehensive context for agile planning in a multi-tenant SaaS
+      environment. It covers the following key areas:
+
+      1. **Tenant-Aware Story Writing**: How to write user stories that include tenant
+         context requirements, isolation acceptance criteria, and tier-specific behavior.
+      2. **Sprint Planning for Multi-Tenant**: Balancing feature work across tiers,
+         prioritizing isolation and security stories, and managing tier-specific backlogs.
+      3. **Release Coordination**: Coordinating releases that affect multiple tenants,
+         feature flag management, and gradual rollout strategies per tier.
+      4. **Incident Response Integration**: Incorporating tenant-specific incident handling
+         into sprint capacity, including isolation breach response procedures.
+
+      Once loaded, confirm by stating: "BAM scrum master context loaded. Ready to plan
+      tenant-aware sprints."
+
+  - id: sprint-tenant-stories-prompt
+    content: |
+      ## Tenant-Aware Sprint Planning
+      Ensure stories include:
+      - Tenant context requirements
+      - Isolation verification acceptance criteria
+      - Tier-specific behavior testing
+      - Cross-tenant scenario handling

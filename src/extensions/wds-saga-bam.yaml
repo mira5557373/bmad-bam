@@ -1,0 +1,61 @@
+# BAM Extension for WDS Saga (Analyst)
+# Pattern: WDS agent-guides (NO memories: field)
+
+agent:
+  metadata:
+    extends: 'wds-agent-saga-analyst'
+    module: 'bam'
+    description: "Adds tenant persona mapping to Saga's discovery"
+
+menu:
+  - trigger: bam-saga-context
+    action: "#load-bam-saga-context-prompt"
+    description: Load BAM discovery context for Saga
+  - trigger: saas-trigger-map
+    action: "#saas-trigger-map-prompt"
+    description: Map triggers for multi-tenant SaaS
+  - trigger: tenant-persona-map
+    action: "#tenant-persona-map-prompt"
+    description: Map tenant personas across tiers
+
+prompts:
+  - id: load-bam-saga-context-prompt
+    content: |
+      ## Load BAM Context for Saga
+
+      Read and internalize the multi-tenant discovery context guide:
+      `{project-root}/_bmad/bam/data/agent-guides/bam/multi-tenant-context.md`
+
+      This guide provides comprehensive context for applying multi-tenant awareness to all
+      user research and discovery activities. It covers the following key areas:
+
+      1. **Tenant Hierarchy Personas**: Understanding user personas at each level of the
+         tenant hierarchy - organization admins, workspace admins, and end users.
+      2. **Tier-Based Discovery**: How to segment discovery findings by tier (Free, Pro,
+         Enterprise) and identify tier-specific needs and pain points.
+      3. **SaaS Trigger Mapping**: Identifying triggers unique to multi-tenant SaaS including
+         upgrade moments, collaboration needs, and administrative oversight requirements.
+      4. **Cross-Tenant Patterns**: Discovering common patterns and needs that span tenants
+         while respecting data isolation in research methodologies.
+
+      Apply this multi-tenant lens to all discovery activities. Once loaded, confirm by
+      stating: "BAM discovery context loaded. Ready to conduct tenant-aware research."
+
+  - id: saas-trigger-map-prompt
+    content: |
+      ## SaaS Trigger Mapping
+      Identify triggers specific to multi-tenant SaaS:
+      - Tier upgrade triggers
+      - Feature limit triggers
+      - Collaboration triggers
+      - Admin oversight triggers
+
+  - id: tenant-persona-map-prompt
+    content: |
+      ## Tenant Persona Mapping
+      Map personas across tenant hierarchy:
+      | Level | Persona | Goals | Pain Points |
+      |-------|---------|-------|-------------|
+      | Org Admin | ... | ... | ... |
+      | Workspace Admin | ... | ... | ... |
+      | End User | ... | ... | ... |

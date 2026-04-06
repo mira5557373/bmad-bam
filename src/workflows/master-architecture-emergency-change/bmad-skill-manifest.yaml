@@ -1,0 +1,6 @@
+type: workflow
+name: bmad-bam-master-architecture-emergency-change
+displayName: Master Architecture Emergency Change
+description: "Emergency protocol for changing frozen master architecture. Use when the user requests to 'change master architecture' or 'emergency architecture update'."
+module: bam
+canonicalId: bmad-bam-master-architecture-emergency-change

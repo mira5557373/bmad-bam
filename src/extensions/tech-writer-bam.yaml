@@ -1,0 +1,60 @@
+# BAM Extension for BMM Tech Writer
+# Pattern: WDS agent-guides (NO memories: field)
+
+agent:
+  metadata:
+    extends: 'bmad-agent-tech-writer'
+    module: 'bam'
+    description: "Adds tenant isolation documentation capabilities"
+
+menu:
+  - trigger: bam-docs-context
+    action: "#load-bam-docs-context-prompt"
+    description: Load BAM documentation context
+  - trigger: doc-tenant-model
+    action: "#doc-tenant-model-prompt"
+    description: Document tenant model
+  - trigger: doc-rls-policies
+    action: "#doc-rls-policies-prompt"
+    description: Document RLS policies
+
+prompts:
+  - id: load-bam-docs-context-prompt
+    content: |
+      ## Load BAM Documentation Context
+
+      Read and internalize the RLS documentation standards guide:
+      `{project-root}/_bmad/bam/data/agent-guides/bam/rls-documentation.md`
+
+      This guide provides comprehensive context for documenting tenant isolation and
+      multi-tenant architecture for various audiences. It covers the following key areas:
+
+      1. **Technical Documentation**: Standards for documenting RLS policies, tenant context
+         propagation, and isolation mechanisms for developer audiences.
+      2. **API Documentation**: How to document tenant-scoped APIs including authentication,
+         tenant context headers, and error responses for isolation violations.
+      3. **Compliance Documentation**: Creating audit-ready documentation for security reviews,
+         SOC2 compliance, and GDPR data isolation requirements.
+      4. **Operational Runbooks**: Documenting procedures for tenant provisioning, data
+         migration, isolation breach response, and tenant offboarding.
+
+      Once loaded, confirm by stating: "BAM documentation context loaded. Ready to create
+      tenant isolation documentation."
+
+  - id: doc-tenant-model-prompt
+    content: |
+      ## Document Tenant Model
+      Create documentation covering:
+      - Tenant hierarchy (org/workspace/user)
+      - Isolation strategy
+      - Tier differences
+      - Admin access procedures
+
+  - id: doc-rls-policies-prompt
+    content: |
+      ## Document RLS Policies
+      For each table document:
+      - Policy purpose
+      - Context requirements
+      - Bypass procedures
+      - Testing instructions

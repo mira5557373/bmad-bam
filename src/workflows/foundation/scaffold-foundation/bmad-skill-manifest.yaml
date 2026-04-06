@@ -1,0 +1,6 @@
+type: workflow
+name: bmad-bam-scaffold-foundation
+displayName: Scaffold Foundation
+description: "Scaffold BAM foundation code and infrastructure. Use when the user requests to 'scaffold foundation' or 'bootstrap BAM project'."
+module: bam
+canonicalId: bmad-bam-scaffold-foundation

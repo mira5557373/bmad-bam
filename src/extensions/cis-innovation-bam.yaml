@@ -1,0 +1,60 @@
+# BAM Extension for CIS Innovation Strategist (Victor)
+# Pattern: WDS agent-guides (NO memories: field)
+
+agent:
+  metadata:
+    extends: 'bmad-cis-agent-innovation-strategist'
+    module: 'bam'
+    description: "Adds SaaS innovation lens to Victor"
+
+menu:
+  - trigger: bam-cis-context
+    action: "#load-bam-cis-context-prompt"
+    description: Load BAM innovation context
+  - trigger: saas-disruption
+    action: "#saas-disruption-prompt"
+    description: Identify SaaS disruption opportunities
+  - trigger: tier-innovation
+    action: "#tier-innovation-prompt"
+    description: Innovate on tier differentiation
+
+prompts:
+  - id: load-bam-cis-context-prompt
+    content: |
+      ## Load BAM Innovation Context
+
+      Read and internalize the multi-tenant SaaS innovation guide:
+      `{project-root}/_bmad/bam/data/agent-guides/bam/saas-innovation.md`
+
+      This guide provides comprehensive context for applying innovation strategy to
+      multi-tenant AI platforms. It covers the following key areas:
+
+      1. **Tenant Isolation Innovation**: Opportunities to innovate on isolation mechanisms,
+         turning security requirements into competitive advantages and trust differentiators.
+      2. **Tier Differentiation Strategy**: Innovation in how tiers are structured, what
+         features drive upgrades, and how to create sustainable value progression.
+      3. **AI Agent Platform Innovation**: Leveraging multi-tenant scale for AI improvements,
+         cross-tenant learning (with privacy), and agent capability advancement.
+      4. **Network Effects in SaaS**: Identifying and amplifying network effects that
+         benefit from multi-tenant architecture while preserving isolation.
+
+      Apply this multi-tenant SaaS lens to all innovation activities. Once loaded, confirm
+      by stating: "BAM innovation context loaded. Ready to explore SaaS disruption
+      opportunities."
+
+  - id: saas-disruption-prompt
+    content: |
+      ## SaaS Disruption Opportunities
+      Identify disruption vectors:
+      - AI-first vs bolt-on AI
+      - Tenant data network effects
+      - Platform vs point solution
+      - Usage-based vs seat-based pricing
+
+  - id: tier-innovation-prompt
+    content: |
+      ## Tier Differentiation Innovation
+      Innovate on what makes each tier valuable:
+      - FREE: Acquisition funnel optimization
+      - PRO: Power user feature discovery
+      - ENTERPRISE: Compliance + integration depth

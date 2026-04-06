@@ -1,0 +1,6 @@
+type: workflow
+name: bmad-bam-tenant-offboarding-design
+displayName: Tenant Offboarding Design
+description: "Design GDPR-compliant tenant offboarding with data archival. Use when the user requests to 'design tenant offboarding' or 'plan tenant deletion'."
+module: bam
+canonicalId: bmad-bam-tenant-offboarding-design

@@ -1,0 +1,6 @@
+type: workflow
+name: bmad-bam-tenant-aware-observability
+displayName: Tenant-Aware Observability
+description: "Design tenant-aware metrics, logs, traces, and alerts. Use when the user requests to 'design observability' or 'configure tenant monitoring'."
+module: bam
+canonicalId: bmad-bam-tenant-aware-observability

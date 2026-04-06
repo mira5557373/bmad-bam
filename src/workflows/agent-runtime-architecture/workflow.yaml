@@ -1,0 +1,9 @@
+# Workflow metadata for bmad-bam-agent-runtime-architecture
+config_variables:
+  - user_name
+  - communication_language
+  - document_output_language
+  - output_folder
+required_tools: []
+tags: [ai-runtime]
+mode: complex

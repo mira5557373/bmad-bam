@@ -1,0 +1,10 @@
+# Usage Metering Design
+
+Design usage metering pipeline for billing. Use when the user requests to 'design usage metering' or 'configure billing pipeline'.
+
+## Quick Reference
+
+- **Owner:** Platform Architect (Atlas)
+- **Domain:** platform
+- **Complexity:** simple
+- **Headless:** Yes

@@ -1,0 +1,112 @@
+name: CI
+
+on:
+  push:
+    branches: [main, develop]
+  pull_request:
+    branches: [main]
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'npm'
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Run schema validation
+        run: npm run test:schema
+
+      - name: Run workflow validation
+        run: npm run test:workflow
+
+      - name: Run install validation
+        run: npm run test:install
+
+      - name: Run extension validation
+        run: npm run test:extension
+
+      - name: Run integration validation
+        run: npm run test:integration
+
+  lint:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Validate YAML files
+        run: |
+          npm install -g yaml-lint
+          find src -name "*.yaml" -exec yaml-lint {} \;
+
+      - name: Check for memories field (must not exist)
+        run: |
+          if grep -r "^memories:" src/extensions/; then
+            echo "ERROR: Found 'memories:' field in extensions - this is not allowed"
+            exit 1
+          fi
+
+  publish-dry-run:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Verify publishable
+        run: npm publish --dry-run
+
+  file-counts:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Verify agent count
+        run: |
+          count=$(ls -d src/agents/*/ 2>/dev/null | wc -l)
+          if [ "$count" -ne 3 ]; then
+            echo "Expected 3 agents, found $count"
+            exit 1
+          fi
+
+      - name: Verify extension count
+        run: |
+          count=$(ls src/extensions/*.yaml 2>/dev/null | wc -l)
+          if [ "$count" -ne 18 ]; then
+            echo "Expected 18 extensions, found $count"
+            exit 1
+          fi
+
+      - name: Verify knowledge count
+        run: |
+          count=$(ls src/knowledge/*.md 2>/dev/null | wc -l)
+          if [ "$count" -ne 30 ]; then
+            echo "Expected 30 knowledge fragments, found $count"
+            exit 1
+          fi
+
+      - name: Verify checklist count
+        run: |
+          count=$(ls src/checklists/*.md 2>/dev/null | wc -l)
+          if [ "$count" -ne 10 ]; then
+            echo "Expected 10 checklists, found $count"
+            exit 1
+          fi
+
+      - name: Verify agent-guide count
+        run: |
+          count=$(ls src/data/agent-guides/bam/*.md 2>/dev/null | wc -l)
+          if [ "$count" -lt 8 ]; then
+            echo "Expected at least 8 agent guides, found $count"
+            exit 1
+          fi

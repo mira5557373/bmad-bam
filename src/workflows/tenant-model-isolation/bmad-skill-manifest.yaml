@@ -1,0 +1,6 @@
+type: workflow
+name: bmad-bam-tenant-model-isolation
+displayName: Tenant Model Isolation
+description: "Design tenant isolation strategy and context propagation. Use when the user requests to 'design tenant isolation' or 'create isolation matrix'."
+module: bam
+canonicalId: bmad-bam-tenant-model-isolation

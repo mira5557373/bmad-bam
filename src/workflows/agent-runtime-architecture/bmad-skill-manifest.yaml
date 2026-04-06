@@ -1,0 +1,6 @@
+type: workflow
+name: bmad-bam-agent-runtime-architecture
+displayName: Agent Runtime Architecture
+description: "Design AI agent runtime patterns and safety. Use when the user requests to 'design agent runtime' or 'create AI runtime architecture'."
+module: bam
+canonicalId: bmad-bam-agent-runtime-architecture

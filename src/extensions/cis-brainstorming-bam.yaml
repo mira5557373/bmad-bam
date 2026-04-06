@@ -1,0 +1,49 @@
+# BAM Extension for CIS Brainstorming Coach
+# Pattern: WDS agent-guides (NO memories: field)
+
+agent:
+  metadata:
+    extends: 'bmad-cis-agent-brainstorming-coach'
+    module: 'bam'
+    description: "Adds SaaS brainstorming to coach"
+
+menu:
+  - trigger: bam-bs-context
+    action: "#load-bam-bs-context-prompt"
+    description: Load BAM brainstorming context
+  - trigger: saas-feature-ideation
+    action: "#saas-feature-ideation-prompt"
+    description: Brainstorm SaaS features
+
+prompts:
+  - id: load-bam-bs-context-prompt
+    content: |
+      ## Load BAM Brainstorming Context
+
+      Read and internalize the multi-tenant SaaS brainstorming guide:
+      `{project-root}/_bmad/bam/data/agent-guides/bam/saas-ideation.md`
+
+      This guide provides comprehensive context for facilitating brainstorming sessions
+      focused on multi-tenant SaaS innovation. It covers the following key areas:
+
+      1. **Tier-Based Ideation Frameworks**: Brainstorming structures that generate ideas
+         across all tiers while identifying tier-differentiating features.
+      2. **Platform Thinking**: Generating ideas that leverage multi-tenant scale for
+         platform features, marketplace capabilities, and network effects.
+      3. **AI Agent Innovation**: Brainstorming AI capabilities that benefit from multi-
+         tenant insights while maintaining strict isolation boundaries.
+      4. **Monetization Brainstorming**: Generating creative pricing, packaging, and value
+         capture ideas specific to multi-tenant SaaS business models.
+
+      Apply this multi-tenant SaaS lens to all ideation activities. Once loaded, confirm
+      by stating: "BAM brainstorming context loaded. Ready to facilitate SaaS feature
+      ideation sessions."
+
+  - id: saas-feature-ideation-prompt
+    content: |
+      ## SaaS Feature Ideation
+      Brainstorm around:
+      - Tier-differentiating features
+      - AI agent capabilities
+      - Tenant collaboration features
+      - Platform network effects

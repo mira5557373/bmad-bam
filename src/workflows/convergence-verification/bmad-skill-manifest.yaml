@@ -1,0 +1,6 @@
+type: workflow
+name: bmad-bam-convergence-verification
+displayName: Convergence Verification
+description: "Verify cross-module integration before release. Use when the user requests to 'run convergence verification' or 'validate release readiness'."
+module: bam
+canonicalId: bmad-bam-convergence-verification

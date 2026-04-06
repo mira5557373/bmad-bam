@@ -1,0 +1,31 @@
+id,name,description,tags,tier,fragment_file
+multi-tenant-patterns,Multi-Tenant Patterns,"RLS, schema, database isolation strategies","tenant,isolation,foundation",core,knowledge/multi-tenant-patterns.md
+rls-best-practices,RLS Best Practices,"PostgreSQL row-level security implementation","security,database,rls",core,knowledge/rls-best-practices.md
+ddd-module-patterns,DDD Module Patterns,"Bounded contexts, aggregates, module design","architecture,ddd,modules",core,knowledge/ddd-module-patterns.md
+module-facade-patterns,Module Facade Patterns,"Cross-module communication contracts","integration,facades,contracts",core,knowledge/module-facade-patterns.md
+shared-kernel-patterns,Shared Kernel Patterns,"Shared code and types across modules","architecture,shared,kernel",core,knowledge/shared-kernel-patterns.md
+event-driven-patterns,Event Driven Patterns,"Module-to-module async communication","integration,events,async",core,knowledge/event-driven-patterns.md
+agent-runtime-patterns,Agent Runtime Patterns,"LangGraph orchestration and state machines","ai,agents,orchestration",extended,knowledge/agent-runtime-patterns.md
+run-contract-patterns,Run Contract Patterns,"Agent task contracts and execution","ai,contracts,execution",extended,knowledge/run-contract-patterns.md
+memory-tier-patterns,Memory Tier Patterns,"Ephemeral, working, long-term memory","ai,memory,tiers",extended,knowledge/memory-tier-patterns.md
+action-gateway-patterns,Action Gateway Patterns,"Tool execution and safety gates","ai,tools,gateway",extended,knowledge/action-gateway-patterns.md
+context-compiler-patterns,Context Compiler Patterns,"Dynamic context assembly for agents","ai,context,assembly",extended,knowledge/context-compiler-patterns.md
+tool-execution-middleware,Tool Execution Middleware,"Middleware patterns for tool safety","ai,tools,middleware",extended,knowledge/tool-execution-middleware.md
+agent-data-governance-patterns,Agent Data Governance,"Data access controls for AI agents","ai,security,governance",specialized,knowledge/agent-data-governance-patterns.md
+agent-identity-tbac-patterns,Agent Identity TBAC,"Tenant-based access control for agents","ai,security,tbac",specialized,knowledge/agent-identity-tbac-patterns.md
+agent-lifecycle-versioning-patterns,Agent Lifecycle Versioning,"Agent version management patterns","ai,versioning,lifecycle",specialized,knowledge/agent-lifecycle-versioning-patterns.md
+agent-resilience-patterns,Agent Resilience Patterns,"Error handling and recovery for agents","ai,resilience,recovery",specialized,knowledge/agent-resilience-patterns.md
+testing-tenant-isolation,Testing Tenant Isolation,"Isolation verification test patterns","testing,isolation,security",extended,knowledge/testing-tenant-isolation.md
+testing-multi-tenant-fixtures,Testing Multi-Tenant Fixtures,"Fixture setup for tenant testing","testing,fixtures,setup",extended,knowledge/testing-multi-tenant-fixtures.md
+testing-agent-safety,Testing Agent Safety,"AI safety evaluation patterns","testing,ai,safety",extended,knowledge/testing-agent-safety.md
+independent-development,Independent Development,"Module-independent dev workflows","development,modules,workflow",core,knowledge/independent-development.md
+parallel-development-guide,Parallel Development Guide,"Multi-team parallel development","development,teams,parallel",extended,knowledge/parallel-development-guide.md
+local-development-setup,Local Development Setup,"Local environment configuration","development,local,setup",core,knowledge/local-development-setup.md
+api-version-routing,API Version Routing,"Version-aware API routing patterns","api,versioning,routing",extended,knowledge/api-version-routing.md
+ai-model-versioning,AI Model Versioning,"LLM version management strategies","ai,versioning,models",specialized,knowledge/ai-model-versioning.md
+saga-orchestration-patterns,Saga Orchestration Patterns,"Distributed transaction patterns","integration,sagas,transactions",specialized,knowledge/saga-orchestration-patterns.md
+provisioning-ui-patterns,Provisioning UI Patterns,"Tenant provisioning interfaces","ui,provisioning,tenants",extended,knowledge/provisioning-ui-patterns.md
+wds-integration-patterns,WDS Integration Patterns,"Integration with WDS module","integration,wds,ux",specialized,knowledge/wds-integration-patterns.md
+workflow-sequence,Workflow Sequence,"BAM workflow execution order","workflows,sequence,order",core,knowledge/workflow-sequence.md
+workflow-ownership,Workflow Ownership,"Agent-to-workflow mapping","workflows,agents,ownership",core,knowledge/workflow-ownership.md
+section-reference-map,Section Reference Map,"Cross-reference between documents","reference,mapping,docs",core,knowledge/section-reference-map.md

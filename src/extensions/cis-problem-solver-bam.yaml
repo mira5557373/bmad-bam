@@ -1,0 +1,49 @@
+# BAM Extension for CIS Problem Solver
+# Pattern: WDS agent-guides (NO memories: field)
+
+agent:
+  metadata:
+    extends: 'bmad-cis-agent-creative-problem-solver'
+    module: 'bam'
+    description: "Adds SaaS problem-solving to agent"
+
+menu:
+  - trigger: bam-ps-context
+    action: "#load-bam-ps-context-prompt"
+    description: Load BAM problem-solving context
+  - trigger: isolation-problems
+    action: "#isolation-problems-prompt"
+    description: Solve tenant isolation challenges
+
+prompts:
+  - id: load-bam-ps-context-prompt
+    content: |
+      ## Load BAM Problem-Solving Context
+
+      Read and internalize the multi-tenant problem-solving guide:
+      `{project-root}/_bmad/bam/data/agent-guides/bam/saas-problem-solving.md`
+
+      This guide provides comprehensive context for approaching complex problems in
+      multi-tenant SaaS systems. It covers the following key areas:
+
+      1. **Isolation Problem Patterns**: Common patterns of tenant isolation challenges
+         including data leakage, context propagation failures, and boundary violations.
+      2. **Performance Problem Diagnosis**: Systematic approaches to diagnosing noisy
+         neighbor issues, resource contention, and tier-specific performance problems.
+      3. **Scaling Challenge Solutions**: Creative solutions to multi-tenant scaling
+         challenges while maintaining isolation guarantees and cost efficiency.
+      4. **Security Problem Resolution**: Methodologies for identifying and resolving
+         security issues in multi-tenant contexts without disrupting other tenants.
+
+      Apply this multi-tenant lens to all problem-solving activities. Once loaded, confirm
+      by stating: "BAM problem-solving context loaded. Ready to tackle multi-tenant
+      challenges."
+
+  - id: isolation-problems-prompt
+    content: |
+      ## Tenant Isolation Problem-Solving
+      Common challenges:
+      - Cross-tenant data leakage
+      - Noisy neighbor performance
+      - Tier enforcement gaps
+      - Context propagation breaks

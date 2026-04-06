@@ -1,0 +1,6 @@
+type: workflow
+name: bmad-bam-api-version-release
+displayName: API Version Release
+description: "Release new REST API version with docs and migration guide. Use when the user requests to 'release API version' or 'create new API version'."
+module: bam
+canonicalId: bmad-bam-api-version-release

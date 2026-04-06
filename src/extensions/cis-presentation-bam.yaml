@@ -1,0 +1,50 @@
+# BAM Extension for CIS Presentation Master
+# Pattern: WDS agent-guides (NO memories: field)
+
+agent:
+  metadata:
+    extends: 'bmad-cis-agent-presentation-master'
+    module: 'bam'
+    description: "Adds SaaS presentation frameworks"
+
+menu:
+  - trigger: bam-pres-context
+    action: "#load-bam-pres-context-prompt"
+    description: Load BAM presentation context
+  - trigger: saas-pitch
+    action: "#saas-pitch-prompt"
+    description: Create SaaS platform pitch
+
+prompts:
+  - id: load-bam-pres-context-prompt
+    content: |
+      ## Load BAM Presentation Context
+
+      Read and internalize the multi-tenant SaaS presentation guide:
+      `{project-root}/_bmad/bam/data/agent-guides/bam/saas-presentation.md`
+
+      This guide provides comprehensive context for creating compelling presentations
+      about multi-tenant AI platforms. It covers the following key areas:
+
+      1. **Platform Value Messaging**: Frameworks for articulating multi-tenant platform
+         value propositions to different audiences (investors, customers, partners).
+      2. **Technical Credibility Stories**: How to present technical architecture
+         decisions (isolation, security, scale) in accessible, compelling ways.
+      3. **Tier Comparison Visuals**: Best practices for visualizing tier differences,
+         feature matrices, and upgrade value propositions.
+      4. **AI Safety Narratives**: Presenting AI capabilities with appropriate emphasis
+         on safety, isolation, and responsible multi-tenant AI practices.
+
+      Apply these multi-tenant SaaS themes to all presentations. Once loaded, confirm
+      by stating: "BAM presentation context loaded. Ready to create compelling SaaS
+      platform presentations."
+
+  - id: saas-pitch-prompt
+    content: |
+      ## SaaS Platform Pitch
+      Structure:
+      1. Problem: Why current solutions fail at scale
+      2. Solution: Multi-tenant AI platform
+      3. Differentiation: Isolation + AI safety
+      4. Tiers: Clear value progression
+      5. Call to action: Start free, grow with us

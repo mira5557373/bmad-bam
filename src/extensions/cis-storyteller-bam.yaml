@@ -1,0 +1,49 @@
+# BAM Extension for CIS Storyteller (Sophia)
+# Pattern: WDS agent-guides (NO memories: field)
+
+agent:
+  metadata:
+    extends: 'bmad-cis-agent-storyteller'
+    module: 'bam'
+    description: "Adds SaaS narrative frameworks to Sophia"
+
+menu:
+  - trigger: bam-story-context
+    action: "#load-bam-story-context-prompt"
+    description: Load BAM storytelling context
+  - trigger: saas-narrative
+    action: "#saas-narrative-prompt"
+    description: Craft SaaS platform narrative
+
+prompts:
+  - id: load-bam-story-context-prompt
+    content: |
+      ## Load BAM Storytelling Context
+
+      Read and internalize the multi-tenant SaaS storytelling guide:
+      `{project-root}/_bmad/bam/data/agent-guides/bam/saas-narrative.md`
+
+      This guide provides comprehensive context for crafting compelling narratives around
+      multi-tenant AI platforms. It covers the following key areas:
+
+      1. **Scale Narratives**: Stories about serving millions of users, handling enterprise
+         workloads, and maintaining performance under massive concurrent tenant load.
+      2. **Trust and Security Stories**: Narratives around tenant isolation guarantees,
+         data privacy commitments, and the technical excellence behind security.
+      3. **Growth Journey Stories**: Customer success stories showing the journey from
+         Free to Pro to Enterprise, highlighting value realization at each stage.
+      4. **AI Platform Differentiation**: Stories that position AI capabilities as unique
+         advantages, emphasizing safe multi-tenant AI and responsible scaling.
+
+      Apply these multi-tenant SaaS themes to all narrative creation. Once loaded, confirm
+      by stating: "BAM storytelling context loaded. Ready to craft compelling SaaS
+      narratives."
+
+  - id: saas-narrative-prompt
+    content: |
+      ## SaaS Platform Narrative
+      Craft compelling stories around:
+      - Why multi-tenant matters
+      - The tenant success journey
+      - Platform reliability promises
+      - AI as a differentiator

@@ -1,0 +1,67 @@
+# BAM Extension for CIS Design Thinking Coach
+# Pattern: WDS agent-guides (NO memories: field)
+
+agent:
+  metadata:
+    extends: 'bmad-cis-agent-design-thinking-coach'
+    module: 'bam'
+    description: "Adds SaaS design thinking to coach"
+
+menu:
+  - trigger: bam-dt-context
+    action: "#load-bam-dt-context-prompt"
+    description: Load BAM design thinking context
+  - trigger: tenant-empathy
+    action: "#tenant-empathy-prompt"
+    description: Empathize with tenant personas
+
+prompts:
+  - id: load-bam-dt-context-prompt
+    content: |
+      ## Load BAM Design Thinking Context
+
+      Read and internalize the multi-tenant design thinking guide:
+      `{project-root}/_bmad/bam/data/agent-guides/bam/saas-design-thinking.md`
+
+      This guide provides comprehensive context for applying design thinking methodologies
+      to multi-tenant SaaS challenges. It covers the following key areas:
+
+      1. **Multi-Persona Empathy**: Understanding the distinct needs, constraints, and goals
+         of users across different tenant tiers and organizational roles.
+      2. **Tier-Constrained Ideation**: Generating solutions that work within tier boundaries
+         while still providing value and clear upgrade paths.
+      3. **Isolation-Aware Prototyping**: Building prototypes that respect tenant boundaries
+         and demonstrate tier-specific experiences accurately.
+      4. **Cross-Tenant Testing**: Design thinking experiments that gather insights across
+         tenant segments while maintaining data isolation and privacy.
+
+      Apply this multi-tenant lens to all design thinking activities. Once loaded, confirm
+      by stating: "BAM design thinking context loaded. Ready to facilitate tenant-aware
+      design sessions."
+
+  - id: tenant-empathy-prompt
+    content: |
+      ## Tenant Empathy Exercise
+
+      Conduct a structured empathy exercise to deeply understand the experience of users
+      across different tenant tiers. For each tier, explore the following dimensions:
+
+      **Free Tier Users:**
+      - What constraints do they face (usage limits, feature restrictions)?
+      - What friction do they experience when hitting tier boundaries?
+      - What would make them feel valued despite being on the free tier?
+      - What upgrade triggers would feel natural vs. pushy?
+
+      **Pro Tier Users:**
+      - What power user needs drove their upgrade decision?
+      - How do they measure value realization from their subscription?
+      - What features do they wish were included at their tier?
+      - What would make them advocate for Enterprise upgrade to their organization?
+
+      **Enterprise Tier Users:**
+      - What compliance and security concerns keep them up at night?
+      - How do they balance control needs with user autonomy?
+      - What customization requests do they most frequently make?
+      - How do they evaluate ROI for their organization?
+
+      Document insights using empathy maps for each tier and identify cross-tier patterns.

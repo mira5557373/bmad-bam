@@ -1,0 +1,6 @@
+type: workflow
+name: bmad-bam-create-master-architecture
+displayName: Create Master Architecture
+description: "Create frozen master architecture for BAM platform. Use when the user requests to 'create master architecture' or 'start BAM foundation'."
+module: bam
+canonicalId: bmad-bam-create-master-architecture

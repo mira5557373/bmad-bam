@@ -1,0 +1,6 @@
+type: workflow
+name: bmad-bam-tenant-onboarding-design
+displayName: Tenant Onboarding Design
+description: "Design tenant provisioning orchestration with tier-specific flows. Use when the user requests to 'design tenant onboarding' or 'plan tenant provisioning'."
+module: bam
+canonicalId: bmad-bam-tenant-onboarding-design

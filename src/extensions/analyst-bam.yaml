@@ -1,0 +1,131 @@
+# BAM Extension for BMM Analyst (Mary)
+# Pattern: WDS agent-guides (NO memories: field)
+
+agent:
+  metadata:
+    extends: 'bmad-agent-analyst'
+    module: 'bam'
+    description: "Adds multi-tenant SaaS discovery capabilities to Mary"
+
+menu:
+  - trigger: bam-context
+    action: "#load-bam-context-prompt"
+    description: Load BAM multi-tenant discovery context
+  - trigger: discover-contexts
+    action: "#discover-contexts-prompt"
+    description: Identify bounded contexts for multi-tenant SaaS
+  - trigger: tenant-personas
+    action: "#tenant-personas-prompt"
+    description: Define tenant persona hierarchy
+  - trigger: tier-requirements
+    action: "#tier-requirements-prompt"
+    description: Map tier-specific feature requirements
+  - trigger: isolation-requirements
+    action: "#isolation-requirements-prompt"
+    description: Capture data isolation requirements
+
+prompts:
+  - id: load-bam-context-prompt
+    content: |
+      ## Load BAM Multi-Tenant Context
+
+      Read and internalize the BAM discovery guide:
+      `{project-root}/_bmad/bam/data/agent-guides/bam/multi-tenant-context.md`
+
+      This guide provides context for:
+      - Multi-tenant requirement patterns
+      - Tenant persona discovery
+      - Tier-based feature differentiation
+      - Bounded context identification with tenant awareness
+
+      Confirm when loaded, then proceed with discovery tasks.
+
+  - id: discover-contexts-prompt
+    content: |
+      ## Bounded Context Discovery for Multi-Tenant SaaS
+
+      Prerequisites: Ensure BAM context loaded via `bam-context`
+
+      Analyze the domain and identify bounded contexts:
+
+      ### Context Types
+      1. **Tenant-Scoped Contexts** - Data owned by specific tenants
+      2. **Platform Contexts** - Shared infrastructure (billing, auth)
+      3. **Cross-Tenant Contexts** - Aggregations, admin views
+
+      For each context, document:
+      - Isolation requirements
+      - Module boundary implications
+      - Facade contract needs
+      - Tenant context propagation
+
+      Output as a bounded context map with tenant annotations.
+
+  - id: tenant-personas-prompt
+    content: |
+      ## Tenant Persona Hierarchy Definition
+
+      Define the tenant structure for this SaaS:
+
+      ### Level 1: Organization
+      - What entity is the billing owner?
+      - How are organizations provisioned?
+      - What org-level settings exist?
+
+      ### Level 2: Workspace (if applicable)
+      - Can organizations have multiple workspaces?
+      - What data is shared across workspaces?
+      - What data is workspace-isolated?
+
+      ### Level 3: User
+      - What roles exist within a workspace?
+      - How does user context propagate?
+      - What user-level preferences exist?
+
+      ### Level 4: API Key (if applicable)
+      - Do API keys have separate permissions?
+      - How are keys scoped to tenants?
+
+      Output as a tenant hierarchy diagram.
+
+  - id: tier-requirements-prompt
+    content: |
+      ## Tier-Specific Feature Requirements
+
+      Map features across pricing tiers:
+
+      | Feature | Free | Pro | Enterprise |
+      |---------|------|-----|------------|
+      | ... | ... | ... | ... |
+
+      For each tier difference, document:
+      - Feature flag approach (soft/hard gate)
+      - Resource limit strategy
+      - Upgrade path UX
+      - Entitlement enforcement point
+
+      Consider:
+      - Which features are tier-gated?
+      - Which are usage-based?
+      - Which are add-ons?
+
+  - id: isolation-requirements-prompt
+    content: |
+      ## Data Isolation Requirements
+
+      For each data type in the domain, specify:
+
+      | Data Type | Tenant-Scoped | Isolation Method | Cross-Tenant Access |
+      |-----------|---------------|------------------|---------------------|
+      | ... | Yes/No | RLS/Schema/DB | Admin only/Never |
+
+      Document:
+      - Compliance requirements (GDPR, SOC2, HIPAA)
+      - Data residency requirements
+      - Encryption requirements per tier
+      - Audit logging requirements
+
+      Flag any data that:
+      - Must never cross tenant boundaries
+      - Requires additional encryption
+      - Has regulatory retention requirements

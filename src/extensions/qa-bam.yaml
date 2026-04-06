@@ -1,0 +1,74 @@
+# BAM Extension for BMM QA
+# Pattern: WDS agent-guides (NO memories: field)
+
+agent:
+  metadata:
+    extends: 'bmad-agent-qa'
+    module: 'bam'
+    description: "Adds tenant isolation testing capabilities"
+
+menu:
+  - trigger: bam-qa-context
+    action: "#load-bam-qa-context-prompt"
+    description: Load BAM QA context
+  - trigger: test-isolation
+    action: "#test-isolation-prompt"
+    description: Design tenant isolation tests
+  - trigger: noisy-neighbor-tests
+    action: "#noisy-neighbor-tests-prompt"
+    description: Design noisy neighbor tests
+
+prompts:
+  - id: load-bam-qa-context-prompt
+    content: |
+      ## Load BAM QA Context
+
+      Read and internalize the tenant testing quality assurance guide:
+      `{project-root}/_bmad/bam/data/agent-guides/bam/tenant-testing.md`
+
+      This guide provides comprehensive context for QA activities focused on verifying
+      tenant isolation and multi-tenant system integrity. It covers the following key areas:
+
+      1. **Isolation Test Cases**: Comprehensive test matrices for verifying RLS policies,
+         cache separation, memory scoping, and API-level tenant boundaries.
+      2. **Security Testing**: Penetration testing patterns for cross-tenant access attempts,
+         privilege escalation, and tenant context manipulation.
+      3. **Performance Testing**: Load testing strategies to verify noisy neighbor protection,
+         SLA maintenance under multi-tenant load, and resource isolation.
+      4. **Regression Suites**: Critical tenant isolation tests that must pass before any
+         release, including automated compliance verification.
+
+      Once loaded, confirm by stating: "BAM QA context loaded. Ready to design tenant
+      isolation test suites."
+
+  - id: test-isolation-prompt
+    content: |
+      ## Tenant Isolation Test Design
+      Test matrix:
+      | Dimension | Test | Expected |
+      |-----------|------|----------|
+      | RLS | Query as Tenant B | 0 rows |
+      | Cache | Get Tenant A key | Miss |
+      | Memory | Read Tenant A | Null |
+
+  - id: noisy-neighbor-tests-prompt
+    content: |
+      ## Noisy Neighbor Tests
+
+      Design comprehensive tests to verify that high-activity tenants cannot degrade the
+      experience of other tenants on the platform. Follow this testing methodology:
+
+      1. **Baseline Establishment**: Measure Tenant B latency percentiles (p50, p95, p99)
+         under normal conditions to establish SLA baseline metrics.
+      2. **Load Generation**: Simulate heavy load on Tenant A including high API request
+         rates, large data operations, intensive AI agent workloads, and memory-heavy queries.
+      3. **Concurrent Measurement**: While Tenant A is under load, continuously measure
+         Tenant B response times, error rates, and throughput across all endpoints.
+      4. **SLA Verification**: Compare Tenant B metrics against baseline and contracted SLA.
+         Flag any degradation beyond acceptable thresholds (e.g., >10% latency increase).
+      5. **Resource Audit**: Verify resource isolation mechanisms are working - check CPU
+         quotas, memory limits, connection pool isolation, and queue prioritization.
+      6. **Tier-Specific Testing**: Test noisy neighbor scenarios within same tier and
+         across tiers to verify Enterprise tenants are protected from Free tier load.
+
+      Document findings with clear metrics and recommendations for isolation improvements.

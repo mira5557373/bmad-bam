@@ -1,0 +1,76 @@
+# BAM Extension for TEA (Test Architect)
+# Pattern: WDS agent-guides (NO memories: field)
+
+agent:
+  metadata:
+    extends: 'bmad-tea'
+    module: 'bam'
+    description: "Adds tenant isolation testing capabilities to TEA"
+
+menu:
+  - trigger: bam-tea-context
+    action: "#load-bam-tea-context-prompt"
+    description: Load BAM testing context
+  - trigger: tenant-test-strategy
+    action: "#tenant-test-strategy-prompt"
+    description: Design tenant isolation test strategy
+  - trigger: tenant-fixtures
+    action: "#tenant-fixtures-prompt"
+    description: Design tenant test fixtures
+
+prompts:
+  - id: load-bam-tea-context-prompt
+    content: |
+      ## Load BAM Testing Context
+
+      Read and internalize the tenant testing architecture guide:
+      `{project-root}/_bmad/bam/data/agent-guides/bam/tenant-testing.md`
+
+      This guide provides comprehensive context for designing test architectures that verify
+      tenant isolation in multi-tenant systems. It covers the following key areas:
+
+      1. **RLS Test Patterns**: Strategies for testing Row-Level Security policies including
+         cross-tenant query attempts, policy bypass verification, and edge case coverage.
+      2. **Tenant Fixture Design**: Patterns for creating isolated test fixtures with proper
+         tenant context, automatic cleanup, and consistent seed data generation.
+      3. **Noisy Neighbor Testing**: Approaches to verify performance isolation between tenants
+         under load, ensuring one tenant cannot impact another's SLA.
+      4. **Memory Isolation Verification**: Test patterns for ensuring AI agent memories are
+         properly scoped and cannot be accessed across tenant boundaries.
+
+      Once loaded, confirm by stating: "BAM testing context loaded. Ready to design tenant
+      isolation test strategies."
+
+  - id: tenant-test-strategy-prompt
+    content: |
+      ## Tenant Isolation Test Strategy
+
+      Design tests to verify:
+      1. RLS policies prevent cross-tenant access
+      2. Cache isolation works correctly
+      3. Memory scope is enforced
+      4. Noisy neighbor protection works
+
+      Test types:
+      - Unit: Mock tenant context
+      - Integration: Real RLS with test tenant
+      - E2E: Full stack isolation verification
+
+  - id: tenant-fixtures-prompt
+    content: |
+      ## Tenant Test Fixtures
+
+      Design fixture factory:
+      ```typescript
+      const fixture = await createTenantFixture({
+        tier: 'pro',
+        users: 3,
+        seedData: true
+      });
+      ```
+
+      Requirements:
+      - One tenant per test suite
+      - Automatic cleanup
+      - Consistent seed data
+      - Cross-tenant verification helpers

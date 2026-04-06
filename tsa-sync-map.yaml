@@ -1,0 +1,124 @@
+# TSA (Technology Stack Architecture) ↔ BAM Synchronization Map
+# Tracks alignment between TSA documentation and BAM knowledge fragments
+
+version: "1.0.0"
+last_sync: "2026-04-05"
+
+mappings:
+  # Foundation Layer
+  - tsa: "01-foundation/multi-tenancy.md"
+    bam:
+      - "knowledge/multi-tenant-patterns.md"
+      - "knowledge/rls-best-practices.md"
+    status: active
+    notes: "Core tenant isolation patterns"
+
+  - tsa: "01-foundation/modular-architecture.md"
+    bam:
+      - "knowledge/ddd-module-patterns.md"
+      - "knowledge/module-facade-patterns.md"
+      - "knowledge/shared-kernel-patterns.md"
+    status: active
+    notes: "Module boundary and DDD patterns"
+
+  # AI Runtime Layer
+  - tsa: "02b-ai/agents.md"
+    bam:
+      - "knowledge/agent-runtime-patterns.md"
+      - "knowledge/run-contract-patterns.md"
+      - "knowledge/memory-tier-patterns.md"
+    status: active
+    notes: "AI agent orchestration patterns"
+
+  - tsa: "02b-ai/tools-mcp.md"
+    bam:
+      - "knowledge/action-gateway-patterns.md"
+      - "knowledge/tool-execution-middleware.md"
+    status: active
+    notes: "Tool integration and MCP patterns"
+
+  - tsa: "02b-ai/safety.md"
+    bam:
+      - "knowledge/testing-agent-safety.md"
+      - "checklists/qg-i3-agent-safety.md"
+    status: active
+    notes: "AI safety evaluation"
+
+  # Security Layer
+  - tsa: "03-security/tenant-isolation.md"
+    bam:
+      - "knowledge/testing-tenant-isolation.md"
+      - "checklists/tenant-isolation.md"
+      - "checklists/qg-i2-tenant-safety.md"
+    status: active
+    notes: "Tenant security verification"
+
+  - tsa: "03-security/agent-access-control.md"
+    bam:
+      - "knowledge/agent-identity-tbac-patterns.md"
+      - "knowledge/agent-data-governance-patterns.md"
+    status: active
+    notes: "Agent access control patterns"
+
+  # Integration Layer
+  - tsa: "04-integration/module-communication.md"
+    bam:
+      - "knowledge/event-driven-patterns.md"
+      - "knowledge/saga-orchestration-patterns.md"
+    status: active
+    notes: "Cross-module integration"
+
+  - tsa: "04-integration/api-versioning.md"
+    bam:
+      - "knowledge/api-version-routing.md"
+    status: active
+    notes: "API version management"
+
+  # Development Layer
+  - tsa: "05-development/local-setup.md"
+    bam:
+      - "knowledge/local-development-setup.md"
+      - "knowledge/independent-development.md"
+    status: active
+    notes: "Development environment"
+
+  - tsa: "05-development/parallel-work.md"
+    bam:
+      - "knowledge/parallel-development-guide.md"
+    status: active
+    notes: "Team coordination"
+
+  # Testing Layer
+  - tsa: "06-testing/multi-tenant.md"
+    bam:
+      - "knowledge/testing-multi-tenant-fixtures.md"
+      - "knowledge/testing-tenant-isolation.md"
+    status: active
+    notes: "Tenant testing patterns"
+
+validation_rules:
+  - rule: "version_match"
+    description: "Technology versions in BAM must match TSA specifications"
+    check: "Compare version numbers in knowledge fragments"
+
+  - rule: "no_contradictions"
+    description: "BAM patterns must not contradict TSA guidance"
+    check: "Manual review of pattern alignment"
+
+  - rule: "complete_coverage"
+    description: "All TSA topics relevant to multi-tenant SaaS must have BAM fragments"
+    check: "Verify mappings array covers all relevant TSA sections"
+
+gaps:
+  # Known gaps to address
+  - tsa: "10-contracts/agent-protocols.md"
+    bam: []
+    status: missing
+    priority: P2
+    notes: "Need to create MCP protocol patterns fragment"
+
+  - tsa: "07-observability/tenant-metrics.md"
+    bam: []
+    status: partial
+    priority: P2
+    notes: "Workflow exists but no knowledge fragment"

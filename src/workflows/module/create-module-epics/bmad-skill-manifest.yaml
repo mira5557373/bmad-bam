@@ -1,0 +1,6 @@
+type: workflow
+name: bmad-bam-create-module-epics
+displayName: Create Module Epics
+description: "Create module-scoped epics and stories. Use when the user requests to 'create module epics' or 'plan module stories'."
+module: bam
+canonicalId: bmad-bam-create-module-epics

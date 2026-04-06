@@ -1,0 +1,68 @@
+# BAM Extension for BMM Developer
+# Pattern: WDS agent-guides (NO memories: field)
+
+agent:
+  metadata:
+    extends: 'bmad-agent-dev'
+    module: 'bam'
+    description: "Adds tenant isolation implementation capabilities"
+
+menu:
+  - trigger: bam-dev-context
+    action: "#load-bam-dev-context-prompt"
+    description: Load BAM development context
+  - trigger: implement-rls
+    action: "#implement-rls-prompt"
+    description: Implement RLS policies
+  - trigger: tenant-context-prop
+    action: "#tenant-context-prop-prompt"
+    description: Implement tenant context propagation
+
+prompts:
+  - id: load-bam-dev-context-prompt
+    content: |
+      ## Load BAM Development Context
+
+      Read and internalize the tenant isolation development guide:
+      `{project-root}/_bmad/bam/data/agent-guides/bam/tenant-isolation.md`
+
+      This guide provides comprehensive context for implementing tenant isolation in code.
+      It covers the following key areas:
+
+      1. **Row-Level Security (RLS)**: Patterns for implementing RLS policies in PostgreSQL,
+         including policy creation, tenant context setting, and connection pooling considerations.
+      2. **Tenant Context Propagation**: How to pass tenant context through all code paths
+         including HTTP requests, background jobs, events, and WebSocket connections.
+      3. **Cache Isolation**: Strategies for ensuring tenant data separation in caching layers
+         using prefixed keys and isolated cache instances.
+      4. **Memory Scope Enforcement**: Ensuring AI agent memories are scoped to the correct
+         tenant boundary and cannot leak across tenant boundaries.
+
+      Once loaded, confirm by stating: "BAM development context loaded. Ready to implement
+      tenant isolation patterns."
+
+  - id: implement-rls-prompt
+    content: |
+      ## Implement RLS Policies
+
+      Load knowledge: `{project-root}/_bmad/bam/knowledge/rls-best-practices.md`
+
+      For each table:
+      ```sql
+      ALTER TABLE {table} ENABLE ROW LEVEL SECURITY;
+      ALTER TABLE {table} FORCE ROW LEVEL SECURITY;
+      CREATE POLICY tenant_isolation ON {table}
+        USING (tenant_id = current_setting('app.current_tenant')::uuid);
+      ```
+
+      Use SET LOCAL (never SET) for connection pooling.
+
+  - id: tenant-context-prop-prompt
+    content: |
+      ## Tenant Context Propagation
+
+      Implement context propagation for all code paths:
+      - HTTP: Middleware extracts from JWT
+      - Background jobs: Context in payload
+      - Events: tenant_id in header
+      - WebSocket: Context on connection

@@ -1,0 +1,62 @@
+# BAM Extension for Master Architect role
+# Pattern: WDS agent-guides (NO memories: field)
+
+agent:
+  metadata:
+    extends: 'bmad-agent-architect'
+    module: 'bam'
+    description: "Adds master architecture review capabilities"
+
+menu:
+  - trigger: bam-master-context
+    action: "#load-bam-master-context-prompt"
+    description: Load BAM master architecture context
+  - trigger: foundation-review
+    action: "#foundation-review-prompt"
+    description: Review foundation against master architecture
+  - trigger: module-compliance
+    action: "#module-compliance-prompt"
+    description: Check module compliance with master
+
+prompts:
+  - id: load-bam-master-context-prompt
+    content: |
+      ## Load BAM Master Architecture Context
+
+      Read and internalize the module architecture master guide:
+      `{project-root}/_bmad/bam/data/agent-guides/bam/module-architecture.md`
+
+      This guide provides comprehensive context for reviewing and governing the overall
+      multi-tenant platform architecture. It covers the following key areas:
+
+      1. **Master Architecture Principles**: Core architectural decisions that all modules
+         must inherit, including tenant model, isolation guarantees, and shared kernel.
+      2. **Module Boundary Governance**: Rules for module independence, allowed dependencies,
+         forbidden couplings, and facade contract requirements.
+      3. **TenantContext Contract**: The canonical TenantContext structure that must flow
+         through all modules, with validation and propagation requirements.
+      4. **Compliance Verification**: Checklist-based verification that modules conform to
+         master architecture without contradiction or unauthorized extension.
+
+      Apply these master architecture principles to all review activities. Once loaded,
+      confirm by stating: "BAM master architecture context loaded. Ready to conduct
+      architecture compliance reviews."
+
+  - id: foundation-review-prompt
+    content: |
+      ## Foundation Review
+      Verify against master architecture:
+      - [ ] Tenant model matches master
+      - [ ] Module boundaries align
+      - [ ] Shared kernel is minimal
+      - [ ] AI runtime decisions consistent
+      - [ ] Forbidden dependencies respected
+
+  - id: module-compliance-prompt
+    content: |
+      ## Module Compliance Check
+      For each module verify:
+      - Inherits from master without contradiction
+      - TenantContext propagation correct
+      - Facade contracts properly versioned
+      - No forbidden dependencies

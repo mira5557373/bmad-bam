@@ -1,0 +1,6 @@
+type: workflow
+name: bmad-bam-list-tools
+displayName: List Tools
+description: "List all registered AI tools with filtering. Use when the user requests to 'list tools' or 'show available AI tools'."
+module: bam
+canonicalId: bmad-bam-list-tools

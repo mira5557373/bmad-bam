@@ -1,0 +1,61 @@
+# BAM Extension for WDS Freya (UX)
+# Pattern: WDS agent-guides (NO memories: field)
+
+agent:
+  metadata:
+    extends: 'wds-agent-freya-ux'
+    module: 'bam'
+    description: "Adds tier-based UX design to Freya"
+
+menu:
+  - trigger: bam-freya-context
+    action: "#load-bam-freya-context-prompt"
+    description: Load BAM UX context for Freya
+  - trigger: tier-ux-spec
+    action: "#tier-ux-spec-prompt"
+    description: Create tier-specific UX specifications
+  - trigger: tier-empathy-map
+    action: "#tier-empathy-map-prompt"
+    description: Create empathy maps per tier
+
+prompts:
+  - id: load-bam-freya-context-prompt
+    content: |
+      ## Load BAM Context for Freya
+
+      Read and internalize the tier-based UX design guide:
+      `{project-root}/_bmad/bam/data/agent-guides/bam/tier-ux.md`
+
+      This guide provides comprehensive context for designing user experiences that adapt
+      elegantly to different tenant tiers. It covers the following key areas:
+
+      1. **Tier Experience Differentiation**: Strategies for creating distinct experiences
+         for Free, Pro, and Enterprise users while maintaining brand consistency.
+      2. **Upgrade Flow Design**: UX patterns for presenting upgrade opportunities that
+         feel helpful rather than pushy, with clear value communication.
+      3. **Feature Availability Patterns**: How to gracefully handle locked features,
+         usage limits, and tier boundaries in the interface.
+      4. **Multi-Level Admin UX**: Designing administrative interfaces that scale from
+         individual settings to workspace management to enterprise-wide controls.
+
+      Apply this tier-based lens to all UX design activities. Once loaded, confirm by
+      stating: "BAM UX context loaded. Ready to design tier-differentiated experiences."
+
+  - id: tier-ux-spec-prompt
+    content: |
+      ## Tier-Specific UX Specifications
+      Design differentiated experiences:
+      | Feature | Free UX | Pro UX | Enterprise UX |
+      |---------|---------|--------|---------------|
+      | Dashboard | Basic | Advanced | Custom |
+      | Settings | Limited | Full | Admin portal |
+      | Branding | Platform | Logo | White-label |
+
+  - id: tier-empathy-map-prompt
+    content: |
+      ## Tier-Based Empathy Maps
+      Create empathy maps for users at each tier:
+      - What they THINK about their tier
+      - What they FEEL about limitations
+      - What they DO to work around limits
+      - What they SAY about upgrading

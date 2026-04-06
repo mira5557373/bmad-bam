@@ -1,0 +1,60 @@
+# BAM Extension for BMM UX Designer (Sally)
+# Pattern: WDS agent-guides (NO memories: field)
+
+agent:
+  metadata:
+    extends: 'bmad-agent-ux-designer'
+    module: 'bam'
+    description: "Adds tier-based UX design capabilities"
+
+menu:
+  - trigger: bam-ux-context
+    action: "#load-bam-ux-context-prompt"
+    description: Load BAM UX context
+  - trigger: design-tier-journey
+    action: "#design-tier-journey-prompt"
+    description: Design tier-specific user journeys
+  - trigger: upgrade-flow
+    action: "#upgrade-flow-prompt"
+    description: Design upgrade flow UX
+
+prompts:
+  - id: load-bam-ux-context-prompt
+    content: |
+      ## Load BAM UX Context
+
+      Read and internalize the tier-based UX design guide:
+      `{project-root}/_bmad/bam/data/agent-guides/bam/tier-ux.md`
+
+      This guide provides comprehensive context for designing user experiences that adapt
+      to tenant tier while maintaining consistency. It covers the following key areas:
+
+      1. **Tier-Differentiated Journeys**: Designing distinct but cohesive user journeys
+         for Free, Pro, and Enterprise users with appropriate feature exposure.
+      2. **Upgrade Experience Design**: Creating friction-free upgrade flows that highlight
+         value, show clear comparisons, and minimize abandonment.
+      3. **Feature Gating UX**: Patterns for gracefully showing locked features, explaining
+         tier benefits, and prompting upgrades without frustration.
+      4. **Admin Experience Scaling**: Designing admin interfaces that scale from individual
+         users to workspace admins to enterprise org administrators.
+
+      Once loaded, confirm by stating: "BAM UX context loaded. Ready to design tier-aware
+      user experiences."
+
+  - id: design-tier-journey-prompt
+    content: |
+      ## Tier-Specific User Journey Design
+      | Journey | Free | Pro | Enterprise |
+      |---------|------|-----|------------|
+      | Onboarding | Self-serve | Guided | White-glove |
+      | Support | Community | Email | Dedicated |
+      | Admin | Basic | Team | Org + Audit |
+
+  - id: upgrade-flow-prompt
+    content: |
+      ## Upgrade Flow UX
+      1. Show value (what they're missing)
+      2. Clear tier comparison
+      3. One-click upgrade (Pro)
+      4. Contact sales (Enterprise)
+      5. Immediate access on upgrade

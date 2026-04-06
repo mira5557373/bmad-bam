@@ -1,0 +1,97 @@
+# BAM Extension for BMM Product Manager
+# Pattern: WDS agent-guides (NO memories: field)
+
+agent:
+  metadata:
+    extends: 'bmad-agent-pm'
+    module: 'bam'
+    description: "Adds SaaS lifecycle planning capabilities"
+
+menu:
+  - trigger: bam-pm-context
+    action: "#load-bam-pm-context-prompt"
+    description: Load BAM product management context
+  - trigger: plan-onboarding
+    action: "#plan-onboarding-prompt"
+    description: Plan tenant onboarding flow
+  - trigger: plan-offboarding
+    action: "#plan-offboarding-prompt"
+    description: Plan tenant offboarding flow
+  - trigger: tier-roadmap
+    action: "#tier-roadmap-prompt"
+    description: Plan tier-based feature roadmap
+
+prompts:
+  - id: load-bam-pm-context-prompt
+    content: |
+      ## Load BAM PM Context
+
+      Read and internalize the SaaS lifecycle management guide:
+      `{project-root}/_bmad/bam/data/agent-guides/bam/saas-lifecycle.md`
+
+      This guide provides comprehensive context for managing the product lifecycle of a
+      multi-tenant SaaS platform. It covers the following key areas:
+
+      1. **Tenant Onboarding**: Strategies for self-serve and assisted onboarding flows,
+         provisioning automation, and first-time user experience per tier.
+      2. **Tier Management**: Product decisions around feature gating, upgrade paths,
+         pricing models, and tier-specific value propositions.
+      3. **Tenant Offboarding**: GDPR-compliant data retention, anonymization, and deletion
+         workflows with appropriate grace periods and data export options.
+      4. **Lifecycle Metrics**: Key metrics for tracking tenant health, activation rates,
+         churn indicators, and upgrade conversion funnels.
+
+      Once loaded, confirm by stating: "BAM product management context loaded. Ready to
+      plan SaaS lifecycle features."
+
+  - id: plan-onboarding-prompt
+    content: |
+      ## Tenant Onboarding Planning
+      Design onboarding flow per tier:
+      | Step | FREE | PRO | ENTERPRISE |
+      |------|------|-----|------------|
+      | Signup | Self-serve | Self-serve | Sales |
+      | Provisioning | Instant | Instant | Custom |
+      | Onboarding | Tutorial | Guided | White-glove |
+
+  - id: plan-offboarding-prompt
+    content: |
+      ## Tenant Offboarding Planning
+
+      Design a comprehensive GDPR-compliant tenant offboarding flow that protects both
+      the platform and departing tenants. Consider the following workflow stages:
+
+      1. **Request Initiation**: Capture offboarding request with reason codes, verify
+         authorization (org admin only), and trigger confirmation workflows.
+      2. **Grace Period**: Implement 30-day grace period with account suspension, allow
+         reactivation, send reminder notifications, and freeze billing.
+      3. **Data Export**: Generate complete tenant data export in portable formats,
+         include all user data, agent memories, configurations, and audit logs.
+      4. **Anonymization**: Scrub PII from analytics data while preserving aggregate
+         metrics, maintain referential integrity in shared data structures.
+      5. **Hard Deletion**: Cascade delete all tenant-specific data, purge from backups
+         after retention period, generate deletion certificate for compliance.
+
+      Document the offboarding SLA per tier: Free (7 days), Pro (14 days), Enterprise
+      (custom with dedicated support). Include rollback procedures for each stage.
+
+  - id: tier-roadmap-prompt
+    content: |
+      ## Tier-Based Feature Roadmap
+
+      Plan a comprehensive feature roadmap that differentiates tiers while creating clear
+      upgrade incentives. Structure the roadmap around these considerations:
+
+      1. **Feature Categorization**: Classify features as Core (all tiers), Growth (Pro+),
+         or Scale (Enterprise only). Map each feature to its tier with clear rationale.
+      2. **Upgrade Triggers**: Identify natural upgrade moments - usage limits hit,
+         team size growth, compliance requirements, integration needs.
+      3. **Value Progression**: Ensure each tier upgrade delivers 3-5x perceived value
+         increase. Document the value proposition for each upgrade path.
+      4. **Pricing Alignment**: Align feature availability with pricing model - usage-based
+         features should scale with metered billing, seat-based with user counts.
+      5. **Sunset Planning**: Plan for feature deprecation and tier restructuring with
+         grandfathering policies for existing customers.
+
+      Create a visual roadmap showing Q1-Q4 feature releases per tier, highlighting which
+      features drive upgrades and which increase retention within tier.

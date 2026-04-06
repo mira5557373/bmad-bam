@@ -1,0 +1,41 @@
+{
+  "name": "bmad-bam",
+  "version": "1.0.0",
+  "description": "BAM - Multi-Tenant Agentic AI SaaS extension for BMAD Method",
+  "license": "MIT",
+  "publishConfig": {
+    "access": "public"
+  },
+  "engines": {
+    "node": ">=20.0.0"
+  },
+  "keywords": [
+    "bmad",
+    "bmad-method",
+    "multi-tenant",
+    "saas",
+    "agentic-ai",
+    "modular-monolith",
+    "ddd",
+    "architecture"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/bmad-code-org/bmad-bam.git"
+  },
+  "author": "BMAD Community",
+  "scripts": {
+    "test": "jest",
+    "test:schema": "jest test/schema.test.js",
+    "test:workflow": "jest test/workflow.test.js",
+    "test:install": "jest test/install.test.js",
+    "test:extension": "jest test/extension.test.js",
+    "test:integration": "jest test/integration.test.js",
+    "validate-tsa": "node tools/validate-tsa-sync.mjs",
+    "lint": "yaml-lint src/**/*.yaml"
+  },
+  "devDependencies": {
+    "jest": "^29.7.0",
+    "js-yaml": "^4.1.0"
+  }
+}

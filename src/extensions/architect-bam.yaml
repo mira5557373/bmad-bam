@@ -1,0 +1,98 @@
+# BAM Extension for BMM Architect (Winston)
+# Pattern: WDS agent-guides (NO memories: field)
+
+agent:
+  metadata:
+    extends: 'bmad-agent-architect'
+    module: 'bam'
+    description: "Adds multi-tenant architecture capabilities to Winston"
+
+menu:
+  - trigger: bam-arch-context
+    action: "#load-bam-arch-context-prompt"
+    description: Load BAM architecture context
+  - trigger: design-modules
+    action: "#design-modules-prompt"
+    description: Design module boundaries with tenant awareness
+  - trigger: define-facades
+    action: "#define-facades-prompt"
+    description: Define facade contracts with TenantContext
+  - trigger: isolation-matrix
+    action: "#isolation-matrix-prompt"
+    description: Create tenant isolation matrix
+
+prompts:
+  - id: load-bam-arch-context-prompt
+    content: |
+      ## Load BAM Architecture Context
+
+      Read and internalize the BAM architecture guide:
+      `{project-root}/_bmad/bam/data/agent-guides/bam/module-architecture.md`
+
+      This guide provides context for:
+      - Modular monolith principles
+      - Module structure patterns
+      - Forbidden dependency rules
+      - Tenant context propagation in modules
+
+      Confirm when loaded, then proceed with architecture tasks.
+
+  - id: design-modules-prompt
+    content: |
+      ## Module Boundary Design for Multi-Tenant SaaS
+
+      Prerequisites: Load BAM context via `bam-arch-context`
+
+      For each identified bounded context:
+
+      | Module | Bounded Context | Owner | Complexity | Dependencies |
+      |--------|-----------------|-------|------------|--------------|
+      | ... | ... | ... | SIMPLE/STANDARD/COMPLEX | ... |
+
+      Design considerations:
+      1. Every module must accept TenantContext
+      2. Module boundaries should align with team ownership
+      3. Plan extraction seams for future microservices
+      4. Define facade vs internal boundaries
+
+      Output as module architecture document.
+
+  - id: define-facades-prompt
+    content: |
+      ## Facade Contract Design
+
+      For each cross-module dependency:
+
+      ```typescript
+      interface {Module}Facade {
+        methodName(
+          ctx: TenantContext,  // Always first parameter
+          input: InputDTO
+        ): Promise<OutputDTO>;
+      }
+      ```
+
+      Requirements:
+      - TenantContext as first parameter always
+      - DTOs only (no domain entities)
+      - Semantic versioning
+      - Contract tests required
+
+  - id: isolation-matrix-prompt
+    content: |
+      ## Tenant Isolation Matrix
+
+      Load template from `{project-root}/_bmad/bam/templates/tenant-isolation-matrix.md`
+
+      Define isolation for each asset:
+
+      | Asset Type | Strategy | Implementation | Verified |
+      |------------|----------|----------------|----------|
+      | Database | RLS/Schema/DB | ... | [ ] |
+      | Cache | Key prefix | ... | [ ] |
+      | Memory | Scope tag | ... | [ ] |
+      | Tools | Tier filter | ... | [ ] |
+      | Jobs | Context | ... | [ ] |
+      | Vectors | Filter | ... | [ ] |
+      | Logs | Field | ... | [ ] |
+      | Files | Path | ... | [ ] |

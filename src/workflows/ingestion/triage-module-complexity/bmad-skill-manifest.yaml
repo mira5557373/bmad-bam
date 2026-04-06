@@ -1,0 +1,6 @@
+type: workflow
+name: bmad-bam-triage-module-complexity
+displayName: Module Complexity Triage
+description: "Classify module complexity using 8-question assessment. Use when the user requests to 'triage module complexity' or 'classify module difficulty'."
+module: bam
+canonicalId: bmad-bam-triage-module-complexity

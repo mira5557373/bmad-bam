@@ -1,0 +1,6 @@
+type: workflow
+name: bmad-bam-evolve-facade-contract
+displayName: Evolve Facade Contract
+description: "Handle breaking changes in facade contracts. Use when the user requests to 'evolve facade contract' or 'update module contract with breaking changes'."
+module: bam
+canonicalId: bmad-bam-evolve-facade-contract

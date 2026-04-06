@@ -1,0 +1,6 @@
+type: workflow
+name: bmad-bam-facade-mismatch-recovery
+displayName: Facade Mismatch Recovery
+description: "Recover from unplanned facade contract divergence. Use when the user requests to 'fix facade mismatch' or 'recover contract divergence'."
+module: bam
+canonicalId: bmad-bam-facade-mismatch-recovery

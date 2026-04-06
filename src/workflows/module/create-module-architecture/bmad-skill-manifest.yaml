@@ -1,0 +1,6 @@
+type: workflow
+name: bmad-bam-create-module-architecture
+displayName: Create Module Architecture
+description: "Design per-module architecture inheriting from master. Use when the user requests to 'create module architecture' or 'design module'."
+module: bam
+canonicalId: bmad-bam-create-module-architecture
