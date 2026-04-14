@@ -1,0 +1,14 @@
+{
+  "module-code": "bam",
+  "capabilities": [{
+    "name": "bmad-bam-tenant-white-labeling-design",
+    "menu-code": "TWL",
+    "description": "Design white-labeling and branding customization per tenant. Use when the user requests to 'design white-labeling' or 'configure tenant branding'.",
+    "supports-headless": true,
+    "phase-name": "3-solutioning",
+    "after": ["bmad-bam-tenant-model-isolation"],
+    "before": [],
+    "is-required": false,
+    "output-location": "{output_folder}/planning-artifacts"
+  }]
+}

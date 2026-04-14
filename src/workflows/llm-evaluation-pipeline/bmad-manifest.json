@@ -1,0 +1,14 @@
+{
+  "module-code": "bam",
+  "capabilities": [{
+    "name": "bmad-bam-llm-evaluation-pipeline",
+    "menu-code": "LEP",
+    "description": "Design automated LLM evaluation for CI/CD with metrics and regression testing",
+    "supports-headless": true,
+    "phase-name": "3-solutioning",
+    "after": ["bmad-bam-agent-runtime-architecture", "bmad-bam-prompt-versioning-management"],
+    "before": ["bmad-bam-convergence-verification"],
+    "is-required": false,
+    "output-location": "{output_folder}/planning-artifacts/architecture"
+  }]
+}

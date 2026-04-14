@@ -8,3 +8,8 @@ Design tenant isolation strategy and context propagation. Use when the user requ
 - **Domain:** tenant
 - **Complexity:** complex
 - **Headless:** Yes
+
+## Workflow Triggers
+
+- **architect-bam (Atlas)**: When designing tenant isolation strategies or RLS policies -> `bam/workflows/tenant-model-isolation`
+- **security-bam**: When validating tenant data isolation or cross-tenant access controls -> `bam/workflows/tenant-model-isolation`

@@ -1,0 +1,15 @@
+{
+  "module-code": "bam",
+  "capabilities": [{
+    "name": "bmad-bam-tenant-safety",
+    "menu-code": "TSFV",
+    "description": "Verify tenant safety controls and isolation for multi-tenant AI platforms",
+    "supports-headless": true,
+    "phase-name": "5-quality",
+    "after": ["bmad-bam-tenant-model-isolation"],
+    "before": ["bmad-bam-production-readiness"],
+    "is-required": false,
+    "output-location": "{output_folder}/security",
+    "qualityGates": ["QG-I2"]
+  }]
+}

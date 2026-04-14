@@ -8,3 +8,8 @@ Design tenant-aware metrics, logs, traces, and alerts. Use when the user request
 - **Domain:** tenant
 - **Complexity:** simple
 - **Headless:** Yes
+
+## Workflow Triggers
+
+- **devops-bam**: When implementing tenant-aware monitoring or observability infrastructure -> `bam/workflows/tenant-aware-observability`
+- **architect-bam (Atlas)**: When designing tenant metrics architecture or distributed tracing -> `bam/workflows/tenant-aware-observability`

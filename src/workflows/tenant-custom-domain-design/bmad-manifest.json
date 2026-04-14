@@ -1,0 +1,14 @@
+{
+  "module-code": "bam",
+  "capabilities": [{
+    "name": "bmad-bam-tenant-custom-domain-design",
+    "menu-code": "TCDD",
+    "description": "Design custom domain and subdomain routing per tenant. Use when the user requests to 'design custom domains' or 'configure tenant domains'.",
+    "supports-headless": true,
+    "phase-name": "3-solutioning",
+    "after": ["bmad-bam-tenant-model-isolation"],
+    "before": [],
+    "is-required": false,
+    "output-location": "{output_folder}/planning-artifacts/infrastructure"
+  }]
+}

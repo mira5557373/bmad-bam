@@ -1,0 +1,7 @@
+type: workflow
+name: tenant-reactivation-design
+displayName: Tenant Reactivation Design
+description: 'Design tenant reactivation workflows after suspension or churn'
+module: bam
+config_variables:
+  - tenant_model

@@ -1,124 +1,117 @@
-# TSA (Technology Stack Architecture) ↔ BAM Synchronization Map
-# Tracks alignment between TSA documentation and BAM knowledge fragments
+# TSA (Technology Stack Architecture) -> BAM Pattern Registry Migration Map
+# TSA has been retired in favor of pattern registry + web research for current information
+# This map documents the migration from static knowledge to dynamic patterns
 
-version: "1.0.0"
-last_sync: "2026-04-05"
+version: "2.0.0"
+last_sync: "2026-04-08"
+module: bam
+status: migrated
 
+# TSA topics are now covered by pattern registry CSVs + web search queries
 mappings:
-  # Foundation Layer
+  # Foundation Layer -> Pattern Registry
   - tsa: "01-foundation/multi-tenancy.md"
     bam:
-      - "knowledge/multi-tenant-patterns.md"
-      - "knowledge/rls-best-practices.md"
+      - "data/bam-patterns.csv (filter: tenant-*)"
+      - "data/tenant-models.csv"
+      - "data/agent-guides/bam/tenant-isolation.md"
+      - "data/agent-guides/bam/rls-best-practices.md"
     status: active
-    notes: "Core tenant isolation patterns"
+    notes: "Core tenant isolation via pattern registry + web search"
 
   - tsa: "01-foundation/modular-architecture.md"
     bam:
-      - "knowledge/ddd-module-patterns.md"
-      - "knowledge/module-facade-patterns.md"
-      - "knowledge/shared-kernel-patterns.md"
+      - "data/bam-patterns.csv (filter: module-*)"
+      - "data/agent-guides/bam/module-architecture.md"
     status: active
-    notes: "Module boundary and DDD patterns"
+    notes: "Module boundary patterns via registry"
 
-  # AI Runtime Layer
+  # AI Runtime Layer -> Pattern Registry
   - tsa: "02b-ai/agents.md"
     bam:
-      - "knowledge/agent-runtime-patterns.md"
-      - "knowledge/run-contract-patterns.md"
-      - "knowledge/memory-tier-patterns.md"
+      - "data/ai-runtimes.csv"
+      - "data/bam-patterns.csv (filter: agent-*)"
+      - "data/agent-guides/bam/ai-runtime.md"
     status: active
-    notes: "AI agent orchestration patterns"
+    notes: "AI runtime via pattern registry + web search for current versions"
 
   - tsa: "02b-ai/tools-mcp.md"
     bam:
-      - "knowledge/action-gateway-patterns.md"
-      - "knowledge/tool-execution-middleware.md"
+      - "data/bam-patterns.csv (filter: tool-*)"
+      - "data/agent-guides/bam/action-gateway-patterns.md"
     status: active
-    notes: "Tool integration and MCP patterns"
+    notes: "Tool integration via pattern registry"
 
   - tsa: "02b-ai/safety.md"
     bam:
-      - "knowledge/testing-agent-safety.md"
+      - "data/quality-gates.csv"
       - "checklists/qg-i3-agent-safety.md"
     status: active
-    notes: "AI safety evaluation"
+    notes: "AI safety evaluation via quality gates"
 
-  # Security Layer
+  # Security Layer -> Pattern Registry
   - tsa: "03-security/tenant-isolation.md"
     bam:
-      - "knowledge/testing-tenant-isolation.md"
+      - "data/tenant-models.csv"
+      - "data/agent-guides/bam/tenant-testing.md"
       - "checklists/tenant-isolation.md"
       - "checklists/qg-i2-tenant-safety.md"
     status: active
-    notes: "Tenant security verification"
+    notes: "Tenant security via registry + checklists"
 
   - tsa: "03-security/agent-access-control.md"
     bam:
-      - "knowledge/agent-identity-tbac-patterns.md"
-      - "knowledge/agent-data-governance-patterns.md"
+      - "data/bam-patterns.csv (filter: agent-identity-*, agent-data-*)"
     status: active
-    notes: "Agent access control patterns"
+    notes: "Agent access control via pattern registry"
 
-  # Integration Layer
+  # Integration Layer -> Pattern Registry
   - tsa: "04-integration/module-communication.md"
     bam:
-      - "knowledge/event-driven-patterns.md"
-      - "knowledge/saga-orchestration-patterns.md"
+      - "data/bam-patterns.csv (filter: event-*, saga-*)"
+      - "data/agent-guides/bam/integration-patterns.md"
     status: active
-    notes: "Cross-module integration"
+    notes: "Module integration via pattern registry"
 
   - tsa: "04-integration/api-versioning.md"
     bam:
-      - "knowledge/api-version-routing.md"
+      - "data/bam-patterns.csv (filter: api-*)"
     status: active
-    notes: "API version management"
+    notes: "API versioning via pattern registry"
 
-  # Development Layer
-  - tsa: "05-development/local-setup.md"
+  # Development & Testing -> Pattern Registry
+  - tsa: "05-development/*"
     bam:
-      - "knowledge/local-development-setup.md"
-      - "knowledge/independent-development.md"
+      - "data/bam-patterns.csv (filter: dev-*)"
     status: active
-    notes: "Development environment"
+    notes: "Development patterns via registry + web search for tooling"
 
-  - tsa: "05-development/parallel-work.md"
-    bam:
-      - "knowledge/parallel-development-guide.md"
-    status: active
-    notes: "Team coordination"
-
-  # Testing Layer
   - tsa: "06-testing/multi-tenant.md"
     bam:
-      - "knowledge/testing-multi-tenant-fixtures.md"
-      - "knowledge/testing-tenant-isolation.md"
+      - "data/agent-guides/bam/tenant-testing.md"
+      - "checklists/tenant-isolation.md"
     status: active
-    notes: "Tenant testing patterns"
+    notes: "Testing via agent guides + checklists"
+
+  # Compliance -> Pattern Registry
+  - tsa: "03-security/compliance.md"
+    bam:
+      - "data/compliance-frameworks.csv"
+    status: active
+    notes: "Compliance requirements via registry"
 
 validation_rules:
-  - rule: "version_match"
-    description: "Technology versions in BAM must match TSA specifications"
-    check: "Compare version numbers in knowledge fragments"
+  - rule: "pattern_registry_coverage"
+    description: "All TSA topics should have corresponding pattern registry entries"
+    check: "Verify bam-patterns.csv has filter-able entries"
 
-  - rule: "no_contradictions"
-    description: "BAM patterns must not contradict TSA guidance"
-    check: "Manual review of pattern alignment"
+  - rule: "web_search_enabled"
+    description: "Web search queries in pattern registry should return current info"
+    check: "Test web_query column produces valid results"
 
-  - rule: "complete_coverage"
-    description: "All TSA topics relevant to multi-tenant SaaS must have BAM fragments"
-    check: "Verify mappings array covers all relevant TSA sections"
+  - rule: "no_static_knowledge"
+    description: "No references to deprecated knowledge/ directory"
+    check: "Verify all BAM refs use data/ or checklists/"
 
-gaps:
-  # Known gaps to address
-  - tsa: "10-contracts/agent-protocols.md"
-    bam: []
-    status: missing
-    priority: P2
-    notes: "Need to create MCP protocol patterns fragment"
-
-  - tsa: "07-observability/tenant-metrics.md"
-    bam: []
-    status: partial
-    priority: P2
-    notes: "Workflow exists but no knowledge fragment"
+gaps: []
+# No gaps - TSA content migrated to pattern registry + web search approach

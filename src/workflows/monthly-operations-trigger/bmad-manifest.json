@@ -1,0 +1,14 @@
+{
+  "module-code": "bam",
+  "capabilities": [{
+    "name": "bmad-bam-monthly-operations-trigger",
+    "menu-code": "MOT",
+    "description": "Scheduled trigger for monthly operational reviews",
+    "supports-headless": true,
+    "phase-name": "6-operations",
+    "after": [],
+    "before": [],
+    "is-required": false,
+    "output-location": "{output_folder}/planning-artifacts"
+  }]
+}

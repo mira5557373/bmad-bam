@@ -1,0 +1,14 @@
+{
+  "module-code": "bam",
+  "capabilities": [{
+    "name": "bmad-bam-data-reconciliation-dr",
+    "menu-code": "DRDR",
+    "description": "Execute or design data reconciliation after DR failover events. Use when the user requests to 'execute data reconciliation', 'reconcile DR data', 'design data reconciliation', or 'verify DR data integrity'.",
+    "supports-headless": true,
+    "phase-name": "4-implementation",
+    "after": ["bmad-bam-disaster-recovery-design"],
+    "before": [],
+    "is-required": false,
+    "output-location": "{output_folder}/planning-artifacts"
+  }]
+}

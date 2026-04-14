@@ -55,10 +55,10 @@ Agent-to-workflow mapping and responsibilities.
 ### agent-runtime-patterns.md
 LangGraph orchestration and state machine patterns.
 
-### run-contract-patterns.md
+### run-contracts.md
 Agent task contracts and execution patterns.
 
-### memory-tier-patterns.md
+### memory-tiers.md
 Ephemeral, working, and long-term memory design.
 
 ### action-gateway-patterns.md
@@ -104,7 +104,7 @@ Agent version management and migration.
 ### agent-resilience-patterns.md
 Error handling and recovery for agents.
 
-### ai-model-versioning.md
+### llm-versioning.md
 LLM version management and migration strategies.
 
 ### saga-orchestration-patterns.md
@@ -130,7 +130,7 @@ Load knowledge fragment: `multi-tenant-patterns.md`
 ```markdown
 ## Related Knowledge
 - `agent-runtime-patterns.md` - For orchestration details
-- `memory-tier-patterns.md` - For memory design
+- `memory-tiers.md` - For memory design
 ```
 
 ### Via Index

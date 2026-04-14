@@ -1,0 +1,5 @@
+type: workflow
+name: agent-handoff-design
+displayName: Agent Handoff Design
+description: "Design multi-agent communication and handoff protocols with state sharing and recovery patterns. Use when the user requests to 'design agent handoff'."
+module: bam

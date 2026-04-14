@@ -1,0 +1,14 @@
+{
+  "module-code": "bam",
+  "capabilities": [{
+    "name": "bmad-bam-incident-response-operations",
+    "menu-code": "INOP",
+    "description": "Execute incident response procedures for production issues",
+    "supports-headless": true,
+    "phase-name": "4-implementation",
+    "after": [],
+    "before": [],
+    "is-required": false,
+    "output-location": "{output_folder}/operations/incidents"
+  }]
+}

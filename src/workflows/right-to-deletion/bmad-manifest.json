@@ -1,0 +1,14 @@
+{
+  "module-code": "bam",
+  "capabilities": [{
+    "name": "bmad-bam-right-to-deletion",
+    "menu-code": "RTDL",
+    "description": "Design GDPR Article 17 right to erasure procedures for data subject deletion requests",
+    "supports-headless": true,
+    "phase-name": "3-solutioning",
+    "after": ["bmad-bam-tenant-model-isolation"],
+    "before": [],
+    "is-required": false,
+    "output-location": "{output_folder}/planning-artifacts"
+  }]
+}

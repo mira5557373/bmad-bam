@@ -1,0 +1,7 @@
+type: workflow
+name: tenant-tier-migration
+displayName: Tenant Tier Migration
+description: 'Design and execute tenant tier upgrades and downgrades'
+module: bam
+config_variables:
+  - tenant_model

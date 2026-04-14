@@ -1,0 +1,14 @@
+{
+  "module-code": "bam",
+  "capabilities": [{
+    "name": "bmad-bam-golden-dataset-management",
+    "menu-code": "GDM",
+    "description": "Design golden dataset lifecycle for AI evaluation",
+    "supports-headless": true,
+    "phase-name": "3-solutioning",
+    "after": ["bmad-bam-agent-runtime-architecture"],
+    "before": ["bmad-bam-ai-eval-safety-design"],
+    "is-required": false,
+    "output-location": "{output_folder}/planning-artifacts/quality"
+  }]
+}

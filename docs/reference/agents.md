@@ -1,15 +1,18 @@
 # Agent Reference
 
-BAM provides 3 specialist agents for multi-tenant SaaS architecture.
+BAM is a **pure extension module** with 0 standalone agents. All capabilities are delivered through extensions to existing BMAD agents.
 
-## Atlas - Platform Architect
+## Architect Personas (via architect-bam.yaml)
 
-**Invocation:** `/atlas` or `bmad-bam-platform-architect`
+The following personas are consolidated into the `architect-bam.yaml` extension, which extends `bmad-agent-architect` with 24 menu items:
 
-### Identity
+### Atlas - Platform Architect Persona
+
+**Invocation:** Load via `bam-platform-context` menu item
+
 Atlas, legendary architect who designed foundational pillars of cloud-native SaaS platforms. 15+ years building systems serving millions of tenants.
 
-### Capabilities
+**Capabilities:**
 
 | Code | Workflow | Description |
 |------|----------|-------------|
@@ -18,25 +21,17 @@ Atlas, legendary architect who designed foundational pillars of cloud-native Saa
 | MBD | module-boundary-design | Define module boundaries |
 | VF | validate-foundation | Validate against QG-F1 |
 
-### When to Use
-- Starting a new multi-tenant project
-- Designing foundation architecture
-- Defining module boundaries
-- Validating foundation gate
-
-### Communication Style
-Speaks with architectural gravitas. Uses blueprints and diagrams. Asks probing questions about scale and isolation requirements.
+**When to Use:** Starting a new multi-tenant project, designing foundation architecture, defining module boundaries, validating foundation gate.
 
 ---
 
-## Nova - AI Runtime Architect
+### Nova - AI Runtime Architect Persona
 
-**Invocation:** `/nova` or `bmad-bam-ai-runtime-architect`
+**Invocation:** Load via `bam-ai-runtime-context` menu item
 
-### Identity
 Nova, the navigating star of AI agent systems. Expert in orchestration frameworks (LangGraph, CrewAI), memory architectures, and tool protocol design.
 
-### Capabilities
+**Capabilities:**
 
 | Code | Workflow | Description |
 |------|----------|-------------|
@@ -44,25 +39,17 @@ Nova, the navigating star of AI agent systems. Expert in orchestration framework
 | TD | tool-definition | Create tool definitions |
 | AED | ai-eval-safety-design | Design AI safety evaluation |
 
-### When to Use
-- Designing AI agent capabilities
-- Defining tool contracts
-- Setting up memory systems
-- Creating safety evaluations
-
-### Communication Style
-Speaks in system diagrams. Uses state machine vocabulary. Always asks about failure modes and recovery paths.
+**When to Use:** Designing AI agent capabilities, defining tool contracts, setting up memory systems, creating safety evaluations.
 
 ---
 
-## Kai - Integration Architect
+### Kai - Integration Architect Persona
 
-**Invocation:** `/kai` or `bmad-bam-integration-architect`
+**Invocation:** Load via `bam-integration-context` menu item
 
-### Identity
 Kai, master of connections and contracts. Specializes in facade design, API versioning, and cross-module integration.
 
-### Capabilities
+**Capabilities:**
 
 | Code | Workflow | Description |
 |------|----------|-------------|
@@ -71,33 +58,30 @@ Kai, master of connections and contracts. Specializes in facade design, API vers
 | VTC | validate-tool-contract | Validate tool contracts |
 | CV | convergence-verification | Verify cross-module integration |
 
-### When to Use
-- Designing module interfaces
-- Evolving API versions
-- Integrating modules
-- Validating convergence
-
-### Communication Style
-Speaks in contract language. Obsessed with backwards compatibility. Always considers failure scenarios.
+**When to Use:** Designing module interfaces, evolving API versions, integrating modules, validating convergence.
 
 ---
 
 ## Agent Extensions
 
-BAM extends 18 agents from other modules:
+BAM extends agents from other modules through **25 extensions**:
 
-### BMM Extensions (8)
+### BMM Extensions (10)
 
 | Agent | Extension | New Capabilities |
 |-------|-----------|------------------|
 | Mary (Analyst) | analyst-bam | Tenant persona discovery, bounded context mapping |
-| Winston (Architect) | architect-bam | Module architecture, facade design |
-| Dev | dev-bam | RLS implementation, tenant context |
+| Winston (Architect) | architect-bam | Module architecture, facade design, Atlas/Nova/Kai personas (24 menu items) |
+| Dev | dev-bam | RLS implementation, tenant context, QA capabilities (tenant isolation testing), SM capabilities (sprint planning with tenant stories) |
 | PM | pm-bam | SaaS lifecycle planning |
-| QA | qa-bam | Tenant isolation testing |
-| SM | sm-bam | Sprint planning with tenant stories |
+| PO | po-bam | Product ownership with tenant focus |
 | Sally (UX) | ux-bam | Tier-based UX design |
 | Tech Writer | tech-writer-bam | RLS documentation |
+| DevOps | devops-bam | Multi-tenant deployment |
+| Security | security-bam | Tenant isolation security |
+| Master Architect | master-architect-bam | Master architecture review |
+
+> **Note:** QA and SM capabilities have been merged into `dev-bam.yaml` following BMM consolidation patterns.
 
 ### TEA Extension (1)
 
@@ -112,7 +96,7 @@ BAM extends 18 agents from other modules:
 | Saga | wds-saga-bam | SaaS trigger mapping, tenant personas |
 | Freya | wds-freya-bam | Tier journey design, upgrade flows |
 
-### CIS Extensions (6)
+### CIS Extensions (12)
 
 | Agent | Extension | New Capabilities |
 |-------|-----------|------------------|
@@ -122,12 +106,12 @@ BAM extends 18 agents from other modules:
 | Problem Solver | cis-problem-solver-bam | Isolation challenges |
 | Brainstorming Coach | cis-brainstorming-bam | SaaS feature ideation |
 | Presentation Master | cis-presentation-bam | SaaS pitch creation |
-
-### Master Extension (1)
-
-| Agent | Extension | New Capabilities |
-|-------|-----------|------------------|
-| Winston (Architect) | master-architect-bam | Master architecture review |
+| Disruption Analyst | cis-disruption-bam | Market disruption analysis |
+| Futures Strategist | cis-futures-bam | Platform evolution planning |
+| Market Analyst | cis-market-bam | SaaS market analysis |
+| Platform Strategist | cis-platform-bam | Platform strategy |
+| Scale Architect | cis-scale-bam | Scaling strategies |
+| Value Designer | cis-value-bam | Value proposition design |
 
 ## Loading BAM Context
 

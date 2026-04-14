@@ -1,0 +1,9 @@
+type: workflow
+name: database-migration-pipeline
+displayName: Database Migration Pipeline
+description: "Execute database migrations including migration plan execution, data validation, tenant impact assessment, and rollback testing. Use for schema changes."
+module: bam
+config_variables:
+  - tenant_model
+  - ai_runtime
+step_naming_convention: "step-NN-mode-description"

@@ -1,9 +1,8 @@
 ---
-name: bmad-bam-ai-eval-safety-design
+name: ai-eval-safety-design
 displayName: AI Eval Safety Design
 description: Design AI evaluation metrics and safety strategy. Use when the user requests to 'design AI eval strategy' or 'create safety cases'.
 module: bam
-web_bundle: true
 tags: [ai-runtime]
 ---
 
@@ -28,6 +27,13 @@ Search for and load `{project-root}/**/project-context.md` as foundational refer
 **If running in headless mode (`-H`):** Use defaults for all optional inputs, skip confirmation prompts, and auto-proceed through all steps.
 
 **Note:** If the user provides additional information during guided steps, capture it for later use without breaking the current flow.
+
+## When to Use
+
+- Designing AI evaluation metrics and quality thresholds
+- Creating golden task suites for agent testing
+- Building safety cases for prompt injection and PII handling
+- Defining fallback and refusal rules for agents
 
 ## Mode
 
@@ -93,6 +99,21 @@ Create diverse test cases per agent type:
 - [ ] Safety tests comprehensive (injection, PII, isolation)
 - [ ] Fallback/refusal rules complete with tier awareness
 
+## Quality Gates
+
+This workflow contributes to:
+- **QG-I3** (Agent Safety) - Defines evaluation strategy and safety test cases
+- **QG-I2** (Tenant Safety) - Tenant isolation tests for agent memory/data
+
+### Entry Gate
+- QG-M3 (Agent Runtime) must pass before designing eval strategy
+- Agent runtime architecture must be defined
+
+### Exit Gate
+- QG-I3 checklist items from `qg-i3-agent-safety.md` verified
+- Evaluation metrics and golden tasks documented
+- Safety cases cover injection, PII, and tenant isolation
+
 ## Output
 
 - `{output_folder}/planning-artifacts/quality/eval-strategy.md`
@@ -102,7 +123,7 @@ Create diverse test cases per agent type:
 ## References
 
 - Knowledge: `bam/knowledge/agent-runtime-patterns.md`, `bam/knowledge/agent-resilience-patterns.md`, `bam/knowledge/testing-agent-safety.md`
-- AI Model Versioning: `bam/knowledge/ai-model-versioning.md`
+- AI Model Versioning: `bam/knowledge/llm-versioning.md`
 
 - Checklist: `bam/checklists/qg-i3-agent-safety.md`
-- AI Model Versioning: `bam/knowledge/ai-model-versioning.md`
+- AI Model Versioning: `bam/knowledge/llm-versioning.md`

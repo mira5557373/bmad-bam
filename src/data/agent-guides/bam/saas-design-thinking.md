@@ -11,6 +11,28 @@
 
 ---
 
+## Core Concepts
+
+### Empathy Phase
+Understanding tenant needs through observation, interviews, and data analysis. This phase focuses on deeply comprehending the pain points, goals, and contexts of different tenant personas across tiers (Free, Pro, Enterprise).
+
+### Define Phase
+Synthesizing empathy insights into clear, actionable problem statements. For multi-tenant platforms, this means articulating challenges that respect tier boundaries while addressing common pain points.
+
+### Ideate Phase
+Generating diverse solutions through structured brainstorming techniques. Ideas must consider tier constraints, graceful degradation across subscription levels, and upgrade incentives.
+
+### Prototype Phase
+Creating rapid, low-fidelity representations of solutions to test assumptions. Prototypes should capture tenant journey transitions, tier upgrades, and cross-tenant admin scenarios.
+
+### Test Phase
+Validating prototypes with real tenant representatives from each tier. Testing must verify isolation boundaries, tier-appropriate experiences, and seamless upgrade/downgrade flows.
+
+### Multi-Tenant Considerations
+Design thinking in multi-tenant SaaS requires balancing shared infrastructure efficiency with personalized tenant experiences. Each phase must account for tier differentiation, data isolation requirements, and the natural progression tenants make through subscription levels.
+
+---
+
 ## Empathy Mapping for Tenant Personas
 
 ### Tenant Persona Framework
@@ -141,3 +163,38 @@ AWARENESS → EVALUATION → ONBOARDING → ACTIVATION → EXPANSION → ADVOCAC
 - `bmad-bam-create-master-architecture` - Architecture decisions from ideation
 - `bmad-bam-tenant-onboarding-design` - Onboarding flows from journey prototyping
 - WDS workflows with BAM extension for UX testing
+
+---
+
+## Related Patterns
+
+Load decision criteria and web search queries from pattern registry:
+
+- **Design patterns:** `{project-root}/_bmad/bam/data/bam-patterns.csv` → filter by category: `design-*`
+- **SaaS patterns:** `{project-root}/_bmad/bam/data/bam-patterns.csv` → filter by category: `saas-*`
+
+### Web Research
+
+Use the `web_queries` column from pattern registry to search for current best practices:
+- Search: "SaaS design thinking methodology {date}"
+- Search: "B2B SaaS user research multi-tenant {date}"
+- Search: "design sprint SaaS product development {date}"
+
+---
+
+## Decision Framework
+
+| Question | Recommendation | Rationale |
+|----------|---------------|-----------|
+| How many tenant personas per tier to interview? | Minimum 3 per segment; 5+ for primary revenue tier | Statistical validity requires sample size; focus investment on highest-impact segments |
+| When to use soft vs hard feature gates in ideation? | Soft gates for features that drive upgrades; hard gates for infrastructure-dependent features | Soft gates enable value demonstration; hard gates prevent support burden for unprovided capabilities |
+| How to prioritize tier-aware solutions? | High impact + low effort for all tiers first; then tier-specific high-impact features | Maximize value delivery across customer base while supporting tier differentiation |
+| When to prototype tier transitions vs core flows? | Prototype transitions when conversion rate is a key metric; core flows when retention is focus | Align design investment with business objectives and growth stage |
+| How to validate isolation in design testing? | Include explicit cross-tenant access attempts in every test scenario | Security cannot be retrofitted; validation during design prevents costly fixes later |
+
+## Related Workflows
+
+- `bmad-bam-tenant-onboarding-design` - Design onboarding flows from journey prototyping
+- `bmad-bam-tenant-tier-migration` - Design tier upgrade/downgrade experiences
+- `bmad-bam-tenant-model-isolation` - Translate isolation requirements from empathy mapping
+- `bmad-bam-create-master-architecture` - Implement architecture decisions from ideation

@@ -1,0 +1,15 @@
+{
+  "module-code": "bam",
+  "capabilities": [{
+    "name": "bmad-bam-tenant-offboarding-design",
+    "menu-code": "TOFD",
+    "description": "Design GDPR-compliant tenant offboarding with data archival. Use when the user requests to 'design tenant offboarding' or 'plan tenant deletion'.",
+    "supports-headless": true,
+    "phase-name": "3-solutioning",
+    "after": ["bmad-bam-tenant-model-isolation"],
+    "before": [],
+    "is-required": false,
+    "output-location": "{output_folder}/planning-artifacts",
+    "qualityGates": ["QG-M2"]
+  }]
+}

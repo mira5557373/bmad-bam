@@ -1,0 +1,45 @@
+type: workflow
+name: production-readiness
+displayName: Production Readiness
+description: "Comprehensive production readiness assessment for multi-tenant AI platforms. Use when the user requests 'production readiness check', 'go-live assessment', or 'launch readiness'."
+module: bam
+version: 1.0.0
+category: bam-extension
+domain: operations
+
+triggers:
+  - pattern: "production readiness"
+  - pattern: "prod ready check"
+  - pattern: "go-live assessment"
+  - pattern: "launch readiness"
+
+inputs:
+  required:
+    - architecture_doc
+    - security_audit_results
+    - performance_benchmarks
+  optional:
+    - compliance_verification
+    - runbook_status
+
+outputs:
+  - production-readiness-report.md
+  - go-live-checklist.md
+  - risk-assessment.md
+
+quality_gate: QG-OC
+recovery_protocol: 3-step
+
+dependencies:
+  templates:
+    - observability-template.md
+    - testing-strategy-template.md
+  data:
+    - bam-patterns.csv
+  checklists:
+    - production-checklist.md
+    - security-checklist.md
+  workflows:
+    - bmad-bam-ai-security
+    - bmad-bam-data-protection
+    - bmad-bam-compliance-verification

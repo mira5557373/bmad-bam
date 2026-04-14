@@ -1,0 +1,14 @@
+{
+  "module-code": "bam",
+  "capabilities": [{
+    "name": "bmad-bam-tenant-sla-monitoring",
+    "menu-code": "TSLAM",
+    "description": "Design SLA monitoring and compliance tracking per tenant including SLA reporting and breach alerting",
+    "supports-headless": true,
+    "phase-name": "3-solutioning",
+    "after": ["bmad-bam-tenant-health-monitoring"],
+    "before": [],
+    "is-required": false,
+    "output-location": "{output_folder}/planning-artifacts"
+  }]
+}

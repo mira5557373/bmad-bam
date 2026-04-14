@@ -1,0 +1,9 @@
+type: workflow
+name: data-reconciliation-dr
+displayName: Data Reconciliation DR
+description: "Validate data integrity and reconciliation after DR failover events. Use when the user requests to 'design data reconciliation' or 'verify DR data integrity'."
+module: bam
+config_variables:
+  - tenant_model
+  - ai_runtime
+step_naming_convention: 'step-NN-mode-description'

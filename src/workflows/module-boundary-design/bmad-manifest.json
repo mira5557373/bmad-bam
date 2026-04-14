@@ -1,0 +1,14 @@
+{
+  "module-code": "bam",
+  "capabilities": [{
+    "name": "bmad-bam-module-boundary-design",
+    "menu-code": "MBD",
+    "description": "Design module boundaries and ownership",
+    "supports-headless": true,
+    "phase-name": "3-solutioning",
+    "after": ["bmad-bam-create-master-architecture"],
+    "before": [],
+    "is-required": true,
+    "output-location": "{output_folder}/planning-artifacts"
+  }]
+}

@@ -1,0 +1,14 @@
+{
+  "module-code": "bam",
+  "capabilities": [{
+    "name": "bmad-bam-tenant-contract-renewal",
+    "menu-code": "TCRN",
+    "description": "Design contract renewal automation with pricing updates and renegotiation workflows",
+    "supports-headless": true,
+    "phase-name": "3-solutioning",
+    "after": ["bmad-bam-tenant-billing-integration"],
+    "before": [],
+    "is-required": false,
+    "output-location": "{output_folder}/planning-artifacts/operations"
+  }]
+}

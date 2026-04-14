@@ -1,0 +1,14 @@
+{
+  "module-code": "bam",
+  "capabilities": [{
+    "name": "bmad-bam-ai-feedback-loop",
+    "menu-code": "AIFL",
+    "description": "Design user feedback collection and model improvement",
+    "supports-headless": true,
+    "phase-name": "3-solutioning",
+    "after": [],
+    "before": [],
+    "is-required": false,
+    "output-location": "{output_folder}/planning-artifacts"
+  }]
+}

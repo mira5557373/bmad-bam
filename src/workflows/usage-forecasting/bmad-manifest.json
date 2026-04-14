@@ -1,0 +1,14 @@
+{
+  "module-code": "bam",
+  "capabilities": [{
+    "name": "bmad-bam-usage-forecasting",
+    "menu-code": "USFC",
+    "description": "Design usage forecasting models for capacity planning with trend analysis and demand prediction",
+    "supports-headless": true,
+    "phase-name": "3-solutioning",
+    "after": ["bmad-bam-usage-metering-design", "bmad-bam-tenant-capacity-planning"],
+    "before": [],
+    "is-required": false,
+    "output-location": "{output_folder}/planning-artifacts/analytics"
+  }]
+}

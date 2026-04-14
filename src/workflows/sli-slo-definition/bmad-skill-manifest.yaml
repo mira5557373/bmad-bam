@@ -1,0 +1,5 @@
+type: workflow
+name: sli-slo-definition
+displayName: SLI/SLO Definition
+description: "Define Service Level Indicators and Objectives for multi-tenant platform. Use when the user requests to 'define SLIs/SLOs' or 'create service level objectives'."
+module: bam

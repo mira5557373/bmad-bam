@@ -1,0 +1,5 @@
+type: workflow
+name: incident-response-operations
+displayName: Incident Response Operations
+description: "Execute incident response procedures for production issues. Use when the user requests to 'handle incident' or 'initiate incident response'."
+module: bam

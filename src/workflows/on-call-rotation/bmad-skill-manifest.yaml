@@ -1,0 +1,7 @@
+type: workflow
+name: on-call-rotation
+displayName: On-Call Rotation
+description: "Design on-call rotation and escalation for multi-tenant platforms. Use when the user requests to 'design on-call rotation' or 'plan escalation procedures'."
+module: bam
+config_variables:
+  - tenant_model

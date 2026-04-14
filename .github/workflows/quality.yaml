@@ -1,0 +1,215 @@
+name: Quality
+
+on:
+  push:
+    branches: [main, develop]
+  pull_request:
+    branches: [main]
+
+jobs:
+  validate:
+    name: Schema & Extension Tests
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'npm'
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Run schema validation
+        run: npm run test:schema
+
+      - name: Run workflow validation
+        run: npm run test:workflow
+
+      - name: Run install validation
+        run: npm run test:install
+
+      - name: Run extension validation
+        run: npm run test:extension
+
+      - name: Run integration validation
+        run: npm run test:integration
+
+  lint:
+    name: YAML & Extension Lint
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Install yaml-lint
+        run: npm install -g yaml-lint
+
+      - name: Validate YAML files
+        run: find src -name "*.yaml" -exec yaml-lint {} \;
+
+      - name: Check for memories field (must not exist)
+        run: |
+          if grep -r "^memories:" src/extensions/; then
+            echo "ERROR: Found 'memories:' field in extensions - this is not allowed"
+            exit 1
+          fi
+
+      - name: Check for web_bundle in SKILL.md (non-standard field)
+        run: |
+          if grep -r "^web_bundle:" src/workflows/**/SKILL.md 2>/dev/null; then
+            echo "ERROR: Found 'web_bundle:' field in SKILL.md - this is not a standard BMAD field"
+            exit 1
+          fi
+
+  pattern-validation:
+    name: Pattern Reference Validation
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'npm'
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Validate TSA sync map
+        run: npm run validate-tsa
+
+      - name: Verify pattern registry CSV files exist
+        run: |
+          for csv in bam-patterns.csv tenant-models.csv ai-runtimes.csv quality-gates.csv compliance-frameworks.csv section-pattern-map.csv; do
+            if [ ! -f "src/data/$csv" ]; then
+              echo "ERROR: Missing pattern registry file: src/data/$csv"
+              exit 1
+            fi
+          done
+
+      - name: Verify CSV headers have web_queries column
+        run: |
+          for csv in src/data/bam-patterns.csv src/data/tenant-models.csv src/data/ai-runtimes.csv src/data/section-pattern-map.csv; do
+            if [ -f "$csv" ]; then
+              if ! head -1 "$csv" | grep -q "web_queries"; then
+                echo "WARNING: $csv missing web_queries column"
+              fi
+            fi
+          done
+
+  workflow-structure:
+    name: Workflow Structure Validation
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Verify all workflows have required files
+        run: |
+          errors=0
+          for dir in $(find src/workflows -mindepth 1 -maxdepth 1 -type d ! -name "README.md"); do
+            if [ -d "$dir/steps" ]; then
+              # Flat workflow
+              if [ ! -f "$dir/SKILL.md" ]; then
+                echo "ERROR: Missing SKILL.md in $dir"
+                errors=$((errors + 1))
+              fi
+              if [ ! -f "$dir/bmad-skill-manifest.yaml" ]; then
+                echo "ERROR: Missing bmad-skill-manifest.yaml in $dir"
+                errors=$((errors + 1))
+              fi
+            fi
+          done
+          if [ $errors -gt 0 ]; then
+            echo "Found $errors workflow structure errors"
+            exit 1
+          fi
+
+      - name: Verify nested workflows have required files
+        run: |
+          errors=0
+          for container in foundation module integration ingestion discovery utility; do
+            if [ -d "src/workflows/$container" ]; then
+              for dir in $(find "src/workflows/$container" -mindepth 1 -maxdepth 1 -type d); do
+                if [ -d "$dir/steps" ]; then
+                  if [ ! -f "$dir/SKILL.md" ]; then
+                    echo "ERROR: Missing SKILL.md in $dir"
+                    errors=$((errors + 1))
+                  fi
+                fi
+              done
+            fi
+          done
+          if [ $errors -gt 0 ]; then
+            echo "Found $errors nested workflow structure errors"
+            exit 1
+          fi
+
+  publish-dry-run:
+    name: Publish Verification
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Verify publishable
+        run: npm publish --dry-run
+
+  file-counts:
+    name: Asset Count Verification
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Verify extension count
+        run: |
+          count=$(ls src/extensions/*.yaml 2>/dev/null | wc -l)
+          if [ "$count" -lt 25 ]; then
+            echo "Expected at least 25 extensions, found $count"
+            exit 1
+          fi
+
+      - name: Verify checklist count
+        run: |
+          count=$(ls src/checklists/*.md 2>/dev/null | grep -v README | wc -l)
+          if [ "$count" -ne 22 ]; then
+            echo "Expected 22 checklists (excluding README), found $count"
+            exit 1
+          fi
+
+      - name: Verify agent-guide count
+        run: |
+          count=$(find src/data/agent-guides/bam -name "*.md" 2>/dev/null | wc -l)
+          if [ "$count" -lt 133 ]; then
+            echo "Expected at least 133 agent guides, found $count"
+            exit 1
+          fi
+
+      - name: Verify workflow count
+        run: |
+          flat=$(find src/workflows -mindepth 2 -maxdepth 2 -type d -name "steps" | wc -l)
+          nested=$(find src/workflows -mindepth 3 -maxdepth 3 -type d -name "steps" | wc -l)
+          total=$((flat + nested))
+          if [ "$total" -lt 67 ]; then
+            echo "Expected at least 67 workflows, found $total (flat: $flat, nested: $nested)"
+            exit 1
+          fi
+
+      - name: Verify template count
+        run: |
+          count=$(ls src/templates/*.md 2>/dev/null | wc -l)
+          if [ "$count" -lt 137 ]; then
+            echo "Expected at least 137 templates, found $count"
+            exit 1
+          fi

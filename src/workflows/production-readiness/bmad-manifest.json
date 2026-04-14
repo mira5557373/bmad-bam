@@ -1,0 +1,15 @@
+{
+  "module-code": "bam",
+  "capabilities": [{
+    "name": "bmad-bam-production-readiness",
+    "menu-code": "PRRD",
+    "description": "Comprehensive production readiness assessment for multi-tenant AI platforms",
+    "supports-headless": true,
+    "phase-name": "5-quality",
+    "after": ["bmad-bam-convergence-verification"],
+    "before": [],
+    "is-required": true,
+    "output-location": "{output_folder}/operations",
+    "qualityGates": ["QG-P1"]
+  }]
+}

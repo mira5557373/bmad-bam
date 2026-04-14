@@ -1,0 +1,14 @@
+{
+  "module-code": "bam",
+  "capabilities": [{
+    "name": "bmad-bam-disaster-recovery-drill",
+    "menu-code": "DRDR",
+    "description": "Execute disaster recovery drills including DR plan execution, failover testing, recovery validation, and RTO/RPO verification for multi-tenant AI platforms",
+    "supports-headless": true,
+    "phase-name": "4-implementation",
+    "after": ["bmad-bam-disaster-recovery-design"],
+    "before": [],
+    "is-required": false,
+    "output-location": "{output_folder}/operations"
+  }]
+}

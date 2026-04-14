@@ -1,0 +1,14 @@
+{
+  "module-code": "bam",
+  "capabilities": [{
+    "name": "bmad-bam-tenant-trial-conversion",
+    "menu-code": "TTCV",
+    "description": "Design trial-to-paid conversion workflows with engagement tracking and conversion optimization",
+    "supports-headless": true,
+    "phase-name": "3-solutioning",
+    "after": ["bmad-bam-tenant-onboarding-design"],
+    "before": [],
+    "is-required": false,
+    "output-location": "{output_folder}/planning-artifacts/operations"
+  }]
+}

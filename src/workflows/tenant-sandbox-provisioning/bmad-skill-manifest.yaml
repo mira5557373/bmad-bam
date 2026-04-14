@@ -1,0 +1,7 @@
+type: workflow
+name: tenant-sandbox-provisioning
+displayName: Tenant Sandbox Provisioning
+description: "Design demo/trial environment creation with sandbox creation, data seeding, and cleanup. Use when the user requests to 'design sandbox provisioning' or 'plan trial environments'."
+module: bam
+config_variables:
+  - tenant_model

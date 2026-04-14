@@ -1,0 +1,10 @@
+# Workflow metadata for bmad-bam-tenant-incident-response
+config_variables:
+  - user_name
+  - communication_language
+  - document_output_language
+  - output_folder
+  - tenant_model
+required_tools: []
+tags: [operations, incident-response, tenant-lifecycle]
+mode: complex

@@ -1,0 +1,14 @@
+{
+  "module-code": "bam",
+  "capabilities": [{
+    "name": "bmad-bam-tenant-capacity-planning",
+    "menu-code": "TCP",
+    "description": "Design capacity forecasting and resource planning per tenant.",
+    "supports-headless": true,
+    "phase-name": "3-solutioning",
+    "after": ["bmad-bam-tenant-model-isolation"],
+    "before": ["bmad-bam-tenant-cost-attribution"],
+    "is-required": false,
+    "output-location": "{output_folder}/planning-artifacts/operations"
+  }]
+}

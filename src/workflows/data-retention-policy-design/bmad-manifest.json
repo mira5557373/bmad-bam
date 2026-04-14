@@ -1,0 +1,14 @@
+{
+  "module-code": "bam",
+  "capabilities": [{
+    "name": "bmad-bam-data-retention-policy-design",
+    "menu-code": "DRPD",
+    "description": "Design tenant data retention policies with GDPR/CCPA compliance, automated archival, secure deletion, and audit trails",
+    "supports-headless": true,
+    "phase-name": "3-solutioning",
+    "after": ["bmad-bam-tenant-model-isolation"],
+    "before": [],
+    "is-required": false,
+    "output-location": "{output_folder}/planning-artifacts/compliance"
+  }]
+}

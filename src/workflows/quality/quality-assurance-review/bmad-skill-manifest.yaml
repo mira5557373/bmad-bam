@@ -1,0 +1,15 @@
+type: workflow
+name: quality-assurance-review
+displayName: Quality Assurance Review
+description: "Comprehensive quality assurance review for multi-tenant SaaS. Use when the user requests to 'review quality' or 'QA review'."
+module: bam
+config_variables:
+  - tenant_model
+  - ai_runtime
+  - test_architecture
+step_naming_convention: "step-NN-mode-description"
+tags:
+  - quality
+  - phase-5
+  - qa
+  - review

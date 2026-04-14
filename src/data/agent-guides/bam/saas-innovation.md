@@ -11,6 +11,25 @@
 
 ---
 
+## Core Concepts
+
+### Innovation Types
+Understanding the spectrum from incremental (small improvements) to radical (market-changing) innovation. SaaS platforms must balance core product enhancements, adjacent market expansion, and transformational bets across their innovation portfolio.
+
+### Disruptive Innovation
+Lower-cost or simpler alternatives that initially serve underserved segments before moving upmarket. In SaaS, disruption often comes through pricing model changes, AI-powered automation, or platform ecosystem effects.
+
+### Market Timing
+Recognizing when market conditions, technology readiness, and customer willingness align for successful innovation. Premature launches fail from lack of adoption; late entries face established competition.
+
+### Innovation Portfolio Management
+Allocating resources across core (70%), adjacent (20%), and transformational (10%) initiatives. This balance ensures steady revenue while investing in future growth.
+
+### Multi-Tenant Considerations
+Multi-tenant platforms have unique innovation opportunities through shared infrastructure that can be enhanced for all tenants simultaneously. Innovation must consider tier impact, tenant data leverage for AI improvements, and competitive positioning across Free, Pro, and Enterprise segments.
+
+---
+
 ## Tenant Feedback Loops
 
 ### Feedback Loop Architecture
@@ -217,9 +236,40 @@ IDENTIFY → MONITOR → ANALYZE → ACT
 
 ---
 
+## Decision Framework
+
+| Question | Recommendation | Rationale |
+|----------|----------------|-----------|
+| How do you allocate innovation budget? | Follow 70/20/10 rule: core, adjacent, transformational | Balanced portfolio ensures steady revenue while investing in future growth |
+| When should you promote Enterprise features to Pro? | When competitors offer similar at Pro level | Tier compression requires proactive feature migration to maintain competitiveness |
+| How do you build sustainable competitive advantage? | Invest in network effects and data moats over features | Features are easily copied; network effects and AI trained on usage are defensible |
+| Should you expand or deepen your tier structure? | Add tiers when distinct segments exist; deepen when value varies within tier | Team tier between Pro and Enterprise often captures mid-market; add-ons capture variance |
+| How do you balance technical debt with innovation? | Refactor high-debt areas before innovating; innovate freely in low-debt areas | Technical debt slows innovation; strategic refactoring enables faster future development |
+
 ## Integration with BAM Workflows
 
 - `bmad-bam-create-master-architecture` - Platform evolution architecture
 - `bmad-bam-tenant-model-isolation` - Isolation evolution paths
-- `bmad-bam-saas-ideation` - Feature innovation process
+- `bmad-bam-create-master-architecture` - Feature innovation process
 - PM workflows for roadmap and competitive analysis
+
+## Related Patterns
+
+Load decision criteria and web search queries from pattern registry:
+
+- **Innovation patterns:** `{project-root}/_bmad/bam/data/bam-patterns.csv` → filter by category: `innovation-*`
+- **SaaS patterns:** `{project-root}/_bmad/bam/data/bam-patterns.csv` → filter by category: `saas-*`
+
+### Web Research
+
+Use the `web_queries` column from pattern registry to search for current best practices:
+- Search: "SaaS innovation management {date}"
+- Search: "multi-tenant feature experimentation {date}"
+- Search: "AI-first SaaS product strategy {date}"
+
+## Related Workflows
+
+- `bmad-bam-create-master-architecture` - Design platform evolution architecture
+- `bmad-bam-tenant-tier-migration` - Implement tier progression strategies
+- `bmad-bam-product-analytics-instrumentation` - Build feedback loop analytics
+- `bmad-bam-performance-baseline` - Validate innovation impact on performance

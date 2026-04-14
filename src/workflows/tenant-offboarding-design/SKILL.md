@@ -1,9 +1,8 @@
 ---
-name: bmad-bam-tenant-offboarding-design
+name: tenant-offboarding-design
 displayName: Tenant Offboarding Design
 description: Design GDPR-compliant tenant offboarding with data archival. Use when the user requests to 'design tenant offboarding' or 'plan tenant deletion'.
 module: bam
-web_bundle: true
 tags: [tenant]
 ---
 
@@ -28,6 +27,12 @@ Search for and load `{project-root}/**/project-context.md` as foundational refer
 **If running in headless mode (`-H`):** Use defaults for all optional inputs, skip confirmation prompts, and auto-proceed through all steps.
 
 **Note:** If the user provides additional information during guided steps, capture it for later use without breaking the current flow.
+
+## When to Use
+
+- Designing tenant offboarding procedures
+- Creating data retention and deletion policies
+- Building account termination workflows
 
 ## Mode
 
@@ -94,6 +99,17 @@ Define the ordered offboarding sequence:
 - Offboarding step matrix
 - Data retention policy
 - Compliance checklist
+
+## Quality Gates
+
+| Gate | Contribution | Description |
+|------|--------------|-------------|
+| **QG-M2** | Contributes | Tenant data isolation during offboarding |
+| **QG-I2** | Contributes | Tenant safety during deletion and archival |
+| **QG-P1** | Contributes | Production-ready offboarding procedures |
+
+- **Entry Gate:** QG-M2 (Tenant Isolation) - Tenant model must be defined
+- **Exit Gate:** QG-I2 (Tenant Safety) - Offboarding process must preserve tenant isolation
 
 ## References
 

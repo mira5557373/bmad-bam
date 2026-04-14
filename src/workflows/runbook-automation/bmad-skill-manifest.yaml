@@ -1,0 +1,7 @@
+type: workflow
+name: runbook-automation
+displayName: Runbook Automation
+description: "Design automated runbook execution for multi-tenant platforms. Use when the user requests to 'design runbook automation' or 'plan automated operations'."
+module: bam
+config_variables:
+  - tenant_model

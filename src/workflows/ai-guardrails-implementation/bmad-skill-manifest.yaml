@@ -1,0 +1,5 @@
+type: workflow
+name: ai-guardrails-implementation
+displayName: AI Guardrails Implementation
+description: "Design AI content filtering and output validation guardrails. Use when the user requests to 'implement AI guardrails' or 'design content filtering'."
+module: bam

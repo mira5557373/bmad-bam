@@ -1,0 +1,14 @@
+{
+  "module-code": "bam",
+  "capabilities": [{
+    "name": "bmad-bam-graphql-design",
+    "menu-code": "GQLD",
+    "description": "Design GraphQL API layer with schema federation and tenant context",
+    "supports-headless": true,
+    "phase-name": "3-solutioning",
+    "after": [],
+    "before": [],
+    "is-required": false,
+    "output-location": "{output_folder}/planning-artifacts/graphql"
+  }]
+}

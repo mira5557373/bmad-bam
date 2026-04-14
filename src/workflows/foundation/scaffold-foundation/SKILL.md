@@ -1,9 +1,8 @@
 ---
-name: bmad-bam-scaffold-foundation
+name: scaffold-foundation
 displayName: Scaffold Foundation
 description: Scaffold BAM foundation code and infrastructure. Use when the user requests to 'scaffold foundation' or 'bootstrap BAM project'.
 module: bam
-web_bundle: true
 tags: [foundation]
 ---
 
@@ -19,7 +18,7 @@ Act as a Platform Architect scaffolding foundation infrastructure for a modular-
 
 ## On Activation
 
-Load available config from `{project-root}/_bmad/config.yaml` and `{project-root}/_bmad/config.user.yaml` (root and `bam` section). If config is missing, let the user know `bmad-bam-setup` can configure the module at any time. Resolve:
+Load available config from `{project-root}/_bmad/config.yaml` and `{project-root}/_bmad/config.user.yaml` (root and `bam` section). If config is missing, let the user know they can configure BAM settings in `{project-root}/_bmad/config.yaml` under the `bam` section, or re-run `npx bmad-method install` to reconfigure. Resolve:
 
 - `{user_name}`, `{communication_language}`, `{document_output_language}`, `{output_folder}`
 
@@ -30,6 +29,12 @@ Load available config from `{project-root}/_bmad/config.yaml` and `{project-root
 Search for and load `{project-root}/**/project-context.md` as foundational reference for project decisions and constraints.
 
 Verify prerequisite: `master-architecture.md` must exist. If missing, inform the user to run `bmad-bam-create-master-architecture` first.
+
+## When to Use
+
+- Scaffolding initial BAM project structure
+- Creating foundation directories and files
+- Setting up base project configuration
 
 ## Mode
 
@@ -132,3 +137,17 @@ Remind: After foundation stories are implemented, run `bmad-bam-validate-foundat
 - Knowledge: `bam/knowledge/shared-kernel-patterns.md`, `bam/knowledge/agent-runtime-patterns.md`, `bam/knowledge/local-development-setup.md`
 - Shared Kernel Patterns: `bam/knowledge/shared-kernel-patterns.md`
 - Local Development Setup: `bam/knowledge/local-development-setup.md`
+
+## Quality Gates
+
+This workflow contributes to:
+- **QG-F1** (Foundation) - Supports foundation gate by scaffolding implementation
+
+### Entry Gate
+- `master-architecture.md` must exist (QG-F1 design complete)
+
+### Exit Gate
+- All required foundation files exist and pass integrity check
+- Zone boundaries established
+- Foundation epics ready for implementation
+- Scaffold integrity check passes (database.py, tenant_context.py, base_entity.py, events.py)

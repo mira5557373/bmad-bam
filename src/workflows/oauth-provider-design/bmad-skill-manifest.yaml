@@ -1,0 +1,5 @@
+type: workflow
+name: oauth-provider-design
+displayName: OAuth Provider Design
+description: "Design OAuth2 provider implementation for third-party authorization. Use when the user requests to 'implement OAuth provider' or 'design authorization server'."
+module: bam

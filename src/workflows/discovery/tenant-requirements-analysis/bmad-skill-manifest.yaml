@@ -1,0 +1,9 @@
+type: workflow
+name: tenant-requirements-analysis
+displayName: Tenant Requirements Analysis
+description: "Analyze tenant-aware requirements for multi-tenant SaaS. Use when the user requests to 'analyze tenant requirements' or 'start tenant discovery'."
+module: bam
+config_variables:
+  - tenant_model
+  - ai_runtime
+step_naming_convention: 'step-NN-mode-description'

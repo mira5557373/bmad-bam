@@ -1,0 +1,7 @@
+type: workflow
+name: log-aggregation-design
+displayName: Log Aggregation Design
+description: "Design centralized log aggregation for multi-tenant platforms. Use when the user requests to 'design log aggregation' or 'plan centralized logging'."
+module: bam
+config_variables:
+  - tenant_model

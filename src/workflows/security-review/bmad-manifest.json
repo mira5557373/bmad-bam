@@ -1,0 +1,15 @@
+{
+  "module-code": "bam",
+  "capabilities": [{
+    "name": "bmad-bam-security-review",
+    "menu-code": "SR",
+    "description": "Dedicated security assessment for multi-tenant AI platforms including threat modeling, tenant isolation, and AI safety review.",
+    "supports-headless": true,
+    "phase-name": "anytime",
+    "after": ["bmad-bam-tenant-model-isolation"],
+    "before": [],
+    "is-required": false,
+    "output-location": "{output_folder}/planning-artifacts",
+    "qualityGates": ["QG-S3"]
+  }]
+}

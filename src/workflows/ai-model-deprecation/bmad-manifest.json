@@ -1,0 +1,14 @@
+{
+  "module-code": "bam",
+  "capabilities": [{
+    "name": "bmad-bam-ai-model-deprecation",
+    "menu-code": "AMD",
+    "description": "Operations workflow for deprecating AI models in multi-tenant platforms. Covers tenant impact assessment, migration planning, model sunset communication, and safe decommissioning.",
+    "supports-headless": true,
+    "phase-name": "6-operations",
+    "after": ["bmad-bam-agent-runtime-architecture"],
+    "before": [],
+    "is-required": false,
+    "output-location": "{output_folder}/planning-artifacts"
+  }]
+}

@@ -1,9 +1,8 @@
 ---
-name: bmad-bam-tenant-aware-observability
+name: tenant-aware-observability
 displayName: Tenant-Aware Observability
 description: Design tenant-aware metrics, logs, traces, and alerts. Use when the user requests to 'design observability' or 'configure tenant monitoring'.
 module: bam
-web_bundle: true
 tags: [tenant]
 ---
 
@@ -28,6 +27,12 @@ Search for and load `{project-root}/**/project-context.md` as foundational refer
 **If running in headless mode (`-H`):** Use defaults for all optional inputs, skip confirmation prompts, and auto-proceed through all steps.
 
 **Note:** If the user provides additional information during guided steps, capture it for later use without breaking the current flow.
+
+## When to Use
+
+- Designing tenant-aware logging and tracing
+- Creating per-tenant metrics and dashboards
+- Building tenant context propagation in telemetry
 
 ## Mode
 
@@ -109,6 +114,28 @@ Attribution rule: cross-module calls attributed to the CALLING module.
 | Background job (Redis)   | Job payload field               | Job payload field       |
 | WebSocket                | Connection state                | Connection state        |
 | Outbound webhook         | HTTP header `X-Correlation-ID`  | Webhook payload         |
+
+## Quality Gates
+
+This workflow contributes to:
+- **QG-M2** (Tenant Isolation) - Validates tenant-scoped telemetry and audit trails
+- **QG-I2** (Tenant Safety) - Ensures tenant data isolation in observability stack
+- **QG-P1** (Production) - Production monitoring and alerting required
+
+### Entry Gate
+- QG-F1 (Foundation) must pass (master architecture defined)
+- QG-M2 (Tenant Isolation) recommended for proper tenant context design
+
+### Exit Gate
+- QG-M2 and QG-P1 checklist items from `tenant-isolation.md` and `production-readiness.md` verified
+- Telemetry design complete with tenant context propagation
+- Audit event catalog defined
+
+## Related Workflows
+
+- `bmad-bam-tenant-model-isolation` - Tenant context design prerequisite
+- `bmad-bam-tenant-incident-response` - Observability enables incident detection
+- `bmad-bam-usage-metering-design` - Cost attribution integration
 
 ## Output
 

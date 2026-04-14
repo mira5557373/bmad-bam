@@ -1,3 +1,15 @@
+---
+name: Tenant Tier Matrix
+description: Template for documenting feature access and limits by tenant tier
+category: tenant
+version: 1.0.0
+type: "tenant"
+---
+
+## Purpose
+
+Template for documenting feature access and limits by tenant tier
+
 # Tenant Tier Matrix
 
 ## Feature Access by Tier
@@ -34,3 +46,38 @@
 | Storage    | 1 GB/month | $X    |
 | API calls  | 10K calls  | $X    |
 | Compute    | 1 hour     | $X    |
+
+---
+
+## Verification Checklist
+
+- [ ] All tenant tiers are defined with clear feature differentiation
+- [ ] Usage limits are realistic and enforceable at runtime
+- [ ] Overage pricing is competitive and clearly documented
+- [ ] Feature access matrix covers all platform capabilities
+- [ ] Rate limits are appropriate for each tier's target use case
+- [ ] Upgrade/downgrade paths between tiers are clearly defined
+- [ ] Multi-tenant isolation requirements are specified per tier
+- [ ] Enterprise tier includes all compliance-related features
+- [ ] Free tier provides enough value for user acquisition
+- [ ] Data residency options align with tier pricing strategy
+- [ ] Audit log retention periods meet compliance requirements
+- [ ] Compute isolation levels match tier SLA commitments
+
+---
+
+## Web Research Queries
+
+Before finalizing this document, verify current best practices:
+
+- "tenant lifecycle SaaS patterns {date}"
+- "SaaS tier pricing strategies multi-tenant {date}"
+- "feature gating best practices enterprise SaaS {date}"
+
+Incorporate relevant findings. _Source: [URL]_
+
+## Change Log
+
+| Version | Date | Author | Changes |
+|---------|------|--------|---------|
+| {{version}} | {{date}} | {{author}} | Initial template creation |

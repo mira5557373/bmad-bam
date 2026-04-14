@@ -1,0 +1,8 @@
+type: workflow
+name: monthly-operations-trigger
+displayName: Monthly Operations Trigger
+description: 'Scheduled trigger for monthly operational reviews'
+module: bam
+config_variables:
+  - tenant_model
+step_naming_convention: "step-NN-mode-description"

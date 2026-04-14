@@ -1,0 +1,5 @@
+type: workflow
+name: ai-model-registry
+displayName: AI Model Registry
+description: "Design centralized model registry with versioning. Use when the user requests to 'create model registry' or 'design model versioning'."
+module: bam

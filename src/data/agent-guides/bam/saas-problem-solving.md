@@ -11,6 +11,25 @@
 
 ---
 
+## Core Concepts
+
+### Problem Framing
+Accurately defining problems before attempting solutions. Poor framing leads to solving symptoms rather than root causes. Effective framing identifies affected tenants, scope of impact, and distinguishes between isolated incidents and systemic issues.
+
+### Root Cause Analysis
+Systematic investigation techniques like the 5 Whys, fishbone diagrams, and fault tree analysis. In multi-tenant contexts, root causes often involve isolation failures, resource contention, or configuration propagation issues.
+
+### Impact Assessment
+Evaluating problem severity across dimensions: tenant count affected, revenue impact, SLA violations, and reputational risk. Tier-based prioritization ensures enterprise issues receive appropriate urgency.
+
+### Solution Verification
+Confirming fixes resolve the problem without introducing new issues. Multi-tenant solutions must be tested across tenant contexts, tiers, and edge cases to prevent regression.
+
+### Multi-Tenant Considerations
+Problem-solving in multi-tenant platforms requires tenant-aware debugging, understanding isolation boundaries, and recognizing that issues can cascade across tenants (noisy neighbor) or be isolated to specific configurations. Solutions must balance quick fixes for affected tenants with systemic improvements that prevent recurrence platform-wide.
+
+---
+
 ## Tenant Isolation Challenges
 
 ### Common Isolation Problems
@@ -211,9 +230,43 @@ TRIGGER → EDUCATE → COMPARE → DECIDE → EXECUTE → CONFIRM
 
 ---
 
+## Decision Framework
+
+| Question | Recommendation | Rationale |
+|----------|----------------|-----------|
+| How do you prioritize multi-tenant incidents? | Tier-based severity: Enterprise P1, Pro P2, Free P3 for same issue | SLA commitments and revenue impact justify tier-based prioritization |
+| When should you implement dedicated resources for isolation? | When noisy neighbor incidents exceed SLA thresholds | Dedicated resources eliminate contention at cost; trigger only when needed |
+| How do you handle cross-tenant feature requests? | Require explicit consent, audit logging, and legal review | Cross-tenant data sharing has significant compliance and security implications |
+| What friction reduction has highest ROI? | One-click upgrade with instant access and prorated billing | Reducing upgrade friction directly increases conversion and expansion revenue |
+| How do you prevent isolation problems from recurring? | Add integration tests with multi-tenant fixtures for every isolation fix | Regression tests ensure fixes persist and new code doesn't reintroduce issues |
+
 ## Integration with BAM Workflows
 
 - `bmad-bam-tenant-model-isolation` - Isolation architecture
-- `bmad-bam-tenant-testing` - Multi-tenant test scenarios
-- `bmad-bam-rls-documentation` - RLS policy validation
+- `bmad-bam-convergence-verification` - Multi-tenant test scenarios
+- `bmad-bam-tenant-model-isolation` - RLS policy validation
 - DevOps workflows for monitoring and alerting
+
+---
+
+## Related Patterns
+
+Load decision criteria and web search queries from pattern registry:
+
+- **Problem-solving patterns:** `{project-root}/_bmad/bam/data/bam-patterns.csv` → filter by category: `problem-*`
+- **SaaS patterns:** `{project-root}/_bmad/bam/data/bam-patterns.csv` → filter by category: `saas-*`
+
+### Web Research
+
+Use the `web_queries` column from pattern registry to search for current best practices:
+- Search: "SaaS problem-solving frameworks {date}"
+- Search: "multi-tenant debugging strategies {date}"
+- Search: "B2B SaaS root cause analysis {date}"
+
+## Related Workflows
+
+- `bmad-bam-tenant-model-isolation` - Design isolation to prevent problems
+- `bmad-bam-chaos-engineering-design` - Verify isolation with multi-tenant tests
+- `bmad-bam-performance-baseline` - Detect noisy neighbor issues
+- `bmad-bam-tenant-tier-migration` - Reduce upgrade friction
+- `bmad-bam-security-review` - Audit isolation boundaries

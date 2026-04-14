@@ -1,0 +1,8 @@
+type: workflow
+name: tenant-audit-log-design
+displayName: Tenant Audit Log Design
+description: 'Design tenant-scoped audit trail architecture for compliance and security'
+module: bam
+config_variables:
+  - tenant_model
+  - output_folder

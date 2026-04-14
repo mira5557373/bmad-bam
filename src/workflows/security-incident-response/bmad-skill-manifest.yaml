@@ -1,0 +1,9 @@
+type: workflow
+name: security-incident-response
+displayName: Security Incident Response
+description: "Design security-specific incident response procedures for multi-tenant AI platforms. Use when the user requests to 'design security incident response' or 'create security incident procedures'."
+module: bam
+config_variables:
+  - tenant_model
+  - ai_runtime
+step_naming_convention: 'step-NN-mode-description'

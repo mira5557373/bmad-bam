@@ -11,12 +11,38 @@ menu:
   - trigger: bam-ux-context
     action: "#load-bam-ux-context-prompt"
     description: Load BAM UX context
-  - trigger: design-tier-journey
+  - trigger: bam-ux-design-tier-journey
     action: "#design-tier-journey-prompt"
     description: Design tier-specific user journeys
-  - trigger: upgrade-flow
+  - trigger: bam-ux-upgrade-flow
     action: "#upgrade-flow-prompt"
     description: Design upgrade flow UX
+  - trigger: bam-ux-tier-comparison
+    action: "#tier-comparison-prompt"
+    description: Design tier comparison and pricing page UX
+  - trigger: bam-ux-onboarding-flows
+    action: "#onboarding-flows-prompt"
+    description: Design tier-differentiated onboarding experiences
+  - trigger: bam-ux-admin-portal
+    action: "#admin-portal-prompt"
+    description: Design multi-level admin portal UX
+  - trigger: bam-ux-upgrade-prompts
+    action: "#upgrade-prompts-prompt"
+    description: Design contextual upgrade prompt patterns
+  - trigger: bam-ux-research
+    action: "#web-research-ux-prompt"
+    description: Conduct web research for UX design decisions
+  - trigger: bam-ux-validate
+    action: "#validate-ux-design-prompt"
+    description: Validate UX design against quality gates
+
+  - trigger: bam-tenant-admin-context
+    action: "#load-tenant-admin-context-prompt"
+    description: Load BAM tenant admin role guide for admin portal UX
+
+  - trigger: bam-white-labeling-guide-context
+    action: "#load-white-labeling-guide-context-prompt"
+    description: Load BAM white-labeling guide context
 
 prompts:
   - id: load-bam-ux-context-prompt
@@ -25,6 +51,10 @@ prompts:
 
       Read and internalize the tier-based UX design guide:
       `{project-root}/_bmad/bam/data/agent-guides/bam/tier-ux.md`
+
+      Also load the UX-specific guides:
+      `{project-root}/_bmad/bam/data/agent-guides/bam/ux-guide.md`
+      `{project-root}/_bmad/bam/data/agent-guides/bam/freya-guide.md`
 
       This guide provides comprehensive context for designing user experiences that adapt
       to tenant tier while maintaining consistency. It covers the following key areas:
@@ -37,6 +67,7 @@ prompts:
          tier benefits, and prompting upgrades without frustration.
       4. **Admin Experience Scaling**: Designing admin interfaces that scale from individual
          users to workspace admins to enterprise org administrators.
+      5. **UX Design Patterns**: Multi-tenant UX design best practices and Freya patterns.
 
       Once loaded, confirm by stating: "BAM UX context loaded. Ready to design tier-aware
       user experiences."
@@ -44,17 +75,651 @@ prompts:
   - id: design-tier-journey-prompt
     content: |
       ## Tier-Specific User Journey Design
-      | Journey | Free | Pro | Enterprise |
-      |---------|------|-----|------------|
-      | Onboarding | Self-serve | Guided | White-glove |
-      | Support | Community | Email | Dedicated |
-      | Admin | Basic | Team | Org + Audit |
+
+      Prerequisites: Ensure BAM UX context loaded via `bam-ux-context`
+
+      **Load patterns:** `{project-root}/_bmad/bam/data/bam-patterns.csv` → filter: `tenant-lifecycle, customization`
+
+      ### Objective
+      Design differentiated user journeys that provide tier-appropriate experiences
+      while maintaining consistent brand identity and UX patterns.
+
+      ### Process
+
+      1. **Onboarding Journey Design**
+         - Design tier-appropriate first experiences
+         - Balance guidance with autonomy
+         - Optimize for time-to-value
+
+         | Phase | FREE | PRO | ENTERPRISE |
+         |-------|------|-----|------------|
+         | Welcome | Auto-start tutorial | Setup wizard | Kickoff call scheduled |
+         | First action | Guided to core feature | Template selection | Requirements gathering |
+         | Configuration | Minimal, defaults | Customizable | Custom setup by CSM |
+         | Team setup | N/A (single user) | Invite prompt | SSO configuration |
+         | Success check | In-app celebration | Progress email | Check-in call |
+
+         **Onboarding UX Principles:**
+         | Principle | FREE | PRO | ENTERPRISE |
+         |-----------|------|-----|------------|
+         | Speed | Instant value | Quick wins | Thorough setup |
+         | Guidance | Light touch | Moderate | High touch |
+         | Defaults | Opinionated | Flexible | Custom |
+         | Escape hatches | Skip all | Skip steps | Customize pace |
+
+      2. **Support Journey Design**
+         - Design support access per tier
+         - Balance self-serve with assisted
+         - Set appropriate expectations
+
+         | Support Need | FREE | PRO | ENTERPRISE |
+         |--------------|------|-----|------------|
+         | Documentation | Full access | Full access | Full + custom |
+         | Community | Full access | Full access | Private channel |
+         | Chat | Bot only | Live chat | Priority chat |
+         | Email | N/A | 24h response | 4h response |
+         | Phone | N/A | N/A | Dedicated line |
+         | CSM | N/A | N/A | Named contact |
+
+         **Support UX Patterns:**
+         - FREE: Self-serve first, community escalation
+         - PRO: Self-serve + quick escalation path
+         - ENTERPRISE: Direct access, proactive support
+
+      3. **Admin Journey Design**
+         - Design admin capabilities per tier
+         - Scale complexity with tier
+         - Provide appropriate controls
+
+         | Admin Function | FREE | PRO | ENTERPRISE |
+         |----------------|------|-----|------------|
+         | User management | Self only | Team + roles | Org + SSO |
+         | Billing | View only | Self-serve | Invoice + PO |
+         | Settings | Basic | Advanced | Full + API |
+         | Audit | N/A | Basic logs | Full audit trail |
+         | Compliance | N/A | Export | Reports + certs |
+
+         **Admin UX Principles:**
+         - Progressive disclosure by tier
+         - Advanced features behind clear navigation
+         - Enterprise features in dedicated admin portal
+
+      4. **Cross-Journey Consistency**
+         - Ensure consistent patterns across tiers
+         - Maintain brand identity
+         - Enable smooth tier transitions
+
+         | Consistency Area | Pattern | Variation by Tier |
+         |------------------|---------|-------------------|
+         | Navigation | Same structure | More items unlocked |
+         | Branding | Platform branding | WHITE-LABEL: Custom |
+         | Language | Consistent tone | Enterprise: Formal option |
+         | Accessibility | Full compliance | All tiers equal |
+
+      ### Verification Checklist
+      - [ ] Each tier has complete journey map
+      - [ ] Journeys are achievable within tier constraints
+      - [ ] Upgrade moments are natural, not forced
+      - [ ] Support expectations match tier promises
+      - [ ] Admin capabilities scale appropriately
+      - [ ] Cross-tier consistency maintained
+      - [ ] Accessibility requirements met for all tiers
+
+      ### Output
+      Produce user journey maps per tier using template:
+      `{project-root}/_bmad/bam/templates/tier-journey-template.md`
 
   - id: upgrade-flow-prompt
     content: |
       ## Upgrade Flow UX
-      1. Show value (what they're missing)
-      2. Clear tier comparison
-      3. One-click upgrade (Pro)
-      4. Contact sales (Enterprise)
-      5. Immediate access on upgrade
+
+      Prerequisites: Ensure BAM UX context loaded via `bam-ux-context`
+
+      **Load patterns:** `{project-root}/_bmad/bam/data/bam-patterns.csv` → filter: `tenant-lifecycle, customization`
+
+      ### Objective
+      Design frictionless upgrade experiences that clearly communicate value,
+      build confidence, and convert users while respecting their autonomy.
+
+      ### Process
+
+      1. **Value Communication Design**
+         - Show what users are missing
+         - Quantify potential benefits
+         - Use social proof appropriately
+
+         | Value Element | FREE to PRO | PRO to ENTERPRISE |
+         |---------------|-------------|-------------------|
+         | Missing features | Feature preview cards | Compliance capabilities |
+         | Quantified benefit | "Save X hours/week" | "Support Y users" |
+         | Social proof | Customer testimonials | Enterprise logos |
+         | Risk reduction | "14-day free trial" | "Custom pilot program" |
+
+         **Value Display Patterns:**
+         - Locked feature indicators (subtle, not aggressive)
+         - Upgrade prompts at natural friction points
+         - Usage limit approaching notifications
+         - Tier comparison tooltips
+
+      2. **Tier Comparison Design**
+         - Create clear, honest comparisons
+         - Highlight tier-appropriate value
+         - Avoid overwhelming detail
+
+         | Comparison Element | Design Approach | Don'ts |
+         |-------------------|-----------------|--------|
+         | Feature matrix | Scannable, categorized | Endless checkmarks |
+         | Pricing | Clear, predictable | Hidden fees |
+         | Limits | Honest, contextual | Fine print |
+         | Recommendations | Persona-based | One-size-fits-all |
+
+         **Comparison UX:**
+         - Default to recommended tier based on usage
+         - Allow easy switching between comparisons
+         - Show current tier clearly
+         - Highlight best value option
+
+      3. **Upgrade Transaction Design**
+         - Minimize friction for Pro upgrades
+         - Appropriate friction for Enterprise
+         - Handle edge cases gracefully
+
+         | Upgrade Path | Flow Design | Friction Level |
+         |--------------|-------------|----------------|
+         | FREE to PRO | One-click + payment | Minimal |
+         | PRO to ENTERPRISE | Contact sales form | Appropriate |
+         | Trial to paid | Reminder + one-click | Minimal |
+         | Downgrade | Confirmation + reason | Medium |
+
+         **Pro Upgrade Flow:**
+         1. Single CTA button
+         2. Payment information (or saved)
+         3. Confirmation with immediate access
+         4. Welcome to Pro experience
+
+         **Enterprise Upgrade Flow:**
+         1. Interest form (minimal fields)
+         2. Sales contact within 24h
+         3. Discovery call scheduling
+         4. Custom proposal
+         5. Contract negotiation
+         6. Onboarding kickoff
+
+      4. **Post-Upgrade Experience**
+         - Celebrate the upgrade
+         - Guide to new features
+         - Confirm value realization
+
+         | Post-Upgrade Element | FREE to PRO | PRO to ENTERPRISE |
+         |----------------------|-------------|-------------------|
+         | Celebration | In-app confetti + message | Personal welcome call |
+         | New features tour | Guided walkthrough | CSM-led training |
+         | Quick win | Suggest first Pro feature | Custom implementation |
+         | Check-in | Automated email day 3 | CSM call week 1 |
+
+      5. **Upgrade Prompt Placement**
+         - Strategic, not spammy
+         - Contextual, not random
+         - Helpful, not pushy
+
+         | Trigger | Prompt Type | Timing |
+         |---------|-------------|--------|
+         | Usage limit at 80% | Gentle warning | Immediate |
+         | Usage limit hit | Upgrade modal | At limit |
+         | Locked feature click | Feature unlock offer | Immediate |
+         | Repeated advanced use | Pro suggestion | After pattern |
+         | Team growth detected | Upgrade recommendation | Weekly digest |
+
+      ### Verification Checklist
+      - [ ] Value clearly communicated without manipulation
+      - [ ] Tier comparisons honest and scannable
+      - [ ] Pro upgrade achievable in < 2 minutes
+      - [ ] Enterprise path appropriate for B2B sales
+      - [ ] Post-upgrade experience celebrates and guides
+      - [ ] Upgrade prompts helpful, not annoying
+      - [ ] Downgrade path exists and is respectful
+
+      ### Output
+      Produce upgrade flow designs using template:
+      `{project-root}/_bmad/bam/templates/upgrade-flow-template.md`
+
+  - id: tier-comparison-prompt
+    content: |
+      ## Tier Comparison UX Design
+
+      Prerequisites: Ensure BAM UX context loaded via `bam-ux-context`
+
+      **Load patterns:** `{project-root}/_bmad/bam/data/bam-patterns.csv` → filter: `tenant-lifecycle, customization`
+
+      ### Objective
+      Design effective tier comparison and pricing page experiences that help users
+      make informed decisions while clearly communicating value differentiation.
+
+      ### Process
+
+      1. **Comparison Page Structure**
+         - Design scannable tier comparison layouts
+         - Prioritize key differentiators
+         - Balance detail with simplicity
+
+         | Element | Design Approach | Multi-Tenant Consideration |
+         |---------|-----------------|---------------------------|
+         | Tier columns | Side-by-side, highlight recommended | Show current tier clearly |
+         | Feature rows | Group by category | Indicate tenant-specific limits |
+         | Pricing | Clear, predictable | Show per-seat/usage calculations |
+         | CTAs | Tier-appropriate | FREE: Trial, PRO: Buy, ENT: Contact |
+
+         **Comparison UX Patterns:**
+         | Pattern | When to Use | Example |
+         |---------|-------------|---------|
+         | Feature matrix | Full comparison needed | Pricing page |
+         | Quick compare | In-context upgrade | Modal overlay |
+         | Side-by-side | Two-tier decision | Pro vs Enterprise |
+         | Calculator | Usage-based pricing | Estimate costs |
+
+      2. **Value Communication Design**
+         - Highlight ROI per tier
+         - Use social proof effectively
+         - Show tier-appropriate benefits
+
+         | Tier | Primary Value Message | Supporting Evidence |
+         |------|----------------------|---------------------|
+         | FREE | Get started free | User count, no CC required |
+         | PRO | Unlock full potential | Feature highlights, testimonials |
+         | ENTERPRISE | Scale with confidence | Logos, case studies, SLA |
+
+         **Value Hierarchy:**
+         - Lead with outcomes, not features
+         - Quantify benefits where possible
+         - Address tier-specific concerns
+
+      3. **Interactive Comparison Elements**
+         - Design feature exploration
+         - Enable tier simulation
+         - Support decision confidence
+
+         | Interactive Element | Purpose | Implementation |
+         |--------------------|---------|----------------|
+         | Feature hover | Detail on demand | Tooltip with examples |
+         | Tier toggle | Compare any two | Quick switch buttons |
+         | Usage calculator | Estimate costs | Input-based projection |
+         | Feature preview | Try before upgrade | Limited demo mode |
+
+      4. **Mobile Comparison Design**
+         - Adapt comparison for mobile
+         - Maintain clarity on small screens
+         - Support touch interactions
+
+         | Mobile Pattern | Desktop Equivalent | Adaptation |
+         |----------------|-------------------|------------|
+         | Swipeable tiers | Side-by-side columns | Horizontal scroll |
+         | Accordion features | Feature rows | Expandable sections |
+         | Sticky header | Fixed tier names | Persistent tier tabs |
+         | Bottom CTA | Inline CTAs | Fixed footer action |
+
+      ### Verification Checklist
+      - [ ] Comparison is scannable in under 10 seconds
+      - [ ] Current tier clearly indicated
+      - [ ] Recommended tier highlighted with rationale
+      - [ ] Pricing is transparent and predictable
+      - [ ] Mobile experience maintains clarity
+      - [ ] CTAs are tier-appropriate
+      - [ ] Accessibility requirements met
+
+      ### Output
+      Produce tier comparison designs using template:
+      `{project-root}/_bmad/bam/templates/tier-comparison-ux-template.md`
+
+  - id: onboarding-flows-prompt
+    content: |
+      ## Tier-Differentiated Onboarding Flows
+
+      Prerequisites: Ensure BAM UX context loaded via `bam-ux-context`
+
+      **Load patterns:** `{project-root}/_bmad/bam/data/bam-patterns.csv` → filter: `tenant-lifecycle, customization`
+
+      ### Objective
+      Design onboarding experiences that are appropriately tailored to each tier,
+      optimizing for time-to-value while respecting tier constraints and expectations.
+
+      ### Process
+
+      1. **Onboarding Flow Architecture**
+         - Define onboarding stages per tier
+         - Balance speed with completeness
+         - Design for different starting points
+
+         | Stage | FREE | PRO | ENTERPRISE |
+         |-------|------|-----|------------|
+         | Account setup | Email only | Email + company | SSO + provisioning |
+         | Welcome | Auto-start tutorial | Setup wizard | Kickoff call scheduled |
+         | First action | Guided to core feature | Template selection | Requirements gathering |
+         | Configuration | Minimal, defaults | Customizable | Custom setup by CSM |
+         | Team setup | N/A (single user) | Invite prompt | Bulk user provisioning |
+         | Success check | In-app celebration | Progress email | Check-in call |
+
+         **Onboarding Principles:**
+         | Principle | FREE | PRO | ENTERPRISE |
+         |-----------|------|-----|------------|
+         | Speed | Instant value (<2 min) | Quick wins (<5 min) | Thorough setup (days) |
+         | Guidance | Light touch, skippable | Moderate, customizable | High touch, scheduled |
+         | Defaults | Opinionated, auto-set | Flexible, suggested | Custom, discussed |
+         | Escape hatches | Skip all available | Skip steps available | Customize pace |
+
+      2. **First-Run Experience Design**
+         - Design first login experience per tier
+         - Create appropriate first tasks
+         - Establish success patterns
+
+         | First-Run Element | FREE | PRO | ENTERPRISE |
+         |-------------------|------|-----|------------|
+         | Welcome message | Product-focused | Value-focused | Relationship-focused |
+         | Primary CTA | Try core feature | Complete setup | Schedule kickoff |
+         | Progress indicator | Simple checklist | Detailed progress bar | Milestone tracker |
+         | Help access | Self-serve docs | Chat + docs | Dedicated support |
+
+         **First-Run UX Patterns:**
+         - Progressive disclosure of features
+         - Contextual guidance at each step
+         - Clear completion indicators
+         - Celebration of first success
+
+      3. **Team Onboarding Design**
+         - Design member invitation flows
+         - Create role-appropriate onboarding
+         - Support batch operations
+
+         | Team Onboarding | PRO | ENTERPRISE |
+         |-----------------|-----|------------|
+         | Invitation method | Email invite | SSO auto-provision |
+         | Role assignment | Basic roles | Custom roles |
+         | Onboarding content | Standard | Role-specific |
+         | Admin controls | Invite tracking | Onboarding management |
+         | Bulk operations | CSV import | SCIM provisioning |
+
+      4. **Onboarding Recovery Design**
+         - Design for incomplete onboarding
+         - Create re-engagement patterns
+         - Handle edge cases
+
+         | Recovery Scenario | Detection | Response |
+         |-------------------|-----------|----------|
+         | Abandoned at signup | No first action | Email reminder + simplified start |
+         | Partial completion | Stopped mid-flow | Resume prompt with progress |
+         | Skipped setup | Used skip option | Gentle reminders at friction |
+         | Inactive after completion | No activity post-onboard | Value reminder email |
+
+      ### Verification Checklist
+      - [ ] Each tier has complete onboarding flow
+      - [ ] Time-to-value optimized per tier
+      - [ ] Skip options available without penalty
+      - [ ] Team onboarding scales appropriately
+      - [ ] Recovery flows handle all abandonment points
+      - [ ] Onboarding success tracked and measured
+      - [ ] Accessibility maintained throughout
+
+      ### Output
+      Produce onboarding flow designs using template:
+      `{project-root}/_bmad/bam/templates/onboarding-flow-template.md`
+
+  - id: admin-portal-prompt
+    content: |
+      ## Multi-Level Admin Portal UX
+
+      Prerequisites: Ensure BAM UX context loaded via `bam-ux-context`
+
+      **Load patterns:** `{project-root}/_bmad/bam/data/bam-patterns.csv` → filter: `tenant-lifecycle, customization`
+
+      ### Objective
+      Design administrative interfaces that scale from individual user settings
+      to workspace management to enterprise-wide organizational controls.
+
+      ### Process
+
+      1. **Admin Level Architecture**
+         - Define admin capabilities per level
+         - Design navigation hierarchy
+         - Establish permission boundaries
+
+         | Admin Level | Scope | Key Capabilities | Tier Availability |
+         |-------------|-------|------------------|-------------------|
+         | User | Self only | Profile, preferences, API keys | All tiers |
+         | Workspace | Team | Members, settings, integrations | PRO, ENTERPRISE |
+         | Organization | Company | Workspaces, policies, billing | ENTERPRISE |
+         | Super Admin | Platform | All orgs, system config | Internal only |
+
+         **Admin Navigation Design:**
+         | Level | Navigation Pattern | Information Architecture |
+         |-------|-------------------|-------------------------|
+         | User | Settings section | Flat, categorized |
+         | Workspace | Admin tab | Grouped by function |
+         | Organization | Dedicated portal | Full admin experience |
+         | Super Admin | Separate application | Role-based views |
+
+      2. **User Management UX**
+         - Design member invitation and management
+         - Create role assignment interfaces
+         - Support bulk operations at scale
+
+         | User Management | PRO | ENTERPRISE |
+         |-----------------|-----|------------|
+         | View members | List with search | Advanced filters + export |
+         | Invite members | Email invite | SSO + SCIM + email |
+         | Assign roles | Basic roles | Custom roles + inheritance |
+         | Remove members | Individual remove | Bulk + offboarding flow |
+         | Audit actions | Basic activity log | Full audit trail |
+
+         **User Management Patterns:**
+         - Progressive detail: List -> Detail -> Actions
+         - Batch operations with confirmation
+         - Role preview before assignment
+         - Offboarding checklist for enterprise
+
+      3. **Billing and Usage Admin**
+         - Design billing visibility per level
+         - Create usage monitoring interfaces
+         - Support cost management
+
+         | Billing Admin | PRO | ENTERPRISE |
+         |---------------|-----|------------|
+         | View invoices | Self-serve | Invoice + PO support |
+         | Update payment | Card on file | Multiple payment methods |
+         | View usage | Basic metrics | Detailed analytics |
+         | Manage seats | Self-serve adjust | Approval workflows |
+         | Cost allocation | N/A | Department chargebacks |
+
+      4. **Security and Compliance Admin**
+         - Design security settings interfaces
+         - Create compliance monitoring
+         - Support audit requirements
+
+         | Security Admin | PRO | ENTERPRISE |
+         |----------------|-----|------------|
+         | Authentication | Password + 2FA optional | SSO + 2FA required |
+         | Access control | Basic roles | RBAC + custom policies |
+         | Audit logs | 30 days | Unlimited + export |
+         | Compliance | Self-attestation | Reports + certifications |
+         | Data management | Export request | Retention policies |
+
+      ### Verification Checklist
+      - [ ] Admin levels clearly defined and scoped
+      - [ ] Navigation scales with permission level
+      - [ ] User management supports expected scale
+      - [ ] Billing admin matches tier capabilities
+      - [ ] Security controls match compliance needs
+      - [ ] Audit requirements met for enterprise
+      - [ ] Accessibility maintained in admin interfaces
+
+      ### Output
+      Produce admin portal designs using template:
+      `{project-root}/_bmad/bam/templates/admin-portal-ux-template.md`
+
+  - id: upgrade-prompts-prompt
+    content: |
+      ## Contextual Upgrade Prompt Patterns
+
+      Prerequisites: Ensure BAM UX context loaded via `bam-ux-context`
+
+      **Load patterns:** `{project-root}/_bmad/bam/data/bam-patterns.csv` → filter: `tenant-lifecycle, customization`
+
+      ### Objective
+      Design upgrade prompts that are helpful and contextual rather than
+      intrusive, converting users through value demonstration not pressure.
+
+      ### Process
+
+      1. **Upgrade Prompt Taxonomy**
+         - Categorize prompt types by trigger
+         - Define appropriate intensity levels
+         - Establish frequency guidelines
+
+         | Prompt Type | Trigger | Intensity | Frequency |
+         |-------------|---------|-----------|-----------|
+         | Soft nudge | Feature discovery | Low | Once per feature |
+         | Usage warning | Approaching limit | Medium | At thresholds |
+         | Limit reached | At capacity | High | When blocked |
+         | Value moment | Success achieved | Low | Post-success |
+         | Time-based | Trial ending | Medium | 3, 1 day before |
+
+         **Prompt Intensity Scale:**
+         | Level | Visual Treatment | User Control |
+         |-------|-----------------|--------------|
+         | Low | Inline hint, subtle badge | Easily dismissed |
+         | Medium | Toast, banner | Dismiss + snooze |
+         | High | Modal, blocking | Must acknowledge |
+
+      2. **Context-Appropriate Prompt Design**
+         - Design prompts for specific contexts
+         - Match message to user situation
+         - Provide clear value proposition
+
+         | Context | Prompt Message Pattern | Value Highlight |
+         |---------|------------------------|-----------------|
+         | Locked feature click | "Unlock X with Pro" | Feature benefit |
+         | Limit at 80% | "Running low on X" | What happens next |
+         | Limit reached | "You've hit your limit" | How to continue |
+         | Team action blocked | "Add team members with Pro" | Collaboration benefit |
+         | Success moment | "Imagine doing more with Pro" | Enhanced capability |
+
+         **Message Framework:**
+         - Lead with empathy, not sales
+         - Show specific value, not generic upgrade
+         - Provide clear action, easy dismiss
+         - Remember previous dismissals
+
+      3. **Upgrade Prompt Placement**
+         - Define where prompts appear
+         - Avoid interruption fatigue
+         - Maintain user flow
+
+         | Placement | Use Case | Design Pattern |
+         |-----------|----------|----------------|
+         | Inline | Feature discovery | Subtle badge + tooltip |
+         | Sidebar | Usage status | Persistent meter |
+         | Toast | Approaching limit | Temporary, dismissable |
+         | Modal | Limit reached | Blocking with options |
+         | Page | Upgrade consideration | Dedicated comparison |
+
+         **Placement Guidelines:**
+         - Inline: Non-blocking, informational
+         - Toast: Important but not urgent
+         - Modal: Action required to continue
+         - Page: User-initiated exploration
+
+      4. **Upgrade Path Optimization**
+         - Design friction-appropriate paths
+         - Minimize steps for self-serve
+         - Support enterprise inquiry
+
+         | User Tier | Upgrade Path | Friction Level | Steps |
+         |-----------|--------------|----------------|-------|
+         | FREE | Self-serve to PRO | Minimal | 2-3 clicks |
+         | FREE | Inquiry to ENTERPRISE | Appropriate | Form + call |
+         | PRO | Self-serve seat add | Minimal | 1-2 clicks |
+         | PRO | Inquiry to ENTERPRISE | Appropriate | Form + call |
+
+      ### Verification Checklist
+      - [ ] Prompts categorized by trigger and intensity
+      - [ ] Context-appropriate messages designed
+      - [ ] Placement respects user flow
+      - [ ] Upgrade paths have minimal friction
+      - [ ] Dismissal preferences remembered
+      - [ ] Frequency caps prevent fatigue
+      - [ ] A/B testing plan defined
+
+      ### Output
+      Produce upgrade prompt designs using template:
+      `{project-root}/_bmad/bam/templates/upgrade-prompt-patterns-template.md`
+
+  - id: web-research-ux-prompt
+    content: |
+      ## BAM Web Research - UX Design
+
+      Conduct targeted web research for UX design decisions in multi-tenant SaaS.
+
+      **Research Focus:** {{research_topic}}
+
+      Execute 2-3 targeted searches:
+      Search the web: "{{research_topic}} UX design best practices {date}"
+      Search the web: "{{research_topic}} SaaS patterns {date}"
+      Search the web: "{{research_topic}} multi-tenant user experience {date}"
+
+      **Research Areas:**
+      - Tier-differentiated user experiences
+      - SaaS onboarding UX patterns
+      - Upgrade flow and pricing page design
+      - Feature gating and locked feature UX
+      - Admin dashboard design for multi-tenant
+      - White-labeling and tenant customization UX
+
+      Return findings with source citations: _Source: [URL]_
+
+      **Output Format:**
+      1. Key findings summary
+      2. Applicable UX patterns for multi-tenant SaaS
+      3. Design recommendations with rationale
+      4. Sources consulted
+
+  - id: validate-ux-design-prompt
+    content: |
+      ## Validate UX Design Against Quality Gates
+
+      Prerequisites: Ensure BAM UX context loaded via `bam-ux-context`
+
+      **Quality Gate Validation:**
+
+      Check against relevant quality gates:
+      - QG-M2 (Tenant Isolation): UX respects tenant boundaries
+      - QG-I2 (Tenant Safety): No cross-tenant data exposure in UI
+      - QG-P1 (Production): Accessibility and performance requirements met
+
+      **Validation Checklist:**
+      - [ ] Tier-specific features clearly differentiated in UI
+      - [ ] Upgrade flows respect tenant context
+      - [ ] Admin portal enforces proper authorization
+      - [ ] No tenant data leakage through URL, cache, or UI state
+
+      Report validation results with UX recommendations.
+
+  - id: load-tenant-admin-context-prompt
+    content: |
+      ## Load BAM Tenant Admin Context
+
+      Read and internalize the tenant admin role guide:
+      `{project-root}/_bmad/bam/data/agent-guides/bam/tenant-admin-guide.md`
+
+      This guide provides context for:
+      - Managing tenant organization settings and users
+      - Configuring SSO, API keys, and security controls
+      - Understanding billing, usage, and quota management
+      - Navigating compliance and data governance features
+      - Supporting tier-appropriate admin capabilities
+
+      Confirm when loaded, then proceed with tenant admin UX design tasks.
+
+  - id: load-white-labeling-guide-context-prompt
+    content: |
+      Read and internalize the BAM guide:
+      `{project-root}/_bmad/bam/data/agent-guides/bam/white-labeling-guide.md`
+
+      Confirm when loaded.

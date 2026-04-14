@@ -1,0 +1,9 @@
+# Workflow metadata for bmad-bam-migrate-v2
+config_variables:
+  - user_name
+  - communication_language
+  - document_output_language
+  - output_folder
+required_tools: []
+tags: [bam, migration]
+mode: complex

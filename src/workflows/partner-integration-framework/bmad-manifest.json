@@ -1,0 +1,14 @@
+{
+  "module-code": "bam",
+  "capabilities": [{
+    "name": "bmad-bam-partner-integration-framework",
+    "menu-code": "PRIF",
+    "description": "Design partner and ISV integration framework with sandbox environments",
+    "supports-headless": true,
+    "phase-name": "3-solutioning",
+    "after": [],
+    "before": [],
+    "is-required": false,
+    "output-location": "{output_folder}/planning-artifacts/partners"
+  }]
+}

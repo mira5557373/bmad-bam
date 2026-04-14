@@ -1,0 +1,9 @@
+type: workflow
+name: privacy-impact-assessment
+displayName: Privacy Impact Assessment
+description: "Design PIA/DPIA process for data protection impact assessments. Use when the user requests to 'conduct privacy impact assessment', 'create DPIA', or 'assess privacy risks'."
+module: bam
+config_variables:
+  - tenant_model
+  - ai_runtime
+step_naming_convention: 'step-NN-mode-description'

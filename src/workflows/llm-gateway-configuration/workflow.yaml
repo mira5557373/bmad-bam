@@ -1,0 +1,10 @@
+# Workflow metadata for bmad-bam-llm-gateway-configuration
+config_variables:
+  - user_name
+  - communication_language
+  - document_output_language
+  - output_folder
+  - ai_runtime
+required_tools: []
+tags: [ai-runtime, llm, gateway, routing]
+mode: complex

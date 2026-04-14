@@ -1,0 +1,14 @@
+{
+  "module-code": "bam",
+  "capabilities": [{
+    "name": "bmad-bam-tenant-billing-integration",
+    "menu-code": "TBI",
+    "description": "Design tenant billing integration with usage metering",
+    "supports-headless": true,
+    "phase-name": "3-solutioning",
+    "after": ["bmad-bam-usage-metering-design"],
+    "before": ["bmad-bam-convergence-verification"],
+    "is-required": false,
+    "output-location": "{output_folder}/planning-artifacts"
+  }]
+}

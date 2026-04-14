@@ -1,4 +1,4 @@
-# Tenant Isolation Verification Checklist
+# QG-M2: Tenant Isolation Verification Checklist
 
 > Gate ID: QG-M2 (Tenant Isolation Complete)
 > Validates tenant isolation design is complete before module development.
@@ -57,23 +57,101 @@
 | **PASS** | All CRITICAL items pass, ≥80% of non-critical items pass |
 | **CONDITIONAL** | All CRITICAL items pass, <80% of non-critical items pass — remediation plan required |
 | **FAIL** | Any CRITICAL item fails — block until resolved |
+| **WAIVED** | Non-critical item explicitly waived with stakeholder sign-off and documented justification |
+
+## Waiver Process
+
+For non-critical items that cannot be addressed:
+1. Document the specific item and reason for waiver
+2. Identify business justification
+3. Obtain stakeholder sign-off (Product Owner or Technical Lead)
+4. Record waiver in gate report with expiration date (if applicable)
+5. Create follow-up ticket for future remediation
+
+**Note:** CRITICAL items cannot be waived.
 
 ## Critical vs Non-Critical Classification
 
-| Category           | Classification                                        |
-| ------------------ | ----------------------------------------------------- |
-| Database Level     | CRITICAL                                              |
-| Application Level  | CRITICAL                                              |
-| Vector Store Level | CRITICAL                                              |
-| Cache Level        | CRITICAL                                              |
-| Memory Level       | CRITICAL                                              |
-| Background Jobs    | Non-critical (can proceed with documented exceptions) |
-| Audit              | Non-critical                                          |
+| Category           | Classification | CONDITIONAL Threshold | FAIL Threshold |
+| ------------------ | -------------- | --------------------- | -------------- |
+| Database Level     | CRITICAL       | RLS partial coverage | Cross-tenant query succeeds |
+| Application Level  | CRITICAL       | Middleware incomplete | Missing tenant context |
+| Vector Store Level | CRITICAL       | Filter injection partial | Cross-tenant retrieval |
+| Cache Level        | CRITICAL       | Key prefix inconsistent | Cache key collision |
+| Memory Level       | CRITICAL       | Memory scope partial | Memory scope leak |
+| Background Jobs    | Non-critical   | Context propagation partial | N/A |
+| Audit              | Non-critical   | Audit logging incomplete | N/A |
 
-**PASS CRITERIA:** All checkboxes completed
-**OWNER:** Platform Architect
-**REVIEWERS:** Security, DEV Lead
+## Required Templates
+
+The following templates must be completed before this gate can pass:
+
+| Template | Purpose | Location |
+|----------|---------|----------|
+| `tenant-model-template.md` | Tenant isolation design | `{output_folder}/planning-artifacts/` |
+| `rls-policy-template.md` | RLS policy definitions | `{output_folder}/planning-artifacts/` |
+| `tenant-context-template.md` | Tenant context middleware | `{output_folder}/planning-artifacts/` |
+| `cache-isolation-template.md` | Cache isolation strategy | `{output_folder}/planning-artifacts/` |
+| `memory-isolation-template.md` | Agent memory isolation | `{output_folder}/planning-artifacts/` |
+| `audit-logging-template.md` | Tenant audit logging | `{output_folder}/operations/` |
+
+## Web Research Verification
+
+- [ ] Search the web: "PostgreSQL RLS multi-tenant best practices {date}" - Verify RLS patterns
+- [ ] Search the web: "multi-tenant cache isolation Redis patterns {date}" - Confirm cache isolation is current
+- [ ] Search the web: "vector store tenant isolation patterns {date}" - Verify vector DB isolation approaches
+- [ ] _Source: [URL]_ citations documented for key isolation decisions
 
 ## Recovery Protocol
 
-If this gate fails, refer to the relevant recovery workflow or escalation procedure.
+**If QG-M2 fails:**
+
+1. **Attempt 1:** Immediate remediation (target: 1-2 days)
+   - Identify failed CRITICAL categories (Database, Application, Vector Store, Cache, Memory)
+   - Review RLS policy definitions against `rls-policy-template.md`
+   - Verify tenant context middleware implementation
+   - Execute cross-tenant isolation test suite to pinpoint leaks
+   - Run `tenant-model-isolation` workflow for incomplete areas
+   - Re-run QG-M2 validation after fixes
+   - **Lock passed categories** — do not re-test locked items
+
+2. **Attempt 2:** Deep investigation (target: 1-2 days)
+   - Engage Security team and database specialists
+   - Analyze cross-tenant query test failures in detail
+   - Review JWT tenant_id claim extraction logic
+   - Verify async job context propagation patterns
+   - Check vector store collection isolation strategy
+   - Validate cache key prefixing across all caching layers
+   - Re-run QG-M2 validation after remediation
+   - **Preserve locked categories** from Attempt 1
+
+3. **Mandatory Course Correction:**
+   - Escalate to Security Lead and Platform Architect
+   - Document isolation gaps with evidence
+   - Conduct security-focused architecture review
+   - Consider tenant model change (e.g., RLS → schema-per-tenant)
+   - Create remediation plan with security sign-off
+   - Schedule penetration test for isolation validation
+   - Follow-up validation within 1 week
+
+**Category-Specific Recovery:**
+
+| Category | Immediate Action | Escalation Trigger |
+|----------|------------------|-------------------|
+| Database Level | Review RLS policies, enable FORCE RLS | Cross-tenant query succeeds |
+| Application Level | Fix middleware, verify JWT extraction | Missing tenant context |
+| Vector Store Level | Implement collection strategy, fix filters | Cross-tenant retrieval |
+| Cache Level | Add tenant prefix to all keys | Cache key collision |
+| Memory Level | Verify memory scope per conversation/user/tenant | Memory scope leak |
+| Background Jobs | Propagate tenant context to all workers | Job without tenant |
+| Audit | Enable access logging, audit trail | Missing audit events |
+
+## Related Workflows
+
+- `bmad-bam-tenant-model-isolation` - Tenant isolation design
+- `bmad-bam-validate-module` - Module validation (QG-M2)
+- `bmad-bam-convergence-verification` - Integration validation (QG-I2)
+
+**PASS CRITERIA:** All CRITICAL checkboxes completed, tenant isolation verified
+**OWNER:** Platform Architect
+**REVIEWERS:** Security, DEV Lead

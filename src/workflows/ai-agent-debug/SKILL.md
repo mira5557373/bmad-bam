@@ -1,9 +1,8 @@
 ---
-name: bmad-bam-ai-agent-debug
+name: ai-agent-debug
 displayName: AI Agent Debug
 description: Debug AI agent behavior during development. Use when the user requests to 'debug AI agent' or 'troubleshoot agent behavior'.
 module: bam
-web_bundle: true
 tags: [ai-runtime]
 ---
 
@@ -28,6 +27,13 @@ Search for and load `{project-root}/**/project-context.md` as foundational refer
 **If running in headless mode (`-H`):** Use defaults for all optional inputs, skip confirmation prompts, and auto-proceed through all steps.
 
 **Note:** If the user provides additional information during guided steps, capture it for later use without breaking the current flow.
+
+## When to Use
+
+- Debugging unexpected AI agent behavior during development
+- Troubleshooting tool execution failures
+- Investigating memory state issues or cross-tenant contamination
+- Analyzing prompt and guardrail effectiveness
 
 ## Mode
 
@@ -97,6 +103,21 @@ Gather from the user (or from args in headless mode):
 - Recommend fix (prompt change, tool fix, memory config, guardrail adjustment)
 - Suggest regression test to prevent recurrence
 
+## Quality Gates
+
+This workflow contributes to:
+- **QG-I3** (Agent Safety) - Debugging findings inform agent safety verification
+- **QG-P1** (Production) - Debug reports support production readiness
+
+### Entry Gate
+- QG-M3 (Agent Runtime) must pass before debugging runtime issues
+- Agent must be deployed in a testable environment
+
+### Exit Gate
+- Root cause identified and documented
+- Fix recommendation provided with regression test case
+- QG-I3 checklist items from `qg-i3-agent-safety.md` informed by findings
+
 ## Output
 
 - `{output_folder}/planning-artifacts/quality/debug-report-{agent-name}.md` — debug report with root cause analysis and fix recommendations
@@ -104,4 +125,4 @@ Gather from the user (or from args in headless mode):
 
 ## References
 
-- Knowledge: `bam/knowledge/agent-runtime-patterns.md`, `bam/knowledge/memory-tier-patterns.md`, `bam/knowledge/tool-execution-middleware.md`
+- Knowledge: `bam/knowledge/agent-runtime-patterns.md`, `bam/knowledge/memory-tiers.md`, `bam/knowledge/tool-execution-middleware.md`

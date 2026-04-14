@@ -31,11 +31,21 @@
     "test:install": "jest test/install.test.js",
     "test:extension": "jest test/extension.test.js",
     "test:integration": "jest test/integration.test.js",
+    "test:security": "jest test/security/",
+    "test:security:injection": "jest test/security/prompt-injection.test.js",
+    "test:security:isolation": "jest test/security/tenant-isolation.test.js",
+    "test:workflow-execution": "jest test/integration/workflow-execution.test.js",
     "validate-tsa": "node tools/validate-tsa-sync.mjs",
     "lint": "yaml-lint src/**/*.yaml"
   },
   "devDependencies": {
     "jest": "^29.7.0",
     "js-yaml": "^4.1.0"
+  },
+  "bmad": {
+    "module": "bam",
+    "extends": ["bmm", "tea", "wds", "cis"],
+    "version": "1.0.0",
+    "type": "extension"
   }
 }

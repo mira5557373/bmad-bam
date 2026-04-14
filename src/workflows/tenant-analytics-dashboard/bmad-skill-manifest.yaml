@@ -1,0 +1,9 @@
+type: workflow
+name: tenant-analytics-dashboard
+displayName: Tenant Analytics Dashboard
+description: "Design analytics dashboards for multi-tenant SaaS platforms. Use when the user requests to 'design analytics' or 'create tenant dashboard'."
+module: bam
+config_variables:
+  - tenant_model
+  - ai_runtime
+step_naming_convention: "step-NN-mode-description"

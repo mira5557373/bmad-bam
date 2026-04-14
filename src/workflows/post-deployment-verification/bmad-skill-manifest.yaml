@@ -1,0 +1,9 @@
+type: workflow
+name: post-deployment-verification
+displayName: Post-Deployment Verification
+description: "Verify deployment success with smoke tests, monitoring activation, tenant health checks, and rollback readiness. Use when completing deployment to production or staging environments."
+module: bam
+config_variables:
+  - tenant_model
+  - ai_runtime
+step_naming_convention: "step-NN-mode-description"

@@ -1,0 +1,14 @@
+{
+  "module-code": "bam",
+  "capabilities": [{
+    "name": "bmad-bam-tenant-analytics-dashboard",
+    "menu-code": "TAD",
+    "description": "Design tenant-isolated analytics dashboard with real-time metrics",
+    "supports-headless": true,
+    "phase-name": "3-solutioning",
+    "after": ["bmad-bam-tenant-aware-observability"],
+    "before": ["bmad-bam-convergence-verification"],
+    "is-required": false,
+    "output-location": "{output_folder}/planning-artifacts"
+  }]
+}

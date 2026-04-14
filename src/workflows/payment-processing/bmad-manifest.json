@@ -1,0 +1,14 @@
+{
+  "module-code": "bam",
+  "capabilities": [{
+    "name": "bmad-bam-payment-processing",
+    "menu-code": "PAYM",
+    "description": "Design payment gateway integration with Stripe/Braintree",
+    "supports-headless": true,
+    "phase-name": "3-solutioning",
+    "after": [],
+    "before": [],
+    "is-required": false,
+    "output-location": "{output_folder}/planning-artifacts/billing"
+  }]
+}

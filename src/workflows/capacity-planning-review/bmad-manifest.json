@@ -1,0 +1,14 @@
+{
+  "module-code": "bam",
+  "capabilities": [{
+    "name": "bmad-bam-capacity-planning-review",
+    "menu-code": "CAPR",
+    "description": "Execute capacity planning reviews for growth and scaling",
+    "supports-headless": true,
+    "phase-name": "3-solutioning",
+    "after": [],
+    "before": [],
+    "is-required": false,
+    "output-location": "{output_folder}/operations/capacity"
+  }]
+}

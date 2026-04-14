@@ -1,0 +1,14 @@
+{
+  "module-code": "bam",
+  "capabilities": [{
+    "name": "bmad-bam-tenant-health-scoring",
+    "menu-code": "THSC",
+    "description": "Design comprehensive tenant health scoring algorithm with weighted metrics, composite scores, and predictive indicators",
+    "supports-headless": true,
+    "phase-name": "3-solutioning",
+    "after": ["bmad-bam-tenant-health-monitoring", "bmad-bam-usage-metering-design"],
+    "before": [],
+    "is-required": false,
+    "output-location": "{output_folder}/planning-artifacts/analytics"
+  }]
+}

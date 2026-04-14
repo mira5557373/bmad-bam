@@ -1,0 +1,5 @@
+type: workflow
+name: billing-disputes
+displayName: Billing Disputes
+description: "Design billing dispute resolution workflow. Use when the user requests to 'design billing disputes' or 'configure dispute resolution'."
+module: bam

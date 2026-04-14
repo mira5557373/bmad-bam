@@ -1,0 +1,9 @@
+type: workflow
+name: agent-safety
+displayName: Agent Safety Validation
+description: 'Validate AI agent safety controls, guardrails, and kill switch functionality'
+module: bam
+config_variables:
+  - ai_runtime
+  - tenant_model
+step_naming_convention: "step-NN-mode-description"

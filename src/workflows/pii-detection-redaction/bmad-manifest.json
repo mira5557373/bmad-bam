@@ -1,0 +1,14 @@
+{
+  "module-code": "bam",
+  "capabilities": [{
+    "name": "bmad-bam-pii-detection-redaction",
+    "menu-code": "PIDR",
+    "description": "Design PII detection and redaction pipeline for compliance",
+    "supports-headless": true,
+    "phase-name": "3-solutioning",
+    "after": ["bmad-bam-compliance-design"],
+    "before": ["bmad-bam-ai-guardrails-implementation"],
+    "is-required": false,
+    "output-location": "{output_folder}/planning-artifacts/compliance"
+  }]
+}

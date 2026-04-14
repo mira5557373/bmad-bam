@@ -1,0 +1,5 @@
+type: workflow
+name: tenant-portal-design
+displayName: Tenant Portal Design
+description: "Design tenant self-service portal with admin features and billing integration. Use when the user requests to 'design tenant portal' or 'plan self-service capabilities'."
+module: bam

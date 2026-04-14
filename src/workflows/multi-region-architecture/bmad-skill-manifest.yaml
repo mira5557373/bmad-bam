@@ -1,0 +1,5 @@
+type: workflow
+name: multi-region-architecture
+displayName: Multi-Region Architecture
+description: "Design multi-region deployment architecture for data residency and GDPR compliance. Use when the user requests to 'design multi-region' or 'plan data residency'."
+module: bam

@@ -1,0 +1,14 @@
+{
+  "module-code": "bam",
+  "capabilities": [{
+    "name": "bmad-bam-tenant-health-monitoring",
+    "menu-code": "THM",
+    "description": "Design tenant-specific health monitoring including per-tenant SLIs, health dashboards, and alerting",
+    "supports-headless": true,
+    "phase-name": "3-solutioning",
+    "after": ["bmad-bam-tenant-aware-observability"],
+    "before": ["bmad-bam-tenant-sla-monitoring"],
+    "is-required": false,
+    "output-location": "{output_folder}/planning-artifacts"
+  }]
+}

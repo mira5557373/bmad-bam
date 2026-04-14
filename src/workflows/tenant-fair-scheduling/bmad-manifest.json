@@ -1,0 +1,15 @@
+{
+  "module-code": "bam",
+  "capabilities": [{
+    "name": "bmad-bam-tenant-fair-scheduling",
+    "menu-code": "TFS",
+    "description": "Design fair resource scheduling to prevent noisy neighbor issues",
+    "supports-headless": true,
+    "phase-name": "3-solutioning",
+    "after": ["bmad-bam-tenant-model-isolation"],
+    "before": [],
+    "is-required": false,
+    "output-location": "{output_folder}/planning-artifacts",
+    "qualityGates": ["QG-M2"]
+  }]
+}

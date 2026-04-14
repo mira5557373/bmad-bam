@@ -1,0 +1,14 @@
+{
+  "module-code": "bam",
+  "capabilities": [{
+    "name": "bmad-bam-etl-pipeline-design",
+    "menu-code": "EPD",
+    "description": "Design ETL pipelines for multi-tenant data processing. Use when the user requests to 'design ETL pipeline' or 'create data integration'.",
+    "supports-headless": true,
+    "phase-name": "3-solutioning",
+    "after": ["bmad-bam-tenant-model-isolation"],
+    "before": [],
+    "is-required": false,
+    "output-location": "{output_folder}/planning-artifacts"
+  }]
+}

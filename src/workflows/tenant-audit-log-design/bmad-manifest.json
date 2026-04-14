@@ -1,0 +1,14 @@
+{
+  "module-code": "bam",
+  "capabilities": [{
+    "name": "bmad-bam-tenant-audit-log-design",
+    "menu-code": "TALD",
+    "description": "Design tenant-scoped audit trail architecture for compliance and security.",
+    "supports-headless": true,
+    "phase-name": "3-solutioning",
+    "after": ["bmad-bam-tenant-model-isolation"],
+    "before": ["bmad-bam-soc2-evidence-collection"],
+    "is-required": false,
+    "output-location": "{output_folder}/planning-artifacts/compliance"
+  }]
+}

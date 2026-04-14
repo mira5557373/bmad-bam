@@ -1,9 +1,8 @@
 ---
-name: bmad-bam-define-facade-contract
+name: define-facade-contract
 displayName: Define Facade Contract
 description: Define versioned facade contract between modules. Use when the user requests to 'define facade contract' or 'create module contract'.
 module: bam
-web_bundle: true
 tags: [integration]
 ---
 
@@ -28,6 +27,12 @@ Search for and load `{project-root}/**/project-context.md` as foundational refer
 **If running in headless mode (`-H`):** Use defaults for all optional inputs, skip confirmation prompts, and auto-proceed through all steps.
 
 **Note:** If the user provides additional information during guided steps, capture it for later use without breaking the current flow.
+
+## When to Use
+
+- Defining public interfaces for modules
+- Creating facade method signatures and DTOs
+- Establishing module contract boundaries
 
 ## Mode
 
@@ -89,3 +94,19 @@ Define the contract interface:
 - Knowledge: `bam/knowledge/module-facade-patterns.md`, `bam/knowledge/event-driven-patterns.md`
 - Module Facade Patterns: `bam/knowledge/module-facade-patterns.md`
 - Event-Driven Patterns: `bam/knowledge/event-driven-patterns.md`
+
+## Quality Gates
+
+This workflow contributes to:
+- **QG-M1** (Module Architecture) - Defines facade contracts for module dependencies
+- **QG-I1** (Convergence) - Establishes versioned contracts for integration
+
+### Entry Gate
+- Consumer and provider module architectures must exist
+- Master architecture error contract defined
+
+### Exit Gate
+- Versioned facade contract created with tenant-scoped methods
+- Input/output DTOs and error types specified
+- Consumer architecture dependencies section updated
+- Implementation stories created for both provider and consumer modules

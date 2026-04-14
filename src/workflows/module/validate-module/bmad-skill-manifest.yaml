@@ -1,6 +1,5 @@
 type: workflow
-name: bmad-bam-validate-module
+name: validate-module
 displayName: Validate Module
 description: "Validate module architecture against master constraints. Use when the user requests to 'validate module' or 'check module readiness'."
 module: bam
-canonicalId: bmad-bam-validate-module

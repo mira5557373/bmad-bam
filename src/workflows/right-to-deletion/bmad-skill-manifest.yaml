@@ -1,0 +1,9 @@
+type: workflow
+name: right-to-deletion
+displayName: Right to Deletion
+description: "Design GDPR Article 17 right to erasure procedures for data subject deletion requests. Use when the user requests to 'implement right to erasure', 'design deletion workflow', or 'handle GDPR deletion requests'."
+module: bam
+config_variables:
+  - tenant_model
+  - ai_runtime
+step_naming_convention: 'step-NN-mode-description'

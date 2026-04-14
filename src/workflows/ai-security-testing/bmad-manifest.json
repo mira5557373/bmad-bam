@@ -1,0 +1,14 @@
+{
+  "module-code": "bam",
+  "capabilities": [{
+    "name": "bmad-bam-ai-security-testing",
+    "menu-code": "AST",
+    "description": "Design and execute security testing for AI agents including prompt injection, data leakage, and adversarial attacks",
+    "supports-headless": true,
+    "phase-name": "3-solutioning",
+    "after": ["bmad-bam-agent-runtime-architecture"],
+    "before": [],
+    "is-required": false,
+    "output-location": "{output_folder}/planning-artifacts"
+  }]
+}

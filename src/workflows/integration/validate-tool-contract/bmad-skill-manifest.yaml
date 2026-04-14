@@ -1,6 +1,5 @@
 type: workflow
-name: bmad-bam-validate-tool-contract
+name: validate-tool-contract
 displayName: Validate Tool Contract
 description: "Validate tool contract against ToolDefinition schema. Use when the user requests to 'validate tool contract' or 'check tool registration'."
 module: bam
-canonicalId: bmad-bam-validate-tool-contract

@@ -1,0 +1,14 @@
+{
+  "module-code": "bam",
+  "capabilities": [{
+    "name": "bmad-bam-ai-usage-analytics",
+    "menu-code": "AIUA",
+    "description": "Design AI-specific analytics including token usage, latency tracking, model performance, and cost attribution per tenant",
+    "supports-headless": true,
+    "phase-name": "3-solutioning",
+    "after": ["bmad-bam-agent-runtime-architecture", "bmad-bam-usage-metering-design"],
+    "before": [],
+    "is-required": false,
+    "output-location": "{output_folder}/planning-artifacts/analytics"
+  }]
+}

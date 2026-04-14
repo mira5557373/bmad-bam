@@ -1,0 +1,9 @@
+# Workflow metadata for bmad-bam-tenant-health-monitoring
+config_variables:
+  - user_name
+  - communication_language
+  - document_output_language
+  - output_folder
+required_tools: []
+tags: [tenant, operations, observability]
+mode: simple

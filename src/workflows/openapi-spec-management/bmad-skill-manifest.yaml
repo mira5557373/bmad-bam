@@ -1,0 +1,9 @@
+type: workflow
+name: openapi-spec-management
+displayName: OpenAPI Spec Management
+description: "Design OpenAPI specification lifecycle management. Use when the user requests to 'manage API specs' or 'design API documentation workflow'."
+module: bam
+config_variables:
+  - tenant_model
+  - ai_runtime
+step_naming_convention: "step-NN-mode-description"

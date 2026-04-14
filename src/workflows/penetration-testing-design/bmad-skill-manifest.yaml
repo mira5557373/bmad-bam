@@ -1,0 +1,9 @@
+type: workflow
+name: penetration-testing-design
+displayName: Penetration Testing Design
+description: 'Design security penetration testing procedures for multi-tenant AI platforms'
+module: bam
+config_variables:
+  - tenant_model
+  - ai_runtime
+  - output_folder

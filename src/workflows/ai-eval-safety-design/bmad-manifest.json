@@ -1,0 +1,15 @@
+{
+  "module-code": "bam",
+  "capabilities": [{
+    "name": "bmad-bam-ai-eval-safety-design",
+    "menu-code": "AES",
+    "description": "Design AI evaluation metrics and safety strategy",
+    "supports-headless": true,
+    "phase-name": "3-solutioning",
+    "after": ["bmad-bam-agent-runtime-architecture"],
+    "before": [],
+    "is-required": false,
+    "output-location": "{output_folder}/planning-artifacts",
+    "qualityGates": ["QG-AI1"]
+  }]
+}

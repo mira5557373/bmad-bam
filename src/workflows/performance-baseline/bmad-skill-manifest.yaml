@@ -1,0 +1,7 @@
+type: workflow
+name: performance-baseline
+displayName: Performance Baseline
+description: "Design performance baseline establishment for multi-tenant platforms. Use when the user requests to 'establish performance baselines' or 'design performance benchmarks'."
+module: bam
+config_variables:
+  - tenant_model

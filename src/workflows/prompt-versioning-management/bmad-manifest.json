@@ -1,0 +1,14 @@
+{
+  "module-code": "bam",
+  "capabilities": [{
+    "name": "bmad-bam-prompt-versioning-management",
+    "menu-code": "PVM",
+    "description": "Design prompt versioning, A/B testing, and rollback strategies for AI agents",
+    "supports-headless": true,
+    "phase-name": "3-solutioning",
+    "after": ["bmad-bam-agent-runtime-architecture"],
+    "before": ["bmad-bam-llm-evaluation-pipeline"],
+    "is-required": false,
+    "output-location": "{output_folder}/planning-artifacts/architecture"
+  }]
+}

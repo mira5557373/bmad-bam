@@ -1,0 +1,5 @@
+type: workflow
+name: invoice-generation
+displayName: Invoice Generation
+description: "Design automated invoice generation pipeline. Use when the user requests to 'design invoice generation' or 'configure billing automation'."
+module: bam

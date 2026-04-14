@@ -1,0 +1,5 @@
+type: workflow
+name: api-gateway-design
+displayName: API Gateway Design
+description: "Design API gateway configuration with rate limiting, authentication, and routing. Use when the user requests to 'configure API gateway' or 'design gateway routing'."
+module: bam

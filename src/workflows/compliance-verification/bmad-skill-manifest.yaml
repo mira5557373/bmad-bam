@@ -1,0 +1,40 @@
+type: workflow
+name: compliance-verification
+displayName: Compliance Verification
+description: "Verify multi-tenant AI platform compliance with regulatory frameworks (SOC2, GDPR, HIPAA). Use when the user requests to 'verify compliance' or 'compliance audit'."
+module: bam
+version: 1.0.0
+category: bam-extension
+domain: compliance
+
+triggers:
+  - pattern: "verify compliance"
+  - pattern: "compliance audit"
+  - pattern: "regulatory check"
+  - pattern: "SOC2 verification"
+  - pattern: "GDPR compliance"
+
+inputs:
+  required:
+    - compliance_framework
+    - tenant_architecture_doc
+  optional:
+    - previous_audit_results
+    - exemption_list
+
+outputs:
+  - compliance-verification-report.md
+  - compliance-findings.md
+  - remediation-plan.md
+
+quality_gate: QG-CP1
+recovery_protocol: 3-step
+
+dependencies:
+  templates:
+    - compliance-framework-template.md
+    - audit-logging-template.md
+  data:
+    - bam-patterns.csv
+  checklists:
+    - compliance-checklist.md

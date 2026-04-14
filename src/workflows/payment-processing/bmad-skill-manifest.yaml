@@ -1,0 +1,5 @@
+type: workflow
+name: payment-processing
+displayName: Payment Processing
+description: "Design payment gateway integration with Stripe/Braintree. Use when the user requests to 'design payment processing' or 'integrate payment gateway'."
+module: bam

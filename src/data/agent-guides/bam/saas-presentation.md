@@ -11,6 +11,25 @@
 
 ---
 
+## Core Concepts
+
+### Pitch Structure
+The logical flow of a compelling presentation: problem, solution, proof, and call to action. Effective SaaS pitches establish pain quickly, demonstrate value clearly, and make the next step obvious.
+
+### Audience Engagement
+Techniques for capturing and maintaining attention: storytelling, interactive demos, relevant examples, and responsive Q&A. Different audiences require different engagement styles based on technical depth and decision-making authority.
+
+### Visual Communication
+Using diagrams, charts, and graphics to convey complex information efficiently. Architecture diagrams, tier comparisons, and flow visualizations communicate more effectively than text-heavy slides.
+
+### Objection Handling
+Anticipating and addressing concerns before they derail conversations. Common SaaS objections include security, scalability, pricing, and integration concerns that can be preemptively addressed through prepared visuals and talking points.
+
+### Multi-Tenant Considerations
+Presenting multi-tenant architecture requires translating technical isolation concepts into business benefits. Security teams need detailed isolation diagrams, executives need ROI comparisons, and technical evaluators need integration clarity. Tier comparison visuals must highlight value progression without overwhelming with details.
+
+---
+
 ## Tenant Isolation Diagrams
 
 ### Isolation Visualization Patterns
@@ -218,9 +237,41 @@ AUDIENCE → CONCERNS → MESSAGE → FORMAT → DEPTH
 
 ---
 
+## Decision Framework
+
+| Question | Recommendation | Rationale |
+|----------|----------------|-----------|
+| How do you present isolation to non-technical stakeholders? | Use business framing: "Your data is yours alone" with simple boundary diagrams | Technical terms like RLS confuse; business outcomes resonate |
+| Should architecture diagrams vary by audience? | Create 3-5 box C-level, detailed architect versions of same content | Different audiences need different detail levels; reuse core content |
+| How do you handle security objections in sales? | Prepare specific slides for common objections with evidence | Proactive objection handling builds confidence and shortens sales cycles |
+| What tier comparison format works best? | Feature matrix for detailed evaluation; pricing table for quick comparison | Different stages of buyer journey need different visual formats |
+| How do you demonstrate enterprise readiness? | Show compliance certifications, SLA guarantees, and customer logos | Enterprise buyers need proof of scale and security before committing |
+
 ## Integration with BAM Workflows
 
 - `bmad-bam-tenant-model-isolation` - Source for isolation diagrams
 - `bmad-bam-create-master-architecture` - Architecture deck content
-- `bmad-bam-tier-ux` - Tier comparison visuals
+- `bmad-bam-tenant-tier-migration` - Tier comparison visuals
 - PM workflows for roadmap presentations
+
+## Related Patterns
+
+Load decision criteria and web search queries from pattern registry:
+
+- **Presentation patterns:** `{project-root}/_bmad/bam/data/bam-patterns.csv` → filter by category: `presentation-*`
+- **SaaS patterns:** `{project-root}/_bmad/bam/data/bam-patterns.csv` → filter by category: `saas-*`
+
+### Web Research
+
+Use the `web_queries` column from pattern registry to search for current best practices:
+- Search: "SaaS product presentation frameworks {date}"
+- Search: "B2B SaaS demo best practices {date}"
+- Search: "multi-tenant product pitch deck {date}"
+
+## Related Workflows
+
+- `bmad-bam-tenant-model-isolation` - Source isolation diagram content
+- `bmad-bam-create-master-architecture` - Architecture deck foundation
+- `bmad-bam-tenant-tier-migration` - Tier comparison visual content
+- `bmad-bam-security-review` - Security compliance presentation material
+- `bmad-bam-validate-foundation` - Validate architecture for stakeholder review

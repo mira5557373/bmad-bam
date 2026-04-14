@@ -1,0 +1,7 @@
+type: workflow
+name: tenant-contract-renewal
+displayName: Tenant Contract Renewal
+description: 'Design contract renewal automation with pricing updates'
+module: bam
+config_variables:
+  - tenant_model

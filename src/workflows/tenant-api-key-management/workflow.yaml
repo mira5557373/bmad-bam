@@ -1,0 +1,9 @@
+# Workflow metadata for bmad-bam-tenant-api-key-management
+config_variables:
+  - user_name
+  - communication_language
+  - document_output_language
+  - output_folder
+required_tools: []
+tags: [tenant, security, api]
+mode: simple

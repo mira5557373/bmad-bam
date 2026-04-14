@@ -1,0 +1,14 @@
+{
+  "module-code": "bam",
+  "capabilities": [{
+    "name": "bmad-bam-post-deployment-verification",
+    "menu-code": "PDVF",
+    "description": "Verify deployment success with smoke tests, monitoring activation, tenant health checks, and rollback readiness for multi-tenant AI platforms",
+    "supports-headless": true,
+    "phase-name": "4-implementation",
+    "after": [],
+    "before": [],
+    "is-required": false,
+    "output-location": "{output_folder}/operations"
+  }]
+}

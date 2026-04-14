@@ -1,0 +1,5 @@
+type: workflow
+name: vector-database-design
+displayName: Vector Database Design
+description: "Design tenant-isolated vector storage for RAG systems. Use when the user requests to 'design vector database' or 'create vector storage architecture'."
+module: bam

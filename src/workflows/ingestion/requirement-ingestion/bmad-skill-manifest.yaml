@@ -1,6 +1,5 @@
 type: workflow
-name: bmad-bam-requirement-ingestion
+name: requirement-ingestion
 displayName: Requirement Ingestion
 description: "Decompose large feature catalogs into module definitions. Use when the user requests to 'ingest requirements' or 'decompose feature catalog'."
 module: bam
-canonicalId: bmad-bam-requirement-ingestion

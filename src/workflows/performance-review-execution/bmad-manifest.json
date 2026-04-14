@@ -1,0 +1,14 @@
+{
+  "module-code": "bam",
+  "capabilities": [{
+    "name": "bmad-bam-performance-review-execution",
+    "menu-code": "PERF",
+    "description": "Execute periodic performance reviews for multi-tenant AI platform",
+    "supports-headless": true,
+    "phase-name": "4-implementation",
+    "after": [],
+    "before": [],
+    "is-required": false,
+    "output-location": "{output_folder}/operations/performance"
+  }]
+}

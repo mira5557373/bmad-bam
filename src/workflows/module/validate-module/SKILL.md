@@ -1,9 +1,8 @@
 ---
-name: bmad-bam-validate-module
+name: validate-module
 displayName: Validate Module
 description: Validate module architecture against master constraints. Use when the user requests to 'validate module' or 'check module readiness'.
 module: bam
-web_bundle: true
 tags: [module]
 ---
 
@@ -30,6 +29,12 @@ Search for and load `{project-root}/**/project-context.md` as foundational refer
 **Note:** If the user provides additional information during guided steps, capture it for later use without breaking the current flow.
 
 **Intent Check:** Confirm the user's intent and the target module name before processing. Verify the module architecture exists and is the correct target for validation.
+
+## When to Use
+
+- Validating module architecture against QG-M1/M2/M3
+- Checking module completeness and quality
+- Verifying module quality gate requirements
 
 ## Mode
 
@@ -92,3 +97,21 @@ Load `master-architecture.md` and `modules/{module}/architecture.md`.
 - Checklist: `bam/checklists/module-readiness.md`
 - Template: `bam/templates/sprint-status-template.yaml`
 - Knowledge: `bam/knowledge/module-facade-patterns.md`, `bam/knowledge/ddd-module-patterns.md`
+
+## Quality Gates
+
+This workflow contributes to:
+- **QG-M1** (Module Architecture) - Validates module architecture conformance
+- **QG-M2** (Tenant Isolation) - Validates tenant isolation compliance
+- **QG-M3** (Agent Runtime) - Validates AI behavior declarations (if applicable)
+
+### Entry Gate
+- Module architecture must exist (`modules/{module}/architecture.md`)
+- Master architecture must exist (`master-architecture.md`)
+
+### Exit Gate
+- QG-M1 checklist items verified (master conformance, facade completeness)
+- QG-M2 checklist items verified (tenant_id in all entities, tenant-scoped methods)
+- QG-M3 checklist items verified if AI applicable (tool permissions, memory scope)
+- Validation report generated with PASS/FAIL decision
+- Sprint-status updated: module status → 'validated' or 'validation-failed'

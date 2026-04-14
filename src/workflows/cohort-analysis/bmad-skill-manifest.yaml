@@ -1,0 +1,7 @@
+type: workflow
+name: cohort-analysis
+displayName: Cohort Analysis
+description: "Design cohort analysis for tenant segmentation with retention curves and behavior patterns. Use when the user requests to 'design cohort analysis' or 'plan tenant segmentation'."
+module: bam
+config_variables:
+  - tenant_model

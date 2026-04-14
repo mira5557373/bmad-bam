@@ -1,6 +1,5 @@
 type: workflow
-name: bmad-bam-define-facade-contract
+name: define-facade-contract
 displayName: Define Facade Contract
 description: "Define versioned facade contract between modules. Use when the user requests to 'define facade contract' or 'create module contract'."
 module: bam
-canonicalId: bmad-bam-define-facade-contract

@@ -1,0 +1,5 @@
+type: workflow
+name: continuous-security-setup
+displayName: Continuous Security Setup
+description: "Set up continuous security monitoring and automation. Use when the user requests to 'setup security monitoring' or 'configure continuous security'."
+module: bam

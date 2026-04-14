@@ -1,0 +1,14 @@
+{
+  "module-code": "bam",
+  "capabilities": [{
+    "name": "bmad-bam-product-analytics-instrumentation",
+    "menu-code": "PAIN",
+    "description": "Design product analytics event schema with tracking plan, data governance, and pipeline architecture",
+    "supports-headless": true,
+    "phase-name": "3-solutioning",
+    "after": ["bmad-bam-tenant-model-isolation"],
+    "before": [],
+    "is-required": false,
+    "output-location": "{output_folder}/planning-artifacts/analytics"
+  }]
+}

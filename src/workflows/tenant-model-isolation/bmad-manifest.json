@@ -1,0 +1,15 @@
+{
+  "module-code": "bam",
+  "capabilities": [{
+    "name": "bmad-bam-tenant-model-isolation",
+    "menu-code": "TMI",
+    "description": "Design tenant isolation strategy and context propagation. Use when the user requests to 'design tenant isolation' or 'create isolation matrix'.",
+    "supports-headless": true,
+    "phase-name": "3-solutioning",
+    "after": ["bmad-bam-create-master-architecture"],
+    "before": ["bmad-bam-tenant-aware-observability", "bmad-bam-usage-metering-design", "bmad-bam-tenant-onboarding-design", "bmad-bam-tenant-offboarding-design"],
+    "is-required": true,
+    "output-location": "{output_folder}/planning-artifacts",
+    "qualityGates": ["QG-M2"]
+  }]
+}

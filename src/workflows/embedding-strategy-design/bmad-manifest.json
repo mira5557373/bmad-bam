@@ -1,0 +1,14 @@
+{
+  "module-code": "bam",
+  "capabilities": [{
+    "name": "bmad-bam-embedding-strategy-design",
+    "menu-code": "ESD",
+    "description": "Design embedding models and tenant isolation for vector search",
+    "supports-headless": true,
+    "phase-name": "3-solutioning",
+    "after": ["bmad-bam-vector-database-design"],
+    "before": [],
+    "is-required": false,
+    "output-location": "{output_folder}/planning-artifacts/architecture"
+  }]
+}

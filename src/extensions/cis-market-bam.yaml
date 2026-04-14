@@ -1,0 +1,385 @@
+# BAM Extension for CIS Market Analysis
+# Pattern: WDS agent-guides (NO memories: field)
+
+agent:
+  metadata:
+    extends: 'bmad-cis-agent-innovation-strategist'
+    module: 'bam'
+    description: "Adds market analysis capabilities for multi-tenant SaaS"
+
+menu:
+  - trigger: bam-market-context
+    action: "#load-bam-market-context-prompt"
+    description: Load BAM market analysis context
+  - trigger: bam-market-analysis
+    action: "#market-analysis-prompt"
+    description: Analyze market dynamics for multi-tenant SaaS
+  - trigger: bam-market-research
+    action: "#web-research-market-prompt"
+    description: Conduct web research for market patterns
+  - trigger: bam-market-competitive
+    action: "#competitive-analysis-prompt"
+    description: Conduct competitive landscape analysis
+  - trigger: bam-market-segment
+    action: "#segment-analysis-prompt"
+    description: Analyze and prioritize market segments
+  - trigger: bam-market-pricing
+    action: "#pricing-intelligence-prompt"
+    description: Gather competitive pricing intelligence
+  - trigger: bam-market-gtm
+    action: "#gtm-strategy-prompt"
+    description: Design go-to-market strategy for multi-tenant platform
+  - trigger: bam-market-positioning
+    action: "#positioning-strategy-prompt"
+    description: Develop market positioning strategy
+  - trigger: bam-market-validate
+    action: "#validate-market-analysis-prompt"
+    description: Validate market analysis against quality gates
+
+prompts:
+  - id: load-bam-market-context-prompt
+    content: |
+      ## Load BAM Market Context
+
+      Read and internalize the multi-tenant SaaS market guide:
+      `{project-root}/_bmad/bam/data/agent-guides/bam/saas-innovation.md`
+
+      Also load the market-specific guides:
+      `{project-root}/_bmad/bam/data/agent-guides/bam/innovation-guide.md`
+      `{project-root}/_bmad/bam/data/agent-guides/bam/market-analysis.md`
+
+      This guide provides comprehensive context for market analysis in
+      multi-tenant AI platforms. It covers the following key areas:
+
+      1. **Competitive Landscape**: Understanding competitor positioning,
+         strengths, and vulnerabilities in multi-tenant SaaS.
+      2. **Market Segmentation**: How to segment and prioritize markets
+         for multi-tenant platform expansion.
+      3. **Pricing Intelligence**: Competitive pricing analysis and
+         tier structure optimization.
+      4. **Go-to-Market Strategy**: Channel and motion optimization
+         for multi-tenant platforms.
+
+      Apply this market lens to all strategic decisions. Once loaded, confirm
+      by stating: "BAM market context loaded. Ready to analyze market dynamics."
+
+  - id: market-analysis-prompt
+    content: |
+      ## Market Dynamics Analysis
+
+      Prerequisites: Ensure BAM context loaded via `bam-market-context`
+
+      **Load patterns:** `{project-root}/_bmad/bam/data/bam-patterns.csv` → filter: `customization, tenant-lifecycle`
+
+      ### Objective
+      Analyze market dynamics affecting multi-tenant SaaS platforms,
+      with focus on competitive positioning and market opportunity.
+
+      ### Process
+
+      1. **Competitive Landscape Mapping**
+         - Map competitors by segment and positioning
+         - Assess multi-tenant architecture maturity
+         - Identify competitive vulnerabilities
+
+      2. **Market Segmentation Analysis**
+         - Define target segments by tenant profile
+         - Map segment attractiveness and fit
+         - Prioritize segments for expansion
+
+      3. **Pricing Intelligence**
+         - Analyze competitor pricing structures
+         - Evaluate tier packaging effectiveness
+         - Identify pricing optimization opportunities
+
+      ### Verification Checklist
+      - [ ] Competitive landscape documented
+      - [ ] Market segments prioritized
+      - [ ] Pricing analysis complete
+      - [ ] Go-to-market implications outlined
+
+      ### Output
+      Produce market analysis using template:
+      `{project-root}/_bmad/bam/templates/market-analysis-template.md`
+
+  - id: web-research-market-prompt
+    content: |
+      ## BAM Web Research - Market
+
+      Research current best practices for market.
+
+      **Research Focus:** {{research_topic}}
+
+      Search the web: "{{research_topic}} market patterns {date}"
+      Search the web: "{{research_topic}} enterprise SaaS {date}"
+
+      Return findings with: _Source: [URL]_
+
+  - id: competitive-analysis-prompt
+    content: |
+      ## Competitive Landscape Analysis
+
+      Prerequisites: Ensure BAM context loaded via `bam-market-context`
+
+      **Load patterns:** `{project-root}/_bmad/bam/data/bam-patterns.csv` → filter: `customization, tenant-lifecycle`
+
+      ### Objective
+      Analyze the competitive landscape for multi-tenant AI platforms,
+      identifying positioning opportunities and competitive threats.
+
+      ### Process
+
+      1. **Competitor Mapping**
+         - Direct competitors (similar offerings)
+         - Indirect competitors (alternative solutions)
+         - Potential entrants (adjacent market players)
+
+         | Competitor | Category | Strengths | Weaknesses | Multi-Tenant Maturity |
+         |------------|----------|-----------|------------|----------------------|
+         | {Name} | Direct | {List} | {List} | {Low/Med/High} |
+         | {Name} | Indirect | {List} | {List} | {Low/Med/High} |
+         | {Name} | Potential | {List} | {List} | {Low/Med/High} |
+
+      2. **Capability Comparison**
+         - Feature matrix by tier
+         - Technical architecture assessment
+         - AI capability depth
+
+      3. **Positioning Gap Analysis**
+         - Underserved segments
+         - Feature gaps in market
+         - Differentiation opportunities
+
+      ### Verification Checklist
+      - [ ] All major competitors mapped
+      - [ ] Capability comparison complete
+      - [ ] Positioning gaps identified
+      - [ ] Strategic recommendations clear
+
+      ### Output
+      Produce competitive analysis document with competitor profiles,
+      capability matrix, and positioning recommendations.
+
+  - id: segment-analysis-prompt
+    content: |
+      ## Market Segment Analysis
+
+      Prerequisites: Ensure BAM context loaded via `bam-market-context`
+
+      **Load patterns:** `{project-root}/_bmad/bam/data/bam-patterns.csv` → filter: `tenant-lifecycle, customization`
+
+      ### Objective
+      Analyze and prioritize market segments for multi-tenant platform
+      expansion based on attractiveness and fit.
+
+      ### Process
+
+      1. **Segment Definition**
+         - By company size (SMB, Mid-market, Enterprise)
+         - By industry vertical
+         - By use case maturity
+         - By geographic region
+
+         | Segment | Size | Growth | Competition | Fit | Priority |
+         |---------|------|--------|-------------|-----|----------|
+         | {Name} | {$B} | {%/yr} | {Low/Med/High} | {Score} | {1-5} |
+
+      2. **Segment Attractiveness Scoring**
+         - Market size and growth
+         - Competitive intensity
+         - Willingness to pay
+         - Switching costs
+
+      3. **Segment Fit Assessment**
+         - Feature alignment
+         - Go-to-market fit
+         - Support requirements
+         - Compliance needs
+
+      4. **Prioritization Matrix**
+         - Plot segments on attractiveness vs fit
+         - Identify primary target segments
+         - Define expansion sequence
+
+      ### Verification Checklist
+      - [ ] All viable segments identified
+      - [ ] Attractiveness scored consistently
+      - [ ] Fit assessment complete
+      - [ ] Prioritization justified
+
+      ### Output
+      Produce segment analysis document with segment profiles, scoring
+      matrices, and prioritized expansion recommendations.
+
+  - id: pricing-intelligence-prompt
+    content: |
+      ## Competitive Pricing Intelligence
+
+      Prerequisites: Ensure BAM context loaded via `bam-market-context`
+
+      **Load patterns:** `{project-root}/_bmad/bam/data/bam-patterns.csv` → filter: `tenant-lifecycle, customization`
+
+      ### Objective
+      Gather and analyze competitive pricing intelligence to inform
+      tier structure and pricing strategy decisions.
+
+      ### Process
+
+      1. **Competitor Pricing Analysis**
+         - Public pricing collection
+         - Tier structure comparison
+         - Feature-to-price mapping
+
+         | Competitor | Free Tier | Pro Tier | Enterprise | Pricing Model |
+         |------------|-----------|----------|------------|---------------|
+         | {Name} | {Features} | ${Price} | {Contact} | {Seat/Usage} |
+
+      2. **Value-to-Price Analysis**
+         - Feature value scoring
+         - Price positioning map
+         - Value gap identification
+
+      3. **Pricing Model Comparison**
+         - Seat-based vs usage-based
+         - Hybrid models observed
+         - Monetization innovation
+
+      4. **Strategic Pricing Recommendations**
+         - Competitive positioning
+         - Tier structure optimization
+         - Pricing model evolution
+
+      ### Verification Checklist
+      - [ ] Competitor pricing documented
+      - [ ] Value-to-price analysis complete
+      - [ ] Model comparison thorough
+      - [ ] Recommendations actionable
+
+      ### Output
+      Produce pricing intelligence report with competitive pricing
+      analysis, value mapping, and strategic recommendations.
+
+  - id: gtm-strategy-prompt
+    content: |
+      ## Go-to-Market Strategy Design
+
+      Prerequisites: Ensure BAM context loaded via `bam-market-context`
+
+      **Load patterns:** `{project-root}/_bmad/bam/data/bam-patterns.csv` → filter: `tenant-lifecycle, experimentation`
+
+      ### Objective
+      Design go-to-market strategy for multi-tenant platform that
+      optimizes for efficient customer acquisition and expansion.
+
+      ### Process
+
+      1. **GTM Motion Selection**
+         - Product-led growth (PLG) opportunities
+         - Sales-led motion for Enterprise
+         - Hybrid approach design
+
+         | Segment | Primary Motion | Secondary Motion | Key Metrics |
+         |---------|---------------|------------------|-------------|
+         | SMB | PLG self-serve | Community | Activation, virality |
+         | Mid-market | PLG + Sales | Partner | Time-to-value, expansion |
+         | Enterprise | Sales-led | PLG for teams | Deal size, time-to-close |
+
+      2. **Channel Strategy**
+         - Direct vs partner channels
+         - Marketplace presence
+         - Integration partnerships
+
+      3. **Campaign and Content Strategy**
+         - Segment-specific messaging
+         - Content journey mapping
+         - Demand generation approach
+
+      4. **Success Metrics Framework**
+         - Acquisition metrics
+         - Activation metrics
+         - Expansion metrics
+
+      ### Verification Checklist
+      - [ ] GTM motions defined per segment
+      - [ ] Channel strategy aligned
+      - [ ] Content strategy mapped
+      - [ ] Metrics framework complete
+
+      ### Output
+      Produce GTM strategy document with motion definitions, channel
+      strategy, content plan, and metrics framework.
+
+  - id: positioning-strategy-prompt
+    content: |
+      ## Market Positioning Strategy
+
+      Prerequisites: Ensure BAM context loaded via `bam-market-context`
+
+      **Load patterns:** `{project-root}/_bmad/bam/data/bam-patterns.csv` → filter: `customization, experimentation`
+
+      ### Objective
+      Develop market positioning strategy that differentiates multi-tenant
+      platform from competitors and resonates with target segments.
+
+      ### Process
+
+      1. **Positioning Framework Development**
+         - Category definition
+         - Target customer profile
+         - Key differentiators
+         - Proof points
+
+         | Element | Content |
+         |---------|---------|
+         | Category | {What category do we create/lead?} |
+         | For | {Who is our ideal customer?} |
+         | Who | {What is their key challenge?} |
+         | We provide | {What is our unique solution?} |
+         | Unlike | {Who is the alternative?} |
+         | We | {What makes us different?} |
+
+      2. **Differentiation Hierarchy**
+         - Primary differentiator (unique)
+         - Secondary differentiators (strong)
+         - Table stakes (must have)
+
+      3. **Messaging Architecture**
+         - Master narrative
+         - Segment-specific messaging
+         - Tier-specific value propositions
+
+      4. **Positioning Validation**
+         - Customer resonance testing
+         - Competitive response anticipation
+         - Internal alignment check
+
+      ### Verification Checklist
+      - [ ] Positioning framework complete
+      - [ ] Differentiation defensible
+      - [ ] Messaging architecture developed
+      - [ ] Validation approach planned
+
+      ### Output
+      Produce positioning strategy document with framework, messaging
+      architecture, and validation recommendations.
+
+  - id: validate-market-analysis-prompt
+    content: |
+      ## Validate Market Analysis Against Quality Gates
+
+      Prerequisites: Ensure BAM market context loaded via `bam-market-context`
+
+      **Quality Gate Validation:**
+      
+      Check against relevant quality gates:
+      - QG-F1 (Foundation): Market requirements map to architecture decisions
+      - QG-M1 (Module): Competitive features map to module capabilities
+      - QG-P1 (Production): Market positioning aligns with production readiness
+      
+      **Validation Checklist:**
+      - [ ] Segment analysis informs tier differentiation strategy
+      - [ ] Competitive analysis reflects current platform capabilities
+      - [ ] Pricing intelligence aligns with value delivery model
+      - [ ] GTM strategy considers multi-tenant deployment model
+      
+      Report validation results with market strategy recommendations.

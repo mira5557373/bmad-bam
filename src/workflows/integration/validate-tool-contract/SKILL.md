@@ -1,9 +1,8 @@
 ---
-name: bmad-bam-validate-tool-contract
+name: validate-tool-contract
 displayName: Validate Tool Contract
 description: Validate tool contract against ToolDefinition schema. Use when the user requests to 'validate tool contract' or 'check tool registration'.
 module: bam
-web_bundle: true
 tags: [ai-runtime]
 ---
 
@@ -31,9 +30,20 @@ Search for and load `{project-root}/**/project-context.md` as foundational refer
 
 **Intent Check:** Confirm the user's intent and the target tool contract path or module name before processing. Verify the contract exists and is the correct target for validation.
 
+## When to Use
+
+- Validating AI tool contracts
+- Checking tool permission configurations
+- Verifying tool safety requirements
+
 ## Mode
 
 This workflow operates in **Validate** mode — checking existing artifacts against quality criteria.
+
+## Quality Gates
+
+- **Entry Gate:** Tool contract must exist (from `define-facade-contract` or `evolve-facade-contract`)
+- **Exit Gate:** QG-M3-TOOLS (Tool Contract Validation - enables safe tool registration with AI runtime)
 
 ## Validation Checklist
 

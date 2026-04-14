@@ -8,6 +8,7 @@ const path = require('path');
 const yaml = require('js-yaml');
 
 const SRC_DIR = path.join(__dirname, '..', 'src');
+const WORKFLOWS_DIR = path.join(SRC_DIR, 'workflows');
 
 describe('Agent Schema Validation', () => {
   const agentsDir = path.join(SRC_DIR, 'agents');
@@ -18,18 +19,17 @@ describe('Agent Schema Validation', () => {
       .filter(f => fs.statSync(path.join(agentsDir, f)).isDirectory());
   };
 
-  test('each agent has bmad-skill-manifest.yaml', () => {
+  test('BAM is a pure extension module with 0 standalone agents', () => {
+    // BAM is intentionally a pure extension module with no standalone agents
+    // Atlas, Nova, Kai personas are consolidated into architect-bam.yaml extension
     const agents = getAgentDirs();
-    expect(agents.length).toBeGreaterThan(0);
-
-    agents.forEach(agent => {
-      const manifestPath = path.join(agentsDir, agent, 'bmad-skill-manifest.yaml');
-      expect(fs.existsSync(manifestPath)).toBe(true);
-    });
+    expect(agents.length).toBe(0);
   });
 
   test('each agent has SKILL.md', () => {
     const agents = getAgentDirs();
+    // Skip if no agents (BAM is pure extension module)
+    if (agents.length === 0) return;
 
     agents.forEach(agent => {
       const skillPath = path.join(agentsDir, agent, 'SKILL.md');
@@ -39,6 +39,8 @@ describe('Agent Schema Validation', () => {
 
   test('agent manifests have required fields', () => {
     const agents = getAgentDirs();
+    // Skip if no agents (BAM is pure extension module)
+    if (agents.length === 0) return;
     const requiredFields = ['type', 'name', 'capabilities', 'module'];
 
     agents.forEach(agent => {
@@ -57,6 +59,8 @@ describe('Agent Schema Validation', () => {
 
   test('agent capabilities are comma-separated strings, not arrays', () => {
     const agents = getAgentDirs();
+    // Skip if no agents (BAM is pure extension module)
+    if (agents.length === 0) return;
 
     agents.forEach(agent => {
       const manifestPath = path.join(agentsDir, agent, 'bmad-skill-manifest.yaml');
@@ -147,7 +151,7 @@ describe('Extension Schema Validation', () => {
 
 describe('Module Configuration Validation', () => {
   test('module.yaml exists and is valid', () => {
-    const modulePath = path.join(SRC_DIR, 'module.yaml');
+    const modulePath = path.join(WORKFLOWS_DIR, 'module.yaml');
     expect(fs.existsSync(modulePath)).toBe(true);
 
     const content = fs.readFileSync(modulePath, 'utf-8');
@@ -159,7 +163,7 @@ describe('Module Configuration Validation', () => {
   });
 
   test('module-help.csv exists and has entries', () => {
-    const helpPath = path.join(SRC_DIR, 'module-help.csv');
+    const helpPath = path.join(WORKFLOWS_DIR, 'module-help.csv');
     expect(fs.existsSync(helpPath)).toBe(true);
 
     const content = fs.readFileSync(helpPath, 'utf-8');
@@ -173,5 +177,104 @@ describe('Module Configuration Validation', () => {
     expect(header).toContain('module');
     expect(header).toContain('skill');
     expect(header).toContain('display-name');
+  });
+});
+
+describe('Empty File Handling', () => {
+  test('handles empty YAML gracefully', () => {
+    // Test that yaml.load handles empty content without crashing
+    const testEmptyYaml = () => {
+      const emptyContent = '';
+      const result = yaml.load(emptyContent);
+      return result;
+    };
+
+    // Should not throw - empty YAML returns undefined or null
+    expect(testEmptyYaml).not.toThrow();
+    expect([undefined, null]).toContain(testEmptyYaml());
+
+    // Test whitespace-only YAML
+    const testWhitespaceYaml = () => {
+      const whitespaceContent = '   \n\n   \t\t\n';
+      const result = yaml.load(whitespaceContent);
+      return result;
+    };
+
+    expect(testWhitespaceYaml).not.toThrow();
+    // js-yaml returns null for whitespace-only content
+    expect([undefined, null]).toContain(testWhitespaceYaml());
+  });
+
+  test('handles empty CSV gracefully', () => {
+    // Helper: Parse CSV with graceful empty handling
+    const parseCSV = (content) => {
+      if (!content || content.trim() === '') {
+        return { headers: [], rows: [] };
+      }
+
+      const lines = content.trim().split('\n');
+      if (lines.length === 0) {
+        return { headers: [], rows: [] };
+      }
+
+      const headers = lines[0].split(',');
+      const rows = lines.slice(1).map(line => {
+        const values = [];
+        let current = '';
+        let inQuotes = false;
+
+        for (const char of line) {
+          if (char === '"') {
+            inQuotes = !inQuotes;
+          } else if (char === ',' && !inQuotes) {
+            values.push(current.trim());
+            current = '';
+          } else {
+            current += char;
+          }
+        }
+        values.push(current.trim());
+
+        const row = {};
+        headers.forEach((header, i) => {
+          row[header] = values[i] || '';
+        });
+        return row;
+      });
+
+      return { headers, rows };
+    };
+
+    // Test empty CSV
+    const emptyResult = parseCSV('');
+    expect(emptyResult.headers).toEqual([]);
+    expect(emptyResult.rows).toEqual([]);
+
+    // Test header-only CSV
+    const headerOnlyResult = parseCSV('col1,col2,col3');
+    expect(headerOnlyResult.headers).toEqual(['col1', 'col2', 'col3']);
+    expect(headerOnlyResult.rows).toEqual([]);
+
+    // Test whitespace CSV - after trim(), empty string returns empty arrays
+    const whitespaceResult = parseCSV('   \n\n  ');
+    expect(whitespaceResult.headers).toEqual([]);
+    expect(whitespaceResult.rows).toEqual([]);
+  });
+
+  test('handles malformed YAML without crashing', () => {
+    // Test that malformed YAML throws YAMLException, not a crash
+    const testMalformedYaml = () => {
+      const malformedContent = 'key: value\n  invalid indent';
+      try {
+        yaml.load(malformedContent);
+        return 'no-error';
+      } catch (e) {
+        return e.name;
+      }
+    };
+
+    // Should catch YAML error gracefully
+    const result = testMalformedYaml();
+    expect(['YAMLException', 'no-error']).toContain(result);
   });
 });

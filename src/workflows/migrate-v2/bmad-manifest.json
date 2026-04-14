@@ -1,0 +1,14 @@
+{
+  "module-code": "bam",
+  "capabilities": [{
+    "name": "bmad-bam-migrate-v2",
+    "menu-code": "MV2",
+    "description": "Migrate BAM artifacts and configurations to v2 format.",
+    "supports-headless": true,
+    "phase-name": "anytime",
+    "after": [],
+    "before": [],
+    "is-required": false,
+    "output-location": "{output_folder}"
+  }]
+}

@@ -1,0 +1,5 @@
+type: workflow
+name: tenant-hierarchy-design
+displayName: Tenant Hierarchy Design
+description: "Design enterprise multi-BU/department tenant structure with permission inheritance and billing rollup. Use when the user requests to 'design tenant hierarchy' or 'plan multi-level tenant structure'."
+module: bam

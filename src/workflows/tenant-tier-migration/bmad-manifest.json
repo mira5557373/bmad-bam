@@ -1,0 +1,14 @@
+{
+  "module-code": "bam",
+  "capabilities": [{
+    "name": "bmad-bam-tenant-tier-migration",
+    "menu-code": "TTM",
+    "description": "Design and execute tenant tier upgrades and downgrades between FREE, PRO, and ENTERPRISE tiers.",
+    "supports-headless": true,
+    "phase-name": "3-solutioning",
+    "after": ["bmad-bam-tenant-onboarding-design"],
+    "before": [],
+    "is-required": false,
+    "output-location": "{output_folder}/planning-artifacts"
+  }]
+}

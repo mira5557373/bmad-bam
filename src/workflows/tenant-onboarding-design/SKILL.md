@@ -1,9 +1,8 @@
 ---
-name: bmad-bam-tenant-onboarding-design
+name: tenant-onboarding-design
 displayName: Tenant Onboarding Design
 description: Design tenant provisioning orchestration with tier-specific flows. Use when the user requests to 'design tenant onboarding' or 'plan tenant provisioning'.
 module: bam
-web_bundle: true
 tags: [tenant]
 ---
 
@@ -28,6 +27,12 @@ Search for and load `{project-root}/**/project-context.md` as foundational refer
 **If running in headless mode (`-H`):** Use defaults for all optional inputs, skip confirmation prompts, and auto-proceed through all steps.
 
 **Note:** If the user provides additional information during guided steps, capture it for later use without breaking the current flow.
+
+## When to Use
+
+- Designing tenant onboarding procedures
+- Creating self-service provisioning workflows
+- Building tenant activation and setup processes
 
 ## Mode
 
@@ -84,7 +89,18 @@ Define webhook events fired during onboarding:
 - `tenant.provisioning.completed`
 - `tenant.provisioning.failed` (with compensation status)
 
-### Quality Gates
+## Quality Gates
+
+| Gate | Contribution | Description |
+|------|--------------|-------------|
+| **QG-M2** | Contributes | Tenant isolation during provisioning |
+| **QG-I2** | Contributes | Tenant safety in onboarding workflow |
+| **QG-P1** | Contributes | Production-ready provisioning procedures |
+
+- **Entry Gate:** QG-F1 (Foundation) - Master architecture must be defined
+- **Exit Gate:** QG-M2 (Tenant Isolation) - Onboarding must enforce tenant boundaries
+
+### Verification Checklist
 
 - [ ] All provisioning steps defined with compensation
 - [ ] Tier-specific flows documented
@@ -110,3 +126,10 @@ Define webhook events fired during onboarding:
 - Saga Orchestration Patterns: `bam/knowledge/saga-orchestration-patterns.md`
 - Provisioning UI Patterns: `bam/knowledge/provisioning-ui-patterns.md`
 - WDS Integration Patterns: `bam/knowledge/wds-integration-patterns.md`
+
+## Web Research
+
+This workflow uses web search to verify current best practices. Steps involving technology decisions will include:
+- `Search the web:` directives for pattern verification
+- Pattern registry `web_queries` for search topics
+- Source citations: `_Source: [URL]_`

@@ -1,0 +1,5 @@
+type: workflow
+name: rag-pipeline-design
+displayName: RAG Pipeline Design
+description: "Design retrieval-augmented generation architecture including chunking, embeddings, and retrieval. Use when the user requests to 'design RAG pipeline' or 'create knowledge retrieval'."
+module: bam

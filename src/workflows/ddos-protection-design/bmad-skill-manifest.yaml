@@ -1,0 +1,9 @@
+type: workflow
+name: ddos-protection-design
+displayName: DDoS Protection Design
+description: "Design DDoS mitigation strategies for multi-tenant AI platforms. Use when the user requests to 'design DDoS protection' or 'create DDoS mitigation'."
+module: bam
+config_variables:
+  - tenant_model
+  - ai_runtime
+step_naming_convention: 'step-NN-mode-description'

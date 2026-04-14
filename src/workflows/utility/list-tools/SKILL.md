@@ -1,9 +1,8 @@
 ---
-name: bmad-bam-list-tools
+name: list-tools
 displayName: List Tools
 description: List all registered AI tools with filtering. Use when the user requests to 'list tools' or 'show available AI tools'.
 module: bam
-web_bundle: false
 console-only: true
 tags: [ai-runtime]
 ---
@@ -27,6 +26,20 @@ Load available config from `{project-root}/_bmad/config.yaml` and `{project-root
 Search for and load `{project-root}/**/project-context.md` as foundational reference for project decisions and constraints.
 
 **Note:** If the user provides additional information during guided steps, capture it for later use without breaking the current flow.
+
+## When to Use
+
+- Discovering available AI tools in the platform
+- Checking tool permissions and requirements
+- Verifying tool registration during development
+
+## Modes
+
+| Mode | Purpose | Step Range |
+|------|---------|------------|
+| Create | Generate tool listing | `step-01-c-*` to `step-03-c-*` |
+| Edit | Update filters | `step-10-e-*` |
+| Validate | Verify tool registration | `step-20-v-*` |
 
 **Intent Check:** Confirm the user's intent and any filter criteria before processing. Verify the requested tier, module, or category filters are valid.
 
@@ -57,6 +70,19 @@ If no filters applied, show all tools grouped by module.
 
 - Console table of matching tools
 - Tool count summary
+
+## Quality Gates
+
+This workflow contributes to:
+- **QG-M3** (Agent Runtime) - Tool inventory utility for runtime verification
+
+### Entry Gate
+- Tool registry exists in AI runtime module configuration
+- Valid filter criteria (if specified)
+
+### Exit Gate
+- Tool listing displayed with requested filters
+- Tool count summary provided
 
 ## References
 

@@ -1,0 +1,9 @@
+type: workflow
+name: security-operations
+displayName: Security Operations
+description: "Set up security operations including threat detection, correlation rules, AI threat detection, and hunting capabilities. Use for SOC/SIEM configuration."
+module: bam
+config_variables:
+  - tenant_model
+  - ai_runtime
+step_naming_convention: "step-NN-mode-description"

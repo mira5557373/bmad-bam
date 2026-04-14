@@ -1,9 +1,8 @@
 ---
-name: bmad-bam-cross-module-story
+name: cross-module-story
 displayName: Cross-Module Story
 description: Create stories spanning multiple modules. Use when the user requests to 'create cross-module story' or 'plan multi-module feature'.
 module: bam
-web_bundle: true
 tags: [integration]
 ---
 
@@ -28,6 +27,12 @@ Search for and load `{project-root}/**/project-context.md` as foundational refer
 **If running in headless mode (`-H`):** Use defaults for all optional inputs, skip confirmation prompts, and auto-proceed through all steps.
 
 **Note:** If the user provides additional information during guided steps, capture it for later use without breaking the current flow.
+
+## When to Use
+
+- Creating user stories that span multiple modules
+- Coordinating cross-module feature development
+- Defining integration requirements between modules
 
 ## Mode
 
@@ -80,6 +85,21 @@ Default: **Create** mode. In headless mode, always use Create.
 - [ ] Dependencies sequenced (no circular task dependencies)
 - [ ] Tenant context flow documented end-to-end
 - [ ] AI behavior specified for all AI-involved steps
+
+## Quality Gates
+
+This workflow contributes to:
+- **QG-I1** (Convergence) - Cross-module stories define integration points
+- **QG-M2** (Tenant Isolation) - Tenant context flow analysis informs isolation design
+
+### Entry Gate
+- QG-F1 (Foundation) must pass before cross-module planning
+- Module boundaries must be defined (from master architecture)
+
+### Exit Gate
+- Per-module tasks documented with clear ownership
+- Tenant context flow verified at all cross-module boundaries
+- AI-involved steps have defined eval requirements
 
 ## Output
 

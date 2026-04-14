@@ -1,0 +1,9 @@
+type: workflow
+name: extend-project-context
+displayName: Extend Project Context
+description: "Add BAM configuration section to project-context.md. Use when setting up BAM for a project."
+module: bam
+config_variables:
+  - tenant_model
+  - ai_runtime
+step_naming_convention: 'step-NN-mode-description'

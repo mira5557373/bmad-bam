@@ -1,3 +1,11 @@
+---
+name: Evolution Backlog Template
+description: Template for tracking proposed changes to frozen master architecture
+category: architecture
+version: 1.0.0
+type: "documentation"
+---
+
 # Evolution Backlog
 
 > Candidates for master architecture evolution. Managed by Platform Architect.
@@ -11,8 +19,8 @@ This backlog tracks proposed changes to the frozen master architecture. Changes 
 
 | ID      | Source              | Type             | Description       | Impact Score | Status   | Owner |
 | ------- | ------------------- | ---------------- | ----------------- | ------------ | -------- | ----- |
-| EVO-001 | Retro {{DATE}}      | PATTERN_ADDITION | {{DESCRIPTION}}   | {{SCORE_0_8}} | pending  | {{OWNER}} |
-| EVO-002 | Module {{MODULE_NAME}} | TECH_REFRESH  | {{DESCRIPTION}}   | {{SCORE_0_8}} | approved | {{OWNER}} |
+| EVO-001 | Retro {{date}}      | PATTERN_ADDITION | {{description}}   | {{score_0_8}} | pending  | {{owner}} |
+| EVO-002 | Module {{module_name}} | TECH_REFRESH  | {{description}}   | {{score_0_8}} | approved | {{owner}} |
 
 ## Field Definitions
 
@@ -60,3 +68,38 @@ This backlog tracks proposed changes to the frozen master architecture. Changes 
 3. Evolution committee review (for score ≥ 5)
 4. Status update with rationale
 5. If approved: create ADR, plan migration, update master architecture
+
+---
+
+## Web Research Queries
+
+Before finalizing this document, verify current best practices:
+
+- "architecture evolution backlog best practices {date}"
+- "master architecture change management multi-tenant SaaS patterns {date}"
+- "platform evolution governance enterprise implementation {date}"
+
+Incorporate relevant findings into the document sections above.
+
+---
+
+## Verification Checklist
+
+- [ ] All evolution candidates have unique IDs in EVO-XXX format
+- [ ] Source of each candidate is documented (retro, module, incident, audit)
+- [ ] Change type is categorized (TECH_REFRESH, PATTERN_ADDITION, MAJOR_EVOLUTION, DEPRECATION)
+- [ ] Impact score is assigned using 0-8 scoring criteria
+- [ ] Status reflects current lifecycle state
+- [ ] Owner is assigned for each evolution candidate
+- [ ] High-impact changes (score >= 5) have evolution committee review scheduled
+- [ ] Approved changes have ADR created with migration plan
+- [ ] Rejected changes have documented rationale
+- [ ] Deferred changes have target review date
+- [ ] Multi-tenant impact is considered in impact scoring
+- [ ] Cross-cutting changes include module-level migration planning
+
+## Change Log
+
+| Version | Date | Author | Changes |
+|---------|------|--------|---------|
+| {{version}} | {{date}} | {{author}} | Initial template creation |

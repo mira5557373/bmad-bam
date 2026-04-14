@@ -1,0 +1,9 @@
+type: workflow
+name: disaster-recovery-design
+displayName: Disaster Recovery Design
+description: "Design tier-aware disaster recovery strategy with RTO/RPO objectives. Use when the user requests to 'design disaster recovery' or 'create DR plan'."
+module: bam
+config_variables:
+  - tenant_model
+  - ai_runtime
+step_naming_convention: 'step-NN-mode-description'

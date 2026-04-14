@@ -1,0 +1,8 @@
+type: workflow
+name: security-review
+displayName: Security Review
+description: 'Dedicated security assessment workflow for multi-tenant platforms'
+module: bam
+config_variables:
+  - tenant_model
+  - ai_runtime

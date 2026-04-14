@@ -1,0 +1,14 @@
+{
+  "module-code": "bam",
+  "capabilities": [{
+    "name": "bmad-bam-tenant-suspension-design",
+    "menu-code": "TSD",
+    "description": "Design tenant suspension and reactivation lifecycle with grace periods and notification sequences. Use when the user requests to 'design tenant suspension' or 'plan tenant lifecycle states'.",
+    "supports-headless": true,
+    "phase-name": "3-solutioning",
+    "after": ["bmad-bam-tenant-model-isolation"],
+    "before": [],
+    "is-required": false,
+    "output-location": "{output_folder}/planning-artifacts"
+  }]
+}

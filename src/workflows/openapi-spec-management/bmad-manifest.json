@@ -1,0 +1,14 @@
+{
+  "module-code": "bam",
+  "capabilities": [{
+    "name": "bmad-bam-openapi-spec-management",
+    "menu-code": "OSM",
+    "description": "Design OpenAPI specification lifecycle management. Use when the user requests to 'manage API specs' or 'design API documentation workflow'.",
+    "supports-headless": true,
+    "phase-name": "anytime",
+    "after": [],
+    "before": [],
+    "is-required": false,
+    "output-location": "{output_folder}/planning-artifacts"
+  }]
+}

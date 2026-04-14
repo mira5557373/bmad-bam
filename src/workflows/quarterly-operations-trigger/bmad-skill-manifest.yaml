@@ -1,0 +1,8 @@
+type: workflow
+name: quarterly-operations-trigger
+displayName: Quarterly Operations Trigger
+description: 'Scheduled trigger for quarterly operational reviews and audits'
+module: bam
+config_variables:
+  - tenant_model
+step_naming_convention: "step-NN-mode-description"

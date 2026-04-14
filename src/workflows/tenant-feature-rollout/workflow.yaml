@@ -1,0 +1,9 @@
+# Workflow metadata for bmad-bam-tenant-feature-rollout
+config_variables:
+  - user_name
+  - communication_language
+  - document_output_language
+  - output_folder
+required_tools: []
+tags: [tenant, operations, feature-flags]
+mode: simple

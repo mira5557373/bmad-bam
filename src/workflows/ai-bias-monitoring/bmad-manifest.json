@@ -1,0 +1,14 @@
+{
+  "module-code": "bam",
+  "capabilities": [{
+    "name": "bmad-bam-ai-bias-monitoring",
+    "menu-code": "ABM",
+    "description": "Design bias detection and fairness monitoring for AI systems",
+    "supports-headless": true,
+    "phase-name": "3-solutioning",
+    "after": ["bmad-bam-agent-runtime-architecture"],
+    "before": ["bmad-bam-ai-eval-safety-design"],
+    "is-required": false,
+    "output-location": "{output_folder}/planning-artifacts/quality"
+  }]
+}

@@ -1,0 +1,11 @@
+# Workflow metadata for bmad-bam-security-review
+config_variables:
+  - user_name
+  - communication_language
+  - document_output_language
+  - output_folder
+  - tenant_model
+  - ai_runtime
+required_tools: []
+tags: [security, tenant-isolation, ai-safety]
+mode: complex

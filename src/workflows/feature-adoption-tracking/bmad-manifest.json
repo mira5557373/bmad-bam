@@ -1,0 +1,14 @@
+{
+  "module-code": "bam",
+  "capabilities": [{
+    "name": "bmad-bam-feature-adoption-tracking",
+    "menu-code": "FEAT",
+    "description": "Design feature adoption analytics with activation funnels, usage patterns, and adoption velocity",
+    "supports-headless": true,
+    "phase-name": "3-solutioning",
+    "after": ["bmad-bam-product-analytics-instrumentation", "bmad-bam-usage-metering-design"],
+    "before": [],
+    "is-required": false,
+    "output-location": "{output_folder}/planning-artifacts/analytics"
+  }]
+}

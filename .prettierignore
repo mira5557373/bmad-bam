@@ -1,0 +1,9 @@
+# Ignore markdown files - documentation formatting is handled by markdownlint
+*.md
+
+# Ignore node_modules and coverage
+node_modules/
+coverage/
+
+# Ignore package-lock.json (auto-generated)
+package-lock.json

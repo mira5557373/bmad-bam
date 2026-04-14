@@ -1,0 +1,14 @@
+{
+  "module-code": "bam",
+  "capabilities": [{
+    "name": "bmad-bam-sdk-generation",
+    "menu-code": "SDKG",
+    "description": "Generate SDKs for multiple programming languages from OpenAPI spec",
+    "supports-headless": true,
+    "phase-name": "3-solutioning",
+    "after": [],
+    "before": [],
+    "is-required": false,
+    "output-location": "{output_folder}/planning-artifacts/sdk"
+  }]
+}

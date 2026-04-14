@@ -1,0 +1,14 @@
+{
+  "module-code": "bam",
+  "capabilities": [{
+    "name": "bmad-bam-llm-gateway-configuration",
+    "menu-code": "LGC",
+    "description": "Design LLM provider routing, fallback chains, and cost optimization.",
+    "supports-headless": true,
+    "phase-name": "3-solutioning",
+    "after": ["bmad-bam-agent-runtime-architecture"],
+    "before": [],
+    "is-required": false,
+    "output-location": "{output_folder}/planning-artifacts/ai-runtime"
+  }]
+}

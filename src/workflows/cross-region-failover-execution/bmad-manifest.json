@@ -1,0 +1,14 @@
+{
+  "module-code": "bam",
+  "capabilities": [{
+    "name": "bmad-bam-cross-region-failover-execution",
+    "menu-code": "CRFE",
+    "description": "Execute cross-region failover procedures during DR events. Use when the user requests to 'execute failover' or 'initiate DR procedures'.",
+    "supports-headless": true,
+    "phase-name": "4-implementation",
+    "after": ["bmad-bam-disaster-recovery-design"],
+    "before": [],
+    "is-required": false,
+    "output-location": "{output_folder}/planning-artifacts"
+  }]
+}

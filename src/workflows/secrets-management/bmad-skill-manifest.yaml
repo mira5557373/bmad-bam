@@ -1,0 +1,9 @@
+type: workflow
+name: secrets-management
+displayName: Secrets Management
+description: "Design secrets rotation and vault integration for multi-tenant AI platforms. Use when the user requests to 'design secrets management' or 'create vault integration'."
+module: bam
+config_variables:
+  - tenant_model
+  - ai_runtime
+step_naming_convention: 'step-NN-mode-description'

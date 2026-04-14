@@ -1,0 +1,7 @@
+type: workflow
+name: tenant-trial-conversion
+displayName: Tenant Trial Conversion
+description: 'Design trial-to-paid conversion workflows with engagement tracking'
+module: bam
+config_variables:
+  - tenant_model

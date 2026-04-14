@@ -1,0 +1,13 @@
+type: workflow
+name: sla-contract-design
+displayName: SLA Contract Design
+description: "Design comprehensive SLA contracts for multi-tenant AI platforms including uptime guarantees, AI response latency, tenant isolation SLAs, support tiers, penalty structures, and reporting obligations."
+module: bam
+phase: 3-solutioning
+config_variables:
+  - tenant_model
+step_naming_convention: "step-NN-mode-description"
+quality_gates:
+  entry: QG-I1
+  exit: QG-SLA1
+  contributes_to: QG-P1

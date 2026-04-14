@@ -1,0 +1,14 @@
+{
+  "module-code": "bam",
+  "capabilities": [{
+    "name": "bmad-bam-tenant-sso-integration",
+    "menu-code": "TSSO",
+    "description": "Design tenant SSO integration supporting SAML 2.0, OIDC, and enterprise IdP provisioning with session management and JIT user creation",
+    "supports-headless": true,
+    "phase-name": "3-solutioning",
+    "after": [],
+    "before": [],
+    "is-required": false,
+    "output-location": "{output_folder}/planning-artifacts/security"
+  }]
+}

@@ -1,0 +1,7 @@
+type: workflow
+name: tenant-feature-rollout
+displayName: Tenant Feature Rollout
+description: "Design controlled per-tenant feature releases with feature flags, rollout strategy, monitoring, and rollback. Use when the user requests to 'design feature rollout' or 'plan controlled feature releases'."
+module: bam
+config_variables:
+  - tenant_model

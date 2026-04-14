@@ -1,0 +1,9 @@
+type: workflow
+name: zero-trust-architecture
+displayName: Zero Trust Architecture
+description: "Design zero-trust network and identity architecture for multi-tenant AI platforms. Use when the user requests to 'design zero trust' or 'create zero trust architecture'."
+module: bam
+config_variables:
+  - tenant_model
+  - ai_runtime
+step_naming_convention: 'step-NN-mode-description'

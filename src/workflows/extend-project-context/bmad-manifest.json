@@ -1,0 +1,14 @@
+{
+  "module-code": "bam",
+  "capabilities": [{
+    "name": "bmad-bam-extend-project-context",
+    "menu-code": "EPC",
+    "description": "Extend project context with BAM-specific tenant, isolation, and AI runtime configurations.",
+    "supports-headless": true,
+    "phase-name": "anytime",
+    "after": [],
+    "before": [],
+    "is-required": false,
+    "output-location": "{output_folder}"
+  }]
+}

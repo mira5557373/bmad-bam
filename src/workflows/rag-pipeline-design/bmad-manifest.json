@@ -1,0 +1,14 @@
+{
+  "module-code": "bam",
+  "capabilities": [{
+    "name": "bmad-bam-rag-pipeline-design",
+    "menu-code": "RPD",
+    "description": "Design RAG architecture with chunking, embeddings, and retrieval optimization",
+    "supports-headless": true,
+    "phase-name": "3-solutioning",
+    "after": ["bmad-bam-agent-runtime-architecture"],
+    "before": ["bmad-bam-llm-evaluation-pipeline"],
+    "is-required": false,
+    "output-location": "{output_folder}/planning-artifacts/architecture"
+  }]
+}

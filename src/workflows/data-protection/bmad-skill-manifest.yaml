@@ -1,0 +1,40 @@
+type: workflow
+name: data-protection
+displayName: Data Protection
+description: Verify data protection controls for multi-tenant AI platforms including encryption, isolation, and privacy
+module: bam
+version: 1.0.0
+category: bam-extension
+domain: security
+
+triggers:
+  - pattern: "verify data protection"
+  - pattern: "data security audit"
+  - pattern: "encryption verification"
+  - pattern: "privacy controls"
+
+inputs:
+  required:
+    - data_classification_doc
+    - tenant_architecture_doc
+  optional:
+    - encryption_standards
+    - privacy_requirements
+
+outputs:
+  - data-protection-report.md
+  - encryption-audit.md
+  - privacy-assessment.md
+
+quality_gate: QG-DR1
+recovery_protocol: 3-step
+
+dependencies:
+  templates:
+    - rls-policy-template.md
+    - cache-isolation-template.md
+    - memory-isolation-template.md
+  data:
+    - bam-patterns.csv
+  checklists:
+    - security-checklist.md

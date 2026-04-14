@@ -1,0 +1,106 @@
+# BAM Module Definition
+# Pattern: WDS style with requiredModules + recommendedModules
+
+code: bam
+version: "1.0.0"
+type: extension
+name: "BAM - Multi-Tenant Agentic AI SaaS"
+header: "BAM: Multi-Tenant Agentic AI SaaS Architecture"
+subheader: "Extend BMAD with enterprise SaaS patterns"
+description: "Extension module that adds multi-tenant capabilities, modular monolith patterns, and AI agent architecture to the BMAD Method"
+
+# Installation behavior
+default_selected: false
+
+# Module dependencies
+requiredModules: [core]
+recommendedModules: [bmm, tea, wds, cis]
+
+# Configuration variables (user prompted during install)
+tenant_model:
+  prompt: "Select tenant isolation strategy for your SaaS platform"
+  default: "row-level-security"
+  single-select:
+    - value: "row-level-security"
+      label: "Row-Level Security (Recommended for most SaaS)"
+    - value: "schema-per-tenant"
+      label: "Schema per Tenant (Higher isolation)"
+    - value: "database-per-tenant"
+      label: "Database per Tenant (Maximum isolation)"
+
+ai_runtime:
+  prompt: "Select AI agent orchestration framework"
+  default: "langgraph"
+  single-select:
+    - value: "langgraph"
+      label: "LangGraph (Recommended)"
+    - value: "crewai"
+      label: "CrewAI"
+    - value: "autogen"
+      label: "AutoGen"
+    - value: "dspy"
+      label: "DSPy (Prompt Optimization)"
+    - value: "instructor"
+      label: "Instructor (Structured Outputs)"
+    - value: "custom"
+      label: "Custom Framework"
+
+design_first:
+  prompt: "Start with architecture design before coding?"
+  default: "true"
+  single-select:
+    - value: "true"
+      label: "Yes - Design-first approach (Recommended)"
+    - value: "false"
+      label: "No - Start coding immediately"
+
+test_architecture:
+  prompt: "Include test architecture planning?"
+  default: "true"
+  single-select:
+    - value: "true"
+      label: "Yes - Plan testing with TEA integration"
+    - value: "false"
+      label: "No - Basic testing only"
+
+# Web search configuration for pattern registry
+web_search:
+  enabled: true
+  year_placeholder: "{date}"
+  directive_format: "Search the web:"
+  pattern: "solutioning"
+  description: "BAM uses targeted web search for technology verification (solutioning pattern, not mandatory blocking)"
+
+# Directory creation
+directories:
+  - "{output_folder}/planning-artifacts"
+  - "{output_folder}/implementation-artifacts"
+  - "{output_folder}/architecture-docs"
+
+# Post-install notes
+post-install-notes:
+  tenant_model:
+    row-level-security: |
+      RLS Setup Complete:
+        - BAM workflows will generate PostgreSQL RLS policies
+        - Ensure your database supports row-level security
+        - Run: bam-create-master-architecture to start foundation design
+    schema-per-tenant: |
+      Schema-Per-Tenant Setup:
+        - Each tenant will have a separate PostgreSQL schema
+        - Requires schema management in your provisioning pipeline
+        - Run: bam-tenant-onboarding-design to plan provisioning
+    database-per-tenant: |
+      Database-Per-Tenant Setup:
+        - Maximum isolation but highest operational complexity
+        - Requires connection pooling and routing infrastructure
+        - Consider this for enterprise-tier tenants only
+  ai_runtime:
+    langgraph: |
+      LangGraph Selected:
+        - Run: bam-agent-runtime-architecture to design orchestration
+        - Load knowledge: agent-runtime-patterns.md
+    crewai: |
+      CrewAI Selected:
+        - Configure crew hierarchies in agent runtime design
+        - Review: run-contracts.md for task contracts

@@ -1,0 +1,7 @@
+type: workflow
+name: maintenance-window-design
+displayName: Maintenance Window Design
+description: "Design maintenance window scheduling for multi-tenant platforms. Use when the user requests to 'design maintenance windows' or 'plan scheduled maintenance'."
+module: bam
+config_variables:
+  - tenant_model

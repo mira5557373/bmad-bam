@@ -1,9 +1,8 @@
 ---
-name: bmad-bam-tenant-model-isolation
+name: tenant-model-isolation
 displayName: Tenant Model Isolation
 description: Design tenant isolation strategy and context propagation. Use when the user requests to 'design tenant isolation' or 'create isolation matrix'.
 module: bam
-web_bundle: true
 tags: [tenant]
 ---
 
@@ -28,6 +27,21 @@ Search for and load `{project-root}/**/project-context.md` as foundational refer
 **If running in headless mode (`-H`):** Use defaults for all optional inputs, skip confirmation prompts, and auto-proceed through all steps.
 
 **Note:** If the user provides additional information during guided steps, capture it for later use without breaking the current flow.
+
+## When to Use
+
+- Designing tenant isolation strategy for the platform
+- Creating isolation matrix for all asset types
+- Defining context propagation patterns
+- Mapping compliance requirements to tenant data
+
+## Modes
+
+| Mode | Purpose | Step Range |
+|------|---------|------------|
+| Create | Generate new tenant isolation design | `step-01-c-*` to `step-05-c-*` |
+| Edit | Modify existing isolation design | `step-10-e-*` to `step-11-e-*` |
+| Validate | Check against QG-M2 criteria | `step-20-v-*` to `step-22-v-*` |
 
 ## Workflow
 
@@ -79,12 +93,29 @@ Define how tenant context flows across every boundary:
 - Audit trail requirements
 - Data residency considerations
 
-### Quality Gates
+## Quality Gates
 
-- [ ] Isolation matrix complete for all asset types
-- [ ] Context propagation design covers all boundaries
-- [ ] No implicit sharing of tenant data
-- [ ] Compliance requirements documented
+This workflow contributes to:
+- **QG-M2** (Tenant Isolation) - Primary gate for tenant isolation validation
+- **QG-I2** (Tenant Safety) - Tenant safety validation at integration level
+- **QG-P1** (Production) - Tenant isolation required for production readiness
+
+### Entry Gate
+- QG-F1 (Foundation) must pass (master architecture defined with tenant model selection)
+
+### Exit Gate
+- QG-M2 checklist items from `tenant-isolation.md` verified:
+  - [ ] Isolation matrix complete for all asset types
+  - [ ] Context propagation design covers all boundaries
+  - [ ] No implicit sharing of tenant data
+  - [ ] Compliance requirements documented
+
+## Related Workflows
+
+- `bmad-bam-create-master-architecture` - Tenant model selection prerequisite
+- `bmad-bam-tenant-data-migration` - Uses isolation boundaries
+- `bmad-bam-tenant-data-export` - Uses tenant data boundaries
+- `bmad-bam-validate-module` - Validates tenant isolation in modules
 
 ## Output
 

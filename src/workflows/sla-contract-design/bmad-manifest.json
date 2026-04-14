@@ -1,0 +1,14 @@
+{
+  "module-code": "bam",
+  "capabilities": [{
+    "name": "bmad-bam-sla-contract-design",
+    "menu-code": "SCD",
+    "description": "Design comprehensive SLA contracts for multi-tenant AI platforms including uptime guarantees, AI response latency, tenant isolation SLAs, and tiered service commitments.",
+    "supports-headless": true,
+    "phase-name": "3-solutioning",
+    "after": ["bmad-bam-create-master-architecture"],
+    "before": ["bmad-bam-sli-slo-definition", "bmad-bam-tenant-sla-monitoring"],
+    "is-required": false,
+    "output-location": "{output_folder}/planning-artifacts"
+  }]
+}

@@ -1,0 +1,11 @@
+{
+  "name": "bmad-bam-rag-observability-design",
+  "phase": "3-solutioning",
+  "after": ["bmad-bam-agent-runtime-architecture"],
+  "before": ["bmad-bam-validate-foundation"],
+  "qualityGates": ["QG-AI2"],
+  "outputs": [
+    "{output_folder}/operations/ai/rag-observability-config.md",
+    "{output_folder}/operations/ai/rag-dashboards.md"
+  ]
+}

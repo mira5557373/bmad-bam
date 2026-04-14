@@ -1,0 +1,14 @@
+{
+  "module-code": "bam",
+  "capabilities": [{
+    "name": "bmad-bam-api-documentation-automation",
+    "menu-code": "ADOC",
+    "description": "Design automated API documentation pipeline with OpenAPI",
+    "supports-headless": true,
+    "phase-name": "3-solutioning",
+    "after": ["bmad-bam-api-version-release"],
+    "before": ["bmad-bam-openapi-spec-management"],
+    "is-required": false,
+    "output-location": "{output_folder}/planning-artifacts/api"
+  }]
+}

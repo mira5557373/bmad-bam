@@ -1,0 +1,14 @@
+{
+  "module-code": "bam",
+  "capabilities": [{
+    "name": "bmad-bam-database-migration-pipeline",
+    "menu-code": "DBMP",
+    "description": "Execute database migrations including migration plan execution, data validation, tenant impact assessment, and rollback testing for multi-tenant AI platforms",
+    "supports-headless": true,
+    "phase-name": "4-implementation",
+    "after": [],
+    "before": [],
+    "is-required": false,
+    "output-location": "{output_folder}/operations"
+  }]
+}

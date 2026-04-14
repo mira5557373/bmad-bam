@@ -1,0 +1,9 @@
+type: workflow
+name: ai-security
+displayName: AI Security Audit
+description: 'Comprehensive security audit for AI/LLM systems including model security and inference protection'
+module: bam
+config_variables:
+  - ai_runtime
+  - tenant_model
+step_naming_convention: "step-NN-mode-description"

@@ -1,0 +1,9 @@
+type: workflow
+name: model-validation
+displayName: Model Validation
+description: "Validate AI model releases including model validation, tenant rollout planning, rollback testing, and monitoring configuration. Use for AI model releases."
+module: bam
+config_variables:
+  - tenant_model
+  - ai_runtime
+step_naming_convention: "step-NN-mode-description"

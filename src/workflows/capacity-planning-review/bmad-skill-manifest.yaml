@@ -1,0 +1,5 @@
+type: workflow
+name: capacity-planning-review
+displayName: Capacity Planning Review
+description: "Execute capacity planning reviews for growth and scaling. Use when the user requests to 'review capacity' or 'plan capacity'."
+module: bam

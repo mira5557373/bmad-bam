@@ -11,6 +11,25 @@
 
 ---
 
+## Core Concepts
+
+### Divergent Thinking
+The creative process of generating a wide range of ideas without judgment. In SaaS ideation, this means exploring all possible features, monetization models, and tenant experiences before narrowing down to viable options.
+
+### Convergent Thinking
+The analytical process of evaluating and selecting the best ideas from a divergent set. For multi-tenant platforms, convergence considers tier placement, revenue potential, technical feasibility, and competitive differentiation.
+
+### Idea Validation
+Testing concepts early with real tenant feedback before significant investment. Validation techniques include prototype testing, landing page experiments, and feature request analysis across tenant segments.
+
+### Feature-Market Fit
+Ensuring ideated features solve real problems for specific tenant segments. Each feature must demonstrate clear value for its target tier while supporting natural upgrade paths.
+
+### Multi-Tenant Considerations
+Ideation for multi-tenant SaaS platforms must balance platform-level features that benefit all tenants with tier-gated capabilities that drive upgrade revenue. Every idea requires tier placement decisions, isolation impact analysis, and consideration of shared vs. dedicated resources.
+
+---
+
 ## Tier-Aware Feature Brainstorming
 
 ### Feature Ideation Matrix
@@ -222,9 +241,40 @@ WHAT'S THE COST MODEL?
 
 ---
 
+## Decision Framework
+
+| Question | Recommendation | Rationale |
+|----------|----------------|-----------|
+| Should this feature be tier-gated or platform-wide? | Gate if it drives conversion; platform if it's table stakes | Features that differentiate tiers should require upgrade; core functionality benefits all |
+| How do you validate feature ideas before building? | Run landing page tests and prototype validation with target tier | Early validation prevents wasted development on features tenants won't use |
+| Should enterprise tenants influence the roadmap directly? | Establish advisory board and design partner programs | Enterprise input ensures features meet real needs and builds customer loyalty |
+| When should you unbundle features into add-ons? | Unbundle when usage varies significantly within a tier | Add-ons allow high-usage tenants to pay more without raising base tier pricing |
+| How do you balance platform vs tenant-specific features? | 80% platform, 20% tenant-specific for enterprise tier | Platform leverage maximizes ROI; customization differentiates enterprise |
+
 ## Integration with BAM Workflows
 
 - `bmad-bam-create-master-architecture` - Platform feature design
 - `bmad-bam-tenant-model-isolation` - Isolation for new features
-- `bmad-bam-tier-ux` - Tier experience for new features
+- `bmad-bam-tenant-tier-migration` - Tier experience for new features
 - PM workflows for roadmap prioritization
+
+## Related Patterns
+
+Load decision criteria and web search queries from pattern registry:
+
+- **Ideation patterns:** `{project-root}/_bmad/bam/data/bam-patterns.csv` → filter by category: `ideation-*`
+- **Innovation patterns:** `{project-root}/_bmad/bam/data/bam-patterns.csv` → filter by category: `innovation-*`
+
+### Web Research
+
+Use the `web_queries` column from pattern registry to search for current best practices:
+- Search: "SaaS product ideation frameworks {date}"
+- Search: "AI-powered product discovery {date}"
+- Search: "B2B SaaS feature ideation validation {date}"
+
+## Related Workflows
+
+- `bmad-bam-create-master-architecture` - Implement platform features from ideation
+- `bmad-bam-tenant-model-isolation` - Design isolation for new tier-gated features
+- `bmad-bam-tenant-tier-migration` - Design tier experiences for new features
+- `bmad-bam-tenant-billing-integration` - Implement monetization strategies from ideation

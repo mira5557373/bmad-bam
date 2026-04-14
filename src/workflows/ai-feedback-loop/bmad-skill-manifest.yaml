@@ -1,0 +1,5 @@
+type: workflow
+name: ai-feedback-loop
+displayName: AI Feedback Loop
+description: "Design user feedback collection and model improvement. Use when the user requests to 'design feedback loop' or 'create user feedback system'."
+module: bam

@@ -1,0 +1,9 @@
+type: workflow
+name: threat-modeling
+displayName: Threat Modeling
+description: "Design threat modeling processes for multi-tenant AI platforms. Use when the user requests to 'design threat model' or 'create threat assessment'."
+module: bam
+config_variables:
+  - tenant_model
+  - ai_runtime
+step_naming_convention: 'step-NN-mode-description'

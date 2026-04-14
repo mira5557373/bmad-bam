@@ -1,0 +1,7 @@
+type: workflow
+name: tenant-health-monitoring
+displayName: Tenant Health Monitoring
+description: "Design proactive tenant health management with metrics, scoring, alerting, and remediation. Use when the user requests to 'design tenant health monitoring' or 'plan tenant health management'."
+module: bam
+config_variables:
+  - tenant_model

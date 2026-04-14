@@ -1,0 +1,8 @@
+type: workflow
+name: tenant-cost-attribution
+displayName: Tenant Cost Attribution
+description: 'Design cost allocation and chargeback for multi-tenant platforms'
+module: bam
+config_variables:
+  - tenant_model
+  - output_folder

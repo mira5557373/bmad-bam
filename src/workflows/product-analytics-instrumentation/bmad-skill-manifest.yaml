@@ -1,0 +1,7 @@
+type: workflow
+name: product-analytics-instrumentation
+displayName: Product Analytics Instrumentation
+description: "Design product analytics event schema with tracking plan and data governance. Use when the user requests to 'design product analytics' or 'plan event instrumentation'."
+module: bam
+config_variables:
+  - tenant_model

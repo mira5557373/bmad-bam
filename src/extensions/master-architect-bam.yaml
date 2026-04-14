@@ -11,12 +11,27 @@ menu:
   - trigger: bam-master-context
     action: "#load-bam-master-context-prompt"
     description: Load BAM master architecture context
-  - trigger: foundation-review
+  - trigger: bam-master-foundation-review
     action: "#foundation-review-prompt"
     description: Review foundation against master architecture
-  - trigger: module-compliance
+  - trigger: bam-master-module-compliance
     action: "#module-compliance-prompt"
     description: Check module compliance with master
+  - trigger: bam-master-architect-research
+    action: "#web-research-master-architect-prompt"
+    description: Conduct web research for master-architect decisions
+  - trigger: bam-master-platform-governance
+    action: "#platform-governance-prompt"
+    description: Define platform governance policies and enforcement
+  - trigger: bam-master-cross-module-coordination
+    action: "#cross-module-coordination-prompt"
+    description: Coordinate cross-module dependencies and contracts
+  - trigger: bam-master-architecture-evolution
+    action: "#architecture-evolution-prompt"
+    description: Plan architecture evolution and migration strategies
+  - trigger: bam-master-tenant-boundary-audit
+    action: "#tenant-boundary-audit-prompt"
+    description: Audit tenant boundaries across all modules
 
 prompts:
   - id: load-bam-master-context-prompt
@@ -45,18 +60,498 @@ prompts:
   - id: foundation-review-prompt
     content: |
       ## Foundation Review
-      Verify against master architecture:
-      - [ ] Tenant model matches master
-      - [ ] Module boundaries align
-      - [ ] Shared kernel is minimal
-      - [ ] AI runtime decisions consistent
-      - [ ] Forbidden dependencies respected
+
+      Prerequisites: Ensure BAM master context loaded via `bam-master-context`
+
+      **Load patterns:** `{project-root}/_bmad/bam/data/bam-patterns.csv` → filter: `module-boundaries, tenant-isolation`
+
+      ### Objective
+      Conduct comprehensive foundation review ensuring all architectural decisions
+      align with master architecture and maintain system integrity.
+
+      ### Process
+
+      1. **Tenant Model Verification**
+         - Compare foundation tenant model against master definition
+         - Verify isolation strategy consistency
+         - Check tenant hierarchy alignment
+
+         | Aspect | Master Specification | Foundation Implementation | Status |
+         |--------|---------------------|--------------------------|--------|
+         | Isolation strategy | {from master} | {from foundation} | Match/Mismatch |
+         | Tenant hierarchy | org/workspace/user | {from foundation} | Match/Mismatch |
+         | Context structure | TenantContext interface | {from foundation} | Match/Mismatch |
+         | ID format | UUID v7 | {from foundation} | Match/Mismatch |
+
+      2. **Module Boundary Alignment**
+         - Verify module boundaries match master design
+         - Check for unauthorized cross-module dependencies
+         - Validate facade contracts exist
+
+         | Module | Master Boundary | Foundation Boundary | Dependencies |
+         |--------|-----------------|--------------------| -------------|
+         | Core | {from master} | {from foundation} | Valid/Invalid |
+         | Auth | {from master} | {from foundation} | Valid/Invalid |
+         | Billing | {from master} | {from foundation} | Valid/Invalid |
+         | AI Runtime | {from master} | {from foundation} | Valid/Invalid |
+
+      3. **Shared Kernel Minimality Check**
+         - Audit shared kernel contents
+         - Verify only essential types are shared
+         - Check for shared kernel bloat
+
+         | Shared Type | Justification | Alternatives Considered | Verdict |
+         |-------------|---------------|------------------------|---------|
+         | TenantContext | Cross-cutting concern | None viable | Essential |
+         | Result<T> | Error handling pattern | Module-specific | Essential |
+         | {type} | {reason} | {alternatives} | Essential/Remove |
+
+      4. **AI Runtime Decision Consistency**
+         - Verify AI runtime matches master selection
+         - Check orchestration pattern alignment
+         - Validate tool contract compatibility
+
+         | Decision | Master Choice | Foundation Choice | Consistent |
+         |----------|---------------|-------------------|------------|
+         | Runtime | {ai_runtime} | {from foundation} | Yes/No |
+         | Orchestration | {pattern} | {from foundation} | Yes/No |
+         | Tool contracts | {version} | {from foundation} | Yes/No |
+
+      5. **Forbidden Dependencies Audit**
+         - Scan for forbidden dependency patterns
+         - Verify no circular dependencies
+         - Check for layer violations
+
+         | Forbidden Pattern | Detection Method | Found | Location |
+         |-------------------|-----------------|-------|----------|
+         | Module A -> Module B direct | Import scan | Yes/No | {file} |
+         | Domain -> Infrastructure | Layer check | Yes/No | {file} |
+         | Circular A <-> B | Cycle detection | Yes/No | {modules} |
+
+      ### Verification Checklist
+      - [ ] Tenant model matches master exactly
+      - [ ] All module boundaries align with master
+      - [ ] Shared kernel contains only essential types
+      - [ ] AI runtime consistent with master decision
+      - [ ] No forbidden dependencies detected
+      - [ ] All facade contracts exist and versioned
+      - [ ] TenantContext propagation verified
+
+      ### Output
+      Produce foundation review report using template:
+      `{project-root}/_bmad/bam/templates/foundation-review-template.md`
 
   - id: module-compliance-prompt
     content: |
       ## Module Compliance Check
-      For each module verify:
-      - Inherits from master without contradiction
-      - TenantContext propagation correct
-      - Facade contracts properly versioned
-      - No forbidden dependencies
+
+      Prerequisites: Ensure BAM master context loaded via `bam-master-context`
+
+      **Load patterns:** `{project-root}/_bmad/bam/data/bam-patterns.csv` → filter: `module-boundaries, facade-contracts`
+
+      ### Objective
+      Verify individual module compliance with master architecture requirements,
+      ensuring consistent patterns and proper isolation.
+
+      ### Process
+
+      1. **Master Inheritance Verification**
+         - Check module inherits all master constraints
+         - Verify no contradictions to master decisions
+         - Validate extension points used correctly
+
+         | Master Constraint | Module Compliance | Evidence |
+         |-------------------|-------------------|----------|
+         | Tenant isolation required | {compliant/non-compliant} | {file/pattern} |
+         | Facade-only access | {compliant/non-compliant} | {file/pattern} |
+         | Event-driven integration | {compliant/non-compliant} | {file/pattern} |
+         | Shared kernel only | {compliant/non-compliant} | {file/pattern} |
+
+         **Contradiction Detection:**
+         | Master Decision | Module Decision | Contradiction |
+         |-----------------|-----------------|---------------|
+         | RLS isolation | {module approach} | None/Conflict |
+         | {runtime} orchestration | {module approach} | None/Conflict |
+
+      2. **TenantContext Propagation Audit**
+         - Trace TenantContext through module code paths
+         - Verify context set before data access
+         - Check context cleared after operations
+
+         | Code Path | Context Source | Propagation | Validation |
+         |-----------|---------------|-------------|------------|
+         | HTTP handler | Middleware | Request scope | Valid/Invalid |
+         | Background job | Job payload | Job scope | Valid/Invalid |
+         | Event handler | Event header | Handler scope | Valid/Invalid |
+         | Scheduled task | Tenant iteration | Task scope | Valid/Invalid |
+
+         **Context Gaps:**
+         | Gap Location | Missing Context | Risk Level | Remediation |
+         |--------------|-----------------|------------|-------------|
+         | {file:line} | {description} | High/Medium/Low | {action} |
+
+      3. **Facade Contract Versioning**
+         - Verify facade contracts are versioned
+         - Check backward compatibility
+         - Validate contract documentation
+
+         | Facade | Current Version | Breaking Changes | Documentation |
+         |--------|-----------------|------------------|---------------|
+         | {module}Facade | v{X} | None/Listed | Complete/Partial |
+
+         **Version Compatibility Matrix:**
+         | Consumer Version | Provider Version | Compatible |
+         |------------------|------------------|------------|
+         | v1 | v1 | Yes |
+         | v1 | v2 | {yes/no with migration} |
+
+      4. **Forbidden Dependency Analysis**
+         - Scan module imports for forbidden patterns
+         - Check for internal module exposure
+         - Verify only facades are exported
+
+         | Import Pattern | Allowed | Found In | Action |
+         |---------------|---------|----------|--------|
+         | Direct domain import | No | {files} | Remove |
+         | Infrastructure leak | No | {files} | Remove |
+         | Facade import | Yes | {files} | OK |
+         | Shared kernel | Yes | {files} | OK |
+
+      ### Module Compliance Report
+
+      | Compliance Area | Status | Issues | Priority |
+      |-----------------|--------|--------|----------|
+      | Master inheritance | Pass/Fail | {count} | {P1-P3} |
+      | TenantContext | Pass/Fail | {count} | {P1-P3} |
+      | Facade contracts | Pass/Fail | {count} | {P1-P3} |
+      | Dependencies | Pass/Fail | {count} | {P1-P3} |
+
+      ### Verification Checklist
+      - [ ] Module inherits master without contradiction
+      - [ ] TenantContext flows through all code paths
+      - [ ] Facade contracts versioned and documented
+      - [ ] No forbidden dependencies
+      - [ ] Only facades exposed to other modules
+      - [ ] Events follow master event schema
+      - [ ] Errors follow master error pattern
+
+      ### Output
+      Produce module compliance report using template:
+      `{project-root}/_bmad/bam/templates/module-compliance-template.md`
+
+  - id: web-research-master-architect-prompt
+    content: |
+      ## BAM Web Research - Master-Architect
+
+      Conduct targeted web research to verify current best practices.
+
+      **Research Focus:** {{research_topic}}
+
+      Execute 2-3 targeted searches using pattern registry web_queries:
+      Search the web: "{{research_topic}} best practices {date}"
+      Search the web: "{{research_topic}} multi-tenant SaaS {date}"
+
+      Return findings as structured summary with source citations:
+      _Source: [URL]_
+
+  - id: platform-governance-prompt
+    content: |
+      ## Platform Governance Design
+
+      Prerequisites: Ensure BAM master context loaded via `bam-master-context`
+
+      **Load patterns:** `{project-root}/_bmad/bam/data/bam-patterns.csv` → filter: `module-boundaries, compliance, observability`
+
+      ### Objective
+      Define platform governance policies that ensure consistent architectural
+      standards across all modules in the multi-tenant platform.
+
+      ### Process
+
+      1. **Governance Policy Definition**
+         - Define mandatory architectural standards
+         - Establish policy enforcement mechanisms
+         - Document exception procedures
+
+         | Policy Category | Standard | Enforcement | Exception Process |
+         |-----------------|----------|-------------|-------------------|
+         | Tenant isolation | RLS mandatory | CI pipeline check | Architecture review board |
+         | API versioning | Semantic versioning | Schema validation | Deprecation approval |
+         | Module boundaries | Facade-only access | Import analysis | Cross-module contract |
+         | Data retention | Per-tenant retention | Automated enforcement | Compliance override |
+
+      2. **Enforcement Automation**
+         - Identify automated enforcement points
+         - Define CI/CD policy gates
+         - Plan runtime enforcement
+
+         | Enforcement Point | Type | Trigger | Action on Violation |
+         |-------------------|------|---------|---------------------|
+         | PR merge | Pre-merge | Code change | Block merge |
+         | Deployment | Pre-deploy | Config change | Fail deployment |
+         | Runtime | Continuous | Policy violation | Alert + remediation |
+         | Audit | Scheduled | Compliance check | Report + escalation |
+
+      3. **Change Control Board**
+         - Define governance structure
+         - Establish decision-making process
+         - Document escalation paths
+
+         | Decision Type | Decision Authority | Review Required | Approval Time |
+         |---------------|-------------------|-----------------|---------------|
+         | Minor pattern deviation | Module architect | Peer review | 1 day |
+         | New shared kernel type | Platform architect | Full review | 1 week |
+         | Master architecture change | Architecture board | Impact analysis | 2 weeks |
+         | Security policy change | Security + Platform | Security review | 1 week |
+
+      ### Verification Checklist
+      - [ ] All policy categories documented
+      - [ ] Enforcement mechanisms defined for each policy
+      - [ ] Exception procedures clear and auditable
+      - [ ] Change control board structure established
+      - [ ] Multi-tenant isolation policies prioritized
+
+      ### Output
+      Produce governance document using template:
+      `{project-root}/_bmad/bam/templates/platform-governance-template.md`
+
+  - id: cross-module-coordination-prompt
+    content: |
+      ## Cross-Module Coordination
+
+      Prerequisites: Ensure BAM master context loaded via `bam-master-context`
+
+      **Load patterns:** `{project-root}/_bmad/bam/data/bam-patterns.csv` → filter: `facade-contracts, module-boundaries, event-contracts`
+
+      ### Objective
+      Coordinate dependencies and contracts between modules to maintain clean
+      boundaries while enabling required cross-module functionality.
+
+      ### Process
+
+      1. **Dependency Mapping**
+         - Map all cross-module dependencies
+         - Classify dependency types
+         - Identify coupling risks
+
+         | Consumer Module | Provider Module | Dependency Type | Contract | Risk Level |
+         |-----------------|-----------------|-----------------|----------|------------|
+         | Billing | Auth | Facade | UserFacade v2 | Low |
+         | AI Runtime | Core | Event | TenantCreated | Low |
+         | Reporting | All | Read model | Cross-module query | Medium |
+         | {consumer} | {provider} | {type} | {contract} | {risk} |
+
+      2. **Contract Registry**
+         - Maintain central contract registry
+         - Track contract versions
+         - Document breaking change policy
+
+         | Contract | Current Version | Consumers | Last Breaking Change | Deprecation |
+         |----------|-----------------|-----------|---------------------|-------------|
+         | UserFacade | v2.3.0 | Billing, AI | v2.0.0 (6 months) | v1 deprecated |
+         | TenantContext | v1.0.0 | All | None (frozen) | N/A |
+         | AgentRunEvent | v1.2.0 | Analytics | v1.0.0 (1 year) | None |
+
+      3. **Coordination Protocols**
+         - Define cross-module change protocol
+         - Establish version compatibility rules
+         - Plan coordinated releases
+
+         | Scenario | Protocol | Coordination Required | Timeline |
+         |----------|----------|----------------------|----------|
+         | Non-breaking facade change | Notify consumers | None | Immediate |
+         | Breaking facade change | Deprecation period | Consumer updates | 3 months |
+         | New event schema | Schema registry update | Subscriber review | 1 week |
+         | Shared kernel change | Full impact analysis | All modules | 1 month |
+
+      4. **Tenant Context Coordination**
+         - Verify TenantContext flows across module boundaries
+         - Ensure context propagation in async flows
+         - Validate context in event handlers
+
+         | Cross-Module Flow | Context Source | Propagation Method | Validation |
+         |-------------------|----------------|-------------------|------------|
+         | Sync facade call | Request context | Method parameter | Facade layer |
+         | Async event | Event header | Event envelope | Event handler |
+         | Scheduled job | Job configuration | Job context | Job runner |
+         | Background task | Task queue | Task metadata | Task processor |
+
+      ### Verification Checklist
+      - [ ] All cross-module dependencies mapped
+      - [ ] Contract registry maintained and current
+      - [ ] Coordination protocols documented
+      - [ ] TenantContext propagation verified across all flows
+      - [ ] No unauthorized direct module access
+
+      ### Output
+      Produce coordination document using template:
+      `{project-root}/_bmad/bam/templates/cross-module-coordination-template.md`
+
+  - id: architecture-evolution-prompt
+    content: |
+      ## Architecture Evolution Planning
+
+      Prerequisites: Ensure BAM master context loaded via `bam-master-context`
+
+      **Load patterns:** `{project-root}/_bmad/bam/data/bam-patterns.csv` → filter: `module-boundaries, facade-contracts, tenant-isolation`
+
+      ### Objective
+      Plan controlled architecture evolution that maintains multi-tenant integrity
+      while enabling platform growth and modernization.
+
+      ### Process
+
+      1. **Evolution Assessment**
+         - Evaluate current architecture fitness
+         - Identify evolution drivers
+         - Assess tenant impact
+
+         | Evolution Driver | Current State | Target State | Tenant Impact |
+         |------------------|---------------|--------------|---------------|
+         | Scale requirements | Single region | Multi-region | Data residency |
+         | Performance | Shared compute | Tier-based compute | Noisy neighbor |
+         | Compliance | Basic isolation | Certified isolation | Audit requirements |
+         | Feature velocity | Monolithic deploy | Module-level deploy | Feature flags |
+
+      2. **Migration Strategy**
+         - Define migration approaches
+         - Plan rollback procedures
+         - Ensure zero tenant disruption
+
+         | Migration Type | Strategy | Tenant Impact | Rollback Time |
+         |----------------|----------|---------------|---------------|
+         | Schema migration | Blue-green | Zero downtime | < 5 minutes |
+         | Module extraction | Strangler fig | Gradual cutover | Immediate |
+         | Tenant model change | Dual-write | Transparent | < 1 hour |
+         | AI runtime upgrade | Canary deployment | Opt-in beta | Immediate |
+
+      3. **Compatibility Gates**
+         - Define backward compatibility requirements
+         - Establish breaking change thresholds
+         - Plan deprecation cycles
+
+         | Component | Compatibility Window | Breaking Change Approval | Deprecation Notice |
+         |-----------|---------------------|-------------------------|-------------------|
+         | Public API | 18 months | Platform + Product | 6 months |
+         | Internal facade | 6 months | Module owners | 3 months |
+         | Event schema | 12 months | Event consumers | 6 months |
+         | TenantContext | Indefinite | Architecture board | N/A (frozen) |
+
+      4. **Multi-Tenant Evolution Safeguards**
+         - Ensure isolation preserved during evolution
+         - Plan tenant-specific migration timing
+         - Define enterprise tenant coordination
+
+         | Safeguard | Implementation | Verification | Frequency |
+         |-----------|----------------|--------------|-----------|
+         | Isolation regression test | Automated test suite | CI pipeline | Every change |
+         | Tenant data audit | Migration validator | Pre/post migration | Each migration |
+         | Performance baseline | SLA monitoring | Continuous | Real-time |
+         | Compliance check | Security scan | Pre-release | Each release |
+
+      ### Verification Checklist
+      - [ ] Evolution drivers documented with business justification
+      - [ ] Migration strategies defined with rollback plans
+      - [ ] Compatibility windows established for all components
+      - [ ] Multi-tenant safeguards in place
+      - [ ] Enterprise tenant coordination planned
+
+      ### Output
+      Produce evolution plan using template:
+      `{project-root}/_bmad/bam/templates/architecture-evolution-template.md`
+
+  - id: tenant-boundary-audit-prompt
+    content: |
+      ## Tenant Boundary Audit
+
+      Prerequisites: Ensure BAM master context loaded via `bam-master-context`
+
+      **Load patterns:** `{project-root}/_bmad/bam/data/bam-patterns.csv` → filter: `tenant-isolation, module-boundaries, compliance`
+
+      ### Objective
+      Conduct comprehensive audit of tenant boundaries across all platform modules
+      to verify isolation guarantees and identify potential leakage points.
+
+      ### Process
+
+      1. **Data Layer Audit**
+         - Verify RLS policies on all tenant tables
+         - Check for bypass paths
+         - Audit cross-tenant queries
+
+         | Table | RLS Enabled | Policy Type | Bypass Paths | Audit Status |
+         |-------|-------------|-------------|--------------|--------------|
+         | users | Yes | tenant_id match | Admin role | Compliant |
+         | workspaces | Yes | org_id match | None | Compliant |
+         | agent_runs | Yes | tenant_id match | System job | Review needed |
+         | audit_logs | Yes | tenant_read | Support access | Compliant |
+
+      2. **API Layer Audit**
+         - Verify tenant validation in all endpoints
+         - Check authorization boundaries
+         - Audit cross-tenant request handling
+
+         | Endpoint | Auth Method | Tenant Validation | Cross-Tenant Block | Status |
+         |----------|-------------|-------------------|-------------------|--------|
+         | /api/v1/users | Bearer token | Middleware | 403 Forbidden | Pass |
+         | /api/v1/agents | API key | Header validation | 403 Forbidden | Pass |
+         | /api/admin/* | Admin token | Role + tenant | Logged access | Review |
+         | /webhooks | Signature | Tenant ID in path | Reject | Pass |
+
+      3. **Cache Layer Audit**
+         - Verify cache key isolation
+         - Check for shared cache leakage
+         - Audit cache invalidation scope
+
+         | Cache Type | Key Pattern | Isolation Method | Leakage Risk | Status |
+         |------------|-------------|------------------|--------------|--------|
+         | Session | session:{tenant}:{id} | Key prefix | None | Pass |
+         | Query cache | query:{tenant}:{hash} | Key prefix | None | Pass |
+         | Rate limit | rate:{tenant}:{ip} | Key prefix | None | Pass |
+         | Feature flags | flags:{plan_tier} | Tier-based | Low (intended) | Pass |
+
+      4. **AI/Agent Layer Audit**
+         - Verify memory isolation per tenant
+         - Check tool execution boundaries
+         - Audit context leakage in prompts
+
+         | Component | Isolation Method | Cross-Tenant Risk | Verification |
+         |-----------|------------------|-------------------|--------------|
+         | Agent memory | Tenant-scoped store | None | Automated test |
+         | Tool execution | Sandboxed per tenant | None | Security review |
+         | Prompt context | Tenant context only | Prompt injection | Red team test |
+         | Model fine-tuning | Tenant-specific models | Data leakage | Audit required |
+
+      5. **Event/Message Layer Audit**
+         - Verify event routing isolation
+         - Check message queue boundaries
+         - Audit event handler context
+
+         | Event Type | Routing | Tenant Header | Handler Validation | Status |
+         |------------|---------|---------------|-------------------|--------|
+         | TenantCreated | Topic per event | tenant_id | Context check | Pass |
+         | AgentRunComplete | Tenant topic | tenant_id | Context check | Pass |
+         | SystemAlert | Platform topic | None (system) | Role check | Pass |
+         | CrossTenantReport | Admin topic | List of tenants | Admin only | Review |
+
+      ### Audit Report Summary
+
+      | Layer | Total Items | Compliant | Review Needed | Non-Compliant |
+      |-------|-------------|-----------|---------------|---------------|
+      | Data | {count} | {count} | {count} | {count} |
+      | API | {count} | {count} | {count} | {count} |
+      | Cache | {count} | {count} | {count} | {count} |
+      | AI/Agent | {count} | {count} | {count} | {count} |
+      | Event | {count} | {count} | {count} | {count} |
+
+      ### Verification Checklist
+      - [ ] All data tables with tenant data have RLS policies
+      - [ ] All API endpoints validate tenant context
+      - [ ] All cache keys include tenant isolation
+      - [ ] AI agent memory properly scoped to tenant
+      - [ ] Event routing respects tenant boundaries
+      - [ ] Cross-tenant access logged and auditable
+
+      ### Output
+      Produce audit report using template:
+      `{project-root}/_bmad/bam/templates/tenant-boundary-audit-template.md`

@@ -1,0 +1,9 @@
+type: workflow
+name: validate-patterns
+displayName: Validate Pattern Registry
+description: "Validate BAM pattern registry completeness and consistency. Use to verify pattern configuration."
+module: bam
+config_variables:
+  - tenant_model
+  - ai_runtime
+step_naming_convention: 'step-NN-mode-description'

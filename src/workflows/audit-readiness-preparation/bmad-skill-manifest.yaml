@@ -1,0 +1,9 @@
+type: workflow
+name: audit-readiness-preparation
+displayName: Audit Readiness Preparation
+description: "Design audit preparation procedures for compliance assessments. Use when the user requests to 'prepare for audit', 'document evidence collection', or 'create audit readiness checklist'."
+module: bam
+config_variables:
+  - tenant_model
+  - ai_runtime
+step_naming_convention: 'step-NN-mode-description'

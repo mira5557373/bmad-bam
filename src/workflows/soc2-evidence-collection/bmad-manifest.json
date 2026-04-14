@@ -1,0 +1,14 @@
+{
+  "module-code": "bam",
+  "capabilities": [{
+    "name": "bmad-bam-soc2-evidence-collection",
+    "menu-code": "SOC2",
+    "description": "Design SOC2 audit evidence automation for multi-tenant AI platforms.",
+    "supports-headless": true,
+    "phase-name": "3-solutioning",
+    "after": ["bmad-bam-tenant-audit-log-design"],
+    "before": [],
+    "is-required": false,
+    "output-location": "{output_folder}/planning-artifacts/compliance"
+  }]
+}

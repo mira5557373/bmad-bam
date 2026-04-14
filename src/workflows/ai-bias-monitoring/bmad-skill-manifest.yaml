@@ -1,0 +1,9 @@
+type: workflow
+name: ai-bias-monitoring
+displayName: AI Bias Monitoring
+description: "Design bias detection and fairness monitoring for AI systems. Use when the user requests 'design bias monitoring' or 'AI fairness'."
+module: bam
+config_variables:
+  - tenant_model
+  - ai_runtime
+step_naming_convention: "step-NN-mode-description"

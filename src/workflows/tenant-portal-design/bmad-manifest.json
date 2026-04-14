@@ -1,0 +1,14 @@
+{
+  "module-code": "bam",
+  "capabilities": [{
+    "name": "bmad-bam-tenant-portal-design",
+    "menu-code": "TPD",
+    "description": "Design tenant self-service portal with admin features and billing integration. Use when the user requests to 'design tenant portal' or 'plan self-service capabilities'.",
+    "supports-headless": true,
+    "phase-name": "3-solutioning",
+    "after": ["bmad-bam-tenant-model-isolation"],
+    "before": [],
+    "is-required": false,
+    "output-location": "{output_folder}/planning-artifacts"
+  }]
+}

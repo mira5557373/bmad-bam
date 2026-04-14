@@ -1,0 +1,14 @@
+type: workflow
+name: quality-gate-automation
+displayName: Quality Gate Automation
+description: "Automate quality gate validation in CI/CD pipelines. Use when the user requests 'automate gates' or 'CI quality gates'."
+module: bam
+config_variables:
+  - tenant_model
+  - test_architecture
+step_naming_convention: "step-NN-mode-description"
+tags:
+  - quality
+  - phase-5
+  - automation
+  - cicd

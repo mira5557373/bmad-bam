@@ -1,0 +1,7 @@
+type: workflow
+name: compliance-continuous-verification
+displayName: Compliance Continuous Verification
+description: "Design automated compliance scanning with compliance rules, scanning, evidence collection, and reporting. Use when the user requests to 'design compliance verification' or 'plan automated compliance scanning'."
+module: bam
+config_variables:
+  - tenant_model

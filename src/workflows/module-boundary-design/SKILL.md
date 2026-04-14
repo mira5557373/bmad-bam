@@ -1,9 +1,8 @@
 ---
-name: bmad-bam-module-boundary-design
+name: module-boundary-design
 displayName: Module Boundary Design
 description: Design module boundaries and data ownership. Use when the user requests to 'design module boundaries' or 'identify bounded contexts'.
 module: bam
-web_bundle: true
 tags: [module]
 ---
 
@@ -28,6 +27,12 @@ Search for and load `{project-root}/**/project-context.md` as foundational refer
 **If running in headless mode (`-H`):** Use defaults for all optional inputs, skip confirmation prompts, and auto-proceed through all steps.
 
 **Note:** If the user provides additional information during guided steps, capture it for later use without breaking the current flow.
+
+## When to Use
+
+- Designing module boundaries in modular monolith
+- Defining module responsibilities and ownership
+- Establishing inter-module communication patterns
 
 ## Mode
 
@@ -74,12 +79,27 @@ Default: **Create** mode. In headless mode, always use Create.
 - Create catalog: module name, owner, purpose, dependencies, extraction readiness score
 - Produce dependency graph visualization (mermaid diagram)
 
-### Quality Gates
+## Quality Gates
 
-- [ ] All data has clear module ownership
-- [ ] No circular dependencies
-- [ ] Each module has defined public facade
-- [ ] Extraction seams documented
+This workflow contributes to:
+- **QG-M1** (Module Architecture) - Validates module boundary definitions and dependencies
+- **QG-F1** (Foundation) - Module boundaries inform master architecture
+
+### Entry Gate
+- QG-F1 (Foundation) should pass or be in progress (master architecture defined)
+
+### Exit Gate
+- QG-M1 checklist items from `module-architecture.md` verified:
+  - [ ] All data has clear module ownership
+  - [ ] No circular dependencies
+  - [ ] Each module has defined public facade
+  - [ ] Extraction seams documented
+
+## Related Workflows
+
+- `bmad-bam-create-master-architecture` - Precedes boundary design
+- `bmad-bam-create-module-architecture` - Uses boundary definitions
+- `bmad-bam-define-facade-contract` - Defines module public interfaces
 
 ## Output
 

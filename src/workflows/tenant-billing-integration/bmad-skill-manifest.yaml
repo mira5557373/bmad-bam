@@ -1,0 +1,5 @@
+type: workflow
+name: tenant-billing-integration
+displayName: Tenant Billing Integration
+description: "Design billing system integration for multi-tenant SaaS platforms. Use when the user requests to 'design billing integration' or 'configure tenant billing'."
+module: bam

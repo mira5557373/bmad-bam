@@ -1,0 +1,5 @@
+type: workflow
+name: ai-batch-inference
+displayName: AI Batch Inference
+description: "Design batch inference pipeline for high-volume processing. Use when the user requests to 'design batch inference' or 'create bulk AI processing'."
+module: bam

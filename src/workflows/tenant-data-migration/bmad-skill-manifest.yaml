@@ -1,0 +1,9 @@
+type: workflow
+name: tenant-data-migration
+displayName: Tenant Data Migration
+description: 'Design and execute tenant data migration between environments or tiers'
+module: bam
+config_variables:
+  - tenant_model
+  - ai_runtime
+step_naming_convention: 'step-NN-mode-description'

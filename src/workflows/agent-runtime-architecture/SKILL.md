@@ -1,9 +1,8 @@
 ---
-name: bmad-bam-agent-runtime-architecture
+name: agent-runtime-architecture
 displayName: Agent Runtime Architecture
 description: Design AI agent runtime patterns and safety. Use when the user requests to 'design agent runtime' or 'create AI runtime architecture'.
 module: bam
-web_bundle: true
 tags: [ai-runtime]
 ---
 
@@ -28,6 +27,21 @@ Search for and load `{project-root}/**/project-context.md` as foundational refer
 **If running in headless mode (`-H`):** Use defaults for all optional inputs, skip confirmation prompts, and auto-proceed through all steps.
 
 **Note:** If the user provides additional information during guided steps, capture it for later use without breaking the current flow.
+
+## When to Use
+
+- Designing AI agent capabilities for the platform
+- Defining orchestration patterns and tool registry
+- Establishing memory tier isolation rules
+- Creating agent safety controls and kill switches
+
+## Modes
+
+| Mode | Purpose | Step Range |
+|------|---------|------------|
+| Create | Generate new agent runtime architecture | `step-01-c-*` to `step-06-c-*` |
+| Edit | Modify existing architecture | `step-10-e-*` to `step-11-e-*` |
+| Validate | Check against QG-M3 criteria | `step-20-v-*` to `step-22-v-*` |
 
 ## Workflow
 
@@ -94,6 +108,21 @@ Define isolation rules: tenant memory NEVER leaks to other tenants.
 - [ ] Approval triggers documented
 - [ ] Kill switch mechanism defined and tested
 
+## Quality Gates
+
+This workflow contributes to:
+- **QG-M3** (Agent Runtime) - Validates agent orchestration, tool registry, and memory tier design
+- **QG-I3** (Agent Safety) - Provides foundation for agent safety verification
+
+### Entry Gate
+- QG-F1 (Foundation) must pass before starting
+- Master PRD and architecture decisions must be complete
+
+### Exit Gate
+- QG-M3 checklist items from `qg-m3-agent-runtime.md` verified
+- Agent runtime architecture documented with ADRs
+- Kill switch and fallback mechanisms defined
+
 ## Output
 
 - `{output_folder}/planning-artifacts/architecture/agent-runtime-architecture.md`
@@ -102,12 +131,12 @@ Define isolation rules: tenant memory NEVER leaks to other tenants.
 
 ## References
 
-- Template: `bam/templates/agent-runtime-architecture.md`, `bam/templates/tool-contract-template.md`
-- AI Model Versioning: `bam/knowledge/ai-model-versioning.md`
+- Template: `bam/templates/agent-runtime-architecture-template.md`, `bam/templates/tool-contract-template.md`
+- AI Model Versioning: `bam/knowledge/llm-versioning.md`
 - Agent Runtime Patterns: `bam/knowledge/agent-runtime-patterns.md`
-- Memory Tier Patterns: `bam/knowledge/memory-tier-patterns.md`
+- Memory Tier Patterns: `bam/knowledge/memory-tiers.md`
 - Tool Execution Middleware: `bam/knowledge/tool-execution-middleware.md`
-- Run Contract Patterns: `bam/knowledge/run-contract-patterns.md`
+- Run Contract Patterns: `bam/knowledge/run-contracts.md`
 - Context Compiler Patterns: `bam/knowledge/context-compiler-patterns.md`
 - Action Gateway Patterns: `bam/knowledge/action-gateway-patterns.md`
 - Agent Resilience Patterns: `bam/knowledge/agent-resilience-patterns.md`
@@ -115,16 +144,23 @@ Define isolation rules: tenant memory NEVER leaks to other tenants.
 - Agent Identity TBAC: `bam/knowledge/agent-identity-tbac-patterns.md`
 - WDS Integration Patterns: `bam/knowledge/wds-integration-patterns.md`
 
-- Knowledge: `bam/knowledge/agent-runtime-patterns.md`, `bam/knowledge/memory-tier-patterns.md`, `bam/knowledge/tool-execution-middleware.md`, `bam/knowledge/run-contract-patterns.md`, `bam/knowledge/action-gateway-patterns.md`, `bam/knowledge/context-compiler-patterns.md`, `bam/knowledge/ai-model-versioning.md`, `bam/knowledge/agent-lifecycle-versioning-patterns.md`, `bam/knowledge/agent-identity-tbac-patterns.md`, `bam/knowledge/agent-resilience-patterns.md`
+- Knowledge: `bam/knowledge/agent-runtime-patterns.md`, `bam/knowledge/memory-tiers.md`, `bam/knowledge/tool-execution-middleware.md`, `bam/knowledge/run-contracts.md`, `bam/knowledge/action-gateway-patterns.md`, `bam/knowledge/context-compiler-patterns.md`, `bam/knowledge/llm-versioning.md`, `bam/knowledge/agent-lifecycle-versioning-patterns.md`, `bam/knowledge/agent-identity-tbac-patterns.md`, `bam/knowledge/agent-resilience-patterns.md`
 - Checklist: `bam/checklists/qg-m3-agent-runtime.md`
-- AI Model Versioning: `bam/knowledge/ai-model-versioning.md`
+- AI Model Versioning: `bam/knowledge/llm-versioning.md`
 - Agent Runtime Patterns: `bam/knowledge/agent-runtime-patterns.md`
-- Memory Tier Patterns: `bam/knowledge/memory-tier-patterns.md`
+- Memory Tier Patterns: `bam/knowledge/memory-tiers.md`
 - Tool Execution Middleware: `bam/knowledge/tool-execution-middleware.md`
-- Run Contract Patterns: `bam/knowledge/run-contract-patterns.md`
+- Run Contract Patterns: `bam/knowledge/run-contracts.md`
 - Context Compiler Patterns: `bam/knowledge/context-compiler-patterns.md`
 - Action Gateway Patterns: `bam/knowledge/action-gateway-patterns.md`
 - Agent Resilience Patterns: `bam/knowledge/agent-resilience-patterns.md`
 - Agent Lifecycle Versioning: `bam/knowledge/agent-lifecycle-versioning-patterns.md`
 - Agent Identity TBAC: `bam/knowledge/agent-identity-tbac-patterns.md`
 - WDS Integration Patterns: `bam/knowledge/wds-integration-patterns.md`
+
+## Web Research
+
+This workflow uses web search to verify current best practices. Steps involving technology decisions will include:
+- `Search the web:` directives for pattern verification
+- Pattern registry `web_queries` for search topics
+- Source citations: `_Source: [URL]_`

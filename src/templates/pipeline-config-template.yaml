@@ -1,0 +1,208 @@
+---
+name: pipeline-config-template
+type: ci-cd-config
+description: Quality gate automation pipeline configuration template
+module: bam
+category: quality
+version: 1.0.0
+web_research_enabled: true
+---
+# Quality Gate Pipeline Configuration Template
+
+## Metadata
+project: '{{project_name}}'
+date: '{{date}}'
+author: '{{author}}'
+version: '{{version}}'
+
+## Pipeline Stages
+stages:
+  - name: build
+    purpose: Compile and unit tests
+    trigger: push
+    gates: []
+
+  - name: test
+    purpose: Integration tests
+    trigger: pull_request
+    gates:
+      - QG-M2
+
+  - name: security
+    purpose: Security scanning
+    trigger: pull_request
+    gates:
+      - QG-I2
+      - QG-I3
+
+  - name: deploy-staging
+    purpose: Staging deployment
+    trigger: merge_to_main
+    gates: []
+
+  - name: gate-check
+    purpose: Quality gate validation
+    trigger: pre_deploy_production
+    gates:
+      - QG-I1
+      - QG-P1
+
+  - name: deploy-production
+    purpose: Production deployment
+    trigger: gate_pass
+    gates: []
+
+## Gate Definitions
+gates:
+  QG-M2:
+    name: Tenant Isolation Gate
+    stage: test
+    blocking: true
+    checks:
+      - name: rls_policy_test
+        tool: '{{rls_test_tool}}'
+        threshold: 100
+      - name: cache_isolation
+        tool: '{{cache_test_tool}}'
+        threshold: 100
+      - name: memory_isolation
+        tool: '{{memory_test_tool}}'
+        threshold: 100
+      - name: api_isolation
+        tool: '{{api_test_tool}}'
+        threshold: 100
+
+  QG-I1:
+    name: Convergence Gate
+    stage: gate-check
+    blocking: true
+    checks:
+      - name: contract_tests
+        tool: pact
+        threshold: 100
+      - name: integration_tests
+        tool: jest
+        threshold: 95
+      - name: e2e_workflow
+        tool: playwright
+        threshold: 90
+
+  QG-I2:
+    name: Tenant Safety Gate
+    stage: security
+    blocking: true
+    checks:
+      - name: security_scan
+        tool: '{{security_tool}}'
+        threshold: 0_critical_high
+      - name: cross_tenant_tests
+        tool: '{{cross_tenant_tool}}'
+        threshold: 100
+
+  QG-I3:
+    name: Agent Safety Gate
+    stage: security
+    blocking: true
+    checks:
+      - name: prompt_injection_test
+        tool: '{{ai_security_tool}}'
+        threshold: 100
+      - name: input_validation
+        tool: '{{fuzzing_tool}}'
+        threshold: 95
+
+  QG-P1:
+    name: Production Readiness Gate
+    stage: gate-check
+    blocking: true
+    checks:
+      - name: performance_test
+        tool: k6
+        threshold:
+          p95_latency_ms: 500
+          error_rate_pct: 0.1
+      - name: chaos_test
+        tool: litmus
+        threshold: pass
+      - name: smoke_test
+        tool: '{{smoke_tool}}'
+        threshold: 100
+
+## Threshold Configuration
+thresholds:
+  coverage:
+    unit_test: 80
+    integration_test: 70
+    isolation_test: 100
+    e2e_test: 95
+
+  security:
+    critical: 0
+    high: 0
+    medium: 5
+    low: 20
+
+  performance:
+    p95_latency_ms: 500
+    error_rate_pct: 0.1
+    throughput_rps: 1000
+
+## Bypass Policy
+bypass:
+  QG-M2:
+    bypassable: false
+    reason: Tenant isolation is never bypassable
+
+  QG-I1:
+    bypassable: true
+    conditions:
+      - hotfix_only
+    approvers:
+      - tech_lead
+      - pm
+    max_per_month: 2
+    token_expiry_hours: 4
+    remediation_sla_hours: 48
+
+  QG-I2:
+    bypassable: false
+    reason: Tenant safety is never bypassable
+
+  QG-I3:
+    bypassable: false
+    reason: Agent safety is never bypassable
+
+  QG-P1:
+    bypassable: true
+    conditions:
+      - emergency_only
+    approvers:
+      - vp_engineering
+      - security_lead
+    max_per_month: 1
+    token_expiry_hours: 2
+    remediation_sla_hours: 24
+
+## Alert Configuration
+alerts:
+  gate_failure:
+    severity: critical
+    channel: '{{pagerduty_service}}'
+    escalation_minutes: 15
+
+  threshold_warning:
+    severity: high
+    channel: '{{slack_channel}}'
+    escalation_minutes: 60
+
+## Web Research Queries
+# Before finalizing configuration, verify current best practices:
+# Search the web: "CI/CD quality gate configuration {date}"
+# Search the web: "GitHub Actions quality gates {date}"
+
+## Change Log
+change_log:
+  - version: '1.0.0'
+    date: '{{date}}'
+    author: '{{author}}'
+    changes: Initial configuration template

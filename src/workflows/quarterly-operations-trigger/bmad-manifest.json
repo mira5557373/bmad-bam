@@ -1,0 +1,14 @@
+{
+  "module-code": "bam",
+  "capabilities": [{
+    "name": "bmad-bam-quarterly-operations-trigger",
+    "menu-code": "QOT",
+    "description": "Scheduled trigger for quarterly operational reviews and audits",
+    "supports-headless": true,
+    "phase-name": "6-operations",
+    "after": [],
+    "before": [],
+    "is-required": false,
+    "output-location": "{output_folder}/planning-artifacts"
+  }]
+}

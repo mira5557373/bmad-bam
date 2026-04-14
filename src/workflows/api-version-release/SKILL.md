@@ -1,9 +1,8 @@
 ---
-name: bmad-bam-api-version-release
+name: api-version-release
 displayName: API Version Release
 description: Release new REST API version with docs and migration guide. Use when the user requests to 'release API version' or 'create new API version'.
 module: bam
-web_bundle: true
 tags: [platform]
 ---
 
@@ -28,6 +27,12 @@ Search for and load `{project-root}/**/project-context.md` as foundational refer
 **If running in headless mode (`-H`):** Use defaults for all optional inputs, skip confirmation prompts, and auto-proceed through all steps.
 
 **Note:** If the user provides additional information during guided steps, capture it for later use without breaking the current flow.
+
+## When to Use
+
+- Releasing new API versions with backward compatibility
+- Managing API deprecation schedules
+- Coordinating version rollout across tenants
 
 ## Mode
 
@@ -79,6 +84,21 @@ Default: **Create** mode. In headless mode, always use Create.
 - Test backward compatibility (old version still works)
 - Test new version endpoints
 - Verify tenant context propagation
+
+## Quality Gates
+
+This workflow contributes to:
+- **QG-I1** (Convergence) - API version compatibility across modules
+- **QG-P1** (Production) - API versioning required for production release
+
+### Entry Gate
+- QG-M1 (Module Arch) must pass for modules exposing APIs
+- Module facades and contracts must be defined
+
+### Exit Gate
+- OpenAPI spec generated and validated
+- Migration guide documented with deprecation timeline
+- Version-specific integration tests passing
 
 ## Output
 

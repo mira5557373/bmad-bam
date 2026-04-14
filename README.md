@@ -28,12 +28,13 @@ npx bmad-method install
 
 | Component | Count | Description |
 |-----------|-------|-------------|
-| Agents | 3 | Atlas (Platform), Nova (AI Runtime), Kai (Integration) |
-| Workflows | 27 | Foundation -> Module -> Integration -> Production |
-| Knowledge | 30 | Reusable architectural patterns |
-| Extensions | 18 | Extend BMM, TEA, WDS, CIS agents |
-| Checklists | 9 | Quality gates at every milestone |
-| Templates | 14 | Architecture docs, contracts, matrices |
+| Agents | 0 | Pure extension module (Atlas/Nova/Kai consolidated in architect-bam) |
+| Workflows | 190 | Foundation → Module → Integration → Production |
+| Patterns | 50 | Pattern registry in 6 CSV files |
+| Agent Guides | 188 | Context injection via WDS pattern |
+| Extensions | 31 | Extend BMM, TEA, WDS, CIS agents |
+| Checklists | 32 | Quality gates at every milestone |
+| Templates | 453 | Architecture docs, contracts, matrices |
 
 ## Ecosystem Integration
 
@@ -46,10 +47,17 @@ BAM integrates seamlessly with all official BMAD modules:
 
 ## Quality Gates
 
-BAM enforces 8 quality gates in sequence:
+BAM enforces 40 quality gates across 6 categories:
+
+- **Phase gates:** QG-D1, QG-PL1
+- **Core gates:** QG-F1, QG-M1-M3, QG-I1-I3, QG-P1 (8)
+- **Security gates:** QG-S1-S10 (10)
+- **AI gates:** QG-AI1-AI2 (2)
+- **Operations gates:** QG-IR1, QG-SA1, QG-PR1, QG-DR1, QG-CP1, QG-CS1, QG-MG1, QG-OC, QG-CC (9)
+- **Testing gates (TEA):** QG-TC1-TC3 (3)
 
 ```
-QG-F1 (Foundation) -> QG-M1/M2/M3 (Module) -> QG-I1/I2/I3 (Integration) -> QG-P1 (Production) -> DEPLOY
+QG-D1 → QG-PL1 → QG-F1 (Foundation) → QG-M1/M2/M3 (Module) → QG-I1/I2/I3 (Integration) → QG-P1 (Production) → DEPLOY
 ```
 
 ## Documentation

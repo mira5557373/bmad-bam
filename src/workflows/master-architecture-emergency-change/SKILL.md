@@ -1,9 +1,8 @@
 ---
-name: bmad-bam-master-architecture-emergency-change
+name: master-architecture-emergency-change
 displayName: Master Architecture Emergency Change
 description: Emergency protocol for changing frozen master architecture. Use when the user requests to 'change master architecture' or 'emergency architecture update'.
 module: bam
-web_bundle: true
 tags: [foundation]
 ---
 
@@ -28,6 +27,12 @@ Search for and load `{project-root}/**/project-context.md` as foundational refer
 **If running in headless mode (`-H`):** Use defaults for all optional inputs, skip confirmation prompts, and auto-proceed through all steps.
 
 **Note:** If the user provides additional information during guided steps, capture it for later use without breaking the current flow.
+
+## When to Use
+
+- Making emergency changes to frozen master architecture
+- Creating ADRs for architecture exceptions
+- Managing critical architecture updates
 
 ## Mode
 
@@ -92,6 +97,25 @@ Write an Architecture Decision Record:
 - Updated `{output_folder}/planning-artifacts/master-architecture.md`
 - `{output_folder}/planning-artifacts/architecture/adrs/{change-name}-impact-report.md` — impact report with per-module assessment
 - Revalidation tracking entries in sprint-status
+
+## Quality Gates
+
+This workflow contributes to:
+- **QG-F1** (Foundation) - Changes to master architecture require re-validation of foundation gate
+- **QG-I1** (Convergence) - Emergency changes may affect module convergence
+
+### Entry Gate
+- QG-F1 (Foundation) must have previously passed before changes can be considered
+
+### Exit Gate
+- ADR approved with full impact analysis
+- Affected modules identified for revalidation
+- QG-F1 checklist items from `foundation-gate.md` scheduled for re-verification
+
+## Related Workflows
+
+- `bmad-bam-create-master-architecture` - Original architecture creation
+- `bmad-bam-validate-foundation` - Foundation revalidation after changes
 
 ## References
 

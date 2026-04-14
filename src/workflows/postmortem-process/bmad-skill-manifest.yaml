@@ -1,0 +1,5 @@
+type: workflow
+name: postmortem-process
+displayName: Postmortem Process
+description: "Design incident post-mortem process. Use when the user requests to 'design postmortem process' or 'create incident review workflow'."
+module: bam

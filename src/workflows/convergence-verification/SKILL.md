@@ -1,9 +1,8 @@
 ---
-name: bmad-bam-convergence-verification
+name: convergence-verification
 displayName: Convergence Verification
 description: Verify cross-module integration before release. Use when the user requests to 'run convergence verification' or 'validate release readiness'.
 module: bam
-web_bundle: true
 tags: [integration]
 ---
 
@@ -28,6 +27,21 @@ Search for and load `{project-root}/**/project-context.md` as foundational refer
 **If running in headless mode (`-H`):** Use defaults for all optional inputs, skip confirmation prompts, and auto-proceed through all steps.
 
 **Note:** If the user provides additional information during guided steps, capture it for later use without breaking the current flow.
+
+## When to Use
+
+- Before any release milestone
+- When verifying cross-module integration
+- When validating tenant safety under load
+- When confirming agent eval thresholds
+
+## Modes
+
+| Mode | Purpose | Step Range |
+|------|---------|------------|
+| Create | Generate new convergence verification report | `step-01-c-*` to `step-04-c-*` |
+| Edit | Modify existing verification | `step-10-e-*` to `step-11-e-*` |
+| Validate | Re-run verification checks | `step-20-v-*` to `step-22-v-*` |
 
 ## Workflow
 
@@ -77,6 +91,22 @@ Search for and load `{project-root}/**/project-context.md` as foundational refer
 - [ ] Tenant isolation verified under load
 - [ ] Agent evals pass thresholds
 - [ ] Performance within SLOs
+
+## Quality Gates
+
+This workflow contributes to:
+- **QG-I1** (Convergence) - Primary gate for cross-module integration
+- **QG-I2** (Tenant Safety) - Verifies tenant isolation under load
+- **QG-I3** (Agent Safety) - Validates agent eval thresholds and kill switches
+
+### Entry Gate
+- QG-M1 (Module Arch), QG-M2 (Tenant Isolation), QG-M3 (Agent Runtime) must all pass
+- All modules must have defined facades and contracts
+
+### Exit Gate
+- QG-I1, QG-I2, QG-I3 checklist items from respective checklist files verified
+- Release recommendation (GO/NO-GO) documented with evidence
+- Performance SLOs validated per tier
 
 ## Output
 

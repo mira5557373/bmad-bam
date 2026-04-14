@@ -1,0 +1,14 @@
+{
+  "module-code": "bam",
+  "capabilities": [{
+    "name": "bmad-bam-ai-model-security",
+    "menu-code": "AMS",
+    "description": "Design security controls for AI model lifecycle",
+    "supports-headless": true,
+    "phase-name": "3-solutioning",
+    "after": ["bmad-bam-agent-runtime-architecture"],
+    "before": ["bmad-bam-ai-security-testing"],
+    "is-required": false,
+    "output-location": "{output_folder}/planning-artifacts/security"
+  }]
+}

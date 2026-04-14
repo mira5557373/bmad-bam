@@ -1,9 +1,8 @@
 ---
-name: bmad-bam-requirement-ingestion
+name: requirement-ingestion
 displayName: Requirement Ingestion
 description: Decompose large feature catalogs into module definitions. Use when the user requests to 'ingest requirements' or 'decompose feature catalog'.
 module: bam
-web_bundle: true
 tags: [platform]
 ---
 
@@ -28,6 +27,12 @@ Search for and load `{project-root}/**/project-context.md` as foundational refer
 **If running in headless mode (`-H`):** Use defaults for all optional inputs, skip confirmation prompts, and auto-proceed through all steps.
 
 **Note:** If the user provides additional information during guided steps, capture it for later use without breaking the current flow.
+
+## When to Use
+
+- Ingesting requirements from external sources
+- Converting PRDs to BAM format
+- Normalizing requirement documentation
 
 ## Mode
 
@@ -94,12 +99,20 @@ Register all discovered modules in sprint-status.yaml:
 - Dependencies declared
 - Priority assigned
 
-### Quality Gates
+## Quality Gates
 
-- [ ] All features assigned to exactly one module
-- [ ] No circular dependencies in module graph
-- [ ] Priority order respects dependency constraints
-- [ ] All modules registered in sprint-status.yaml
+This workflow contributes to:
+- **QG-F1** (Foundation) - Feeds into foundation architecture planning
+
+### Entry Gate
+- Feature catalog document exists and is accessible
+- BMM discovery phase completed (product brief, PRD)
+
+### Exit Gate
+- All features assigned to exactly one module
+- No circular dependencies in module graph
+- Priority order respects dependency constraints
+- All modules registered in sprint-status.yaml
 
 ## Output
 

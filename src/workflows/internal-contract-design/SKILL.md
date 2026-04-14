@@ -1,9 +1,8 @@
 ---
-name: bmad-bam-internal-contract-design
+name: internal-contract-design
 displayName: Internal Contract Design
 description: Design module facade contracts and event schemas. Use when the user requests to 'design internal contracts' or 'specify module interfaces'.
 module: bam
-web_bundle: true
 tags: [integration]
 ---
 
@@ -28,6 +27,12 @@ Search for and load `{project-root}/**/project-context.md` as foundational refer
 **If running in headless mode (`-H`):** Use defaults for all optional inputs, skip confirmation prompts, and auto-proceed through all steps.
 
 **Note:** If the user provides additional information during guided steps, capture it for later use without breaking the current flow.
+
+## When to Use
+
+- Designing internal contracts between module components
+- Creating internal service interfaces
+- Establishing module-internal boundaries
 
 ## Mode
 
@@ -78,6 +83,21 @@ For each module, define:
 - [ ] DTOs specified with validation rules
 - [ ] Events have clear schemas with tenant_id
 - [ ] Policies documented
+
+## Quality Gates
+
+This workflow contributes to:
+- **QG-M1** (Module Arch) - Facade contracts define module boundaries
+- **QG-I1** (Convergence) - Contract compliance verified during convergence
+
+### Entry Gate
+- QG-F1 (Foundation) must pass before contract design
+- Master architecture must define module boundaries
+
+### Exit Gate
+- All module facades documented with versioning strategy
+- Event schemas include tenant_id and follow naming conventions
+- QG-M1 contract-related checklist items from `module-architecture.md` verified
 
 ## Output
 

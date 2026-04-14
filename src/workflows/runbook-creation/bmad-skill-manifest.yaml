@@ -1,0 +1,38 @@
+type: workflow
+name: runbook-creation
+displayName: Runbook Creation
+description: Create comprehensive operational runbooks for multi-tenant AI platform operations
+module: bam
+version: 1.0.0
+category: bam-extension
+domain: operations
+
+triggers:
+  - pattern: "create runbook"
+  - pattern: "operational runbook"
+  - pattern: "incident runbook"
+  - pattern: "operations documentation"
+
+inputs:
+  required:
+    - architecture_doc
+    - operational_context
+  optional:
+    - existing_runbooks
+    - incident_history
+
+outputs:
+  - runbook-collection.md
+  - incident-response-runbook.md
+  - ai-operations-runbook.md
+
+quality_gate: QG-OC
+recovery_protocol: 3-step
+
+dependencies:
+  templates:
+    - observability-template.md
+  data:
+    - bam-patterns.csv
+  checklists:
+    - production-checklist.md

@@ -8,21 +8,37 @@ agent:
     description: "Adds multi-tenant SaaS discovery capabilities to Mary"
 
 menu:
-  - trigger: bam-context
+  - trigger: bam-analyst-context
     action: "#load-bam-context-prompt"
     description: Load BAM multi-tenant discovery context
-  - trigger: discover-contexts
+  - trigger: bam-analyst-discover-contexts
     action: "#discover-contexts-prompt"
     description: Identify bounded contexts for multi-tenant SaaS
-  - trigger: tenant-personas
+  - trigger: bam-analyst-tenant-personas
     action: "#tenant-personas-prompt"
     description: Define tenant persona hierarchy
-  - trigger: tier-requirements
+  - trigger: bam-analyst-tier-requirements
     action: "#tier-requirements-prompt"
     description: Map tier-specific feature requirements
-  - trigger: isolation-requirements
+  - trigger: bam-analyst-isolation-requirements
     action: "#isolation-requirements-prompt"
     description: Capture data isolation requirements
+  - trigger: bam-analyst-research
+    action: "#web-research-analyst-prompt"
+    description: Conduct web research for analyst decisions
+
+  # ============================================================
+  # CONTEXT LOADERS - Agent Guides
+  # ============================================================
+  - trigger: bam-billing-integration-patterns-context
+    action: "#load-billing-integration-patterns-context-prompt"
+    description: Load BAM billing integration patterns
+  - trigger: bam-graphql-multi-tenancy-context
+    action: "#load-graphql-multi-tenancy-context-prompt"
+    description: Load BAM GraphQL multi-tenancy patterns
+  - trigger: bam-grpc-multi-tenancy-context
+    action: "#load-grpc-multi-tenancy-context-prompt"
+    description: Load BAM gRPC multi-tenancy patterns
 
 prompts:
   - id: load-bam-context-prompt
@@ -32,11 +48,16 @@ prompts:
       Read and internalize the BAM discovery guide:
       `{project-root}/_bmad/bam/data/agent-guides/bam/multi-tenant-context.md`
 
+      Also load the analyst-specific guides:
+      `{project-root}/_bmad/bam/data/agent-guides/bam/analyst-guide.md`
+      `{project-root}/_bmad/bam/data/agent-guides/bam/rls-best-practices.md`
+
       This guide provides context for:
       - Multi-tenant requirement patterns
       - Tenant persona discovery
       - Tier-based feature differentiation
       - Bounded context identification with tenant awareness
+      - Row-level security best practices for data isolation
 
       Confirm when loaded, then proceed with discovery tasks.
 
@@ -44,7 +65,9 @@ prompts:
     content: |
       ## Bounded Context Discovery for Multi-Tenant SaaS
 
-      Prerequisites: Ensure BAM context loaded via `bam-context`
+      Prerequisites: Ensure BAM context loaded via `bam-analyst-context`
+
+      **Load patterns:** `{project-root}/_bmad/bam/data/bam-patterns.csv` → filter: `tenant-isolation, tenant-lifecycle, compliance`
 
       Analyze the domain and identify bounded contexts:
 
@@ -64,6 +87,8 @@ prompts:
   - id: tenant-personas-prompt
     content: |
       ## Tenant Persona Hierarchy Definition
+
+      **Load patterns:** `{project-root}/_bmad/bam/data/bam-patterns.csv` → filter: `tenant-lifecycle, tenant-isolation`
 
       Define the tenant structure for this SaaS:
 
@@ -92,6 +117,8 @@ prompts:
     content: |
       ## Tier-Specific Feature Requirements
 
+      **Load patterns:** `{project-root}/_bmad/bam/data/bam-patterns.csv` → filter: `tenant-lifecycle, compliance`
+
       Map features across pricing tiers:
 
       | Feature | Free | Pro | Enterprise |
@@ -113,6 +140,8 @@ prompts:
     content: |
       ## Data Isolation Requirements
 
+      **Load patterns:** `{project-root}/_bmad/bam/data/bam-patterns.csv` → filter: `tenant-isolation, compliance`
+
       For each data type in the domain, specify:
 
       | Data Type | Tenant-Scoped | Isolation Method | Cross-Tenant Access |
@@ -129,3 +158,42 @@ prompts:
       - Must never cross tenant boundaries
       - Requires additional encryption
       - Has regulatory retention requirements
+
+  - id: web-research-analyst-prompt
+    content: |
+      ## BAM Web Research - Analyst
+
+      Conduct targeted web research to verify current best practices.
+
+      **Research Focus:** {{research_topic}}
+
+      Execute 2-3 targeted searches using pattern registry web_queries:
+      Search the web: "{{research_topic}} best practices {date}"
+      Search the web: "{{research_topic}} multi-tenant SaaS {date}"
+
+      Return findings as structured summary with source citations:
+      _Source: [URL]_
+
+  # ============================================================
+  # CONTEXT LOADER PROMPTS - Agent Guides
+  # ============================================================
+  - id: load-billing-integration-patterns-context-prompt
+    content: |
+      Read and internalize the BAM guide:
+      `{project-root}/_bmad/bam/data/agent-guides/bam/billing-integration-patterns.md`
+
+      Confirm when loaded.
+
+  - id: load-graphql-multi-tenancy-context-prompt
+    content: |
+      Read and internalize the BAM guide:
+      `{project-root}/_bmad/bam/data/agent-guides/bam/graphql-multi-tenancy.md`
+
+      Confirm when loaded.
+
+  - id: load-grpc-multi-tenancy-context-prompt
+    content: |
+      Read and internalize the BAM guide:
+      `{project-root}/_bmad/bam/data/agent-guides/bam/grpc-multi-tenancy.md`
+
+      Confirm when loaded.

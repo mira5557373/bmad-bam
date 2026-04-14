@@ -1,0 +1,8 @@
+type: workflow
+name: ai-security-testing
+displayName: AI Security Testing
+description: "Design AI/agent security testing in CI/CD with prompt injection tests, guardrail validation, and penetration tests. Use when the user requests to 'design AI security testing' or 'plan agent security validation'."
+module: bam
+config_variables:
+  - tenant_model
+  - ai_runtime

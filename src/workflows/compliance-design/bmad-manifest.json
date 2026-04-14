@@ -1,0 +1,14 @@
+{
+  "module-code": "bam",
+  "capabilities": [{
+    "name": "bmad-bam-compliance-design",
+    "menu-code": "CD",
+    "description": "Design audit logging architecture and compliance framework alignment. Use when the user requests to 'design compliance', 'setup audit logging', or 'align with SOC2/GDPR/HIPAA'.",
+    "supports-headless": true,
+    "phase-name": "3-solutioning",
+    "after": ["bmad-bam-tenant-model-isolation"],
+    "before": [],
+    "is-required": false,
+    "output-location": "{output_folder}/planning-artifacts"
+  }]
+}

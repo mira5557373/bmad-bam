@@ -1,0 +1,14 @@
+type: workflow
+name: quality-metrics-dashboard
+displayName: Quality Metrics Dashboard
+description: "Design quality metrics dashboard for multi-tenant SaaS monitoring. Use when the user requests 'quality dashboard' or 'metrics visualization'."
+module: bam
+config_variables:
+  - tenant_model
+  - test_architecture
+step_naming_convention: "step-NN-mode-description"
+tags:
+  - quality
+  - phase-5
+  - metrics
+  - dashboard

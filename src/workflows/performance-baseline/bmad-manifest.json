@@ -1,0 +1,15 @@
+{
+  "module-code": "bam",
+  "capabilities": [{
+    "name": "bmad-bam-performance-baseline",
+    "menu-code": "PEBL",
+    "description": "Design performance baseline establishment and benchmarking",
+    "supports-headless": true,
+    "phase-name": "3-solutioning",
+    "after": ["bmad-bam-tenant-aware-observability"],
+    "before": [],
+    "is-required": false,
+    "output-location": "{output_folder}/planning-artifacts/operations",
+    "qualityGates": ["QG-LT1"]
+  }]
+}

@@ -1,0 +1,38 @@
+type: workflow
+name: tenant-safety
+displayName: Tenant Safety
+description: Verify tenant safety controls and isolation for multi-tenant AI platforms
+module: bam
+
+triggers:
+  - pattern: "verify tenant safety"
+  - pattern: "tenant isolation audit"
+  - pattern: "multi-tenant security"
+  - pattern: "tenant safety check"
+
+inputs:
+  required:
+    - tenant_architecture_doc
+    - isolation_configuration
+  optional:
+    - tenant_tier_definitions
+    - previous_audit_results
+
+outputs:
+  - tenant-safety-report.md
+  - isolation-verification.md
+  - cross-tenant-test-results.md
+
+quality_gate: QG-AI2
+recovery_protocol: 3-step
+
+dependencies:
+  templates:
+    - rls-policy-template.md
+    - cache-isolation-template.md
+    - memory-isolation-template.md
+    - tenant-context-template.md
+  data:
+    - bam-patterns.csv
+  checklists:
+    - tenant-checklist.md

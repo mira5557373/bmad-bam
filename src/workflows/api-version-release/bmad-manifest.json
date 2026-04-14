@@ -1,0 +1,14 @@
+{
+  "module-code": "bam",
+  "capabilities": [{
+    "name": "bmad-bam-api-version-release",
+    "menu-code": "AVR",
+    "description": "Release new REST API version with OpenAPI docs and migration guide",
+    "supports-headless": true,
+    "phase-name": "4-implementation",
+    "after": ["bmad-bam-convergence-verification"],
+    "before": [],
+    "is-required": false,
+    "output-location": "{output_folder}/planning-artifacts"
+  }]
+}

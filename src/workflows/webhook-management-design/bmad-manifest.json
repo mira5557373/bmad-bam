@@ -1,0 +1,14 @@
+{
+  "module-code": "bam",
+  "capabilities": [{
+    "name": "bmad-bam-webhook-management-design",
+    "menu-code": "WHMD",
+    "description": "Design tenant webhook delivery with at-least-once guarantees, retry queues, HMAC signing, and dead letter handling",
+    "supports-headless": true,
+    "phase-name": "3-solutioning",
+    "after": ["bmad-bam-tenant-model-isolation"],
+    "before": [],
+    "is-required": false,
+    "output-location": "{output_folder}/planning-artifacts/integration"
+  }]
+}

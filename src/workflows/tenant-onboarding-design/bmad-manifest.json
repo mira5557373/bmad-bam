@@ -1,0 +1,15 @@
+{
+  "module-code": "bam",
+  "capabilities": [{
+    "name": "bmad-bam-tenant-onboarding-design",
+    "menu-code": "TOD",
+    "description": "Design tenant provisioning orchestration with tier-specific flows. Use when the user requests to 'design tenant onboarding' or 'plan tenant provisioning'.",
+    "supports-headless": true,
+    "phase-name": "3-solutioning",
+    "after": ["bmad-bam-tenant-model-isolation"],
+    "before": [],
+    "is-required": false,
+    "output-location": "{output_folder}/planning-artifacts",
+    "qualityGates": ["QG-M2"]
+  }]
+}

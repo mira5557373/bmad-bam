@@ -1,6 +1,7 @@
 # QG-M3-TOOLS: Tool Registration Validation
 
-# Extension of Module Quality Gate (QG-M3) — validates tool manifest, contracts, governance, and testing
+> Gate ID: QG-M3-TOOLS (Tool Registration Validation)
+> Extension of Module Quality Gate (QG-M3) - validates tool manifest, contracts, governance, and testing
 
 ## Checklist
 
@@ -62,6 +63,18 @@
 | **PASS** | All thresholds met: manifest valid (100%), descriptions compliant (100%), contract exists, test coverage ≥90%, rate limits defined (100%), DANGEROUS tools have approval (100%) |
 | **CONDITIONAL** | All CRITICAL thresholds met, semantic test pass ≥80% — remediation plan required for remaining items |
 | **FAIL** | Any CRITICAL threshold not met — block until resolved |
+| **WAIVED** | Non-critical item explicitly waived with stakeholder sign-off and documented justification |
+
+## Waiver Process
+
+For non-critical items that cannot be addressed:
+1. Document the specific item and reason for waiver
+2. Identify business justification
+3. Obtain stakeholder sign-off (Product Owner or Technical Lead)
+4. Record waiver in gate report with expiration date (if applicable)
+5. Create follow-up ticket for future remediation
+
+**Note:** CRITICAL items cannot be waived.
 
 ### Threshold Details
 
@@ -79,6 +92,70 @@
 
 > Gate failure recovery: resolve blocking items before approving tool registration.
 
+## Web Research Verification
+
+- [ ] Search the web: "AI tool registry design patterns {date}" - Verify tool registry best practices
+- [ ] Search the web: "LLM tool calling rate limiting patterns {date}" - Confirm governance patterns are current
+- [ ] _Source: [URL]_ citations documented for key tool registration decisions
+
+**PASS CRITERIA:** All CRITICAL checkboxes completed, tool manifest valid, contract documented
+**OWNER:** BAM
+**REVIEWERS:** Platform Architect, Security Lead
+
+## Critical vs Non-Critical Classification
+
+| Category | Classification | CONDITIONAL Threshold | FAIL Threshold |
+|----------|----------------|----------------------|----------------|
+| Tool Manifest Completeness | CRITICAL | Minor schema gaps | No manifest |
+| Tool Contract Documentation | CRITICAL | Incomplete examples | No contract |
+| Tool Governance (DANGEROUS tools) | CRITICAL | Rate limits missing | No approval flow |
+| Tool Testing (unit, contract) | CRITICAL | Coverage 80-90% | Coverage <80% |
+| Semantic Testing | Non-critical | Pass rate 70-80% | Pass rate <70% |
+| Observability | Non-critical | Partial tracing | No tracing |
+
 ## Recovery Protocol
 
-If this gate fails, refer to the relevant recovery workflow or escalation procedure.
+**If QG-M3-TOOLS fails:**
+
+1. **Attempt 1:** Immediate tool registration remediation (target: 1-2 days)
+   - Run tool manifest validation script
+   - Fix schema validation errors
+   - Add missing tool descriptions (< 200 chars, verb-first)
+   - Update tool contract documentation
+   - Verify DANGEROUS tools have approval_required=True
+   - Re-run QG-M3-TOOLS validation
+   - **Lock passed categories** — do not re-test locked items
+
+2. **Attempt 2:** Deep tool configuration review (target: 2-3 days)
+   - Engage Platform Architect and Security for tool audit
+   - Review all tool permissions and rate limits
+   - Add missing semantic test cases (target: 3 per tool)
+   - Verify observability integration (Langfuse tracing)
+   - Update audit logging configuration
+   - Re-run validation after remediation
+   - **Preserve locked categories** from Attempt 1
+
+3. **Mandatory Course Correction:**
+   - Escalate to Tech Lead and Platform Architect
+   - Document tool registration blockers in ADR
+   - Conduct tool design review session
+   - Consider splitting complex tools into smaller units
+   - Create remediation plan with stakeholder sign-off
+   - Schedule follow-up validation within 1 week
+
+**Category-Specific Recovery:**
+
+| Category | Immediate Action | Escalation Trigger |
+|----------|------------------|-------------------|
+| Tool Manifest Completeness | Validate tool_manifest.py exists; ensure unique naming; add LLM-optimized descriptions | No manifest file or schema validation fails |
+| Tool Contract Documentation | Create docs/contracts/{module}-tool-contract.md; document all tools with examples | No contract documentation or version mismatch |
+| Tool Governance | Set approval_required=True for DANGEROUS tools; define rate limits and timeouts | DANGEROUS tools lack approval flow or no rate limits |
+| Tool Testing | Achieve 90%+ unit test coverage; implement contract tests; add semantic test cases | Test coverage below 80% or contract tests fail |
+| Observability | Configure Langfuse tracing; map error codes; enable audit logging | No tracing configured or audit logging disabled |
+
+## Related Workflows
+
+- `bmad-bam-agent-runtime-architecture` - Tool registry design
+- `bmad-bam-validate-tool-contract` - Tool contract validation
+- `bmad-bam-define-facade-contract` - Facade to tool mapping
+- `tea-trace` - Tool execution verification

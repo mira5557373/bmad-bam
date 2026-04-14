@@ -1,0 +1,11 @@
+# Workflow metadata for bmad-bam-extend-project-context
+config_variables:
+  - user_name
+  - communication_language
+  - document_output_language
+  - output_folder
+  - tenant_model
+  - ai_runtime
+required_tools: []
+tags: [bam, project-context]
+mode: simple

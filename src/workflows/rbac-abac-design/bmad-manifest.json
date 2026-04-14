@@ -1,0 +1,14 @@
+{
+  "module-code": "bam",
+  "capabilities": [{
+    "name": "bmad-bam-rbac-abac-design",
+    "menu-code": "RBAC",
+    "description": "Design role-based and attribute-based access control for multi-tenant platforms",
+    "supports-headless": true,
+    "phase-name": "3-solutioning",
+    "after": ["bmad-bam-security-review"],
+    "before": ["bmad-bam-tenant-model-isolation"],
+    "is-required": false,
+    "output-location": "{output_folder}/planning-artifacts/security"
+  }]
+}

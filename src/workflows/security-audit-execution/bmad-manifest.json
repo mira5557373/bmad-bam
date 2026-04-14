@@ -1,0 +1,14 @@
+{
+  "module-code": "bam",
+  "capabilities": [{
+    "name": "bmad-bam-security-audit-execution",
+    "menu-code": "SAUD",
+    "description": "Execute quarterly security audits including access control review, vulnerability assessment, and compliance verification for multi-tenant AI platforms",
+    "supports-headless": true,
+    "phase-name": "4-implementation",
+    "after": [],
+    "before": [],
+    "is-required": false,
+    "output-location": "{output_folder}/security"
+  }]
+}

@@ -1,0 +1,14 @@
+{
+  "module-code": "bam",
+  "capabilities": [{
+    "name": "bmad-bam-continuous-security-setup",
+    "menu-code": "CSSS",
+    "description": "Set up continuous security monitoring and automation",
+    "supports-headless": true,
+    "phase-name": "3-solutioning",
+    "after": [],
+    "before": [],
+    "is-required": false,
+    "output-location": "{output_folder}/operations/security"
+  }]
+}

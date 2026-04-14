@@ -1,0 +1,222 @@
+# BAM Extension for BMM Product Manager - Product Owner Capabilities
+# Pattern: WDS agent-guides (NO memories: field)
+# NOTE: Extends bmad-agent-pm (BMM has no standalone PO agent)
+
+agent:
+  metadata:
+    extends: 'bmad-agent-pm'
+    module: 'bam'
+    description: 'Adds multi-tenant product ownership capabilities to PM agent'
+
+menu:
+  - trigger: bam-po-prerequisites
+    action: '#bam-prerequisites-prompt'
+    description: Check BAM Prerequisites
+  - trigger: bam-po-context
+    action: '#load-po-context-prompt'
+    description: Load BAM product owner context
+  - trigger: bam-po-tier-strategy
+    action: '#tier-strategy-prompt'
+    description: Define pricing tier strategy
+  - trigger: bam-po-feature-prioritization
+    action: '#feature-prioritization-prompt'
+    description: Prioritize features across tiers
+  - trigger: bam-po-tenant-roadmap
+    action: '#tenant-roadmap-prompt'
+    description: Plan tenant-aware roadmap
+  - trigger: bam-po-research
+    action: '#web-research-po-prompt'
+    description: Conduct web research for product owner decisions
+
+prompts:
+  - id: bam-prerequisites-prompt
+    content: |
+      ## BAM Prerequisites Check
+
+      Before proceeding with BAM workflows, verify:
+      - [ ] Master architecture document exists
+      - [ ] Tenant model is defined
+      - [ ] Module boundaries are established
+
+      Load required context:
+      `{project-root}/_bmad/bam/data/agent-guides/bam/po-guide.md`
+
+  - id: load-po-context-prompt
+    content: |
+      ## Load BAM Product Owner Context
+
+      Read and internalize the multi-tenant product ownership guide:
+      `{project-root}/_bmad/bam/data/agent-guides/bam/po-guide.md`
+
+      Also load the PO-specific guides:
+      `{project-root}/_bmad/bam/data/agent-guides/bam/cost-tracking.md`
+      `{project-root}/_bmad/bam/data/agent-guides/bam/usage-metering.md`
+      `{project-root}/_bmad/bam/data/agent-guides/bam/experimentation.md`
+      `{project-root}/_bmad/bam/data/agent-guides/bam/customization.md`
+
+      This guide provides comprehensive context for strategic product ownership in a
+      multi-tenant SaaS platform. It covers the following key responsibilities:
+
+      1. **Tier Strategy**: Defining value propositions for FREE, PRO, and ENTERPRISE
+         tiers with clear differentiation that drives upgrades while maintaining
+         retention at each level.
+      2. **Feature Gating**: Determining which features belong to which tiers based on
+         cost to serve, competitive differentiation, and customer segment needs.
+      3. **Pricing Models**: Choosing between seat-based, usage-based, or hybrid pricing
+         and aligning feature availability with the selected model.
+      4. **Roadmap Planning**: Building tenant-aware roadmaps that balance platform
+         improvements with tier-specific feature development.
+      5. **Cost and Usage Tracking**: FinOps patterns for multi-tenant pricing decisions.
+      6. **Experimentation and Customization**: A/B testing and tenant customization strategies.
+
+      Once loaded, confirm by stating: "BAM product owner context loaded. Ready for
+      strategic tier and roadmap planning."
+
+  - id: tier-strategy-prompt
+    content: |
+      ## Define Pricing Tier Strategy
+
+      Develop a comprehensive tier strategy that maximizes conversion while ensuring
+      sustainable unit economics. Consider each tier as a distinct product offering.
+
+      **Load patterns:** `{project-root}/_bmad/bam/data/bam-patterns.csv` → filter: `tenant-isolation`
+      **Load patterns:** `{project-root}/_bmad/bam/data/bam-patterns.csv` → filter: `usage-metering`
+
+      ### Tier Value Matrix
+
+      | Dimension | FREE | PRO | ENTERPRISE |
+      |-----------|------|-----|------------|
+      | Target Persona | Individual developers, evaluators | Growing teams, SMBs | Large orgs, regulated industries |
+      | Primary Value | Try before buy, viral growth | Productivity, collaboration | Compliance, scale, customization |
+      | Usage Limits | Constrained (drives upgrade) | Generous (drives retention) | Unlimited or custom |
+      | Support Level | Community/docs only | Email, chat (SLA: 24hr) | Dedicated CSM, phone (SLA: 4hr) |
+      | Data Retention | 30 days | 1 year | Custom (up to unlimited) |
+
+      ### Strategic Considerations
+
+      For each tier, document:
+      - **Cost to serve**: Infrastructure, support, and operational costs per tenant
+      - **Conversion trigger**: What specific friction or limit drives upgrades
+      - **Retention lever**: What feature or value prevents churn at this tier
+      - **Competitive position**: How this tier compares to market alternatives
+
+      ### Pricing Model Alignment
+
+      Evaluate and recommend a pricing model that aligns with tier strategy:
+      - **Seat-based**: Works for collaboration-heavy products, predictable revenue
+      - **Usage-based**: Works for variable consumption, aligns cost with value
+      - **Hybrid**: Combines base seats with usage overage, balances predictability
+
+      Output a tier strategy document with clear rationale for each decision.
+
+  - id: feature-prioritization-prompt
+    content: |
+      ## Feature Prioritization Across Tiers
+
+      Apply a structured prioritization framework that considers tier placement,
+      development cost, and strategic impact. Every feature decision affects
+      conversion, retention, and competitive positioning.
+
+      **Load patterns:** `{project-root}/_bmad/bam/data/bam-patterns.csv` → filter: `module-boundaries`
+
+      ### Prioritization Framework
+
+      Score each feature candidate on the following dimensions (1-5 scale):
+
+      | Criteria | Weight | Description |
+      |----------|--------|-------------|
+      | Revenue Impact | 30% | Will this drive new sales or upgrades? |
+      | Retention Impact | 25% | Will this reduce churn or increase stickiness? |
+      | Competitive Necessity | 20% | Do competitors have this? Is it table stakes? |
+      | Implementation Cost | 15% | Engineering effort and ongoing maintenance |
+      | Platform vs Tier | 10% | Does this benefit all users or specific tiers? |
+
+      ### Tier Placement Decision Tree
+
+      For each feature, evaluate:
+      1. **Is it a hygiene feature?** Basic expectations users have. Place in lowest tier.
+      2. **Is it a differentiator?** Creates competitive advantage. Gate appropriately.
+      3. **Is it cost-sensitive?** High infrastructure cost. Gate to paying tiers.
+      4. **Is it adoption-driving?** Helps users discover value. Consider FREE tier.
+      5. **Is it enterprise-specific?** Compliance, SSO, audit. ENTERPRISE only.
+
+      ### Feature Gating Implementation
+
+      Document for each prioritized feature:
+      - Feature flag strategy (hard gate vs soft limit vs usage-based)
+      - Upgrade prompt UX when users hit the gate
+      - Grandfathering policy if moving features between tiers
+      - Module impact and facade contract implications
+
+      Output a prioritized feature backlog with tier assignments and rationale.
+
+  - id: tenant-roadmap-prompt
+    content: |
+      ## Plan Tenant-Aware Roadmap
+
+      Build a strategic roadmap that balances platform stability, tier-specific
+      features, and cross-cutting improvements. A tenant-aware roadmap considers
+      the impact of each initiative on different tenant segments.
+
+      **Load patterns:** `{project-root}/_bmad/bam/data/bam-patterns.csv` → filter: `event-driven`
+
+      ### Roadmap Structure
+
+      Organize the roadmap into three parallel tracks:
+
+      | Track | Focus | Cadence | Examples |
+      |-------|-------|---------|----------|
+      | Platform | Stability, performance, security | Continuous | RLS optimization, caching improvements |
+      | Tier Features | Tier-specific value delivery | Quarterly | PRO collaboration, ENTERPRISE compliance |
+      | Cross-Cutting | Benefits all tiers | Monthly | UX improvements, new integrations |
+
+      ### Quarterly Planning Framework
+
+      For each quarter, allocate engineering capacity:
+      - **40% Platform**: Technical debt, infrastructure, reliability
+      - **35% Tier Features**: Conversion and retention driving features
+      - **25% Cross-Cutting**: General improvements benefiting all tenants
+
+      ### Tenant Impact Assessment
+
+      For each roadmap item, document:
+      - **Affected tiers**: Which tiers will see this change
+      - **Migration requirements**: Does this require tenant data migration?
+      - **Rollout strategy**: Big bang vs phased vs tier-by-tier
+      - **Rollback plan**: How to revert if issues arise
+      - **Success metrics**: How will you measure impact per tier
+
+      ### Communication Planning
+
+      Plan tenant communication for roadmap items:
+      - **FREE tier**: In-app notifications, changelog
+      - **PRO tier**: Email announcements, in-app + changelog
+      - **ENTERPRISE tier**: CSM outreach, advance notice, dedicated migration support
+
+      Output a 4-quarter rolling roadmap with tenant impact annotations.
+
+  - id: web-research-po-prompt
+    content: |
+      ## BAM Web Research - Product Owner
+
+      Conduct targeted web research for multi-tenant SaaS product backlog and feature prioritization decisions.
+
+      **Research Focus:** {{research_topic}}
+
+      Execute 2-3 targeted searches:
+      - "{{research_topic}} product backlog best practices {date}"
+      - "{{research_topic}} SaaS patterns {date}"
+      - "{{research_topic}} feature prioritization techniques {date}"
+
+      Return findings as structured summary:
+
+      ### Key Findings
+      - {Finding 1} _Source: [URL]_
+      - {Finding 2} _Source: [URL]_
+
+      ### Applicable Patterns
+      - {Pattern 1}
+
+      ### Sources
+      - [URL 1]
+      - [URL 2]

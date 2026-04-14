@@ -1,0 +1,5 @@
+type: workflow
+name: data-synchronization-design
+displayName: Data Synchronization Design
+description: "Design data synchronization patterns for multi-tenant systems. Use when the user requests to 'design data sync' or 'configure replication patterns'."
+module: bam

@@ -1,0 +1,390 @@
+# BAM Extension for BMM MLOps
+# Pattern: WDS agent-guides (NO memories: field)
+
+agent:
+  metadata:
+    extends: 'bmad-agent-architect'
+    module: 'bam'
+    description: 'Adds multi-tenant MLOps, model governance, and experiment tracking capabilities'
+
+menu:
+  # ============================================================
+  # CONTEXT LOADER
+  # ============================================================
+  - trigger: bam-ml-context
+    action: '#load-ml-context-prompt'
+    description: Load BAM MLOps context
+
+  # ============================================================
+  # WEB RESEARCH
+  # ============================================================
+  - trigger: bam-ml-research
+    action: '#web-research-ml-prompt'
+    description: Conduct web research for MLOps decisions
+
+  # ============================================================
+  # MLOPS CAPABILITIES
+  # ============================================================
+  - trigger: bam-ml-experiment-design
+    action: '#ml-experiment-design-prompt'
+    description: Design multi-tenant experiment tracking architecture
+
+  - trigger: bam-ml-model-registry-design
+    action: '#ml-model-registry-design-prompt'
+    description: Design multi-tenant model registry architecture
+
+  - trigger: bam-ml-feature-store-design
+    action: '#ml-feature-store-design-prompt'
+    description: Design multi-tenant feature store architecture
+
+  - trigger: bam-ml-pipeline-design
+    action: '#ml-pipeline-design-prompt'
+    description: Design multi-tenant ML pipeline architecture
+
+  # ============================================================
+  # CONTEXT LOADERS - Agent Guides
+  # ============================================================
+  - trigger: bam-model-versioning-context
+    action: '#load-model-versioning-context-prompt'
+    description: Load BAM model versioning patterns
+
+  - trigger: bam-model-serving-context
+    action: '#load-model-serving-context-prompt'
+    description: Load BAM model serving patterns
+
+  - trigger: bam-model-monitoring-context
+    action: '#load-model-monitoring-context-prompt'
+    description: Load BAM model monitoring patterns
+
+  - trigger: bam-ai-fairness-guide-context
+    action: '#load-ai-fairness-guide-context-prompt'
+    description: Load BAM AI fairness guide context
+
+  - trigger: bam-ai-model-governance-context
+    action: '#load-ai-model-governance-context-prompt'
+    description: Load BAM AI model governance context
+
+prompts:
+  # ============================================================
+  # CONTEXT LOADER PROMPT
+  # ============================================================
+  - id: load-ml-context-prompt
+    content: |
+      ## Load BAM MLOps Context
+
+      Read and internalize the BAM MLOps guide:
+      `{project-root}/_bmad/bam/data/agent-guides/bam/mlops-patterns.md`
+
+      Also load the related guides:
+      `{project-root}/_bmad/bam/data/agent-guides/bam/ai-runtime.md`
+      `{project-root}/_bmad/bam/data/agent-guides/bam/llm-versioning.md`
+      `{project-root}/_bmad/bam/data/agent-guides/bam/llmops.md`
+      `{project-root}/_bmad/bam/data/agent-guides/bam/tenant-isolation.md`
+
+      These guides provide context for:
+      - Multi-tenant experiment tracking
+      - Model registry with tenant isolation
+      - Feature store design patterns
+      - ML pipeline orchestration
+      - Model governance and versioning
+      - LLMOps for agentic systems
+
+      Confirm when loaded, then proceed with MLOps tasks.
+
+  # ============================================================
+  # WEB RESEARCH PROMPT
+  # ============================================================
+  - id: web-research-ml-prompt
+    content: |
+      ## BAM Web Research - MLOps
+
+      Conduct targeted web research for MLOps decisions in multi-tenant SaaS.
+
+      **Research Focus:** {{research_topic}}
+
+      Execute 2-3 targeted searches:
+      Search the web: "{{research_topic}} MLOps best practices {date}"
+      Search the web: "{{research_topic}} multi-tenant SaaS {date}"
+      Search the web: "{{research_topic}} model governance patterns {date}"
+
+      **Research Areas:**
+      - Experiment tracking in multi-tenant systems
+      - Model registry design and versioning
+      - Feature store architecture patterns
+      - ML pipeline orchestration
+      - Model governance and compliance
+      - LLMOps and fine-tuning isolation
+
+      Return findings with source citations: _Source: [URL]_
+
+      **Output Format:**
+      1. Key findings summary
+      2. Applicable MLOps patterns for multi-tenant SaaS
+      3. MLOps recommendations with rationale
+      4. Sources consulted
+
+  # ============================================================
+  # EXPERIMENT DESIGN PROMPT
+  # ============================================================
+  - id: ml-experiment-design-prompt
+    content: |
+      ## Multi-Tenant Experiment Tracking Architecture Design
+
+      Prerequisites: Load MLOps context via `bam-ml-context`
+
+      **Load patterns:** `{project-root}/_bmad/bam/data/bam-patterns.csv` -> filter: `tenant-isolation`
+      **Load patterns:** `{project-root}/_bmad/bam/data/ai-runtimes.csv`
+
+      Design experiment tracking that respects tenant boundaries:
+
+      ### Experiment Architecture
+      | Component | Purpose | Tenant Isolation |
+      |-----------|---------|------------------|
+      | Experiment Store | Track experiments | Tenant-scoped projects |
+      | Run Logger | Log metrics/params | TenantContext injection |
+      | Artifact Store | Store outputs | Path isolation |
+      | Comparison UI | Compare runs | Filtered views |
+
+      ### Experiment Metadata
+      | Field | Type | Purpose |
+      |-------|------|---------|
+      | tenant_id | UUID | Tenant isolation |
+      | experiment_id | UUID | Experiment grouping |
+      | run_id | UUID | Individual run |
+      | parameters | JSON | Hyperparameters |
+      | metrics | JSON | Performance metrics |
+      | artifacts | URI[] | Model checkpoints |
+
+      ### Multi-Tenant Considerations
+      - Experiments isolated per tenant
+      - Shared compute with resource quotas
+      - Artifact storage with tenant path prefixes
+      - No cross-tenant experiment visibility
+      - Tier-based compute limits
+
+      ### Tier Limits
+      | Resource | Free | Pro | Enterprise |
+      |----------|------|-----|------------|
+      | Concurrent runs | 1 | 5 | Unlimited |
+      | Experiment history | 30 days | 1 year | Unlimited |
+      | Artifact storage | 1 GB | 100 GB | Custom |
+      | GPU access | None | Scheduled | Dedicated |
+
+      ### Implementation Requirements
+      - [ ] TenantContext propagated to all logging
+      - [ ] Artifact paths include tenant_id
+      - [ ] Compute isolation via resource quotas
+      - [ ] Comparison views tenant-filtered
+      - [ ] Audit logging for compliance
+
+      Output as experiment tracking architecture document.
+
+  # ============================================================
+  # MODEL REGISTRY DESIGN PROMPT
+  # ============================================================
+  - id: ml-model-registry-design-prompt
+    content: |
+      ## Multi-Tenant Model Registry Architecture Design
+
+      Prerequisites: Load MLOps context via `bam-ml-context`
+
+      **Load patterns:** `{project-root}/_bmad/bam/data/bam-patterns.csv` -> filter: `tenant-isolation`
+      **Load patterns:** `{project-root}/_bmad/bam/data/ai-runtimes.csv`
+
+      Design model registry that supports multi-tenant governance:
+
+      ### Registry Architecture
+      | Layer | Purpose | Tenant Isolation |
+      |-------|---------|------------------|
+      | Model Store | Binary storage | Tenant path prefixes |
+      | Metadata DB | Model metadata | RLS on tenant_id |
+      | Version Control | Model versions | Tenant-scoped lineage |
+      | Serving Config | Deployment config | Tenant endpoints |
+
+      ### Model Lifecycle States
+      | State | Description | Transitions |
+      |-------|-------------|-------------|
+      | Registered | Initial upload | -> Staging |
+      | Staging | Pre-production testing | -> Production, Archived |
+      | Production | Live serving | -> Staging, Archived |
+      | Archived | No longer active | -> Staging (restore) |
+
+      ### Model Metadata Schema
+      | Field | Type | Required | Description |
+      |-------|------|----------|-------------|
+      | model_id | UUID | Yes | Unique identifier |
+      | tenant_id | UUID | Yes | Tenant context |
+      | name | string | Yes | Model name |
+      | version | semver | Yes | Model version |
+      | framework | enum | Yes | TF/PyTorch/etc |
+      | stage | enum | Yes | Lifecycle state |
+      | metrics | JSON | No | Performance metrics |
+      | lineage | JSON | No | Training lineage |
+
+      ### Multi-Tenant Model Serving
+      | Pattern | Use Case | Isolation |
+      |---------|----------|-----------|
+      | Shared endpoint | Cost-efficient | Request routing |
+      | Dedicated endpoint | Low latency | Full isolation |
+      | Serverless | Variable load | Request isolation |
+
+      ### Implementation Requirements
+      - [ ] Model binaries tenant-isolated
+      - [ ] Metadata enforces RLS
+      - [ ] Version history per tenant
+      - [ ] Deployment configs tenant-scoped
+      - [ ] Model lineage tracked
+      - [ ] Approval workflows for production
+
+      Output as model registry architecture document.
+
+  # ============================================================
+  # FEATURE STORE DESIGN PROMPT
+  # ============================================================
+  - id: ml-feature-store-design-prompt
+    content: |
+      ## Multi-Tenant Feature Store Architecture Design
+
+      Prerequisites: Load MLOps context via `bam-ml-context`
+
+      **Load patterns:** `{project-root}/_bmad/bam/data/bam-patterns.csv` -> filter: `tenant-isolation`
+
+      Design feature store that supports multi-tenant ML:
+
+      ### Feature Store Architecture
+      | Component | Purpose | Tenant Isolation |
+      |-----------|---------|------------------|
+      | Feature Registry | Feature definitions | Tenant-scoped schemas |
+      | Offline Store | Historical features | Partitioned by tenant |
+      | Online Store | Real-time features | Key prefix isolation |
+      | Feature Serving | API access | TenantContext validation |
+
+      ### Feature Types
+      | Type | Computation | Storage | Access Pattern |
+      |------|-------------|---------|----------------|
+      | Batch | Scheduled jobs | Offline store | Training |
+      | Streaming | Real-time | Online store | Inference |
+      | On-demand | Request-time | Computed | Feature serving |
+
+      ### Multi-Tenant Feature Sharing
+      | Feature Scope | Visibility | Example |
+      |---------------|------------|---------|
+      | Tenant-owned | Tenant only | Custom features |
+      | Platform-shared | Read-only | Common features |
+      | Enterprise-shared | Cross-tenant | Organization features |
+
+      ### Feature Metadata
+      | Field | Type | Description |
+      |-------|------|-------------|
+      | feature_id | UUID | Unique identifier |
+      | tenant_id | UUID | Owning tenant |
+      | name | string | Feature name |
+      | dtype | enum | Data type |
+      | ttl | duration | Time-to-live |
+      | owner | string | Responsible team |
+
+      ### Implementation Requirements
+      - [ ] Features partitioned by tenant
+      - [ ] Online store keys include tenant_id
+      - [ ] Feature serving validates context
+      - [ ] Shared features marked read-only
+      - [ ] Feature lineage tracked
+      - [ ] Point-in-time correctness maintained
+
+      Output as feature store architecture document.
+
+  # ============================================================
+  # ML PIPELINE DESIGN PROMPT
+  # ============================================================
+  - id: ml-pipeline-design-prompt
+    content: |
+      ## Multi-Tenant ML Pipeline Architecture Design
+
+      Prerequisites: Load MLOps context via `bam-ml-context`
+
+      **Load patterns:** `{project-root}/_bmad/bam/data/bam-patterns.csv` -> filter: `tenant-isolation`
+      **Load patterns:** `{project-root}/_bmad/bam/data/ai-runtimes.csv`
+
+      Design ML pipelines that support multi-tenant execution:
+
+      ### Pipeline Architecture
+      | Layer | Purpose | Tenant Isolation |
+      |-------|---------|------------------|
+      | Orchestrator | DAG execution | Tenant resource pools |
+      | Compute | Training/inference | Namespaced execution |
+      | Storage | Artifacts/data | Path isolation |
+      | Monitoring | Pipeline metrics | Tenant-filtered dashboards |
+
+      ### Pipeline Stage Types
+      | Stage | Purpose | Isolation Level |
+      |-------|---------|-----------------|
+      | Data Ingestion | Load training data | Tenant data only |
+      | Preprocessing | Feature engineering | Tenant compute |
+      | Training | Model training | Tenant resources |
+      | Evaluation | Performance metrics | Tenant metrics |
+      | Deployment | Model serving | Tenant endpoints |
+
+      ### Resource Allocation by Tier
+      | Resource | Free | Pro | Enterprise |
+      |----------|------|-----|------------|
+      | Pipeline runs/day | 5 | 50 | Unlimited |
+      | Max runtime | 1 hour | 24 hours | Custom |
+      | Concurrent stages | 2 | 10 | Custom |
+      | GPU allocation | None | Shared | Dedicated |
+      | Priority | Low | Medium | High |
+
+      ### Pipeline Triggers
+      | Trigger Type | Use Case | Tenant Scope |
+      |--------------|----------|--------------|
+      | Manual | Ad-hoc training | User-initiated |
+      | Scheduled | Periodic retraining | Tenant cron |
+      | Event | Data arrival | Tenant events |
+      | Model drift | Performance degradation | Tenant metrics |
+
+      ### Implementation Requirements
+      - [ ] Pipeline definitions tenant-scoped
+      - [ ] Compute resources isolated
+      - [ ] Artifacts stored with tenant prefix
+      - [ ] Logs filtered by tenant
+      - [ ] Cost tracking per tenant
+      - [ ] SLA monitoring per tier
+
+      Output as ML pipeline architecture document.
+
+  # ============================================================
+  # CONTEXT LOADER PROMPTS - Agent Guides
+  # ============================================================
+  - id: load-model-versioning-context-prompt
+    content: |
+      Read and internalize the BAM guide:
+      `{project-root}/_bmad/bam/data/agent-guides/bam/ml-model-versioning.md`
+
+      Confirm when loaded.
+
+  - id: load-model-serving-context-prompt
+    content: |
+      Read and internalize the BAM guide:
+      `{project-root}/_bmad/bam/data/agent-guides/bam/model-serving-patterns.md`
+
+      Confirm when loaded.
+
+  - id: load-model-monitoring-context-prompt
+    content: |
+      Read and internalize the BAM guide:
+      `{project-root}/_bmad/bam/data/agent-guides/bam/model-monitoring-patterns.md`
+
+      Confirm when loaded.
+
+  - id: load-ai-fairness-guide-context-prompt
+    content: |
+      Read and internalize the BAM guide:
+      `{project-root}/_bmad/bam/data/agent-guides/bam/ai-fairness-guide.md`
+
+      Confirm when loaded.
+
+  - id: load-ai-model-governance-context-prompt
+    content: |
+      Read and internalize the BAM guide:
+      `{project-root}/_bmad/bam/data/agent-guides/bam/ai-model-governance.md`
+
+      Confirm when loaded.

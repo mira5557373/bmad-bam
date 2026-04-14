@@ -1,0 +1,15 @@
+{
+  "module-code": "bam",
+  "capabilities": [{
+    "name": "bmad-bam-ai-observability-setup",
+    "menu-code": "AIOS",
+    "description": "Set up AI/LLM observability for multi-tenant platform",
+    "supports-headless": true,
+    "phase-name": "3-solutioning",
+    "after": [],
+    "before": [],
+    "is-required": false,
+    "output-location": "{output_folder}/operations/ai",
+    "qualityGates": ["QG-AI2"]
+  }]
+}

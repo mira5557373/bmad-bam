@@ -1,0 +1,68 @@
+# markdownlint-cli2 configuration
+# Relaxed rules for documentation-heavy projects
+
+config:
+  # Line length - disabled for prose content
+  MD013: false
+
+  # Heading style - allow any consistent style
+  MD003:
+    style: "consistent"
+
+  # Unordered list style - allow any consistent style
+  MD004:
+    style: "consistent"
+
+  # List indent - disabled as tables/code may need different indentation
+  MD007: false
+
+  # Trailing spaces - disabled (common in markdown for line breaks)
+  MD009: false
+
+  # Allow multiple headings with same content (common in large docs)
+  MD024:
+    siblings_only: true
+
+  # Trailing punctuation in headings - disabled (common in docs like "Step 1:")
+  MD026: false
+
+  # Ordered list prefix - allow any style (1. 2. 3. or 1. 1. 1.)
+  MD029: false
+
+  # Allow inline HTML (common in markdown)
+  MD033: false
+
+  # Emphasis used instead of heading - disabled (common pattern)
+  MD036: false
+
+  # Spaces inside code span - disabled (regex patterns may need spaces)
+  MD038: false
+
+  # First line in file should be top-level heading - disabled
+  MD041: false
+
+  # Table column count - disabled (tables may have intentional structure)
+  MD056: false
+
+  # Blank lines around headings - relax for code-heavy docs
+  MD022:
+    lines_above: 1
+    lines_below: 0
+
+  # Fenced code blocks should be surrounded by blank lines - relaxed
+  MD031: false
+
+  # Lists should be surrounded by blank lines - relaxed
+  MD032: false
+
+  # Fenced code blocks should have a language specified - warning only
+  MD040: false
+
+  # Table column style - disabled (many table formats are valid)
+  MD060: false
+
+# Ignore node_modules and other generated content
+ignores:
+  - "node_modules/**"
+  - "coverage/**"
+  - "**/CHANGELOG.md"

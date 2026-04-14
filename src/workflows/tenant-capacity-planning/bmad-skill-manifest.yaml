@@ -1,0 +1,8 @@
+type: workflow
+name: tenant-capacity-planning
+displayName: Tenant Capacity Planning
+description: 'Design capacity forecasting and resource planning per tenant'
+module: bam
+config_variables:
+  - tenant_model
+  - output_folder

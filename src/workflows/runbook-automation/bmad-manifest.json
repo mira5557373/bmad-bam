@@ -1,0 +1,14 @@
+{
+  "module-code": "bam",
+  "capabilities": [{
+    "name": "bmad-bam-runbook-automation",
+    "menu-code": "RNBA",
+    "description": "Design automated runbook execution for operational procedures",
+    "supports-headless": true,
+    "phase-name": "3-solutioning",
+    "after": ["bmad-bam-tenant-incident-response"],
+    "before": [],
+    "is-required": false,
+    "output-location": "{output_folder}/planning-artifacts/operations"
+  }]
+}

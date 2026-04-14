@@ -1,0 +1,9 @@
+type: workflow
+name: compliance-training-tracking
+displayName: Compliance Training Tracking
+description: "Design compliance training requirements and tracking procedures. Use when the user requests to 'track compliance training', 'design training program', or 'manage training requirements'."
+module: bam
+config_variables:
+  - tenant_model
+  - ai_runtime
+step_naming_convention: 'step-NN-mode-description'

@@ -11,9 +11,27 @@ menu:
   - trigger: bam-bs-context
     action: "#load-bam-bs-context-prompt"
     description: Load BAM brainstorming context
-  - trigger: saas-feature-ideation
+  - trigger: bam-bs-saas-feature-ideation
     action: "#saas-feature-ideation-prompt"
     description: Brainstorm SaaS features
+  - trigger: bam-bs-research
+    action: "#web-research-brainstorming-prompt"
+    description: Conduct web research for brainstorming decisions
+  - trigger: bam-bs-ai-capability-storm
+    action: "#ai-capability-brainstorm-prompt"
+    description: Brainstorm AI agent capabilities for multi-tenant platform
+  - trigger: bam-bs-monetization-ideas
+    action: "#monetization-ideation-prompt"
+    description: Generate creative monetization strategies
+  - trigger: bam-bs-integration-opportunities
+    action: "#integration-brainstorm-prompt"
+    description: Ideate integration and ecosystem opportunities
+  - trigger: bam-bs-tenant-experience
+    action: "#tenant-experience-ideation-prompt"
+    description: Brainstorm tenant onboarding and experience improvements
+  - trigger: bam-bs-competitive-differentiation
+    action: "#competitive-differentiation-prompt"
+    description: Generate ideas for competitive advantage
 
 prompts:
   - id: load-bam-bs-context-prompt
@@ -42,8 +60,335 @@ prompts:
   - id: saas-feature-ideation-prompt
     content: |
       ## SaaS Feature Ideation
-      Brainstorm around:
-      - Tier-differentiating features
-      - AI agent capabilities
-      - Tenant collaboration features
-      - Platform network effects
+
+      Prerequisites: Ensure BAM context loaded via `bam-bs-context`
+
+      **Load patterns:** `{project-root}/_bmad/bam/data/bam-patterns.csv` → filter: `customization, experimentation, tenant-lifecycle`
+
+      ### Objective
+      Generate innovative feature ideas that leverage multi-tenant architecture advantages
+      while creating clear tier differentiation and upgrade pathways.
+
+      ### Process
+
+      1. **Tier-Differentiating Features Brainstorm**
+         - Identify features that create clear value gaps between tiers
+         - Focus on capabilities that justify 3-5x price increases per tier
+         - Consider both functional (what it does) and non-functional (how well) differentiation
+
+         | Tier | Feature Focus | Differentiation Strategy |
+         |------|---------------|-------------------------|
+         | FREE | Core value demonstration | Usage limits, watermarks, community support |
+         | PRO | Power user enablement | Higher limits, priority, integrations |
+         | ENTERPRISE | Scale and compliance | Unlimited, SLA, audit, SSO, custom |
+
+      2. **AI Agent Capability Ideation**
+         - Brainstorm AI features that benefit from multi-tenant scale
+         - Consider cross-tenant learning opportunities (privacy-preserving)
+         - Identify agent capabilities that increase stickiness per tier
+
+         | Capability Type | Free Tier | Pro Tier | Enterprise Tier |
+         |-----------------|-----------|----------|-----------------|
+         | Agent count | 1 | 5 | Unlimited |
+         | Model access | Basic | Advanced | Custom/fine-tuned |
+         | Memory retention | 7 days | 90 days | Unlimited |
+         | Training data | Platform only | Platform + imports | Custom corpus |
+
+      3. **Tenant Collaboration Features**
+         - Ideate features that create network effects within tenants
+         - Consider workspace-level collaboration (within tenant)
+         - Design cross-tenant collaboration with isolation (marketplace, templates)
+
+         | Collaboration Type | Description | Isolation Consideration |
+         |-------------------|-------------|------------------------|
+         | Intra-workspace | Team features within workspace | Standard tenant isolation |
+         | Cross-workspace | Features across workspaces in org | Org-level permission |
+         | Cross-tenant | Marketplace, public templates | Full anonymization required |
+
+      4. **Platform Network Effects**
+         - Identify features where more tenants = more value for all
+         - Consider aggregate insights (anonymized benchmarks)
+         - Design community/marketplace features
+
+         | Network Effect Type | Example | Privacy Approach |
+         |--------------------|---------|-----------------|
+         | Direct | Shared template marketplace | Opt-in public sharing |
+         | Indirect | Better AI from aggregate learning | Differential privacy |
+         | Data | Anonymized industry benchmarks | K-anonymity minimum |
+
+      ### Verification Checklist
+      - [ ] Each feature idea mapped to specific tier(s)
+      - [ ] AI capabilities have clear isolation boundaries defined
+      - [ ] Collaboration features respect tenant isolation
+      - [ ] Network effects preserve tenant privacy
+      - [ ] Upgrade triggers identified for each feature set
+
+      ### Output
+      Produce feature ideation document organized by category with tier mapping,
+      isolation requirements, and estimated development complexity per feature.
+
+  - id: web-research-brainstorming-prompt
+    content: |
+      ## BAM Web Research - Brainstorming
+
+      Conduct targeted web research for multi-tenant SaaS ideation and creativity decisions.
+
+      **Research Focus:** {{research_topic}}
+
+      Execute 2-3 targeted searches:
+      - "{{research_topic}} ideation best practices {date}"
+      - "{{research_topic}} SaaS patterns {date}"
+      - "{{research_topic}} creativity techniques {date}"
+
+      Return findings as structured summary:
+
+      ### Key Findings
+      - {Finding 1} _Source: [URL]_
+      - {Finding 2} _Source: [URL]_
+
+      ### Applicable Patterns
+      - {Pattern 1}
+
+      ### Sources
+      - [URL 1]
+      - [URL 2]
+
+  - id: ai-capability-brainstorm-prompt
+    content: |
+      ## AI Agent Capability Brainstorming
+
+      Prerequisites: Ensure BAM context loaded via `bam-bs-context`
+
+      **Load patterns:** `{project-root}/_bmad/bam/data/bam-patterns.csv` → filter: `agent-runtime, customization`
+
+      ### Objective
+      Generate innovative AI agent capabilities that leverage multi-tenant architecture
+      for enhanced learning, personalization, and cross-tenant intelligence.
+
+      ### Process
+
+      1. **Cross-Tenant Learning Opportunities**
+         - Identify patterns that benefit from aggregate tenant data
+         - Design privacy-preserving learning mechanisms
+         - Consider federated learning approaches
+
+         | Learning Type | Data Source | Privacy Approach | Value Delivered |
+         |---------------|-------------|------------------|-----------------|
+         | Best practices | Anonymized workflows | Differential privacy | Industry benchmarks |
+         | Model tuning | Aggregated feedback | Federated learning | Better predictions |
+         | Anomaly detection | Cross-tenant patterns | K-anonymity | Security insights |
+
+      2. **Tier-Differentiated AI Capabilities**
+         - Brainstorm AI features exclusive to each tier
+         - Design upgrade triggers based on AI usage
+         - Consider custom model access for Enterprise
+
+         | Tier | AI Capability | Differentiation |
+         |------|---------------|-----------------|
+         | FREE | Basic assistants | Rate-limited, standard models |
+         | PRO | Advanced agents | Higher limits, better models |
+         | ENTERPRISE | Custom AI | Fine-tuned, dedicated resources |
+
+      3. **Agent Orchestration Innovations**
+         - Multi-agent collaboration patterns
+         - Agent specialization strategies
+         - Human-in-the-loop integration
+
+      ### Verification Checklist
+      - [ ] Privacy implications assessed for each idea
+      - [ ] Tier differentiation maintains upgrade path
+      - [ ] Technical feasibility evaluated
+      - [ ] Competitive uniqueness identified
+
+      ### Output
+      Produce AI capability ideation document with prioritized features,
+      privacy requirements, and tier allocation recommendations.
+
+  - id: monetization-ideation-prompt
+    content: |
+      ## Monetization Strategy Brainstorming
+
+      Prerequisites: Ensure BAM context loaded via `bam-bs-context`
+
+      **Load patterns:** `{project-root}/_bmad/bam/data/bam-patterns.csv` → filter: `tenant-lifecycle, customization`
+
+      ### Objective
+      Generate creative monetization strategies that align value capture with
+      value creation in multi-tenant SaaS platforms.
+
+      ### Process
+
+      1. **Pricing Model Innovations**
+         - Usage-based pricing variations
+         - Outcome-based pricing possibilities
+         - Hybrid model combinations
+
+         | Model Type | Trigger | Value Alignment | Example |
+         |------------|---------|-----------------|---------|
+         | Per-seat | Team size | Predictable | $X/user/month |
+         | Usage-based | Consumption | Scales with value | $X/API call |
+         | Outcome-based | Results achieved | High alignment | $X/lead generated |
+         | Platform fee | Transaction volume | Marketplace model | X% of GMV |
+
+      2. **Add-On and Expansion Revenue**
+         - Premium feature modules
+         - Professional services packages
+         - Marketplace revenue streams
+
+      3. **Network Effect Monetization**
+         - Marketplace transaction fees
+         - Premium listing placements
+         - Data insights packages
+
+      ### Verification Checklist
+      - [ ] Value alignment assessed for each model
+      - [ ] Churn risk evaluated
+      - [ ] Competitive positioning considered
+      - [ ] Implementation complexity estimated
+
+      ### Output
+      Produce monetization strategy document with revenue model options,
+      expected impact analysis, and implementation recommendations.
+
+  - id: integration-brainstorm-prompt
+    content: |
+      ## Integration Ecosystem Brainstorming
+
+      Prerequisites: Ensure BAM context loaded via `bam-bs-context`
+
+      **Load patterns:** `{project-root}/_bmad/bam/data/bam-patterns.csv` → filter: `customization, experimentation`
+
+      ### Objective
+      Ideate integration opportunities that extend platform value through
+      ecosystem connections while maintaining tenant isolation.
+
+      ### Process
+
+      1. **Core Integration Categories**
+         - Identity and access (SSO, SCIM)
+         - Data sources (CRM, ERP, databases)
+         - Communication (Slack, Teams, email)
+         - Productivity (Google, Microsoft, Notion)
+
+         | Category | Priority Integrations | Tenant Isolation Need |
+         |----------|----------------------|----------------------|
+         | Identity | Okta, Azure AD, Google | Tenant-scoped credentials |
+         | Data | Salesforce, HubSpot | Per-tenant API keys |
+         | Comms | Slack, Teams | Workspace isolation |
+         | Storage | S3, GCS, Azure Blob | Tenant-prefixed paths |
+
+      2. **Marketplace Ecosystem Ideas**
+         - Third-party app marketplace
+         - Template and workflow exchange
+         - Custom integration development
+
+      3. **API Platform Opportunities**
+         - Public API monetization
+         - Webhook ecosystem
+         - Partner developer program
+
+      ### Verification Checklist
+      - [ ] Tenant isolation maintained in all integrations
+      - [ ] Security review requirements identified
+      - [ ] Partner ecosystem strategy aligned
+      - [ ] Revenue opportunities evaluated
+
+      ### Output
+      Produce integration ecosystem roadmap with prioritized integrations,
+      isolation requirements, and partner engagement strategy.
+
+  - id: tenant-experience-ideation-prompt
+    content: |
+      ## Tenant Experience Brainstorming
+
+      Prerequisites: Ensure BAM context loaded via `bam-bs-context`
+
+      **Load patterns:** `{project-root}/_bmad/bam/data/bam-patterns.csv` → filter: `tenant-lifecycle, experimentation`
+
+      ### Objective
+      Generate ideas for exceptional tenant onboarding, activation, and
+      ongoing experience that drive retention and expansion.
+
+      ### Process
+
+      1. **Onboarding Experience Innovations**
+         - Self-serve onboarding optimization
+         - Guided setup wizards
+         - Time-to-value acceleration
+
+         | Onboarding Stage | Current State | Ideation Focus |
+         |------------------|---------------|----------------|
+         | Signup | Form completion | Social auth, SSO |
+         | Setup | Manual configuration | Smart defaults, import |
+         | Activation | First use | Guided first success |
+         | Value realization | Gradual discovery | Aha moment acceleration |
+
+      2. **Ongoing Experience Improvements**
+         - In-app guidance and tooltips
+         - Proactive health monitoring
+         - Success metric dashboards
+
+      3. **Tenant Success Programs**
+         - Automated success journeys
+         - Community building
+         - Advocacy programs
+
+      ### Verification Checklist
+      - [ ] Time-to-value metrics defined
+      - [ ] Tier-appropriate experiences designed
+      - [ ] Automation opportunities identified
+      - [ ] Success metrics tracked
+
+      ### Output
+      Produce tenant experience roadmap with prioritized improvements,
+      expected impact on retention, and implementation approach.
+
+  - id: competitive-differentiation-prompt
+    content: |
+      ## Competitive Differentiation Brainstorming
+
+      Prerequisites: Ensure BAM context loaded via `bam-bs-context`
+
+      **Load patterns:** `{project-root}/_bmad/bam/data/bam-patterns.csv` → filter: `customization, experimentation`
+
+      ### Objective
+      Generate innovative ideas for sustainable competitive differentiation
+      that leverage multi-tenant architecture advantages.
+
+      ### Process
+
+      1. **Architecture-Driven Differentiation**
+         - Scale advantages from multi-tenancy
+         - Cost efficiency passed to customers
+         - Reliability and uptime superiority
+
+         | Advantage | How Multi-Tenancy Enables | Competitor Gap |
+         |-----------|--------------------------|----------------|
+         | Scale economics | Shared infrastructure | Higher costs for single-tenant |
+         | Continuous deployment | One codebase, all tenants | Fragmented updates |
+         | Aggregate intelligence | Cross-tenant insights | Isolated data silos |
+
+      2. **AI-Native Differentiation**
+         - Deep AI integration vs bolt-on
+         - Multi-tenant AI advantages
+         - Responsible AI positioning
+
+      3. **Platform and Ecosystem Moats**
+         - Network effects strategies
+         - Switching cost creation
+         - Community and marketplace advantages
+
+      4. **Trust and Security Positioning**
+         - Isolation guarantee marketing
+         - Compliance leadership
+         - Transparency differentiation
+
+      ### Verification Checklist
+      - [ ] Defensibility assessed for each differentiation
+      - [ ] Competitor response scenarios evaluated
+      - [ ] Resource requirements estimated
+      - [ ] Time-to-market analyzed
+
+      ### Output
+      Produce competitive differentiation strategy with prioritized initiatives,
+      defensibility analysis, and execution roadmap.

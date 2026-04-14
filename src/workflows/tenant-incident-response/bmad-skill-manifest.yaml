@@ -1,0 +1,7 @@
+type: workflow
+name: tenant-incident-response
+displayName: Tenant Incident Response
+description: 'Design tenant-isolated incident handling procedures'
+module: bam
+config_variables:
+  - tenant_model

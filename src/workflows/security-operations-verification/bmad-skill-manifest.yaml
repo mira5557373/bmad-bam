@@ -1,0 +1,41 @@
+type: workflow
+name: security-operations-verification
+displayName: Security Operations Verification
+description: Verify security operations readiness for multi-tenant AI platforms
+module: bam
+version: 1.0.0
+category: bam-extension
+domain: security
+
+triggers:
+  - pattern: "verify security operations"
+  - pattern: "security ops audit"
+  - pattern: "security readiness"
+  - pattern: "SecOps verification"
+
+inputs:
+  required:
+    - security_architecture_doc
+    - incident_response_plan
+  optional:
+    - previous_audit_results
+    - threat_model
+
+outputs:
+  - security-operations-report.md
+  - incident-readiness-assessment.md
+  - security-controls-audit.md
+
+quality_gate: QG-S4
+recovery_protocol: 3-step
+
+dependencies:
+  templates:
+    - audit-logging-template.md
+    - observability-template.md
+  data:
+    - bam-patterns.csv
+  checklists:
+    - security-checklist.md
+  workflows:
+    - bmad-bam-ai-security

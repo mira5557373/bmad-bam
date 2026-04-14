@@ -1,0 +1,14 @@
+{
+  "module-code": "bam",
+  "capabilities": [{
+    "name": "bmad-bam-postmortem-process",
+    "menu-code": "PMP",
+    "description": "Design incident post-mortem process. Use when the user requests to 'design postmortem process' or 'create incident review workflow'.",
+    "supports-headless": true,
+    "phase-name": "anytime",
+    "after": [],
+    "before": [],
+    "is-required": false,
+    "output-location": "{output_folder}/planning-artifacts/operations"
+  }]
+}

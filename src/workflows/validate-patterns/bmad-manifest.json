@@ -1,0 +1,14 @@
+{
+  "module-code": "bam",
+  "capabilities": [{
+    "name": "bmad-bam-validate-patterns",
+    "menu-code": "VP",
+    "description": "Validate BAM pattern registry CSV files for integrity and cross-references.",
+    "supports-headless": true,
+    "phase-name": "anytime",
+    "after": [],
+    "before": [],
+    "is-required": false,
+    "output-location": "{output_folder}"
+  }]
+}

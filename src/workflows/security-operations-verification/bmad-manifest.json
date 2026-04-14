@@ -1,0 +1,14 @@
+{
+  "module-code": "bam",
+  "capabilities": [{
+    "name": "bmad-bam-security-operations-verification",
+    "menu-code": "SECV",
+    "description": "Verify security operations readiness for multi-tenant AI platforms",
+    "supports-headless": true,
+    "phase-name": "5-quality",
+    "after": ["bmad-bam-ai-security"],
+    "before": ["bmad-bam-production-readiness"],
+    "is-required": false,
+    "output-location": "{output_folder}/security"
+  }]
+}

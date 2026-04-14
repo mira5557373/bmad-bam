@@ -1,0 +1,9 @@
+type: workflow
+name: cross-region-failover-execution
+displayName: Cross-Region Failover Execution
+description: "Execute cross-region failover procedures during DR events. Use when the user requests to 'execute failover' or 'initiate DR procedures'."
+module: bam
+config_variables:
+  - tenant_model
+  - ai_runtime
+step_naming_convention: 'step-NN-mode-description'

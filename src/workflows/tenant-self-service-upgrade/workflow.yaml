@@ -1,0 +1,10 @@
+# Workflow metadata for bmad-bam-tenant-self-service-upgrade
+config_variables:
+  - user_name
+  - communication_language
+  - document_output_language
+  - output_folder
+  - tenant_model
+required_tools: []
+tags: [operations, tenant-lifecycle, self-service, upgrade]
+mode: complex

@@ -1,0 +1,14 @@
+{
+  "module-code": "bam",
+  "capabilities": [{
+    "name": "bmad-bam-tenant-network-isolation-design",
+    "menu-code": "TNID",
+    "description": "Design network-level tenant isolation using VPC and security groups. Use when the user requests to 'design network isolation' or 'configure VPC security'.",
+    "supports-headless": true,
+    "phase-name": "3-solutioning",
+    "after": ["bmad-bam-tenant-model-isolation"],
+    "before": [],
+    "is-required": false,
+    "output-location": "{output_folder}/planning-artifacts/infrastructure"
+  }]
+}

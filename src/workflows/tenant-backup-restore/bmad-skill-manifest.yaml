@@ -1,0 +1,7 @@
+type: workflow
+name: tenant-backup-restore
+displayName: Tenant Backup and Restore
+description: "Design tenant-specific backup strategy and recovery procedures. Use when the user requests to 'design tenant backup' or 'plan tenant recovery'."
+module: bam
+config_variables:
+  - tenant_model

@@ -1,0 +1,5 @@
+type: workflow
+name: prompt-catalog-design
+displayName: Prompt Catalog Design
+description: "Design prompt library and catalog management for multi-tenant AI platforms. Use when the user requests to 'design prompt catalog' or 'manage prompt library'."
+module: bam

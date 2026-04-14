@@ -1,0 +1,14 @@
+{
+  "module-code": "bam",
+  "capabilities": [{
+    "name": "bmad-bam-data-protection",
+    "menu-code": "DPRT",
+    "description": "Verify data protection controls for multi-tenant AI platforms",
+    "supports-headless": true,
+    "phase-name": "5-quality",
+    "after": ["bmad-bam-validate-module"],
+    "before": ["bmad-bam-production-readiness"],
+    "is-required": false,
+    "output-location": "{output_folder}/security"
+  }]
+}

@@ -1,0 +1,5 @@
+type: workflow
+name: tenant-api-key-management
+displayName: Tenant API Key Management
+description: "Design API key lifecycle for programmatic tenant access including creation, rotation, revocation, and audit. Use when the user requests to 'design API key management' or 'plan tenant API access'."
+module: bam

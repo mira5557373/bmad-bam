@@ -1,0 +1,9 @@
+type: workflow
+name: migrate-v2
+displayName: BAM Migration v2
+description: "Migrate BAM project from v1 (knowledge fragments) to v2 (pattern registry). Use when upgrading existing BAM projects."
+module: bam
+config_variables:
+  - tenant_model
+  - ai_runtime
+step_naming_convention: 'step-NN-mode-description'

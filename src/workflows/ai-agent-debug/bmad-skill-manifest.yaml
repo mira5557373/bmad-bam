@@ -1,6 +1,5 @@
 type: workflow
-name: bmad-bam-ai-agent-debug
+name: ai-agent-debug
 displayName: AI Agent Debug
 description: "Debug AI agent behavior during development. Use when the user requests to 'debug AI agent' or 'troubleshoot agent behavior'."
 module: bam
-canonicalId: bmad-bam-ai-agent-debug

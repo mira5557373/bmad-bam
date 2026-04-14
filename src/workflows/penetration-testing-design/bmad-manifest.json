@@ -1,0 +1,14 @@
+{
+  "module-code": "bam",
+  "capabilities": [{
+    "name": "bmad-bam-penetration-testing-design",
+    "menu-code": "PTD",
+    "description": "Design security penetration testing procedures for multi-tenant AI platforms.",
+    "supports-headless": true,
+    "phase-name": "3-solutioning",
+    "after": ["bmad-bam-security-review"],
+    "before": [],
+    "is-required": false,
+    "output-location": "{output_folder}/planning-artifacts/security"
+  }]
+}

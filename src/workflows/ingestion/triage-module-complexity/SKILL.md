@@ -1,9 +1,8 @@
 ---
-name: bmad-bam-triage-module-complexity
+name: triage-module-complexity
 displayName: Module Complexity Triage
 description: Classify module complexity using 8-question assessment. Use when the user requests to 'triage module complexity' or 'classify module difficulty'.
 module: bam
-web_bundle: true
 tags: [platform]
 ---
 
@@ -30,6 +29,12 @@ Search for and load `{project-root}/**/project-context.md` as foundational refer
 **Note:** If the user provides additional information during guided steps, capture it for later use without breaking the current flow.
 
 **Intent Check:** Confirm the user's intent and the target module name (or "all" for batch mode) before processing. Verify the module exists in the project context.
+
+## When to Use
+
+- Assessing module complexity for planning
+- Classifying modules as SIMPLE/STANDARD/COMPLEX
+- Identifying module risk factors
 
 ## Mode
 
@@ -77,6 +82,21 @@ For each module, evaluate:
 - `{output_folder}/planning-artifacts/modules/{module-name}/complexity-assessment.md` — complexity classification per module
 - Updated sprint-status.yaml with `complexity: SIMPLE|STANDARD|COMPLEX` per module
 - Assessment rationale for each classification
+
+## Quality Gates
+
+This workflow contributes to:
+- **QG-F1** (Foundation) - Complexity classification informs architecture depth
+- **QG-M1** (Module Architecture) - Determines phase depth for each module
+
+### Entry Gate
+- Modules identified via requirement-ingestion or existing module list
+- Module feature files or documentation available
+
+### Exit Gate
+- All targeted modules classified as SIMPLE/STANDARD/COMPLEX
+- Classifications recorded in sprint-status.yaml
+- Assessment rationale documented per module
 
 ## References
 

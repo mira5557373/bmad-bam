@@ -1,0 +1,14 @@
+{
+  "module-code": "bam",
+  "capabilities": [{
+    "name": "bmad-bam-api-throttling-design",
+    "menu-code": "APTH",
+    "description": "Design API throttling strategies with sliding window algorithms, per-endpoint limits, and adaptive throttling based on tenant tiers",
+    "supports-headless": true,
+    "phase-name": "3-solutioning",
+    "after": ["bmad-bam-tenant-model-isolation"],
+    "before": [],
+    "is-required": false,
+    "output-location": "{output_folder}/planning-artifacts/operations"
+  }]
+}

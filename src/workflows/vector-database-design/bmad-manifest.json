@@ -1,0 +1,14 @@
+{
+  "module-code": "bam",
+  "capabilities": [{
+    "name": "bmad-bam-vector-database-design",
+    "menu-code": "VDD",
+    "description": "Design tenant-isolated vector storage for RAG systems",
+    "supports-headless": true,
+    "phase-name": "3-solutioning",
+    "after": ["bmad-bam-rag-pipeline-design"],
+    "before": ["bmad-bam-embedding-strategy-design"],
+    "is-required": false,
+    "output-location": "{output_folder}/planning-artifacts/architecture"
+  }]
+}

@@ -1,9 +1,8 @@
 ---
-name: bmad-bam-validate-foundation
+name: validate-foundation
 displayName: Validate Foundation
 description: Validate BAM foundation gate readiness. Use when the user requests to 'validate foundation' or 'check foundation gate'.
 module: bam
-web_bundle: true
 tags: [foundation]
 ---
 
@@ -19,7 +18,7 @@ Act as a Platform Architect performing foundation readiness assessment.
 
 ## On Activation
 
-Load available config from `{project-root}/_bmad/config.yaml` and `{project-root}/_bmad/config.user.yaml` (root and `bam` section). If config is missing, let the user know `bmad-bam-setup` can configure the module at any time. Resolve:
+Load available config from `{project-root}/_bmad/config.yaml` and `{project-root}/_bmad/config.user.yaml` (root and `bam` section). If config is missing, let the user know they can configure BAM settings in `{project-root}/_bmad/config.yaml` under the `bam` section, or re-run `npx bmad-method install` to reconfigure. Resolve:
 
 - `{user_name}`, `{communication_language}`, `{document_output_language}`, `{output_folder}`
 
@@ -29,9 +28,20 @@ Search for and load `{project-root}/**/project-context.md` as foundational refer
 
 **Note:** If the user provides additional information during guided steps, capture it for later use without breaking the current flow.
 
+## When to Use
+
+- Validating foundation architecture against QG-F1
+- Checking master architecture completeness
+- Verifying foundation quality gate requirements
+
 ## Mode
 
 This workflow operates in **Validate** mode — checking existing artifacts against quality criteria.
+
+## Quality Gates
+
+- **Entry Gate:** QG-M1, QG-M2, QG-M3 (sub-gates must pass before running composite Foundation Gate)
+- **Exit Gate:** QG-F1 (Foundation Gate - enables module development)
 
 ## Gate Hierarchy Context
 
@@ -106,7 +116,7 @@ foundation:
 ## References
 
 - Checklist: `bam/checklists/foundation-gate.md`
-- Run Contract Patterns: `bam/knowledge/run-contract-patterns.md`
+- Run Contract Patterns: `bam/knowledge/run-contracts.md`
 - Context Compiler Patterns: `bam/knowledge/context-compiler-patterns.md`
 - Action Gateway Patterns: `bam/knowledge/action-gateway-patterns.md`
 - Tenant Isolation Testing: `bam/knowledge/testing-tenant-isolation.md`
@@ -115,8 +125,8 @@ foundation:
 - Workflow Ownership: `bam/knowledge/workflow-ownership.md`
 
 - Template: `bam/templates/sprint-status-template.yaml`
-- Knowledge: `bam/knowledge/run-contract-patterns.md`, `bam/knowledge/action-gateway-patterns.md`, `bam/knowledge/context-compiler-patterns.md`, `bam/knowledge/section-reference-map.md`
-- Run Contract Patterns: `bam/knowledge/run-contract-patterns.md`
+- Knowledge: `bam/knowledge/run-contracts.md`, `bam/knowledge/action-gateway-patterns.md`, `bam/knowledge/context-compiler-patterns.md`, `bam/knowledge/section-reference-map.md`
+- Run Contract Patterns: `bam/knowledge/run-contracts.md`
 - Context Compiler Patterns: `bam/knowledge/context-compiler-patterns.md`
 - Action Gateway Patterns: `bam/knowledge/action-gateway-patterns.md`
 - Tenant Isolation Testing: `bam/knowledge/testing-tenant-isolation.md`

@@ -1,0 +1,9 @@
+type: workflow
+name: golden-dataset-management
+displayName: Golden Dataset Management
+description: "Design golden dataset lifecycle for AI evaluation. Use when the user requests 'design golden dataset' or 'AI evaluation data'."
+module: bam
+config_variables:
+  - tenant_model
+  - ai_runtime
+step_naming_convention: "step-NN-mode-description"

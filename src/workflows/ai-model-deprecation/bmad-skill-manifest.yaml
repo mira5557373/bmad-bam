@@ -1,0 +1,10 @@
+type: workflow
+name: ai-model-deprecation
+displayName: AI Model Deprecation
+description: "Operations workflow for deprecating AI models in multi-tenant platforms. Covers tenant impact assessment, migration planning, model sunset communication, and safe decommissioning."
+module: bam
+phase: 6-operations
+config_variables:
+  - tenant_model
+  - ai_runtime
+step_naming_convention: "step-NN-mode-description"

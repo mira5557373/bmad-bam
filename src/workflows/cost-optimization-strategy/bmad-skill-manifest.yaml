@@ -1,0 +1,7 @@
+type: workflow
+name: cost-optimization-strategy
+displayName: Cost Optimization Strategy
+description: "Design cost optimization recommendations for multi-tenant platforms. Use when the user requests to 'design cost optimization' or 'plan cloud cost reduction'."
+module: bam
+config_variables:
+  - tenant_model

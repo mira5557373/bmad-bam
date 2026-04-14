@@ -1,6 +1,5 @@
 type: workflow
-name: bmad-bam-usage-metering-design
+name: usage-metering-design
 displayName: Usage Metering Design
 description: "Design usage metering pipeline for billing. Use when the user requests to 'design usage metering' or 'configure billing pipeline'."
 module: bam
-canonicalId: bmad-bam-usage-metering-design

@@ -1,9 +1,8 @@
 ---
-name: bmad-bam-facade-mismatch-recovery
+name: facade-mismatch-recovery
 displayName: Facade Mismatch Recovery
 description: Recover from unplanned facade contract divergence. Use when the user requests to 'fix facade mismatch' or 'recover contract divergence'.
 module: bam
-web_bundle: true
 tags: [integration]
 ---
 
@@ -30,6 +29,12 @@ Search for and load `{project-root}/**/project-context.md` as foundational refer
 **Note:** If the user provides additional information during guided steps, capture it for later use without breaking the current flow.
 
 **Intent Check:** Confirm the user's intent and the target module or contract path before processing. Verify the facade contract exists and the reported mismatch is the correct target for recovery.
+
+## When to Use
+
+- Recovering from facade contract mismatches
+- Resolving module integration conflicts
+- Repairing broken contract dependencies
 
 ## Mode
 
@@ -85,6 +90,20 @@ Default: **Create** mode. In headless mode, always use Create.
 - `{output_folder}/planning-artifacts/contracts/{module}-mismatch-report.md` — mismatch report (what diverged, severity, affected consumers)
 - Recovery plan with specific actions
 - Updated contract or implementation stories
+
+## Quality Gates
+
+This workflow contributes to:
+- **QG-I1** (Convergence) - Recovery workflow for contract alignment
+
+### Entry Gate
+- QG-M1 (Module Architecture) must pass for affected module
+- Mismatch detected between contract and implementation
+
+### Exit Gate
+- Contract and implementation aligned
+- All consumers verified working
+- Recovery documented and sprint-status updated
 
 ## References
 

@@ -1,0 +1,5 @@
+type: workflow
+name: api-deprecation-strategy
+displayName: API Deprecation Strategy
+description: "Design API deprecation lifecycle with sunset dates and migration support. Use when the user requests to 'deprecate API' or 'sunset endpoints'."
+module: bam

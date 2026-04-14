@@ -11,9 +11,27 @@ menu:
   - trigger: bam-dt-context
     action: "#load-bam-dt-context-prompt"
     description: Load BAM design thinking context
-  - trigger: tenant-empathy
+  - trigger: bam-dt-tenant-empathy
     action: "#tenant-empathy-prompt"
     description: Empathize with tenant personas
+  - trigger: bam-dt-research
+    action: "#web-research-design-thinking-prompt"
+    description: Conduct web research for design thinking decisions
+  - trigger: bam-dt-problem-reframe
+    action: "#problem-reframe-prompt"
+    description: Reframe multi-tenant challenges as opportunities
+  - trigger: bam-dt-prototype-isolation
+    action: "#prototype-isolation-prompt"
+    description: Design isolation-aware prototypes
+  - trigger: bam-dt-journey-mapping
+    action: "#tenant-journey-mapping-prompt"
+    description: Map tenant journey across tiers
+  - trigger: bam-dt-ideation-constraints
+    action: "#constrained-ideation-prompt"
+    description: Generate ideas within tier constraints
+  - trigger: bam-dt-test-multitenancy
+    action: "#multitenancy-testing-prompt"
+    description: Design multi-tenant user testing approaches
 
 prompts:
   - id: load-bam-dt-context-prompt
@@ -43,6 +61,8 @@ prompts:
     content: |
       ## Tenant Empathy Exercise
 
+      **Load patterns:** `{project-root}/_bmad/bam/data/bam-patterns.csv` → filter: `customization, experimentation, tenant-lifecycle`
+
       Conduct a structured empathy exercise to deeply understand the experience of users
       across different tenant tiers. For each tier, explore the following dimensions:
 
@@ -65,3 +85,263 @@ prompts:
       - How do they evaluate ROI for their organization?
 
       Document insights using empathy maps for each tier and identify cross-tier patterns.
+
+  - id: web-research-design-thinking-prompt
+    content: |
+      ## BAM Web Research - Design Thinking
+
+      Conduct targeted web research for multi-tenant SaaS design research and user research decisions.
+
+      **Research Focus:** {{research_topic}}
+
+      Execute 2-3 targeted searches:
+      - "{{research_topic}} design research best practices {date}"
+      - "{{research_topic}} SaaS patterns {date}"
+      - "{{research_topic}} user research techniques {date}"
+
+      Return findings as structured summary:
+
+      ### Key Findings
+      - {Finding 1} _Source: [URL]_
+      - {Finding 2} _Source: [URL]_
+
+      ### Applicable Patterns
+      - {Pattern 1}
+
+      ### Sources
+      - [URL 1]
+      - [URL 2]
+
+  - id: problem-reframe-prompt
+    content: |
+      ## Multi-Tenant Problem Reframing
+
+      Prerequisites: Ensure BAM context loaded via `bam-dt-context`
+
+      **Load patterns:** `{project-root}/_bmad/bam/data/bam-patterns.csv` → filter: `tenant-isolation, customization`
+
+      ### Objective
+      Reframe multi-tenant challenges as innovation opportunities using
+      design thinking problem reframing techniques.
+
+      ### Process
+
+      1. **Challenge Identification**
+         - List current multi-tenant pain points
+         - Identify constraints that seem limiting
+         - Surface assumptions being made
+
+         | Challenge | Current Frame | Reframed Opportunity |
+         |-----------|--------------|---------------------|
+         | Tenant isolation overhead | Cost center | Trust differentiator |
+         | Feature parity across tiers | Limitation | Clear value ladder |
+         | Noisy neighbor issues | Technical debt | Fair usage features |
+         | Customization requests | Support burden | Premium upsell path |
+
+      2. **How Might We Questions**
+         - Transform constraints into HMW questions
+         - Generate multiple reframes per challenge
+         - Prioritize most generative frames
+
+      3. **Opportunity Mapping**
+         - Map reframed opportunities to business value
+         - Identify quick wins vs strategic investments
+         - Connect to tier differentiation strategy
+
+      ### Verification Checklist
+      - [ ] All major challenges reframed
+      - [ ] Business value identified for each opportunity
+      - [ ] Prioritization criteria applied
+      - [ ] Stakeholder alignment achieved
+
+      ### Output
+      Produce reframed problem statement document with HMW questions,
+      opportunity map, and recommended focus areas.
+
+  - id: prototype-isolation-prompt
+    content: |
+      ## Isolation-Aware Prototype Design
+
+      Prerequisites: Ensure BAM context loaded via `bam-dt-context`
+
+      **Load patterns:** `{project-root}/_bmad/bam/data/bam-patterns.csv` → filter: `tenant-isolation, experimentation`
+
+      ### Objective
+      Design prototypes that accurately represent tier-specific experiences
+      while respecting tenant isolation boundaries.
+
+      ### Process
+
+      1. **Prototype Fidelity Planning**
+         - Determine appropriate fidelity per tier
+         - Plan isolation boundary representation
+         - Design upgrade/downgrade simulation
+
+         | Prototype Type | Best For | Isolation Consideration |
+         |----------------|----------|------------------------|
+         | Paper/Wireframe | Early concepts | Show tier badges, locked features |
+         | Clickable mockup | User flows | Simulate tier restrictions |
+         | Coded prototype | Technical validation | Mock tenant context |
+         | Production pilot | Final validation | Real isolation, test tenants |
+
+      2. **Tier-Specific Prototype Variations**
+         - Create separate flows per tier
+         - Design upgrade trigger moments
+         - Show feature gate experiences
+
+      3. **Data Isolation in Prototypes**
+         - Plan test data strategies
+         - Design multi-tenant simulation
+         - Consider cross-tenant scenarios
+
+      ### Verification Checklist
+      - [ ] Prototype represents real tier experience
+      - [ ] Isolation boundaries clearly communicated
+      - [ ] Upgrade paths testable in prototype
+      - [ ] Test data does not leak between sessions
+
+      ### Output
+      Produce prototype specification with tier variations,
+      data requirements, and testing approach.
+
+  - id: tenant-journey-mapping-prompt
+    content: |
+      ## Tenant Journey Mapping
+
+      Prerequisites: Ensure BAM context loaded via `bam-dt-context`
+
+      **Load patterns:** `{project-root}/_bmad/bam/data/bam-patterns.csv` → filter: `tenant-lifecycle, customization`
+
+      ### Objective
+      Map the complete tenant journey from discovery through expansion,
+      identifying opportunities for improvement at each stage.
+
+      ### Process
+
+      1. **Journey Stage Definition**
+         - Discovery and evaluation
+         - Signup and onboarding
+         - Activation and first value
+         - Ongoing usage and expansion
+         - Upgrade and tier transition
+         - Advocacy or churn
+
+         | Stage | Tenant Actions | Platform Touchpoints | Emotions |
+         |-------|---------------|---------------------|----------|
+         | Discovery | Research, compare | Marketing, demos | Curious, skeptical |
+         | Signup | Create account | Signup flow, trial | Hopeful, cautious |
+         | Onboarding | Configure, import | Setup wizard, docs | Overwhelmed, excited |
+         | Activation | First workflow | Core features | Accomplished, frustrated |
+         | Expansion | Team growth | Collaboration, limits | Growing, constrained |
+         | Upgrade | Tier decision | Pricing, comparison | Evaluating, committed |
+
+      2. **Pain Point and Opportunity Identification**
+         - Map friction at each stage
+         - Identify emotional low points
+         - Surface unmet needs
+
+      3. **Tier-Specific Journey Variations**
+         - How Free journey differs from Enterprise
+         - Where tier boundaries create friction
+         - Upgrade trigger optimization
+
+      ### Verification Checklist
+      - [ ] All journey stages mapped
+      - [ ] Pain points identified with evidence
+      - [ ] Opportunities prioritized
+      - [ ] Tier variations documented
+
+      ### Output
+      Produce journey map visualization with pain points, opportunities,
+      and recommended interventions per stage.
+
+  - id: constrained-ideation-prompt
+    content: |
+      ## Tier-Constrained Ideation
+
+      Prerequisites: Ensure BAM context loaded via `bam-dt-context`
+
+      **Load patterns:** `{project-root}/_bmad/bam/data/bam-patterns.csv` → filter: `customization, experimentation`
+
+      ### Objective
+      Generate creative solutions that work within tier constraints
+      while still delivering meaningful value at each level.
+
+      ### Process
+
+      1. **Constraint Definition**
+         - Define tier-specific constraints
+         - Identify non-negotiable boundaries
+         - Surface hidden flexibility
+
+         | Tier | Hard Constraints | Soft Constraints | Innovation Space |
+         |------|-----------------|------------------|------------------|
+         | FREE | Usage limits, no support | Feature set | UX optimization |
+         | PRO | SLA limits, standard security | Customization | Workflow innovation |
+         | ENTERPRISE | Compliance requirements | Nothing | Full capability |
+
+      2. **Constrained Brainstorming Techniques**
+         - Constraint removal exercise
+         - Constraint inversion exercise
+         - Minimum viable feature design
+
+      3. **Value Maximization Within Limits**
+         - Identify maximum value at each tier
+         - Design for constraint satisfaction
+         - Create delight within boundaries
+
+      ### Verification Checklist
+      - [ ] Solutions respect tier boundaries
+      - [ ] Value delivery verified at each tier
+      - [ ] Upgrade motivation maintained
+      - [ ] Implementation feasibility confirmed
+
+      ### Output
+      Produce ideation results organized by tier with constraint
+      satisfaction analysis and implementation recommendations.
+
+  - id: multitenancy-testing-prompt
+    content: |
+      ## Multi-Tenant User Testing Design
+
+      Prerequisites: Ensure BAM context loaded via `bam-dt-context`
+
+      **Load patterns:** `{project-root}/_bmad/bam/data/bam-patterns.csv` → filter: `tenant-isolation, experimentation`
+
+      ### Objective
+      Design user testing approaches that gather insights across tenant
+      segments while maintaining data isolation and privacy.
+
+      ### Process
+
+      1. **Testing Approach Selection**
+         - Moderated vs unmoderated testing
+         - In-product vs external testing
+         - Tenant recruitment strategy
+
+         | Approach | Best For | Isolation Requirement |
+         |----------|----------|----------------------|
+         | In-product surveys | Quick feedback | Tenant-scoped responses |
+         | Moderated testing | Deep insights | Separate test accounts |
+         | Beta programs | Early feedback | Opt-in tenant groups |
+         | A/B testing | Quantitative validation | Tenant-aware assignment |
+
+      2. **Cross-Tenant Insight Aggregation**
+         - Privacy-preserving analysis
+         - Segment-specific findings
+         - Anonymized benchmarking
+
+      3. **Tier-Specific Testing Considerations**
+         - Free tier user research challenges
+         - Enterprise stakeholder involvement
+         - Upgrade path testing
+
+      ### Verification Checklist
+      - [ ] Privacy requirements met
+      - [ ] Tenant isolation maintained
+      - [ ] Representative sample achieved
+      - [ ] Insights actionable per segment
+
+      ### Output
+      Produce user testing plan with methodology, recruitment approach,
+      privacy safeguards, and analysis framework.

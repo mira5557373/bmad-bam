@@ -1,9 +1,8 @@
 ---
-name: bmad-bam-create-module-epics
+name: create-module-epics
 displayName: Create Module Epics
 description: Create module-scoped epics and stories. Use when the user requests to 'create module epics' or 'plan module stories'.
 module: bam
-web_bundle: true
 tags: [module]
 ---
 
@@ -19,7 +18,7 @@ Act as a Platform Architect creating implementation-ready epics for a bounded mo
 
 ## On Activation
 
-Load available config from `{project-root}/_bmad/config.yaml` and `{project-root}/_bmad/config.user.yaml` (root and `bam` section). If config is missing, let the user know `bmad-bam-setup` can configure the module at any time. Resolve:
+Load available config from `{project-root}/_bmad/config.yaml` and `{project-root}/_bmad/config.user.yaml` (root and `bam` section). If config is missing, let the user know they can configure BAM settings in `{project-root}/_bmad/config.yaml` under the `bam` section, or re-run `npx bmad-method install` to reconfigure. Resolve:
 
 - `{user_name}`, `{communication_language}`, `{document_output_language}`, `{output_folder}`
 
@@ -35,6 +34,12 @@ Verify prerequisites:
 - Foundation gate must have passed
 
 **Intent Check:** Confirm the user's intent and the target module name before processing. Verify the module architecture exists and is the correct target for epic creation.
+
+## When to Use
+
+- Creating epic-level stories for new modules
+- Breaking down module scope into development phases
+- Planning module implementation milestones
 
 ## Mode
 
@@ -95,3 +100,18 @@ Create a spike story when:
 - Template: `bam/templates/sprint-status-template.yaml`
 - Knowledge: `bam/knowledge/independent-development.md`, `bam/knowledge/parallel-development-guide.md`
 - Parallel Development Guide: `bam/knowledge/parallel-development-guide.md`
+
+## Quality Gates
+
+This workflow contributes to:
+- **QG-M1** (Module Architecture) - Supports module architecture gate with implementation planning
+
+### Entry Gate
+- QG-F1 (Foundation) must have passed
+- Module architecture must exist (`modules/{module}/architecture.md`)
+
+### Exit Gate
+- Epics created with complexity-aware granularity
+- All stories implementable within module boundary
+- Spike stories created for high-uncertainty areas (COMPLEX modules)
+- Sprint-status updated: module status → 'epics-complete'

@@ -1,9 +1,8 @@
 ---
-name: bmad-bam-usage-metering-design
+name: usage-metering-design
 displayName: Usage Metering Design
 description: Design usage metering pipeline for billing. Use when the user requests to 'design usage metering' or 'configure billing pipeline'.
 module: bam
-web_bundle: true
 tags: [platform]
 ---
 
@@ -28,6 +27,12 @@ Search for and load `{project-root}/**/project-context.md` as foundational refer
 **If running in headless mode (`-H`):** Use defaults for all optional inputs, skip confirmation prompts, and auto-proceed through all steps.
 
 **Note:** If the user provides additional information during guided steps, capture it for later use without breaking the current flow.
+
+## When to Use
+
+- Designing usage metering and tracking
+- Creating billing integration patterns
+- Building quota management systems
 
 ## Mode
 
@@ -98,7 +103,19 @@ Configure event sources:
 - Discrepancy alerting (>5% variance triggers investigation)
 - Monthly audit report
 
-### Quality Gates
+## Quality Gates
+
+| Gate | Contribution | Description |
+|------|--------------|-------------|
+| **QG-F1** | Contributes | Foundation-level billing architecture |
+| **QG-M2** | Contributes | Tenant-scoped metering and quotas |
+| **QG-I2** | Contributes | Tenant safety in usage tracking |
+| **QG-P1** | Contributes | Production-ready billing pipeline |
+
+- **Entry Gate:** QG-F1 (Foundation) - Master architecture must define billing approach
+- **Exit Gate:** QG-M2 (Tenant Isolation) - Metering must be tenant-scoped
+
+### Verification Checklist
 
 - [ ] All metering dimensions mapped to Kafka events
 - [ ] Orb pricing plans configured per tenant tier

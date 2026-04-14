@@ -1,0 +1,9 @@
+type: workflow
+name: ai-model-security
+displayName: AI Model Security
+description: "Design security controls for AI model lifecycle including poisoning prevention and supply chain security. Use when the user requests 'design model security' or 'AI model supply chain'."
+module: bam
+config_variables:
+  - tenant_model
+  - ai_runtime
+step_naming_convention: "step-NN-mode-description"

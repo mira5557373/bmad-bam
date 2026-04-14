@@ -1,0 +1,5 @@
+type: workflow
+name: pii-detection-redaction
+displayName: PII Detection & Redaction
+description: "Design PII detection and redaction pipeline for AI contexts. Use when the user requests to 'implement PII detection' or 'design data redaction'."
+module: bam

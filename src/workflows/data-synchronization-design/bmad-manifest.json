@@ -1,0 +1,14 @@
+{
+  "module-code": "bam",
+  "capabilities": [{
+    "name": "bmad-bam-data-synchronization-design",
+    "menu-code": "DSD",
+    "description": "Design data synchronization patterns for multi-tenant systems. Use when the user requests to 'design data sync' or 'configure replication patterns'.",
+    "supports-headless": true,
+    "phase-name": "3-solutioning",
+    "after": ["bmad-bam-tenant-model-isolation"],
+    "before": [],
+    "is-required": false,
+    "output-location": "{output_folder}/planning-artifacts/data"
+  }]
+}

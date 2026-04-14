@@ -1,0 +1,5 @@
+type: workflow
+name: graphql-design
+displayName: GraphQL API Design
+description: "Design GraphQL API layer with schema federation and tenant context. Use when the user requests to 'design GraphQL API' or 'create GraphQL schema'."
+module: bam

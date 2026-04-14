@@ -9,6 +9,7 @@ const yaml = require('js-yaml');
 
 const ROOT_DIR = path.join(__dirname, '..');
 const SRC_DIR = path.join(ROOT_DIR, 'src');
+const WORKFLOWS_DIR = path.join(SRC_DIR, 'workflows');
 
 describe('Tier 1: Installation Validation', () => {
   describe('Package Configuration', () => {
@@ -42,12 +43,12 @@ describe('Tier 1: Installation Validation', () => {
 
   describe('Module Definition', () => {
     test('module.yaml exists', () => {
-      const modulePath = path.join(SRC_DIR, 'module.yaml');
+      const modulePath = path.join(WORKFLOWS_DIR, 'module.yaml');
       expect(fs.existsSync(modulePath)).toBe(true);
     });
 
     test('module.yaml has required fields', () => {
-      const modulePath = path.join(SRC_DIR, 'module.yaml');
+      const modulePath = path.join(WORKFLOWS_DIR, 'module.yaml');
       const content = fs.readFileSync(modulePath, 'utf-8');
       const module = yaml.load(content);
 
@@ -57,7 +58,7 @@ describe('Tier 1: Installation Validation', () => {
     });
 
     test('module.yaml has configuration variables', () => {
-      const modulePath = path.join(SRC_DIR, 'module.yaml');
+      const modulePath = path.join(WORKFLOWS_DIR, 'module.yaml');
       const content = fs.readFileSync(modulePath, 'utf-8');
       const module = yaml.load(content);
 
@@ -69,10 +70,9 @@ describe('Tier 1: Installation Validation', () => {
 
   describe('Directory Structure', () => {
     const requiredDirs = [
-      'src/agents',
       'src/workflows',
       'src/extensions',
-      'src/knowledge',
+      'src/data',
       'src/checklists',
       'src/templates',
       'src/data/agent-guides/bam',
@@ -88,22 +88,22 @@ describe('Tier 1: Installation Validation', () => {
 
   describe('Help System', () => {
     test('module-help.csv exists', () => {
-      const helpPath = path.join(SRC_DIR, 'module-help.csv');
+      const helpPath = path.join(WORKFLOWS_DIR, 'module-help.csv');
       expect(fs.existsSync(helpPath)).toBe(true);
     });
 
     test('module-help.csv has correct column count', () => {
-      const helpPath = path.join(SRC_DIR, 'module-help.csv');
+      const helpPath = path.join(WORKFLOWS_DIR, 'module-help.csv');
       const content = fs.readFileSync(helpPath, 'utf-8');
       const lines = content.trim().split('\n');
       const header = lines[0].split(',');
 
-      // Should have 13 columns per BMB schema
-      expect(header.length).toBe(13);
+      // Should have 14 columns per BMB schema (including keywords column for semantic search)
+      expect(header.length).toBe(14);
     });
 
     test('all module-help entries have module=bam', () => {
-      const helpPath = path.join(SRC_DIR, 'module-help.csv');
+      const helpPath = path.join(WORKFLOWS_DIR, 'module-help.csv');
       const content = fs.readFileSync(helpPath, 'utf-8');
       const lines = content.trim().split('\n').slice(1); // Skip header
 
@@ -116,38 +116,63 @@ describe('Tier 1: Installation Validation', () => {
 });
 
 describe('File Counts', () => {
-  test('has 3 agents', () => {
+  test('has 0 agents (pure extension module)', () => {
     const agentsDir = path.join(SRC_DIR, 'agents');
+    if (!fs.existsSync(agentsDir)) {
+      expect(true).toBe(true); // No agents directory is valid for pure extension module
+      return;
+    }
     const agents = fs.readdirSync(agentsDir)
       .filter(f => fs.statSync(path.join(agentsDir, f)).isDirectory());
-    expect(agents.length).toBe(3);
+    expect(agents.length).toBe(0);
   });
 
-  test('has 18 extensions', () => {
+  test('has 31 extensions', () => {
     const extensionsDir = path.join(SRC_DIR, 'extensions');
     const extensions = fs.readdirSync(extensionsDir)
       .filter(f => f.endsWith('.yaml'));
-    expect(extensions.length).toBe(18);
+    // Increased from 28 to 31 after adding billing-bam, analytics-bam, reseller-bam
+    expect(extensions.length).toBe(31);
   });
 
-  test('has 30 knowledge fragments', () => {
-    const knowledgeDir = path.join(SRC_DIR, 'knowledge');
-    const fragments = fs.readdirSync(knowledgeDir)
-      .filter(f => f.endsWith('.md'));
-    expect(fragments.length).toBe(30);
+  test('has 6 pattern registry CSVs', () => {
+    const dataDir = path.join(SRC_DIR, 'data');
+    const csvFiles = fs.readdirSync(dataDir)
+      .filter(f => f.endsWith('.csv'));
+    expect(csvFiles.length).toBe(6);
   });
 
-  test('has 10 checklists', () => {
+  test('has 36 checklists', () => {
     const checklistsDir = path.join(SRC_DIR, 'checklists');
     const checklists = fs.readdirSync(checklistsDir)
-      .filter(f => f.endsWith('.md'));
-    expect(checklists.length).toBe(10);
+      .filter(f => f.endsWith('.md') && f !== 'README.md');
+    // Increased to 22 after adding qg-compliance-continuous.md, qg-ai-observability.md,
+    // qg-capacity-planning.md, qg-disaster-recovery-drill.md for specialized quality gates
+    // Increased to 24 after adding production-checklist.md, security-checklist.md
+    // Increased to 30 after adding BMM/TEA compatibility gates:
+    // qg-tc1-tenant-unit-coverage.md, qg-tc2-rls-coverage.md, qg-tc3-cross-tenant-coverage.md,
+    // qg-dev1-pre-commit.md
+    // Increased to 32 after adding phase 1-2 gates:
+    // qg-d1-discovery.md, qg-pl1-planning.md
+    // Increased to 35 after adding additional checklists
+    // Increased to 36 after adding qg-ai1-ai-safety.md
+    expect(checklists.length).toBe(36);
   });
 
-  test('has 15 agent guides', () => {
+  test('has 189 agent guides', () => {
     const guidesDir = path.join(SRC_DIR, 'data', 'agent-guides', 'bam');
     const guides = fs.readdirSync(guidesDir)
       .filter(f => f.endsWith('.md'));
-    expect(guides.length).toBe(15);
+    // Reduced from 185 to 176 after removing 9 duplicate agent guides:
+    // scale-patterns, event-driven, local-dev, audit-trail-patterns, caching-strategy,
+    // memory-tier-patterns, run-contract-patterns, white-labeling-patterns, agent-runtime
+    // Then increased to 182 after adding 6 new workflow-specific guides:
+    // data-protection.md, production-readiness.md, runbook-guide.md,
+    // security-operations.md, tenant-safety.md, ai-security.md
+    // Then increased to 188 after adding 6 observability guides:
+    // rag-observability.md, tool-execution-observability.md, agent-tracing.md,
+    // vector-store-observability.md, embedding-observability.md, context-window-observability.md
+    // Increased to 189 after adding tenant-data-anonymization.md
+    expect(guides.length).toBe(189);
   });
 });

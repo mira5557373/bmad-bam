@@ -1,9 +1,8 @@
 ---
-name: bmad-bam-create-master-architecture
+name: create-master-architecture
 displayName: Create Master Architecture
 description: Create frozen master architecture for BAM platform. Use when the user requests to 'create master architecture' or 'start BAM foundation'.
 module: bam
-web_bundle: true
 tags: [foundation]
 ---
 
@@ -19,7 +18,7 @@ Act as a senior Platform Architect specializing in modular-monolith, multi-tenan
 
 ## On Activation
 
-Load available config from `{project-root}/_bmad/config.yaml` and `{project-root}/_bmad/config.user.yaml` (root and `bam` section). If config is missing, let the user know `bmad-bam-setup` can configure the module at any time. Resolve:
+Load available config from `{project-root}/_bmad/config.yaml` and `{project-root}/_bmad/config.user.yaml` (root and `bam` section). If config is missing, let the user know they can configure BAM settings in `{project-root}/_bmad/config.yaml` under the `bam` section, or re-run `npx bmad-method install` to reconfigure. Resolve:
 
 - `{user_name}` — address the user by name
 - `{communication_language}` — all communications
@@ -33,6 +32,20 @@ Detect headless mode from args or user intent.
 **If running in headless mode (`-H`):** Use defaults for all optional inputs, skip confirmation prompts, and auto-proceed through all steps.
 
 **Note:** If the user provides additional information during guided steps, capture it for later use without breaking the current flow.
+
+## When to Use
+
+- Starting a new BAM platform project
+- Creating frozen master architecture decisions
+- Establishing tenant model, AI runtime, and module boundaries
+
+## Modes
+
+| Mode | Purpose | Step Range |
+|------|---------|------------|
+| Create | Generate new master architecture | `step-01-c-*` to `step-09-c-*` |
+| Edit | Modify existing architecture (requires ADR) | `step-10-e-*` to `step-11-e-*` |
+| Validate | Check against QG-F1 criteria | `step-20-v-*` to `step-22-v-*` |
 
 ## Workflow
 
@@ -159,3 +172,26 @@ Present summary of what was produced. If not headless, ask if adjustments are ne
 - RLS Best Practices: `bam/knowledge/rls-best-practices.md`
 - Workflow Sequence: `bam/knowledge/workflow-sequence.md`
 - Workflow Ownership: `bam/knowledge/workflow-ownership.md`
+
+## Quality Gates
+
+This workflow contributes to:
+- **QG-F1** (Foundation) - Defines master architecture
+
+### Entry Gate
+- No prerequisite gates (first workflow in foundation phase)
+
+### Exit Gate
+- QG-F1 checklist items from `foundation-gate.md` verified
+- All 7 required sections present (tenant model, AI runtime, module boundaries, shared kernel, tech stack, contracts, code patterns)
+- All TSA technologies have version pins
+- All isolation strategies defined
+- Shared kernel interfaces complete
+- At least 4 code pattern examples
+
+## Web Research
+
+This workflow uses web search to verify current best practices. Steps involving technology decisions will include:
+- `Search the web:` directives for pattern verification
+- Pattern registry `web_queries` for search topics
+- Source citations: `_Source: [URL]_`

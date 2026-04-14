@@ -1,0 +1,5 @@
+type: workflow
+name: ai-observability-setup
+displayName: AI Observability Setup
+description: "Set up AI/LLM observability for multi-tenant platform. Use when the user requests to 'setup AI observability' or 'configure LLM monitoring'."
+module: bam

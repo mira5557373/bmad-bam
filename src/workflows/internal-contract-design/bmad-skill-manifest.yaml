@@ -1,6 +1,5 @@
 type: workflow
-name: bmad-bam-internal-contract-design
+name: internal-contract-design
 displayName: Internal Contract Design
 description: "Design module facade contracts and event schemas. Use when the user requests to 'design internal contracts' or 'specify module interfaces'."
 module: bam
-canonicalId: bmad-bam-internal-contract-design

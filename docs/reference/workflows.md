@@ -1,6 +1,6 @@
 # Workflow Reference
 
-BAM provides 27 workflows organized by phase.
+BAM provides **67 workflows** organized by phase.
 
 ## Foundation Phase
 
@@ -73,25 +73,27 @@ BAM provides 27 workflows organized by phase.
 
 ## Workflow Structure
 
-Each workflow follows the CEV pattern:
+Each workflow follows the CEV pattern with a **unified steps/ directory**:
 
 ```
 workflow-name/
 ├── bmad-skill-manifest.yaml   # Skill definition
 ├── SKILL.md                   # Full instructions
 ├── workflow.md                # Mode selection
-├── workflow.yaml              # Configuration
-├── steps-c/                   # Create mode
-│   ├── 01-first-step.md
-│   ├── 02-second-step.md
-│   └── ...
-├── steps-e/                   # Edit mode
-│   ├── 01-load-existing.md
-│   └── 02-apply-changes.md
-└── steps-v/                   # Validate mode
-    ├── 01-load-artifact.md
-    └── 02-validate.md
+├── workflow.yaml              # Configuration (optional)
+├── bmad-manifest.json         # Dependency chain (optional)
+└── steps/                     # Unified steps directory
+    ├── step-01-c-first-step.md    # Create mode (01-09)
+    ├── step-02-c-second-step.md
+    ├── ...
+    ├── step-10-e-load-existing.md # Edit mode (10-19)
+    ├── step-11-e-apply-changes.md
+    ├── step-20-v-load-artifact.md # Validate mode (20-29)
+    ├── step-21-v-validate.md
+    └── step-22-v-report.md
 ```
+
+> **Note:** BAM uses a unified `steps/` directory with mode suffixes (`-c-`, `-e-`, `-v-`) rather than separate `steps-c/`, `steps-e/`, `steps-v/` directories. This simplifies navigation and is semantically equivalent.
 
 ## Mode Selection
 

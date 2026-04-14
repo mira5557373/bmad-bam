@@ -1,0 +1,61 @@
+---
+name: sprint-status-template
+type: status-report
+description: Track sprint status for BAM workflow iterations
+---
+# Sprint Status Report
+
+## Metadata
+project: '{{project_name}}'
+sprint: '{{sprint_number}}'
+date: '{{date}}'
+author: '{{user_name}}'
+
+## Summary
+summary:
+  overall_health: '{{green|yellow|red}}'
+  goals_completed: '{{completed_count}}/{{total_goals}}'
+  blockers_count: '{{blocker_count}}'
+  quality_gates_passed: '{{passed_count}}/{{total_gates}}'
+
+## Sprint Goals
+goals:
+  - id: 'G1'
+    description: '{{goal_1_description}}'
+    status: '{{not_started|in_progress|completed|blocked}}'
+    completion_percentage: '{{0-100}}'
+
+## Workflow Progress
+workflows:
+  - name: '{{workflow_name}}'
+    status: '{{not_started|in_progress|completed}}'
+    blockers: []
+    notes: ''
+
+## Quality Gates
+quality_gates:
+  - gate: '{{gate_id}}'
+    status: '{{pending|passed|failed}}'
+    evidence: ''
+    failure_reason: ''
+
+## Risks and Issues
+risks:
+  - id: 'R1'
+    description: '{{risk_description}}'
+    severity: '{{low|medium|high|critical}}'
+    mitigation: '{{mitigation_strategy}}'
+    status: '{{open|mitigated|closed}}'
+
+## Decisions Made
+decisions:
+  - id: 'D1'
+    description: '{{decision_description}}'
+    rationale: '{{rationale}}'
+    date: '{{decision_date}}'
+
+## Next Sprint Planning
+next_sprint:
+  focus_areas: []
+  carry_over_items: []
+  estimated_velocity: '{{velocity}}'

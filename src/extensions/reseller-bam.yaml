@@ -1,0 +1,193 @@
+# src/extensions/reseller-bam.yaml
+# Pattern: WDS agent-guides (NO memories: field)
+
+agent:
+  metadata:
+    extends: 'bmad-agent-pm'
+    module: 'bam'
+    description: 'Reseller, partner, and white-label management for multi-tenant SaaS'
+
+menu:
+  # Context loader (REQUIRED)
+  - trigger: bam-reseller-context
+    action: "#load-reseller-context-prompt"
+    description: Load BAM reseller and partner context
+
+  # Reseller capabilities
+  - trigger: bam-design-white-label
+    action: "#design-white-label-prompt"
+    description: Design white-label deployment architecture
+
+  - trigger: bam-design-partner-program
+    action: "#design-partner-program-prompt"
+    description: Design partner/reseller program
+
+  - trigger: bam-design-tenant-hierarchy
+    action: "#design-tenant-hierarchy-prompt"
+    description: Design sub-tenant hierarchy for resellers
+
+  - trigger: bam-design-revenue-sharing
+    action: "#design-revenue-sharing-prompt"
+    description: Design revenue sharing models
+
+  - trigger: bam-design-partner-portal
+    action: "#design-partner-portal-prompt"
+    description: Design partner management portal
+
+  - trigger: bam-design-partner-certification
+    action: "#design-partner-certification-prompt"
+    description: Design partner certification program
+
+  - trigger: bam-design-marketplace
+    action: "#design-marketplace-prompt"
+    description: Design marketplace for partner apps
+
+  # Web research
+  - trigger: bam-reseller-research
+    action: "#bam-reseller-research-prompt"
+    description: Research current reseller/partner best practices
+
+prompts:
+  - id: load-reseller-context-prompt
+    content: |
+      Read and internalize the BAM reseller guides:
+      `{project-root}/_bmad/bam/data/agent-guides/bam/reseller-guide.md`
+
+      Also load related patterns:
+      - `{project-root}/_bmad/bam/data/agent-guides/bam/white-labeling-guide.md`
+      - `{project-root}/_bmad/bam/data/agent-guides/bam/tenant-hierarchy-patterns.md`
+
+      Confirm when loaded.
+
+  - id: design-white-label-prompt
+    content: |
+      ## Design White-Label Architecture
+
+      Prerequisites: Ensure reseller context loaded via `bam-reseller-context`
+
+      **Load patterns:** `{project-root}/_bmad/bam/data/bam-patterns.csv` -> filter: `customization`
+
+      Design white-label deployment:
+
+      1. Branding customization layers
+      2. Domain/subdomain management
+      3. Theme and styling system
+      4. Email template customization
+      5. Feature toggling per reseller
+      6. Data isolation for reseller tenants
+
+      **Output template:** `{project-root}/_bmad/bam/templates/white-label-template.md`
+
+  - id: design-partner-program-prompt
+    content: |
+      ## Design Partner Program
+
+      Prerequisites: Ensure reseller context loaded via `bam-reseller-context`
+
+      Design partner/reseller program:
+
+      1. Partner tier definitions
+      2. Onboarding requirements
+      3. Training and enablement
+      4. Co-marketing opportunities
+      5. Support escalation paths
+      6. Performance metrics and KPIs
+
+      **Output template:** `{project-root}/_bmad/bam/templates/partner-program-template.md`
+
+  - id: design-tenant-hierarchy-prompt
+    content: |
+      ## Design Tenant Hierarchy
+
+      Prerequisites: Ensure reseller context loaded via `bam-reseller-context`
+
+      Design sub-tenant hierarchy:
+
+      1. Hierarchy depth limits
+      2. Permission inheritance
+      3. Billing rollup
+      4. Data access patterns
+      5. Admin delegation
+      6. Reporting aggregation
+
+      Reference workflow: `bmad-bam-tenant-hierarchy-design`
+
+  - id: design-revenue-sharing-prompt
+    content: |
+      ## Design Revenue Sharing
+
+      Prerequisites: Ensure reseller context loaded via `bam-reseller-context`
+
+      Design revenue sharing models:
+
+      1. Commission structures
+      2. Margin management
+      3. Payout schedules
+      4. Reconciliation process
+      5. Clawback policies
+      6. Reporting and transparency
+
+      **Output template:** `{project-root}/_bmad/bam/templates/revenue-sharing-template.md`
+
+  - id: design-partner-portal-prompt
+    content: |
+      ## Design Partner Portal
+
+      Prerequisites: Ensure reseller context loaded via `bam-reseller-context`
+
+      Design partner management portal:
+
+      1. Dashboard and KPIs
+      2. Customer management tools
+      3. Lead distribution
+      4. Deal registration
+      5. Resource library
+      6. Support ticketing integration
+
+      **Output template:** `{project-root}/_bmad/bam/templates/partner-portal-template.md`
+
+  - id: design-partner-certification-prompt
+    content: |
+      ## Design Partner Certification
+
+      Prerequisites: Ensure reseller context loaded via `bam-reseller-context`
+
+      Design certification program:
+
+      1. Certification levels
+      2. Training curriculum
+      3. Assessment criteria
+      4. Badge/credential system
+      5. Renewal requirements
+      6. Specialization tracks
+
+      **Output template:** `{project-root}/_bmad/bam/templates/partner-certification-template.md`
+
+  - id: design-marketplace-prompt
+    content: |
+      ## Design Partner Marketplace
+
+      Prerequisites: Ensure reseller context loaded via `bam-reseller-context`
+
+      Design marketplace for partner apps:
+
+      1. App submission process
+      2. Review and approval workflow
+      3. Listing and discovery
+      4. Installation flow
+      5. Billing integration
+      6. Rating and reviews
+
+      Reference workflow: `bmad-bam-marketplace-design`
+
+  - id: bam-reseller-research-prompt
+    content: |
+      ## Reseller Best Practices Research
+
+      Search the web for current reseller/partner best practices:
+      - "SaaS partner program design {date}"
+      - "white-label architecture patterns {date}"
+      - "reseller revenue sharing models {date}"
+      - "B2B marketplace design {date}"
+
+      Synthesize findings and cite sources with `_Source: [URL]_`

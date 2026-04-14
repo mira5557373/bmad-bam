@@ -1,0 +1,14 @@
+{
+  "module-code": "bam",
+  "capabilities": [{
+    "name": "bmad-bam-tenant-aware-observability",
+    "menu-code": "TAO",
+    "description": "Design tenant-aware metrics, logs, traces, and alerts. Use when the user requests to 'design observability' or 'configure tenant monitoring'.",
+    "supports-headless": true,
+    "phase-name": "3-solutioning",
+    "after": ["bmad-bam-tenant-model-isolation"],
+    "before": [],
+    "is-required": false,
+    "output-location": "{output_folder}/planning-artifacts"
+  }]
+}

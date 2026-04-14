@@ -1,0 +1,9 @@
+# Workflow metadata for bmad-bam-etl-pipeline-design
+config_variables:
+  - user_name
+  - communication_language
+  - document_output_language
+  - output_folder
+required_tools: []
+tags: [data, integration]
+mode: simple

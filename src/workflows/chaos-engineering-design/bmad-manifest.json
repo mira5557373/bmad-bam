@@ -1,0 +1,15 @@
+{
+  "module-code": "bam",
+  "capabilities": [{
+    "name": "bmad-bam-chaos-engineering-design",
+    "menu-code": "CHED",
+    "description": "Design chaos engineering practices for multi-tenant resilience testing",
+    "supports-headless": true,
+    "phase-name": "3-solutioning",
+    "after": ["bmad-bam-disaster-recovery-design"],
+    "before": [],
+    "is-required": false,
+    "output-location": "{output_folder}/planning-artifacts/operations",
+    "qualityGates": ["QG-CE1"]
+  }]
+}

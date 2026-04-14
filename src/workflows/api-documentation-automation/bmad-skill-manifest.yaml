@@ -1,0 +1,5 @@
+type: workflow
+name: api-documentation-automation
+displayName: API Documentation Automation
+description: "Design automated API documentation pipeline. Use when the user requests to 'automate API docs' or 'create documentation pipeline'."
+module: bam

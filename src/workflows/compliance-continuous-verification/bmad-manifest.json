@@ -1,0 +1,15 @@
+{
+  "module-code": "bam",
+  "capabilities": [{
+    "name": "bmad-bam-compliance-continuous-verification",
+    "menu-code": "CCV",
+    "description": "Design continuous compliance monitoring and automated verification for regulatory requirements",
+    "supports-headless": true,
+    "phase-name": "3-solutioning",
+    "after": ["bmad-bam-compliance-design"],
+    "before": [],
+    "is-required": false,
+    "output-location": "{output_folder}/planning-artifacts",
+    "qualityGates": ["QG-CC"]
+  }]
+}

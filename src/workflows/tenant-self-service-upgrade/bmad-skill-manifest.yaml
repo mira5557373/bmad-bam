@@ -1,0 +1,7 @@
+type: workflow
+name: tenant-self-service-upgrade
+displayName: Tenant Self-Service Upgrade
+description: 'Design self-service tier upgrade workflows with payment integration'
+module: bam
+config_variables:
+  - tenant_model

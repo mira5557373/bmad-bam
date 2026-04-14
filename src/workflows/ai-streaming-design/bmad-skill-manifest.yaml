@@ -1,0 +1,5 @@
+type: workflow
+name: ai-streaming-design
+displayName: AI Streaming Design
+description: "Design real-time streaming response architecture. Use when the user requests to 'design streaming' or 'create real-time responses'."
+module: bam

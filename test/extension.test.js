@@ -84,6 +84,7 @@ describe('Tier 2: Extension Integration', () => {
       const guides = fs.readdirSync(GUIDES_DIR)
         .filter(f => f.endsWith('.md'));
 
+      const missingWhenToLoad = [];
       guides.forEach(guide => {
         const content = fs.readFileSync(path.join(GUIDES_DIR, guide), 'utf-8');
 
@@ -94,9 +95,14 @@ describe('Tier 2: Extension Integration', () => {
           content.includes('**When');
 
         if (!hasWhenToLoad) {
-          console.warn(`Guide ${guide} missing "When to load" section`);
+          missingWhenToLoad.push(guide);
         }
       });
+
+      if (missingWhenToLoad.length > 0) {
+        console.error('Agent guides missing "When to load" section:', missingWhenToLoad);
+      }
+      expect(missingWhenToLoad).toEqual([]);
     });
   });
 
@@ -106,8 +112,6 @@ describe('Tier 2: Extension Integration', () => {
       'architect-bam.yaml': 'bmad-agent-architect',
       'dev-bam.yaml': 'bmad-agent-dev',
       'pm-bam.yaml': 'bmad-agent-pm',
-      'qa-bam.yaml': 'bmad-agent-qa',
-      'sm-bam.yaml': 'bmad-agent-sm',
       'ux-bam.yaml': 'bmad-agent-ux-designer',
       'tech-writer-bam.yaml': 'bmad-agent-tech-writer',
       'tea-bam.yaml': 'bmad-tea',
@@ -147,13 +151,15 @@ describe('Tier 2: Extension Integration', () => {
       const triggers = allTriggers.map(t => t.trigger);
       const unique = [...new Set(triggers)];
 
-      if (triggers.length !== unique.length) {
-        const duplicates = triggers.filter((t, i) => triggers.indexOf(t) !== i);
-        console.warn('Duplicate triggers found:', duplicates);
-      }
+      // Find duplicates
+      const duplicates = triggers.filter((t, i) => triggers.indexOf(t) !== i);
 
-      // Allow some duplicates (like bam-context variants)
-      // but warn about them
+      // Filter out documented exceptions (bam-context variants that are intentionally shared)
+      const allowedDuplicates = ['bam-context', 'load-bam-context'];
+      const unexpectedDuplicates = duplicates.filter(d => !allowedDuplicates.includes(d));
+
+      // Fail if there are unexpected duplicates
+      expect(unexpectedDuplicates).toEqual([]);
     });
   });
 });

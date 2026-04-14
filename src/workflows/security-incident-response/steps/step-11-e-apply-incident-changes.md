@@ -1,0 +1,125 @@
+# Step 2: Apply Incident Response Changes
+
+## MANDATORY EXECUTION RULES (READ FIRST)
+
+- STOP **NEVER generate content without user input** - Wait for explicit direction
+- BOOK **CRITICAL: ALWAYS read the complete step file** before taking any action
+- CYCLE **CRITICAL: When loading next step with 'C'**, ensure entire file is read
+- PAUSE **ALWAYS pause after presenting findings** and await user direction
+- TARGET **Focus ONLY on current step scope** - do not look ahead
+
+## EXECUTION PROTOCOLS
+
+- TARGET Show your analysis before taking any action
+- SAVE Update document frontmatter after each section completion
+- MEMO Maintain append-only document building
+- CHECK Track progress in `stepsCompleted` array
+
+---
+
+## Purpose
+
+Apply the confirmed modifications to the incident response plan, preserving unchanged sections while updating targeted areas.
+
+## Prerequisites
+
+- Incident response plan loaded in Step 10
+- Modification scope confirmed
+- **Load patterns:** `{project-root}/_bmad/bam/data/bam-patterns.csv` -> filter: security
+
+
+---
+
+## Inputs
+
+- Loaded incident response plan from Step 10
+- Confirmed modification scope
+- User-provided change details
+- Pattern registry: `{project-root}/_bmad/bam/data/bam-patterns.csv`
+
+---
+
+## Actions
+
+### 1. Apply Section Modifications
+
+For each section in the modification scope:
+
+| Section | Modification Type | Action |
+|---------|-------------------|--------|
+| Classification | Update | Modify severity or categories |
+| Response Team | Update | Change contacts or roles |
+| Procedures | Extend | Add new procedures |
+| Notification | Adjust | Update triggers or channels |
+| Playbooks | Add | Include new scenarios |
+| Schedule | Reschedule | Adjust dates |
+
+### 2. Preserve Unchanged Sections
+
+Ensure the following remain intact:
+- Document metadata
+- Sections not in modification scope
+- Cross-references between sections
+- Approval history
+
+### 3. Update Document Metadata
+
+Update version tracking:
+
+| Field | Action |
+|-------|--------|
+| Version | Increment minor version |
+| Last Modified | Update to current date |
+| Modified By | Record current user |
+| Change Summary | Document changes made |
+
+### 4. Validate Cross-References
+
+Check all internal references remain valid.
+
+---
+
+## COLLABORATION MENUS (A/P/C)
+
+- **[A] Advanced Elicitation**: Deep dive into requirements, explore alternatives
+- **[P] Party Mode**: Collaborative brainstorming, creative exploration
+- **[C] Continue**: Proceed to next step with current decisions
+
+### Menu Options
+
+### [A]nalyze Options
+- **A1**: Review applied changes for consistency
+- **A2**: Analyze impact on related sections
+- **A3**: Evaluate cross-reference integrity
+- **A4**: Assess version tracking accuracy
+
+### [P]ropose Changes
+- **P1**: Propose additional modifications
+- **P2**: Suggest consistency improvements
+- **P3**: Recommend cross-reference updates
+- **P4**: Propose metadata enhancements
+
+### [C]ontinue
+- **C1**: Accept changes and save updated document
+- **C2**: Mark edit complete and output to `{output_folder}/planning-artifacts/security-incident-response-plan.md`
+
+**Enter your choice (e.g., A1, P2, C1):**
+
+---
+
+## Verification
+
+- [ ] All specified modifications applied
+- [ ] Unchanged sections preserved
+- [ ] Document metadata updated
+- [ ] Cross-references validated
+- [ ] Patterns align with pattern registry
+
+## Outputs
+
+- Updated `{output_folder}/planning-artifacts/security-incident-response-plan.md`
+- Change log entry
+
+## Next Step
+
+Edit workflow complete. Save updated incident response plan to designated location.

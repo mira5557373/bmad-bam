@@ -1,0 +1,14 @@
+{
+  "module-code": "bam",
+  "capabilities": [{
+    "name": "bmad-bam-cost-optimization-review",
+    "menu-code": "COPR",
+    "description": "Execute cost optimization reviews for multi-tenant AI platform",
+    "supports-headless": true,
+    "phase-name": "3-solutioning",
+    "after": [],
+    "before": [],
+    "is-required": false,
+    "output-location": "{output_folder}/operations/cost"
+  }]
+}

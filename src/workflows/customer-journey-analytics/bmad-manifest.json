@@ -1,0 +1,14 @@
+{
+  "module-code": "bam",
+  "capabilities": [{
+    "name": "bmad-bam-customer-journey-analytics",
+    "menu-code": "CJAY",
+    "description": "Design customer journey tracking with touchpoint analysis, conversion paths, and experience optimization",
+    "supports-headless": true,
+    "phase-name": "3-solutioning",
+    "after": ["bmad-bam-product-analytics-instrumentation", "bmad-bam-feature-adoption-tracking"],
+    "before": [],
+    "is-required": false,
+    "output-location": "{output_folder}/planning-artifacts/analytics"
+  }]
+}

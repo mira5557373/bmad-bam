@@ -1,0 +1,15 @@
+{
+  "module-code": "bam",
+  "capabilities": [{
+    "name": "bmad-bam-ai-security",
+    "menu-code": "AISEC",
+    "description": "Comprehensive AI security audit workflow",
+    "supports-headless": true,
+    "phase-name": "5-quality",
+    "after": ["bmad-bam-agent-runtime-architecture"],
+    "before": ["bmad-bam-production-readiness"],
+    "is-required": false,
+    "output-location": "{output_folder}/security",
+    "qualityGates": ["QG-S4"]
+  }]
+}

@@ -1,0 +1,14 @@
+{
+  "module-code": "bam",
+  "capabilities": [{
+    "name": "bmad-bam-sli-slo-definition",
+    "menu-code": "SLSD",
+    "description": "Define Service Level Indicators and Objectives for reliability",
+    "supports-headless": true,
+    "phase-name": "3-solutioning",
+    "after": ["bmad-bam-tenant-aware-observability"],
+    "before": ["bmad-bam-runbook-automation"],
+    "is-required": false,
+    "output-location": "{output_folder}/planning-artifacts/operations"
+  }]
+}

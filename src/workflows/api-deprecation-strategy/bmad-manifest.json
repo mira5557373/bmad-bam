@@ -1,0 +1,14 @@
+{
+  "module-code": "bam",
+  "capabilities": [{
+    "name": "bmad-bam-api-deprecation-strategy",
+    "menu-code": "APDS",
+    "description": "Design API deprecation lifecycle with sunset dates and migration support",
+    "supports-headless": true,
+    "phase-name": "3-solutioning",
+    "after": [],
+    "before": [],
+    "is-required": false,
+    "output-location": "{output_folder}/planning-artifacts/api"
+  }]
+}

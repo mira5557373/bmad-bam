@@ -1,4 +1,16 @@
-# Tenant Lifecycle: {{TENANT_NAME}}
+---
+name: Tenant Lifecycle Template
+description: Template for tenant onboarding and offboarding orchestration
+category: tenant
+version: 1.0.0
+type: "tenant"
+---
+
+## Purpose
+
+Template for tenant onboarding and offboarding orchestration
+
+# Tenant Lifecycle: {{tenant_name}}
 
 ## Onboarding Orchestration
 
@@ -77,3 +89,39 @@ REQUESTED → GRACE_PERIOD → ARCHIVING → DELETING → COMPLETED
 | `tenant.offboarding.started`    | Grace period begins     | tenant_id, grace_end_date     |
 | `tenant.offboarding.cancelled`  | Tenant reactivates      | tenant_id                     |
 | `tenant.deleted`                | Final deletion complete | tenant_id, archived_records   |
+
+---
+
+## Web Research Queries
+
+Before finalizing this document, verify current best practices:
+
+- "tenant lifecycle SaaS patterns {date}"
+- "tenant onboarding orchestration multi-tenant {date}"
+- "GDPR tenant offboarding best practices {date}"
+- "tenant provisioning saga patterns {date}"
+
+Incorporate relevant findings. _Source: [URL]_
+
+---
+
+## Verification Checklist
+
+- [ ] All onboarding provisioning steps defined with handlers and compensations
+- [ ] Tier-specific resource matrix complete for all tiers (FREE, PRO, ENTERPRISE)
+- [ ] Idempotency mechanism documented for provisioning requests
+- [ ] Offboarding states and transitions clearly defined
+- [ ] GDPR archive requirements documented with retention periods
+- [ ] Data export (portability) mechanism defined for offboarding
+- [ ] Module-specific onboarding and offboarding hooks identified
+- [ ] Webhook events defined for all lifecycle state changes
+- [ ] Multi-tenant isolation verified through provisioning and cleanup
+- [ ] Grace period and cancellation flow documented
+- [ ] Timeout values appropriate for each provisioning step
+- [ ] Critical vs non-critical steps distinguished for error handling
+
+## Change Log
+
+| Version | Date | Author | Changes |
+|---------|------|--------|---------|
+| {{version}} | {{date}} | {{author}} | Initial template creation |

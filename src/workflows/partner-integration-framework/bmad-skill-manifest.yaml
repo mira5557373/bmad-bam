@@ -1,0 +1,5 @@
+type: workflow
+name: partner-integration-framework
+displayName: Partner Integration Framework
+description: "Design partner and ISV integration framework with sandbox environments. Use when the user requests to 'integrate partners' or 'design ISV program'."
+module: bam

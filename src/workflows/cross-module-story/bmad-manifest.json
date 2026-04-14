@@ -1,0 +1,14 @@
+{
+  "module-code": "bam",
+  "capabilities": [{
+    "name": "bmad-bam-cross-module-story",
+    "menu-code": "CMS",
+    "description": "Break user journeys that span multiple modules into per-module tasks with tenant and AI dependency tracking",
+    "supports-headless": true,
+    "phase-name": "2-planning",
+    "after": ["bmad-bam-create-module-architecture"],
+    "before": ["bmad-bam-convergence-verification"],
+    "is-required": false,
+    "output-location": "{output_folder}/planning-artifacts"
+  }]
+}

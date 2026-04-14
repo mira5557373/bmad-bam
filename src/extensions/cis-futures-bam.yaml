@@ -1,0 +1,369 @@
+# BAM Extension for CIS Futures Analysis
+# Pattern: WDS agent-guides (NO memories: field)
+
+agent:
+  metadata:
+    extends: 'bmad-cis-agent-innovation-strategist'
+    module: 'bam'
+    description: "Adds futures analysis capabilities for multi-tenant SaaS"
+
+menu:
+  - trigger: bam-futures-context
+    action: "#load-bam-futures-context-prompt"
+    description: Load BAM futures analysis context
+  - trigger: bam-futures-analysis
+    action: "#futures-analysis-prompt"
+    description: Analyze future trends in multi-tenant SaaS
+  - trigger: bam-futures-research
+    action: "#web-research-futures-prompt"
+    description: Conduct web research for futures patterns
+  - trigger: bam-futures-ai-evolution
+    action: "#ai-evolution-futures-prompt"
+    description: Project AI capability evolution for multi-tenant platforms
+  - trigger: bam-futures-regulatory
+    action: "#regulatory-futures-prompt"
+    description: Anticipate regulatory changes affecting multi-tenant SaaS
+  - trigger: bam-futures-scenario-planning
+    action: "#scenario-planning-prompt"
+    description: Develop strategic scenarios for platform evolution
+  - trigger: bam-futures-tech-readiness
+    action: "#technology-readiness-prompt"
+    description: Assess emerging technology readiness for adoption
+  - trigger: bam-futures-market-evolution
+    action: "#market-evolution-prompt"
+    description: Project market evolution and segment shifts
+  - trigger: bam-futures-validate
+    action: "#validate-futures-analysis-prompt"
+    description: Validate futures analysis against quality gates
+
+prompts:
+  - id: load-bam-futures-context-prompt
+    content: |
+      ## Load BAM Futures Context
+
+      Read and internalize the multi-tenant SaaS futures guide:
+      `{project-root}/_bmad/bam/data/agent-guides/bam/saas-innovation.md`
+
+      Also load the futures-specific guides:
+      `{project-root}/_bmad/bam/data/agent-guides/bam/innovation-guide.md`
+      `{project-root}/_bmad/bam/data/agent-guides/bam/market-analysis.md`
+
+      This guide provides comprehensive context for futures analysis in
+      multi-tenant AI platforms. It covers the following key areas:
+
+      1. **Technology Horizons**: Emerging technologies that will reshape
+         multi-tenant platform architectures and capabilities.
+      2. **Market Evolution**: How SaaS markets are evolving and where
+         consolidation or fragmentation is likely.
+      3. **AI Capability Trajectories**: How AI capabilities will advance
+         and create new platform opportunities.
+      4. **Regulatory Futures**: Anticipated compliance and regulatory
+         changes affecting multi-tenant platforms.
+
+      Apply this futures lens to all strategic planning. Once loaded, confirm
+      by stating: "BAM futures context loaded. Ready to analyze future trends."
+
+  - id: futures-analysis-prompt
+    content: |
+      ## Futures Trend Analysis
+
+      Prerequisites: Ensure BAM context loaded via `bam-futures-context`
+
+      **Load patterns:** `{project-root}/_bmad/bam/data/bam-patterns.csv` → filter: `customization, experimentation`
+
+      ### Objective
+      Identify and evaluate future trends affecting multi-tenant SaaS platforms,
+      with focus on technology, market, and regulatory developments.
+
+      ### Process
+
+      1. **Technology Horizon Scanning**
+         - Map emerging technologies by time horizon (1/3/5 years)
+         - Assess platform implications for each technology
+         - Identify required architectural preparation
+
+      2. **Market Evolution Analysis**
+         - Project market segment evolution
+         - Identify emerging customer segments
+         - Map changing competitive dynamics
+
+      3. **Regulatory Horizon Analysis**
+         - Track emerging compliance requirements
+         - Assess multi-tenant isolation implications
+         - Plan for data sovereignty trends
+
+      ### Verification Checklist
+      - [ ] Technology trends mapped by horizon
+      - [ ] Market evolution scenarios documented
+      - [ ] Regulatory changes identified
+      - [ ] Strategic implications outlined
+
+      ### Output
+      Produce futures analysis using template:
+      `{project-root}/_bmad/bam/templates/futures-analysis-template.md`
+
+  - id: web-research-futures-prompt
+    content: |
+      ## BAM Web Research - Futures
+
+      Research current best practices for futures.
+
+      **Research Focus:** {{research_topic}}
+
+      Search the web: "{{research_topic}} futures patterns {date}"
+      Search the web: "{{research_topic}} enterprise SaaS {date}"
+
+      Return findings with: _Source: [URL]_
+
+  - id: ai-evolution-futures-prompt
+    content: |
+      ## AI Capability Evolution Futures
+
+      Prerequisites: Ensure BAM context loaded via `bam-futures-context`
+
+      **Load patterns:** `{project-root}/_bmad/bam/data/bam-patterns.csv` → filter: `agent-runtime, experimentation`
+
+      ### Objective
+      Project the evolution of AI capabilities and their implications for
+      multi-tenant platform architecture and feature development.
+
+      ### Process
+
+      1. **AI Capability Horizon Mapping**
+         - Near-term (1 year): Incremental improvements
+         - Medium-term (2-3 years): Significant advances
+         - Long-term (5+ years): Transformational changes
+
+         | Horizon | AI Capability | Platform Implication | Preparation Needed |
+         |---------|---------------|---------------------|-------------------|
+         | 1 year | Better reasoning | Enhanced agents | Agent architecture |
+         | 2-3 years | Multi-modal native | Rich interactions | Data pipeline prep |
+         | 5+ years | AGI approaches | Fundamental shifts | Strategic optionality |
+
+      2. **Multi-Tenant AI Implications**
+         - How AI advances affect isolation requirements
+         - Cross-tenant learning opportunities
+         - Custom model economics
+
+      3. **Competitive AI Positioning**
+         - Build vs buy AI capabilities
+         - AI vendor dependency risks
+         - Differentiation through AI
+
+      ### Verification Checklist
+      - [ ] Horizons mapped with confidence levels
+      - [ ] Platform implications identified
+      - [ ] Preparation roadmap created
+      - [ ] Risk scenarios evaluated
+
+      ### Output
+      Produce AI futures analysis with capability timeline, platform
+      implications, and strategic preparation recommendations.
+
+  - id: regulatory-futures-prompt
+    content: |
+      ## Regulatory Futures Analysis
+
+      Prerequisites: Ensure BAM context loaded via `bam-futures-context`
+
+      **Load patterns:** `{project-root}/_bmad/bam/data/bam-patterns.csv` → filter: `tenant-isolation, compliance-frameworks`
+
+      ### Objective
+      Anticipate regulatory changes affecting multi-tenant SaaS platforms
+      and plan for compliance evolution.
+
+      ### Process
+
+      1. **Regulatory Horizon Scanning**
+         - AI regulation trajectories
+         - Data sovereignty trends
+         - Industry-specific compliance evolution
+
+         | Region | Regulatory Area | Expected Changes | Timeline |
+         |--------|-----------------|------------------|----------|
+         | EU | AI Act | Risk classification, audits | 1-2 years |
+         | US | State privacy | Patchwork expansion | Ongoing |
+         | Global | Data localization | More restrictions | 2-3 years |
+         | Industry | Sector-specific AI | Finance, healthcare | 1-3 years |
+
+      2. **Multi-Tenant Compliance Implications**
+         - Isolation requirement changes
+         - Audit and transparency needs
+         - Cross-border data handling
+
+      3. **Proactive Compliance Positioning**
+         - Build compliance as feature
+         - Certification roadmap
+         - Regulatory relationships
+
+      ### Verification Checklist
+      - [ ] Key regulations tracked
+      - [ ] Impact assessment completed
+      - [ ] Preparation timeline defined
+      - [ ] Competitive positioning identified
+
+      ### Output
+      Produce regulatory futures analysis with anticipated changes,
+      compliance roadmap, and competitive positioning recommendations.
+
+  - id: scenario-planning-prompt
+    content: |
+      ## Strategic Scenario Planning
+
+      Prerequisites: Ensure BAM context loaded via `bam-futures-context`
+
+      **Load patterns:** `{project-root}/_bmad/bam/data/bam-patterns.csv` → filter: `customization, experimentation`
+
+      ### Objective
+      Develop strategic scenarios for multi-tenant platform evolution
+      to inform robust decision-making under uncertainty.
+
+      ### Process
+
+      1. **Driving Forces Identification**
+         - Technology forces (AI, infrastructure)
+         - Market forces (competition, consolidation)
+         - Regulatory forces (compliance, sovereignty)
+         - Customer forces (expectations, adoption)
+
+      2. **Scenario Matrix Construction**
+         - Select two critical uncertainties
+         - Define four scenario quadrants
+         - Develop scenario narratives
+
+         | Scenario | AI Advancement | Market Consolidation | Platform Strategy |
+         |----------|---------------|---------------------|-------------------|
+         | A | Rapid | High | Platform leader |
+         | B | Rapid | Low | Niche excellence |
+         | C | Slow | High | Integration focus |
+         | D | Slow | Low | Feature depth |
+
+      3. **Strategic Implications per Scenario**
+         - Identify winning strategies per scenario
+         - Find robust strategies across scenarios
+         - Plan strategic options/hedges
+
+      ### Verification Checklist
+      - [ ] Key uncertainties identified
+      - [ ] Scenarios internally consistent
+      - [ ] Implications actionable
+      - [ ] Robust strategies identified
+
+      ### Output
+      Produce scenario planning document with four scenarios, strategic
+      implications, and recommended hedging strategies.
+
+  - id: technology-readiness-prompt
+    content: |
+      ## Emerging Technology Readiness Assessment
+
+      Prerequisites: Ensure BAM context loaded via `bam-futures-context`
+
+      **Load patterns:** `{project-root}/_bmad/bam/data/bam-patterns.csv` → filter: `agent-runtime, customization`
+
+      ### Objective
+      Assess emerging technologies for adoption readiness in multi-tenant
+      SaaS platforms, balancing innovation with stability.
+
+      ### Process
+
+      1. **Technology Radar Construction**
+         - Adopt: Ready for production
+         - Trial: Ready for controlled use
+         - Assess: Worth exploring
+         - Hold: Not ready yet
+
+         | Technology | Quadrant | Multi-Tenant Consideration |
+         |------------|----------|---------------------------|
+         | LLM orchestration | Adopt | Tenant-scoped agents |
+         | Vector databases | Trial | Per-tenant collections |
+         | Edge AI | Assess | Isolation at edge |
+         | Quantum-safe crypto | Hold | Future-proofing |
+
+      2. **Readiness Criteria Evaluation**
+         - Maturity and stability
+         - Multi-tenant compatibility
+         - Security and isolation support
+         - Operational complexity
+
+      3. **Adoption Roadmap**
+         - Sequencing of technology adoption
+         - Proof of concept planning
+         - Migration strategies
+
+      ### Verification Checklist
+      - [ ] Technologies categorized correctly
+      - [ ] Multi-tenant implications assessed
+      - [ ] Adoption sequence defined
+      - [ ] Risk mitigation planned
+
+      ### Output
+      Produce technology radar with readiness assessments, multi-tenant
+      considerations, and adoption roadmap recommendations.
+
+  - id: market-evolution-prompt
+    content: |
+      ## Market Evolution Projection
+
+      Prerequisites: Ensure BAM context loaded via `bam-futures-context`
+
+      **Load patterns:** `{project-root}/_bmad/bam/data/bam-patterns.csv` → filter: `tenant-lifecycle, customization`
+
+      ### Objective
+      Project market evolution and segment shifts to inform platform
+      positioning and feature investment decisions.
+
+      ### Process
+
+      1. **Market Segment Evolution**
+         - Emerging customer segments
+         - Declining segments
+         - Segment migration patterns
+
+         | Segment | Current State | Projected Evolution | Platform Response |
+         |---------|--------------|--------------------|--------------------|
+         | SMB | Price-sensitive | More sophisticated | Enhanced free tier |
+         | Mid-market | Growing rapidly | Enterprise expectations | Pro tier expansion |
+         | Enterprise | Stable | AI-demanding | Custom AI capabilities |
+         | Vertical | Emerging | Deep specialization | Vertical modules |
+
+      2. **Competitive Landscape Evolution**
+         - Consolidation predictions
+         - New entrant threats
+         - Adjacent market expansion
+
+      3. **Positioning Implications**
+         - Segment targeting evolution
+         - Feature prioritization
+         - Pricing strategy adaptation
+
+      ### Verification Checklist
+      - [ ] Segment evolution documented
+      - [ ] Competitive shifts anticipated
+      - [ ] Positioning recommendations clear
+      - [ ] Investment priorities aligned
+
+      ### Output
+      Produce market evolution analysis with segment projections,
+      competitive landscape changes, and positioning recommendations.
+
+  - id: validate-futures-analysis-prompt
+    content: |
+      ## Validate Futures Analysis Against Quality Gates
+
+      Prerequisites: Ensure BAM futures context loaded via `bam-futures-context`
+
+      **Quality Gate Validation:**
+      
+      Check against relevant quality gates:
+      - QG-F1 (Foundation): Futures analysis aligns with platform architecture vision
+      - QG-M1 (Module): Projected capabilities map to module boundaries
+      - QG-P1 (Production): Future-proofing considerations documented
+      
+      **Validation Checklist:**
+      - [ ] Analysis timeframes align with roadmap planning cycles
+      - [ ] Technology projections grounded in current capability assessment
+      - [ ] Regulatory scenarios consider current compliance requirements
+      - [ ] Market evolution scenarios map to tier differentiation strategy
+      
+      Report validation results with recommendations for alignment.

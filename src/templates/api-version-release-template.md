@@ -1,16 +1,28 @@
-# API Version Release: v{{VERSION_NUMBER}}
+---
+name: API Version Release Template
+description: Template for documenting API version releases and migrations
+category: integration
+version: 1.0.0
+type: "integration"
+---
+
+## Purpose
+
+Template for documenting API version releases and migrations
+
+# API Version Release: v{{version_number}}
 
 ## Version Metadata
 
 | Field               | Value                                       |
 | ------------------- | ------------------------------------------- |
-| Version             | v{{VERSION_NUMBER}}                         |
+| Version             | v{{version_number}}                         |
 | Status              | ALPHA / BETA / STABLE / DEPRECATED / SUNSET |
-| Release Date        | {{RELEASE_DATE}}                            |
-| Deprecation Date    | {{DEPRECATION_DATE}}                        |
-| Sunset Date         | {{SUNSET_DATE}}                             |
-| Changelog URL       | /api/v{{VERSION_NUMBER}}/changelog          |
-| Migration Guide URL | /api/v{{VERSION_NUMBER}}/migration          |
+| Release Date        | {{release_date}}                            |
+| Deprecation Date    | {{deprecation_date}}                        |
+| Sunset Date         | {{sunset_date}}                             |
+| Changelog URL       | /api/v{{version_number}}/changelog          |
+| Migration Guide URL | /api/v{{version_number}}/migration          |
 
 ## Version Lifecycle
 
@@ -20,45 +32,45 @@ ALPHA → BETA → STABLE → DEPRECATED → SUNSET
                           minimum)     warning)
 ```
 
-## Breaking Changes from v{{PREVIOUS_VERSION}}
+## Breaking Changes from v{{previous_version}}
 
 | Change                  | Type                  | Migration Path    |
 | ----------------------- | --------------------- | ----------------- |
-| {{CHANGE_DESCRIPTION}}  | Breaking/Non-Breaking | {{MIGRATION_STEPS}} |
+| {{change_description}}  | Breaking/Non-Breaking | {{migration_steps}} |
 
 ## Versioned Routers
 
-| Module             | v{{PREVIOUS_VERSION}} Router   | v{{VERSION_NUMBER}} Router   | Shared Implementation       |
+| Module             | v{{previous_version}} Router   | v{{version_number}} Router   | Shared Implementation       |
 | ------------------ | ------------------------------ | ---------------------------- | --------------------------- |
-| {{MODULE_NAME}}    | `router_v{{PREVIOUS_VERSION}}` | `router_v{{VERSION_NUMBER}}` | `{{MODULE_NAME}}_service`   |
+| {{module_name}}    | `router_v{{previous_version}}` | `router_v{{version_number}}` | `{{module_name}}_service`   |
 
 ## Response Shape Differences
 
-| Field           | v{{PREVIOUS_VERSION}} | v{{VERSION_NUMBER}} | Notes               |
+| Field           | v{{previous_version}} | v{{version_number}} | Notes               |
 | --------------- | --------------------- | ------------------- | ------------------- |
-| {{FIELD_NAME}}  | {{OLD_SHAPE}}         | {{NEW_SHAPE}}       | {{MIGRATION_NOTE}}  |
+| {{field_name}}  | {{old_shape}}         | {{new_shape}}       | {{migration_note}}  |
 
 ## Tenant Version Migration
 
 | Phase            | Duration              | Behavior                            |
 | ---------------- | --------------------- | ----------------------------------- |
-| Pre-migration    | —                     | All tenants on v{{PREVIOUS_VERSION}} |
+| Pre-migration    | —                     | All tenants on v{{previous_version}} |
 | Migration active | 7-day rollback window | Both versions served per tenant pin |
-| Post-migration   | —                     | All tenants on v{{VERSION_NUMBER}}  |
+| Post-migration   | —                     | All tenants on v{{version_number}}  |
 
 ## Response Headers
 
 | Header               | Value                  | Purpose                   |
 | -------------------- | ---------------------- | ------------------------- |
-| X-API-Version        | v{{VERSION_NUMBER}}    | Active version            |
+| X-API-Version        | v{{version_number}}    | Active version            |
 | X-API-Version-Status | STABLE                 | Lifecycle status          |
-| Deprecation          | {{DEPRECATION_DATE}}   | RFC 8594 deprecation date |
-| Sunset               | {{SUNSET_DATE}}        | RFC 8594 sunset date      |
-| Link                 | {{MIGRATION_URL}}      | Migration guide link      |
+| Deprecation          | {{deprecation_date}}   | RFC 8594 deprecation date |
+| Sunset               | {{sunset_date}}        | RFC 8594 sunset date      |
+| Link                 | {{migration_url}}      | Migration guide link      |
 
 ## OpenAPI Specification
 
-- Endpoint: `/api/v{{VERSION_NUMBER}}/openapi.json`
+- Endpoint: `/api/v{{version_number}}/openapi.json`
 - Includes deprecation notices for sunset versions
 - Per-version filtering of endpoints
 
@@ -70,3 +82,37 @@ Key validation areas:
 - Pre-Release: version config, docs, backward compat, testing
 - Deprecation: notices, migration guides, tenant communication
 - Sunset: 410 responses, cleanup, monitoring
+
+---
+
+## Web Research Queries
+
+Before finalizing this document, verify current best practices:
+
+- "API versioning strategies best practices {date}"
+- "API deprecation multi-tenant SaaS patterns {date}"
+- "API lifecycle management enterprise implementation {date}"
+
+Incorporate relevant findings into the document sections above.
+
+---
+
+## Verification Checklist
+
+- [ ] Version metadata is complete with all lifecycle dates
+- [ ] Breaking changes are documented with migration paths
+- [ ] Response shape differences are clearly specified between versions
+- [ ] Tenant version migration phases are defined with rollback window
+- [ ] Response headers include proper RFC 8594 deprecation/sunset dates
+- [ ] OpenAPI specification endpoint is accessible for this version
+- [ ] Quality gate (QG-API-VERSION) checks are passing
+- [ ] Backward compatibility has been verified for non-breaking changes
+- [ ] Tenant communication plan is in place for deprecation notices
+- [ ] Per-tenant version pinning mechanism is documented
+- [ ] 410 Gone responses are configured for sunset versions
+
+## Change Log
+
+| Version | Date | Author | Changes |
+|---------|------|--------|---------|
+| {{version}} | {{date}} | {{author}} | Initial template creation |

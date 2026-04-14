@@ -1,0 +1,5 @@
+type: workflow
+name: webhook-management-design
+displayName: Webhook Management Design
+description: "Design tenant webhook delivery system with retry logic, security, and event management. Use when designing webhook infrastructure."
+module: bam

@@ -1,0 +1,14 @@
+{
+  "module-code": "bam",
+  "capabilities": [{
+    "name": "bmad-bam-define-facade-contract",
+    "menu-code": "DFC",
+    "description": "Define a new facade contract between modules",
+    "supports-headless": true,
+    "phase-name": "3-solutioning",
+    "after": ["bmad-bam-create-module-architecture"],
+    "before": ["bmad-bam-evolve-facade-contract", "bmad-bam-convergence-verification"],
+    "is-required": false,
+    "output-location": "{output_folder}/planning-artifacts"
+  }]
+}

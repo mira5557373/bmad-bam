@@ -1,6 +1,5 @@
 type: workflow
-name: bmad-bam-validate-foundation
+name: validate-foundation
 displayName: Validate Foundation
 description: "Validate BAM foundation gate readiness. Use when the user requests to 'validate foundation' or 'check foundation gate'."
 module: bam
-canonicalId: bmad-bam-validate-foundation

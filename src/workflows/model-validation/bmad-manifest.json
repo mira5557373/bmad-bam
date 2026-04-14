@@ -1,0 +1,14 @@
+{
+  "module-code": "bam",
+  "capabilities": [{
+    "name": "bmad-bam-model-validation",
+    "menu-code": "MODV",
+    "description": "Validate AI model releases including model validation, tenant rollout planning, rollback testing, and monitoring configuration for multi-tenant AI platforms",
+    "supports-headless": true,
+    "phase-name": "4-implementation",
+    "after": [],
+    "before": [],
+    "is-required": false,
+    "output-location": "{output_folder}/ai"
+  }]
+}

@@ -1,0 +1,14 @@
+{
+  "module-code": "bam",
+  "capabilities": [{
+    "name": "bmad-bam-create-master-architecture",
+    "menu-code": "CMAR",
+    "description": "Create frozen master architecture with tenant model and module boundaries",
+    "supports-headless": true,
+    "phase-name": "3-solutioning",
+    "after": ["bmad-bam-requirement-ingestion", "bmad-bam-triage-module-complexity"],
+    "before": ["bmad-bam-tenant-model-isolation", "bmad-bam-module-boundary-design", "bmad-bam-validate-foundation"],
+    "is-required": true,
+    "output-location": "{output_folder}/planning-artifacts"
+  }]
+}

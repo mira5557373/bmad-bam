@@ -101,3 +101,36 @@ After discovery, route to:
 - [ ] Compliance requirements listed
 - [ ] Cross-tenant scenarios identified
 - [ ] Admin/support access rules defined
+
+## Related Patterns
+
+Load decision criteria and web search queries from pattern registry:
+
+- **Tenant patterns:** `{project-root}/_bmad/bam/data/tenant-models.csv`
+- **Isolation patterns:** `{project-root}/_bmad/bam/data/bam-patterns.csv` → filter by category: `tenant-*`
+
+### Web Research
+
+Use the `web_queries` column from pattern registry to search for current best practices:
+- Search: "multi-tenant SaaS context propagation patterns {date}"
+- Search: "tenant context isolation middleware {date}"
+- Search: "PostgreSQL RLS tenant context injection {date}"
+
+---
+
+## Decision Framework
+
+| Question | Recommendation | Rationale |
+|----------|---------------|-----------|
+| Which tenant isolation model to start with? | Row-Level Security for most SaaS (<1000 tenants) | Simplest to implement, cost-effective, sufficient isolation for majority of use cases |
+| When to add workspace level to hierarchy? | When teams within an org need data separation or different billing centers exist | Prevents over-engineering early while supporting natural organizational structures when needed |
+| How to handle cross-tenant admin access? | Explicit admin role with full audit logging and time-limited access | Balances operational needs with security requirements; audit trail essential for compliance |
+| When to upgrade from RLS to schema-per-tenant? | When regulatory compliance requires stronger isolation or tenant count exceeds 1000 | RLS performance degrades at scale; compliance requirements may mandate physical separation |
+| Should tier limits be enforced at discovery or action time? | Enforce at action time with discovery-time warnings | Better UX showing capabilities with upgrade prompts; hard enforcement prevents overuse |
+
+## Related Workflows
+
+- `bmad-bam-tenant-model-isolation` - Design tenant isolation strategy based on discovery
+- `bmad-bam-tenant-onboarding-design` - Define tenant hierarchy provisioning flows
+- `bmad-bam-tenant-tier-migration` - Handle tier upgrade and downgrade transitions
+- `bmad-bam-create-master-architecture` - Establish foundation for multi-tenant design

@@ -25,7 +25,10 @@ BAM is an **extension module** that adds:
 - [Getting Started](tutorials/getting-started.md) - Install BAM and create your first module
 - [Create Master Architecture](how-to/create-master-architecture.md) - Design your platform foundation
 - [Why Modular Monolith](explanation/why-modular-monolith.md) - Understand the architecture choice
-- [Workflow Reference](reference/workflows.md) - All 27 BAM workflows
+- [Workflow Reference](reference/workflows.md) - All 61 BAM workflows
+- [Extensions Reference](reference/extensions.md) - All 25 BAM extensions
+- [Agent Guides Reference](reference/agent-guides.md) - All 133 agent guides
+- [Architecture Decisions](adr/README.md) - ADRs documenting key decisions
 
 ## Module Compatibility
 
@@ -49,9 +52,9 @@ npx bmad-method install
 
 | Component | Count |
 |-----------|-------|
-| Agents | 3 (Atlas, Nova, Kai) |
-| Workflows | 27 |
-| Knowledge Fragments | 30 |
-| Extensions | 18 |
-| Checklists | 9 |
-| Templates | 12 |
+| Agents | 0 (pure extension module - Atlas/Nova/Kai consolidated in architect-bam.yaml) |
+| Workflows | 61 |
+| Agent Guides | 133 |
+| Extensions | 25 |
+| Checklists | 22 |
+| Templates | 137 |

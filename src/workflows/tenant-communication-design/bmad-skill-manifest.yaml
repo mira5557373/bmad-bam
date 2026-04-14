@@ -1,0 +1,9 @@
+type: workflow
+name: tenant-communication-design
+displayName: Tenant Communication Design
+description: "Design tenant notification templates and communication workflows. Use when the user requests to 'design notifications' or 'create communication templates'."
+module: bam
+config_variables:
+  - tenant_model
+  - ai_runtime
+step_naming_convention: 'step-NN-mode-description'

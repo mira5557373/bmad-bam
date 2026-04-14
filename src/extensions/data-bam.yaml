@@ -1,0 +1,337 @@
+# BAM Extension for BMM Data Governance
+# Pattern: WDS agent-guides (NO memories: field)
+
+agent:
+  metadata:
+    extends: 'bmad-agent-architect'
+    module: 'bam'
+    description: 'Adds multi-tenant data governance, lineage, and quality capabilities'
+
+menu:
+  # ============================================================
+  # CONTEXT LOADER
+  # ============================================================
+  - trigger: bam-data-context
+    action: '#load-data-context-prompt'
+    description: Load BAM data governance context
+
+  # ============================================================
+  # WEB RESEARCH
+  # ============================================================
+  - trigger: bam-data-research
+    action: '#web-research-data-prompt'
+    description: Conduct web research for data governance decisions
+
+  # ============================================================
+  # DATA GOVERNANCE CAPABILITIES
+  # ============================================================
+  - trigger: bam-data-lineage-design
+    action: '#data-lineage-design-prompt'
+    description: Design multi-tenant data lineage architecture
+
+  - trigger: bam-data-quality-rules
+    action: '#data-quality-rules-prompt'
+    description: Design data quality rules and validation framework
+
+  - trigger: bam-data-catalog-design
+    action: '#data-catalog-design-prompt'
+    description: Design multi-tenant data catalog architecture
+
+  - trigger: bam-data-governance-review
+    action: '#data-governance-review-prompt'
+    description: Comprehensive data governance architecture review
+
+  # ============================================================
+  # CONTEXT LOADERS - Agent Guides
+  # ============================================================
+  - trigger: bam-data-classification-context
+    action: '#load-data-classification-context-prompt'
+    description: Load BAM data classification patterns
+
+  - trigger: bam-data-retention-context
+    action: '#load-data-retention-context-prompt'
+    description: Load BAM data retention patterns
+
+  - trigger: bam-data-masking-context
+    action: '#load-data-masking-context-prompt'
+    description: Load BAM data masking patterns
+
+  - trigger: bam-data-pipeline-patterns-context
+    action: '#load-data-pipeline-patterns-context-prompt'
+    description: Load BAM data pipeline patterns context
+
+prompts:
+  # ============================================================
+  # CONTEXT LOADER PROMPT
+  # ============================================================
+  - id: load-data-context-prompt
+    content: |
+      ## Load BAM Data Governance Context
+
+      Read and internalize the BAM data governance guide:
+      `{project-root}/_bmad/bam/data/agent-guides/bam/data-governance.md`
+
+      Also load the related guides:
+      `{project-root}/_bmad/bam/data/agent-guides/bam/compliance.md`
+      `{project-root}/_bmad/bam/data/agent-guides/bam/tenant-isolation.md`
+      `{project-root}/_bmad/bam/data/agent-guides/bam/audit-logging-patterns.md`
+
+      These guides provide context for:
+      - Multi-tenant data lineage tracking
+      - Data quality rule enforcement
+      - Tenant-aware data catalog design
+      - Data classification and sensitivity
+      - Compliance-driven data governance
+
+      Confirm when loaded, then proceed with data governance tasks.
+
+  # ============================================================
+  # WEB RESEARCH PROMPT
+  # ============================================================
+  - id: web-research-data-prompt
+    content: |
+      ## BAM Web Research - Data Governance
+
+      Conduct targeted web research for data governance decisions in multi-tenant SaaS.
+
+      **Research Focus:** {{research_topic}}
+
+      Execute 2-3 targeted searches:
+      Search the web: "{{research_topic}} data governance best practices {date}"
+      Search the web: "{{research_topic}} multi-tenant SaaS {date}"
+      Search the web: "{{research_topic}} data lineage patterns {date}"
+
+      **Research Areas:**
+      - Data lineage tracking in multi-tenant systems
+      - Data quality frameworks and validation
+      - Data catalog design patterns
+      - Data classification automation
+      - Tenant-isolated metadata management
+      - Data governance compliance (GDPR, SOC2)
+
+      Return findings with source citations: _Source: [URL]_
+
+      **Output Format:**
+      1. Key findings summary
+      2. Applicable data governance patterns for multi-tenant SaaS
+      3. Data governance recommendations with rationale
+      4. Sources consulted
+
+  # ============================================================
+  # DATA LINEAGE DESIGN PROMPT
+  # ============================================================
+  - id: data-lineage-design-prompt
+    content: |
+      ## Multi-Tenant Data Lineage Architecture Design
+
+      Prerequisites: Load data governance context via `bam-data-context`
+
+      **Load patterns:** `{project-root}/_bmad/bam/data/bam-patterns.csv` -> filter: `tenant-isolation`
+      **Load patterns:** `{project-root}/_bmad/bam/data/compliance-frameworks.csv`
+
+      Design data lineage tracking that respects tenant boundaries:
+
+      ### Lineage Architecture
+      | Component | Purpose | Tenant Isolation |
+      |-----------|---------|------------------|
+      | Lineage Graph | Track data flow | Tenant-scoped subgraphs |
+      | Metadata Store | Store lineage events | RLS on tenant_id |
+      | Lineage API | Query lineage | TenantContext validation |
+      | Visualization | Display lineage | Filtered by tenant |
+
+      ### Lineage Event Types
+      | Event Type | Captures | Example |
+      |------------|----------|---------|
+      | Source | Data ingestion | API import, file upload |
+      | Transform | Data processing | ETL job, aggregation |
+      | Sink | Data output | Export, API response |
+      | Access | Data read | Report generation |
+
+      ### Multi-Tenant Considerations
+      - Lineage graphs must be tenant-isolated
+      - Cross-tenant lineage only for platform-level data
+      - Lineage retention follows tenant data retention
+      - Admin-only cross-tenant lineage views
+
+      ### Implementation Requirements
+      - [ ] Lineage events capture tenant_id
+      - [ ] Graph storage supports tenant filtering
+      - [ ] API validates tenant context
+      - [ ] Visualization respects tenant boundaries
+      - [ ] Historical lineage preserved for compliance
+
+      Output as data lineage architecture document using:
+      `{project-root}/_bmad/bam/templates/data-lineage-architecture-template.md`
+
+  # ============================================================
+  # DATA QUALITY RULES PROMPT
+  # ============================================================
+  - id: data-quality-rules-prompt
+    content: |
+      ## Data Quality Rules and Validation Framework
+
+      Prerequisites: Load data governance context via `bam-data-context`
+
+      **Load patterns:** `{project-root}/_bmad/bam/data/bam-patterns.csv` -> filter: `tenant-isolation`
+      **Load patterns:** `{project-root}/_bmad/bam/data/compliance-frameworks.csv`
+
+      Design data quality framework for multi-tenant platform:
+
+      ### Quality Dimensions
+      | Dimension | Definition | Measurement |
+      |-----------|------------|-------------|
+      | Completeness | Required fields present | % non-null |
+      | Accuracy | Data matches reality | Validation pass rate |
+      | Consistency | Data matches rules | Cross-field validation |
+      | Timeliness | Data freshness | Lag from source |
+      | Uniqueness | No duplicates | Dedup rate |
+
+      ### Rule Categories
+      | Category | Scope | Examples |
+      |----------|-------|----------|
+      | Schema | Field-level | Type, format, required |
+      | Business | Record-level | Cross-field validation |
+      | Referential | Relationship | Foreign key integrity |
+      | Statistical | Dataset-level | Distribution checks |
+
+      ### Tenant-Specific Quality
+      | Tier | Quality SLA | Monitoring |
+      |------|-------------|------------|
+      | Free | Best effort | Weekly reports |
+      | Pro | 99% accuracy | Daily monitoring |
+      | Enterprise | Custom SLA | Real-time alerts |
+
+      ### Implementation Requirements
+      - [ ] Quality rules versioned and tenant-configurable
+      - [ ] Validation errors tenant-isolated
+      - [ ] Quality metrics per tenant
+      - [ ] Remediation workflows tenant-aware
+      - [ ] Historical quality trends tracked
+
+      Output as data quality framework document.
+
+  # ============================================================
+  # DATA CATALOG DESIGN PROMPT
+  # ============================================================
+  - id: data-catalog-design-prompt
+    content: |
+      ## Multi-Tenant Data Catalog Architecture Design
+
+      Prerequisites: Load data governance context via `bam-data-context`
+
+      **Load patterns:** `{project-root}/_bmad/bam/data/bam-patterns.csv` -> filter: `tenant-isolation`
+
+      Design data catalog that supports multi-tenant discovery:
+
+      ### Catalog Architecture
+      | Layer | Purpose | Tenant Isolation |
+      |-------|---------|------------------|
+      | Metadata Store | Asset definitions | Tenant-scoped schemas |
+      | Search Index | Discovery | Tenant-filtered queries |
+      | Lineage Integration | Context | Scoped lineage views |
+      | Access Control | Security | TBAC enforcement |
+
+      ### Catalog Asset Types
+      | Asset Type | Description | Discovery |
+      |------------|-------------|-----------|
+      | Tables | Database tables | Schema browser |
+      | Columns | Field definitions | Search + filter |
+      | Pipelines | ETL workflows | Pipeline catalog |
+      | Reports | BI outputs | Report library |
+      | APIs | Data endpoints | API documentation |
+
+      ### Multi-Tenant Features
+      | Feature | Free | Pro | Enterprise |
+      |---------|------|-----|------------|
+      | Asset discovery | Basic | Full | Custom |
+      | Metadata editing | No | Yes | Yes |
+      | Custom tags | No | Limited | Unlimited |
+      | Data profiling | No | Manual | Automated |
+      | Business glossary | Shared | Shared | Custom |
+
+      ### Implementation Requirements
+      - [ ] Catalog metadata tenant-isolated
+      - [ ] Search respects tenant boundaries
+      - [ ] Shared glossary read-only for tenants
+      - [ ] Custom metadata tenant-scoped
+      - [ ] Access logging for compliance
+
+      Output as data catalog architecture document.
+
+  # ============================================================
+  # DATA GOVERNANCE REVIEW PROMPT
+  # ============================================================
+  - id: data-governance-review-prompt
+    content: |
+      ## Comprehensive Data Governance Architecture Review
+
+      Prerequisites: Load data governance context via `bam-data-context`
+
+      **Load checklist:** `{project-root}/_bmad/bam/checklists/qg-i2-tenant-safety.md`
+      **Load patterns:** `{project-root}/_bmad/bam/data/compliance-frameworks.csv`
+
+      Perform comprehensive review of data governance architecture:
+
+      ### Data Lineage Review
+      - [ ] Lineage captures all data movements
+      - [ ] Tenant isolation enforced in lineage graph
+      - [ ] Historical lineage retained per compliance
+      - [ ] Cross-tenant lineage restricted to admins
+      - [ ] Lineage visualization tenant-scoped
+
+      ### Data Quality Review
+      - [ ] Quality rules defined for all critical data
+      - [ ] Validation errors tenant-isolated
+      - [ ] Quality metrics tracked per tenant
+      - [ ] Remediation workflows operational
+      - [ ] Quality SLAs defined per tier
+
+      ### Data Catalog Review
+      - [ ] All data assets cataloged
+      - [ ] Metadata tenant-isolated
+      - [ ] Search respects tenant boundaries
+      - [ ] Access controls enforced
+      - [ ] Business glossary maintained
+
+      ### Compliance Review
+      - [ ] Data classification applied
+      - [ ] Sensitive data identified
+      - [ ] Retention policies enforced
+      - [ ] Audit logging complete
+      - [ ] GDPR/SOC2 requirements met
+
+      Generate data governance review report with:
+      - Findings (Critical/Major/Minor)
+      - Recommendations
+      - Compliance gaps
+
+  # ============================================================
+  # CONTEXT LOADER PROMPTS - Agent Guides
+  # ============================================================
+  - id: load-data-classification-context-prompt
+    content: |
+      Read and internalize the BAM guide:
+      `{project-root}/_bmad/bam/data/agent-guides/bam/data-classification-patterns.md`
+
+      Confirm when loaded.
+
+  - id: load-data-retention-context-prompt
+    content: |
+      Read and internalize the BAM guide:
+      `{project-root}/_bmad/bam/data/agent-guides/bam/data-retention-patterns.md`
+
+      Confirm when loaded.
+
+  - id: load-data-masking-context-prompt
+    content: |
+      Read and internalize the BAM guide:
+      `{project-root}/_bmad/bam/data/agent-guides/bam/data-masking-patterns.md`
+
+      Confirm when loaded.
+
+  - id: load-data-pipeline-patterns-context-prompt
+    content: |
+      Read and internalize the BAM guide:
+      `{project-root}/_bmad/bam/data/agent-guides/bam/data-pipeline-patterns.md`
+
+      Confirm when loaded.

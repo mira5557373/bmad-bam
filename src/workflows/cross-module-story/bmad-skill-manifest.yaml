@@ -1,6 +1,5 @@
 type: workflow
-name: bmad-bam-cross-module-story
+name: cross-module-story
 displayName: Cross-Module Story
 description: "Create stories spanning multiple modules. Use when the user requests to 'create cross-module story' or 'plan multi-module feature'."
 module: bam
-canonicalId: bmad-bam-cross-module-story

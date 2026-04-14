@@ -1,9 +1,8 @@
 ---
-name: bmad-bam-evolve-facade-contract
+name: evolve-facade-contract
 displayName: Evolve Facade Contract
 description: Handle breaking changes in facade contracts. Use when the user requests to 'evolve facade contract' or 'update module contract with breaking changes'.
 module: bam
-web_bundle: true
 tags: [integration]
 ---
 
@@ -30,6 +29,12 @@ Search for and load `{project-root}/**/project-context.md` as foundational refer
 **Note:** If the user provides additional information during guided steps, capture it for later use without breaking the current flow.
 
 **Intent Check:** Confirm the user's intent and the target contract name before processing. Verify the contract exists and is the correct target for evolution.
+
+## When to Use
+
+- Evolving existing facade contracts safely
+- Adding backward-compatible changes to module interfaces
+- Managing contract version transitions
 
 ## Mode
 
@@ -83,6 +88,20 @@ Prerequisites: ALL consumers migrated and verified.
 - Migration stories per consumer
 - Migration tracking in sprint-status
 - Archived old contract version
+
+## Quality Gates
+
+This workflow contributes to:
+- **QG-I1** (Convergence) - Contract evolution tracking
+
+### Entry Gate
+- QG-M1 (Module Architecture) must pass for provider module
+- Existing facade contract must be registered
+
+### Exit Gate
+- Updated contracts compatible with QG-I1 criteria
+- All consumers migrated before breaking release
+- Contract version increment follows semantic versioning
 
 ## References
 

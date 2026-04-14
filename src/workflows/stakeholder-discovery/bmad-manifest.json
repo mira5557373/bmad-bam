@@ -1,0 +1,14 @@
+{
+  "module-code": "bam",
+  "capabilities": [{
+    "name": "bmad-bam-stakeholder-discovery",
+    "menu-code": "SD",
+    "description": "Discover and document key stakeholders for multi-tenant SaaS platform initiatives. Use when the user requests to 'identify stakeholders' or 'create stakeholder map'.",
+    "supports-headless": true,
+    "phase-name": "1-discovery",
+    "after": [],
+    "before": ["bmad-bam-create-master-architecture"],
+    "is-required": false,
+    "output-location": "{output_folder}/planning-artifacts"
+  }]
+}

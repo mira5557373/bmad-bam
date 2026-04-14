@@ -1,0 +1,14 @@
+{
+  "module-code": "bam",
+  "capabilities": [{
+    "name": "bmad-bam-event-streaming-design",
+    "menu-code": "EVSD",
+    "description": "Design event streaming architecture with Kafka or EventBridge",
+    "supports-headless": true,
+    "phase-name": "3-solutioning",
+    "after": [],
+    "before": [],
+    "is-required": false,
+    "output-location": "{output_folder}/planning-artifacts/streaming"
+  }]
+}

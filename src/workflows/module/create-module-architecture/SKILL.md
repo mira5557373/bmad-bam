@@ -1,9 +1,8 @@
 ---
-name: bmad-bam-create-module-architecture
+name: create-module-architecture
 displayName: Create Module Architecture
 description: Design per-module architecture inheriting from master. Use when the user requests to 'create module architecture' or 'design module'.
 module: bam
-web_bundle: true
 tags: [module]
 ---
 
@@ -19,7 +18,7 @@ Act as a Platform Architect designing module-level bounded contexts within a mod
 
 ## On Activation
 
-Load available config from `{project-root}/_bmad/config.yaml` and `{project-root}/_bmad/config.user.yaml` (root and `bam` section). If config is missing, let the user know `bmad-bam-setup` can configure the module at any time. Resolve:
+Load available config from `{project-root}/_bmad/config.yaml` and `{project-root}/_bmad/config.user.yaml` (root and `bam` section). If config is missing, let the user know they can configure BAM settings in `{project-root}/_bmad/config.yaml` under the `bam` section, or re-run `npx bmad-method install` to reconfigure. Resolve:
 
 - `{user_name}`, `{communication_language}`, `{document_output_language}`, `{output_folder}`
 
@@ -37,6 +36,20 @@ Ask for or detect the target module name.
 **If running in headless mode (`-H`):** Use defaults for all optional inputs, skip confirmation prompts, and auto-proceed through all steps.
 
 **Note:** If the user provides additional information during guided steps, capture it for later use without breaking the current flow.
+
+## When to Use
+
+- Creating architecture for a new module
+- Defining module boundaries, facades, and domain model
+- Establishing module-level AI behaviors and tool permissions
+
+## Modes
+
+| Mode | Purpose | Step Range |
+|------|---------|------------|
+| Create | Generate new module architecture | `step-01-c-*` to `step-10-c-*` |
+| Edit | Modify existing module architecture | `step-10-e-*` to `step-11-e-*` |
+| Validate | Check against QG-M1 criteria | `step-20-v-*` to `step-22-v-*` |
 
 ## Workflow
 
@@ -144,3 +157,25 @@ Define agents, tool permissions, and memory scope rules for this module.
 - Checklist: `bam/checklists/module-readiness.md`
 - DDD Module Patterns: `bam/knowledge/ddd-module-patterns.md`
 - Workflow Sequence: `bam/knowledge/workflow-sequence.md`
+
+## Quality Gates
+
+This workflow contributes to:
+- **QG-M1** (Module Architecture) - Defines module architecture
+
+### Entry Gate
+- QG-F1 (Foundation) must have passed
+- Module must not already have an architecture document (if it does, use Edit mode)
+
+### Exit Gate
+- QG-M1 checklist items from `module-architecture.md` verified
+- Module identity, domain model, facade, dependencies, events, and AI behaviors defined
+- Architecture inherits from master architecture
+- Module registered in sprint-status.yaml as 'architecture-complete'
+
+## Web Research
+
+This workflow uses web search to verify current best practices. Steps involving technology decisions will include:
+- `Search the web:` directives for pattern verification
+- Pattern registry `web_queries` for search topics
+- Source citations: `_Source: [URL]_`

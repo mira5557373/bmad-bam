@@ -1,0 +1,14 @@
+{
+  "module-code": "bam",
+  "capabilities": [{
+    "name": "bmad-bam-distributed-tracing-design",
+    "menu-code": "DTD",
+    "description": "Design distributed tracing for microservices observability",
+    "supports-headless": true,
+    "phase-name": "3-solutioning",
+    "after": ["bmad-bam-tenant-aware-observability"],
+    "before": ["bmad-bam-ai-observability-setup"],
+    "is-required": false,
+    "output-location": "{output_folder}/planning-artifacts/observability"
+  }]
+}

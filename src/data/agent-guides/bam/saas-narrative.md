@@ -11,6 +11,25 @@
 
 ---
 
+## Core Concepts
+
+### Storytelling Frameworks
+Structured approaches to crafting compelling narratives. The classic hero's journey, problem-solution-result, and before-after-bridge frameworks help transform feature descriptions into emotional, memorable stories.
+
+### Value Proposition
+A clear statement of why a tenant should choose your platform. Effective value propositions articulate the specific benefit, target audience, and unique differentiation in a concise, compelling format.
+
+### Proof Points
+Quantifiable evidence that supports narrative claims. Metrics like time saved, cost reduction, revenue growth, and efficiency gains transform stories from aspirational to credible.
+
+### Audience Segmentation
+Tailoring narratives to specific personas, tiers, and buyer roles. Technical evaluators need different stories than executive sponsors; free tier prospects respond differently than enterprise buyers.
+
+### Multi-Tenant Considerations
+Multi-tenant SaaS narrative must balance platform-wide value propositions with tier-specific stories. Success stories should showcase natural tier progression, demonstrate isolation benefits for enterprise buyers, and articulate how shared infrastructure delivers better value than single-tenant alternatives.
+
+---
+
 ## Tenant Success Stories Framework
 
 ### Success Story Structure
@@ -194,3 +213,36 @@ and enable [$Z] in new revenue through platform capabilities."
 - `bmad-bam-create-master-architecture` - Platform capability narratives
 - WDS workflows for storytelling UX patterns
 - PM workflows for feature value articulation
+
+## Related Patterns
+
+Load decision criteria and web search queries from pattern registry:
+
+- **Narrative patterns:** `{project-root}/_bmad/bam/data/bam-patterns.csv` → filter by category: `narrative-*`
+- **SaaS patterns:** `{project-root}/_bmad/bam/data/bam-patterns.csv` → filter by category: `saas-*`
+
+### Web Research
+
+Use the `web_queries` column from pattern registry to search for current best practices:
+- Search: "SaaS product storytelling {date}"
+- Search: "B2B SaaS value proposition narrative {date}"
+- Search: "multi-tenant product positioning {date}"
+
+---
+
+## Decision Framework
+
+| Question | Recommendation | Rationale |
+|----------|---------------|-----------|
+| Which tier success stories to prioritize? | Focus on tier transition stories (Free to Pro, Pro to Enterprise) | Transition stories drive upgrade conversions; demonstrate natural growth path |
+| When to quantify ROI vs emotional appeal? | Quantify for enterprise buyers; emotional for SMB and startup audiences | Enterprise decisions require justification; smaller businesses respond to aspiration |
+| How to balance platform-wide vs tier-specific messaging? | Lead with universal value, then tier-specific benefits in discovery flow | Broad appeal captures attention; specific benefits convert qualified prospects |
+| When to refresh success stories? | Quarterly for metrics; annually for narrative structure | Metrics become stale quickly; story frameworks remain relevant longer |
+| How to handle competitive narratives? | Counter weaknesses, don't attack directly; focus on unique strengths | Negative positioning creates risk; differentiation builds confidence |
+
+## Related Workflows
+
+- `bmad-bam-tenant-onboarding-design` - Document onboarding success stories
+- `bmad-bam-tenant-tier-migration` - Capture tier transition narratives
+- `bmad-bam-create-master-architecture` - Articulate platform capability value
+- `bmad-bam-tenant-analytics-dashboard` - Track ROI proof points
