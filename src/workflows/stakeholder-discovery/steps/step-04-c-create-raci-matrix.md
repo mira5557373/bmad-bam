@@ -30,7 +30,7 @@ Create a comprehensive RACI (Responsible, Accountable, Consulted, Informed) matr
 - Interests and influence mapped (Step 2)
 - Communication plan defined (Step 3)
 - **Load patterns:** `{project-root}/_bmad/bam/data/bam-patterns.csv` -> filter: governance
-- **Load template:** `{project-root}/_bmad/bam/templates/stakeholder-map-template.md`
+- **Load template:** `{project-root}/_bmad/bam/data/templates/stakeholder-map-template.md`
 
 
 ---

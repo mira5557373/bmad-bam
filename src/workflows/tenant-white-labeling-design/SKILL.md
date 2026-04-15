@@ -124,5 +124,5 @@ This workflow contributes to:
 
 ## References
 
-- Knowledge: `bam/knowledge/multi-tenant-patterns.md`
-- Checklist: `bam/checklists/tenant-isolation.md`
+- Knowledge: `{project-root}/_bmad/bam/data/agent-guides/bam/multi-tenant-patterns.md`
+- Checklist: `{project-root}/_bmad/bam/data/checklists/tenant-isolation.md`

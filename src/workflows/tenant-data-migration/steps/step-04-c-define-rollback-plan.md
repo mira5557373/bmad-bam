@@ -39,7 +39,7 @@ Define comprehensive rollback procedures for each migration phase to ensure safe
 
 - Output from previous step(s) in this workflow
 - Pattern registry: `{project-root}/_bmad/bam/data/bam-patterns.csv`
-- Relevant templates from `{project-root}/_bmad/bam/templates/`
+- Relevant templates from `{project-root}/_bmad/bam/data/templates/`
 - User feedback and refinements from previous steps
 
 ---
@@ -232,7 +232,7 @@ Select an option:
 - Complete rollback plan document
 - Rollback scripts for each phase
 - Emergency contact list
-- **Load template:** `{project-root}/_bmad/bam/templates/migration-runbook-template.md`
+- **Load template:** `{project-root}/_bmad/bam/data/templates/migration-runbook-template.md`
 
 ---
 

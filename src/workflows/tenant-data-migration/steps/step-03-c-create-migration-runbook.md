@@ -39,7 +39,7 @@ Create a detailed execution runbook with step-by-step procedures, commands, and 
 
 - Output from previous step(s) in this workflow
 - Pattern registry: `{project-root}/_bmad/bam/data/bam-patterns.csv`
-- Relevant templates from `{project-root}/_bmad/bam/templates/`
+- Relevant templates from `{project-root}/_bmad/bam/data/templates/`
 - User feedback and refinements from previous steps
 
 ---
@@ -238,7 +238,7 @@ Select an option:
 - Complete migration runbook
 - Phase execution scripts
 - Communication templates
-- **Load template:** `{project-root}/_bmad/bam/templates/data-migration-template.md`
+- **Load template:** `{project-root}/_bmad/bam/data/templates/data-migration-template.md`
 
 ---
 

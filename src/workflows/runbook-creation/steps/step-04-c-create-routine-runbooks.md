@@ -8,7 +8,7 @@ Create runbooks for routine operations, maintenance, and administrative tasks.
 
 - Steps 1-3 complete
 - Operational procedures identified
-- **Load checklists:** `{project-root}/_bmad/bam/checklists/production-checklist.md`
+- **Load checklists:** `{project-root}/_bmad/bam/data/checklists/production-checklist.md`
 
 ## Actions
 

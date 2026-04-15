@@ -27,14 +27,14 @@ Load the service mesh configuration documents for validation against infrastruct
 
 - Service mesh configuration artifact exists to validate
 - **Load patterns:** `{project-root}/_bmad/bam/data/bam-patterns.csv` -> filter: infrastructure
-- **Load checklist:** `{project-root}/_bmad/bam/checklists/module-readiness.md`
+- **Load checklist:** `{project-root}/_bmad/bam/data/checklists/module-readiness.md`
 
 ---
 
 ## Inputs
 
 - Artifact file path for validation
-- Quality gate checklist: `{project-root}/_bmad/bam/checklists/`
+- Quality gate checklist: `{project-root}/_bmad/bam/data/checklists/`
 - Pattern registry: `{project-root}/_bmad/bam/data/bam-patterns.csv`
 
 ---

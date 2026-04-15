@@ -37,7 +37,7 @@ Document the dependencies between modules for this feature.
 
 - Output from previous step(s) in this workflow
 - Pattern registry: `{project-root}/_bmad/bam/data/bam-patterns.csv`
-- Relevant templates from `{project-root}/_bmad/bam/templates/`
+- Relevant templates from `{project-root}/_bmad/bam/data/templates/`
 - User feedback and refinements from previous steps
 
 ---
@@ -160,7 +160,7 @@ Select an option or provide feedback:
 - Dependency graph
 - Critical path analysis
 - Contract requirements
-- **Load template:** `{project-root}/_bmad/bam/templates/cross-module-story-template.md`
+- **Load template:** `{project-root}/_bmad/bam/data/templates/cross-module-story-template.md`
 
 ## Next Step
 

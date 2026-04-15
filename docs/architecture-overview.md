@@ -404,7 +404,7 @@ BAM integrates with the BMAD ecosystem through the BMB installer and BMM workflo
 ### BMB Installation
 
 ```yaml
-# src/workflows/module.yaml
+# src/module.yaml
 code: bam
 name: "BAM - Multi-Tenant Agentic AI SaaS"
 default_selected: false
@@ -614,7 +614,7 @@ For persistent agent preferences across sessions:
 │   └── contract-history.md
 ```
 
-Sidecar templates are installed from `src/templates/sidecar-*.md` and loaded by extension prompts for continuity.
+Sidecar templates are installed from `src/data/templates/sidecar-*.md` and loaded by extension prompts for continuity.
 
 ---
 

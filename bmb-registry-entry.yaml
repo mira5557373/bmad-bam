@@ -1,0 +1,54 @@
+# BMB Registry Entry for BAM Module
+# ============================================================================
+# This file documents the registry entry needed to add BAM to the official
+# BMAD Method Base (BMB) module registry.
+#
+# IMPORTANT: To fully fix the installation issue, this entry must be added to:
+# 1. Remote: https://github.com/bmad-code-org/bmad-plugins-marketplace/registry/official.yaml
+# 2. Fallback: bmad-method/tools/installer/modules/registry-fallback.yaml
+#
+# Until this is added to the official registry, use the post-install script
+# to copy the data/ directory manually.
+# ============================================================================
+
+# Add this entry to the modules section of the registry YAML:
+
+bmad-bam:
+  url: https://github.com/bmad-code-org/bmad-bam
+  module-definition: src/module.yaml
+  code: bmad-bam
+  name: "BAM - Multi-Tenant Agentic AI SaaS"
+  description: "Extension module that adds multi-tenant capabilities, modular monolith patterns, and AI agent architecture to the BMAD Method"
+  defaultSelected: false
+  type: bmad-org
+  npmPackage: bmad-bam
+
+# ============================================================================
+# WHY THIS IS NEEDED
+# ============================================================================
+#
+# Without this registry entry, BMB installs BAM via "plugin resolution" which:
+# - ONLY copies skill directories from marketplace.json plugins[].skills[]
+# - IGNORES the data/ directory (agent-guides, templates, checklists, extensions)
+#
+# With this registry entry, BMB uses "external module" installation which:
+# - Copies the ENTIRE src/ directory including data/
+# - Properly installs all 721 resource files
+#
+# ============================================================================
+# VERIFICATION AFTER REGISTRY UPDATE
+# ============================================================================
+#
+# After the registry is updated, verify installation with:
+#
+#   npx bmad-method install
+#   # Select BAM module
+#
+#   # Then verify:
+#   ls _bmad/bmad-bam/data/          # Should show subdirs + CSVs
+#   ls _bmad/bmad-bam/data/agent-guides/bam/ | wc -l   # Should be 190
+#   ls _bmad/bmad-bam/data/templates/ | wc -l          # Should be 456
+#   ls _bmad/bmad-bam/data/checklists/ | wc -l         # Should be 37
+#   ls _bmad/bmad-bam/data/extensions/ | wc -l         # Should be 32
+#
+# ============================================================================

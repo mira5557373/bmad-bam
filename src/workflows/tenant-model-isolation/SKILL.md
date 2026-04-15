@@ -124,12 +124,12 @@ This workflow contributes to:
 
 ## References
 
-- Template: `bam/templates/tenant-isolation-matrix.md`, `bam/templates/tenant-tier-matrix.md`, `bam/templates/tenant-lifecycle-template.md`
-- RLS Best Practices: `bam/knowledge/rls-best-practices.md`
-- Multi-Tenant Patterns: `bam/knowledge/multi-tenant-patterns.md`
+- Template: `{project-root}/_bmad/bam/data/templates/tenant-isolation-matrix.md`, `{project-root}/_bmad/bam/data/templates/tenant-tier-matrix.md`, `{project-root}/_bmad/bam/data/templates/tenant-lifecycle-template.md`
+- RLS Best Practices: `{project-root}/_bmad/bam/data/agent-guides/bam/rls-best-practices.md`
+- Multi-Tenant Patterns: `{project-root}/_bmad/bam/data/agent-guides/bam/multi-tenant-patterns.md`
 
-- Knowledge: `bam/knowledge/multi-tenant-patterns.md`, `bam/knowledge/rls-best-practices.md`
-- Template: `bam/templates/rls-policy.sql`
-- Checklist: `bam/checklists/tenant-isolation.md`
-- RLS Best Practices: `bam/knowledge/rls-best-practices.md`
-- Multi-Tenant Patterns: `bam/knowledge/multi-tenant-patterns.md`
+- Knowledge: `{project-root}/_bmad/bam/data/agent-guides/bam/multi-tenant-patterns.md`, `{project-root}/_bmad/bam/data/agent-guides/bam/rls-best-practices.md`
+- Template: `{project-root}/_bmad/bam/data/templates/rls-policy.sql`
+- Checklist: `{project-root}/_bmad/bam/data/checklists/tenant-isolation.md`
+- RLS Best Practices: `{project-root}/_bmad/bam/data/agent-guides/bam/rls-best-practices.md`
+- Multi-Tenant Patterns: `{project-root}/_bmad/bam/data/agent-guides/bam/multi-tenant-patterns.md`

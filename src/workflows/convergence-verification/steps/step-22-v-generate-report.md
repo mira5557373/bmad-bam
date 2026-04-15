@@ -148,8 +148,8 @@ Create validation report summarizing:
 - Gate-level pass/fail summary (QG-I1, QG-I2, QG-I3)
 - Integration readiness assessment
 - Production deployment recommendation
-- **Load template:** `{project-root}/_bmad/bam/templates/test-case-template.md`
-- **Load template:** `{project-root}/_bmad/bam/templates/cross-tenant-test-plan-template.md`
+- **Load template:** `{project-root}/_bmad/bam/data/templates/test-case-template.md`
+- **Load template:** `{project-root}/_bmad/bam/data/templates/cross-tenant-test-plan-template.md`
 
 ## Next Step
 

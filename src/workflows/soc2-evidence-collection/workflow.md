@@ -70,4 +70,4 @@ Load the existing output artifact, then follow `steps/` for validation against q
 
 ## Templates
 
-- **Load template:** `{project-root}/_bmad/bam/templates/soc2-control-mapping-template.md`
+- **Load template:** `{project-root}/_bmad/bam/data/templates/soc2-control-mapping-template.md`

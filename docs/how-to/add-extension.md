@@ -21,16 +21,16 @@ BAM extensions enhance existing BMAD agents with multi-tenant SaaS capabilities.
 
 ### 1. Create Extension YAML File
 
-Create the extension file in `src/extensions/`:
+Create the extension file in `src/data/extensions/`:
 
 ```bash
-touch src/extensions/{agent}-bam.yaml
+touch src/data/extensions/{agent}-bam.yaml
 ```
 
 ### 2. Define Required Fields
 
 ```yaml
-# src/extensions/{agent}-bam.yaml
+# src/data/extensions/{agent}-bam.yaml
 
 agent:
   metadata:
@@ -215,7 +215,7 @@ Tests verify:
 ## Example: Complete Extension
 
 ```yaml
-# src/extensions/analyst-bam.yaml
+# src/data/extensions/analyst-bam.yaml
 
 agent:
   metadata:

@@ -116,7 +116,7 @@ Select an option:
 ## Outputs
 
 - Validation report
-- **Load template:** `{project-root}/_bmad/bam/templates/quality-gate-report-template.md`
+- **Load template:** `{project-root}/_bmad/bam/data/templates/quality-gate-report-template.md`
 - **Output to:** `{output_folder}/planning-artifacts/tenant-requirements-validation-report.md`
 
 ## Next Step

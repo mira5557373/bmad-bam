@@ -67,5 +67,5 @@ Load the existing output artifact, then follow `steps/` for validation against q
 
 ## Templates
 
-- **Load template:** `{project-root}/_bmad/bam/templates/model-security-template.md`
-- **Load template:** `{project-root}/_bmad/bam/templates/access-control-template.md`
+- **Load template:** `{project-root}/_bmad/bam/data/templates/model-security-template.md`
+- **Load template:** `{project-root}/_bmad/bam/data/templates/access-control-template.md`

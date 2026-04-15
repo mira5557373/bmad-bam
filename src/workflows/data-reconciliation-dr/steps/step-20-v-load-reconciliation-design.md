@@ -100,7 +100,7 @@ If the file is incomplete:
 ## Inputs
 
 - Artifact file path for validation
-- Quality gate checklist: `{project-root}/_bmad/bam/checklists/`
+- Quality gate checklist: `{project-root}/_bmad/bam/data/checklists/`
 - Pattern registry: `{project-root}/_bmad/bam/data/bam-patterns.csv`
 
 ---
@@ -187,7 +187,7 @@ If the file is incomplete:
 - Loaded reconciliation design for validation
 - Section completeness checklist
 - Initial quality assessment
-- **Load template:** `{project-root}/_bmad/bam/templates/data-reconciliation-dr-template.md`
+- **Load template:** `{project-root}/_bmad/bam/data/templates/data-reconciliation-dr-template.md`
 
 ## Next Step
 

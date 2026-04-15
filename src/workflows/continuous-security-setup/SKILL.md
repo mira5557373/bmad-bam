@@ -101,8 +101,8 @@ This workflow contributes to:
 
 ## References
 
-- Template: `bam/templates/security-config-template.md`
-- Knowledge: `bam/knowledge/security-patterns.md`
+- Template: `{project-root}/_bmad/bam/data/templates/security-config-template.md`
+- Knowledge: `{project-root}/_bmad/bam/data/agent-guides/bam/security-patterns.md`
 
 ## Web Research
 

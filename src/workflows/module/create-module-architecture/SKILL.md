@@ -148,15 +148,15 @@ Define agents, tool permissions, and memory scope rules for this module.
 
 ## References
 
-- Template: `bam/templates/module-architecture-template.md`, `bam/templates/module-context-template.md`
-- DDD Module Patterns: `bam/knowledge/ddd-module-patterns.md`
-- Workflow Sequence: `bam/knowledge/workflow-sequence.md`
+- Template: `{project-root}/_bmad/bam/data/templates/module-architecture-template.md`, `{project-root}/_bmad/bam/data/templates/module-context-template.md`
+- DDD Module Patterns: `{project-root}/_bmad/bam/data/agent-guides/bam/ddd-module-patterns.md`
+- Workflow Sequence: `{project-root}/_bmad/bam/data/agent-guides/bam/workflow-sequence.md`
 
-- Template: `bam/templates/sprint-status-template.yaml`
-- Knowledge: `bam/knowledge/ddd-module-patterns.md`, `bam/knowledge/module-facade-patterns.md`, `bam/knowledge/independent-development.md`
-- Checklist: `bam/checklists/module-readiness.md`
-- DDD Module Patterns: `bam/knowledge/ddd-module-patterns.md`
-- Workflow Sequence: `bam/knowledge/workflow-sequence.md`
+- Template: `{project-root}/_bmad/bam/data/templates/sprint-status-template.yaml`
+- Knowledge: `{project-root}/_bmad/bam/data/agent-guides/bam/ddd-module-patterns.md`, `{project-root}/_bmad/bam/data/agent-guides/bam/module-facade-patterns.md`, `{project-root}/_bmad/bam/data/agent-guides/bam/independent-development.md`
+- Checklist: `{project-root}/_bmad/bam/data/checklists/module-readiness.md`
+- DDD Module Patterns: `{project-root}/_bmad/bam/data/agent-guides/bam/ddd-module-patterns.md`
+- Workflow Sequence: `{project-root}/_bmad/bam/data/agent-guides/bam/workflow-sequence.md`
 
 ## Quality Gates
 

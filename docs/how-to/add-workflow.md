@@ -149,7 +149,7 @@ Step files follow the naming convention: `step-NN-mode-description.md`
 ## Outputs
 
 - {Artifact 1}
-- **Load template:** `{project-root}/_bmad/bam/templates/{template}.md`
+- **Load template:** `{project-root}/_bmad/bam/data/templates/{template}.md`
 
 ## Next Step
 
@@ -178,7 +178,7 @@ The `{date}` placeholder is resolved at runtime to the current year.
 
 ### 7. Add to module-help.csv
 
-Add a row to `src/workflows/module-help.csv` with all 14 columns:
+Add a row to `src/module-help.csv` with all 14 columns:
 
 ```csv
 bam,bmad-bam-{workflow-name},{Display Name},{MENU-CODE},{Description},run,,{phase},{after},{before},{required},{output-location},{outputs},{keywords}

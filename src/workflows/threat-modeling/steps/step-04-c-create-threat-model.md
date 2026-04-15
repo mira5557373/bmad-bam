@@ -38,7 +38,7 @@ Assemble the comprehensive threat model document incorporating attack surface an
 
 - All outputs from Steps 1-3
 - Pattern registry: `{project-root}/_bmad/bam/data/bam-patterns.csv`
-- Template: `{project-root}/_bmad/bam/templates/threat-model-template.md`
+- Template: `{project-root}/_bmad/bam/data/templates/threat-model-template.md`
 
 ---
 

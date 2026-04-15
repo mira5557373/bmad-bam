@@ -44,7 +44,7 @@ _Source: [URL]_ for key findings.
 
 - Output from previous step(s) in this workflow
 - Pattern registry: `{project-root}/_bmad/bam/data/bam-patterns.csv`
-- Relevant templates from `{project-root}/_bmad/bam/templates/`
+- Relevant templates from `{project-root}/_bmad/bam/data/templates/`
 - User feedback and refinements from previous steps
 
 ---
@@ -138,7 +138,7 @@ Select an option:
 - Dependency validation script/linter rules
 - Event ownership registry
 - Database ownership matrix
-- **Load template:** `{project-root}/_bmad/bam/templates/module-architecture-template.md`
+- **Load template:** `{project-root}/_bmad/bam/data/templates/module-architecture-template.md`
 
 ---
 

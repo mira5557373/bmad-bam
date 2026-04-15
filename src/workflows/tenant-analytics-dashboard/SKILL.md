@@ -89,5 +89,5 @@ This workflow contributes to:
 
 ## References
 
-- Patterns: `bam/data/bam-patterns.csv`
-- Templates: `bam/templates/analytics-dashboard-template.md`
+- Patterns: `{project-root}/_bmad/bam/data/bam-patterns.csv`
+- Templates: `{project-root}/_bmad/bam/data/templates/analytics-dashboard-template.md`

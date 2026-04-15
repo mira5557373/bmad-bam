@@ -25,7 +25,7 @@ Load the AI evaluation and safety design artifacts for validation against QG-I3 
 
 - AI eval safety design artifact exists to validate
 - **Load patterns:** `{project-root}/_bmad/bam/data/bam-patterns.csv` → filter: testing-agent-safety
-- **Load checklist:** `{project-root}/_bmad/bam/checklists/qg-i3-agent-safety.md`
+- **Load checklist:** `{project-root}/_bmad/bam/data/checklists/qg-i3-agent-safety.md`
 
 Load the existing AI eval safety design documents:
 - `{output_folder}/planning-artifacts/safety/safety-criteria.md`
@@ -45,7 +45,7 @@ Parse the document structure and prepare for validation against the quality crit
 ## Inputs
 
 - Artifact file path for validation
-- Quality gate checklist: `{project-root}/_bmad/bam/checklists/`
+- Quality gate checklist: `{project-root}/_bmad/bam/data/checklists/`
 - Pattern registry: `{project-root}/_bmad/bam/data/bam-patterns.csv`
 
 ---

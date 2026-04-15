@@ -98,7 +98,7 @@ _Source: [URL]_
 ## Outputs
 
 - `{output_folder}/planning-artifacts/security-baseline-config.md`
-- **Load template:** `{project-root}/_bmad/bam/templates/security-baseline-template.md`
+- **Load template:** `{project-root}/_bmad/bam/data/templates/security-baseline-template.md`
 
 ## Next Step
 

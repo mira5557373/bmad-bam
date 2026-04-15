@@ -181,7 +181,7 @@ Select an option:
 
 - Dataset schema specification
 - Field definitions
-- **Load template:** `{project-root}/_bmad/bam/templates/golden-dataset-schema-template.md`
+- **Load template:** `{project-root}/_bmad/bam/data/templates/golden-dataset-schema-template.md`
 
 ## Next Step
 

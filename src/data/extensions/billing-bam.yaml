@@ -1,0 +1,195 @@
+# src/data/extensions/billing-bam.yaml
+# Pattern: WDS agent-guides (NO memories: field)
+
+agent:
+  metadata:
+    extends: 'bmad-agent-pm'
+    module: 'bam'
+    description: 'Multi-tenant billing, payments, and subscription management'
+
+menu:
+  # Context loader (REQUIRED)
+  - trigger: bam-billing-context
+    action: "#load-billing-context-prompt"
+    description: Load BAM billing and payments context
+
+  # Billing capabilities
+  - trigger: bam-design-billing-integration
+    action: "#design-billing-integration-prompt"
+    description: Design billing provider integration (Stripe/Paddle)
+
+  - trigger: bam-design-usage-billing
+    action: "#design-usage-billing-prompt"
+    description: Design usage-based billing model
+
+  - trigger: bam-design-subscription-lifecycle
+    action: "#design-subscription-lifecycle-prompt"
+    description: Design subscription lifecycle management
+
+  - trigger: bam-design-invoice-automation
+    action: "#design-invoice-automation-prompt"
+    description: Design automated invoicing system
+
+  - trigger: bam-design-payment-processing
+    action: "#design-payment-processing-prompt"
+    description: Design payment processing flows
+
+  - trigger: bam-design-revenue-recognition
+    action: "#design-revenue-recognition-prompt"
+    description: Design revenue recognition patterns
+
+  - trigger: bam-handle-billing-disputes
+    action: "#handle-billing-disputes-prompt"
+    description: Handle billing dispute resolution
+
+  # Web research
+  - trigger: bam-billing-research
+    action: "#bam-billing-research-prompt"
+    description: Research current billing best practices
+
+prompts:
+  - id: load-billing-context-prompt
+    content: |
+      Read and internalize the BAM billing guide:
+      `{project-root}/_bmad/bam/data/agent-guides/bam/billing-guide.md`
+
+      Also load related patterns:
+      - `{project-root}/_bmad/bam/data/agent-guides/bam/billing-integration-patterns.md`
+      - `{project-root}/_bmad/bam/data/agent-guides/bam/usage-metering.md`
+
+      Confirm when loaded.
+
+  - id: design-billing-integration-prompt
+    content: |
+      ## Design Billing Provider Integration
+
+      Prerequisites: Ensure billing context loaded via `bam-billing-context`
+
+      **Load patterns:** `{project-root}/_bmad/bam/data/bam-patterns.csv` -> filter: `billing-integration`
+
+      Design integration with billing provider (Stripe, Paddle, custom):
+
+      1. Provider selection criteria
+      2. Webhook handling for payment events
+      3. Tenant-aware billing accounts
+      4. Multi-currency support
+      5. Tax calculation integration
+      6. PCI compliance considerations
+
+      **Output template:** `{project-root}/_bmad/bam/data/templates/billing-integration-template.md`
+
+  - id: design-usage-billing-prompt
+    content: |
+      ## Design Usage-Based Billing
+
+      Prerequisites: Ensure billing context loaded via `bam-billing-context`
+
+      **Load patterns:** `{project-root}/_bmad/bam/data/bam-patterns.csv` -> filter: `usage-metering`
+
+      Design usage-based billing model:
+
+      1. Usage metrics definition (API calls, storage, compute)
+      2. Metering collection and aggregation
+      3. Billing period calculations
+      4. Overage handling
+      5. Usage alerts and notifications
+      6. Cost attribution per tenant
+
+      **Output template:** `{project-root}/_bmad/bam/data/templates/usage-billing-template.md`
+
+  - id: design-subscription-lifecycle-prompt
+    content: |
+      ## Design Subscription Lifecycle
+
+      Prerequisites: Ensure billing context loaded via `bam-billing-context`
+
+      Design subscription management:
+
+      1. Plan/tier definitions
+      2. Trial period management
+      3. Upgrade/downgrade flows
+      4. Cancellation and retention
+      5. Renewal automation
+      6. Grace periods and dunning
+
+      **Output template:** `{project-root}/_bmad/bam/data/templates/subscription-lifecycle-template.md`
+
+  - id: design-invoice-automation-prompt
+    content: |
+      ## Design Invoice Automation
+
+      Prerequisites: Ensure billing context loaded via `bam-billing-context`
+
+      Design automated invoicing:
+
+      1. Invoice generation triggers
+      2. Line item calculations
+      3. Tax and discount application
+      4. Invoice delivery methods
+      5. Payment reminder sequences
+      6. Invoice customization per tenant
+
+      **Output template:** `{project-root}/_bmad/bam/data/templates/invoice-automation-template.md`
+
+  - id: design-payment-processing-prompt
+    content: |
+      ## Design Payment Processing
+
+      Prerequisites: Ensure billing context loaded via `bam-billing-context`
+
+      Design payment processing flows:
+
+      1. Payment method management
+      2. Authorization and capture
+      3. Failed payment handling
+      4. Refund processing
+      5. Chargeback management
+      6. Payment reconciliation
+
+      **Output template:** `{project-root}/_bmad/bam/data/templates/payment-processing-template.md`
+
+  - id: design-revenue-recognition-prompt
+    content: |
+      ## Design Revenue Recognition
+
+      Prerequisites: Ensure billing context loaded via `bam-billing-context`
+
+      Design revenue recognition patterns:
+
+      1. ASC 606 compliance
+      2. Deferred revenue tracking
+      3. Contract modifications
+      4. Multi-element arrangements
+      5. Revenue allocation methods
+      6. Reporting and audit trails
+
+      **Output template:** `{project-root}/_bmad/bam/data/templates/revenue-recognition-template.md`
+
+  - id: handle-billing-disputes-prompt
+    content: |
+      ## Handle Billing Disputes
+
+      Prerequisites: Ensure billing context loaded via `bam-billing-context`
+
+      Design dispute resolution process:
+
+      1. Dispute intake and categorization
+      2. Investigation workflow
+      3. Credit and refund policies
+      4. Escalation procedures
+      5. Documentation requirements
+      6. Prevention strategies
+
+      Reference workflow: `bmad-bam-billing-disputes`
+
+  - id: bam-billing-research-prompt
+    content: |
+      ## Billing Best Practices Research
+
+      Search the web for current billing best practices:
+      - "SaaS billing integration patterns {date}"
+      - "usage-based billing implementation {date}"
+      - "subscription management best practices {date}"
+      - "PCI compliance SaaS {date}"
+
+      Synthesize findings and cite sources with `_Source: [URL]_`

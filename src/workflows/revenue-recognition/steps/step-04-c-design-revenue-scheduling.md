@@ -163,7 +163,7 @@ Ask for confirmation before proceeding to Edit or Validate modes.
 - Revenue scheduling specification
 - Period-end procedures
 - Adjustment handling policy
-- **Load template:** `{project-root}/_bmad/bam/templates/revenue-recognition-template.md`
+- **Load template:** `{project-root}/_bmad/bam/data/templates/revenue-recognition-template.md`
 
 ---
 

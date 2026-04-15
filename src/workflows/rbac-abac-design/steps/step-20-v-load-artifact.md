@@ -27,14 +27,14 @@ Load the RBAC/ABAC architecture documents for validation against security and co
 
 - RBAC/ABAC architecture artifact exists to validate
 - **Load patterns:** `{project-root}/_bmad/bam/data/bam-patterns.csv` → filter: security
-- **Load checklist:** `{project-root}/_bmad/bam/checklists/qg-security-continuous.md`
+- **Load checklist:** `{project-root}/_bmad/bam/data/checklists/qg-security-continuous.md`
 
 ---
 
 ## Inputs
 
 - Artifact file path for validation
-- Quality gate checklist: `{project-root}/_bmad/bam/checklists/`
+- Quality gate checklist: `{project-root}/_bmad/bam/data/checklists/`
 - Pattern registry: `{project-root}/_bmad/bam/data/bam-patterns.csv`
 
 ---

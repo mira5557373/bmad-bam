@@ -37,7 +37,7 @@ Design and configure the guardrail system for runtime safety.
 
 - Output from previous step(s) in this workflow
 - Pattern registry: `{project-root}/_bmad/bam/data/bam-patterns.csv`
-- Relevant templates from `{project-root}/_bmad/bam/templates/`
+- Relevant templates from `{project-root}/_bmad/bam/data/templates/`
 - User feedback and refinements from previous steps
 
 ---
@@ -148,7 +148,7 @@ Select an option:
 
 - Guardrail configuration document
 - Rules and thresholds specification
-- **Load template:** `{project-root}/_bmad/bam/templates/guardrail-config-template.md`
+- **Load template:** `{project-root}/_bmad/bam/data/templates/guardrail-config-template.md`
 
 ## Next Step
 

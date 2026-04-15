@@ -26,7 +26,7 @@ Validate the LLM evaluation pipeline against QG-I3 (Agent Safety) quality gate c
 ## Prerequisites
 
 - Step 20 completed: Artifact loaded
-- **Load checklist:** `{project-root}/_bmad/bam/checklists/qg-i3-agent-safety.md`
+- **Load checklist:** `{project-root}/_bmad/bam/data/checklists/qg-i3-agent-safety.md`
 - **Load patterns:** `{project-root}/_bmad/bam/data/bam-patterns.csv` → filter: evaluation-patterns
 
 ---
@@ -34,7 +34,7 @@ Validate the LLM evaluation pipeline against QG-I3 (Agent Safety) quality gate c
 ## Inputs
 
 - Loaded artifact from Step 20
-- Quality gate checklist: `{project-root}/_bmad/bam/checklists/qg-i3-agent-safety.md`
+- Quality gate checklist: `{project-root}/_bmad/bam/data/checklists/qg-i3-agent-safety.md`
 - Pattern registry: `{project-root}/_bmad/bam/data/bam-patterns.csv`
 
 ---

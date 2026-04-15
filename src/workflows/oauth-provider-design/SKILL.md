@@ -82,5 +82,5 @@ This workflow contributes to:
 
 ## References
 
-- Template: `bam/templates/oauth-provider-template.md`
+- Template: `{project-root}/_bmad/bam/data/templates/oauth-provider-template.md`
 - SSO Integration: `bmad-bam-tenant-sso-integration`

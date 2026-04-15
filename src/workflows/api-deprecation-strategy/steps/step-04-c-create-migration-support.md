@@ -37,7 +37,7 @@ Document migration paths, generate code examples, plan support resources, and de
 - Output from Steps 1-3
 - SDK documentation
 - Pattern registry: `{project-root}/_bmad/bam/data/bam-patterns.csv`
-- Relevant templates from `{project-root}/_bmad/bam/templates/`
+- Relevant templates from `{project-root}/_bmad/bam/data/templates/`
 
 ---
 

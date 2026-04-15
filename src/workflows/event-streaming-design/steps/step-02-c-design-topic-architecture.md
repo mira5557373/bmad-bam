@@ -37,7 +37,7 @@ Create topic naming conventions, define partition strategies, plan tenant isolat
 - Output from Step 1 (Event domains)
 - Platform selection (Kafka, EventBridge, etc.)
 - Pattern registry: `{project-root}/_bmad/bam/data/bam-patterns.csv`
-- Relevant templates from `{project-root}/_bmad/bam/templates/`
+- Relevant templates from `{project-root}/_bmad/bam/data/templates/`
 
 ---
 

@@ -6,7 +6,7 @@ This guide covers creating quality gate checklists for BAM, including file forma
 
 - BAM module installed
 - Understanding of BAM quality gate system (QG-F1 through QG-P1)
-- Access to `src/checklists/` directory
+- Access to `src/data/checklists/` directory
 - Review existing checklists for reference patterns
 
 ## Overview
@@ -30,10 +30,10 @@ Quality gate checklists are structured markdown files that define verification c
 
 ### 1. Create the Checklist File
 
-Create a new file in `src/checklists/`:
+Create a new file in `src/data/checklists/`:
 
 ```bash
-touch src/checklists/{checklist-name}.md
+touch src/data/checklists/{checklist-name}.md
 ```
 
 **Naming Conventions:**
@@ -293,7 +293,7 @@ Reference checklists in workflow step files:
 ## Verification
 
 Load and complete the checklist:
-`{project-root}/_bmad/bam/checklists/{checklist}.md`
+`{project-root}/_bmad/bam/data/checklists/{checklist}.md`
 
 All CRITICAL items must pass before proceeding.
 ```

@@ -91,5 +91,5 @@ This workflow does not contribute to any quality gates. It is a utility workflow
 
 ## Templates
 
-- **Load template:** `{project-root}/_bmad/bam/templates/api-documentation-template.md`
-- **Load template:** `{project-root}/_bmad/bam/templates/openapi-config-template.md`
+- **Load template:** `{project-root}/_bmad/bam/data/templates/api-documentation-template.md`
+- **Load template:** `{project-root}/_bmad/bam/data/templates/openapi-config-template.md`

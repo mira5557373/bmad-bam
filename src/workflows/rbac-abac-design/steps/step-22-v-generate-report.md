@@ -27,8 +27,8 @@ Generate a comprehensive validation report summarizing findings from the RBAC/AB
 
 - Step 20 completed: RBAC/ABAC architecture artifact loaded successfully
 - Step 21 completed: Validation performed against security criteria
-- **Load checklist:** `{project-root}/_bmad/bam/checklists/qg-security-continuous.md`
-- **Load template:** `{project-root}/_bmad/bam/templates/quality-gate-report-template.md`
+- **Load checklist:** `{project-root}/_bmad/bam/data/checklists/qg-security-continuous.md`
+- **Load template:** `{project-root}/_bmad/bam/data/templates/quality-gate-report-template.md`
 
 ---
 

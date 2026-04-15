@@ -39,7 +39,7 @@ Design features available exclusively to tenant administrators for managing thei
 
 - Output from previous step(s) in this workflow
 - Pattern registry: `{project-root}/_bmad/bam/data/bam-patterns.csv`
-- Relevant templates from `{project-root}/_bmad/bam/templates/`
+- Relevant templates from `{project-root}/_bmad/bam/data/templates/`
 - User feedback and refinements from previous steps
 
 ---
@@ -189,7 +189,7 @@ Ask for confirmation before proceeding to tier options configuration.
 
 - Admin feature catalog
 - Feature-tier availability matrix
-- **Load template:** `{project-root}/_bmad/bam/templates/admin-portal-ux-template.md`
+- **Load template:** `{project-root}/_bmad/bam/data/templates/admin-portal-ux-template.md`
 
 ---
 

@@ -146,7 +146,7 @@ Create validation report summarizing:
 - Category-level findings summary
 - Reconciliation readiness assessment
 - DR testing recommendations
-- **Load template:** `{project-root}/_bmad/bam/templates/data-reconciliation-dr-template.md`
+- **Load template:** `{project-root}/_bmad/bam/data/templates/data-reconciliation-dr-template.md`
 
 ## Next Step
 

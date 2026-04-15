@@ -27,7 +27,7 @@ Load the Master Architecture Document artifact for QG-F1 validation. The master 
 
 - Master Architecture Document artifact exists to validate
 - **Load patterns:** `{project-root}/_bmad/bam/data/bam-patterns.csv` → filter: tenant-isolation,module-boundaries
-- **Load checklist:** `{project-root}/_bmad/bam/checklists/foundation-gate.md`
+- **Load checklist:** `{project-root}/_bmad/bam/data/checklists/foundation-gate.md`
 
 ---
 
@@ -35,7 +35,7 @@ Load the Master Architecture Document artifact for QG-F1 validation. The master 
 ## Inputs
 
 - Artifact file path for validation
-- Quality gate checklist: `{project-root}/_bmad/bam/checklists/`
+- Quality gate checklist: `{project-root}/_bmad/bam/data/checklists/`
 - Pattern registry: `{project-root}/_bmad/bam/data/bam-patterns.csv`
 
 ---

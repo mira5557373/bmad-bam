@@ -9,7 +9,7 @@ Generate the formal quality gate decision for QG-I3 (Agent Safety) based on vali
 - Step 20 complete (document loaded)
 - Step 21 complete (validation checks executed)
 - Step 22 complete (validation report generated)
-- **Load checklist:** `{project-root}/_bmad/bam/checklists/qg-i3-agent-safety.md`
+- **Load checklist:** `{project-root}/_bmad/bam/data/checklists/qg-i3-agent-safety.md`
 
 ## Actions
 

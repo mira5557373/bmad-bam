@@ -102,4 +102,4 @@ Load the existing output artifact, then follow `steps/` for validation against q
 
 ## Templates
 
-- **Load template:** `{project-root}/_bmad/bam/templates/analytics-dashboard-template.md`
+- **Load template:** `{project-root}/_bmad/bam/data/templates/analytics-dashboard-template.md`

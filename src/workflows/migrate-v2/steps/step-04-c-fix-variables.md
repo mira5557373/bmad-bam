@@ -37,7 +37,7 @@ Transform all uppercase template variables to lowercase BMM-compatible format.
 
 - Output from previous step(s) in this workflow
 - Pattern registry: `{project-root}/_bmad/bam/data/bam-patterns.csv`
-- Relevant templates from `{project-root}/_bmad/bam/templates/`
+- Relevant templates from `{project-root}/_bmad/bam/data/templates/`
 - User feedback and refinements from previous steps
 
 ---
@@ -59,7 +59,7 @@ Transform all uppercase template variables to lowercase BMM-compatible format.
 
 ### 2. Transform Template Files
 
-Apply transformations to all files in `src/templates/`.
+Apply transformations to all files in `src/data/templates/`.
 
 ### 3. Transform Step Files
 

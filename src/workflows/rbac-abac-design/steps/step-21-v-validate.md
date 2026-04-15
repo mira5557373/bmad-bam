@@ -27,7 +27,7 @@ Validate the RBAC/ABAC architecture against security criteria, ensuring complete
 
 - Step 20 completed: Artifact loaded successfully
 - **Load patterns:** `{project-root}/_bmad/bam/data/bam-patterns.csv` → filter: security
-- **Load checklist:** `{project-root}/_bmad/bam/checklists/qg-security-continuous.md`
+- **Load checklist:** `{project-root}/_bmad/bam/data/checklists/qg-security-continuous.md`
 
 ---
 

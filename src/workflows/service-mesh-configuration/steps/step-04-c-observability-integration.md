@@ -113,7 +113,7 @@ Your options:
 - Service metrics definitions
 - Tenant-tagged telemetry spec
 - Service mesh dashboard configuration
-- **Load template:** `{project-root}/_bmad/bam/templates/service-mesh-template.md`
+- **Load template:** `{project-root}/_bmad/bam/data/templates/service-mesh-template.md`
 
 ---
 

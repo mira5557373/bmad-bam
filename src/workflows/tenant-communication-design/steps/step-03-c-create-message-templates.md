@@ -191,7 +191,7 @@ Select an option:
 - Message template catalog
 - Variable specification document
 - Localization requirements
-- **Load template:** `{project-root}/_bmad/bam/templates/message-template-catalog.md`
+- **Load template:** `{project-root}/_bmad/bam/data/templates/message-template-catalog.md`
 
 ---
 

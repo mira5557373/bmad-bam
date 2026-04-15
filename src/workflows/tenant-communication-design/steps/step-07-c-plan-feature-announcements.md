@@ -198,7 +198,7 @@ Select an option:
 - Feature announcement design document
 - Deprecation protocol specification
 - Announcement template catalog
-- **Load template:** `{project-root}/_bmad/bam/templates/feature-announcement-template.md`
+- **Load template:** `{project-root}/_bmad/bam/data/templates/feature-announcement-template.md`
 
 ---
 

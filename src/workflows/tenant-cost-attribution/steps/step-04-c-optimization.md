@@ -28,7 +28,7 @@ Design cost optimization strategies and recommendations to improve margins while
 
 - Step 3 completed: Chargeback reports designed
 - **Load patterns:** `{project-root}/_bmad/bam/data/bam-patterns.csv` -> filter: operations
-- **Load checklist:** `{project-root}/_bmad/bam/checklists/production-readiness.md`
+- **Load checklist:** `{project-root}/_bmad/bam/data/checklists/production-readiness.md`
 
 ---
 

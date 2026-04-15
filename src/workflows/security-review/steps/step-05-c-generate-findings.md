@@ -29,7 +29,7 @@ Consolidate all security findings from the assessment into a prioritized report 
 
 - Steps 1-4 completed: Scope, threat model, tenant isolation, AI safety reviews
 - **Load patterns:** `{project-root}/_bmad/bam/data/bam-patterns.csv` → filter: `compliance,testing-agent-safety`
-- **Load template:** `{project-root}/_bmad/bam/templates/quality-gate-report-template.md`
+- **Load template:** `{project-root}/_bmad/bam/data/templates/quality-gate-report-template.md`
 
 ---
 
@@ -38,7 +38,7 @@ Consolidate all security findings from the assessment into a prioritized report 
 
 - Output from previous step(s) in this workflow
 - Pattern registry: `{project-root}/_bmad/bam/data/bam-patterns.csv`
-- Relevant templates from `{project-root}/_bmad/bam/templates/`
+- Relevant templates from `{project-root}/_bmad/bam/data/templates/`
 - User feedback and refinements from previous steps
 
 ---

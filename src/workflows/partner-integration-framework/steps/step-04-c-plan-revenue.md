@@ -37,7 +37,7 @@ Design revenue sharing, configure billing integration, plan co-selling arrangeme
 - Output from Steps 1-3
 - Business requirements
 - Pattern registry: `{project-root}/_bmad/bam/data/bam-patterns.csv`
-- Relevant templates from `{project-root}/_bmad/bam/templates/`
+- Relevant templates from `{project-root}/_bmad/bam/data/templates/`
 
 ---
 

@@ -102,4 +102,4 @@ Load the existing output artifact, then follow:
 
 ## Templates
 
-- **Load template:** `{project-root}/_bmad/bam/templates/ai-eval-report-template.md`
+- **Load template:** `{project-root}/_bmad/bam/data/templates/ai-eval-report-template.md`

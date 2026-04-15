@@ -157,8 +157,8 @@ Select an option:
 - Trigger configuration
 - Artifact management specification
 - Environment promotion flow
-- **Load template:** `{project-root}/_bmad/bam/templates/cicd-pipeline-template.md`
-- **Load template:** `{project-root}/_bmad/bam/templates/cicd-gate-config-template.md`
+- **Load template:** `{project-root}/_bmad/bam/data/templates/cicd-pipeline-template.md`
+- **Load template:** `{project-root}/_bmad/bam/data/templates/cicd-gate-config-template.md`
 
 ---
 

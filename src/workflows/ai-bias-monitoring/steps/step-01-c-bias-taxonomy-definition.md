@@ -157,7 +157,7 @@ Select an option:
 
 - Bias taxonomy document
 - Protected attributes list
-- **Load template:** `{project-root}/_bmad/bam/templates/bias-taxonomy-template.md`
+- **Load template:** `{project-root}/_bmad/bam/data/templates/bias-taxonomy-template.md`
 
 ## Next Step
 

@@ -27,14 +27,14 @@ Validate the RAG pipeline architecture against QG-M3 quality gate criteria, ensu
 
 - Step 20 completed: Artifact loaded successfully
 - **Load patterns:** `{project-root}/_bmad/bam/data/bam-patterns.csv` → filter: rag-patterns
-- **Load checklist:** `{project-root}/_bmad/bam/checklists/qg-m3-agent-runtime.md`
+- **Load checklist:** `{project-root}/_bmad/bam/data/checklists/qg-m3-agent-runtime.md`
 
 ---
 
 ## Inputs
 
 - Loaded artifact from Step 20
-- Quality gate checklist: `{project-root}/_bmad/bam/checklists/qg-m3-agent-runtime.md`
+- Quality gate checklist: `{project-root}/_bmad/bam/data/checklists/qg-m3-agent-runtime.md`
 - Pattern registry: `{project-root}/_bmad/bam/data/bam-patterns.csv`
 
 ---

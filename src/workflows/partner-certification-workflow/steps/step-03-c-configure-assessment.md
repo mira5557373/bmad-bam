@@ -227,8 +227,8 @@ _Source: [URL]_
 - Business assessment process documentation
 - Scoring methodology and rubrics
 - Pass/fail threshold definitions
-- **Load template:** `{project-root}/_bmad/bam/templates/partner-certification-template.md`
-- **Load template:** `{project-root}/_bmad/bam/templates/partner-portal-template.md`
+- **Load template:** `{project-root}/_bmad/bam/data/templates/partner-certification-template.md`
+- **Load template:** `{project-root}/_bmad/bam/data/templates/partner-portal-template.md`
 
 ## Next Step
 

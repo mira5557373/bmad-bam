@@ -28,7 +28,7 @@ Validate the security operations verification artifacts against quality criteria
 - Previous step completed (step-20-v-load-artifact.md)
 - **Load patterns:** `{project-root}/_bmad/bam/data/bam-patterns.csv` → filter: `security`
 - **Load quality gate:** `{project-root}/_bmad/bam/data/quality-gates.csv` → filter: `QG-S4`
-- **Load checklist:** `{project-root}/_bmad/bam/checklists/security-checklist.md`
+- **Load checklist:** `{project-root}/_bmad/bam/data/checklists/security-checklist.md`
 
 ---
 

@@ -7,7 +7,7 @@ Load agent execution tracing configuration for QG-AI2 validation.
 ## Prerequisites
 
 - Configuration exists at `{output_folder}/operations/ai/agent-tracing-config.md`
-- **Load checklist:** `{project-root}/_bmad/bam/checklists/qg-ai-observability.md`
+- **Load checklist:** `{project-root}/_bmad/bam/data/checklists/qg-ai-observability.md`
 
 ## Actions
 

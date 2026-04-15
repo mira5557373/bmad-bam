@@ -97,4 +97,4 @@ Upon completion, the following patterns must be verified:
 
 ## Templates
 
-- **Load template:** `{project-root}/_bmad/bam/templates/penetration-testing-template.md`
+- **Load template:** `{project-root}/_bmad/bam/data/templates/penetration-testing-template.md`

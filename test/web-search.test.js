@@ -8,8 +8,8 @@ const path = require('path');
 
 const SRC_DIR = path.join(__dirname, '..', 'src');
 const WORKFLOWS_DIR = path.join(SRC_DIR, 'workflows');
-const EXTENSIONS_DIR = path.join(SRC_DIR, 'extensions');
-const TEMPLATES_DIR = path.join(SRC_DIR, 'templates');
+const EXTENSIONS_DIR = path.join(SRC_DIR, 'data', 'extensions');
+const TEMPLATES_DIR = path.join(SRC_DIR, 'data', 'templates');
 
 // Recursively find files matching a pattern
 const findFiles = (dir, pattern, results = []) => {

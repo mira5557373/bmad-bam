@@ -112,7 +112,7 @@ Your options:
 - Segmentation model
 - Action playbooks
 - Reporting schedule
-- **Load template:** `{project-root}/_bmad/bam/templates/revenue-analytics-template.md`
+- **Load template:** `{project-root}/_bmad/bam/data/templates/revenue-analytics-template.md`
 
 ---
 

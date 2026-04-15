@@ -26,7 +26,7 @@ Load the penetration testing design documents for validation against quality cri
 ## Prerequisites
 
 - Penetration testing design artifact exists to validate
-- **Load checklist:** `{project-root}/_bmad/bam/checklists/qg-i3-agent-safety.md`
+- **Load checklist:** `{project-root}/_bmad/bam/data/checklists/qg-i3-agent-safety.md`
 
 ---
 

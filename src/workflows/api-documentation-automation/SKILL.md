@@ -100,8 +100,8 @@ This workflow is a **utility workflow** without quality gate requirements.
 
 ## References
 
-- Template: `bam/templates/api-documentation-template.md`
-- Knowledge: `bam/knowledge/api-documentation-patterns.md`, `bam/knowledge/developer-portal-patterns.md`
+- Template: `{project-root}/_bmad/bam/data/templates/api-documentation-template.md`
+- Knowledge: `{project-root}/_bmad/bam/data/agent-guides/bam/api-documentation-patterns.md`, `{project-root}/_bmad/bam/data/agent-guides/bam/developer-portal-patterns.md`
 
 ## Web Research
 

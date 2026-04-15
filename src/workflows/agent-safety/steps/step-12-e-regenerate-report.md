@@ -8,7 +8,7 @@ Regenerate the agent safety validation report after applying changes to incorpor
 
 - Step 10 complete (existing document loaded)
 - Step 11 complete (changes applied)
-- **Load template:** `{project-root}/_bmad/bam/templates/agent-safety-report-template.md`
+- **Load template:** `{project-root}/_bmad/bam/data/templates/agent-safety-report-template.md`
 - **Load patterns:** `{project-root}/_bmad/bam/data/bam-patterns.csv` -> filter: `ai-safety`
 
 ## Actions

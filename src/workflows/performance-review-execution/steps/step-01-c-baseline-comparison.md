@@ -156,7 +156,7 @@ Select an option:
 - Baseline comparison table
 - Deviation analysis
 - Trend analysis
-- **Load template:** `{project-root}/_bmad/bam/templates/performance-review-template.md`
+- **Load template:** `{project-root}/_bmad/bam/data/templates/performance-review-template.md`
 
 ---
 

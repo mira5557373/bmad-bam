@@ -117,7 +117,7 @@ Select an option:
 ## Outputs
 
 - Capacity baseline document
-- **Load template:** `{project-root}/_bmad/bam/templates/capacity-planning-template.md`
+- **Load template:** `{project-root}/_bmad/bam/data/templates/capacity-planning-template.md`
 
 ---
 

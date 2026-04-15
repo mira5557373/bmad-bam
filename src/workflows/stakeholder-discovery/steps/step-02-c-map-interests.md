@@ -189,8 +189,8 @@ _Source: [URL]_
 - Interest-influence matrix
 - Conflict identification and resolution approaches
 - Dependency mapping
-- **Load template:** `{project-root}/_bmad/bam/templates/stakeholder-map-template.md`
-- **Load template:** `{project-root}/_bmad/bam/templates/competitive-analysis-template.md`
+- **Load template:** `{project-root}/_bmad/bam/data/templates/stakeholder-map-template.md`
+- **Load template:** `{project-root}/_bmad/bam/data/templates/competitive-analysis-template.md`
 
 ## Next Step
 

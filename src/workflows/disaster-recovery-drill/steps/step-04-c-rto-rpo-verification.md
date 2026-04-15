@@ -140,8 +140,8 @@ Select an option:
 - Drill findings and recommendations
 - Failback plan
 - DR drill report (complete)
-- **Load template:** `{project-root}/_bmad/bam/templates/rto-rpo-measurement-template.md`
-- **Load template:** `{project-root}/_bmad/bam/templates/dr-drill-report-template.md`
+- **Load template:** `{project-root}/_bmad/bam/data/templates/rto-rpo-measurement-template.md`
+- **Load template:** `{project-root}/_bmad/bam/data/templates/dr-drill-report-template.md`
 
 ---
 

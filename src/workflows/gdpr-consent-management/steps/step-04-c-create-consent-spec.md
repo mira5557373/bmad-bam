@@ -31,7 +31,7 @@ Generate the comprehensive GDPR consent management specification document consol
 - Storage architecture (Step 3)
 - Soft gate checkpoint passed
 - **Load patterns:** `{project-root}/_bmad/bam/data/bam-patterns.csv` → filter: compliance
-- **Load template:** `{project-root}/_bmad/bam/templates/gdpr-consent-template.md`
+- **Load template:** `{project-root}/_bmad/bam/data/templates/gdpr-consent-template.md`
 
 
 ---
@@ -157,7 +157,7 @@ _Source: [URL]_
 - Purpose-lawful basis mapping
 - Consent collection UI requirements
 - Preference center specification
-- **Load template:** `{project-root}/_bmad/bam/templates/gdpr-consent-template.md`
+- **Load template:** `{project-root}/_bmad/bam/data/templates/gdpr-consent-template.md`
 
 ## Next Step
 

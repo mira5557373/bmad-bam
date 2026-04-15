@@ -8,7 +8,7 @@ Verify complete separation of AI contexts including conversation history, agent 
 
 - Steps 1-2 complete
 - AI context architecture documented
-- **Load template:** `{project-root}/_bmad/bam/templates/memory-isolation-template.md`
+- **Load template:** `{project-root}/_bmad/bam/data/templates/memory-isolation-template.md`
 
 ## Actions
 

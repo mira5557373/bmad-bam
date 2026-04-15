@@ -80,10 +80,10 @@ Load the existing hipaa-compliance-spec.md, then follow `step-2X-v-` (20 through
 
 - **Patterns:** Load from `{project-root}/_bmad/bam/data/bam-patterns.csv` filter: `compliance`
 - **Compliance:** Load from `{project-root}/_bmad/bam/data/compliance-frameworks.csv`
-- **Templates:** `{project-root}/_bmad/bam/templates/hipaa-compliance-template.md`
-- **Checklists:** `{project-root}/_bmad/bam/checklists/production-readiness.md`
+- **Templates:** `{project-root}/_bmad/bam/data/templates/hipaa-compliance-template.md`
+- **Checklists:** `{project-root}/_bmad/bam/data/checklists/production-readiness.md`
 
 ## Templates
 
-- **Load template:** `{project-root}/_bmad/bam/templates/hipaa-compliance-template.md`
-- **Load template:** `{project-root}/_bmad/bam/templates/baa-management-template.md`
+- **Load template:** `{project-root}/_bmad/bam/data/templates/hipaa-compliance-template.md`
+- **Load template:** `{project-root}/_bmad/bam/data/templates/baa-management-template.md`

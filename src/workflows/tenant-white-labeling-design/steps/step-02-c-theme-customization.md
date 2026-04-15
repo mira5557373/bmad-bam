@@ -272,8 +272,8 @@ Select an option:
 - Theme architecture document
 - CSS variable specification
 - Component mapping guide
-- **Load template:** `{project-root}/_bmad/bam/templates/customization-template.md`
-- **Load template:** `{project-root}/_bmad/bam/templates/white-labeling-template.md`
+- **Load template:** `{project-root}/_bmad/bam/data/templates/customization-template.md`
+- **Load template:** `{project-root}/_bmad/bam/data/templates/white-labeling-template.md`
 
 ---
 

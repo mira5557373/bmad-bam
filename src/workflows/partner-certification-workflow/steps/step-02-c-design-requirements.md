@@ -214,8 +214,8 @@ _Source: [URL]_
 - Business requirements matrix
 - Training curriculum outline
 - Support requirements documentation
-- **Load template:** `{project-root}/_bmad/bam/templates/partner-certification-template.md`
-- **Load template:** `{project-root}/_bmad/bam/templates/partner-framework-template.md`
+- **Load template:** `{project-root}/_bmad/bam/data/templates/partner-certification-template.md`
+- **Load template:** `{project-root}/_bmad/bam/data/templates/partner-framework-template.md`
 
 ## Next Step
 

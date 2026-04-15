@@ -39,7 +39,7 @@ Add acceptance criteria to each story and finalize the epics document.
 
 - Output from previous step(s) in this workflow
 - Pattern registry: `{project-root}/_bmad/bam/data/bam-patterns.csv`
-- Relevant templates from `{project-root}/_bmad/bam/templates/`
+- Relevant templates from `{project-root}/_bmad/bam/data/templates/`
 - User feedback and refinements from previous steps
 
 ---
@@ -183,7 +183,7 @@ Select an option:
 
 - Final epics.md document
 - Updated sprint-status.yaml
-- **Load template:** `{project-root}/_bmad/bam/templates/module-epic-template.md`
+- **Load template:** `{project-root}/_bmad/bam/data/templates/module-epic-template.md`
 
 ---
 

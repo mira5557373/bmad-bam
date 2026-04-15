@@ -176,8 +176,8 @@ Select an option:
 - Metric catalog
 - Threshold definitions
 - Dashboard requirements
-- **Load template:** `{project-root}/_bmad/bam/templates/ai-eval-report-template.md`
-- **Load template:** `{project-root}/_bmad/bam/templates/llm-evaluation-pipeline-template.md`
+- **Load template:** `{project-root}/_bmad/bam/data/templates/ai-eval-report-template.md`
+- **Load template:** `{project-root}/_bmad/bam/data/templates/llm-evaluation-pipeline-template.md`
 
 ---
 

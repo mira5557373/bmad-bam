@@ -27,7 +27,7 @@ This step loads the Emergency Change Request artifact for validation. Emergency 
 
 - Emergency Change Request artifact exists to validate
 - **Load patterns:** `{project-root}/_bmad/bam/data/bam-patterns.csv` → filter: module-boundaries
-- **Load checklist:** `{project-root}/_bmad/bam/checklists/production-readiness.md`
+- **Load checklist:** `{project-root}/_bmad/bam/data/checklists/production-readiness.md`
 
 ---
 
@@ -35,7 +35,7 @@ This step loads the Emergency Change Request artifact for validation. Emergency 
 ## Inputs
 
 - Artifact file path for validation
-- Quality gate checklist: `{project-root}/_bmad/bam/checklists/`
+- Quality gate checklist: `{project-root}/_bmad/bam/data/checklists/`
 - Pattern registry: `{project-root}/_bmad/bam/data/bam-patterns.csv`
 
 ---

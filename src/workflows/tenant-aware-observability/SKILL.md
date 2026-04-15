@@ -146,4 +146,4 @@ This workflow contributes to:
 
 ## References
 
-- Knowledge: `bam/knowledge/multi-tenant-patterns.md`, `bam/knowledge/agent-data-governance-patterns.md`
+- Knowledge: `{project-root}/_bmad/bam/data/agent-guides/bam/multi-tenant-patterns.md`, `{project-root}/_bmad/bam/data/agent-guides/bam/agent-data-governance-patterns.md`

@@ -54,5 +54,5 @@ Follow Validate steps: step-20-v-load → step-21-v-validate → step-22-v-repor
 
 - **Pattern Registry:** `{project-root}/_bmad/bam/data/bam-patterns.csv` → filter: `distributed-tracing`
 - **Agent Guide:** `{project-root}/_bmad/bam/data/agent-guides/bam/agent-tracing.md`
-- **Template:** `{project-root}/_bmad/bam/templates/agent-execution-trace-template.md`
-- **Quality Gate:** `{project-root}/_bmad/bam/checklists/qg-ai-observability.md`
+- **Template:** `{project-root}/_bmad/bam/data/templates/agent-execution-trace-template.md`
+- **Quality Gate:** `{project-root}/_bmad/bam/data/checklists/qg-ai-observability.md`

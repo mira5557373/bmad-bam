@@ -103,5 +103,5 @@ This workflow produces artifacts that must pass QG-PD1 validation. Upon completi
 
 ## Templates
 
-- **Load template:** `{project-root}/_bmad/bam/templates/post-deployment-checklist-template.md`
-- **Load template:** `{project-root}/_bmad/bam/templates/rollback-procedure-template.md`
+- **Load template:** `{project-root}/_bmad/bam/data/templates/post-deployment-checklist-template.md`
+- **Load template:** `{project-root}/_bmad/bam/data/templates/rollback-procedure-template.md`

@@ -145,7 +145,7 @@ Use the AI safety evaluation workflow if issues relate to safety:
 Create a debug report using the template:
 
 ```
-**Load template:** `{project-root}/_bmad/bam/templates/agent-debug-report-template.md`
+**Load template:** `{project-root}/_bmad/bam/data/templates/agent-debug-report-template.md`
 ```
 
 Include:

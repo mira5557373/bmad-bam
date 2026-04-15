@@ -120,6 +120,6 @@ This workflow contributes to QG-P1 by ensuring model lifecycle management:
 
 - **Patterns:** Load from `{project-root}/_bmad/bam/data/bam-patterns.csv` filter: `ai-runtime`
 - **Patterns:** Load from `{project-root}/_bmad/bam/data/ai-runtimes.csv`
-- **Templates:** `{project-root}/_bmad/bam/templates/ai-model-deprecation-plan-template.md`
-- **Templates:** `{project-root}/_bmad/bam/templates/deprecation-report-template.md`
-- **Checklists:** `{project-root}/_bmad/bam/checklists/qg-m3-agent-runtime.md`
+- **Templates:** `{project-root}/_bmad/bam/data/templates/ai-model-deprecation-plan-template.md`
+- **Templates:** `{project-root}/_bmad/bam/data/templates/deprecation-report-template.md`
+- **Checklists:** `{project-root}/_bmad/bam/data/checklists/qg-m3-agent-runtime.md`

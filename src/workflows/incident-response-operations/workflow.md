@@ -127,5 +127,5 @@ This workflow produces artifacts that must pass QG-IR1 validation. Upon completi
 
 ## Templates
 
-- **Load template:** `{project-root}/_bmad/bam/templates/incident-report-template.md`
-- **Load template:** `{project-root}/_bmad/bam/templates/postmortem-template.md`
+- **Load template:** `{project-root}/_bmad/bam/data/templates/incident-report-template.md`
+- **Load template:** `{project-root}/_bmad/bam/data/templates/postmortem-template.md`

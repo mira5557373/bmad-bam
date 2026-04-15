@@ -37,7 +37,7 @@ Load and analyze the master architecture document to extract patterns, constrain
 
 - Output from previous step(s) in this workflow
 - Pattern registry: `{project-root}/_bmad/bam/data/bam-patterns.csv`
-- Relevant templates from `{project-root}/_bmad/bam/templates/`
+- Relevant templates from `{project-root}/_bmad/bam/data/templates/`
 - User feedback and refinements from previous steps
 
 ---
@@ -143,7 +143,7 @@ Select an option:
 - Constraint compliance matrix
 - List of shared kernel interfaces to implement
 - Gap analysis (patterns needed but not in master)
-- **Load template:** `{project-root}/_bmad/bam/templates/module-context-template.md`
+- **Load template:** `{project-root}/_bmad/bam/data/templates/module-context-template.md`
 
 ---
 

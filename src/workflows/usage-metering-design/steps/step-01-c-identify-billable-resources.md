@@ -211,7 +211,7 @@ Select an option:
 - Billable resources catalog
 - Tier inclusion matrix
 - Overage pricing table
-- **Load template:** `{project-root}/_bmad/bam/templates/usage-metering-design-template.md`
+- **Load template:** `{project-root}/_bmad/bam/data/templates/usage-metering-design-template.md`
 
 ---
 

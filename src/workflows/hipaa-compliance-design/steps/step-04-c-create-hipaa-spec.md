@@ -31,7 +31,7 @@ Generate the comprehensive HIPAA compliance specification document consolidating
 - BAA management designed (Step 3)
 - Soft gate checkpoint passed
 - **Load patterns:** `{project-root}/_bmad/bam/data/bam-patterns.csv` → filter: compliance
-- **Load template:** `{project-root}/_bmad/bam/templates/hipaa-compliance-template.md`
+- **Load template:** `{project-root}/_bmad/bam/data/templates/hipaa-compliance-template.md`
 
 
 ---
@@ -174,7 +174,7 @@ _Source: [URL]_
 - Safeguard control matrix
 - BAA management procedures
 - Breach notification runbook
-- **Load template:** `{project-root}/_bmad/bam/templates/hipaa-compliance-template.md`
+- **Load template:** `{project-root}/_bmad/bam/data/templates/hipaa-compliance-template.md`
 
 ## Next Step
 

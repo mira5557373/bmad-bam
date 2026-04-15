@@ -34,10 +34,10 @@ Follow the naming convention:
 ## Step 2: Create the Checklist File
 
 ```bash
-touch src/checklists/{gate-id}-{name}.md
+touch src/data/checklists/{gate-id}-{name}.md
 ```
 
-Example: `src/checklists/qg-m4-api-safety.md`
+Example: `src/data/checklists/qg-m4-api-safety.md`
 
 ## Step 3: Add Required Structure
 
@@ -116,9 +116,9 @@ npm test -- test/checklist-format.test.js
 ## Examples
 
 See existing checklists:
-- `src/checklists/foundation-gate.md` - QG-F1
-- `src/checklists/qg-m3-agent-runtime.md` - QG-M3
-- `src/checklists/qg-i1-convergence.md` - QG-I1
+- `src/data/checklists/foundation-gate.md` - QG-F1
+- `src/data/checklists/qg-m3-agent-runtime.md` - QG-M3
+- `src/data/checklists/qg-i1-convergence.md` - QG-I1
 
 ## Validation
 

@@ -128,7 +128,7 @@ Your options:
 - Data consistency verification spec
 - Tenant-level dashboard design
 - Alert configuration
-- **Load template:** `{project-root}/_bmad/bam/templates/data-sync-template.md`
+- **Load template:** `{project-root}/_bmad/bam/data/templates/data-sync-template.md`
 
 ---
 

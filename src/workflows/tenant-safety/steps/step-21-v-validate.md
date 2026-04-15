@@ -28,7 +28,7 @@ Validate the tenant safety artifacts against QG-AI2 (AI Safety Gate) criteria an
 - Previous step completed (step-20-v-load-artifact.md)
 - **Load patterns:** `{project-root}/_bmad/bam/data/bam-patterns.csv` -> filter: `tenant-safety`
 - **Load quality gate:** `{project-root}/_bmad/bam/data/quality-gates.csv` -> filter: `QG-AI2`
-- **Load checklist:** `{project-root}/_bmad/bam/checklists/qg-i2-tenant-safety.md`
+- **Load checklist:** `{project-root}/_bmad/bam/data/checklists/qg-i2-tenant-safety.md`
 
 ---
 

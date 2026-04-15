@@ -107,7 +107,7 @@ Your options:
 - Tracking plan document
 - Event specifications
 - Implementation checklist
-- **Load template:** `{project-root}/_bmad/bam/templates/growth-strategy-template.md`
+- **Load template:** `{project-root}/_bmad/bam/data/templates/growth-strategy-template.md`
 
 ---
 

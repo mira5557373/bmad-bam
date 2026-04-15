@@ -39,7 +39,7 @@ Define the cleanup procedures for each isolation boundary.
 
 - Output from previous step(s) in this workflow
 - Pattern registry: `{project-root}/_bmad/bam/data/bam-patterns.csv`
-- Relevant templates from `{project-root}/_bmad/bam/templates/`
+- Relevant templates from `{project-root}/_bmad/bam/data/templates/`
 - User feedback and refinements from previous steps
 
 ---
@@ -60,7 +60,7 @@ Define the cleanup procedures for each isolation boundary:
 | Conversation data | Batch delete with tenant_id | Count = 0 |
 | RLS policies | Remove tenant-specific policies | Policy list empty |
 
-**Load template:** `{project-root}/_bmad/bam/templates/tenant-cleanup-verification-template.md`
+**Load template:** `{project-root}/_bmad/bam/data/templates/tenant-cleanup-verification-template.md`
 
 Refer to the template for cleanup verification patterns. Use web research for current best practices.
 
@@ -122,7 +122,7 @@ vector_cleanup:
 | ClickHouse | Drop tenant partition | Partition not found |
 | Time-series DB | Delete tenant metrics | No metrics for tenant_id |
 
-**Load template:** `{project-root}/_bmad/bam/templates/analytics-cleanup-template.md`
+**Load template:** `{project-root}/_bmad/bam/data/templates/analytics-cleanup-template.md`
 
 Refer to the template for analytics cleanup patterns. Use web research for current best practices.
 

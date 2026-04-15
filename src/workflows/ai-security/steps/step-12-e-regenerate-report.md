@@ -9,7 +9,7 @@ Regenerate the AI security audit report after applying changes, ensuring all upd
 - Step 10 complete (existing audit loaded)
 - Step 11 complete (changes applied)
 - **Load patterns:** `{project-root}/_bmad/bam/data/bam-patterns.csv` -> filter: `ai-security`
-- **Load template:** `{project-root}/_bmad/bam/templates/ai-security-assessment-template.md`
+- **Load template:** `{project-root}/_bmad/bam/data/templates/ai-security-assessment-template.md`
 
 ## Actions
 

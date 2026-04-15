@@ -180,7 +180,7 @@ _Source: [URL]_
 - Stakeholder registry with all identified stakeholders
 - Stakeholder categorization framework
 - Initial stakeholder map
-- **Load template:** `{project-root}/_bmad/bam/templates/stakeholder-map-template.md`
+- **Load template:** `{project-root}/_bmad/bam/data/templates/stakeholder-map-template.md`
 
 ## Next Step
 

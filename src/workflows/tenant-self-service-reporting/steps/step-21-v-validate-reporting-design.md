@@ -25,7 +25,7 @@ Perform comprehensive validation of the tenant self-service reporting design aga
 
 - Reporting design loaded (Step 20)
 - **Load patterns:** `{project-root}/_bmad/bam/data/bam-patterns.csv` → filter: reporting
-- **Load checklist:** `{project-root}/_bmad/bam/checklists/production-readiness.md`
+- **Load checklist:** `{project-root}/_bmad/bam/data/checklists/production-readiness.md`
 
 ## Validation Categories
 
@@ -250,7 +250,7 @@ List improvement recommendations:
 - List of critical issues
 - Improvement recommendations
 - Overall pass/fail/conditional status
-- **Load template:** `{project-root}/_bmad/bam/templates/tenant-self-service-reporting-template.md`
+- **Load template:** `{project-root}/_bmad/bam/data/templates/tenant-self-service-reporting-template.md`
 
 ## Next Step
 

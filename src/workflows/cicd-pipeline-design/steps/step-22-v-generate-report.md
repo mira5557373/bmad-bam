@@ -27,8 +27,8 @@ Generate a comprehensive validation report summarizing findings from the CI/CD p
 
 - Step 20 completed: CI/CD pipeline architecture artifact loaded successfully
 - Step 21 completed: Validation performed against production readiness criteria
-- **Load checklist:** `{project-root}/_bmad/bam/checklists/production-readiness.md`
-- **Load template:** `{project-root}/_bmad/bam/templates/quality-gate-report-template.md`
+- **Load checklist:** `{project-root}/_bmad/bam/data/checklists/production-readiness.md`
+- **Load template:** `{project-root}/_bmad/bam/data/templates/quality-gate-report-template.md`
 
 ---
 

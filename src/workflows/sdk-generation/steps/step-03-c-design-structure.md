@@ -37,7 +37,7 @@ Design the package structure, client initialization patterns, and documentation 
 - Output from Steps 1-2 (OpenAPI analysis, generator config)
 - Language-specific conventions
 - Pattern registry: `{project-root}/_bmad/bam/data/bam-patterns.csv`
-- Relevant templates from `{project-root}/_bmad/bam/templates/`
+- Relevant templates from `{project-root}/_bmad/bam/data/templates/`
 
 ---
 

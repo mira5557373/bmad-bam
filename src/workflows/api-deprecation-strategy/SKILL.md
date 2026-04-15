@@ -104,5 +104,5 @@ This workflow contributes to:
 
 ## References
 
-- Template: `bam/templates/api-deprecation-template.md`
+- Template: `{project-root}/_bmad/bam/data/templates/api-deprecation-template.md`
 - API Version Release: `bmad-bam-api-version-release`

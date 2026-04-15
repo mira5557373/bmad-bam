@@ -35,7 +35,7 @@ Define detailed tenant personas with multi-tenancy specific attributes.
 
 - Output from previous step(s) in this workflow
 - Pattern registry: `{project-root}/_bmad/bam/data/bam-patterns.csv`
-- Relevant templates from `{project-root}/_bmad/bam/templates/`
+- Relevant templates from `{project-root}/_bmad/bam/data/templates/`
 - User feedback and refinements from previous steps
 
 ---
@@ -141,7 +141,7 @@ Ask for confirmation before proceeding to compliance requirements.
 - Extended persona definitions
 - Tenant admin persona
 - Cross-tenant scenario matrix
-- **Load template:** `{project-root}/_bmad/bam/templates/empathy-map-template.md`
+- **Load template:** `{project-root}/_bmad/bam/data/templates/empathy-map-template.md`
 
 ## Next Step
 

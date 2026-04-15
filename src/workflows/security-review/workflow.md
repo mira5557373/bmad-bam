@@ -102,5 +102,5 @@ This workflow produces artifacts that must pass QG-S3 validation. Upon completio
 
 ## Templates
 
-- **Load template:** `{project-root}/_bmad/bam/templates/encryption-key-management-template.md`
-- **Load template:** `{project-root}/_bmad/bam/templates/security-assessment-template.md`
+- **Load template:** `{project-root}/_bmad/bam/data/templates/encryption-key-management-template.md`
+- **Load template:** `{project-root}/_bmad/bam/data/templates/security-assessment-template.md`

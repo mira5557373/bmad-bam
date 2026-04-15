@@ -28,7 +28,7 @@ Design auto-scaling triggers, thresholds, and policies to automatically adjust c
 
 - Step 3 completed: Resource planning with quotas and pools
 - **Load patterns:** `{project-root}/_bmad/bam/data/bam-patterns.csv` -> filter: scaling
-- **Load checklist:** `{project-root}/_bmad/bam/checklists/production-readiness.md`
+- **Load checklist:** `{project-root}/_bmad/bam/data/checklists/production-readiness.md`
 
 ---
 

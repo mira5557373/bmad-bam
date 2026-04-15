@@ -54,5 +54,5 @@ Default: **Create** mode.
 ## References
 
 - **Patterns:** Load from `{project-root}/_bmad/bam/data/bam-patterns.csv` filter: `security`
-- **Templates:** `{project-root}/_bmad/bam/templates/secrets-management-template.md`
-- **Checklists:** `{project-root}/_bmad/bam/checklists/production-readiness.md`
+- **Templates:** `{project-root}/_bmad/bam/data/templates/secrets-management-template.md`
+- **Checklists:** `{project-root}/_bmad/bam/data/checklists/production-readiness.md`

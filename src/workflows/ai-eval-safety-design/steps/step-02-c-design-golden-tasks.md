@@ -37,7 +37,7 @@ Create a comprehensive set of golden tasks for safety evaluation.
 
 - Output from previous step(s) in this workflow
 - Pattern registry: `{project-root}/_bmad/bam/data/bam-patterns.csv`
-- Relevant templates from `{project-root}/_bmad/bam/templates/`
+- Relevant templates from `{project-root}/_bmad/bam/data/templates/`
 - User feedback and refinements from previous steps
 
 ---
@@ -158,7 +158,7 @@ Select an option:
 
 - Golden task library (50+ tasks)
 - Coverage matrix
-- **Load template:** `{project-root}/_bmad/bam/templates/golden-task-template.md`
+- **Load template:** `{project-root}/_bmad/bam/data/templates/golden-task-template.md`
 
 ## Next Step
 

@@ -34,7 +34,7 @@ This step loads the ETL Pipeline Design artifacts for validation against QG-I2 (
 ## Inputs
 
 - Artifact file path for validation
-- Quality gate checklist: `{project-root}/_bmad/bam/checklists/qg-i2-tenant-safety.md`
+- Quality gate checklist: `{project-root}/_bmad/bam/data/checklists/qg-i2-tenant-safety.md`
 - Pattern registry: `{project-root}/_bmad/bam/data/bam-patterns.csv`
 
 ---

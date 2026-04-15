@@ -87,13 +87,13 @@ Define the contract interface:
 
 ## References
 
-- Template: `bam/templates/facade-contract-template.md`
-- Module Facade Patterns: `bam/knowledge/module-facade-patterns.md`
-- Event-Driven Patterns: `bam/knowledge/event-driven-patterns.md`
+- Template: `{project-root}/_bmad/bam/data/templates/facade-contract-template.md`
+- Module Facade Patterns: `{project-root}/_bmad/bam/data/agent-guides/bam/module-facade-patterns.md`
+- Event-Driven Patterns: `{project-root}/_bmad/bam/data/agent-guides/bam/event-driven-patterns.md`
 
-- Knowledge: `bam/knowledge/module-facade-patterns.md`, `bam/knowledge/event-driven-patterns.md`
-- Module Facade Patterns: `bam/knowledge/module-facade-patterns.md`
-- Event-Driven Patterns: `bam/knowledge/event-driven-patterns.md`
+- Knowledge: `{project-root}/_bmad/bam/data/agent-guides/bam/module-facade-patterns.md`, `{project-root}/_bmad/bam/data/agent-guides/bam/event-driven-patterns.md`
+- Module Facade Patterns: `{project-root}/_bmad/bam/data/agent-guides/bam/module-facade-patterns.md`
+- Event-Driven Patterns: `{project-root}/_bmad/bam/data/agent-guides/bam/event-driven-patterns.md`
 
 ## Quality Gates
 

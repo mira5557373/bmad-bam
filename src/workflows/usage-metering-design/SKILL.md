@@ -131,4 +131,4 @@ Configure event sources:
 
 ## References
 
-- Knowledge: `bam/knowledge/multi-tenant-patterns.md`, `bam/knowledge/saga-orchestration-patterns.md`
+- Knowledge: `{project-root}/_bmad/bam/data/agent-guides/bam/multi-tenant-patterns.md`, `{project-root}/_bmad/bam/data/agent-guides/bam/saga-orchestration-patterns.md`

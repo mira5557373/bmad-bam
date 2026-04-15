@@ -100,5 +100,5 @@ This workflow contributes to QG-P1. Upon completion, the following patterns must
 
 ## Templates
 
-- **Load template:** `{project-root}/_bmad/bam/templates/sli-slo-template.md`
-- **Load template:** `{project-root}/_bmad/bam/templates/error-budget-template.md`
+- **Load template:** `{project-root}/_bmad/bam/data/templates/sli-slo-template.md`
+- **Load template:** `{project-root}/_bmad/bam/data/templates/error-budget-template.md`

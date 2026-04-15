@@ -11,13 +11,14 @@
   "plugins": [
     {
       "name": "bmad-bam",
-      "source": "./src/workflows",
+      "source": "./",
       "description": "Multi-Tenant Agentic AI SaaS extension — adds tenant isolation, modular monolith patterns, AI agent orchestration, and quality gates to the BMAD Method ecosystem.",
       "version": "1.0.0",
       "author": {
         "name": "BMAD Community"
       },
       "skills": [
+        "./src/data",
         "./src/workflows/agent-execution-tracing",
         "./src/workflows/agent-handoff-design",
         "./src/workflows/agent-memory-optimization",

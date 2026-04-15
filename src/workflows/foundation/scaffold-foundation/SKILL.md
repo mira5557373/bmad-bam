@@ -130,13 +130,13 @@ Remind: After foundation stories are implemented, run `bmad-bam-validate-foundat
 
 ## References
 
-- Template: `bam/templates/master-architecture-template.md`
-- Shared Kernel Patterns: `bam/knowledge/shared-kernel-patterns.md`
-- Local Development Setup: `bam/knowledge/local-development-setup.md`
+- Template: `{project-root}/_bmad/bam/data/templates/master-architecture-template.md`
+- Shared Kernel Patterns: `{project-root}/_bmad/bam/data/agent-guides/bam/shared-kernel-patterns.md`
+- Local Development Setup: `{project-root}/_bmad/bam/data/agent-guides/bam/local-development-setup.md`
 
-- Knowledge: `bam/knowledge/shared-kernel-patterns.md`, `bam/knowledge/agent-runtime-patterns.md`, `bam/knowledge/local-development-setup.md`
-- Shared Kernel Patterns: `bam/knowledge/shared-kernel-patterns.md`
-- Local Development Setup: `bam/knowledge/local-development-setup.md`
+- Knowledge: `{project-root}/_bmad/bam/data/agent-guides/bam/shared-kernel-patterns.md`, `{project-root}/_bmad/bam/data/agent-guides/bam/agent-runtime-patterns.md`, `{project-root}/_bmad/bam/data/agent-guides/bam/local-development-setup.md`
+- Shared Kernel Patterns: `{project-root}/_bmad/bam/data/agent-guides/bam/shared-kernel-patterns.md`
+- Local Development Setup: `{project-root}/_bmad/bam/data/agent-guides/bam/local-development-setup.md`
 
 ## Quality Gates
 

@@ -25,7 +25,7 @@ Load the golden dataset management artifacts for validation against QG-M3 qualit
 
 - Golden dataset management artifact exists to validate
 - **Load patterns:** `{project-root}/_bmad/bam/data/bam-patterns.csv` → filter: ai-testing, llmops
-- **Load checklist:** `{project-root}/_bmad/bam/checklists/qg-m3-agent-runtime.md`
+- **Load checklist:** `{project-root}/_bmad/bam/data/checklists/qg-m3-agent-runtime.md`
 
 Load the existing golden dataset management documents:
 - `{output_folder}/planning-artifacts/quality/golden-dataset.md`
@@ -39,7 +39,7 @@ Parse the document structure and prepare for validation against the quality crit
 ## Inputs
 
 - Artifact file path for validation
-- Quality gate checklist: `{project-root}/_bmad/bam/checklists/qg-m3-agent-runtime.md`
+- Quality gate checklist: `{project-root}/_bmad/bam/data/checklists/qg-m3-agent-runtime.md`
 - Pattern registry: `{project-root}/_bmad/bam/data/bam-patterns.csv`
 
 ---

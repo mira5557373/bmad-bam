@@ -1,0 +1,393 @@
+# BAM Extension for CIS Scale Strategy
+# Pattern: WDS agent-guides (NO memories: field)
+
+agent:
+  metadata:
+    extends: 'bmad-cis-agent-innovation-strategist'
+    module: 'bam'
+    description: "Adds scale strategy capabilities for multi-tenant SaaS"
+
+menu:
+  - trigger: bam-scale-context
+    action: "#load-bam-scale-context-prompt"
+    description: Load BAM scale strategy context
+  - trigger: bam-scale-analysis
+    action: "#scale-analysis-prompt"
+    description: Analyze scale strategy for multi-tenant SaaS
+  - trigger: bam-scale-research
+    action: "#web-research-scale-prompt"
+    description: Conduct web research for scale patterns
+  - trigger: bam-scale-gtm
+    action: "#gtm-scale-prompt"
+    description: Design scalable go-to-market strategy
+  - trigger: bam-scale-growth
+    action: "#growth-strategy-prompt"
+    description: Develop growth strategy for multi-tenant platform
+  - trigger: bam-scale-positioning
+    action: "#market-positioning-prompt"
+    description: Define market positioning for scale advantage
+  - trigger: bam-scale-expansion
+    action: "#expansion-strategy-prompt"
+    description: Plan geographic and segment expansion strategy
+  - trigger: bam-scale-unit-economics
+    action: "#unit-economics-prompt"
+    description: Analyze and optimize unit economics at scale
+  - trigger: bam-scale-validate
+    action: "#validate-scale-analysis-prompt"
+    description: Validate scale analysis against quality gates
+
+prompts:
+  - id: load-bam-scale-context-prompt
+    content: |
+      ## Load BAM Scale Context
+
+      Read and internalize the multi-tenant SaaS scale guide:
+      `{project-root}/_bmad/bam/data/agent-guides/bam/saas-innovation.md`
+
+      Also load the scale-specific guides:
+      `{project-root}/_bmad/bam/data/agent-guides/bam/innovation-guide.md`
+      `{project-root}/_bmad/bam/data/agent-guides/bam/scaling-patterns.md`
+
+      This guide provides comprehensive context for scale strategy in
+      multi-tenant AI platforms. It covers the following key areas:
+
+      1. **Scale Economics**: Understanding how multi-tenant scale creates
+         cost advantages and competitive moats.
+      2. **Growth Architecture**: Designing systems that scale efficiently
+         with tenant growth and usage increases.
+      3. **Operational Scale**: Scaling operations, support, and success
+         functions with tenant base growth.
+      4. **International Scale**: Expanding multi-tenant platforms across
+         regions and regulatory environments.
+
+      Apply this scale lens to all growth planning. Once loaded, confirm
+      by stating: "BAM scale context loaded. Ready to analyze scale strategy."
+
+  - id: scale-analysis-prompt
+    content: |
+      ## Scale Strategy Analysis
+
+      Prerequisites: Ensure BAM context loaded via `bam-scale-context`
+
+      **Load patterns:** `{project-root}/_bmad/bam/data/bam-patterns.csv` → filter: `tenant-isolation, tenant-lifecycle`
+
+      ### Objective
+      Develop scale strategy for multi-tenant SaaS platforms,
+      with focus on growth architecture and operational efficiency.
+
+      ### Process
+
+      1. **Scale Economics Assessment**
+         - Map cost curves and scale advantages
+         - Identify scale bottlenecks
+         - Evaluate unit economics at scale
+
+      2. **Growth Architecture Planning**
+         - Design for horizontal scaling
+         - Plan capacity management
+         - Evaluate multi-region deployment
+
+      3. **Operational Scale Design**
+         - Scale support operations
+         - Automate tenant success
+         - Design self-service systems
+
+      ### Verification Checklist
+      - [ ] Scale economics documented
+      - [ ] Architecture bottlenecks identified
+      - [ ] Operational scale plan created
+      - [ ] International expansion path defined
+
+      ### Output
+      Produce scale strategy using template:
+      `{project-root}/_bmad/bam/data/templates/scale-strategy-template.md`
+
+  - id: web-research-scale-prompt
+    content: |
+      ## BAM Web Research - Scale
+
+      Research current best practices for scale.
+
+      **Research Focus:** {{research_topic}}
+
+      Search the web: "{{research_topic}} scale patterns {date}"
+      Search the web: "{{research_topic}} enterprise SaaS {date}"
+
+      Return findings with: _Source: [URL]_
+
+  - id: gtm-scale-prompt
+    content: |
+      ## Scalable Go-to-Market Strategy
+
+      Prerequisites: Ensure BAM context loaded via `bam-scale-context`
+
+      **Load patterns:** `{project-root}/_bmad/bam/data/bam-patterns.csv` → filter: `tenant-lifecycle, experimentation`
+
+      ### Objective
+      Design go-to-market strategy that scales efficiently with
+      multi-tenant platform growth and market expansion.
+
+      ### Process
+
+      1. **Scalable GTM Motion Design**
+         | Motion | Scale Lever | Multi-Tenant Advantage |
+         |--------|------------|----------------------|
+         | PLG | Self-serve signup | Free tier acquisition |
+         | Viral | User invitations | Network effects |
+         | Community | User-generated content | Shared learning |
+         | Partner | Channel leverage | Ecosystem scale |
+
+      2. **Automation for Scale**
+         - Self-serve onboarding flows
+         - Automated trial conversion
+         - Usage-based upgrade triggers
+         - Customer success automation
+
+      3. **Scalable Channel Architecture**
+         | Channel | Investment | CAC | Scalability |
+         |---------|-----------|-----|-------------|
+         | Direct sales | High | High | Limited |
+         | Partner | Medium | Medium | High |
+         | Digital | Low | Low | Very high |
+         | Community | Low | Very low | Exponential |
+
+      4. **GTM Metrics at Scale**
+         - CAC payback by segment
+         - Viral coefficient tracking
+         - Channel efficiency analysis
+         - LTV/CAC optimization
+
+      ### Verification Checklist
+      - [ ] Scale levers identified
+      - [ ] Automation opportunities mapped
+      - [ ] Channel economics modeled
+      - [ ] Metrics framework defined
+
+      ### Output
+      Produce scalable GTM strategy using template:
+      `{project-root}/_bmad/bam/data/templates/gtm-scale-template.md`
+
+  - id: growth-strategy-prompt
+    content: |
+      ## Growth Strategy for Multi-Tenant Platform
+
+      Prerequisites: Ensure BAM context loaded via `bam-scale-context`
+
+      **Load patterns:** `{project-root}/_bmad/bam/data/bam-patterns.csv` → filter: `tenant-lifecycle, experimentation`
+
+      ### Objective
+      Develop growth strategy that leverages multi-tenant architecture
+      for sustainable, efficient customer acquisition and expansion.
+
+      ### Process
+
+      1. **Growth Model Design**
+         | Model | Driver | Multi-Tenant Fit |
+         |-------|--------|-----------------|
+         | Acquisition | New tenant signup | Free tier funnel |
+         | Activation | First value moment | Onboarding automation |
+         | Retention | Ongoing engagement | Feature stickiness |
+         | Revenue | Tier upgrade | Usage-based triggers |
+         | Referral | Word of mouth | Viral mechanics |
+
+      2. **Growth Loops**
+         - User invitation loops
+         - Content creation loops
+         - Integration network effects
+         - Data value accumulation
+
+      3. **Growth Experiments**
+         | Hypothesis | Metric | Test Design | Timeline |
+         |------------|--------|-------------|----------|
+         | {Change} | {KPI} | {A/B test} | {Weeks} |
+
+      4. **Growth Team Structure**
+         - Growth product management
+         - Growth engineering
+         - Data analytics
+         - Growth marketing
+
+      ### Verification Checklist
+      - [ ] Growth model comprehensive
+      - [ ] Growth loops identified
+      - [ ] Experiments prioritized
+      - [ ] Team structure planned
+
+      ### Output
+      Produce growth strategy using template:
+      `{project-root}/_bmad/bam/data/templates/growth-strategy-template.md`
+
+  - id: market-positioning-prompt
+    content: |
+      ## Market Positioning for Scale Advantage
+
+      Prerequisites: Ensure BAM context loaded via `bam-scale-context`
+
+      **Load patterns:** `{project-root}/_bmad/bam/data/bam-patterns.csv` → filter: `customization, tenant-lifecycle`
+
+      ### Objective
+      Define market positioning that emphasizes multi-tenant scale
+      advantages as key competitive differentiators.
+
+      ### Process
+
+      1. **Scale-Based Positioning**
+         | Advantage | Positioning | Proof Point |
+         |-----------|-------------|-------------|
+         | Cost efficiency | Better value | X% lower TCO |
+         | Reliability | Always available | 99.99% uptime |
+         | Innovation speed | Always current | Weekly releases |
+         | Security | Enterprise-grade | SOC2, compliance |
+
+      2. **Positioning by Segment**
+         - SMB: Focus on simplicity and value
+         - Mid-market: Focus on scale and support
+         - Enterprise: Focus on reliability and compliance
+
+      3. **Competitive Positioning**
+         | Dimension | Competitor | Our Position |
+         |-----------|------------|--------------|
+         | Architecture | Single-tenant | Multi-tenant scale |
+         | Pricing | Per-seat | Usage-aligned |
+         | AI capability | Bolt-on | AI-native |
+         | Speed | Slow releases | Continuous deployment |
+
+      4. **Positioning Validation**
+         - Message testing with segments
+         - Competitive win/loss analysis
+         - Brand perception tracking
+
+      ### Verification Checklist
+      - [ ] Scale advantages articulated
+      - [ ] Segment positioning defined
+      - [ ] Competitive differentiation clear
+      - [ ] Validation plan created
+
+      ### Output
+      Produce positioning strategy using template:
+      `{project-root}/_bmad/bam/data/templates/scale-positioning-template.md`
+
+  - id: expansion-strategy-prompt
+    content: |
+      ## Geographic and Segment Expansion Strategy
+
+      Prerequisites: Ensure BAM context loaded via `bam-scale-context`
+
+      **Load patterns:** `{project-root}/_bmad/bam/data/bam-patterns.csv` → filter: `tenant-isolation, tenant-lifecycle`
+
+      ### Objective
+      Plan expansion strategy for multi-tenant platform across
+      geographies and market segments.
+
+      ### Process
+
+      1. **Geographic Expansion**
+         | Region | Market Size | Regulations | Priority |
+         |--------|-------------|-------------|----------|
+         | NA | Large | Moderate | Current |
+         | EU | Large | Strict (GDPR) | Near-term |
+         | APAC | Growing | Variable | Medium-term |
+         | LATAM | Emerging | Moderate | Long-term |
+
+      2. **Multi-Region Architecture**
+         - Data residency requirements
+         - Regional deployment options
+         - Cross-region tenant migration
+         - Latency optimization
+
+      3. **Segment Expansion**
+         | Segment | Entry Strategy | Investment |
+         |---------|---------------|------------|
+         | Vertical | Domain expertise | High |
+         | Horizontal | Feature depth | Medium |
+         | Enterprise | Sales team | High |
+
+      4. **Expansion Playbook**
+         - Market entry checklist
+         - Localization requirements
+         - Compliance preparation
+         - Partner development
+
+      ### Verification Checklist
+      - [ ] Expansion priorities clear
+      - [ ] Architecture requirements defined
+      - [ ] Segment strategies aligned
+      - [ ] Playbook documented
+
+      ### Output
+      Produce expansion strategy using template:
+      `{project-root}/_bmad/bam/data/templates/expansion-strategy-template.md`
+
+  - id: unit-economics-prompt
+    content: |
+      ## Unit Economics at Scale
+
+      Prerequisites: Ensure BAM context loaded via `bam-scale-context`
+
+      **Load patterns:** `{project-root}/_bmad/bam/data/bam-patterns.csv` → filter: `tenant-lifecycle, observability`
+
+      ### Objective
+      Analyze and optimize unit economics for multi-tenant SaaS
+      platform to ensure sustainable growth at scale.
+
+      ### Process
+
+      1. **Unit Economics Framework**
+         | Metric | Definition | Target |
+         |--------|------------|--------|
+         | CAC | Cost to acquire customer | <LTV/3 |
+         | LTV | Lifetime value | >3x CAC |
+         | Payback | Months to recover CAC | <12 months |
+         | Margin | Gross margin | >70% |
+         | NRR | Net revenue retention | >110% |
+
+      2. **Multi-Tenant Cost Analysis**
+         - Infrastructure cost per tenant
+         - Support cost per tier
+         - AI compute cost allocation
+         - Scale efficiency gains
+
+      3. **Revenue Optimization**
+         | Lever | Mechanism | Impact |
+         |-------|-----------|--------|
+         | Pricing | Value-based tiers | ARPU increase |
+         | Expansion | Usage upgrades | NRR improvement |
+         | Retention | Churn reduction | LTV increase |
+         | Efficiency | Automation | Margin improvement |
+
+      4. **Cohort Analysis**
+         - CAC trends by acquisition channel
+         - LTV by segment/tier
+         - Payback by motion (PLG vs sales)
+         - Margin by tenant size
+
+      ### Verification Checklist
+      - [ ] Unit economics calculated
+      - [ ] Cost structure optimized
+      - [ ] Revenue levers identified
+      - [ ] Cohort insights applied
+
+      ### Output
+      Produce unit economics analysis using template:
+      `{project-root}/_bmad/bam/data/templates/unit-economics-template.md`
+
+  - id: validate-scale-analysis-prompt
+    content: |
+      ## Validate Scale Analysis Against Quality Gates
+
+      Prerequisites: Ensure BAM scale context loaded via `bam-scale-context`
+
+      **Quality Gate Validation:**
+      
+      Check against relevant quality gates:
+      - QG-F1 (Foundation): Scale assumptions align with architecture capacity
+      - QG-M2 (Tenant Isolation): Scaling doesn't compromise isolation
+      - QG-P1 (Production): Scale targets achievable with current architecture
+      
+      **Validation Checklist:**
+      - [ ] Growth projections validated against infrastructure limits
+      - [ ] Unit economics account for multi-tenant efficiency
+      - [ ] Expansion strategy considers tenant isolation requirements
+      - [ ] Scale milestones align with quality gate progression
+      
+      Report validation results with scale strategy recommendations.

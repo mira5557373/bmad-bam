@@ -266,8 +266,8 @@ Select an option:
 - Branding asset specification
 - Storage architecture
 - CDN configuration
-- **Load template:** `{project-root}/_bmad/bam/templates/branding-config-template.md`
-- **Load template:** `{project-root}/_bmad/bam/templates/white-label-template.md`
+- **Load template:** `{project-root}/_bmad/bam/data/templates/branding-config-template.md`
+- **Load template:** `{project-root}/_bmad/bam/data/templates/white-label-template.md`
 
 ---
 

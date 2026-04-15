@@ -129,11 +129,11 @@ This workflow contributes to:
 
 ## References
 
-- Template: `bam/templates/ai-model-deprecation-plan-template.md`
-- Template: `bam/templates/deprecation-report-template.md`
-- Knowledge: `bam/knowledge/agent-runtime-patterns.md`
-- Knowledge: `bam/knowledge/multi-tenant-patterns.md`
-- Checklist: `bam/checklists/qg-m3-agent-runtime.md`
+- Template: `{project-root}/_bmad/bam/data/templates/ai-model-deprecation-plan-template.md`
+- Template: `{project-root}/_bmad/bam/data/templates/deprecation-report-template.md`
+- Knowledge: `{project-root}/_bmad/bam/data/agent-guides/bam/agent-runtime-patterns.md`
+- Knowledge: `{project-root}/_bmad/bam/data/agent-guides/bam/multi-tenant-patterns.md`
+- Checklist: `{project-root}/_bmad/bam/data/checklists/qg-m3-agent-runtime.md`
 
 ## Headless Mode
 

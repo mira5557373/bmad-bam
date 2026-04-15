@@ -152,7 +152,7 @@ _Source: [URL]_
 - Usage hot spot analysis
 - Configuration dependency map
 
-**Load template:** `{project-root}/_bmad/bam/templates/ai-model-deprecation-plan-template.md`
+**Load template:** `{project-root}/_bmad/bam/data/templates/ai-model-deprecation-plan-template.md`
 
 ---
 

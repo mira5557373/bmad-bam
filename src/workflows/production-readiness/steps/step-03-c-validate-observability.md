@@ -8,7 +8,7 @@ Validate observability infrastructure including metrics, logging, tracing, and a
 
 - Steps 1-2 complete
 - Observability stack deployed
-- **Load template:** `{project-root}/_bmad/bam/templates/observability-template.md`
+- **Load template:** `{project-root}/_bmad/bam/data/templates/observability-template.md`
 
 ## Actions
 

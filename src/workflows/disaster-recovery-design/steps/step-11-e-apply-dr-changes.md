@@ -26,7 +26,7 @@ Apply targeted modifications to the existing disaster recovery plan based on the
 - DR plan loaded (Step 10)
 - Modification scope confirmed
 - **Load patterns:** `{project-root}/_bmad/bam/data/bam-patterns.csv` → filter: disaster-recovery
-- **Load template:** `{project-root}/_bmad/bam/templates/disaster-recovery-plan-template.md`
+- **Load template:** `{project-root}/_bmad/bam/data/templates/disaster-recovery-plan-template.md`
 
 
 ---

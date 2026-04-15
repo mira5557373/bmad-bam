@@ -37,7 +37,7 @@ Design the webhook integration for payment event processing and synchronization.
 
 - Output from previous step(s) in this workflow
 - Pattern registry: `{project-root}/_bmad/bam/data/bam-patterns.csv`
-- Relevant templates from `{project-root}/_bmad/bam/templates/`
+- Relevant templates from `{project-root}/_bmad/bam/data/templates/`
 - User feedback and refinements from previous steps
 
 ---
@@ -176,7 +176,7 @@ Ask for confirmation before proceeding to Edit or Validate modes.
 - Webhook integration specification
 - Event processing architecture
 - Security configuration
-- **Load template:** `{project-root}/_bmad/bam/templates/payment-processing-template.md`
+- **Load template:** `{project-root}/_bmad/bam/data/templates/payment-processing-template.md`
 
 ---
 

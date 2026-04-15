@@ -88,4 +88,4 @@ Load the existing output artifact, then follow `steps/` for validation against q
 
 ## Templates
 
-- **Load template:** `{project-root}/_bmad/bam/templates/observability-spec-template.md`
+- **Load template:** `{project-root}/_bmad/bam/data/templates/observability-spec-template.md`

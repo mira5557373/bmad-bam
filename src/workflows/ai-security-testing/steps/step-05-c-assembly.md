@@ -16,7 +16,7 @@ Combine all AI security testing designs into a comprehensive test plan document.
 ## Prerequisites
 
 - Steps 1-4 completed
-- **Load template:** `{project-root}/_bmad/bam/templates/ai-security-test-plan-template.md`
+- **Load template:** `{project-root}/_bmad/bam/data/templates/ai-security-test-plan-template.md`
 
 ---
 

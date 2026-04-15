@@ -68,4 +68,4 @@ The encryption design must satisfy:
 ## References
 
 - **Patterns:** Load from `{project-root}/_bmad/bam/data/bam-patterns.csv` filter: `security`
-- **Templates:** `{project-root}/_bmad/bam/templates/encryption-design-template.md`
+- **Templates:** `{project-root}/_bmad/bam/data/templates/encryption-design-template.md`

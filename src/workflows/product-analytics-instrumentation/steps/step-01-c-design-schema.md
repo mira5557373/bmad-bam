@@ -124,7 +124,7 @@ Select an option:
 - Event schema specification
 - Taxonomy documentation
 - Naming conventions guide
-- **Load template:** `{project-root}/_bmad/bam/templates/expansion-strategy-template.md`
+- **Load template:** `{project-root}/_bmad/bam/data/templates/expansion-strategy-template.md`
 
 ---
 

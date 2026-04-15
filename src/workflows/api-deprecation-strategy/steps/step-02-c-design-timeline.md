@@ -37,7 +37,7 @@ Set sunset dates, define grace periods by tier, plan notification schedules, and
 - Output from Step 1 (Deprecation candidates)
 - Tenant tier configurations
 - Pattern registry: `{project-root}/_bmad/bam/data/bam-patterns.csv`
-- Relevant templates from `{project-root}/_bmad/bam/templates/`
+- Relevant templates from `{project-root}/_bmad/bam/data/templates/`
 
 ---
 
@@ -155,7 +155,7 @@ Select an option:
 - Deprecation timeline document
 - Tier-specific grace periods
 - Notification schedule
-- **Load template:** `{project-root}/_bmad/bam/templates/api-deprecation-template.md`
+- **Load template:** `{project-root}/_bmad/bam/data/templates/api-deprecation-template.md`
 
 ## Next Step
 

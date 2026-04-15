@@ -116,10 +116,10 @@ This workflow contributes to:
 
 ## References
 
-- Template: `bam/templates/tenant-self-service-reporting-template.md`
-- Knowledge: `bam/knowledge/multi-tenant-patterns.md`
-- Knowledge: `bam/knowledge/tenant-lifecycle-patterns.md`
-- Checklist: `bam/checklists/production-readiness.md`
+- Template: `{project-root}/_bmad/bam/data/templates/tenant-self-service-reporting-template.md`
+- Knowledge: `{project-root}/_bmad/bam/data/agent-guides/bam/multi-tenant-patterns.md`
+- Knowledge: `{project-root}/_bmad/bam/data/agent-guides/bam/tenant-lifecycle-patterns.md`
+- Checklist: `{project-root}/_bmad/bam/data/checklists/production-readiness.md`
 
 ## Headless Mode
 

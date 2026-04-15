@@ -29,7 +29,7 @@ Combine all design sections from Steps 1-8 into the final `master-architecture.m
 
 - All Steps 1-8 completed and approved at soft gate
 - **Load patterns:** `{project-root}/_bmad/bam/data/bam-patterns.csv` → filter: event-driven
-- **Load template:** `{project-root}/_bmad/bam/templates/master-architecture-template.md`
+- **Load template:** `{project-root}/_bmad/bam/data/templates/master-architecture-template.md`
 - All section content available in working memory
 
 **Verify current best practices with web search:**
@@ -46,7 +46,7 @@ _Source: [URL]_ for key findings.
 
 - Output from previous step(s) in this workflow
 - Pattern registry: `{project-root}/_bmad/bam/data/bam-patterns.csv`
-- Relevant templates from `{project-root}/_bmad/bam/templates/`
+- Relevant templates from `{project-root}/_bmad/bam/data/templates/`
 - User feedback and refinements from previous steps
 
 ---
@@ -229,9 +229,9 @@ Select an option:
 - [ ] `master-architecture.md` written to output folder
 - [ ] Completeness validation passed
 - [ ] Ready for QG-F1 (Foundation Gate) validation
-- **Load template:** `{project-root}/_bmad/bam/templates/adr-template.md`
-- **Load template:** `{project-root}/_bmad/bam/templates/architecture-diagrams-template.md`
-- **Load template:** `{project-root}/_bmad/bam/templates/architecture-evolution-template.md`
+- **Load template:** `{project-root}/_bmad/bam/data/templates/adr-template.md`
+- **Load template:** `{project-root}/_bmad/bam/data/templates/architecture-diagrams-template.md`
+- **Load template:** `{project-root}/_bmad/bam/data/templates/architecture-evolution-template.md`
 
 ---
 

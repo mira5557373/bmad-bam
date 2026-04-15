@@ -116,9 +116,9 @@ This workflow contributes to:
 
 ## References
 
-- Template: `bam/templates/partner-certification-template.md`
-- Knowledge: `bam/knowledge/partner-ecosystem-patterns.md`
-- Checklist: `bam/checklists/production-readiness.md`
+- Template: `{project-root}/_bmad/bam/data/templates/partner-certification-template.md`
+- Knowledge: `{project-root}/_bmad/bam/data/agent-guides/bam/partner-ecosystem-patterns.md`
+- Checklist: `{project-root}/_bmad/bam/data/checklists/production-readiness.md`
 
 ## Headless Mode
 

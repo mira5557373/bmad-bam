@@ -38,7 +38,7 @@ Design the multi-tier memory architecture for AI agents, ensuring proper tenant 
 
 - Output from previous step(s) in this workflow
 - Pattern registry: `{project-root}/_bmad/bam/data/bam-patterns.csv`
-- Relevant templates from `{project-root}/_bmad/bam/templates/`
+- Relevant templates from `{project-root}/_bmad/bam/data/templates/`
 - User feedback and refinements from previous steps
 
 ---
@@ -187,7 +187,7 @@ Select an option:
 - Write permission matrix
 - Context compiler design
 - Retention policy document
-- **Load template:** `{project-root}/_bmad/bam/templates/rag-architecture-template.md`
+- **Load template:** `{project-root}/_bmad/bam/data/templates/rag-architecture-template.md`
 
 ---
 

@@ -171,7 +171,7 @@ Ask for confirmation before proceeding to HIPAA specification creation.
 - BAA lifecycle management procedures
 - Subcontractor tracking system design
 - BAA compliance dashboard specification
-- **Load template:** `{project-root}/_bmad/bam/templates/baa-management-template.md`
+- **Load template:** `{project-root}/_bmad/bam/data/templates/baa-management-template.md`
 
 ## Next Step
 

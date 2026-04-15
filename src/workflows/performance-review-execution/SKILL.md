@@ -111,8 +111,8 @@ This workflow contributes to:
 
 ## References
 
-- Template: `bam/templates/performance-review-template.md`
-- Knowledge: `bam/knowledge/performance-patterns.md`
+- Template: `{project-root}/_bmad/bam/data/templates/performance-review-template.md`
+- Knowledge: `{project-root}/_bmad/bam/data/agent-guides/bam/performance-patterns.md`
 
 ## Web Research
 

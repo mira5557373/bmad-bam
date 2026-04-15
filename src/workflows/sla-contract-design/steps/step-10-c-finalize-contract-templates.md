@@ -30,7 +30,7 @@ Create final SLA contract templates incorporating all design elements from previ
 - Step 9 (Validate SLA Feasibility) completed
 - Feasibility validation passed
 - All stakeholder approvals obtained
-- **Load template:** `{project-root}/_bmad/bam/templates/sla-contract-template.md`
+- **Load template:** `{project-root}/_bmad/bam/data/templates/sla-contract-template.md`
 - **Load patterns:** `{project-root}/_bmad/bam/data/bam-patterns.csv` -> filter: `contract`
 - **Load patterns:** `{project-root}/_bmad/bam/data/compliance-frameworks.csv`
 
@@ -40,7 +40,7 @@ Create final SLA contract templates incorporating all design elements from previ
 
 - All SLA design outputs from Steps 1-9
 - Feasibility assessment and approvals
-- Template: `{project-root}/_bmad/bam/templates/sla-contract-template.md`
+- Template: `{project-root}/_bmad/bam/data/templates/sla-contract-template.md`
 - Pattern registry: `{project-root}/_bmad/bam/data/bam-patterns.csv`
 
 ---
@@ -239,7 +239,7 @@ Select an option:
 - Contract amendment procedures
 - Supporting documentation list
 - Review and approval workflow
-- **Load template:** `{project-root}/_bmad/bam/templates/error-budget-template.md`
+- **Load template:** `{project-root}/_bmad/bam/data/templates/error-budget-template.md`
 
 ---
 

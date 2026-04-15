@@ -203,7 +203,7 @@ _Source: [URL]_
 - Data source mapping documentation
 - Scope boundary definitions
 - Tier-specific reconciliation requirements
-- **Load template:** `{project-root}/_bmad/bam/templates/data-reconciliation-dr-template.md`
+- **Load template:** `{project-root}/_bmad/bam/data/templates/data-reconciliation-dr-template.md`
 
 ## Next Step
 

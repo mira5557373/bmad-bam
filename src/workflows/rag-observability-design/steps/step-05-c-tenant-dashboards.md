@@ -7,8 +7,8 @@ Design per-tenant RAG dashboards for monitoring and cost attribution.
 ## Prerequisites
 
 - Step 4 complete (quality baselines established)
-- **Load template:** `{project-root}/_bmad/bam/templates/rag-observability-template.md`
-- **Load template:** `{project-root}/_bmad/bam/templates/vector-store-metrics-template.md`
+- **Load template:** `{project-root}/_bmad/bam/data/templates/rag-observability-template.md`
+- **Load template:** `{project-root}/_bmad/bam/data/templates/vector-store-metrics-template.md`
 
 ## Actions
 

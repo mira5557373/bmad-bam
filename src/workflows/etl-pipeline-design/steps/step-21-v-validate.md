@@ -26,7 +26,7 @@ Validate the ETL Pipeline Design against QG-I2 (Tenant Safety) criteria and best
 ## Prerequisites
 
 - Step 20 completed (Load Artifact)
-- **Load checklist:** `{project-root}/_bmad/bam/checklists/qg-i2-tenant-safety.md`
+- **Load checklist:** `{project-root}/_bmad/bam/data/checklists/qg-i2-tenant-safety.md`
 - **Load patterns:** `{project-root}/_bmad/bam/data/bam-patterns.csv` -> filter: `tenant-isolation`
 
 ---

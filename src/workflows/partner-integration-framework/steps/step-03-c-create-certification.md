@@ -37,7 +37,7 @@ Define certification levels, design testing criteria, plan review process, and c
 - Output from Steps 1-2 (Tiers, sandbox)
 - Quality standards
 - Pattern registry: `{project-root}/_bmad/bam/data/bam-patterns.csv`
-- Relevant templates from `{project-root}/_bmad/bam/templates/`
+- Relevant templates from `{project-root}/_bmad/bam/data/templates/`
 
 ---
 

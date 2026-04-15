@@ -28,7 +28,7 @@ Validate the post-deployment verification artifacts against QG-PD1 quality crite
 - Previous step completed (step-20-v-load-artifact.md)
 - **Load patterns:** `{project-root}/_bmad/bam/data/bam-patterns.csv` -> filter: `observability`
 - **Load quality gate:** `{project-root}/_bmad/bam/data/quality-gates.csv` -> filter: `QG-PD1`
-- **Load checklist:** `{project-root}/_bmad/bam/checklists/qg-post-deployment.md`
+- **Load checklist:** `{project-root}/_bmad/bam/data/checklists/qg-post-deployment.md`
 
 ---
 

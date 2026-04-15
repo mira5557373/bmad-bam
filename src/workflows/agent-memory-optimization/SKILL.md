@@ -147,9 +147,9 @@ This workflow contributes to:
 
 ## References
 
-- Template: `bam/templates/memory-tiers-template.md`
-- Knowledge: `bam/knowledge/memory-tiers.md`
-- Checklist: `bam/checklists/qg-m3-agent-runtime.md`
+- Template: `{project-root}/_bmad/bam/data/templates/memory-tiers-template.md`
+- Knowledge: `{project-root}/_bmad/bam/data/agent-guides/bam/memory-tiers.md`
+- Checklist: `{project-root}/_bmad/bam/data/checklists/qg-m3-agent-runtime.md`
 
 ## Web Research
 

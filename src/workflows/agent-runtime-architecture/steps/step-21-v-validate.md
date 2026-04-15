@@ -28,7 +28,7 @@ Validate the agent runtime architecture against QG-M3 quality gate criteria, ens
 - Step 20 completed: Artifact loaded successfully
 - **Load patterns:** `{project-root}/_bmad/bam/data/bam-patterns.csv` → filter: agent-runtime
 - **Load quality gate:** `{project-root}/_bmad/bam/data/quality-gates.csv` -> filter: `QG-M3,QG-AI2`
-- **Load checklist:** `{project-root}/_bmad/bam/checklists/qg-m3-agent-runtime.md`
+- **Load checklist:** `{project-root}/_bmad/bam/data/checklists/qg-m3-agent-runtime.md`
 
 
 

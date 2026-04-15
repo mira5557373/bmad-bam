@@ -37,7 +37,7 @@ Produce the final requirement traceability matrix for planning and implementatio
 
 - Output from previous step(s) in this workflow
 - Pattern registry: `{project-root}/_bmad/bam/data/bam-patterns.csv`
-- Relevant templates from `{project-root}/_bmad/bam/templates/`
+- Relevant templates from `{project-root}/_bmad/bam/data/templates/`
 - User feedback and refinements from previous steps
 
 ---
@@ -119,7 +119,7 @@ _Source: [URL]_
 - Requirement traceability matrix
 - Module index
 - Dependency graph
-- **Load template:** `{project-root}/_bmad/bam/templates/requirement-summary-template.md`
+- **Load template:** `{project-root}/_bmad/bam/data/templates/requirement-summary-template.md`
 
 ## Next Step
 

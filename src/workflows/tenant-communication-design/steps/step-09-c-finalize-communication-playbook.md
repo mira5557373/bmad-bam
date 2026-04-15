@@ -229,7 +229,7 @@ Select an option:
 - Operational Runbook Collection
 - Quick Reference Guides
 - Implementation Checklist
-- **Load template:** `{project-root}/_bmad/bam/templates/communication-playbook-template.md`
+- **Load template:** `{project-root}/_bmad/bam/data/templates/communication-playbook-template.md`
 
 ---
 

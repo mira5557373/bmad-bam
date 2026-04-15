@@ -80,10 +80,10 @@ Load the existing pci-dss-compliance-spec.md, then follow `step-2X-v-` (20 throu
 
 - **Patterns:** Load from `{project-root}/_bmad/bam/data/bam-patterns.csv` filter: `compliance`
 - **Compliance:** Load from `{project-root}/_bmad/bam/data/compliance-frameworks.csv`
-- **Templates:** `{project-root}/_bmad/bam/templates/pci-dss-compliance-template.md`
-- **Checklists:** `{project-root}/_bmad/bam/checklists/production-readiness.md`
+- **Templates:** `{project-root}/_bmad/bam/data/templates/pci-dss-compliance-template.md`
+- **Checklists:** `{project-root}/_bmad/bam/data/checklists/production-readiness.md`
 
 ## Templates
 
-- **Load template:** `{project-root}/_bmad/bam/templates/pci-dss-compliance-template.md`
-- **Load template:** `{project-root}/_bmad/bam/templates/network-segmentation-template.md`
+- **Load template:** `{project-root}/_bmad/bam/data/templates/pci-dss-compliance-template.md`
+- **Load template:** `{project-root}/_bmad/bam/data/templates/network-segmentation-template.md`

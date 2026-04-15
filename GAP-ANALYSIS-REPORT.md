@@ -352,7 +352,7 @@ src/knowledge/
 ### Templates (12 new)
 
 ```
-src/templates/
+src/data/templates/
 ├── ai-eval-report-template.md
 ├── convergence-report-template.md
 ├── foundation-scaffold-template.md
@@ -387,12 +387,12 @@ After implementing fixes, verify:
 
 | Type | Count | Location |
 |------|-------|----------|
-| Extensions | 19 | `src/extensions/` |
+| Extensions | 19 | `src/data/extensions/` |
 | Workflows | 27 | `src/workflows/` |
 | Knowledge | 44 | `src/knowledge/` |
 | Agent Guides | 35 | `src/data/agent-guides/bam/` |
-| Checklists | 10 | `src/checklists/` |
-| Templates | 38 | `src/templates/` |
+| Checklists | 10 | `src/data/checklists/` |
+| Templates | 38 | `src/data/templates/` |
 | Tests | 5 files (75 tests) | `test/` |
 
 ### Test Results

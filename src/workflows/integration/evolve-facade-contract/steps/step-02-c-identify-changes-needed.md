@@ -16,7 +16,7 @@ Document all changes required for the contract evolution.
 
 - Output from previous step(s) in this workflow
 - Pattern registry: `{project-root}/_bmad/bam/data/bam-patterns.csv`
-- Relevant templates from `{project-root}/_bmad/bam/templates/`
+- Relevant templates from `{project-root}/_bmad/bam/data/templates/`
 - User feedback and refinements from previous steps
 
 ---
@@ -142,7 +142,7 @@ Ask for confirmation before proceeding to breaking change assessment.
 - Change manifest document
 - Dependency relationship map
 - Prioritized change list
-- **Load template:** `{project-root}/_bmad/bam/templates/facade-contract-template.md`
+- **Load template:** `{project-root}/_bmad/bam/data/templates/facade-contract-template.md`
 
 ---
 

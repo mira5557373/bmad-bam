@@ -116,9 +116,9 @@ This workflow contributes to:
 
 ## References
 
-- Template: `bam/templates/stakeholder-map-template.md`
-- Knowledge: `bam/knowledge/governance-patterns.md`
-- Checklist: `bam/checklists/foundation-gate.md`
+- Template: `{project-root}/_bmad/bam/data/templates/stakeholder-map-template.md`
+- Knowledge: `{project-root}/_bmad/bam/data/agent-guides/bam/governance-patterns.md`
+- Checklist: `{project-root}/_bmad/bam/data/checklists/foundation-gate.md`
 
 ## Headless Mode
 

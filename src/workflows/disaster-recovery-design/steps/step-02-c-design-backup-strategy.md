@@ -37,7 +37,7 @@ Design a comprehensive backup strategy for each tenant tier, including backup ty
 
 - Output from previous step(s) in this workflow
 - Pattern registry: `{project-root}/_bmad/bam/data/bam-patterns.csv`
-- Relevant templates from `{project-root}/_bmad/bam/templates/`
+- Relevant templates from `{project-root}/_bmad/bam/data/templates/`
 - User feedback and refinements from previous steps
 
 ---
@@ -224,7 +224,7 @@ Ask for confirmation before proceeding to failover design.
 - Storage architecture documentation
 - Data type coverage mapping
 - Verification procedure runbook
-- **Load template:** `{project-root}/_bmad/bam/templates/disaster-recovery-plan-template.md`
+- **Load template:** `{project-root}/_bmad/bam/data/templates/disaster-recovery-plan-template.md`
 
 ## Next Step
 

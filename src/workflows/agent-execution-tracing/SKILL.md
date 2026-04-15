@@ -102,8 +102,8 @@ This workflow contributes to:
 
 ## References
 
-- Template: `bam/templates/agent-execution-trace-template.md`
-- Guide: `bam/data/agent-guides/bam/agent-tracing.md`
+- Template: `{project-root}/_bmad/bam/data/templates/agent-execution-trace-template.md`
+- Guide: `{project-root}/_bmad/bam/data/agent-guides/bam/agent-tracing.md`
 
 ## Web Research
 

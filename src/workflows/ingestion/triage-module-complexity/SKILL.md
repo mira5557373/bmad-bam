@@ -100,5 +100,5 @@ This workflow contributes to:
 
 ## References
 
-- Template: `bam/templates/sprint-status-template.yaml`
-- Knowledge: `bam/knowledge/independent-development.md`
+- Template: `{project-root}/_bmad/bam/data/templates/sprint-status-template.yaml`
+- Knowledge: `{project-root}/_bmad/bam/data/agent-guides/bam/independent-development.md`

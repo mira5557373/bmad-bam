@@ -152,8 +152,8 @@ Upon completion, this workflow produces:
 ## References
 
 - **Patterns:** Load from `{project-root}/_bmad/bam/data/bam-patterns.csv` filter: `sla-contract`
-- **Templates:** `{project-root}/_bmad/bam/templates/sla-contract-template.md`
-- **Checklists:** `{project-root}/_bmad/bam/checklists/production-readiness.md`
+- **Templates:** `{project-root}/_bmad/bam/data/templates/sla-contract-template.md`
+- **Checklists:** `{project-root}/_bmad/bam/data/checklists/production-readiness.md`
 - **Related Workflows:**
   - `bmad-bam-sli-slo-definition` - Define SLIs/SLOs aligned with SLA commitments
   - `bmad-bam-tenant-sla-monitoring` - Implement SLA monitoring

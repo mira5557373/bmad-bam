@@ -134,10 +134,10 @@ Select an option:
 ## Outputs
 
 - Validation report document
-- **Load template:** `{project-root}/_bmad/bam/templates/quality-gate-report-template.md`
-- **Load template:** `{project-root}/_bmad/bam/templates/dev-gate-report-template.md`
-- **Load template:** `{project-root}/_bmad/bam/templates/gate-status-dashboard-template.md`
-- **Load template:** `{project-root}/_bmad/bam/templates/gate-validation-report-template.md`
+- **Load template:** `{project-root}/_bmad/bam/data/templates/quality-gate-report-template.md`
+- **Load template:** `{project-root}/_bmad/bam/data/templates/dev-gate-report-template.md`
+- **Load template:** `{project-root}/_bmad/bam/data/templates/gate-status-dashboard-template.md`
+- **Load template:** `{project-root}/_bmad/bam/data/templates/gate-validation-report-template.md`
 - **Output to:** `{output_folder}/planning-artifacts/{module-name}-validation-meta-report.md`
 
 ---

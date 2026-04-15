@@ -141,8 +141,8 @@ Select an option:
 - Exporter configuration matrix
 - Span naming convention guidelines
 - Resource attribute schema
-- **Load template:** `{project-root}/_bmad/bam/templates/distributed-tracing-template.md`
-- **Load template:** `{project-root}/_bmad/bam/templates/data-lineage-architecture-template.md`
+- **Load template:** `{project-root}/_bmad/bam/data/templates/distributed-tracing-template.md`
+- **Load template:** `{project-root}/_bmad/bam/data/templates/data-lineage-architecture-template.md`
 
 ---
 

@@ -120,9 +120,9 @@ Define resource quota distribution:
 
 ## References
 
-- Template: `bam/templates/tenant-lifecycle-template.md`, `bam/templates/tenant-tier-matrix.md`
-- Multi-Tenant Patterns: `bam/knowledge/multi-tenant-patterns.md`
-- Knowledge: `bam/knowledge/multi-tenant-patterns.md`, `bam/knowledge/rls-best-practices.md`
+- Template: `{project-root}/_bmad/bam/data/templates/tenant-lifecycle-template.md`, `{project-root}/_bmad/bam/data/templates/tenant-tier-matrix.md`
+- Multi-Tenant Patterns: `{project-root}/_bmad/bam/data/agent-guides/bam/multi-tenant-patterns.md`
+- Knowledge: `{project-root}/_bmad/bam/data/agent-guides/bam/multi-tenant-patterns.md`, `{project-root}/_bmad/bam/data/agent-guides/bam/rls-best-practices.md`
 
 ## Web Research
 

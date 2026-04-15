@@ -166,8 +166,8 @@ Select an option:
 - Storage pattern design
 - Metadata schema
 - Scope binding rules
-- **Load template:** `{project-root}/_bmad/bam/templates/tenant-api-key-management-template.md`
-- **Load template:** `{project-root}/_bmad/bam/templates/api-key-lifecycle-template.md`
+- **Load template:** `{project-root}/_bmad/bam/data/templates/tenant-api-key-management-template.md`
+- **Load template:** `{project-root}/_bmad/bam/data/templates/api-key-lifecycle-template.md`
 
 ---
 

@@ -255,7 +255,7 @@ describe('Component Category', () => {
 Ensure the `src/` directory structure is complete:
 ```bash
 ls -la src/
-ls -la src/extensions/
+ls -la src/data/extensions/
 ls -la src/workflows/
 ```
 
@@ -276,5 +276,5 @@ jest.setTimeout(30000); // 30 seconds
 ## Related Documentation
 
 - [CLAUDE.md](../CLAUDE.md) - Module development guidelines
-- [src/workflows/module.yaml](../src/workflows/module.yaml) - Module configuration
-- [src/workflows/module-help.csv](../src/workflows/module-help.csv) - Help system entries
+- [src/module.yaml](../src/module.yaml) - Module configuration
+- [src/module-help.csv](../src/module-help.csv) - Help system entries

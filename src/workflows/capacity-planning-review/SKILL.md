@@ -94,8 +94,8 @@ This workflow contributes to:
 
 ## References
 
-- Template: `bam/templates/capacity-planning-template.md`
-- Knowledge: `bam/knowledge/capacity-patterns.md`
+- Template: `{project-root}/_bmad/bam/data/templates/capacity-planning-template.md`
+- Knowledge: `{project-root}/_bmad/bam/data/agent-guides/bam/capacity-patterns.md`
 
 ## Web Research
 

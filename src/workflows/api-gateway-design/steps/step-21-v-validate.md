@@ -25,7 +25,7 @@ Validate the gateway design against quality criteria ensuring complete routing c
 
 - Step 20 completed: Artifact loaded successfully
 - **Load patterns:** `{project-root}/_bmad/bam/data/bam-patterns.csv` -> filter: api-gateway
-- **Load checklist:** `{project-root}/_bmad/bam/checklists/production-readiness.md`
+- **Load checklist:** `{project-root}/_bmad/bam/data/checklists/production-readiness.md`
 
 ## Validation Checklist
 

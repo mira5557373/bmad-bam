@@ -24,8 +24,8 @@ Validate the AI model security document against QG-S4 (AI Security) quality gate
 ## Prerequisites
 
 - Artifact loaded (Step 20)
-- **Load checklist:** `{project-root}/_bmad/bam/checklists/qg-s4-ai-security.md`
-- **Load checklist:** `{project-root}/_bmad/bam/checklists/qg-m3-agent-runtime.md`
+- **Load checklist:** `{project-root}/_bmad/bam/data/checklists/qg-s4-ai-security.md`
+- **Load checklist:** `{project-root}/_bmad/bam/data/checklists/qg-m3-agent-runtime.md`
 
 ---
 

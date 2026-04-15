@@ -7,9 +7,9 @@ Create debugging runbooks for common agent issues using trace data.
 ## Prerequisites
 
 - Step 4 complete (sampling strategy designed)
-- **Load template:** `{project-root}/_bmad/bam/templates/agent-execution-trace-template.md`
-- **Load template:** `{project-root}/_bmad/bam/templates/tool-execution-observability-template.md`
-- **Load template:** `{project-root}/_bmad/bam/templates/memory-observability-template.md`
+- **Load template:** `{project-root}/_bmad/bam/data/templates/agent-execution-trace-template.md`
+- **Load template:** `{project-root}/_bmad/bam/data/templates/tool-execution-observability-template.md`
+- **Load template:** `{project-root}/_bmad/bam/data/templates/memory-observability-template.md`
 
 ## Actions
 

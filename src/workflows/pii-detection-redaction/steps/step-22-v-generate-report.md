@@ -27,8 +27,8 @@ Generate a comprehensive validation report summarizing findings from the PII det
 
 - Step 20 completed: PII detection architecture artifact loaded successfully
 - Step 21 completed: Validation performed against privacy criteria
-- **Load checklist:** `{project-root}/_bmad/bam/checklists/qg-i3-agent-safety.md`
-- **Load template:** `{project-root}/_bmad/bam/templates/quality-gate-report-template.md`
+- **Load checklist:** `{project-root}/_bmad/bam/data/checklists/qg-i3-agent-safety.md`
+- **Load template:** `{project-root}/_bmad/bam/data/templates/quality-gate-report-template.md`
 
 ---
 

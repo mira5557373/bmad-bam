@@ -27,7 +27,7 @@ Validate the embedding strategy against quality criteria ensuring proper model s
 
 - Step 20 completed: Artifact loaded successfully
 - **Load patterns:** `{project-root}/_bmad/bam/data/bam-patterns.csv` -> filter: embeddings
-- **Load checklist:** `{project-root}/_bmad/bam/checklists/qg-m3-agent-runtime.md`
+- **Load checklist:** `{project-root}/_bmad/bam/data/checklists/qg-m3-agent-runtime.md`
 
 ---
 

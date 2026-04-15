@@ -26,7 +26,7 @@ Generate a comprehensive validation report documenting the audit log design vali
 ## Prerequisites
 
 - Step 21 completed: Validation checks executed with scores
-- **Load template:** `{project-root}/_bmad/bam/templates/validation-report-template.md`
+- **Load template:** `{project-root}/_bmad/bam/data/templates/validation-report-template.md`
 
 ---
 

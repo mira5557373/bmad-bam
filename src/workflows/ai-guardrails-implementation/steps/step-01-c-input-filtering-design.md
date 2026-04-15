@@ -155,7 +155,7 @@ Select an option:
 - Sanitization pipeline specification
 - Injection detection configuration
 - Tenant policy schema
-- **Load template:** `{project-root}/_bmad/bam/templates/content-policy-template.md`
+- **Load template:** `{project-root}/_bmad/bam/data/templates/content-policy-template.md`
 
 ---
 

@@ -1,0 +1,415 @@
+# BAM Extension for BMM Compliance Automation
+# Pattern: WDS agent-guides (NO memories: field)
+
+agent:
+  metadata:
+    extends: 'bmad-agent-analyst'
+    module: 'bam'
+    description: 'Adds multi-tenant compliance automation, evidence collection, and certification tracking capabilities'
+
+menu:
+  # ============================================================
+  # CONTEXT LOADER
+  # ============================================================
+  - trigger: bam-compliance-context
+    action: '#load-compliance-context-prompt'
+    description: Load BAM compliance automation context
+
+  # ============================================================
+  # WEB RESEARCH
+  # ============================================================
+  - trigger: bam-compliance-research
+    action: '#web-research-compliance-prompt'
+    description: Conduct web research for compliance decisions
+
+  # ============================================================
+  # COMPLIANCE AUTOMATION CAPABILITIES
+  # ============================================================
+  - trigger: bam-compliance-audit-automation
+    action: '#compliance-audit-automation-prompt'
+    description: Design automated compliance audit architecture
+
+  - trigger: bam-compliance-evidence-collection
+    action: '#compliance-evidence-collection-prompt'
+    description: Design evidence collection automation system
+
+  - trigger: bam-compliance-certification-tracking
+    action: '#compliance-certification-tracking-prompt'
+    description: Design certification tracking and renewal system
+
+  - trigger: bam-compliance-dashboard-design
+    action: '#compliance-dashboard-design-prompt'
+    description: Design multi-tenant compliance dashboard
+
+  # ============================================================
+  # CONTEXT LOADERS - Agent Guides
+  # ============================================================
+  - trigger: bam-audit-trail-context
+    action: '#load-audit-trail-context-prompt'
+    description: Load BAM audit trail patterns
+
+  - trigger: bam-regulatory-mapping-context
+    action: '#load-regulatory-mapping-context-prompt'
+    description: Load BAM regulatory mapping patterns
+
+  - trigger: bam-evidence-automation-context
+    action: '#load-evidence-automation-context-prompt'
+    description: Load BAM evidence automation patterns
+
+  - trigger: bam-compliance-officer-context
+    action: '#load-compliance-officer-context-prompt'
+    description: Load BAM compliance officer role guide
+
+  - trigger: bam-ai-compliance-regulations-context
+    action: '#load-ai-compliance-regulations-context-prompt'
+    description: Load BAM AI compliance regulations context
+
+  - trigger: bam-pii-handling-patterns-context
+    action: '#load-pii-handling-patterns-context-prompt'
+    description: Load BAM PII handling patterns context
+
+prompts:
+  # ============================================================
+  # CONTEXT LOADER PROMPT
+  # ============================================================
+  - id: load-compliance-context-prompt
+    content: |
+      ## Load BAM Compliance Automation Context
+
+      Read and internalize the BAM compliance automation guide:
+      `{project-root}/_bmad/bam/data/agent-guides/bam/compliance-automation.md`
+
+      Also load the related guides:
+      `{project-root}/_bmad/bam/data/agent-guides/bam/compliance.md`
+      `{project-root}/_bmad/bam/data/agent-guides/bam/audit-logging-patterns.md`
+      `{project-root}/_bmad/bam/data/agent-guides/bam/government-compliance-patterns.md`
+      `{project-root}/_bmad/bam/data/agent-guides/bam/risk-management-patterns.md`
+
+      These guides provide context for:
+      - Automated compliance audit workflows
+      - Evidence collection and retention
+      - Certification tracking and renewal
+      - Compliance dashboards and reporting
+      - Tenant-specific compliance requirements
+      - Regulatory mapping and control frameworks
+
+      Confirm when loaded, then proceed with compliance automation tasks.
+
+  # ============================================================
+  # WEB RESEARCH PROMPT
+  # ============================================================
+  - id: web-research-compliance-prompt
+    content: |
+      ## BAM Web Research - Compliance Automation
+
+      Conduct targeted web research for compliance automation decisions in multi-tenant SaaS.
+
+      **Research Focus:** {{research_topic}}
+
+      Execute 2-3 targeted searches:
+      Search the web: "{{research_topic}} compliance automation best practices {date}"
+      Search the web: "{{research_topic}} multi-tenant SaaS compliance {date}"
+      Search the web: "{{research_topic}} evidence collection automation {date}"
+
+      **Research Areas:**
+      - Automated compliance audit workflows
+      - Evidence collection and retention systems
+      - Certification tracking automation
+      - GRC (Governance, Risk, Compliance) platforms
+      - Continuous compliance monitoring
+      - Tenant-specific compliance requirements
+
+      Return findings with source citations: _Source: [URL]_
+
+      **Output Format:**
+      1. Key findings summary
+      2. Applicable compliance automation patterns for multi-tenant SaaS
+      3. Compliance automation recommendations with rationale
+      4. Sources consulted
+
+  # ============================================================
+  # AUDIT AUTOMATION PROMPT
+  # ============================================================
+  - id: compliance-audit-automation-prompt
+    content: |
+      ## Automated Compliance Audit Architecture Design
+
+      Prerequisites: Load compliance automation context via `bam-compliance-context`
+
+      **Load patterns:** `{project-root}/_bmad/bam/data/compliance-frameworks.csv`
+      **Load patterns:** `{project-root}/_bmad/bam/data/bam-patterns.csv` -> filter: `tenant-isolation`
+
+      Design automated compliance audit system for multi-tenant platform:
+
+      ### Audit Architecture
+      | Component | Purpose | Tenant Scope |
+      |-----------|---------|--------------|
+      | Control Catalog | Define controls | Shared + tenant-custom |
+      | Audit Engine | Execute checks | Per-tenant scheduling |
+      | Finding Store | Track findings | Tenant-isolated |
+      | Remediation Tracker | Track fixes | Tenant workflows |
+
+      ### Audit Types
+      | Type | Frequency | Automation |
+      |------|-----------|------------|
+      | Continuous | Real-time | Fully automated |
+      | Periodic | Daily/Weekly | Scheduled scans |
+      | On-demand | Manual trigger | Semi-automated |
+      | External | Annual | Manual + automated prep |
+
+      ### Control Categories
+      | Category | Framework | Example Controls |
+      |----------|-----------|------------------|
+      | Access Control | SOC2/GDPR | MFA enabled, RBAC configured |
+      | Data Protection | GDPR/HIPAA | Encryption, retention |
+      | Availability | SOC2 | Backup, DR testing |
+      | Logging | All | Audit trail, log retention |
+      | Incident Response | SOC2/ISO27001 | Response plan, testing |
+
+      ### Multi-Tenant Audit Considerations
+      | Aspect | Platform Audit | Tenant Audit |
+      |--------|----------------|--------------|
+      | Scope | Infrastructure | Tenant data/config |
+      | Frequency | Continuous | Per tenant SLA |
+      | Results | Admin only | Tenant + admin |
+      | Remediation | Platform team | Tenant + platform |
+
+      ### Implementation Requirements
+      - [ ] Control catalog versioned and extensible
+      - [ ] Audit results tenant-isolated
+      - [ ] Remediation deadlines per severity
+      - [ ] Audit history retained for compliance
+      - [ ] External audit preparation automated
+      - [ ] Tenant-specific controls supported
+
+      Output as compliance audit architecture document.
+
+  # ============================================================
+  # EVIDENCE COLLECTION PROMPT
+  # ============================================================
+  - id: compliance-evidence-collection-prompt
+    content: |
+      ## Evidence Collection Automation System Design
+
+      Prerequisites: Load compliance automation context via `bam-compliance-context`
+
+      **Load patterns:** `{project-root}/_bmad/bam/data/compliance-frameworks.csv`
+      **Load checklist:** `{project-root}/_bmad/bam/data/checklists/qg-i2-tenant-safety.md`
+
+      Design evidence collection system for multi-tenant compliance:
+
+      ### Evidence Architecture
+      | Component | Purpose | Tenant Isolation |
+      |-----------|---------|------------------|
+      | Evidence Catalog | Define evidence types | Framework-based |
+      | Collection Engine | Gather evidence | Per-tenant collection |
+      | Evidence Store | Secure storage | Tenant-partitioned |
+      | Audit Preparation | Package for audits | Tenant-filtered |
+
+      ### Evidence Types
+      | Type | Source | Collection Method |
+      |------|--------|-------------------|
+      | Configuration | System config | API snapshot |
+      | Logs | Audit logs | Log export |
+      | Screenshots | UI state | Automated capture |
+      | Attestations | Human verification | Workflow-driven |
+      | Metrics | Monitoring systems | Metrics export |
+      | Policies | Documentation | Version control |
+
+      ### Evidence Lifecycle
+      | Stage | Description | Retention |
+      |-------|-------------|-----------|
+      | Collection | Automated gathering | Immediate |
+      | Validation | Completeness check | 24 hours |
+      | Storage | Immutable archival | Per regulation |
+      | Retrieval | Audit access | On-demand |
+      | Expiration | Retention enforcement | Automated |
+
+      ### Tenant-Specific Evidence
+      | Tier | Evidence Scope | Access |
+      |------|----------------|--------|
+      | Free | Platform evidence only | View-only |
+      | Pro | Platform + tenant config | Export |
+      | Enterprise | Full tenant evidence | Full access |
+
+      ### Implementation Requirements
+      - [ ] Evidence collection automated
+      - [ ] Evidence immutably stored
+      - [ ] Retention policies enforced
+      - [ ] Chain of custody maintained
+      - [ ] Export for external audits
+      - [ ] Tenant access controls enforced
+
+      Output as evidence collection architecture document.
+
+  # ============================================================
+  # CERTIFICATION TRACKING PROMPT
+  # ============================================================
+  - id: compliance-certification-tracking-prompt
+    content: |
+      ## Certification Tracking and Renewal System Design
+
+      Prerequisites: Load compliance automation context via `bam-compliance-context`
+
+      **Load patterns:** `{project-root}/_bmad/bam/data/compliance-frameworks.csv`
+
+      Design certification tracking system for multi-tenant platform:
+
+      ### Certification Architecture
+      | Component | Purpose | Scope |
+      |-----------|---------|-------|
+      | Cert Catalog | Track certifications | Platform + tenant |
+      | Renewal Engine | Track deadlines | Automated alerts |
+      | Audit Trail | Track changes | Immutable log |
+      | Dashboard | Visibility | Role-based access |
+
+      ### Certification Types
+      | Type | Scope | Renewal Period |
+      |------|-------|----------------|
+      | SOC2 Type II | Platform | Annual |
+      | ISO 27001 | Platform | Annual + 3-year cycle |
+      | HIPAA | Platform + BAA | Continuous |
+      | GDPR | Platform | Continuous |
+      | PCI-DSS | Payment scope | Annual |
+      | FedRAMP | Government | Annual |
+
+      ### Certification Workflow
+      | Stage | Activities | Timeline |
+      |-------|------------|----------|
+      | Pre-Audit | Evidence prep, gap analysis | -90 days |
+      | Audit | External assessor engagement | -60 to 0 days |
+      | Remediation | Fix findings | 0 to +30 days |
+      | Certification | Receive certification | +30 to +60 days |
+      | Maintenance | Continuous compliance | Ongoing |
+
+      ### Tenant Certification Features
+      | Feature | Free | Pro | Enterprise |
+      |---------|------|-----|------------|
+      | Platform cert visibility | Yes | Yes | Yes |
+      | BAA request | No | Yes | Yes |
+      | Custom cert support | No | No | Yes |
+      | Audit cooperation | No | Limited | Full |
+      | Compliance reports | No | Basic | Custom |
+
+      ### Implementation Requirements
+      - [ ] All certifications tracked centrally
+      - [ ] Renewal alerts automated
+      - [ ] Evidence linked to certifications
+      - [ ] Audit history maintained
+      - [ ] Tenant BAA tracking
+      - [ ] Custom certification support for Enterprise
+
+      Output as certification tracking architecture document.
+
+  # ============================================================
+  # DASHBOARD DESIGN PROMPT
+  # ============================================================
+  - id: compliance-dashboard-design-prompt
+    content: |
+      ## Multi-Tenant Compliance Dashboard Design
+
+      Prerequisites: Load compliance automation context via `bam-compliance-context`
+
+      **Load patterns:** `{project-root}/_bmad/bam/data/compliance-frameworks.csv`
+      **Load patterns:** `{project-root}/_bmad/bam/data/bam-patterns.csv` -> filter: `observability`
+
+      Design compliance dashboard for multi-tenant visibility:
+
+      ### Dashboard Architecture
+      | Component | Purpose | Tenant Isolation |
+      |-----------|---------|------------------|
+      | Data Aggregator | Collect metrics | Tenant filtering |
+      | Visualization | Charts/graphs | Role-based views |
+      | Alerting | Threshold alerts | Tenant-scoped rules |
+      | Export | Report generation | Tenant data only |
+
+      ### Dashboard Views by Role
+      | Role | View | Scope |
+      |------|------|-------|
+      | Platform Admin | Global compliance | All tenants |
+      | Tenant Admin | Tenant compliance | Own tenant |
+      | Auditor | Audit-specific | Scoped to audit |
+      | Executive | Summary | Aggregate metrics |
+
+      ### Key Compliance Metrics
+      | Metric | Description | Alert Threshold |
+      |--------|-------------|-----------------|
+      | Control Coverage | % controls implemented | < 100% |
+      | Finding Backlog | Open findings count | > SLA |
+      | Evidence Freshness | Days since collection | > 30 days |
+      | Certification Status | Days to expiration | < 90 days |
+      | Audit Readiness | % evidence complete | < 95% |
+
+      ### Tenant Dashboard Features
+      | Feature | Free | Pro | Enterprise |
+      |---------|------|-----|------------|
+      | Compliance score | Yes | Yes | Yes |
+      | Control status | View | View + details | Full |
+      | Finding details | No | Yes | Yes |
+      | Custom reports | No | Limited | Unlimited |
+      | API access | No | Read | Read/Write |
+      | White-label | No | No | Yes |
+
+      ### Implementation Requirements
+      - [ ] Real-time data aggregation
+      - [ ] Tenant data strictly isolated
+      - [ ] Role-based access enforced
+      - [ ] Export formats configurable
+      - [ ] Historical trend analysis
+      - [ ] Alerting rules tenant-configurable
+
+      Output as compliance dashboard architecture document.
+
+  # ============================================================
+  # CONTEXT LOADER PROMPTS - Agent Guides
+  # ============================================================
+  - id: load-audit-trail-context-prompt
+    content: |
+      Read and internalize the BAM guide:
+      `{project-root}/_bmad/bam/data/agent-guides/bam/audit-logging-patterns.md`
+
+      Confirm when loaded.
+
+  - id: load-regulatory-mapping-context-prompt
+    content: |
+      Read and internalize the BAM guide:
+      `{project-root}/_bmad/bam/data/agent-guides/bam/regulatory-mapping-patterns.md`
+
+      Confirm when loaded.
+
+  - id: load-evidence-automation-context-prompt
+    content: |
+      Read and internalize the BAM guide:
+      `{project-root}/_bmad/bam/data/agent-guides/bam/evidence-automation-patterns.md`
+
+      Confirm when loaded.
+
+  - id: load-compliance-officer-context-prompt
+    content: |
+      ## Load BAM Compliance Officer Context
+
+      Read and internalize the compliance officer role guide:
+      `{project-root}/_bmad/bam/data/agent-guides/bam/compliance-officer-guide.md`
+
+      This guide provides context for:
+      - Managing per-tenant compliance requirements and evidence
+      - Ensuring platform-wide compliance posture (SOC2, GDPR, HIPAA)
+      - Coordinating audits across platform and tenant scope
+      - Implementing data protection controls with tenant isolation
+      - Preparing for AI-specific regulations (EU AI Act)
+
+      Confirm when loaded, then proceed with compliance tasks.
+
+  - id: load-ai-compliance-regulations-context-prompt
+    content: |
+      Read and internalize the BAM guide:
+      `{project-root}/_bmad/bam/data/agent-guides/bam/ai-compliance-regulations.md`
+
+      Confirm when loaded.
+
+  - id: load-pii-handling-patterns-context-prompt
+    content: |
+      Read and internalize the BAM guide:
+      `{project-root}/_bmad/bam/data/agent-guides/bam/pii-handling-patterns.md`
+
+      Confirm when loaded.

@@ -243,7 +243,7 @@ _Source: [URL]_
 - Phase completion documentation
 - Exception log
 - RTO/RPO achievement report
-- **Load template:** `{project-root}/_bmad/bam/templates/failover-execution-template.md`
+- **Load template:** `{project-root}/_bmad/bam/data/templates/failover-execution-template.md`
 
 ## Next Step
 

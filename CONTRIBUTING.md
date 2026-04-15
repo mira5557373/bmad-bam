@@ -324,7 +324,7 @@ src/workflows/{workflow-name}/
 
 ### module-help.csv Entry
 
-Every workflow MUST have a corresponding entry in `src/workflows/module-help.csv` with all 14 columns:
+Every workflow MUST have a corresponding entry in `src/module-help.csv` with all 14 columns:
 
 ```
 module,skill,display-name,menu-code,description,action,args,phase,after,before,required,output-location,outputs

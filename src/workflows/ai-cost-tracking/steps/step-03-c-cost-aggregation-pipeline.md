@@ -128,7 +128,7 @@ Select an option:
 
 - Aggregation pipeline specification
 - Allocation rules documentation
-- **Load template:** `{project-root}/_bmad/bam/templates/cost-tracking-design-template.md`
+- **Load template:** `{project-root}/_bmad/bam/data/templates/cost-tracking-design-template.md`
 
 ---
 

@@ -24,8 +24,8 @@ Validate the AI bias monitoring document against QG-M3 (Agent Runtime) and QG-I3
 ## Prerequisites
 
 - Artifact loaded (Step 20)
-- **Load checklist:** `{project-root}/_bmad/bam/checklists/qg-i3-agent-safety.md`
-- **Load checklist:** `{project-root}/_bmad/bam/checklists/qg-m3-agent-runtime.md`
+- **Load checklist:** `{project-root}/_bmad/bam/data/checklists/qg-i3-agent-safety.md`
+- **Load checklist:** `{project-root}/_bmad/bam/data/checklists/qg-m3-agent-runtime.md`
 
 ---
 

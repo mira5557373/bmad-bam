@@ -132,7 +132,7 @@ Select an option:
 - Flow log configuration
 - DDoS protection design
 - Complete network isolation document
-- **Load template:** `{project-root}/_bmad/bam/templates/network-isolation-template.md`
+- **Load template:** `{project-root}/_bmad/bam/data/templates/network-isolation-template.md`
 
 ---
 

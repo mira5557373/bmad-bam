@@ -31,7 +31,7 @@ Generate the comprehensive PCI-DSS compliance specification document consolidati
 - Tenant isolation designed (Step 3)
 - Soft gate checkpoint passed
 - **Load patterns:** `{project-root}/_bmad/bam/data/bam-patterns.csv` → filter: compliance
-- **Load template:** `{project-root}/_bmad/bam/templates/pci-dss-compliance-template.md`
+- **Load template:** `{project-root}/_bmad/bam/data/templates/pci-dss-compliance-template.md`
 
 
 ---
@@ -177,7 +177,7 @@ _Source: [URL]_
 - Security control matrix
 - Tenant isolation design
 - SAQ documentation
-- **Load template:** `{project-root}/_bmad/bam/templates/pci-dss-compliance-template.md`
+- **Load template:** `{project-root}/_bmad/bam/data/templates/pci-dss-compliance-template.md`
 
 ## Next Step
 

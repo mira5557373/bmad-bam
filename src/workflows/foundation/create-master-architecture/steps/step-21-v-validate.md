@@ -28,7 +28,7 @@ Validate the master architecture document against QG-F1 foundation gate criteria
 - Step 20 completed: Artifact loaded successfully
 - **Load patterns:** `{project-root}/_bmad/bam/data/bam-patterns.csv` → filter: tenant-isolation,agent-runtime,module-boundaries
 - **Load quality gate:** `{project-root}/_bmad/bam/data/quality-gates.csv` -> filter: `QG-F1`
-- **Load checklist:** `{project-root}/_bmad/bam/checklists/foundation-gate.md`
+- **Load checklist:** `{project-root}/_bmad/bam/data/checklists/foundation-gate.md`
 
 
 

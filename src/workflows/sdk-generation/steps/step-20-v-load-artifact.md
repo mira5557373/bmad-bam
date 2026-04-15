@@ -25,7 +25,7 @@ This step loads the SDK Generation artifact for validation. The configuration do
 
 - SDK generation artifact exists to validate
 - **Load patterns:** `{project-root}/_bmad/bam/data/bam-patterns.csv` -> filter: sdk-patterns
-- **Load checklist:** `{project-root}/_bmad/bam/checklists/production-readiness.md`
+- **Load checklist:** `{project-root}/_bmad/bam/data/checklists/production-readiness.md`
 
 Load the existing SDK generation documents:
 - `{output_folder}/planning-artifacts/sdk/sdk-generation-config.md`
@@ -40,7 +40,7 @@ Parse the document structure and prepare for validation against the quality crit
 ## Inputs
 
 - Artifact file path for validation
-- Quality gate checklist: `{project-root}/_bmad/bam/checklists/`
+- Quality gate checklist: `{project-root}/_bmad/bam/data/checklists/`
 - Pattern registry: `{project-root}/_bmad/bam/data/bam-patterns.csv`
 
 ---

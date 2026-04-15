@@ -1,0 +1,476 @@
+# BAM Extension for CIS Presentation Master
+# Pattern: WDS agent-guides (NO memories: field)
+
+agent:
+  metadata:
+    extends: 'bmad-cis-agent-presentation-master'
+    module: 'bam'
+    description: "Adds SaaS presentation frameworks"
+
+menu:
+  - trigger: bam-pres-context
+    action: "#load-bam-pres-context-prompt"
+    description: Load BAM presentation context
+  - trigger: bam-pres-saas-pitch
+    action: "#saas-pitch-prompt"
+    description: Create SaaS platform pitch
+  - trigger: bam-pres-research
+    action: "#web-research-presentation-prompt"
+    description: Conduct web research for presentation decisions
+  - trigger: bam-pres-investor-deck
+    action: "#investor-deck-prompt"
+    description: Create investor presentation for multi-tenant platform
+  - trigger: bam-pres-customer-demo
+    action: "#customer-demo-prompt"
+    description: Design compelling customer demo flows
+  - trigger: bam-pres-technical-credibility
+    action: "#technical-credibility-prompt"
+    description: Present technical architecture for credibility
+  - trigger: bam-pres-tier-comparison
+    action: "#tier-comparison-visual-prompt"
+    description: Create tier comparison visuals
+  - trigger: bam-pres-case-study
+    action: "#case-study-presentation-prompt"
+    description: Structure case study presentations
+  - trigger: bam-pres-validate
+    action: "#validate-presentation-prompt"
+    description: Validate presentation against quality gates
+
+prompts:
+  - id: load-bam-pres-context-prompt
+    content: |
+      ## Load BAM Presentation Context
+
+      Read and internalize the multi-tenant SaaS presentation guide:
+      `{project-root}/_bmad/bam/data/agent-guides/bam/saas-presentation.md`
+
+      This guide provides comprehensive context for creating compelling presentations
+      about multi-tenant AI platforms. It covers the following key areas:
+
+      1. **Platform Value Messaging**: Frameworks for articulating multi-tenant platform
+         value propositions to different audiences (investors, customers, partners).
+      2. **Technical Credibility Stories**: How to present technical architecture
+         decisions (isolation, security, scale) in accessible, compelling ways.
+      3. **Tier Comparison Visuals**: Best practices for visualizing tier differences,
+         feature matrices, and upgrade value propositions.
+      4. **AI Safety Narratives**: Presenting AI capabilities with appropriate emphasis
+         on safety, isolation, and responsible multi-tenant AI practices.
+
+      Apply these multi-tenant SaaS themes to all presentations. Once loaded, confirm
+      by stating: "BAM presentation context loaded. Ready to create compelling SaaS
+      platform presentations."
+
+  - id: saas-pitch-prompt
+    content: |
+      ## SaaS Platform Pitch
+
+      Prerequisites: Ensure BAM context loaded via `bam-pres-context`
+
+      **Load patterns:** `{project-root}/_bmad/bam/data/bam-patterns.csv` → filter: `customization, experimentation, tenant-lifecycle`
+
+      ### Objective
+      Create a compelling pitch presentation that articulates the multi-tenant AI platform
+      value proposition for investors, customers, or partners.
+
+      ### Process
+
+      1. **Problem Statement (Slides 1-3)**
+         - Establish the pain points of current solutions at scale
+         - Quantify the cost of fragmented tooling
+         - Show the AI adoption gap for enterprises
+
+         | Problem | Evidence | Impact |
+         |---------|----------|--------|
+         | Tool sprawl | Average enterprise uses 900+ SaaS apps | Integration costs, data silos |
+         | AI bolt-on failures | 85% of AI projects fail to reach production | Wasted investment |
+         | Security concerns | 60% cite AI security as top concern | Slowed adoption |
+         | Scale limitations | Single-tenant cannot handle enterprise load | Reliability issues |
+
+         **Slide Structure:**
+         - Slide 1: Hook with relatable pain point quote
+         - Slide 2: Market data showing problem scale
+         - Slide 3: Why existing solutions fail (competitive gap)
+
+      2. **Solution Overview (Slides 4-6)**
+         - Introduce multi-tenant AI platform concept
+         - Highlight architecture advantages
+         - Show the unified experience
+
+         | Solution Element | What It Solves | Proof Point |
+         |-----------------|----------------|-------------|
+         | Multi-tenant architecture | Scale economics, reliability | X tenants served from single instance |
+         | AI-native design | Deep AI integration, not bolt-on | AI in every workflow, not separate tool |
+         | Unified platform | Tool consolidation | Replace N point solutions |
+         | Enterprise-grade | Security, compliance built-in | SOC2, GDPR, SSO ready |
+
+         **Slide Structure:**
+         - Slide 4: Platform vision (30,000 ft view)
+         - Slide 5: Architecture diagram (simple, not technical)
+         - Slide 6: Demo screenshot or workflow example
+
+      3. **Differentiation: Isolation + AI Safety (Slides 7-9)**
+         - Explain tenant isolation in accessible terms
+         - Position AI safety as competitive advantage
+         - Show trust as a feature, not just compliance
+
+         | Differentiator | Competitor Approach | Our Approach |
+         |---------------|--------------------|--------------|
+         | Data isolation | Shared databases, honor system | RLS enforcement, cryptographic separation |
+         | AI data use | Unclear, potential training | Explicit consent, isolated models |
+         | Compliance | Bolt-on, external tools | Built-in, automated |
+         | Auditability | Limited, manual | Complete, real-time |
+
+         **Slide Structure:**
+         - Slide 7: Your data stays yours trust message
+         - Slide 8: Technical credibility (simplified diagram)
+         - Slide 9: Compliance badges and certifications
+
+      4. **Tier Value Progression (Slides 10-11)**
+         - Show clear value at each tier
+         - Make upgrade path obvious
+         - Position enterprise as the destination
+
+         | Tier | Who It Is For | Key Value | Price Anchor |
+         |------|-------------|-----------|--------------|
+         | FREE | Evaluators, individuals | Full platform experience, limited scale | $0 - prove value first |
+         | PRO | Teams, power users | Full power, integrations, priority | $/user - grow with you |
+         | ENTERPRISE | Organizations | Scale, compliance, customization | Custom - enterprise needs |
+
+         **Slide Structure:**
+         - Slide 10: Tier comparison matrix (visual, not table-heavy)
+         - Slide 11: Customer journey examples per tier
+
+      5. **Call to Action (Slide 12)**
+         - Start free, grow with us positioning
+         - Clear next step based on audience
+         - Remove friction from starting
+
+         | Audience | CTA | Follow-up |
+         |----------|-----|-----------|
+         | Investors | Join our journey | Investment deck request |
+         | Customers | Start free today | Self-serve signup link |
+         | Partners | Lets build together | Partnership inquiry form |
+
+      ### Verification Checklist
+      - [ ] Problem resonates with target audience
+      - [ ] Solution is clearly differentiated
+      - [ ] Technical credibility without jargon overload
+      - [ ] Tier value is visually clear
+      - [ ] CTA is specific and actionable
+      - [ ] Presentation flows as a story
+
+      ### Output
+      Produce pitch deck outline with slide-by-slide content guidance,
+      speaker notes, and appendix slides for deep-dive questions.
+      Reference template: `{project-root}/_bmad/bam/data/templates/presentation-template.md`
+
+  - id: web-research-presentation-prompt
+    content: |
+      ## BAM Web Research - Presentation
+
+      Conduct targeted web research for multi-tenant SaaS demo and pitch deck decisions.
+
+      **Research Focus:** {{research_topic}}
+
+      Execute 2-3 targeted searches:
+      - "{{research_topic}} SaaS demo best practices {date}"
+      - "{{research_topic}} SaaS patterns {date}"
+      - "{{research_topic}} pitch deck techniques {date}"
+
+      Return findings as structured summary:
+
+      ### Key Findings
+      - {Finding 1} _Source: [URL]_
+      - {Finding 2} _Source: [URL]_
+
+      ### Applicable Patterns
+      - {Pattern 1}
+
+      ### Sources
+      - [URL 1]
+      - [URL 2]
+
+  - id: investor-deck-prompt
+    content: |
+      ## Investor Presentation for Multi-Tenant Platform
+
+      Prerequisites: Ensure BAM context loaded via `bam-pres-context`
+
+      **Load patterns:** `{project-root}/_bmad/bam/data/bam-patterns.csv` → filter: `customization, tenant-lifecycle`
+
+      ### Objective
+      Create a compelling investor presentation that articulates the multi-tenant
+      AI platform opportunity, defensibility, and growth potential.
+
+      ### Process
+
+      1. **Market Opportunity (Slides 1-3)**
+         - TAM/SAM/SOM breakdown
+         - Market timing thesis
+         - Problem magnitude
+
+         | Market Metric | Value | Source |
+         |---------------|-------|--------|
+         | TAM | $XXB | Industry report |
+         | SAM | $XXB | Addressable segment |
+         | SOM | $XXB | 5-year realistic target |
+
+      2. **Solution and Differentiation (Slides 4-6)**
+         - Multi-tenant architecture advantage
+         - AI-native differentiation
+         - Platform vs point solution positioning
+
+      3. **Business Model (Slides 7-9)**
+         - Tier structure and pricing
+         - Unit economics
+         - Expansion revenue mechanics
+
+         | Metric | Current | Target |
+         |--------|---------|--------|
+         | CAC | $XXX | $XXX |
+         | LTV | $XXX | $XXX |
+         | LTV:CAC | X:1 | X:1 |
+
+      4. **Traction and Growth (Slides 10-11)**
+         - Key metrics and milestones
+         - Customer logos and case studies
+         - Growth trajectory
+
+      5. **Team and Ask (Slides 12-13)**
+         - Founding team credentials
+         - Use of funds
+         - Timeline to milestones
+
+      ### Verification Checklist
+      - [ ] Market opportunity compelling and credible
+      - [ ] Differentiation clear and defensible
+      - [ ] Business model economics attractive
+      - [ ] Traction supports valuation
+      - [ ] Ask aligned with milestones
+
+      ### Output
+      Produce investor deck outline with slide-by-slide content,
+      supporting data requirements, and appendix materials.
+
+  - id: customer-demo-prompt
+    content: |
+      ## Customer Demo Flow Design
+
+      Prerequisites: Ensure BAM context loaded via `bam-pres-context`
+
+      **Load patterns:** `{project-root}/_bmad/bam/data/bam-patterns.csv` → filter: `tenant-lifecycle, experimentation`
+
+      ### Objective
+      Design compelling customer demo flows that showcase multi-tenant
+      platform value and drive conversion.
+
+      ### Process
+
+      1. **Demo Flow Structure**
+         | Phase | Duration | Goal | Key Message |
+         |-------|----------|------|-------------|
+         | Hook | 30 sec | Attention | Problem recognition |
+         | Context | 1 min | Relevance | Their situation |
+         | Aha moment | 2 min | Value | Core capability |
+         | Depth | 5 min | Credibility | Feature tour |
+         | Close | 1 min | Action | Next step |
+
+      2. **Tier-Specific Demo Paths**
+         - Free tier demo: Self-serve value
+         - Pro tier demo: Power user capabilities
+         - Enterprise demo: Scale, security, compliance
+
+      3. **Multi-Tenant Features to Showcase**
+         - Isolation and security (Enterprise)
+         - Scalability under load
+         - Customization within boundaries
+
+      4. **Demo Environment Design**
+         - Sample data that tells a story
+         - Edge cases to avoid showing
+         - Recovery paths for failures
+
+      ### Verification Checklist
+      - [ ] Demo flow under 10 minutes total
+      - [ ] Aha moment clearly identified
+      - [ ] Tier-specific paths designed
+      - [ ] Failure recovery planned
+
+      ### Output
+      Produce demo script with timing, talking points, feature
+      showcase sequence, and contingency plans.
+
+  - id: technical-credibility-prompt
+    content: |
+      ## Technical Architecture Presentation
+
+      Prerequisites: Ensure BAM context loaded via `bam-pres-context`
+
+      **Load patterns:** `{project-root}/_bmad/bam/data/bam-patterns.csv` → filter: `tenant-isolation, agent-runtime`
+
+      ### Objective
+      Present technical architecture in a way that builds credibility
+      without overwhelming non-technical audiences.
+
+      ### Process
+
+      1. **Audience-Appropriate Depth**
+         | Audience | Depth | Focus Areas |
+         |----------|-------|-------------|
+         | Executive | High-level | Scale, reliability, security |
+         | Technical buyer | Architecture | Isolation, integration, APIs |
+         | Developer | Detailed | SDKs, APIs, extensibility |
+         | Security/compliance | Specific | Controls, certifications, audits |
+
+      2. **Multi-Tenant Architecture Storytelling**
+         - Why multi-tenant matters for them
+         - How isolation protects their data
+         - What scale enables (not just handles)
+
+      3. **Visual Architecture Diagrams**
+         | Diagram Type | Audience | Key Elements |
+         |--------------|----------|--------------|
+         | Conceptual | Executive | Clouds, locks, users |
+         | Logical | Technical | Components, flows |
+         | Deployment | DevOps | Infrastructure, regions |
+         | Security | CISO | Boundaries, controls |
+
+      4. **Proof Points**
+         - Uptime statistics
+         - Security certifications
+         - Scale benchmarks
+         - Customer testimonials on reliability
+
+      ### Verification Checklist
+      - [ ] Audience depth appropriate
+      - [ ] Technical accuracy maintained
+      - [ ] Business value translated
+      - [ ] Proof points included
+
+      ### Output
+      Produce technical presentation materials with audience-specific
+      versions, visual assets, and supporting documentation.
+
+  - id: tier-comparison-visual-prompt
+    content: |
+      ## Tier Comparison Visual Design
+
+      Prerequisites: Ensure BAM context loaded via `bam-pres-context`
+
+      **Load patterns:** `{project-root}/_bmad/bam/data/bam-patterns.csv` → filter: `tenant-lifecycle, customization`
+
+      ### Objective
+      Create tier comparison visuals that clearly communicate value
+      differences and motivate appropriate tier selection.
+
+      ### Process
+
+      1. **Comparison Visual Types**
+         | Type | Best For | Avoid When |
+         |------|----------|------------|
+         | Feature matrix | Detailed comparison | Too many features |
+         | Value pyramid | Tier progression | Complex features |
+         | Use case cards | Segment targeting | Multiple overlaps |
+         | Pricing table | Clear pricing | Hidden complexity |
+
+      2. **Feature Categorization**
+         - Core value (all tiers)
+         - Power features (Pro+)
+         - Enterprise capabilities
+         - Add-ons (any tier)
+
+      3. **Visual Design Principles**
+         - Highlight recommended tier
+         - Show upgrade path clearly
+         - Avoid overwhelming detail
+         - Use consistent iconography
+
+      4. **Conversion-Optimized Layout**
+         | Element | Position | Purpose |
+         |---------|----------|---------|
+         | Free tier | Left | Anchor, entry point |
+         | Pro tier | Center, highlighted | Target conversion |
+         | Enterprise | Right | Aspiration, growth |
+
+      ### Verification Checklist
+      - [ ] Tier differences clear at glance
+      - [ ] Upgrade value obvious
+      - [ ] Visual design clean
+      - [ ] Responsive across devices
+
+      ### Output
+      Produce tier comparison specifications with visual mockups,
+      content requirements, and responsive design guidance.
+
+  - id: case-study-presentation-prompt
+    content: |
+      ## Case Study Presentation Structure
+
+      Prerequisites: Ensure BAM context loaded via `bam-pres-context`
+
+      **Load patterns:** `{project-root}/_bmad/bam/data/bam-patterns.csv` → filter: `tenant-lifecycle, experimentation`
+
+      ### Objective
+      Structure case study presentations that demonstrate multi-tenant
+      platform value through compelling customer success stories.
+
+      ### Process
+
+      1. **Case Study Framework**
+         | Section | Content | Emotional Arc |
+         |---------|---------|---------------|
+         | Challenge | Before state, pain points | Empathy, recognition |
+         | Solution | Platform selection, implementation | Hope, curiosity |
+         | Results | Quantified outcomes | Proof, desire |
+         | Future | Ongoing partnership | Trust, aspiration |
+
+      2. **Multi-Tenant Specific Elements**
+         - Isolation and security confidence
+         - Scale handling during growth
+         - Tier progression journey
+         - Cross-tenant learning benefits
+
+      3. **Metrics to Include**
+         | Category | Metrics | Presentation |
+         |----------|---------|--------------|
+         | Efficiency | Time saved, cost reduced | Percentage change |
+         | Growth | Users added, revenue impact | Absolute numbers |
+         | Technical | Uptime, performance | SLA comparison |
+         | Satisfaction | NPS, retention | Trend over time |
+
+      4. **Visual Storytelling**
+         - Customer logo and industry context
+         - Quote from champion
+         - Before/after comparison
+         - Key metric callouts
+
+      ### Verification Checklist
+      - [ ] Customer has approved content
+      - [ ] Metrics are verifiable
+      - [ ] Story arc is compelling
+      - [ ] Call to action is clear
+
+      ### Output
+      Produce case study template with sections, metric placeholders,
+      visual specifications, and approval workflow.
+
+  - id: validate-presentation-prompt
+    content: |
+      ## Validate Presentation Against Quality Gates
+
+      Prerequisites: Ensure BAM presentation context loaded via `bam-pres-context`
+
+      **Quality Gate Validation:**
+      
+      Check against relevant quality gates:
+      - QG-F1 (Foundation): Technical claims reflect actual architecture
+      - QG-M3 (Agent Runtime): AI capability claims are accurate
+      - QG-I2 (Tenant Safety): Security claims are validated
+      
+      **Validation Checklist:**
+      - [ ] Architecture diagrams match master-architecture.md
+      - [ ] Feature claims align with tier definitions
+      - [ ] Security/compliance claims verified against checklist
+      - [ ] Demo flows respect tenant isolation
+      
+      Report validation results with presentation recommendations.

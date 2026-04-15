@@ -27,7 +27,7 @@ Find workflows using the module-help.csv:
 
 ```bash
 # View all BAM workflows
-cat src/workflows/module-help.csv
+cat src/module-help.csv
 ```
 
 **Key columns:**
@@ -249,7 +249,7 @@ Steps specify outputs to generate:
 ## Outputs
 
 - {artifact-name}.md
-- **Load template:** `{project-root}/_bmad/bam/templates/{template}.md`
+- **Load template:** `{project-root}/_bmad/bam/data/templates/{template}.md`
 ```
 
 **Output Locations:**

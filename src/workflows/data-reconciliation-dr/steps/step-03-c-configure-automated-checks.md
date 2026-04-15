@@ -232,7 +232,7 @@ _Source: [URL]_
 - Alert threshold documentation
 - Automated remediation rules
 - Check infrastructure design
-- **Load template:** `{project-root}/_bmad/bam/templates/data-reconciliation-dr-template.md`
+- **Load template:** `{project-root}/_bmad/bam/data/templates/data-reconciliation-dr-template.md`
 
 ## Next Step
 

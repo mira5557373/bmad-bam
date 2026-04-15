@@ -173,7 +173,7 @@ Select an option:
 - Migration scope assessment document
 - Data dependency matrix
 - Constraint analysis
-- **Load template:** `{project-root}/_bmad/bam/templates/tenant-data-migration-template.md`
+- **Load template:** `{project-root}/_bmad/bam/data/templates/tenant-data-migration-template.md`
 
 ---
 

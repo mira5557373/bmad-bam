@@ -29,7 +29,7 @@ Generate comprehensive documentation for the vector database design including ar
 
 - Steps 1-8 completed
 - **Load patterns:** `{project-root}/_bmad/bam/data/bam-patterns.csv` -> filter: documentation
-- **Load template:** `{project-root}/_bmad/bam/templates/vector-database-template.md`
+- **Load template:** `{project-root}/_bmad/bam/data/templates/vector-database-template.md`
 
 ---
 
@@ -37,7 +37,7 @@ Generate comprehensive documentation for the vector database design including ar
 
 - All decisions from previous steps
 - Pattern registry: `{project-root}/_bmad/bam/data/bam-patterns.csv`
-- Template: `{project-root}/_bmad/bam/templates/vector-database-template.md`
+- Template: `{project-root}/_bmad/bam/data/templates/vector-database-template.md`
 
 ---
 

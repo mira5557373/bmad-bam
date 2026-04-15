@@ -117,7 +117,7 @@ After applying changes:
 - Modified evolution documents
 - Change summary
 - Updated changelog
-- **Load template:** `{project-root}/_bmad/bam/templates/facade-migration-template.md`
+- **Load template:** `{project-root}/_bmad/bam/data/templates/facade-migration-template.md`
 
 ---
 

@@ -39,7 +39,7 @@ Design the monitoring, alerting, and observability for rate limiting infrastruct
 
 - Output from previous step(s) in this workflow
 - Pattern registry: `{project-root}/_bmad/bam/data/bam-patterns.csv`
-- Relevant templates from `{project-root}/_bmad/bam/templates/`
+- Relevant templates from `{project-root}/_bmad/bam/data/templates/`
 - User feedback and refinements from previous steps
 
 ---
@@ -194,8 +194,8 @@ Select an option:
 - Monitoring configuration
 - Alerting rules
 - Dashboard specifications
-- **Load template:** `{project-root}/_bmad/bam/templates/rate-limiting-template.md`
-- **Load template:** `{project-root}/_bmad/bam/templates/operational-runbook-template.md`
+- **Load template:** `{project-root}/_bmad/bam/data/templates/rate-limiting-template.md`
+- **Load template:** `{project-root}/_bmad/bam/data/templates/operational-runbook-template.md`
 
 ---
 

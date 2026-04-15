@@ -29,7 +29,7 @@ Document the complete failover execution including timeline, exceptions, lessons
 - Failover readiness assessment completed (Step 1)
 - Failover execution completed (Step 2)
 - Post-failover validation completed (Step 3)
-- **Load template:** `{project-root}/_bmad/bam/templates/failover-execution-template.md`
+- **Load template:** `{project-root}/_bmad/bam/data/templates/failover-execution-template.md`
 - **Load patterns:** `{project-root}/_bmad/bam/data/bam-patterns.csv` → filter: disaster-recovery
 
 
@@ -245,7 +245,7 @@ _Source: [URL]_
 - Exception log with resolutions
 - Lessons learned documentation
 - DR plan update recommendations
-- **Load template:** `{project-root}/_bmad/bam/templates/failover-execution-template.md`
+- **Load template:** `{project-root}/_bmad/bam/data/templates/failover-execution-template.md`
 
 ## Next Step
 

@@ -115,17 +115,17 @@ Define webhook events fired during onboarding:
 
 ## References
 
-- Template: `bam/templates/tenant-lifecycle-template.md`, `bam/templates/tenant-tier-matrix.md`
-- Multi-Tenant Patterns: `bam/knowledge/multi-tenant-patterns.md`
-- Saga Orchestration Patterns: `bam/knowledge/saga-orchestration-patterns.md`
-- Provisioning UI Patterns: `bam/knowledge/provisioning-ui-patterns.md`
-- WDS Integration Patterns: `bam/knowledge/wds-integration-patterns.md`
+- Template: `{project-root}/_bmad/bam/data/templates/tenant-lifecycle-template.md`, `{project-root}/_bmad/bam/data/templates/tenant-tier-matrix.md`
+- Multi-Tenant Patterns: `{project-root}/_bmad/bam/data/agent-guides/bam/multi-tenant-patterns.md`
+- Saga Orchestration Patterns: `{project-root}/_bmad/bam/data/agent-guides/bam/saga-orchestration-patterns.md`
+- Provisioning UI Patterns: `{project-root}/_bmad/bam/data/agent-guides/bam/provisioning-ui-patterns.md`
+- WDS Integration Patterns: `{project-root}/_bmad/bam/data/agent-guides/bam/wds-integration-patterns.md`
 
-- Knowledge: `bam/knowledge/saga-orchestration-patterns.md`, `bam/knowledge/provisioning-ui-patterns.md`, `bam/knowledge/multi-tenant-patterns.md`, `bam/knowledge/wds-integration-patterns.md`
-- Multi-Tenant Patterns: `bam/knowledge/multi-tenant-patterns.md`
-- Saga Orchestration Patterns: `bam/knowledge/saga-orchestration-patterns.md`
-- Provisioning UI Patterns: `bam/knowledge/provisioning-ui-patterns.md`
-- WDS Integration Patterns: `bam/knowledge/wds-integration-patterns.md`
+- Knowledge: `{project-root}/_bmad/bam/data/agent-guides/bam/saga-orchestration-patterns.md`, `{project-root}/_bmad/bam/data/agent-guides/bam/provisioning-ui-patterns.md`, `{project-root}/_bmad/bam/data/agent-guides/bam/multi-tenant-patterns.md`, `{project-root}/_bmad/bam/data/agent-guides/bam/wds-integration-patterns.md`
+- Multi-Tenant Patterns: `{project-root}/_bmad/bam/data/agent-guides/bam/multi-tenant-patterns.md`
+- Saga Orchestration Patterns: `{project-root}/_bmad/bam/data/agent-guides/bam/saga-orchestration-patterns.md`
+- Provisioning UI Patterns: `{project-root}/_bmad/bam/data/agent-guides/bam/provisioning-ui-patterns.md`
+- WDS Integration Patterns: `{project-root}/_bmad/bam/data/agent-guides/bam/wds-integration-patterns.md`
 
 ## Web Research
 

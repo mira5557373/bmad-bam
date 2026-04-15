@@ -142,8 +142,8 @@ Select an option:
 - Confirmed scope statement
 - Assumptions log with rationale
 - Input document inventory
-- **Load template:** `{project-root}/_bmad/bam/templates/requirement-summary-template.md`
-- **Load template:** `{project-root}/_bmad/bam/templates/platform-strategy-template.md`
+- **Load template:** `{project-root}/_bmad/bam/data/templates/requirement-summary-template.md`
+- **Load template:** `{project-root}/_bmad/bam/data/templates/platform-strategy-template.md`
 
 ---
 

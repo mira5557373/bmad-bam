@@ -158,7 +158,7 @@ See: `knowledge/multi-tenant-patterns.md` for tenant isolation guidance.
 
 #### Step 5: Migrate Templates
 
-Templates remain in `src/templates/` but naming conventions have changed.
+Templates remain in `src/data/templates/` but naming conventions have changed.
 
 **Old naming (v0.x):**
 ```

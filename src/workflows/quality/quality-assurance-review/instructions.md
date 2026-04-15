@@ -15,7 +15,7 @@ Perform comprehensive quality assurance review for multi-tenant SaaS platforms, 
 1. Load project context from `{project-root}/**/project-context.md`
 2. Load quality gates guide from `{project-root}/_bmad/bam/data/agent-guides/bam/quality-gates.md`
 3. Execute steps in selected mode
-4. Generate output using `{project-root}/_bmad/bam/templates/quality-gate-report-template.md`
+4. Generate output using `{project-root}/_bmad/bam/data/templates/quality-gate-report-template.md`
 5. Verify against QG-F1 through QG-P1 criteria
 
 ## Quality Gate Integration

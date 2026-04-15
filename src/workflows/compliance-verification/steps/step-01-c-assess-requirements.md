@@ -8,7 +8,7 @@ Identify applicable compliance frameworks and requirements for the multi-tenant 
 
 - Tenant compliance requirements documented
 - Industry/regulatory context known
-- **Load template:** `{project-root}/_bmad/bam/templates/compliance-framework-template.md`
+- **Load template:** `{project-root}/_bmad/bam/data/templates/compliance-framework-template.md`
 
 ## Actions
 

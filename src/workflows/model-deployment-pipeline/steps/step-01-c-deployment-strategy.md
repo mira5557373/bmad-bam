@@ -157,8 +157,8 @@ Select an option:
 - Deployment strategy specification
 - Model versioning conventions
 - Infrastructure requirements matrix
-- **Load template:** `{project-root}/_bmad/bam/templates/deployment-strategy-template.md`
-- **Load template:** `{project-root}/_bmad/bam/templates/deployment-template.md`
+- **Load template:** `{project-root}/_bmad/bam/data/templates/deployment-strategy-template.md`
+- **Load template:** `{project-root}/_bmad/bam/data/templates/deployment-template.md`
 
 ---
 

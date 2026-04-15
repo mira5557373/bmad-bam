@@ -8,7 +8,7 @@ Apply the planned changes to create the new contract version.
 
 - Version strategy created (Step 4)
 - **Load patterns:** `{project-root}/_bmad/bam/data/bam-patterns.csv → filter: facade-contracts`
-- **Load template:** `{project-root}/_bmad/bam/templates/facade-contract-template.md`
+- **Load template:** `{project-root}/_bmad/bam/data/templates/facade-contract-template.md`
 
 
 ---
@@ -17,7 +17,7 @@ Apply the planned changes to create the new contract version.
 
 - Output from previous step(s) in this workflow
 - Pattern registry: `{project-root}/_bmad/bam/data/bam-patterns.csv`
-- Relevant templates from `{project-root}/_bmad/bam/templates/`
+- Relevant templates from `{project-root}/_bmad/bam/data/templates/`
 - User feedback and refinements from previous steps
 
 ---
@@ -131,8 +131,8 @@ Draft announcements including:
 - Migration guide document
 - Consumer communication draft
 - Changelog entry
-- **Load template:** `{project-root}/_bmad/bam/templates/facade-contract-template.md`
-- **Load template:** `{project-root}/_bmad/bam/templates/facade-migration-template.md`
+- **Load template:** `{project-root}/_bmad/bam/data/templates/facade-contract-template.md`
+- **Load template:** `{project-root}/_bmad/bam/data/templates/facade-migration-template.md`
 
 ---
 

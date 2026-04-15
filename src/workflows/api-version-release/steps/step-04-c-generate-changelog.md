@@ -36,7 +36,7 @@ Create comprehensive release documentation.
 
 - Output from previous step(s) in this workflow
 - Pattern registry: `{project-root}/_bmad/bam/data/bam-patterns.csv`
-- Relevant templates from `{project-root}/_bmad/bam/templates/`
+- Relevant templates from `{project-root}/_bmad/bam/data/templates/`
 - User feedback and refinements from previous steps
 
 ---
@@ -189,10 +189,10 @@ Select an option:
 
 - Changelog document
 - Updated API documentation
-- **Load template:** `{project-root}/_bmad/bam/templates/api-release-notes-template.md`
-- **Load template:** `{project-root}/_bmad/bam/templates/api-version-release-template.md`
-- **Load template:** `{project-root}/_bmad/bam/templates/api-changelog-template.md`
-- **Load template:** `{project-root}/_bmad/bam/templates/api-versioning-template.md`
+- **Load template:** `{project-root}/_bmad/bam/data/templates/api-release-notes-template.md`
+- **Load template:** `{project-root}/_bmad/bam/data/templates/api-version-release-template.md`
+- **Load template:** `{project-root}/_bmad/bam/data/templates/api-changelog-template.md`
+- **Load template:** `{project-root}/_bmad/bam/data/templates/api-versioning-template.md`
 
 ## Next Step
 

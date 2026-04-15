@@ -49,4 +49,4 @@ Default: **Create** mode.
 
 ## Templates
 
-- **Load template:** `{project-root}/_bmad/bam/templates/llm-gateway-configuration-template.md`
+- **Load template:** `{project-root}/_bmad/bam/data/templates/llm-gateway-configuration-template.md`

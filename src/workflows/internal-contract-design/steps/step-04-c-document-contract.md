@@ -36,7 +36,7 @@ Create comprehensive contract documentation for implementation and consumption.
 
 - Output from previous step(s) in this workflow
 - Pattern registry: `{project-root}/_bmad/bam/data/bam-patterns.csv`
-- Relevant templates from `{project-root}/_bmad/bam/templates/`
+- Relevant templates from `{project-root}/_bmad/bam/data/templates/`
 - User feedback and refinements from previous steps
 
 ---
@@ -172,7 +172,7 @@ Select an option:
 - Complete contract documentation
 - Test specifications
 - Change history template
-- **Load template:** `{project-root}/_bmad/bam/templates/internal-contract-spec.md`
+- **Load template:** `{project-root}/_bmad/bam/data/templates/internal-contract-spec.md`
 
 ## Next Step
 

@@ -146,8 +146,8 @@ This workflow contributes to:
 
 ## References
 
-- Knowledge: `bam/knowledge/audit-logging-patterns.md`, `bam/knowledge/compliance-reporting-patterns.md`, `bam/knowledge/sox-compliance-patterns.md`, `bam/knowledge/data-sovereignty-patterns.md`
-- Template: `bam/templates/compliance-checklist-template.md`
+- Knowledge: `{project-root}/_bmad/bam/data/agent-guides/bam/audit-logging-patterns.md`, `{project-root}/_bmad/bam/data/agent-guides/bam/compliance-reporting-patterns.md`, `{project-root}/_bmad/bam/data/agent-guides/bam/sox-compliance-patterns.md`, `{project-root}/_bmad/bam/data/agent-guides/bam/data-sovereignty-patterns.md`
+- Template: `{project-root}/_bmad/bam/data/templates/compliance-checklist-template.md`
 
 ## Headless Mode
 

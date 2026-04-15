@@ -1,0 +1,359 @@
+# BAM Extension for CIS Value Strategy
+# Pattern: WDS agent-guides (NO memories: field)
+
+agent:
+  metadata:
+    extends: 'bmad-cis-agent-innovation-strategist'
+    module: 'bam'
+    description: "Adds value strategy capabilities for multi-tenant SaaS"
+
+menu:
+  - trigger: bam-value-context
+    action: "#load-bam-value-context-prompt"
+    description: Load BAM value strategy context
+  - trigger: bam-value-analysis
+    action: "#value-analysis-prompt"
+    description: Analyze value strategy for multi-tenant SaaS
+  - trigger: bam-value-research
+    action: "#web-research-value-prompt"
+    description: Conduct web research for value patterns
+  - trigger: bam-value-roi
+    action: "#roi-analysis-prompt"
+    description: Calculate ROI and TCO for multi-tenant SaaS adoption
+  - trigger: bam-value-pricing
+    action: "#pricing-strategy-prompt"
+    description: Design tier-based pricing strategy for value capture
+  - trigger: bam-value-metrics
+    action: "#value-metrics-prompt"
+    description: Define value metrics and KPIs for tenant success
+  - trigger: bam-value-outcomes
+    action: "#customer-outcomes-prompt"
+    description: Map customer outcomes to platform capabilities
+  - trigger: bam-value-monetization
+    action: "#monetization-model-prompt"
+    description: Design monetization models for AI-native SaaS
+
+prompts:
+  - id: load-bam-value-context-prompt
+    content: |
+      ## Load BAM Value Context
+
+      Read and internalize the multi-tenant SaaS value guide:
+      `{project-root}/_bmad/bam/data/agent-guides/bam/saas-innovation.md`
+
+      Also load the value-specific guides:
+      `{project-root}/_bmad/bam/data/agent-guides/bam/innovation-guide.md`
+      `{project-root}/_bmad/bam/data/agent-guides/bam/value-creation.md`
+
+      This guide provides comprehensive context for value strategy in
+      multi-tenant AI platforms. It covers the following key areas:
+
+      1. **Value Creation**: Understanding how multi-tenant platforms
+         create value for tenants, users, and stakeholders.
+      2. **Value Capture**: Designing pricing and packaging to capture
+         fair value from the value created.
+      3. **Value Communication**: Articulating value propositions
+         effectively to different tenant segments.
+      4. **Value Measurement**: Tracking and demonstrating ROI
+         for tenants and the platform.
+
+      Apply this value lens to all strategic planning. Once loaded, confirm
+      by stating: "BAM value context loaded. Ready to analyze value strategy."
+
+  - id: value-analysis-prompt
+    content: |
+      ## Value Strategy Analysis
+
+      Prerequisites: Ensure BAM context loaded via `bam-value-context`
+
+      **Load patterns:** `{project-root}/_bmad/bam/data/bam-patterns.csv` → filter: `customization, tenant-lifecycle`
+
+      ### Objective
+      Develop value strategy for multi-tenant SaaS platforms,
+      with focus on value creation, capture, and communication.
+
+      ### Process
+
+      1. **Value Creation Mapping**
+         - Map value drivers for each tenant segment
+         - Identify value creation mechanisms
+         - Evaluate value delivery effectiveness
+
+      2. **Value Capture Design**
+         - Design pricing aligned with value
+         - Optimize tier packaging
+         - Evaluate pricing model effectiveness
+
+      3. **Value Communication Planning**
+         - Craft segment-specific value propositions
+         - Design value demonstration flows
+         - Plan ROI communication
+
+      ### Verification Checklist
+      - [ ] Value creation mapped by segment
+      - [ ] Value capture mechanisms designed
+      - [ ] Value communication planned
+      - [ ] ROI measurement defined
+
+      ### Output
+      Produce value strategy using template:
+      `{project-root}/_bmad/bam/data/templates/value-strategy-template.md`
+
+  - id: web-research-value-prompt
+    content: |
+      ## BAM Web Research - Value
+
+      Research current best practices for value.
+
+      **Research Focus:** {{research_topic}}
+
+      Search the web: "{{research_topic}} value patterns {date}"
+      Search the web: "{{research_topic}} enterprise SaaS {date}"
+
+      Return findings with: _Source: [URL]_
+
+  - id: roi-analysis-prompt
+    content: |
+      ## ROI and TCO Analysis for Multi-Tenant SaaS
+
+      Prerequisites: Ensure BAM context loaded via `bam-value-context`
+
+      **Load patterns:** `{project-root}/_bmad/bam/data/bam-patterns.csv` → filter: `tenant-lifecycle, customization`
+
+      ### Objective
+      Calculate comprehensive ROI and Total Cost of Ownership (TCO) for
+      multi-tenant SaaS platform adoption across different tenant segments.
+
+      ### Process
+
+      1. **Cost Baseline Establishment**
+         - Document current state costs (infrastructure, licensing, labor)
+         - Map hidden costs (integration, maintenance, opportunity cost)
+         - Quantify inefficiency costs (manual processes, errors, delays)
+
+      2. **Multi-Tenant Value Quantification**
+         - Calculate shared infrastructure savings
+         - Estimate AI capability value per tier
+         - Model scale economics benefits
+
+      3. **ROI Model Development**
+         | Component | Calculation Method | Data Sources |
+         |-----------|-------------------|--------------|
+         | Time savings | Hours saved x hourly rate | Usage analytics |
+         | Cost reduction | Before vs after spend | Financial data |
+         | Revenue impact | New capability revenue | Sales data |
+         | Risk reduction | Incident cost avoidance | Security metrics |
+
+      4. **TCO Comparison Framework**
+         | Cost Category | Single-Tenant | Multi-Tenant | Savings |
+         |---------------|---------------|--------------|---------|
+         | Infrastructure | Dedicated cost | Shared cost | % reduction |
+         | Maintenance | Per-instance | Amortized | % reduction |
+         | Upgrades | Manual cycles | Continuous | % reduction |
+         | Compliance | Per-customer | Shared cert | % reduction |
+
+      ### Verification Checklist
+      - [ ] All cost categories captured
+      - [ ] ROI assumptions documented
+      - [ ] Sensitivity analysis completed
+      - [ ] Payback period calculated
+
+      ### Output
+      Produce ROI analysis using template:
+      `{project-root}/_bmad/bam/data/templates/roi-analysis-template.md`
+
+  - id: pricing-strategy-prompt
+    content: |
+      ## Tier-Based Pricing Strategy
+
+      Prerequisites: Ensure BAM context loaded via `bam-value-context`
+
+      **Load patterns:** `{project-root}/_bmad/bam/data/bam-patterns.csv` → filter: `customization, tenant-lifecycle`
+
+      ### Objective
+      Design pricing strategy that captures fair value while enabling
+      customer growth and tier progression in multi-tenant SaaS.
+
+      ### Process
+
+      1. **Value-to-Price Mapping**
+         - Identify key value drivers per segment
+         - Map feature value to willingness-to-pay
+         - Design price anchors that justify tier gaps
+
+      2. **Pricing Model Selection**
+         | Model | Best For | Multi-Tenant Consideration |
+         |-------|----------|---------------------------|
+         | Seat-based | Team tools | Easy to understand |
+         | Usage-based | Variable workloads | Aligns with value |
+         | Hybrid | Complex platforms | Captures expansion |
+         | Outcome-based | High-value AI | Shares risk/reward |
+
+      3. **Tier Architecture**
+         | Tier | Price Position | Value Anchor |
+         |------|---------------|--------------|
+         | FREE | $0 | Acquisition, viral growth |
+         | PRO | $X/user | Power user value |
+         | ENTERPRISE | Custom | Scale + compliance |
+
+      4. **Price Optimization**
+         - A/B test price points within tiers
+         - Monitor upgrade conversion rates
+         - Track price sensitivity by segment
+
+      ### Verification Checklist
+      - [ ] Pricing aligned with value delivery
+      - [ ] Tier gaps justified by features
+      - [ ] Competitive positioning validated
+      - [ ] Expansion revenue modeled
+
+      ### Output
+      Produce pricing strategy using template:
+      `{project-root}/_bmad/bam/data/templates/pricing-strategy-template.md`
+
+  - id: value-metrics-prompt
+    content: |
+      ## Value Metrics and KPI Definition
+
+      Prerequisites: Ensure BAM context loaded via `bam-value-context`
+
+      **Load patterns:** `{project-root}/_bmad/bam/data/bam-patterns.csv` → filter: `observability, tenant-lifecycle`
+
+      ### Objective
+      Define measurable value metrics that demonstrate tenant success
+      and platform value realization across tiers.
+
+      ### Process
+
+      1. **Value Metric Categories**
+         | Category | Metric Type | Example Metrics |
+         |----------|-------------|-----------------|
+         | Efficiency | Time savings | Hours saved per week |
+         | Quality | Error reduction | Error rate decrease |
+         | Speed | Cycle time | Days to completion |
+         | Scale | Throughput | Processed items/day |
+         | Cost | Spend reduction | Monthly cost savings |
+
+      2. **Tier-Specific Metrics**
+         - FREE: Activation, engagement, viral coefficient
+         - PRO: Feature adoption, time-to-value, expansion
+         - ENTERPRISE: ROI, compliance, user satisfaction
+
+      3. **Measurement Framework**
+         - Define baseline measurement approach
+         - Design value dashboards per tier
+         - Create automated value reporting
+
+      4. **Success Indicators**
+         | Leading Indicator | Lagging Indicator | Relationship |
+         |-------------------|-------------------|--------------|
+         | Feature adoption | Retention | Usage predicts renewal |
+         | Support tickets | NPS score | Issues impact satisfaction |
+         | API calls | Revenue expansion | Usage drives growth |
+
+      ### Verification Checklist
+      - [ ] Metrics aligned with customer goals
+      - [ ] Measurement infrastructure defined
+      - [ ] Baseline data collection planned
+      - [ ] Reporting cadence established
+
+      ### Output
+      Produce value metrics framework using template:
+      `{project-root}/_bmad/bam/data/templates/value-metrics-template.md`
+
+  - id: customer-outcomes-prompt
+    content: |
+      ## Customer Outcomes Mapping
+
+      Prerequisites: Ensure BAM context loaded via `bam-value-context`
+
+      **Load patterns:** `{project-root}/_bmad/bam/data/bam-patterns.csv` → filter: `customization, tenant-lifecycle`
+
+      ### Objective
+      Map desired customer outcomes to platform capabilities,
+      ensuring clear value delivery across multi-tenant tiers.
+
+      ### Process
+
+      1. **Outcome Discovery**
+         - Interview customers across tiers
+         - Identify job-to-be-done for each segment
+         - Map desired outcomes to current capabilities
+
+      2. **Outcome-Capability Matrix**
+         | Customer Outcome | Platform Capability | Tier Availability |
+         |-----------------|--------------------|--------------------|
+         | Save time | Automation features | PRO+ |
+         | Reduce errors | AI validation | ALL |
+         | Scale operations | Multi-user support | PRO+ |
+         | Meet compliance | Audit logging | ENTERPRISE |
+
+      3. **Outcome Realization Paths**
+         - Design onboarding for outcome achievement
+         - Create milestone celebrations
+         - Build outcome-based success playbooks
+
+      4. **Outcome Measurement**
+         - Define outcome achievement criteria
+         - Track time-to-outcome by tier
+         - Correlate outcomes with retention
+
+      ### Verification Checklist
+      - [ ] Key outcomes identified per segment
+      - [ ] Capabilities mapped to outcomes
+      - [ ] Tier alignment validated
+      - [ ] Success measurement defined
+
+      ### Output
+      Produce outcomes map using template:
+      `{project-root}/_bmad/bam/data/templates/outcomes-mapping-template.md`
+
+  - id: monetization-model-prompt
+    content: |
+      ## AI-Native SaaS Monetization Models
+
+      Prerequisites: Ensure BAM context loaded via `bam-value-context`
+
+      **Load patterns:** `{project-root}/_bmad/bam/data/bam-patterns.csv` → filter: `customization, experimentation`
+
+      ### Objective
+      Design monetization models that capture value from AI capabilities
+      while enabling sustainable growth in multi-tenant platforms.
+
+      ### Process
+
+      1. **AI Value Capture Models**
+         | Model | Description | Best For |
+         |-------|-------------|----------|
+         | Token/credit | Pay per AI usage | Variable workloads |
+         | Outcome-based | Pay for results | High-value AI |
+         | Bundled | AI included in tier | Predictable usage |
+         | Add-on | AI as premium feature | Upsell opportunity |
+
+      2. **Multi-Tenant AI Economics**
+         - Calculate per-tenant AI cost
+         - Model shared model efficiency gains
+         - Design tier-appropriate AI limits
+
+      3. **Revenue Stream Design**
+         | Revenue Type | Mechanism | Growth Driver |
+         |--------------|-----------|---------------|
+         | Subscription | Monthly/annual fee | User expansion |
+         | Usage | Per-action pricing | Activity growth |
+         | Platform | Marketplace fees | Ecosystem growth |
+         | Data | Anonymized insights | Network effects |
+
+      4. **Monetization Optimization**
+         - Test pricing models with segments
+         - Monitor cannibalization risk
+         - Balance growth vs revenue
+
+      ### Verification Checklist
+      - [ ] AI costs accurately modeled
+      - [ ] Value capture aligned with delivery
+      - [ ] Multiple revenue streams identified
+      - [ ] Sustainable unit economics verified
+
+      ### Output
+      Produce monetization model using template:
+      `{project-root}/_bmad/bam/data/templates/monetization-model-template.md`

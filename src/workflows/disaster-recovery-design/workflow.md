@@ -110,5 +110,5 @@ This workflow contributes to QG-P1 by establishing disaster recovery capabilitie
 ## References
 
 - **Patterns:** Load from `{project-root}/_bmad/bam/data/bam-patterns.csv` filter: `disaster-recovery`
-- **Templates:** `{project-root}/_bmad/bam/templates/disaster-recovery-template.md`
-- **Checklists:** `{project-root}/_bmad/bam/checklists/production-readiness.md`
+- **Templates:** `{project-root}/_bmad/bam/data/templates/disaster-recovery-template.md`
+- **Checklists:** `{project-root}/_bmad/bam/data/checklists/production-readiness.md`

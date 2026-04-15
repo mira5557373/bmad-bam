@@ -30,8 +30,8 @@ Generate a comprehensive validation report.
 
 - Comprehensive validation report
 - Overall validation status (PASS/CONDITIONAL/FAIL)
-- **Load template:** `{project-root}/_bmad/bam/templates/chain-of-thought-template.md`
-- **Load template:** `{project-root}/_bmad/bam/templates/few-shot-prompt-template.md`
+- **Load template:** `{project-root}/_bmad/bam/data/templates/chain-of-thought-template.md`
+- **Load template:** `{project-root}/_bmad/bam/data/templates/few-shot-prompt-template.md`
 - **Output to:** `{output_folder}/planning-artifacts/reports/ai-context-management-validation.md`
 
 ---

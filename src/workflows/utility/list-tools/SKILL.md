@@ -86,8 +86,8 @@ This workflow contributes to:
 
 ## References
 
-- Template: `bam/templates/tool-contract-template.md`
-- Tool Execution Middleware: `bam/knowledge/tool-execution-middleware.md`
+- Template: `{project-root}/_bmad/bam/data/templates/tool-contract-template.md`
+- Tool Execution Middleware: `{project-root}/_bmad/bam/data/agent-guides/bam/tool-execution-middleware.md`
 
-- Knowledge: `bam/knowledge/tool-execution-middleware.md`
-- Tool Execution Middleware: `bam/knowledge/tool-execution-middleware.md`
+- Knowledge: `{project-root}/_bmad/bam/data/agent-guides/bam/tool-execution-middleware.md`
+- Tool Execution Middleware: `{project-root}/_bmad/bam/data/agent-guides/bam/tool-execution-middleware.md`

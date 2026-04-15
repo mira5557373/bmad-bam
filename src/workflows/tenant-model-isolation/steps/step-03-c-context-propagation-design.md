@@ -40,7 +40,7 @@ Design comprehensive tenant context propagation ensuring that tenant identity fl
 
 - Output from previous step(s) in this workflow
 - Pattern registry: `{project-root}/_bmad/bam/data/bam-patterns.csv`
-- Relevant templates from `{project-root}/_bmad/bam/templates/`
+- Relevant templates from `{project-root}/_bmad/bam/data/templates/`
 - User feedback and refinements from previous steps
 
 ---
@@ -229,9 +229,9 @@ Select an option:
 - Context propagation design document
 - Code path verification matrix
 - Test case specifications
-- **Load template:** `{project-root}/_bmad/bam/templates/context-propagation-spec.md`
-- **Load template:** `{project-root}/_bmad/bam/templates/tenant-context-propagation-template.md`
-- **Load template:** `{project-root}/_bmad/bam/templates/tenant-routing-template.md`
+- **Load template:** `{project-root}/_bmad/bam/data/templates/context-propagation-spec.md`
+- **Load template:** `{project-root}/_bmad/bam/data/templates/tenant-context-propagation-template.md`
+- **Load template:** `{project-root}/_bmad/bam/data/templates/tenant-routing-template.md`
 
 ---
 

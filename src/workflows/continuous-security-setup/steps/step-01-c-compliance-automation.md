@@ -105,7 +105,7 @@ Select an option:
 ## Outputs
 
 - Compliance automation configuration
-- **Load template:** `{project-root}/_bmad/bam/templates/security-config-template.md`
+- **Load template:** `{project-root}/_bmad/bam/data/templates/security-config-template.md`
 
 ---
 

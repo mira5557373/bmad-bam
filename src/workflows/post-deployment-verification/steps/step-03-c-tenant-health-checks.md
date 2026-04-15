@@ -144,7 +144,7 @@ Select an option:
 - Tenant health status report
 - Per-tenant verification results
 - Tier feature verification matrix
-- **Load template:** `{project-root}/_bmad/bam/templates/tenant-health-report-template.md`
+- **Load template:** `{project-root}/_bmad/bam/data/templates/tenant-health-report-template.md`
 
 ---
 

@@ -124,7 +124,7 @@ Based on status:
 - Status determination (PASS/CONDITIONAL/FAIL)
 - Recommended next actions
 - Mitigation plan (if CONDITIONAL)
-- **Load template:** `{project-root}/_bmad/bam/templates/facade-migration-template.md`
+- **Load template:** `{project-root}/_bmad/bam/data/templates/facade-migration-template.md`
 
 ---
 

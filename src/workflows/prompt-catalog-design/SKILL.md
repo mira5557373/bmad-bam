@@ -166,10 +166,10 @@ This workflow contributes to:
 
 ## References
 
-- Template: `bam/templates/prompt-catalog-template.md`
+- Template: `{project-root}/_bmad/bam/data/templates/prompt-catalog-template.md`
 - Prompt Versioning: `bmad-bam-prompt-versioning-management`
-- Agent Runtime Patterns: `bam/knowledge/agent-runtime-patterns.md`
-- Checklist: `bam/checklists/qg-m3-agent-runtime.md`
+- Agent Runtime Patterns: `{project-root}/_bmad/bam/data/agent-guides/bam/agent-runtime-patterns.md`
+- Checklist: `{project-root}/_bmad/bam/data/checklists/qg-m3-agent-runtime.md`
 
 ## Web Research
 

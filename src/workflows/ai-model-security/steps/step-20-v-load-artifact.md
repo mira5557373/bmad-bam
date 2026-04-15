@@ -25,7 +25,7 @@ Load the AI model security artifacts for validation against QG-S4 quality gate c
 
 - AI model security artifact exists to validate
 - **Load patterns:** `{project-root}/_bmad/bam/data/bam-patterns.csv` → filter: model-versioning, ai-safety
-- **Load checklist:** `{project-root}/_bmad/bam/checklists/qg-s4-ai-security.md`
+- **Load checklist:** `{project-root}/_bmad/bam/data/checklists/qg-s4-ai-security.md`
 
 Load the existing AI model security documents:
 - `{output_folder}/planning-artifacts/security/model-security.md`
@@ -39,7 +39,7 @@ Parse the document structure and prepare for validation against the quality crit
 ## Inputs
 
 - Artifact file path for validation
-- Quality gate checklist: `{project-root}/_bmad/bam/checklists/qg-s4-ai-security.md`
+- Quality gate checklist: `{project-root}/_bmad/bam/data/checklists/qg-s4-ai-security.md`
 - Pattern registry: `{project-root}/_bmad/bam/data/bam-patterns.csv`
 
 ---

@@ -9,7 +9,7 @@ Collect evidence from all quality gates to establish the baseline for comprehens
 - Master architecture document exists
 - Quality gate checklists completed
 - **Load patterns:** `{project-root}/_bmad/bam/data/quality-gates.csv`
-- **Load checklists:** `{project-root}/_bmad/bam/checklists/`
+- **Load checklists:** `{project-root}/_bmad/bam/data/checklists/`
 
 ## Actions
 

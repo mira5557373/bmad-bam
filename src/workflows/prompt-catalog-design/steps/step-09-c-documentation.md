@@ -230,7 +230,7 @@ Ask for confirmation before generating final output.
 - Final prompt catalog specification: `{output_folder}/planning-artifacts/prompt-catalog-spec.md`
 - Documentation standards document
 - Training curriculum outline
-- **Load template:** `{project-root}/_bmad/bam/templates/prompt-catalog-template.md`
+- **Load template:** `{project-root}/_bmad/bam/data/templates/prompt-catalog-template.md`
 
 ---
 

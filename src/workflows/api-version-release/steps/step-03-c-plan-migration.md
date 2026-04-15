@@ -38,7 +38,7 @@ Create a migration strategy for API consumers.
 
 - Output from previous step(s) in this workflow
 - Pattern registry: `{project-root}/_bmad/bam/data/bam-patterns.csv`
-- Relevant templates from `{project-root}/_bmad/bam/templates/`
+- Relevant templates from `{project-root}/_bmad/bam/data/templates/`
 - User feedback and refinements from previous steps
 
 ---
@@ -153,7 +153,7 @@ Select an option:
 - Migration plan document
 - Migration guides
 - Communication strategy
-- **Load template:** `{project-root}/_bmad/bam/templates/api-specification-template.md`
+- **Load template:** `{project-root}/_bmad/bam/data/templates/api-specification-template.md`
 
 ## Next Step
 

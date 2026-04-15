@@ -27,7 +27,7 @@ This step applies the identified changes to the existing security operations ver
 
 - Step 10 completed with identified changes
 - **Load patterns:** `{project-root}/_bmad/bam/data/bam-patterns.csv` → filter: `security`
-- **Load checklists:** `{project-root}/_bmad/bam/checklists/security-checklist.md`
+- **Load checklists:** `{project-root}/_bmad/bam/data/checklists/security-checklist.md`
 
 ---
 

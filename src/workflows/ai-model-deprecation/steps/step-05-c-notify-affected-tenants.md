@@ -32,7 +32,7 @@ Execute the tenant communication plan for the model deprecation, ensuring all af
 - Communication templates prepared
 - Tenant contact information validated
 - **Load patterns:** `{project-root}/_bmad/bam/data/bam-patterns.csv` -> filter: tenant-communication
-- **Load template:** `{project-root}/_bmad/bam/templates/tenant-notification-template.md`
+- **Load template:** `{project-root}/_bmad/bam/data/templates/tenant-notification-template.md`
 
 ---
 

@@ -70,7 +70,7 @@ Validate the cross-module story against quality criteria ensuring proper module 
 ## Gate Decision
 
 - **PASS**: All modules identified, dependencies clear, stories coordinated, integration planned
-- **CONDITIONAL**: Minor gaps (e.g., some contracts pending — reference `{project-root}/_bmad/bam/templates/facade-contract-template.md` for contract definitions including method signatures, DTOs, error types, and tenant context requirements) -- document and proceed with risk awareness
+- **CONDITIONAL**: Minor gaps (e.g., some contracts pending — reference `{project-root}/_bmad/bam/data/templates/facade-contract-template.md` for contract definitions including method signatures, DTOs, error types, and tenant context requirements) -- document and proceed with risk awareness
 - **FAIL**: Missing module identification, circular dependencies, or no integration strategy
 
 Present validation results with specific findings for each component.

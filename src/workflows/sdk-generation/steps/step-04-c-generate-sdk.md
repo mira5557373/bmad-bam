@@ -37,7 +37,7 @@ Execute code generators, add authentication wrappers, implement tenant context h
 - Output from Steps 1-3
 - Generator configurations
 - Pattern registry: `{project-root}/_bmad/bam/data/bam-patterns.csv`
-- Relevant templates from `{project-root}/_bmad/bam/templates/`
+- Relevant templates from `{project-root}/_bmad/bam/data/templates/`
 
 ---
 

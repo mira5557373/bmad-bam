@@ -102,5 +102,5 @@ This workflow contributes to:
 
 ## References
 
-- Template: `bam/templates/api-gateway-template.md`
+- Template: `{project-root}/_bmad/bam/data/templates/api-gateway-template.md`
 - Rate Limiting: `bmad-bam-rate-limiting-design`

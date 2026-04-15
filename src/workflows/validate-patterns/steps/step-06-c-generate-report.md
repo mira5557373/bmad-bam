@@ -30,7 +30,7 @@ Generate comprehensive pattern registry validation report.
 
 - Steps 01-05 completed
 - **Load patterns:** `{project-root}/_bmad/bam/data/bam-patterns.csv`
-- **Load template:** `{project-root}/_bmad/bam/templates/quality-gate-report-template.md`
+- **Load template:** `{project-root}/_bmad/bam/data/templates/quality-gate-report-template.md`
 
 ---
 
@@ -39,7 +39,7 @@ Generate comprehensive pattern registry validation report.
 
 - Output from previous step(s) in this workflow
 - Pattern registry: `{project-root}/_bmad/bam/data/bam-patterns.csv`
-- Relevant templates from `{project-root}/_bmad/bam/templates/`
+- Relevant templates from `{project-root}/_bmad/bam/data/templates/`
 - User feedback and refinements from previous steps
 
 ---

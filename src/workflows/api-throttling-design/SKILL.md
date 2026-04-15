@@ -117,6 +117,6 @@ Design burst handling and graceful degradation:
 
 ## References
 
-- Template: `bam/templates/api-throttling-template.md`
-- Multi-Tenant Patterns: `bam/knowledge/multi-tenant-patterns.md`
-- Rate Limiting Patterns: `bam/data/bam-patterns.csv` -> filter: `rate-limiting`, `api-throttling`
+- Template: `{project-root}/_bmad/bam/data/templates/api-throttling-template.md`
+- Multi-Tenant Patterns: `{project-root}/_bmad/bam/data/agent-guides/bam/multi-tenant-patterns.md`
+- Rate Limiting Patterns: `{project-root}/_bmad/bam/data/bam-patterns.csv` -> filter: `rate-limiting`, `api-throttling`

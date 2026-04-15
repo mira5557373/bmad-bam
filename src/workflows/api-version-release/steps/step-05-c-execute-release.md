@@ -28,7 +28,7 @@ Deploy the new API version following the release process.
 
 - Changelog generated (Step 4)
 - **Load patterns:** `{project-root}/_bmad/bam/data/bam-patterns.csv` → filter: agent-runtime,deployment
-- **Load checklist:** `{project-root}/_bmad/bam/checklists/production-readiness.md`
+- **Load checklist:** `{project-root}/_bmad/bam/data/checklists/production-readiness.md`
 
 
 ---
@@ -37,7 +37,7 @@ Deploy the new API version following the release process.
 
 - Output from previous step(s) in this workflow
 - Pattern registry: `{project-root}/_bmad/bam/data/bam-patterns.csv`
-- Relevant templates from `{project-root}/_bmad/bam/templates/`
+- Relevant templates from `{project-root}/_bmad/bam/data/templates/`
 - User feedback and refinements from previous steps
 
 ---
@@ -169,7 +169,7 @@ Select an option:
 - Release execution log
 - Deployment evidence
 - Post-release metrics
-- **Load template:** `{project-root}/_bmad/bam/templates/rollback-plan-template.md`
+- **Load template:** `{project-root}/_bmad/bam/data/templates/rollback-plan-template.md`
 
 ## Next Step
 

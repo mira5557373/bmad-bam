@@ -155,9 +155,9 @@ This workflow contributes to:
 
 ## References
 
-- Template: `bam/templates/model-fine-tuning-template.md`
-- Related: `bam/templates/model-card-template.md`
-- Checklist: `bam/checklists/qg-m3-agent-runtime.md`
+- Template: `{project-root}/_bmad/bam/data/templates/model-fine-tuning-template.md`
+- Related: `{project-root}/_bmad/bam/data/templates/model-card-template.md`
+- Checklist: `{project-root}/_bmad/bam/data/checklists/qg-m3-agent-runtime.md`
 
 ## Web Research
 

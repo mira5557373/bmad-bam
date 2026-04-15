@@ -27,7 +27,7 @@ Validate the postmortem process against operations criteria, ensuring complete t
 
 - Step 20 completed: Artifact loaded successfully
 - **Load patterns:** `{project-root}/_bmad/bam/data/bam-patterns.csv` -> filter: operations
-- **Load checklist:** `{project-root}/_bmad/bam/checklists/qg-operations-continuous.md`
+- **Load checklist:** `{project-root}/_bmad/bam/data/checklists/qg-operations-continuous.md`
 
 ---
 

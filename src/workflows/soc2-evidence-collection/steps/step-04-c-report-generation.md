@@ -29,7 +29,7 @@ Design automated report generation for audit evidence packages, compliance dashb
 
 - Step 3 completed: Collection automation with storage architecture
 - **Load patterns:** `{project-root}/_bmad/bam/data/compliance-frameworks.csv`
-- **Load checklist:** `{project-root}/_bmad/bam/checklists/production-readiness.md`
+- **Load checklist:** `{project-root}/_bmad/bam/data/checklists/production-readiness.md`
 
 ---
 
@@ -214,7 +214,7 @@ Confirm QG-P1 checklist items for compliance readiness are satisfied.
 - **Output to:** `{output_folder}/planning-artifacts/compliance/soc2-control-mapping.md`
 - **Output to:** `{output_folder}/planning-artifacts/compliance/evidence-collection-plan.md`
 - **Output to:** `{output_folder}/planning-artifacts/compliance/automation-design.md`
-- **Load template:** `{project-root}/_bmad/bam/templates/soc2-control-mapping-template.md`
+- **Load template:** `{project-root}/_bmad/bam/data/templates/soc2-control-mapping-template.md`
 
 ---
 

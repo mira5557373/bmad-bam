@@ -8,7 +8,7 @@ Generate the comprehensive QA review report consolidating all quality assessment
 
 - All quality metrics aggregated
 - Production readiness determined
-- **Load template:** `{project-root}/_bmad/bam/templates/qa-review-report-template.md`
+- **Load template:** `{project-root}/_bmad/bam/data/templates/qa-review-report-template.md`
 
 ## Actions
 

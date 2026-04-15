@@ -81,4 +81,4 @@ Load the existing migration plan, then follow:
 ## References
 
 - **Patterns:** Load from `{project-root}/_bmad/bam/data/bam-patterns.csv` filter: `tenant-lifecycle`
-- **Templates:** `{project-root}/_bmad/bam/templates/data-migration-template.md`
+- **Templates:** `{project-root}/_bmad/bam/data/templates/data-migration-template.md`

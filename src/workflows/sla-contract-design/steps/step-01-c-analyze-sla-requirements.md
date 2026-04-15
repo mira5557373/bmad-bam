@@ -156,7 +156,7 @@ Select an option:
 - Tenant tier SLA requirements matrix
 - Stakeholder requirements summary
 - Industry benchmark comparison
-- **Load template:** `{project-root}/_bmad/bam/templates/sla-template.md`
+- **Load template:** `{project-root}/_bmad/bam/data/templates/sla-template.md`
 
 ---
 

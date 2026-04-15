@@ -26,7 +26,7 @@ Validate the incident report against QG-IR1 quality gate criteria to ensure inci
 ## Prerequisites
 
 - Artifact loaded (Step 20)
-- **Load checklist:** `{project-root}/_bmad/bam/checklists/qg-incident-response.md`
+- **Load checklist:** `{project-root}/_bmad/bam/data/checklists/qg-incident-response.md`
 
 ---
 

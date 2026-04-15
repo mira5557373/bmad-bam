@@ -113,5 +113,5 @@ This workflow contributes to QG-P1 by demonstrating DR capability:
 ## References
 
 - **Patterns:** Load from `{project-root}/_bmad/bam/data/bam-patterns.csv` filter: `disaster-recovery`
-- **Templates:** `{project-root}/_bmad/bam/templates/failover-execution-template.md`
-- **Checklists:** `{project-root}/_bmad/bam/checklists/production-readiness.md`
+- **Templates:** `{project-root}/_bmad/bam/data/templates/failover-execution-template.md`
+- **Checklists:** `{project-root}/_bmad/bam/data/checklists/production-readiness.md`

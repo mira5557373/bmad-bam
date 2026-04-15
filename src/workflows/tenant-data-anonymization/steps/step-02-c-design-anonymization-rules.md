@@ -90,7 +90,7 @@ Document findings with citations: _Source: [URL]_
 - Per-field anonymization rules with output formats
 - K-anonymity requirements by data set
 - Design decisions documented in frontmatter
-- **Load template:** `{project-root}/_bmad/bam/templates/anonymization-spec-template.md`
+- **Load template:** `{project-root}/_bmad/bam/data/templates/anonymization-spec-template.md`
 
 ---
 

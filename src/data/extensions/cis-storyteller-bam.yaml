@@ -1,0 +1,453 @@
+# BAM Extension for CIS Storyteller (Sophia)
+# Pattern: WDS agent-guides (NO memories: field)
+
+agent:
+  metadata:
+    extends: 'bmad-cis-agent-storyteller'
+    module: 'bam'
+    description: "Adds SaaS narrative frameworks to Sophia"
+
+menu:
+  - trigger: bam-story-context
+    action: "#load-bam-story-context-prompt"
+    description: Load BAM storytelling context
+  - trigger: bam-story-saas-narrative
+    action: "#saas-narrative-prompt"
+    description: Craft SaaS platform narrative
+  - trigger: bam-story-research
+    action: "#web-research-storyteller-prompt"
+    description: Conduct web research for storytelling decisions
+  - trigger: bam-story-customer-journey
+    action: "#customer-journey-story-prompt"
+    description: Craft compelling customer journey narratives
+  - trigger: bam-story-trust-security
+    action: "#trust-security-narrative-prompt"
+    description: Create trust and security confidence narratives
+  - trigger: bam-story-ai-differentiation
+    action: "#ai-differentiation-story-prompt"
+    description: Tell AI platform differentiation stories
+  - trigger: bam-story-scale-reliability
+    action: "#scale-reliability-narrative-prompt"
+    description: Craft scale and reliability narratives
+  - trigger: bam-story-transformation
+    action: "#transformation-story-prompt"
+    description: Create customer transformation case studies
+
+prompts:
+  - id: load-bam-story-context-prompt
+    content: |
+      ## Load BAM Storytelling Context
+
+      Read and internalize the multi-tenant SaaS storytelling guide:
+      `{project-root}/_bmad/bam/data/agent-guides/bam/saas-narrative.md`
+
+      Also load the storyteller-specific guide:
+      `{project-root}/_bmad/bam/data/agent-guides/bam/storyteller-guide.md`
+
+      This guide provides comprehensive context for crafting compelling narratives around
+      multi-tenant AI platforms. It covers the following key areas:
+
+      1. **Scale Narratives**: Stories about serving millions of users, handling enterprise
+         workloads, and maintaining performance under massive concurrent tenant load.
+      2. **Trust and Security Stories**: Narratives around tenant isolation guarantees,
+         data privacy commitments, and the technical excellence behind security.
+      3. **Growth Journey Stories**: Customer success stories showing the journey from
+         Free to Pro to Enterprise, highlighting value realization at each stage.
+      4. **AI Platform Differentiation**: Stories that position AI capabilities as unique
+         advantages, emphasizing safe multi-tenant AI and responsible scaling.
+      5. **Storytelling Patterns**: Multi-tenant SaaS narrative frameworks and techniques.
+
+      Apply these multi-tenant SaaS themes to all narrative creation. Once loaded, confirm
+      by stating: "BAM storytelling context loaded. Ready to craft compelling SaaS
+      narratives."
+
+  - id: saas-narrative-prompt
+    content: |
+      ## SaaS Platform Narrative
+
+      Prerequisites: Ensure BAM context loaded via `bam-story-context`
+
+      **Load patterns:** `{project-root}/_bmad/bam/data/bam-patterns.csv` → filter: `customization, experimentation, tenant-lifecycle`
+
+      ### Objective
+      Craft compelling narratives that communicate multi-tenant SaaS value
+      through emotional resonance, concrete examples, and memorable stories.
+
+      ### Process
+
+      1. **Why Multi-Tenant Matters Narrative**
+         - Transform technical architecture into customer benefit
+         - Show the hidden costs of single-tenant
+         - Make scale feel personal, not abstract
+
+         | Technical Reality | Customer Story | Emotional Hook |
+         |------------------|----------------|----------------|
+         | Shared infrastructure | You benefit from innovations built for thousands | Community of success |
+         | Continuous deployment | New features appear without IT projects | Effortless improvement |
+         | Multi-region redundancy | Your work is protected, always available | Peace of mind |
+         | Collective learning | AI that learns from industry patterns | Wisdom of the crowd |
+
+         **Story Framework:**
+         - Hero: Customer struggling with complexity
+         - Challenge: Legacy tools, integration nightmares
+         - Guide: Platform that simplifies
+         - Resolution: Focus on business, not infrastructure
+
+      2. **Tenant Success Journey Storytelling**
+         - Create tier-specific success narratives
+         - Show realistic progression paths
+         - Make upgrade feel like graduation, not upselling
+
+         | Journey Stage | Story Beat | Character Arc |
+         |--------------|------------|---------------|
+         | Discovery | I was skeptical, but free let me try | Curious evaluator |
+         | Activation | The first automation saved me 4 hours | Delighted newcomer |
+         | Value realization | My team now runs on this platform | Committed user |
+         | Expansion | We needed more, and Pro delivered | Growing organization |
+         | Enterprise | Now it is the backbone of our operations | Strategic partner |
+
+         **Customer Quote Framework:**
+         - Include specific, quantified outcomes
+         - Reference emotional relief, not just efficiency
+         - Show transformation, not just improvement
+
+      3. **Platform Reliability Promises**
+         - Turn SLAs into trust stories
+         - Make security feel protective, not restrictive
+         - Transform compliance into competitive advantage
+
+         | Promise | Technical Backing | Story Version |
+         |---------|------------------|---------------|
+         | 99.99% uptime | Multi-AZ, auto-failover | We were up when AWS went down |
+         | Zero data breach | RLS, encryption, audit | Your secrets stay secret |
+         | Always current | Zero-downtime deploys | Updated daily, disrupted never |
+         | Scale on demand | Auto-scaling infrastructure | Black Friday? Bring it on |
+
+         **Trust Narrative Elements:**
+         - Incident story with transparent handling
+         - Security audit results shared openly
+         - Customer testimonials on reliability
+
+      4. **AI as Differentiator Narrative**
+         - Position AI as multiplier, not replacement
+         - Address AI anxiety with safety story
+         - Show tangible, believable AI outcomes
+
+         | AI Concern | Story Response | Proof Point |
+         |------------|---------------|-------------|
+         | Will it replace me? | It handles routine so you handle important | Time saved metrics |
+         | Can I trust its output? | AI suggests, you decide | Human-in-loop examples |
+         | Is my data safe? | Your data stays yours, AI learns patterns | Privacy architecture |
+         | Is it actually useful? | Here is what customers accomplish | Outcome case studies |
+
+         **AI Story Structure:**
+         - Before: Manual, repetitive, error-prone
+         - AI moment: Assistant suggests better approach
+         - After: Faster, more accurate, more creative
+         - Human element: User validates, improves, grows
+
+      ### Verification Checklist
+      - [ ] Each narrative has specific, verifiable details
+      - [ ] Technical claims backed by actual capabilities
+      - [ ] Customer quotes/stories are realistic and approved
+      - [ ] Emotional hooks are authentic, not manipulative
+      - [ ] Stories work for target audience segments
+      - [ ] Narratives align with brand voice
+
+      ### Output
+      Produce narrative guide with:
+      - Core platform narrative (500 words)
+      - Customer journey story template
+      - Proof points and quotable metrics
+      - Situation-specific story variants
+      Reference template: `{project-root}/_bmad/bam/data/templates/narrative-template.md`
+
+  - id: web-research-storyteller-prompt
+    content: |
+      ## BAM Web Research - Storytelling
+
+      Conduct targeted web research for multi-tenant SaaS narrative design and storytelling decisions.
+
+      **Research Focus:** {{research_topic}}
+
+      Execute 2-3 targeted searches:
+      - "{{research_topic}} narrative design best practices {date}"
+      - "{{research_topic}} SaaS patterns {date}"
+      - "{{research_topic}} storytelling techniques {date}"
+
+      Return findings as structured summary:
+
+      ### Key Findings
+      - {Finding 1} _Source: [URL]_
+      - {Finding 2} _Source: [URL]_
+
+      ### Applicable Patterns
+      - {Pattern 1}
+
+      ### Sources
+      - [URL 1]
+      - [URL 2]
+
+  - id: customer-journey-story-prompt
+    content: |
+      ## Customer Journey Narrative
+
+      Prerequisites: Ensure BAM context loaded via `bam-story-context`
+
+      **Load patterns:** `{project-root}/_bmad/bam/data/bam-patterns.csv` → filter: `tenant-lifecycle, experimentation`
+
+      ### Objective
+      Craft compelling customer journey narratives that show the progression
+      from discovery through advocacy in multi-tenant platforms.
+
+      ### Process
+
+      1. **Journey Stage Narratives**
+         | Stage | Story Beat | Emotional Arc | Key Message |
+         |-------|-----------|---------------|-------------|
+         | Discovery | Problem recognition | Frustration | There is a better way |
+         | Evaluation | Hope and skepticism | Cautious optimism | This could work |
+         | Adoption | First success | Delight | This actually works |
+         | Expansion | Growing dependency | Confidence | We need more |
+         | Advocacy | Sharing success | Pride | You should try this |
+
+      2. **Tier Progression Stories**
+         - Free tier: The risk-free discovery
+         - Pro upgrade: The commitment moment
+         - Enterprise evolution: The strategic decision
+
+      3. **Hero Character Development**
+         | Archetype | Challenge | Platform Role | Transformation |
+         |-----------|-----------|---------------|----------------|
+         | Innovator | Fighting legacy | Enabler | Digital leader |
+         | Operator | Drowning in manual work | Automator | Efficiency hero |
+         | Leader | Lacking visibility | Insight provider | Data-driven decision maker |
+
+      4. **Story Collection Process**
+         - Interview framework
+         - Quote extraction
+         - Metric documentation
+         - Permission workflow
+
+      ### Verification Checklist
+      - [ ] Journey stages covered
+      - [ ] Emotional arc compelling
+      - [ ] Real customer validation
+      - [ ] Metrics included
+
+      ### Output
+      Produce customer journey narrative templates with stage-specific
+      story frameworks and collection guidelines.
+
+  - id: trust-security-narrative-prompt
+    content: |
+      ## Trust and Security Narrative
+
+      Prerequisites: Ensure BAM context loaded via `bam-story-context`
+
+      **Load patterns:** `{project-root}/_bmad/bam/data/bam-patterns.csv` → filter: `tenant-isolation, compliance-frameworks`
+
+      ### Objective
+      Create compelling narratives around trust, security, and isolation
+      that turn technical capabilities into emotional confidence.
+
+      ### Process
+
+      1. **Trust Narrative Framework**
+         | Trust Element | Technical Reality | Story Version |
+         |---------------|------------------|---------------|
+         | Data isolation | Row-level security | Your data stays yours |
+         | Access control | RBAC/ABAC | Only your team sees your work |
+         | Encryption | AES-256, TLS | Protected at rest and in transit |
+         | Compliance | SOC2, GDPR | We take the audit burden |
+
+      2. **Security Story Archetypes**
+         | Story Type | Elements | Emotional Impact |
+         |------------|----------|------------------|
+         | The guardian | Proactive protection | Peace of mind |
+         | The invisible shield | Security that does not slow you down | Frictionless safety |
+         | The compliance partner | We handle the paperwork | Focus on your work |
+         | The transparent protector | Open about what we do | Trust through honesty |
+
+      3. **Multi-Tenant Security Differentiation**
+         - Why shared infrastructure is actually safer
+         - The economics of better security
+         - Scale enables better protection
+
+      4. **Trust Proof Points**
+         | Proof Type | Content | Presentation |
+         |------------|---------|--------------|
+         | Certifications | SOC2, ISO 27001 | Badge display |
+         | Audits | Penetration test results | Summary report |
+         | Incident history | Transparent timeline | Security page |
+         | Customer quotes | CISO testimonials | Case studies |
+
+      ### Verification Checklist
+      - [ ] Technical claims accurate
+      - [ ] Emotional messaging appropriate
+      - [ ] Proof points verifiable
+      - [ ] Audience appropriate
+
+      ### Output
+      Produce trust narrative framework with messaging by audience,
+      proof point documentation, and storytelling templates.
+
+  - id: ai-differentiation-story-prompt
+    content: |
+      ## AI Platform Differentiation Narrative
+
+      Prerequisites: Ensure BAM context loaded via `bam-story-context`
+
+      **Load patterns:** `{project-root}/_bmad/bam/data/bam-patterns.csv` → filter: `agent-runtime, customization`
+
+      ### Objective
+      Tell compelling stories about AI capabilities that differentiate
+      multi-tenant platform from bolt-on AI solutions.
+
+      ### Process
+
+      1. **AI Differentiation Narratives**
+         | Differentiator | Story Angle | Competitor Gap |
+         |----------------|-------------|----------------|
+         | AI-native | Built for AI from the start | Retrofitted AI |
+         | Multi-tenant learning | Learns from patterns at scale | Isolated data |
+         | Safe AI | Responsible AI by design | Afterthought safety |
+         | Personalized AI | Tenant-specific while private | Generic or privacy risk |
+
+      2. **AI Value Stories**
+         | Use Case | Before AI | With AI | Metric |
+         |----------|-----------|---------|--------|
+         | Analysis | Hours of manual work | Minutes of insight | 10x faster |
+         | Creation | Blank page struggle | Intelligent starting point | 5x more output |
+         | Decision | Gut feeling | Data-informed | Better outcomes |
+         | Automation | Repetitive tasks | Focused on exceptions | 80% time saved |
+
+      3. **AI Safety Narratives**
+         - Your data does not train models you did not consent to
+         - AI suggestions are transparent and explainable
+         - Human remains in control, AI assists
+
+      4. **Multi-Tenant AI Advantage Stories**
+         | Advantage | Narrative | Customer Benefit |
+         |-----------|-----------|------------------|
+         | Scale learning | AI gets smarter as platform grows | Better predictions |
+         | Privacy-preserving | Learn patterns without exposing data | Intelligence without risk |
+         | Continuous improvement | Updates benefit everyone | Always getting better |
+
+      ### Verification Checklist
+      - [ ] AI claims truthful
+      - [ ] Privacy implications addressed
+      - [ ] Competitor comparison fair
+      - [ ] Customer benefit clear
+
+      ### Output
+      Produce AI differentiation narrative guide with story frameworks,
+      messaging by audience, and competitive positioning.
+
+  - id: scale-reliability-narrative-prompt
+    content: |
+      ## Scale and Reliability Narrative
+
+      Prerequisites: Ensure BAM context loaded via `bam-story-context`
+
+      **Load patterns:** `{project-root}/_bmad/bam/data/bam-patterns.csv` → filter: `tenant-isolation, observability`
+
+      ### Objective
+      Craft narratives that turn infrastructure capabilities into
+      stories of reliability, peace of mind, and business continuity.
+
+      ### Process
+
+      1. **Scale Story Framework**
+         | Scale Aspect | Technical Reality | Story Version |
+         |--------------|------------------|---------------|
+         | Capacity | Auto-scaling infrastructure | Grows with you effortlessly |
+         | Performance | Global CDN, optimized queries | Fast everywhere, always |
+         | Availability | Multi-region, auto-failover | There when you need us |
+         | Recovery | Automated backups, point-in-time | Never lose your work |
+
+      2. **Reliability Narratives**
+         | Story Type | Trigger | Message |
+         |------------|---------|---------|
+         | The always-on partner | Competitor outage | We were there when X was down |
+         | The growth enabler | Viral moment | We scaled with your success |
+         | The disaster survivor | Major incident | We recovered in minutes |
+         | The global reach | International expansion | Same experience everywhere |
+
+      3. **Proof Points and Metrics**
+         | Metric | Current | Story Use |
+         |--------|---------|-----------|
+         | Uptime | 99.99% | 4 nines of reliability |
+         | Response time | <100ms p95 | Faster than you can click |
+         | Recovery time | <5 minutes | Back before you notice |
+         | Capacity | 10x headroom | Ready for your biggest day |
+
+      4. **Customer Reliability Stories**
+         - Black Friday survival story
+         - Product launch success
+         - Crisis averted narrative
+
+      ### Verification Checklist
+      - [ ] Metrics accurate and verifiable
+      - [ ] Stories reflect real capabilities
+      - [ ] Customer stories approved
+      - [ ] Comparison claims fair
+
+      ### Output
+      Produce reliability narrative framework with proof points,
+      customer story templates, and messaging guidelines.
+
+  - id: transformation-story-prompt
+    content: |
+      ## Customer Transformation Case Study
+
+      Prerequisites: Ensure BAM context loaded via `bam-story-context`
+
+      **Load patterns:** `{project-root}/_bmad/bam/data/bam-patterns.csv` → filter: `tenant-lifecycle, experimentation`
+
+      ### Objective
+      Create compelling transformation case studies that show the
+      before/after journey of customers on the multi-tenant platform.
+
+      ### Process
+
+      1. **Transformation Story Structure**
+         | Section | Content | Page/Time |
+         |---------|---------|-----------|
+         | The Challenge | Pain points, failed attempts | 1 page / 1 min |
+         | The Decision | Why this platform | 0.5 page / 30 sec |
+         | The Journey | Implementation, adoption | 1 page / 1 min |
+         | The Results | Quantified outcomes | 1 page / 1 min |
+         | The Future | Ongoing partnership | 0.5 page / 30 sec |
+
+      2. **Transformation Metrics Framework**
+         | Category | Before | After | Change |
+         |----------|--------|-------|--------|
+         | Efficiency | Manual hours | Automated | X% reduction |
+         | Quality | Error rate | Accuracy | X% improvement |
+         | Speed | Time to complete | New time | Xx faster |
+         | Cost | Previous solution | Current | $X savings |
+         | Growth | Limited capacity | New capacity | X% increase |
+
+      3. **Character Development**
+         - Champion: Internal advocate who led the change
+         - Team: How the team adapted and benefited
+         - Leadership: Executive sponsorship and results
+
+      4. **Visual Storytelling Elements**
+         | Element | Purpose | Format |
+         |---------|---------|--------|
+         | Before/after diagram | Show transformation | Side-by-side |
+         | Metric callouts | Quantified impact | Large numbers |
+         | Quote cards | Human element | Photo + text |
+         | Timeline | Journey progression | Visual timeline |
+
+      ### Verification Checklist
+      - [ ] Customer approved content
+      - [ ] Metrics verified
+      - [ ] Story arc compelling
+      - [ ] Visual assets created
+
+      ### Output
+      Produce transformation case study template with section guidance,
+      metric collection framework, and visual asset specifications.

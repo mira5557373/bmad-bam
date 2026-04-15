@@ -295,8 +295,8 @@ Select an option:
 - Incident response procedures
 - Post-deployment verification checklist
 
-**Load template:** `{project-root}/_bmad/bam/templates/model-deployment-template.md`
-**Load template:** `{project-root}/_bmad/bam/templates/model-release-checklist-template.md`
+**Load template:** `{project-root}/_bmad/bam/data/templates/model-deployment-template.md`
+**Load template:** `{project-root}/_bmad/bam/data/templates/model-release-checklist-template.md`
 
 ---
 

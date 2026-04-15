@@ -122,4 +122,4 @@ This workflow produces artifacts that must pass QG-S5 validation. Upon completio
 
 ## Templates
 
-- **Load template:** `{project-root}/_bmad/bam/templates/security-config-template.md`
+- **Load template:** `{project-root}/_bmad/bam/data/templates/security-config-template.md`

@@ -136,7 +136,7 @@ Select an option:
 - Validation report document
 - Gate decision (PASS/CONDITIONAL/FAIL)
 - Required fixes list (if applicable)
-- **Load template:** `{project-root}/_bmad/bam/templates/module-boundaries-template.md`
+- **Load template:** `{project-root}/_bmad/bam/data/templates/module-boundaries-template.md`
 
 ---
 

@@ -140,7 +140,7 @@ Select an option:
 - Event domain catalog
 - Consumer mapping
 - Schema definitions
-- **Load template:** `{project-root}/_bmad/bam/templates/event-driven-design-template.md`
+- **Load template:** `{project-root}/_bmad/bam/data/templates/event-driven-design-template.md`
 
 ## Next Step
 

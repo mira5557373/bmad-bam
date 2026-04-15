@@ -51,8 +51,8 @@ This workflow contributes to:
 
 ## References
 
-- Template: `bam/templates/security-baseline-template.md`
-- Knowledge: `bam/knowledge/security-patterns.md`
+- Template: `{project-root}/_bmad/bam/data/templates/security-baseline-template.md`
+- Knowledge: `{project-root}/_bmad/bam/data/agent-guides/bam/security-patterns.md`
 
 ## Headless Mode
 

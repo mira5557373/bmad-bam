@@ -104,7 +104,7 @@ After completing correlation rules, if 'C' (Continue):
 - Correlation rules configuration
 - Scenario documentation
 - Tuning guidelines
-- **Load template:** `{project-root}/_bmad/bam/templates/correlation-rules-template.md`
+- **Load template:** `{project-root}/_bmad/bam/data/templates/correlation-rules-template.md`
 
 ---
 

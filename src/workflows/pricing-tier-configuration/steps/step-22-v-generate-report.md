@@ -67,7 +67,7 @@ Select an option:
 ## Outputs
 
 - `{output_folder}/planning-artifacts/billing/pricing-tier-validation-report.md`
-- **Load template:** `{project-root}/_bmad/bam/templates/pricing-strategy-template.md`
+- **Load template:** `{project-root}/_bmad/bam/data/templates/pricing-strategy-template.md`
 
 ---
 

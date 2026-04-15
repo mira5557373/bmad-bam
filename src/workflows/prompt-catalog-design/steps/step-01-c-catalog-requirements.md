@@ -172,7 +172,7 @@ Select an option:
 - Prompt catalog requirements specification
 - Organizational structure definition
 - Metadata schema proposal
-- **Load template:** `{project-root}/_bmad/bam/templates/prompt-catalog-template.md`
+- **Load template:** `{project-root}/_bmad/bam/data/templates/prompt-catalog-template.md`
 
 ---
 

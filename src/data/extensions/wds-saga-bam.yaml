@@ -1,0 +1,682 @@
+# BAM Extension for WDS Saga (Analyst)
+# Pattern: WDS agent-guides (NO memories: field)
+
+agent:
+  metadata:
+    extends: 'wds-agent-saga-analyst'
+    module: 'bam'
+    description: "Adds tenant persona mapping to Saga's discovery"
+
+menu:
+  - trigger: bam-saga-context
+    action: "#load-bam-saga-context-prompt"
+    description: Load BAM discovery context for Saga
+  - trigger: bam-saga-saas-trigger-map
+    action: "#saas-trigger-map-prompt"
+    description: Map triggers for multi-tenant SaaS
+  - trigger: bam-saga-tenant-persona-map
+    action: "#tenant-persona-map-prompt"
+    description: Map tenant personas across tiers
+  - trigger: bam-saga-tenant-persona-analysis
+    action: "#tenant-persona-analysis-prompt"
+    description: Deep dive analysis of tenant persona behaviors
+  - trigger: bam-saga-cross-tenant-scenarios
+    action: "#cross-tenant-scenarios-prompt"
+    description: Analyze cross-tenant usage scenarios and patterns
+  - trigger: bam-saga-enterprise-requirements
+    action: "#enterprise-requirements-prompt"
+    description: Gather enterprise-specific requirements and needs
+  - trigger: bam-saga-stakeholder-mapping
+    action: "#stakeholder-mapping-prompt"
+    description: Map stakeholders across tenant hierarchy
+  - trigger: bam-saga-research
+    action: "#web-research-saga-prompt"
+    description: Conduct web research for multi-tenant discovery patterns
+
+prompts:
+  - id: load-bam-saga-context-prompt
+    content: |
+      ## Load BAM Context for Saga
+
+      Read and internalize the multi-tenant discovery context guide:
+      `{project-root}/_bmad/bam/data/agent-guides/bam/multi-tenant-context.md`
+
+      Also load the Saga-specific guide:
+      `{project-root}/_bmad/bam/data/agent-guides/bam/saga-guide.md`
+
+      This guide provides comprehensive context for applying multi-tenant awareness to all
+      user research and discovery activities. It covers the following key areas:
+
+      1. **Tenant Hierarchy Personas**: Understanding user personas at each level of the
+         tenant hierarchy - organization admins, workspace admins, and end users.
+      2. **Tier-Based Discovery**: How to segment discovery findings by tier (Free, Pro,
+         Enterprise) and identify tier-specific needs and pain points.
+      3. **SaaS Trigger Mapping**: Identifying triggers unique to multi-tenant SaaS including
+         upgrade moments, collaboration needs, and administrative oversight requirements.
+      4. **Cross-Tenant Patterns**: Discovering common patterns and needs that span tenants
+         while respecting data isolation in research methodologies.
+      5. **Saga Discovery Patterns**: Multi-tenant discovery and research methodologies.
+
+      Apply this multi-tenant lens to all discovery activities. Once loaded, confirm by
+      stating: "BAM discovery context loaded. Ready to conduct tenant-aware research."
+
+  - id: saas-trigger-map-prompt
+    content: |
+      ## SaaS Trigger Mapping
+
+      Prerequisites: Ensure BAM context loaded via `bam-saga-context`
+
+      **Load patterns:** `{project-root}/_bmad/bam/data/bam-patterns.csv` → filter: `tenant-lifecycle, customization`
+
+      ### Objective
+      Identify and map triggers specific to multi-tenant SaaS that drive user
+      behavior, upgrade decisions, and engagement patterns.
+
+      ### Process
+
+      1. **Tier Upgrade Triggers**
+         - Identify moments that drive tier upgrades
+         - Categorize by trigger type
+         - Document conversion opportunity
+
+         | Trigger Category | Trigger | User Emotion | Opportunity |
+         |-----------------|---------|--------------|-------------|
+         | **Limit-based** | Storage quota at 90% | Anxiety | Show value of unlimited |
+         | | API rate limit hit | Frustration | Demonstrate higher limits |
+         | | User seat limit reached | Blocked | Team plan comparison |
+         | | Agent count maxed | Limited | Show advanced AI features |
+         | **Feature-based** | Clicked locked feature | Curiosity | Feature preview + trial |
+         | | Searched for Pro feature | Intent | Targeted upgrade prompt |
+         | | Attempted integration | Need | Integration comparison |
+         | **Growth-based** | Team member invited (at limit) | Expansion | Team plan benefits |
+         | | Usage doubled month-over-month | Success | Celebrate + upgrade |
+         | | Multiple workspaces needed | Scale | Org plan features |
+         | **Time-based** | Trial ending in 3 days | Urgency | Last chance offer |
+         | | Free user for 30 days | Evaluation complete | Conversion nudge |
+         | | Annual renewal approaching | Decision point | Loyalty upgrade |
+
+      2. **Feature Limit Triggers**
+         - Map all feature limits to triggers
+         - Define trigger thresholds
+         - Design trigger responses
+
+         | Feature | Limit | Warning Trigger | Hard Trigger | Response |
+         |---------|-------|-----------------|--------------|----------|
+         | Storage | 1 GB | 800 MB | 1 GB | Upgrade modal |
+         | API calls | 100/min | 80/min avg | 100/min | Rate limit warning |
+         | Users | 5 | 4 added | 5 reached | Seat limit modal |
+         | Agents | 1 | N/A | Attempt 2nd | Agent limit prompt |
+         | Exports | 10/mo | 8 used | 10 used | Export limit toast |
+
+         **Limit Trigger UX:**
+         | Threshold | UX Treatment | Tone |
+         |-----------|--------------|------|
+         | 70% | Subtle indicator | Informational |
+         | 90% | Warning message | Cautionary |
+         | 100% | Blocking modal | Actionable |
+         | Exceeded | Error + upgrade | Urgent |
+
+      3. **Collaboration Triggers**
+         - Identify team-driven triggers
+         - Map sharing and invitation patterns
+         - Document collaboration blockers
+
+         | Collaboration Action | Trigger | Insight | Opportunity |
+         |---------------------|---------|---------|-------------|
+         | First share attempt | Needs team | Single user going team | Team plan intro |
+         | Multiple shares | Active collaboration | Team is engaged | Workspace features |
+         | External share blocked | Needs Pro sharing | Collaboration pain | Pro share features |
+         | Comment thread started | Team communication | Workflow adoption | Team features |
+         | Duplicate work detected | No team visibility | Efficiency opportunity | Workspace intro |
+
+      4. **Admin Oversight Triggers**
+         - Identify administrative need triggers
+         - Map compliance and control needs
+         - Document governance requirements
+
+         | Admin Need | Trigger | Persona | Opportunity |
+         |------------|---------|---------|-------------|
+         | User audit | "Who did X?" question | Manager | Audit trail feature |
+         | Access control | Wrong person accessed | Security | Role-based access |
+         | Usage report | "How much are we using?" | Finance | Usage analytics |
+         | Compliance | Security questionnaire | IT | Enterprise security |
+         | Offboarding | Employee leaving | HR/Admin | User management |
+         | SSO request | "Can we use our login?" | IT | Enterprise SSO |
+
+      ### Trigger Response Matrix
+
+      | Trigger Type | FREE Response | PRO Response | ENTERPRISE Response |
+      |--------------|---------------|--------------|---------------------|
+      | Limit hit | Upgrade prompt | Higher limit info | Custom limit request |
+      | Feature need | Feature preview | Feature unlock | Custom feature request |
+      | Team growth | Team plan intro | More seats | Org-wide rollout |
+      | Compliance | Enterprise intro | Enterprise features | Dedicated support |
+
+      ### Verification Checklist
+      - [ ] All tier upgrade triggers identified
+      - [ ] Feature limits mapped to triggers
+      - [ ] Collaboration triggers documented
+      - [ ] Admin oversight needs captured
+      - [ ] Trigger responses designed per tier
+      - [ ] Trigger tracking instrumented
+
+      ### Output
+      Produce trigger map using template:
+      `{project-root}/_bmad/bam/data/templates/trigger-map-template.md`
+
+  - id: tenant-persona-map-prompt
+    content: |
+      ## Tenant Persona Mapping
+
+      Prerequisites: Ensure BAM context loaded via `bam-saga-context`
+
+      **Load patterns:** `{project-root}/_bmad/bam/data/bam-patterns.csv` → filter: `tenant-lifecycle, customization`
+
+      ### Objective
+      Map user personas across the tenant hierarchy to understand different
+      user types, their goals, and their pain points at each organizational level.
+
+      ### Process
+
+      1. **Organization Admin Personas**
+         - Define org-level administrator types
+         - Document their goals and pain points
+         - Identify their success metrics
+
+         | Persona | Role | Goals | Pain Points | Success Metric |
+         |---------|------|-------|-------------|----------------|
+         | **IT Director** | Technical oversight | Secure, compliant platform | Integration complexity | Security audit pass |
+         | | | Minimize vendor sprawl | User management overhead | Vendor consolidation |
+         | | | Control costs | Unpredictable billing | Budget predictability |
+         | **Finance Admin** | Budget owner | Predictable spending | Surprise invoices | Cost per user |
+         | | | ROI visibility | Usage opacity | Value metrics |
+         | | | Approval workflows | Manual processes | Automation rate |
+         | **Security Officer** | Risk management | Data protection | Audit requirements | Compliance score |
+         | | | Access control | Shadow IT | Visibility rate |
+         | | | Incident response | Slow vendor response | Response time |
+
+      2. **Workspace Admin Personas**
+         - Define workspace-level administrator types
+         - Document their operational needs
+         - Identify their daily challenges
+
+         | Persona | Role | Goals | Pain Points | Success Metric |
+         |---------|------|-------|-------------|----------------|
+         | **Team Lead** | Team management | Team productivity | Onboarding friction | Team velocity |
+         | | | Resource allocation | Visibility into usage | Utilization rate |
+         | | | Quality control | Inconsistent outputs | Quality score |
+         | **Project Manager** | Delivery focus | Project completion | Coordination overhead | On-time delivery |
+         | | | Status visibility | Manual reporting | Dashboard accuracy |
+         | | | Risk management | Surprise blockers | Risk visibility |
+         | **Power User Admin** | Technical lead | Platform optimization | Configuration limits | Efficiency gains |
+         | | | Team enablement | Training burden | Adoption rate |
+         | | | Integration | Connection reliability | Integration uptime |
+
+      3. **End User Personas**
+         - Define end user types by usage pattern
+         - Document their daily workflows
+         - Identify their frustrations
+
+         | Persona | Usage Pattern | Goals | Pain Points | Success Metric |
+         |---------|---------------|-------|-------------|----------------|
+         | **Daily Active** | Heavy daily use | Efficiency | Slow performance | Time saved |
+         | | | Reliability | Unexpected downtime | Uptime experience |
+         | | | Features | Missing capabilities | Feature satisfaction |
+         | **Occasional User** | Weekly/sporadic | Quick tasks | Relearning UI | Task completion |
+         | | | Simplicity | Too many options | Time to complete |
+         | | | Guidance | Forgot how to | Help effectiveness |
+         | **Automated User** | API/integration | Reliability | API changes | Error rate |
+         | | | Performance | Rate limits | Throughput |
+         | | | Documentation | Unclear docs | Integration time |
+
+      4. **Cross-Hierarchy Persona Relationships**
+         - Map relationships between personas
+         - Identify communication patterns
+         - Document escalation paths
+
+         | From | To | Relationship | Communication | Tension Point |
+         |------|-----|--------------|---------------|---------------|
+         | End User | Workspace Admin | Reports to | Usage questions | Feature requests |
+         | Workspace Admin | Org Admin | Reports to | Budget requests | Cost vs capability |
+         | End User | Org Admin | Indirect | Policy impact | Compliance friction |
+         | Power User | All | Supports | Training, help | Bandwidth |
+
+      5. **Persona Journey Interactions**
+         - Map how personas interact through lifecycle
+         - Identify handoff points
+         - Document collaboration needs
+
+         | Lifecycle Stage | Org Admin | Workspace Admin | End User |
+         |-----------------|-----------|-----------------|----------|
+         | Evaluation | Approves vendor | Evaluates fit | Tests features |
+         | Onboarding | Sets policies | Configures workspace | Learns platform |
+         | Daily use | Monitors overall | Manages team | Does work |
+         | Growth | Approves expansion | Requests resources | Advocates |
+         | Renewal | Makes decision | Provides input | Voices opinion |
+
+      ### Verification Checklist
+      - [ ] All hierarchy levels have personas defined
+      - [ ] Goals are specific and measurable
+      - [ ] Pain points are validated by research
+      - [ ] Success metrics are actionable
+      - [ ] Cross-hierarchy relationships mapped
+      - [ ] Journey interactions documented
+      - [ ] Personas validated with real users
+
+      ### Output
+      Produce tenant persona map using template:
+      `{project-root}/_bmad/bam/data/templates/tenant-persona-template.md`
+
+  - id: tenant-persona-analysis-prompt
+    content: |
+      ## Tenant Persona Deep Dive Analysis
+
+      Prerequisites: Ensure BAM context loaded via `bam-saga-context`
+
+      **Load patterns:** `{project-root}/_bmad/bam/data/bam-patterns.csv` → filter: `tenant-lifecycle, customization`
+
+      ### Objective
+      Conduct deep analysis of tenant persona behaviors, motivations, and needs
+      to inform product decisions and tier differentiation strategies.
+
+      ### Process
+
+      1. **Behavioral Pattern Analysis**
+         - Analyze usage patterns by persona
+         - Identify success and failure indicators
+         - Map behavior to tier appropriateness
+
+         | Persona | Usage Pattern | Success Indicator | Failure Indicator |
+         |---------|---------------|-------------------|-------------------|
+         | Solo Explorer | Sporadic, experimental | Feature breadth | Abandonment |
+         | Team Builder | Collaborative, growing | Team adoption | Isolation |
+         | Power User | Intensive, advanced | Efficiency gains | Hitting limits |
+         | Admin Champion | Management-focused | Team success | Overhead burden |
+         | Executive Sponsor | Strategic, outcome-focused | ROI metrics | Unclear value |
+
+         **Behavioral Insights:**
+         | Behavior | Indicates | Product Response |
+         |----------|-----------|------------------|
+         | Feature hoarding | Evaluation mode | Guide to core value |
+         | Repeated limit hits | Growth need | Upgrade path |
+         | Team invitation attempts | Collaboration need | Team features |
+         | Export/API usage | Integration need | Pro/Enterprise features |
+
+      2. **Motivation and Goal Analysis**
+         - Identify persona motivations
+         - Map goals to product value
+         - Align features with needs
+
+         | Persona | Primary Motivation | Secondary Motivation | Product Value Alignment |
+         |---------|-------------------|---------------------|------------------------|
+         | FREE User | Try before commit | Cost-conscious | Core feature access |
+         | PRO User | Productivity | Team efficiency | Advanced features |
+         | ENTERPRISE | Compliance, scale | Strategic advantage | Full platform + support |
+
+         **Motivation-Based Opportunities:**
+         | Motivation | Current State | Opportunity |
+         |------------|---------------|-------------|
+         | Cost savings | Manual processes | Automation ROI |
+         | Time savings | Slow workflows | Efficiency features |
+         | Risk reduction | Compliance gaps | Security features |
+         | Competitive edge | Market pressure | Advanced capabilities |
+
+      3. **Pain Point Analysis**
+         - Document persona-specific pain points
+         - Prioritize by impact and frequency
+         - Map to product solutions
+
+         | Persona | Pain Point | Severity | Frequency | Solution |
+         |---------|------------|----------|-----------|----------|
+         | Solo Explorer | Overwhelming features | Medium | High | Guided onboarding |
+         | Team Builder | Coordination overhead | High | High | Collaboration features |
+         | Power User | Capability limits | High | Medium | Pro tier features |
+         | Admin Champion | User management burden | High | High | Admin tools |
+         | Executive Sponsor | ROI visibility | Medium | Low | Analytics dashboard |
+
+      4. **Tier Fit Analysis**
+         - Assess persona fit per tier
+         - Identify mismatches
+         - Recommend tier positioning
+
+         | Persona | Natural Tier | Mismatch Risk | Recommendation |
+         |---------|--------------|---------------|----------------|
+         | Hobbyist | FREE | Overpaying for PRO | Clear FREE limits |
+         | Startup | PRO | Outgrowing PRO | Enterprise path |
+         | SMB Team | PRO | Underusing features | Feature education |
+         | Enterprise | ENTERPRISE | Overbuying | Right-size offering |
+
+      ### Verification Checklist
+      - [ ] Behavioral patterns documented with data
+      - [ ] Motivations validated through research
+      - [ ] Pain points prioritized by impact
+      - [ ] Tier fit analysis complete
+      - [ ] Insights actionable for product decisions
+      - [ ] Cross-persona patterns identified
+      - [ ] Recommendations specific and measurable
+
+      ### Output
+      Produce persona analysis using template:
+      `{project-root}/_bmad/bam/data/templates/tenant-persona-analysis-template.md`
+
+  - id: cross-tenant-scenarios-prompt
+    content: |
+      ## Cross-Tenant Scenario Analysis
+
+      Prerequisites: Ensure BAM context loaded via `bam-saga-context`
+
+      **Load patterns:** `{project-root}/_bmad/bam/data/bam-patterns.csv` → filter: `tenant-lifecycle, customization`
+
+      ### Objective
+      Analyze scenarios where tenants interact, share, or need to work across
+      organizational boundaries while maintaining appropriate isolation.
+
+      ### Process
+
+      1. **Cross-Tenant Scenario Mapping**
+         - Identify scenarios requiring cross-tenant interaction
+         - Document isolation requirements
+         - Design appropriate boundaries
+
+         | Scenario | Description | Isolation Requirement | Design Approach |
+         |----------|-------------|----------------------|-----------------|
+         | Guest collaboration | External user invited | Read-only, time-limited | Guest links |
+         | Agency multi-client | One team, many tenants | Full separation | Multi-org capability |
+         | Partner integration | Bidirectional data | API-level isolation | OAuth + scoped access |
+         | Merger/acquisition | Tenant consolidation | Migration path | Data portability |
+         | Parent/subsidiary | Hierarchical tenants | Inheritance + override | Org hierarchy |
+
+         **Cross-Tenant Interaction Types:**
+         | Type | Risk Level | Mitigation |
+         |------|------------|------------|
+         | View-only sharing | Low | Time-limited links |
+         | Edit collaboration | Medium | Explicit permissions |
+         | Data integration | High | API scoping, audit |
+         | Account linking | High | User consent, logging |
+
+      2. **Multi-Organization Scenarios**
+         - Analyze agencies and consultancies
+         - Document service provider needs
+         - Design multi-client workflows
+
+         | Service Provider | Client Need | Platform Feature |
+         |------------------|-------------|------------------|
+         | Agency | Manage multiple clients | Multi-org switching |
+         | Consultancy | Client workspace access | Guest admin role |
+         | Reseller | White-label delivery | Branding per client |
+         | Integrator | System connections | Partner API access |
+
+         **Multi-Org UX Requirements:**
+         | Requirement | Description | Implementation |
+         |-------------|-------------|----------------|
+         | Context switching | Move between orgs | Org switcher UI |
+         | Unified billing | One invoice, many orgs | Consolidated billing |
+         | Role separation | Different roles per org | Per-org permissions |
+         | Data separation | No cross-org data leak | Strict tenant isolation |
+
+      3. **Collaboration Boundary Analysis**
+         - Define what can be shared
+         - Document sharing permissions
+         - Design sharing UX
+
+         | Shareable Item | FREE | PRO | ENTERPRISE |
+         |----------------|------|-----|------------|
+         | View-only links | Limited | Unlimited | Unlimited + controls |
+         | Edit collaboration | N/A | Team only | Team + guests |
+         | External sharing | N/A | Public links | SSO-protected links |
+         | API access | N/A | Personal | Service accounts |
+
+         **Sharing Permission Matrix:**
+         | Sharer | Can Share With | Conditions |
+         |--------|----------------|------------|
+         | User | Team members | Same workspace |
+         | Admin | External guests | Org policy allows |
+         | Super Admin | Across orgs | Enterprise feature |
+
+      4. **Data Portability Scenarios**
+         - Document export requirements
+         - Design migration paths
+         - Support tenant mobility
+
+         | Portability Scenario | Trigger | Data Scope | Design |
+         |---------------------|---------|------------|--------|
+         | User offboarding | Employee leaves | User data | Export + transfer |
+         | Tenant migration | Changing providers | Full tenant | Bulk export API |
+         | Tier downgrade | Cost reduction | Feature-specific | Graceful degradation |
+         | Account closure | Business decision | Everything | Compliance export |
+
+      ### Verification Checklist
+      - [ ] All cross-tenant scenarios identified
+      - [ ] Isolation requirements documented per scenario
+      - [ ] Multi-org needs addressed
+      - [ ] Sharing boundaries clearly defined
+      - [ ] Data portability paths designed
+      - [ ] Security implications assessed
+      - [ ] Compliance requirements met
+
+      ### Output
+      Produce cross-tenant analysis using template:
+      `{project-root}/_bmad/bam/data/templates/cross-tenant-scenarios-template.md`
+
+  - id: enterprise-requirements-prompt
+    content: |
+      ## Enterprise Requirements Gathering
+
+      Prerequisites: Ensure BAM context loaded via `bam-saga-context`
+
+      **Load patterns:** `{project-root}/_bmad/bam/data/bam-patterns.csv` → filter: `tenant-lifecycle, customization`
+
+      ### Objective
+      Systematically gather and document enterprise-specific requirements that
+      differentiate the enterprise tier and meet large organization needs.
+
+      ### Process
+
+      1. **Security Requirements Analysis**
+         - Document enterprise security needs
+         - Map to product capabilities
+         - Identify gaps
+
+         | Security Requirement | Enterprise Need | Product Capability | Gap |
+         |---------------------|-----------------|-------------------|-----|
+         | Authentication | SSO (SAML/OIDC) | Supported | None |
+         | Authorization | RBAC, custom roles | Basic roles | Custom roles |
+         | Encryption | At-rest, in-transit | Standard | Key management |
+         | Audit | Full audit trail | 90-day logs | Unlimited retention |
+         | Compliance | SOC2, HIPAA, GDPR | SOC2 | HIPAA certification |
+
+         **Security Capability Matrix:**
+         | Capability | PRO | ENTERPRISE | Enterprise+ |
+         |------------|-----|------------|-------------|
+         | MFA | Optional | Required | Hardware keys |
+         | SSO | N/A | SAML/OIDC | Custom IdP |
+         | IP restriction | N/A | Yes | Geo-fencing |
+         | Session management | Basic | Advanced | Custom policies |
+
+      2. **Compliance Requirements Analysis**
+         - Identify regulatory requirements
+         - Document compliance needs
+         - Map to certifications
+
+         | Compliance Framework | Requirements | Current Status | Roadmap |
+         |---------------------|--------------|----------------|---------|
+         | SOC 2 Type II | Security controls | Certified | Maintain |
+         | GDPR | Data protection | Compliant | DPA template |
+         | HIPAA | Healthcare data | BAA available | Certification |
+         | ISO 27001 | Information security | In progress | Q3 target |
+         | FedRAMP | US government | Not started | Evaluate |
+
+         **Compliance Feature Requirements:**
+         | Feature | Compliance Need | Implementation |
+         |---------|-----------------|----------------|
+         | Data residency | GDPR, sovereignty | Region selection |
+         | Right to delete | GDPR | Deletion workflow |
+         | Audit logs | All frameworks | Immutable logging |
+         | Access controls | All frameworks | RBAC + policies |
+
+      3. **Integration Requirements Analysis**
+         - Document enterprise integration needs
+         - Map to API capabilities
+         - Identify custom requirements
+
+         | Integration Type | Enterprise Need | Product Capability |
+         |------------------|-----------------|-------------------|
+         | Identity | AD/LDAP sync | SCIM provisioning |
+         | Data | ERP, CRM integration | REST API |
+         | Workflow | Custom automation | Webhooks |
+         | Monitoring | SIEM integration | Audit log export |
+         | Custom | Bespoke integrations | Professional services |
+
+         **API Capability Requirements:**
+         | Capability | PRO | ENTERPRISE |
+         |------------|-----|------------|
+         | Rate limits | Standard | Custom/unlimited |
+         | API versioning | Yes | Yes + LTS |
+         | Webhooks | Basic | Advanced filtering |
+         | Bulk operations | Limited | Full support |
+
+      4. **Support and SLA Requirements**
+         - Document support expectations
+         - Define SLA requirements
+         - Map to service tiers
+
+         | Support Requirement | Enterprise Expectation | Offering |
+         |--------------------|----------------------|---------|
+         | Response time | < 4 hours critical | 2h critical, 4h high |
+         | Availability | 99.9%+ SLA | 99.95% SLA |
+         | Support channels | Phone, dedicated | Named CSM, phone |
+         | Training | Custom training | Onboarding + ongoing |
+         | Documentation | Custom docs | Customizable |
+
+      ### Verification Checklist
+      - [ ] Security requirements comprehensive
+      - [ ] Compliance needs documented with timeline
+      - [ ] Integration requirements mapped
+      - [ ] Support expectations defined
+      - [ ] Gaps identified with remediation plan
+      - [ ] Requirements prioritized by customer impact
+      - [ ] Validated with enterprise prospects/customers
+
+      ### Output
+      Produce enterprise requirements using template:
+      `{project-root}/_bmad/bam/data/templates/enterprise-requirements-template.md`
+
+  - id: stakeholder-mapping-prompt
+    content: |
+      ## Stakeholder Mapping Across Tenant Hierarchy
+
+      Prerequisites: Ensure BAM context loaded via `bam-saga-context`
+
+      **Load patterns:** `{project-root}/_bmad/bam/data/bam-patterns.csv` → filter: `tenant-lifecycle, customization`
+
+      ### Objective
+      Map stakeholders at all levels of the tenant hierarchy to understand
+      decision-making processes, influence patterns, and engagement strategies.
+
+      ### Process
+
+      1. **Stakeholder Identification**
+         - Identify stakeholders by level
+         - Document roles and responsibilities
+         - Map influence and authority
+
+         | Level | Stakeholder | Role | Authority | Influence |
+         |-------|-------------|------|-----------|-----------|
+         | End User | Individual contributor | Uses product daily | None | Low |
+         | End User | Power user | Advanced usage, advocacy | Informal | Medium |
+         | Workspace | Team lead | Team management | Team decisions | High |
+         | Workspace | Admin | Configuration, support | Settings | Medium |
+         | Organization | IT Director | Technical decisions | Vendor approval | High |
+         | Organization | Finance | Budget decisions | Spend approval | High |
+         | Organization | Executive | Strategic decisions | Final authority | Highest |
+
+         **Stakeholder Influence Matrix:**
+         | Stakeholder | Adoption | Upgrade | Expansion | Renewal |
+         |-------------|----------|---------|-----------|---------|
+         | End User | High | Low | Medium | Medium |
+         | Team Lead | High | Medium | High | High |
+         | IT Director | Medium | High | Medium | High |
+         | Finance | Low | High | High | High |
+         | Executive | Low | High | High | Highest |
+
+      2. **Decision-Making Process Mapping**
+         - Map buying decision process
+         - Identify decision influencers
+         - Document approval workflows
+
+         | Decision Type | Stakeholders | Process | Timeline |
+         |---------------|--------------|---------|----------|
+         | FREE signup | End user | Self-serve | Immediate |
+         | PRO upgrade | User + Finance | Card payment | Hours-days |
+         | ENTERPRISE | IT + Finance + Exec | Sales process | Weeks-months |
+         | Expansion | Team lead + Finance | Budget request | Days-weeks |
+         | Renewal | All levels | Review + approval | Weeks |
+
+         **Decision Influence Flow:**
+         | Stage | Primary Influencer | Blockers | Champions |
+         |-------|-------------------|----------|-----------|
+         | Awareness | End users | N/A | Power users |
+         | Evaluation | Team leads | IT security | Advocates |
+         | Decision | Finance | Budget | Executive sponsor |
+         | Adoption | End users | Resistance | Champions |
+
+      3. **Engagement Strategy by Stakeholder**
+         - Define engagement approach per stakeholder
+         - Map communication preferences
+         - Design touchpoint strategy
+
+         | Stakeholder | Engagement Goal | Channel | Frequency |
+         |-------------|-----------------|---------|-----------|
+         | End User | Adoption, satisfaction | In-app, email | Ongoing |
+         | Team Lead | Team success | Email, calls | Weekly/monthly |
+         | IT Director | Security, compliance | Documentation | As needed |
+         | Finance | ROI, cost management | Reports | Monthly/quarterly |
+         | Executive | Strategic value | Executive reviews | Quarterly |
+
+         **Stakeholder Communication Preferences:**
+         | Stakeholder | Prefers | Avoids | Key Messages |
+         |-------------|---------|--------|--------------|
+         | End User | Quick tips | Long emails | Feature value |
+         | Team Lead | Productivity data | Technical jargon | Team efficiency |
+         | IT Director | Security details | Marketing speak | Compliance, control |
+         | Finance | Cost data | Feature lists | ROI, TCO |
+         | Executive | Strategic outcomes | Operational details | Business impact |
+
+      4. **Stakeholder Journey Mapping**
+         - Map stakeholder touchpoints
+         - Identify critical moments
+         - Design intervention points
+
+         | Journey Stage | End User | Admin | Executive |
+         |---------------|----------|-------|-----------|
+         | Pre-purchase | Trial experience | Security review | Business case |
+         | Purchase | Onboarding | Configuration | Contract signing |
+         | Early use | Feature discovery | Team setup | ROI baseline |
+         | Ongoing | Daily usage | Management | Periodic reviews |
+         | Renewal | Satisfaction survey | Usage report | Value assessment |
+
+      ### Verification Checklist
+      - [ ] All stakeholder levels identified
+      - [ ] Influence and authority mapped
+      - [ ] Decision processes documented
+      - [ ] Engagement strategies defined
+      - [ ] Communication preferences noted
+      - [ ] Journey touchpoints mapped
+      - [ ] Validated with sales/success teams
+
+      ### Output
+      Produce stakeholder map using template:
+      `{project-root}/_bmad/bam/data/templates/stakeholder-map-template.md`
+
+  - id: web-research-saga-prompt
+    content: |
+      ## BAM Web Research - Multi-Tenant Discovery
+
+      Research current best practices for multi-tenant discovery.
+
+      **Research Focus:** {{research_topic}}
+
+      Search the web: "{{research_topic}} multi-tenant discovery patterns {date}"
+      Search the web: "{{research_topic}} enterprise SaaS {date}"
+
+      Return findings with: _Source: [URL]_

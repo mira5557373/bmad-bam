@@ -191,8 +191,8 @@ Select an option:
 - Message contract schema
 - Trigger configuration
 - Priority rules
-- **Load template:** `{project-root}/_bmad/bam/templates/agent-handoff-template.md`
-- **Load template:** `{project-root}/_bmad/bam/templates/agent-negotiation-template.md`
+- **Load template:** `{project-root}/_bmad/bam/data/templates/agent-handoff-template.md`
+- **Load template:** `{project-root}/_bmad/bam/data/templates/agent-negotiation-template.md`
 
 ---
 

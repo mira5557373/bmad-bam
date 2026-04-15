@@ -24,7 +24,7 @@ This step loads the Marketplace Design artifact for validation.
 
 - Marketplace design artifact exists to validate
 - **Load patterns:** `{project-root}/_bmad/bam/data/bam-patterns.csv` -> filter: marketplace
-- **Load checklist:** `{project-root}/_bmad/bam/checklists/production-readiness.md`
+- **Load checklist:** `{project-root}/_bmad/bam/data/checklists/production-readiness.md`
 
 ---
 

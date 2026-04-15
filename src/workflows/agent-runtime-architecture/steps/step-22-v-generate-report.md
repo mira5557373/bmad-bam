@@ -27,8 +27,8 @@ Generate a comprehensive validation report summarizing findings from the agent r
 
 - Step 20 completed: Agent runtime architecture artifact loaded successfully
 - Step 21 completed: Validation performed against QG-M3 quality gate criteria
-- **Load checklist:** `{project-root}/_bmad/bam/checklists/qg-m3-agent-runtime.md`
-- **Load template:** `{project-root}/_bmad/bam/templates/quality-gate-report-template.md`
+- **Load checklist:** `{project-root}/_bmad/bam/data/checklists/qg-m3-agent-runtime.md`
+- **Load template:** `{project-root}/_bmad/bam/data/templates/quality-gate-report-template.md`
 
 ---
 

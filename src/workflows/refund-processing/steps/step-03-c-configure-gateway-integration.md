@@ -106,7 +106,7 @@ Present summary of:
 ## Outputs
 
 - Gateway integration specification
-- **Load template:** `{project-root}/_bmad/bam/templates/refund-processing-template.md`
+- **Load template:** `{project-root}/_bmad/bam/data/templates/refund-processing-template.md`
 
 ---
 

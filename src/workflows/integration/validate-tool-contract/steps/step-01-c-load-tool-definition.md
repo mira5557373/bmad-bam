@@ -131,8 +131,8 @@ Document the loaded tool definition:
 
 - Tool definition document
 - Category classification
-- **Load template:** `{project-root}/_bmad/bam/templates/mcp-client-integration-template.md`
-- **Load template:** `{project-root}/_bmad/bam/templates/mcp-server-config-template.md`
+- **Load template:** `{project-root}/_bmad/bam/data/templates/mcp-client-integration-template.md`
+- **Load template:** `{project-root}/_bmad/bam/data/templates/mcp-server-config-template.md`
 
 ## Next Step
 

@@ -36,7 +36,7 @@ Configure tenant context propagation and isolation mechanisms.
 
 - Output from previous step(s) in this workflow
 - Pattern registry: `{project-root}/_bmad/bam/data/bam-patterns.csv`
-- Relevant templates from `{project-root}/_bmad/bam/templates/`
+- Relevant templates from `{project-root}/_bmad/bam/data/templates/`
 - User feedback and refinements from previous steps
 
 ---
@@ -165,7 +165,7 @@ _Source: [URL]_
 - Middleware implementation
 - Test fixtures
 - Foundation epics document
-- **Load template:** `{project-root}/_bmad/bam/templates/foundation-scaffold-template.md`
+- **Load template:** `{project-root}/_bmad/bam/data/templates/foundation-scaffold-template.md`
 
 ## Next Step
 

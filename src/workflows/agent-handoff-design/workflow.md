@@ -100,4 +100,4 @@ Load the existing output artifact, then follow:
 
 ## Templates
 
-- **Load template:** `{project-root}/_bmad/bam/templates/agent-handoff-template.md`
+- **Load template:** `{project-root}/_bmad/bam/data/templates/agent-handoff-template.md`

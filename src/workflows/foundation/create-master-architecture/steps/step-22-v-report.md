@@ -27,8 +27,8 @@ Generate a comprehensive validation report summarizing QG-F1 foundation gate fin
 
 - Step 20 completed: Artifact loaded successfully
 - Step 21 completed: Validation performed against QG-F1 criteria
-- **Load checklist:** `{project-root}/_bmad/bam/checklists/foundation-gate.md`
-- **Load template:** `{project-root}/_bmad/bam/templates/quality-gate-report-template.md`
+- **Load checklist:** `{project-root}/_bmad/bam/data/checklists/foundation-gate.md`
+- **Load template:** `{project-root}/_bmad/bam/data/templates/quality-gate-report-template.md`
 
 ---
 

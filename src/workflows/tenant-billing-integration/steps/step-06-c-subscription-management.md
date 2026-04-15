@@ -39,7 +39,7 @@ Design subscription lifecycle including creation, renewal, pausing, and cancella
 
 - Output from previous step(s) in this workflow
 - Pattern registry: `{project-root}/_bmad/bam/data/bam-patterns.csv`
-- Relevant templates from `{project-root}/_bmad/bam/templates/`
+- Relevant templates from `{project-root}/_bmad/bam/data/templates/`
 - User feedback and refinements from previous steps
 
 ---
@@ -357,7 +357,7 @@ Select an option:
 - Subscription lifecycle diagram
 - Operations specification
 - Trial management rules
-- **Load template:** `{project-root}/_bmad/bam/templates/subscription-management-template.md`
+- **Load template:** `{project-root}/_bmad/bam/data/templates/subscription-management-template.md`
 
 ---
 

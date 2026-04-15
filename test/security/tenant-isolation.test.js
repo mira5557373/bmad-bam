@@ -8,8 +8,8 @@ const path = require('path');
 const yaml = require('js-yaml');
 
 const SRC_DIR = path.join(__dirname, '..', '..', 'src');
-const TEMPLATES_DIR = path.join(SRC_DIR, 'templates');
 const DATA_DIR = path.join(SRC_DIR, 'data');
+const TEMPLATES_DIR = path.join(DATA_DIR, 'templates');  // Now under data/ for BMB compatibility
 const GUIDES_DIR = path.join(DATA_DIR, 'agent-guides', 'bam');
 const WORKFLOWS_DIR = path.join(SRC_DIR, 'workflows');
 

@@ -166,7 +166,7 @@ Select an option:
 
 - Self-service capability catalog
 - Feature access matrix
-- **Load template:** `{project-root}/_bmad/bam/templates/tenant-portal-template.md`
+- **Load template:** `{project-root}/_bmad/bam/data/templates/tenant-portal-template.md`
 
 ---
 

@@ -139,7 +139,7 @@ Select an option:
 - Hierarchy level definitions
 - Cross-hierarchy relationship matrix
 - Constraint specification
-- **Load template:** `{project-root}/_bmad/bam/templates/tenant-hierarchy-template.md`
+- **Load template:** `{project-root}/_bmad/bam/data/templates/tenant-hierarchy-template.md`
 
 ---
 

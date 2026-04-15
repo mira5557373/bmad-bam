@@ -7,7 +7,7 @@ Load RAG observability configuration for QG-AI2 validation.
 ## Prerequisites
 
 - Configuration exists at `{output_folder}/operations/ai/rag-observability-config.md`
-- **Load checklist:** `{project-root}/_bmad/bam/checklists/qg-ai-observability.md`
+- **Load checklist:** `{project-root}/_bmad/bam/data/checklists/qg-ai-observability.md`
 
 ## Actions
 

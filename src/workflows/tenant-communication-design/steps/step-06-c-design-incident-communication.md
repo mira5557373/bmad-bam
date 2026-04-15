@@ -196,7 +196,7 @@ Select an option:
 - Incident communication design document
 - Status page specification
 - Incident template catalog
-- **Load template:** `{project-root}/_bmad/bam/templates/incident-communication-template.md`
+- **Load template:** `{project-root}/_bmad/bam/data/templates/incident-communication-template.md`
 
 ---
 

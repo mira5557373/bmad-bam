@@ -9,9 +9,9 @@ const yaml = require('js-yaml');
 
 const ROOT_DIR = path.join(__dirname, '..');
 const SRC_DIR = path.join(ROOT_DIR, 'src');
-const EXTENSIONS_DIR = path.join(SRC_DIR, 'extensions');
+const EXTENSIONS_DIR = path.join(SRC_DIR, 'data', 'extensions');
 const DATA_DIR = path.join(SRC_DIR, 'data');
-const CHECKLISTS_DIR = path.join(SRC_DIR, 'checklists');
+const CHECKLISTS_DIR = path.join(SRC_DIR, 'data', 'checklists');
 const AGENT_GUIDES_DIR = path.join(DATA_DIR, 'agent-guides', 'bam');
 const WORKFLOWS_DIR = path.join(SRC_DIR, 'workflows');
 

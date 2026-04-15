@@ -27,14 +27,14 @@ Load the LLM evaluation pipeline documents for validation against QG-I3 (Agent S
 
 - LLM evaluation pipeline artifact exists to validate
 - **Load patterns:** `{project-root}/_bmad/bam/data/bam-patterns.csv` → filter: evaluation-patterns
-- **Load checklist:** `{project-root}/_bmad/bam/checklists/qg-i3-agent-safety.md`
+- **Load checklist:** `{project-root}/_bmad/bam/data/checklists/qg-i3-agent-safety.md`
 
 ---
 
 ## Inputs
 
 - Artifact file path for validation
-- Quality gate checklist: `{project-root}/_bmad/bam/checklists/qg-i3-agent-safety.md`
+- Quality gate checklist: `{project-root}/_bmad/bam/data/checklists/qg-i3-agent-safety.md`
 - Pattern registry: `{project-root}/_bmad/bam/data/bam-patterns.csv`
 
 ---

@@ -141,7 +141,7 @@ Select an option:
 - Smoke test execution report
 - Critical path status summary
 - Response time measurements
-- **Load template:** `{project-root}/_bmad/bam/templates/smoke-test-report-template.md`
+- **Load template:** `{project-root}/_bmad/bam/data/templates/smoke-test-report-template.md`
 
 ---
 

@@ -230,7 +230,7 @@ _Source: [URL]_
 - Notification settings documentation
 - Schedule management features
 - Execution monitoring specifications
-- **Load template:** `{project-root}/_bmad/bam/templates/tenant-self-service-reporting-template.md`
+- **Load template:** `{project-root}/_bmad/bam/data/templates/tenant-self-service-reporting-template.md`
 
 ## Next Step
 

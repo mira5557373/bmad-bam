@@ -114,7 +114,7 @@ Present summary of:
 
 - Resolution paths specification
 - Chargeback defense procedures
-- **Load template:** `{project-root}/_bmad/bam/templates/billing-disputes-template.md`
+- **Load template:** `{project-root}/_bmad/bam/data/templates/billing-disputes-template.md`
 
 ---
 

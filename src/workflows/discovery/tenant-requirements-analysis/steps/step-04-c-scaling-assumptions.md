@@ -36,7 +36,7 @@ Document scaling assumptions that will inform architecture decisions.
 
 - Output from previous step(s) in this workflow
 - Pattern registry: `{project-root}/_bmad/bam/data/bam-patterns.csv`
-- Relevant templates from `{project-root}/_bmad/bam/templates/`
+- Relevant templates from `{project-root}/_bmad/bam/data/templates/`
 - User feedback and refinements from previous steps
 
 ---
@@ -135,7 +135,7 @@ Select an option:
 ## Outputs
 
 - Tenant requirements analysis document (complete)
-- **Load template:** `{project-root}/_bmad/bam/templates/capacity-planning-template.md`
+- **Load template:** `{project-root}/_bmad/bam/data/templates/capacity-planning-template.md`
 - **Output to:** `{output_folder}/planning-artifacts/tenant-requirements-analysis.md`
 
 ## Next Step

@@ -8,7 +8,7 @@ Test incident response capabilities and team readiness for security incidents.
 
 - Step 1 complete
 - Incident response plan documented
-- **Load checklists:** `{project-root}/_bmad/bam/checklists/security-checklist.md`
+- **Load checklists:** `{project-root}/_bmad/bam/data/checklists/security-checklist.md`
 
 ## Actions
 

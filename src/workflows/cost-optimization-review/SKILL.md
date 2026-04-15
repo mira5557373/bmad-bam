@@ -94,8 +94,8 @@ This workflow contributes to:
 
 ## References
 
-- Template: `bam/templates/cost-optimization-template.md`
-- Knowledge: `bam/knowledge/cost-optimization-patterns.md`
+- Template: `{project-root}/_bmad/bam/data/templates/cost-optimization-template.md`
+- Knowledge: `{project-root}/_bmad/bam/data/agent-guides/bam/cost-optimization-patterns.md`
 
 ## Web Research
 

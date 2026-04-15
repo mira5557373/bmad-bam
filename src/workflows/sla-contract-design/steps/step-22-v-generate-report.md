@@ -8,7 +8,7 @@ Generate comprehensive validation report for the SLA contract design.
 
 - [ ] Validation checks completed (Step 21-V)
 - [ ] All findings documented
-- **Load template:** `{project-root}/_bmad/bam/templates/validation-report-template.md`
+- **Load template:** `{project-root}/_bmad/bam/data/templates/validation-report-template.md`
 
 ## Actions
 

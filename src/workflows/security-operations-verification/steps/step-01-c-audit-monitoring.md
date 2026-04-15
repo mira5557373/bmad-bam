@@ -8,7 +8,7 @@ Audit security monitoring capabilities for comprehensive threat visibility.
 
 - Security architecture documented
 - Monitoring infrastructure deployed
-- **Load template:** `{project-root}/_bmad/bam/templates/observability-template.md`
+- **Load template:** `{project-root}/_bmad/bam/data/templates/observability-template.md`
 
 ## Actions
 

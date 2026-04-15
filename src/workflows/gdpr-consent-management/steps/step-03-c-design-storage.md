@@ -171,7 +171,7 @@ Ask for confirmation before proceeding to consent management specification creat
 - Tenant-isolated storage design
 - Consent API specification
 - Preference center data model
-- **Load template:** `{project-root}/_bmad/bam/templates/data-residency-template.md`
+- **Load template:** `{project-root}/_bmad/bam/data/templates/data-residency-template.md`
 
 ## Next Step
 

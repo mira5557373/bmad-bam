@@ -137,4 +137,4 @@ This workflow contributes to QG-M3 by establishing model deployment capabilities
 
 ## Templates
 
-- **Load template:** `{project-root}/_bmad/bam/templates/model-deployment-template.md`
+- **Load template:** `{project-root}/_bmad/bam/data/templates/model-deployment-template.md`

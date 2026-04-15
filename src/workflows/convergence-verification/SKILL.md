@@ -115,23 +115,23 @@ This workflow contributes to:
 
 ## References
 
-- Checklist: `bam/checklists/qg-i1-convergence.md`, `bam/checklists/qg-i2-tenant-safety.md`, `bam/checklists/qg-i3-agent-safety.md`
-- Agent Runtime Patterns: `bam/knowledge/agent-runtime-patterns.md`
-- Multi-Tenant Patterns: `bam/knowledge/multi-tenant-patterns.md`
-- Tenant Isolation Testing: `bam/knowledge/testing-tenant-isolation.md`
-- Multi-Tenant Test Fixtures: `bam/knowledge/testing-multi-tenant-fixtures.md`
-- Agent Safety Testing: `bam/knowledge/testing-agent-safety.md`
-- Section Reference Map: `bam/knowledge/section-reference-map.md`
-- Workflow Sequence: `bam/knowledge/workflow-sequence.md`
-- Workflow Ownership: `bam/knowledge/workflow-ownership.md`
+- Checklist: `{project-root}/_bmad/bam/data/checklists/qg-i1-convergence.md`, `{project-root}/_bmad/bam/data/checklists/qg-i2-tenant-safety.md`, `{project-root}/_bmad/bam/data/checklists/qg-i3-agent-safety.md`
+- Agent Runtime Patterns: `{project-root}/_bmad/bam/data/agent-guides/bam/agent-runtime-patterns.md`
+- Multi-Tenant Patterns: `{project-root}/_bmad/bam/data/agent-guides/bam/multi-tenant-patterns.md`
+- Tenant Isolation Testing: `{project-root}/_bmad/bam/data/agent-guides/bam/testing-tenant-isolation.md`
+- Multi-Tenant Test Fixtures: `{project-root}/_bmad/bam/data/agent-guides/bam/testing-multi-tenant-fixtures.md`
+- Agent Safety Testing: `{project-root}/_bmad/bam/data/agent-guides/bam/testing-agent-safety.md`
+- Section Reference Map: `{project-root}/_bmad/bam/data/agent-guides/bam/section-reference-map.md`
+- Workflow Sequence: `{project-root}/_bmad/bam/data/agent-guides/bam/workflow-sequence.md`
+- Workflow Ownership: `{project-root}/_bmad/bam/data/agent-guides/bam/workflow-ownership.md`
 
-- Knowledge: `bam/knowledge/multi-tenant-patterns.md`, `bam/knowledge/agent-runtime-patterns.md`, `bam/knowledge/testing-tenant-isolation.md`, `bam/knowledge/testing-multi-tenant-fixtures.md`
-- Template: `bam/templates/sprint-status-template.yaml`
-- Agent Runtime Patterns: `bam/knowledge/agent-runtime-patterns.md`
-- Multi-Tenant Patterns: `bam/knowledge/multi-tenant-patterns.md`
-- Tenant Isolation Testing: `bam/knowledge/testing-tenant-isolation.md`
-- Multi-Tenant Test Fixtures: `bam/knowledge/testing-multi-tenant-fixtures.md`
-- Agent Safety Testing: `bam/knowledge/testing-agent-safety.md`
-- Section Reference Map: `bam/knowledge/section-reference-map.md`
-- Workflow Sequence: `bam/knowledge/workflow-sequence.md`
-- Workflow Ownership: `bam/knowledge/workflow-ownership.md`
+- Knowledge: `{project-root}/_bmad/bam/data/agent-guides/bam/multi-tenant-patterns.md`, `{project-root}/_bmad/bam/data/agent-guides/bam/agent-runtime-patterns.md`, `{project-root}/_bmad/bam/data/agent-guides/bam/testing-tenant-isolation.md`, `{project-root}/_bmad/bam/data/agent-guides/bam/testing-multi-tenant-fixtures.md`
+- Template: `{project-root}/_bmad/bam/data/templates/sprint-status-template.yaml`
+- Agent Runtime Patterns: `{project-root}/_bmad/bam/data/agent-guides/bam/agent-runtime-patterns.md`
+- Multi-Tenant Patterns: `{project-root}/_bmad/bam/data/agent-guides/bam/multi-tenant-patterns.md`
+- Tenant Isolation Testing: `{project-root}/_bmad/bam/data/agent-guides/bam/testing-tenant-isolation.md`
+- Multi-Tenant Test Fixtures: `{project-root}/_bmad/bam/data/agent-guides/bam/testing-multi-tenant-fixtures.md`
+- Agent Safety Testing: `{project-root}/_bmad/bam/data/agent-guides/bam/testing-agent-safety.md`
+- Section Reference Map: `{project-root}/_bmad/bam/data/agent-guides/bam/section-reference-map.md`
+- Workflow Sequence: `{project-root}/_bmad/bam/data/agent-guides/bam/workflow-sequence.md`
+- Workflow Ownership: `{project-root}/_bmad/bam/data/agent-guides/bam/workflow-ownership.md`

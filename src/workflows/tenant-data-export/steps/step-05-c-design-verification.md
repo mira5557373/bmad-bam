@@ -38,7 +38,7 @@ Design verification mechanisms to ensure export completeness and integrity.
 
 - Output from previous step(s) in this workflow
 - Pattern registry: `{project-root}/_bmad/bam/data/bam-patterns.csv`
-- Relevant templates from `{project-root}/_bmad/bam/templates/`
+- Relevant templates from `{project-root}/_bmad/bam/data/templates/`
 - User feedback and refinements from previous steps
 
 ---
@@ -226,8 +226,8 @@ Select an option:
 
 - Data export design document
 - Export pipeline architecture
-- **Load template:** `{project-root}/_bmad/bam/templates/compliance-design-template.md`
-- **Load template:** `{project-root}/_bmad/bam/templates/data-export-template.md`
+- **Load template:** `{project-root}/_bmad/bam/data/templates/compliance-design-template.md`
+- **Load template:** `{project-root}/_bmad/bam/data/templates/data-export-template.md`
 
 ---
 

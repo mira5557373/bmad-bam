@@ -37,7 +37,7 @@ Design rapid shutdown mechanisms to immediately halt agent operations when safet
 
 - Output from previous step(s) in this workflow
 - Pattern registry: `{project-root}/_bmad/bam/data/bam-patterns.csv`
-- Relevant templates from `{project-root}/_bmad/bam/templates/`
+- Relevant templates from `{project-root}/_bmad/bam/data/templates/`
 - User feedback and refinements from previous steps
 
 ---
@@ -135,7 +135,7 @@ Select an option:
 - Circuit breaker threshold definitions
 - Ops runbook for emergency procedures
 - Rollback playbook with decision tree
-- **Load template:** `{project-root}/_bmad/bam/templates/agent-runtime-architecture-template.md`
+- **Load template:** `{project-root}/_bmad/bam/data/templates/agent-runtime-architecture-template.md`
 
 ---
 

@@ -349,9 +349,9 @@ Act as a {role} specializing in {domain}.
 
 ## References
 
-- Template: `bam/templates/{template}.md`
-- Checklist: `bam/checklists/{checklist}.md`
-- Knowledge: `bam/data/agent-guides/bam/{guide}.md`
+- Template: `{project-root}/_bmad/bam/data/templates/{template}.md`
+- Checklist: `{project-root}/_bmad/bam/data/checklists/{checklist}.md`
+- Knowledge: `{project-root}/_bmad/bam/data/agent-guides/bam/{guide}.md`
 
 ## Web Research
 
@@ -438,7 +438,7 @@ Present summary and ask for confirmation before proceeding.
 
 - {Artifact 1}
 - {Artifact 2}
-- **Load template:** `{project-root}/_bmad/bam/templates/{template}.md`
+- **Load template:** `{project-root}/_bmad/bam/data/templates/{template}.md`
 
 ## Next Step
 

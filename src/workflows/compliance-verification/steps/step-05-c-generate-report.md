@@ -8,7 +8,7 @@ Compile all findings into a comprehensive compliance verification report.
 
 - Steps 1-4 complete
 - All findings documented
-- **Load template:** `{project-root}/_bmad/bam/templates/compliance-framework-template.md`
+- **Load template:** `{project-root}/_bmad/bam/data/templates/compliance-framework-template.md`
 
 ## Actions
 

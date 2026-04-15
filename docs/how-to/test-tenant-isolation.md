@@ -198,7 +198,7 @@ Tests must pass for:
 
 ## Checklist
 
-Use `src/checklists/tenant-isolation.md` to verify all layers.
+Use `src/data/checklists/tenant-isolation.md` to verify all layers.
 
 ## Related
 

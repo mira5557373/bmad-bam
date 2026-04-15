@@ -37,7 +37,7 @@ Create route configurations, design request transformation, configure response h
 - Output from Steps 1-3
 - Service topology
 - Pattern registry: `{project-root}/_bmad/bam/data/bam-patterns.csv`
-- Relevant templates from `{project-root}/_bmad/bam/templates/`
+- Relevant templates from `{project-root}/_bmad/bam/data/templates/`
 
 ---
 

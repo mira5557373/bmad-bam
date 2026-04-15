@@ -63,4 +63,4 @@ Load the existing gdpr-consent-management-spec.md, then follow `step-2X-v-` (20 
 
 - **Patterns:** Load from `{project-root}/_bmad/bam/data/bam-patterns.csv` filter: `compliance`
 - **Compliance:** Load from `{project-root}/_bmad/bam/data/compliance-frameworks.csv`
-- **Templates:** `{project-root}/_bmad/bam/templates/gdpr-consent-template.md`
+- **Templates:** `{project-root}/_bmad/bam/data/templates/gdpr-consent-template.md`

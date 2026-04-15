@@ -29,7 +29,7 @@ Create an operational runbook for contract renewals, including monitoring dashbo
 
 - Step 2 completed: Notification workflow design
 - **Load patterns:** `{project-root}/_bmad/bam/data/bam-patterns.csv` → filter: observability
-- **Load template:** `{project-root}/_bmad/bam/templates/runbook-template.md`
+- **Load template:** `{project-root}/_bmad/bam/data/templates/runbook-template.md`
 
 ---
 
@@ -37,7 +37,7 @@ Create an operational runbook for contract renewals, including monitoring dashbo
 
 - Output from previous step(s) in this workflow
 - Pattern registry: `{project-root}/_bmad/bam/data/bam-patterns.csv`
-- Relevant templates from `{project-root}/_bmad/bam/templates/`
+- Relevant templates from `{project-root}/_bmad/bam/data/templates/`
 - User feedback and refinements from previous steps
 
 ---

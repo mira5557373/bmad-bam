@@ -26,7 +26,7 @@ Apply targeted modifications to the existing failover execution report based on 
 - Execution report loaded (Step 10)
 - Modification scope confirmed
 - **Load patterns:** `{project-root}/_bmad/bam/data/bam-patterns.csv` → filter: disaster-recovery
-- **Load template:** `{project-root}/_bmad/bam/templates/failover-execution-template.md`
+- **Load template:** `{project-root}/_bmad/bam/data/templates/failover-execution-template.md`
 
 
 ---

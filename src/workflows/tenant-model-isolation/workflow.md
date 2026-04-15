@@ -112,8 +112,8 @@ This workflow contributes to QG-DC1 by establishing the data classification foun
 
 ## Templates
 
-- **Load template:** `{project-root}/_bmad/bam/templates/customization-template.md`
-- **Load template:** `{project-root}/_bmad/bam/templates/performance-isolation-template.md`
-- **Load template:** `{project-root}/_bmad/bam/templates/tenant-model-template.md`
-- **Load template:** `{project-root}/_bmad/bam/templates/tenant-routing-template.md`
-- **Load template:** `{project-root}/_bmad/bam/templates/testing-isolation-template.md`
+- **Load template:** `{project-root}/_bmad/bam/data/templates/customization-template.md`
+- **Load template:** `{project-root}/_bmad/bam/data/templates/performance-isolation-template.md`
+- **Load template:** `{project-root}/_bmad/bam/data/templates/tenant-model-template.md`
+- **Load template:** `{project-root}/_bmad/bam/data/templates/tenant-routing-template.md`
+- **Load template:** `{project-root}/_bmad/bam/data/templates/testing-isolation-template.md`

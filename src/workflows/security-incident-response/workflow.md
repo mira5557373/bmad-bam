@@ -101,5 +101,5 @@ This workflow produces artifacts that must pass QG-S9 validation. Upon completio
 ## References
 
 - **Patterns:** Load from `{project-root}/_bmad/bam/data/bam-patterns.csv` filter: `security`
-- **Templates:** `{project-root}/_bmad/bam/templates/security-incident-response-template.md`
-- **Checklists:** `{project-root}/_bmad/bam/checklists/production-readiness.md`
+- **Templates:** `{project-root}/_bmad/bam/data/templates/security-incident-response-template.md`
+- **Checklists:** `{project-root}/_bmad/bam/data/checklists/production-readiness.md`

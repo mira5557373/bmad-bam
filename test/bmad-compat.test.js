@@ -8,9 +8,9 @@ const yaml = require('js-yaml');
 
 const BAM_ROOT = path.resolve(__dirname, '..');
 const WORKFLOWS_DIR = path.join(BAM_ROOT, 'src', 'workflows');
-const EXTENSIONS_DIR = path.join(BAM_ROOT, 'src', 'extensions');
+const EXTENSIONS_DIR = path.join(BAM_ROOT, 'src', 'data', 'extensions');
 const DATA_DIR = path.join(BAM_ROOT, 'src', 'data');
-const TEMPLATES_DIR = path.join(BAM_ROOT, 'src', 'templates');
+const TEMPLATES_DIR = path.join(BAM_ROOT, 'src', 'data', 'templates');
 
 // Helper: recursively find all workflow directories
 const getAllWorkflows = (dir, results = []) => {
@@ -545,7 +545,7 @@ describe('BMAD Method Compatibility', () => {
 
   describe('Module Help CSV Consistency', () => {
     test('module-help.csv exists and has required columns', () => {
-      const csvPath = path.join(BAM_ROOT, 'src', 'workflows', 'module-help.csv');
+      const csvPath = path.join(BAM_ROOT, 'src', 'module-help.csv');
       expect(fs.existsSync(csvPath)).toBe(true);
 
       const content = fs.readFileSync(csvPath, 'utf-8');
@@ -604,10 +604,21 @@ describe('BMAD Method Compatibility', () => {
     });
   });
 
-  describe('No Orphaned Directories', () => {
-    test('src/skills directory should not exist (orphaned)', () => {
+  describe('BMB Compatibility Directories', () => {
+    test('src/skills directory exists (empty, BMB compatibility)', () => {
       const skillsDir = path.join(BAM_ROOT, 'src', 'skills');
-      expect(fs.existsSync(skillsDir)).toBe(false);
+      expect(fs.existsSync(skillsDir)).toBe(true);
+      // Should be empty (only .gitkeep)
+      const files = fs.readdirSync(skillsDir);
+      expect(files.filter(f => f !== '.gitkeep').length).toBe(0);
+    });
+
+    test('src/agents directory exists (empty, BMB compatibility)', () => {
+      const agentsDir = path.join(BAM_ROOT, 'src', 'agents');
+      expect(fs.existsSync(agentsDir)).toBe(true);
+      // Should be empty (only .gitkeep)
+      const files = fs.readdirSync(agentsDir);
+      expect(files.filter(f => f !== '.gitkeep').length).toBe(0);
     });
   });
 });

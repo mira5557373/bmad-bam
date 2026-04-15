@@ -158,20 +158,20 @@ Present summary of what was produced. If not headless, ask if adjustments are ne
 
 ## References
 
-- Template: `bam/templates/master-architecture-template.md`
-- Independent Development: `bam/knowledge/independent-development.md`
-- Shared Kernel Patterns: `bam/knowledge/shared-kernel-patterns.md`
-- RLS Best Practices: `bam/knowledge/rls-best-practices.md`
-- Workflow Sequence: `bam/knowledge/workflow-sequence.md`
-- Workflow Ownership: `bam/knowledge/workflow-ownership.md`
+- Template: `{project-root}/_bmad/bam/data/templates/master-architecture-template.md`
+- Independent Development: `{project-root}/_bmad/bam/data/agent-guides/bam/independent-development.md`
+- Shared Kernel Patterns: `{project-root}/_bmad/bam/data/agent-guides/bam/shared-kernel-patterns.md`
+- RLS Best Practices: `{project-root}/_bmad/bam/data/agent-guides/bam/rls-best-practices.md`
+- Workflow Sequence: `{project-root}/_bmad/bam/data/agent-guides/bam/workflow-sequence.md`
+- Workflow Ownership: `{project-root}/_bmad/bam/data/agent-guides/bam/workflow-ownership.md`
 
-- Knowledge: `bam/knowledge/multi-tenant-patterns.md`, `bam/knowledge/agent-runtime-patterns.md`, `bam/knowledge/shared-kernel-patterns.md`, `bam/knowledge/module-facade-patterns.md`, `bam/knowledge/rls-best-practices.md`, `bam/knowledge/workflow-sequence.md`, `bam/knowledge/workflow-ownership.md`
-- Checklist: `bam/checklists/foundation-gate.md`
-- Independent Development: `bam/knowledge/independent-development.md`
-- Shared Kernel Patterns: `bam/knowledge/shared-kernel-patterns.md`
-- RLS Best Practices: `bam/knowledge/rls-best-practices.md`
-- Workflow Sequence: `bam/knowledge/workflow-sequence.md`
-- Workflow Ownership: `bam/knowledge/workflow-ownership.md`
+- Knowledge: `{project-root}/_bmad/bam/data/agent-guides/bam/multi-tenant-patterns.md`, `{project-root}/_bmad/bam/data/agent-guides/bam/agent-runtime-patterns.md`, `{project-root}/_bmad/bam/data/agent-guides/bam/shared-kernel-patterns.md`, `{project-root}/_bmad/bam/data/agent-guides/bam/module-facade-patterns.md`, `{project-root}/_bmad/bam/data/agent-guides/bam/rls-best-practices.md`, `{project-root}/_bmad/bam/data/agent-guides/bam/workflow-sequence.md`, `{project-root}/_bmad/bam/data/agent-guides/bam/workflow-ownership.md`
+- Checklist: `{project-root}/_bmad/bam/data/checklists/foundation-gate.md`
+- Independent Development: `{project-root}/_bmad/bam/data/agent-guides/bam/independent-development.md`
+- Shared Kernel Patterns: `{project-root}/_bmad/bam/data/agent-guides/bam/shared-kernel-patterns.md`
+- RLS Best Practices: `{project-root}/_bmad/bam/data/agent-guides/bam/rls-best-practices.md`
+- Workflow Sequence: `{project-root}/_bmad/bam/data/agent-guides/bam/workflow-sequence.md`
+- Workflow Ownership: `{project-root}/_bmad/bam/data/agent-guides/bam/workflow-ownership.md`
 
 ## Quality Gates
 

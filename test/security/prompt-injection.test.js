@@ -8,9 +8,9 @@ const path = require('path');
 const yaml = require('js-yaml');
 
 const SRC_DIR = path.join(__dirname, '..', '..', 'src');
-const EXTENSIONS_DIR = path.join(SRC_DIR, 'extensions');
+const EXTENSIONS_DIR = path.join(SRC_DIR, 'data', 'extensions');
 const GUIDES_DIR = path.join(SRC_DIR, 'data', 'agent-guides', 'bam');
-const TEMPLATES_DIR = path.join(SRC_DIR, 'templates');
+const TEMPLATES_DIR = path.join(SRC_DIR, 'data', 'templates');
 
 // Security patterns to detect
 const SECURITY_PATTERNS = {

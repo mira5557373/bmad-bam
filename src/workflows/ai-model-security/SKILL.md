@@ -123,6 +123,6 @@ This workflow contributes to:
 
 ## References
 
-- Knowledge: `bam/knowledge/llm-versioning.md`, `bam/knowledge/agent-runtime-patterns.md`
-- Patterns: `bam/data/bam-patterns.csv` (model-versioning, ai-safety, model-deployment)
-- Checklist: `bam/checklists/qg-s4-ai-security.md`
+- Knowledge: `{project-root}/_bmad/bam/data/agent-guides/bam/llm-versioning.md`, `{project-root}/_bmad/bam/data/agent-guides/bam/agent-runtime-patterns.md`
+- Patterns: `{project-root}/_bmad/bam/data/bam-patterns.csv` (model-versioning, ai-safety, model-deployment)
+- Checklist: `{project-root}/_bmad/bam/data/checklists/qg-s4-ai-security.md`

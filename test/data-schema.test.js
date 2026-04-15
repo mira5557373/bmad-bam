@@ -316,7 +316,7 @@ describe('Module-Help CSV Consistency', () => {
 
   test('module-help.csv after field references valid workflow names', () => {
     // Parse module-help.csv
-    const helpPath = path.join(ROOT_DIR, 'src', 'workflows', 'module-help.csv');
+    const helpPath = path.join(ROOT_DIR, 'src', 'module-help.csv');
     const helpContent = fs.readFileSync(helpPath, 'utf-8');
     const helpCsv = parseCSV(helpContent);
 
@@ -359,7 +359,7 @@ describe('Module-Help CSV Consistency', () => {
 
   test('all module-help.csv skills have corresponding bmad-manifest.json', () => {
     // Parse module-help.csv
-    const helpPath = path.join(ROOT_DIR, 'src', 'workflows', 'module-help.csv');
+    const helpPath = path.join(ROOT_DIR, 'src', 'module-help.csv');
     const helpContent = fs.readFileSync(helpPath, 'utf-8');
     const helpCsv = parseCSV(helpContent);
 

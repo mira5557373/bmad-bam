@@ -26,9 +26,9 @@ Validate the convergence verification report against QG-I1 quality gate criteria
 - Step 20 completed: Artifact loaded successfully
 - **Load patterns:** `{project-root}/_bmad/bam/data/bam-patterns.csv` → filter: tenant-isolation
 - **Load quality gate:** `{project-root}/_bmad/bam/data/quality-gates.csv` -> filter: `QG-I1,QG-I2,QG-I3`
-- **Load checklist:** `{project-root}/_bmad/bam/checklists/qg-i1-convergence.md`
-- **Load checklist:** `{project-root}/_bmad/bam/checklists/qg-i2-tenant-safety.md`
-- **Load checklist:** `{project-root}/_bmad/bam/checklists/qg-i3-agent-safety.md`
+- **Load checklist:** `{project-root}/_bmad/bam/data/checklists/qg-i1-convergence.md`
+- **Load checklist:** `{project-root}/_bmad/bam/data/checklists/qg-i2-tenant-safety.md`
+- **Load checklist:** `{project-root}/_bmad/bam/data/checklists/qg-i3-agent-safety.md`
 
 ## Validation Checklist
 

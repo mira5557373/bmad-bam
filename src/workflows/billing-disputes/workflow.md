@@ -49,4 +49,4 @@ This uses **micro-file architecture** for disciplined execution.
 
 ## Templates
 
-- **Load template:** `{project-root}/_bmad/bam/templates/billing-disputes-template.md`
+- **Load template:** `{project-root}/_bmad/bam/data/templates/billing-disputes-template.md`

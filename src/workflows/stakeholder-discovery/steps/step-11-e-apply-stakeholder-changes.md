@@ -26,7 +26,7 @@ Apply targeted modifications to the existing stakeholder map based on the scope 
 - Stakeholder map loaded (Step 10)
 - Modification scope confirmed
 - **Load patterns:** `{project-root}/_bmad/bam/data/bam-patterns.csv` -> filter: governance
-- **Load template:** `{project-root}/_bmad/bam/templates/stakeholder-map-template.md`
+- **Load template:** `{project-root}/_bmad/bam/data/templates/stakeholder-map-template.md`
 
 
 ---

@@ -28,7 +28,7 @@ Design cost optimization strategies for LLM usage, balancing cost efficiency wit
 
 - Step 3 completed: Fallback chains configured
 - **Load patterns:** `{project-root}/_bmad/bam/data/bam-patterns.csv` -> filter: operations
-- **Load checklist:** `{project-root}/_bmad/bam/checklists/qg-m3-agent-runtime.md`
+- **Load checklist:** `{project-root}/_bmad/bam/data/checklists/qg-m3-agent-runtime.md`
 
 ---
 

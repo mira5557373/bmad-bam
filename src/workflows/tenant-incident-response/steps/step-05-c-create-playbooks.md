@@ -29,7 +29,7 @@ Create operational playbooks for common incident scenarios specific to multi-ten
 
 - Steps 1-4 completed: Severity, isolation, communication, and recovery defined
 - **Load patterns:** `{project-root}/_bmad/bam/data/bam-patterns.csv` → filter: observability
-- **Load template:** `{project-root}/_bmad/bam/templates/runbook-template.md`
+- **Load template:** `{project-root}/_bmad/bam/data/templates/runbook-template.md`
 
 ---
 
@@ -38,7 +38,7 @@ Create operational playbooks for common incident scenarios specific to multi-ten
 
 - Output from previous step(s) in this workflow
 - Pattern registry: `{project-root}/_bmad/bam/data/bam-patterns.csv`
-- Relevant templates from `{project-root}/_bmad/bam/templates/`
+- Relevant templates from `{project-root}/_bmad/bam/data/templates/`
 - User feedback and refinements from previous steps
 
 ---
@@ -191,9 +191,9 @@ Select an option:
 - Complete incident playbook collection
 - **Output to:** `{output_folder}/planning-artifacts/operations/tenant-incident-response-plan.md`
 - **Output to:** `{output_folder}/planning-artifacts/operations/incident-playbooks.md`
-- **Load template:** `{project-root}/_bmad/bam/templates/runbook-template.md`
-- **Load template:** `{project-root}/_bmad/bam/templates/incident-response-template.md`
-- **Load template:** `{project-root}/_bmad/bam/templates/escalation-runbook-template.md`
+- **Load template:** `{project-root}/_bmad/bam/data/templates/runbook-template.md`
+- **Load template:** `{project-root}/_bmad/bam/data/templates/incident-response-template.md`
+- **Load template:** `{project-root}/_bmad/bam/data/templates/escalation-runbook-template.md`
 
 ---
 

@@ -41,7 +41,7 @@ Create a comprehensive isolation matrix that classifies ALL asset types by their
 
 - Output from previous step(s) in this workflow
 - Pattern registry: `{project-root}/_bmad/bam/data/bam-patterns.csv`
-- Relevant templates from `{project-root}/_bmad/bam/templates/`
+- Relevant templates from `{project-root}/_bmad/bam/data/templates/`
 - User feedback and refinements from previous steps
 
 ---
@@ -222,10 +222,10 @@ Ask for confirmation before proceeding to context propagation design.
 - Complete isolation matrix document
 - Per-asset verification test specifications
 - Audit checklist with all assets covered
-- **Load template:** `{project-root}/_bmad/bam/templates/tenant-isolation-matrix.md`
-- **Load template:** `{project-root}/_bmad/bam/templates/database-schema-template.md`
-- **Load template:** `{project-root}/_bmad/bam/templates/tenant-boundary-audit-template.md`
-- **Load template:** `{project-root}/_bmad/bam/templates/tenant-isolation-design-template.md`
+- **Load template:** `{project-root}/_bmad/bam/data/templates/tenant-isolation-matrix.md`
+- **Load template:** `{project-root}/_bmad/bam/data/templates/database-schema-template.md`
+- **Load template:** `{project-root}/_bmad/bam/data/templates/tenant-boundary-audit-template.md`
+- **Load template:** `{project-root}/_bmad/bam/data/templates/tenant-isolation-design-template.md`
 
 ---
 

@@ -37,7 +37,7 @@ Design schema evolution rules, plan compatibility modes, set up schema validatio
 - Output from Steps 1-2 (Domains, topics)
 - Schema format preferences
 - Pattern registry: `{project-root}/_bmad/bam/data/bam-patterns.csv`
-- Relevant templates from `{project-root}/_bmad/bam/templates/`
+- Relevant templates from `{project-root}/_bmad/bam/data/templates/`
 
 ---
 

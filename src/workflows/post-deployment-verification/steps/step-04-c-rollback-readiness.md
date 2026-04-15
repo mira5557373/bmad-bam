@@ -159,7 +159,7 @@ Select an option:
 - Rollback procedure confirmation
 - Estimated rollback timeline
 - Post-deployment verification report (complete)
-- **Load template:** `{project-root}/_bmad/bam/templates/rollback-procedure-template.md`
+- **Load template:** `{project-root}/_bmad/bam/data/templates/rollback-procedure-template.md`
 
 ---
 

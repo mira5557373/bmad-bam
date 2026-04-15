@@ -231,7 +231,7 @@ _Source: [URL]_
 - Data integrity assessment
 - Tenant access verification
 - Performance comparison
-- **Load template:** `{project-root}/_bmad/bam/templates/failover-execution-template.md`
+- **Load template:** `{project-root}/_bmad/bam/data/templates/failover-execution-template.md`
 
 ## Next Step
 

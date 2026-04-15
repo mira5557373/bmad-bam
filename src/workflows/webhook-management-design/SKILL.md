@@ -116,6 +116,6 @@ Design webhook security measures:
 
 ## References
 
-- Template: `bam/templates/webhook-delivery-template.md`
-- Multi-Tenant Patterns: `bam/knowledge/multi-tenant-patterns.md`
-- Event-Driven Patterns: `bam/knowledge/event-driven-patterns.md`
+- Template: `{project-root}/_bmad/bam/data/templates/webhook-delivery-template.md`
+- Multi-Tenant Patterns: `{project-root}/_bmad/bam/data/agent-guides/bam/multi-tenant-patterns.md`
+- Event-Driven Patterns: `{project-root}/_bmad/bam/data/agent-guides/bam/event-driven-patterns.md`

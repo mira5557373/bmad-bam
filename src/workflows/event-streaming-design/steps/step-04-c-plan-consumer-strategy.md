@@ -37,7 +37,7 @@ Design consumer groups, configure offset management, plan DLQ handling, and desi
 - Output from Steps 1-3
 - Consumer SLA requirements
 - Pattern registry: `{project-root}/_bmad/bam/data/bam-patterns.csv`
-- Relevant templates from `{project-root}/_bmad/bam/templates/`
+- Relevant templates from `{project-root}/_bmad/bam/data/templates/`
 
 ---
 
@@ -143,7 +143,7 @@ Select an option:
 - Consumer strategy document
 - DLQ configuration
 - Replay procedures
-- **Load template:** `{project-root}/_bmad/bam/templates/event-streaming-template.md`
+- **Load template:** `{project-root}/_bmad/bam/data/templates/event-streaming-template.md`
 
 ## Next Step
 

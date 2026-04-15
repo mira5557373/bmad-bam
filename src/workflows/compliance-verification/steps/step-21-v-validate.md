@@ -28,7 +28,7 @@ Validate the compliance verification artifacts against quality criteria and regu
 - Previous step completed (step-20-v-load-artifact.md)
 - **Load patterns:** `{project-root}/_bmad/bam/data/compliance-frameworks.csv`
 - **Load quality gate:** `{project-root}/_bmad/bam/data/quality-gates.csv` -> filter: `QG-CP1`
-- **Load checklist:** `{project-root}/_bmad/bam/checklists/compliance-checklist.md`
+- **Load checklist:** `{project-root}/_bmad/bam/data/checklists/compliance-checklist.md`
 
 ---
 

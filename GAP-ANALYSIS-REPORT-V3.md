@@ -450,12 +450,12 @@ npm test
 
 | Type | Count | Location |
 |------|-------|----------|
-| Extensions | 19 | `src/extensions/` |
+| Extensions | 19 | `src/data/extensions/` |
 | Workflows | 27 | `src/workflows/` |
 | Knowledge | 70 | `src/knowledge/` |
 | Agent Guides | 35 | `src/data/agent-guides/bam/` |
-| Checklists | 10 | `src/checklists/` |
-| Templates | 50 | `src/templates/` |
+| Checklists | 10 | `src/data/checklists/` |
+| Templates | 50 | `src/data/templates/` |
 | Step Files | 243 | `src/workflows/*/steps-*/` |
 | Tests | 5 files (96 tests) | `test/` |
 

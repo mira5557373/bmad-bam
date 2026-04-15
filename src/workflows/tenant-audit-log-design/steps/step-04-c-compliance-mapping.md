@@ -29,7 +29,7 @@ Map the audit log design to specific compliance framework requirements, ensuring
 
 - Step 3 completed: Query patterns with access controls
 - **Load patterns:** `{project-root}/_bmad/bam/data/compliance-frameworks.csv`
-- **Load checklist:** `{project-root}/_bmad/bam/checklists/qg-i2-tenant-safety.md`
+- **Load checklist:** `{project-root}/_bmad/bam/data/checklists/qg-i2-tenant-safety.md`
 
 ---
 

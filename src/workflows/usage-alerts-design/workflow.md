@@ -60,4 +60,4 @@ Default: **Create** mode. In headless mode, always use Create.
 
 ## Templates
 
-- **Load template:** `{project-root}/_bmad/bam/templates/usage-alerts-template.md`
+- **Load template:** `{project-root}/_bmad/bam/data/templates/usage-alerts-template.md`

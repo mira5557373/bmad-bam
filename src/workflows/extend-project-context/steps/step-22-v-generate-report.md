@@ -26,7 +26,7 @@ Generate a validation report summarizing findings from the BAM section validatio
 ## Prerequisites
 
 - Step 21 completed: Validation performed
-- **Load template:** `{project-root}/_bmad/bam/templates/quality-gate-report-template.md`
+- **Load template:** `{project-root}/_bmad/bam/data/templates/quality-gate-report-template.md`
 
 ---
 

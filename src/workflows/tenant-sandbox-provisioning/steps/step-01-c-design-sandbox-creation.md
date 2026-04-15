@@ -95,8 +95,8 @@ _Source: [URL]_
 - Resource constraint matrix by sandbox type
 - Isolation requirements and mitigations
 - Design decisions documented in frontmatter
-- **Load template:** `{project-root}/_bmad/bam/templates/tenant-sandbox-template.md`
-- **Load template:** `{project-root}/_bmad/bam/templates/tenant-fixture-template.md`
+- **Load template:** `{project-root}/_bmad/bam/data/templates/tenant-sandbox-template.md`
+- **Load template:** `{project-root}/_bmad/bam/data/templates/tenant-fixture-template.md`
 
 ---
 

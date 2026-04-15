@@ -9,8 +9,8 @@ Audit data isolation mechanisms ensuring complete separation of tenant data acro
 - Tenant architecture documented
 - Isolation configuration available
 - **Load templates:**
-  - `{project-root}/_bmad/bam/templates/rls-policy-template.md`
-  - `{project-root}/_bmad/bam/templates/tenant-context-template.md`
+  - `{project-root}/_bmad/bam/data/templates/rls-policy-template.md`
+  - `{project-root}/_bmad/bam/data/templates/tenant-context-template.md`
 
 ## Actions
 

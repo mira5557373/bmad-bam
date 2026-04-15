@@ -150,9 +150,9 @@ Select an option:
 - Feature difference matrix
 - Resource limits table
 - Data isolation assessment
-- **Load template:** `{project-root}/_bmad/bam/templates/tier-migration-template.md`
-- **Load template:** `{project-root}/_bmad/bam/templates/tier-journey-template.md`
-- **Load template:** `{project-root}/_bmad/bam/templates/tier-journey-map-template.md`
+- **Load template:** `{project-root}/_bmad/bam/data/templates/tier-migration-template.md`
+- **Load template:** `{project-root}/_bmad/bam/data/templates/tier-journey-template.md`
+- **Load template:** `{project-root}/_bmad/bam/data/templates/tier-journey-map-template.md`
 
 ---
 

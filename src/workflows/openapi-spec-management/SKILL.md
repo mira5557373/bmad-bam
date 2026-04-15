@@ -114,4 +114,4 @@ This workflow is a utility workflow with no mandatory quality gates.
 
 ## References
 
-- Knowledge: `bam/knowledge/api-versioning-patterns.md`
+- Knowledge: `{project-root}/_bmad/bam/data/agent-guides/bam/api-versioning-patterns.md`

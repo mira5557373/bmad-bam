@@ -158,7 +158,7 @@ Select an option:
 - Tier baseline calculations
 - Usage pattern analysis
 - Current capacity snapshot
-- **Load template:** `{project-root}/_bmad/bam/templates/tenant-capacity-planning-template.md`
+- **Load template:** `{project-root}/_bmad/bam/data/templates/tenant-capacity-planning-template.md`
 
 ---
 

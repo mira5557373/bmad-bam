@@ -37,7 +37,7 @@ Design the PDF invoice generation pipeline including template management, render
 
 - Output from previous step(s) in this workflow
 - Pattern registry: `{project-root}/_bmad/bam/data/bam-patterns.csv`
-- Relevant templates from `{project-root}/_bmad/bam/templates/`
+- Relevant templates from `{project-root}/_bmad/bam/data/templates/`
 - User feedback and refinements from previous steps
 
 ---
@@ -178,8 +178,8 @@ Ask for confirmation before proceeding to Edit or Validate modes.
 - PDF generation pipeline specification
 - Template requirements document
 - Storage and retention policy
-- **Load template:** `{project-root}/_bmad/bam/templates/invoice-generation-template.md`
-- **Load template:** `{project-root}/_bmad/bam/templates/invoice-automation-template.md`
+- **Load template:** `{project-root}/_bmad/bam/data/templates/invoice-generation-template.md`
+- **Load template:** `{project-root}/_bmad/bam/data/templates/invoice-automation-template.md`
 
 ---
 

@@ -156,7 +156,7 @@ Select an option:
 - Feedback collection design
 - Analytics tracking plan
 - **Save to:** `{output_folder}/planning-artifacts/documentation/api-documentation-pipeline.md`
-- **Load template:** `{project-root}/_bmad/bam/templates/api-docs-automation-template.md`
+- **Load template:** `{project-root}/_bmad/bam/data/templates/api-docs-automation-template.md`
 
 ---
 

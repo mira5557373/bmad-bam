@@ -26,7 +26,7 @@ Validate the White-Labeling Design against QG-M2 (Tenant Isolation) criteria and
 ## Prerequisites
 
 - Step 20 completed (Load Artifact)
-- **Load checklist:** `{project-root}/_bmad/bam/checklists/tenant-isolation.md`
+- **Load checklist:** `{project-root}/_bmad/bam/data/checklists/tenant-isolation.md`
 - **Load patterns:** `{project-root}/_bmad/bam/data/bam-patterns.csv` -> filter: `tenant-isolation`
 
 ---

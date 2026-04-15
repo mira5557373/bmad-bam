@@ -26,7 +26,7 @@ Apply targeted modifications to the existing data reconciliation design based on
 - Reconciliation design loaded (Step 10)
 - Modification scope confirmed
 - **Load patterns:** `{project-root}/_bmad/bam/data/bam-patterns.csv` → filter: data-integrity
-- **Load template:** `{project-root}/_bmad/bam/templates/data-reconciliation-dr-template.md`
+- **Load template:** `{project-root}/_bmad/bam/data/templates/data-reconciliation-dr-template.md`
 
 
 ---
@@ -174,7 +174,7 @@ Create change documentation:
 
 - Updated `{output_folder}/planning-artifacts/data-reconciliation-dr.md`
 - Change summary for audit trail
-- **Load template:** `{project-root}/_bmad/bam/templates/data-reconciliation-dr-template.md`
+- **Load template:** `{project-root}/_bmad/bam/data/templates/data-reconciliation-dr-template.md`
 
 ## Next Step
 

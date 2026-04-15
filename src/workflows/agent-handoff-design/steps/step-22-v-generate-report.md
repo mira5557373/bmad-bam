@@ -93,7 +93,7 @@ Select an option:
 ## Outputs
 
 - Validation report: `{output_folder}/planning-artifacts/validation/agent-handoff-validation-report.md`
-- **Load template:** `{project-root}/_bmad/bam/templates/agent-handoff-template.md`
+- **Load template:** `{project-root}/_bmad/bam/data/templates/agent-handoff-template.md`
 
 ---
 

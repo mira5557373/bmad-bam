@@ -36,7 +36,7 @@ Design the model registry that stores, organizes, and manages fine-tuned models 
 
 - Output from previous step(s) in this workflow
 - Pattern registry: `{project-root}/_bmad/bam/data/bam-patterns.csv`
-- Relevant templates from `{project-root}/_bmad/bam/templates/`
+- Relevant templates from `{project-root}/_bmad/bam/data/templates/`
 - User feedback and refinements from previous steps
 
 ---
@@ -200,7 +200,7 @@ Select an option:
 - Artifact storage configuration
 - Lineage tracking specification
 - Serving integration design
-- **Load template:** `{project-root}/_bmad/bam/templates/model-card-template.md`
+- **Load template:** `{project-root}/_bmad/bam/data/templates/model-card-template.md`
 
 ---
 

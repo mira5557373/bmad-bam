@@ -116,10 +116,10 @@ This workflow contributes to:
 
 ## References
 
-- Template: `bam/templates/prompt-version-template.md`
-- AI Model Versioning: `bam/knowledge/llm-versioning.md`
-- Agent Runtime Patterns: `bam/knowledge/agent-runtime-patterns.md`
-- Checklist: `bam/checklists/qg-m3-agent-runtime.md`
+- Template: `{project-root}/_bmad/bam/data/templates/prompt-version-template.md`
+- AI Model Versioning: `{project-root}/_bmad/bam/data/agent-guides/bam/llm-versioning.md`
+- Agent Runtime Patterns: `{project-root}/_bmad/bam/data/agent-guides/bam/agent-runtime-patterns.md`
+- Checklist: `{project-root}/_bmad/bam/data/checklists/qg-m3-agent-runtime.md`
 
 ## Web Research
 

@@ -37,7 +37,7 @@ Design specific retention policies for each data category, defining retention pe
 
 - Output from previous step(s) in this workflow
 - Pattern registry: `{project-root}/_bmad/bam/data/bam-patterns.csv`
-- Relevant templates from `{project-root}/_bmad/bam/templates/`
+- Relevant templates from `{project-root}/_bmad/bam/data/templates/`
 - User feedback and refinements from previous steps
 
 ---
@@ -150,7 +150,7 @@ Select an option:
 - Retention policy matrix
 - Expiry action catalog
 - Tenant override rules
-- **Load template:** `{project-root}/_bmad/bam/templates/data-retention-template.md`
+- **Load template:** `{project-root}/_bmad/bam/data/templates/data-retention-template.md`
 
 ---
 

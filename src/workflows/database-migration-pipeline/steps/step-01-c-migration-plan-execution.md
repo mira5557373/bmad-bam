@@ -104,7 +104,7 @@ After completing migration execution, if 'C' (Continue):
 - Migration execution log
 - Pre-migration checklist
 - Execution results
-- **Load template:** `{project-root}/_bmad/bam/templates/migration-execution-template.md`
+- **Load template:** `{project-root}/_bmad/bam/data/templates/migration-execution-template.md`
 
 ---
 

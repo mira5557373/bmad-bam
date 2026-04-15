@@ -137,7 +137,7 @@ Select an option:
 ## Outputs
 
 - Validation report document
-- **Load template:** `{project-root}/_bmad/bam/templates/quality-gate-report-template.md`
+- **Load template:** `{project-root}/_bmad/bam/data/templates/quality-gate-report-template.md`
 - **Output to:** `{output_folder}/planning-artifacts/{module-name}-architecture-validation-report.md`
 
 ---

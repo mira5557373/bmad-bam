@@ -101,7 +101,7 @@ After completing rollback testing, if 'C' (Continue):
 - Rollback test results
 - Rollback procedure documentation
 - Migration pipeline report (complete)
-- **Load template:** `{project-root}/_bmad/bam/templates/rollback-procedure-template.md`
+- **Load template:** `{project-root}/_bmad/bam/data/templates/rollback-procedure-template.md`
 
 ---
 

@@ -8,7 +8,7 @@ Compile all findings into a comprehensive security operations verification repor
 
 - Steps 1-4 complete
 - All assessments documented
-- **Load checklists:** `{project-root}/_bmad/bam/checklists/security-checklist.md`
+- **Load checklists:** `{project-root}/_bmad/bam/data/checklists/security-checklist.md`
 
 ## Actions
 

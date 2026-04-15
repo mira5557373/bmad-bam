@@ -169,7 +169,7 @@ Select an option:
 - Communication needs analysis document
 - Stakeholder communication matrix
 - Tier-based requirements specification
-- **Load template:** `{project-root}/_bmad/bam/templates/tenant-communication-template.md`
+- **Load template:** `{project-root}/_bmad/bam/data/templates/tenant-communication-template.md`
 
 ---
 

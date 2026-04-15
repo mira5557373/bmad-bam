@@ -30,7 +30,7 @@ Design renewal requirements, maintenance procedures, tier upgrade/downgrade proc
 - Requirements designed (Step 2)
 - Assessment process configured (Step 3)
 - **Load patterns:** `{project-root}/_bmad/bam/data/bam-patterns.csv` -> filter: partner-ecosystem
-- **Load template:** `{project-root}/_bmad/bam/templates/partner-certification-template.md`
+- **Load template:** `{project-root}/_bmad/bam/data/templates/partner-certification-template.md`
 
 
 ---

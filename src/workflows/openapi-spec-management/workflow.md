@@ -86,5 +86,5 @@ Load the existing output artifact, then follow `steps/` for validation against q
 
 ## Templates
 
-- **Load template:** `{project-root}/_bmad/bam/templates/openapi-spec-template.md`
-- **Load template:** `{project-root}/_bmad/bam/templates/api-versioning-template.md`
+- **Load template:** `{project-root}/_bmad/bam/data/templates/openapi-spec-template.md`
+- **Load template:** `{project-root}/_bmad/bam/data/templates/api-versioning-template.md`

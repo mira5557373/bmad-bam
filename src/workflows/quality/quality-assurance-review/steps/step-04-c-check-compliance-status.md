@@ -8,7 +8,7 @@ Verify compliance requirements are met for regulatory frameworks relevant to the
 
 - Integration tests verified
 - **Load patterns:** `{project-root}/_bmad/bam/data/compliance-frameworks.csv`
-- **Load checklist:** `{project-root}/_bmad/bam/checklists/qg-i2-tenant-safety.md`
+- **Load checklist:** `{project-root}/_bmad/bam/data/checklists/qg-i2-tenant-safety.md`
 
 ## Actions
 

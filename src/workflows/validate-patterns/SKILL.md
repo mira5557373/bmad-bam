@@ -122,10 +122,10 @@ For each pattern:
 
 ## References
 
-- Patterns: `bam/data/bam-patterns.csv`
-- Tenant Models: `bam/data/tenant-models.csv`
-- AI Runtimes: `bam/data/ai-runtimes.csv`
-- Quality Gates: `bam/data/quality-gates.csv`
+- Patterns: `{project-root}/_bmad/bam/data/bam-patterns.csv`
+- Tenant Models: `{project-root}/_bmad/bam/data/tenant-models.csv`
+- AI Runtimes: `{project-root}/_bmad/bam/data/ai-runtimes.csv`
+- Quality Gates: `{project-root}/_bmad/bam/data/quality-gates.csv`
 
 ## Headless Mode
 

@@ -144,7 +144,7 @@ Select an option:
 - SLI catalog per service
 - User journey SLI mapping
 - Measurement methodology documentation
-- **Load template:** `{project-root}/_bmad/bam/templates/sli-slo-template.md`
+- **Load template:** `{project-root}/_bmad/bam/data/templates/sli-slo-template.md`
 
 ---
 

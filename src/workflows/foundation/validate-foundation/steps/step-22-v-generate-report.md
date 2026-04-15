@@ -139,9 +139,9 @@ Select an option:
 - Meta-validation decision (PASS/CONDITIONAL/FAIL)
 - Report quality assessment
 - Required corrections (if applicable)
-- **Load template:** `{project-root}/_bmad/bam/templates/dev-gate-report-template.md`
-- **Load template:** `{project-root}/_bmad/bam/templates/gate-status-dashboard-template.md`
-- **Load template:** `{project-root}/_bmad/bam/templates/gate-validation-report-template.md`
+- **Load template:** `{project-root}/_bmad/bam/data/templates/dev-gate-report-template.md`
+- **Load template:** `{project-root}/_bmad/bam/data/templates/gate-status-dashboard-template.md`
+- **Load template:** `{project-root}/_bmad/bam/data/templates/gate-validation-report-template.md`
 
 ---
 

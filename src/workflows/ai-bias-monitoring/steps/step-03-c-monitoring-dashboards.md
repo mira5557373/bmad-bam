@@ -35,7 +35,7 @@ Design fairness monitoring dashboards and alerting systems.
 
 - Output from previous step(s) in this workflow
 - Pattern registry: `{project-root}/_bmad/bam/data/bam-patterns.csv`
-- Relevant templates from `{project-root}/_bmad/bam/templates/`
+- Relevant templates from `{project-root}/_bmad/bam/data/templates/`
 - User feedback and refinements from previous steps
 
 ---
@@ -170,8 +170,8 @@ Select an option:
 
 - Monitoring dashboard specifications
 - Alert configurations
-- **Load template:** `{project-root}/_bmad/bam/templates/fairness-dashboard-template.md`
-- **Load template:** `{project-root}/_bmad/bam/templates/ai-transparency-report-template.md`
+- **Load template:** `{project-root}/_bmad/bam/data/templates/fairness-dashboard-template.md`
+- **Load template:** `{project-root}/_bmad/bam/data/templates/ai-transparency-report-template.md`
 
 ## Next Step
 

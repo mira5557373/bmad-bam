@@ -26,7 +26,7 @@ Validate the penetration testing design against QG-I3 quality gate criteria, OWA
 ## Prerequisites
 
 - Step 20 completed: Artifact loaded and parsed
-- **Load checklist:** `{project-root}/_bmad/bam/checklists/qg-i3-agent-safety.md`
+- **Load checklist:** `{project-root}/_bmad/bam/data/checklists/qg-i3-agent-safety.md`
 - **Load quality gate:** `{project-root}/_bmad/bam/data/quality-gates.csv` -> filter: `QG-S10`
 - **Entry gate verified:** QG-S4 (AI Security Gate) passed
 

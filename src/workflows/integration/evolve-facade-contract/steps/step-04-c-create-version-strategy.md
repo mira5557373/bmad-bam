@@ -16,7 +16,7 @@ Design the versioning and migration strategy for the contract evolution.
 
 - Output from previous step(s) in this workflow
 - Pattern registry: `{project-root}/_bmad/bam/data/bam-patterns.csv`
-- Relevant templates from `{project-root}/_bmad/bam/templates/`
+- Relevant templates from `{project-root}/_bmad/bam/data/templates/`
 - User feedback and refinements from previous steps
 
 ---
@@ -132,7 +132,7 @@ Create Architecture Decision Record:
 - Migration timeline
 - Rollback procedures
 - Architecture Decision Record (ADR)
-- **Load template:** `{project-root}/_bmad/bam/templates/facade-migration-template.md`
+- **Load template:** `{project-root}/_bmad/bam/data/templates/facade-migration-template.md`
 
 ---
 

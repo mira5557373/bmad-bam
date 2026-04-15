@@ -87,8 +87,8 @@ Create validation report summarizing:
 ## Outputs
 
 - Validation report document
-- **Load template:** `{project-root}/_bmad/bam/templates/quality-gate-report-template.md`
-- **Load template:** `{project-root}/_bmad/bam/templates/complexity-triage-template.md`
+- **Load template:** `{project-root}/_bmad/bam/data/templates/quality-gate-report-template.md`
+- **Load template:** `{project-root}/_bmad/bam/data/templates/complexity-triage-template.md`
 - **Output to:** `{output_folder}/planning-artifacts/{module-name}-complexity-validation-report.md`
 
 ## Next Step

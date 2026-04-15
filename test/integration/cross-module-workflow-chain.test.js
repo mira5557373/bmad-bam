@@ -11,7 +11,7 @@ const yaml = require('js-yaml');
 
 const SRC_DIR = path.join(__dirname, '..', '..', 'src');
 const WORKFLOWS_DIR = path.join(SRC_DIR, 'workflows');
-const EXTENSIONS_DIR = path.join(SRC_DIR, 'extensions');
+const EXTENSIONS_DIR = path.join(SRC_DIR, 'data', 'extensions');
 
 // Helper to find all workflows recursively
 const getAllWorkflows = () => {
@@ -325,7 +325,7 @@ describe('Cross-Module Workflow Chain Integration', () => {
       ];
 
       // Check that checklists exist for each gate
-      const checklistsDir = path.join(SRC_DIR, 'checklists');
+      const checklistsDir = path.join(SRC_DIR, 'data', 'checklists');
       if (!fs.existsSync(checklistsDir)) {
         console.warn('Checklists directory not found');
         return;
@@ -485,7 +485,7 @@ describe('Cross-Module Workflow Chain Integration', () => {
 
 describe('Module Help CSV Workflow Chains', () => {
   test('module-help.csv entries reflect workflow dependencies', () => {
-    const helpPath = path.join(WORKFLOWS_DIR, 'module-help.csv');
+    const helpPath = path.join(SRC_DIR, 'module-help.csv');
     if (!fs.existsSync(helpPath)) {
       console.warn('module-help.csv not found');
       return;

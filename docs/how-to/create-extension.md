@@ -16,16 +16,16 @@ This guide walks you through creating a new BAM extension that follows WDS agent
 
 ## Step 1: Create the Extension File
 
-Create a new YAML file in `src/extensions/`:
+Create a new YAML file in `src/data/extensions/`:
 
 ```bash
-touch src/extensions/{agent}-bam.yaml
+touch src/data/extensions/{agent}-bam.yaml
 ```
 
 ## Step 2: Define Extension Metadata
 
 ```yaml
-# src/extensions/{agent}-bam.yaml
+# src/data/extensions/{agent}-bam.yaml
 
 agent:
   metadata:
@@ -164,7 +164,7 @@ The test suite validates:
 
 Before submitting:
 
-- [ ] Extension file in `src/extensions/{agent}-bam.yaml`
+- [ ] Extension file in `src/data/extensions/{agent}-bam.yaml`
 - [ ] No `memories:` field
 - [ ] Valid `extends:` field pointing to base agent
 - [ ] Context loader menu item

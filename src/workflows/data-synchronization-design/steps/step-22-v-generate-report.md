@@ -27,8 +27,8 @@ Generate a comprehensive validation report summarizing findings from the data sy
 
 - Step 20 completed: Data synchronization design artifact loaded successfully
 - Step 21 completed: Validation performed against data architecture criteria
-- **Load checklist:** `{project-root}/_bmad/bam/checklists/tenant-isolation.md`
-- **Load template:** `{project-root}/_bmad/bam/templates/quality-gate-report-template.md`
+- **Load checklist:** `{project-root}/_bmad/bam/data/checklists/tenant-isolation.md`
+- **Load template:** `{project-root}/_bmad/bam/data/templates/quality-gate-report-template.md`
 
 ---
 

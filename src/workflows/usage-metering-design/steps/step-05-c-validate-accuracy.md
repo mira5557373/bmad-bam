@@ -39,7 +39,7 @@ Define the validation and accuracy assurance strategy for usage metering.
 
 - Output from previous step(s) in this workflow
 - Pattern registry: `{project-root}/_bmad/bam/data/bam-patterns.csv`
-- Relevant templates from `{project-root}/_bmad/bam/templates/`
+- Relevant templates from `{project-root}/_bmad/bam/data/templates/`
 - User feedback and refinements from previous steps
 
 ---
@@ -302,9 +302,9 @@ Select an option:
 - Usage metering design document
 - Billing integration specification
 - Metering runbook
-- **Load template:** `{project-root}/_bmad/bam/templates/metering-event-spec.md`
-- **Load template:** `{project-root}/_bmad/bam/templates/llm-cost-report-template.md`
-- **Load template:** `{project-root}/_bmad/bam/templates/usage-metering-template.md`
+- **Load template:** `{project-root}/_bmad/bam/data/templates/metering-event-spec.md`
+- **Load template:** `{project-root}/_bmad/bam/data/templates/llm-cost-report-template.md`
+- **Load template:** `{project-root}/_bmad/bam/data/templates/usage-metering-template.md`
 
 ---
 

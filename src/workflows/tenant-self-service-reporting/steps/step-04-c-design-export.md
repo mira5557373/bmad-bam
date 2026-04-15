@@ -258,14 +258,14 @@ _Source: [URL]_
 - Cloud storage delivery documentation
 - Webhook delivery specifications
 - Security requirements documentation
-- **Load template:** `{project-root}/_bmad/bam/templates/tenant-self-service-reporting-template.md`
+- **Load template:** `{project-root}/_bmad/bam/data/templates/tenant-self-service-reporting-template.md`
 
 ## Next Step
 
 This completes the Create mode for tenant-self-service-reporting workflow. 
 
 Generate the final reporting design document using template:
-`{project-root}/_bmad/bam/templates/tenant-self-service-reporting-template.md`
+`{project-root}/_bmad/bam/data/templates/tenant-self-service-reporting-template.md`
 
 Output to: `{output_folder}/planning-artifacts/tenant-self-service-reporting.md`
 

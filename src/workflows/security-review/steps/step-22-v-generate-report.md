@@ -27,7 +27,7 @@ Generate a comprehensive validation report summarizing findings from the securit
 
 - Step 20 completed: Security assessment artifact loaded successfully
 - Step 21 completed: Validation performed against quality criteria
-- **Load template:** `{project-root}/_bmad/bam/templates/quality-gate-report-template.md`
+- **Load template:** `{project-root}/_bmad/bam/data/templates/quality-gate-report-template.md`
 
 ---
 

@@ -79,7 +79,7 @@ Validate the completeness and security of the API key management design.
 
 **Gate Reference:** Load from `{project-root}/_bmad/bam/data/quality-gates.csv` -> filter: `QG-S3`
 
-**Load Checklist:** `{project-root}/_bmad/bam/checklists/qg-security-audit.md`
+**Load Checklist:** `{project-root}/_bmad/bam/data/checklists/qg-security-audit.md`
 
 - **PASS**: All security controls complete, lifecycle management operational
 - **CONDITIONAL**: Minor gaps - document gaps and proceed

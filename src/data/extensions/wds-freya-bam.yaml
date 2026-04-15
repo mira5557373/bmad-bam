@@ -1,0 +1,682 @@
+# BAM Extension for WDS Freya (UX)
+# Pattern: WDS agent-guides (NO memories: field)
+
+agent:
+  metadata:
+    extends: 'wds-agent-freya-ux'
+    module: 'bam'
+    description: "Adds tier-based UX design to Freya"
+
+menu:
+  - trigger: bam-freya-context
+    action: "#load-bam-freya-context-prompt"
+    description: Load BAM UX context for Freya
+  - trigger: bam-freya-tier-ux-spec
+    action: "#tier-ux-spec-prompt"
+    description: Create tier-specific UX specifications
+  - trigger: bam-freya-tier-empathy-map
+    action: "#tier-empathy-map-prompt"
+    description: Create empathy maps per tier
+  - trigger: bam-freya-tier-journey
+    action: "#tier-journey-mapping-prompt"
+    description: Map user journeys across tenant tiers
+  - trigger: bam-freya-upgrade-experience
+    action: "#upgrade-experience-prompt"
+    description: Design the complete upgrade experience flow
+  - trigger: bam-freya-feature-discovery
+    action: "#feature-discovery-prompt"
+    description: Design feature discovery and education patterns
+  - trigger: bam-freya-limit-notifications
+    action: "#limit-notifications-prompt"
+    description: Design limit and quota notification UX
+  - trigger: bam-freya-research
+    action: "#web-research-freya-prompt"
+    description: Conduct web research for tier-based UX patterns
+
+prompts:
+  - id: load-bam-freya-context-prompt
+    content: |
+      ## Load BAM Context for Freya
+
+      Read and internalize the tier-based UX design guide:
+      `{project-root}/_bmad/bam/data/agent-guides/bam/tier-ux.md`
+
+      Also load the Freya-specific guide:
+      `{project-root}/_bmad/bam/data/agent-guides/bam/freya-guide.md`
+
+      This guide provides comprehensive context for designing user experiences that adapt
+      elegantly to different tenant tiers. It covers the following key areas:
+
+      1. **Tier Experience Differentiation**: Strategies for creating distinct experiences
+         for Free, Pro, and Enterprise users while maintaining brand consistency.
+      2. **Upgrade Flow Design**: UX patterns for presenting upgrade opportunities that
+         feel helpful rather than pushy, with clear value communication.
+      3. **Feature Availability Patterns**: How to gracefully handle locked features,
+         usage limits, and tier boundaries in the interface.
+      4. **Multi-Level Admin UX**: Designing administrative interfaces that scale from
+         individual settings to workspace management to enterprise-wide controls.
+      5. **Freya UX Patterns**: Multi-tenant UX research and design methodologies.
+
+      Apply this tier-based lens to all UX design activities. Once loaded, confirm by
+      stating: "BAM UX context loaded. Ready to design tier-differentiated experiences."
+
+  - id: tier-ux-spec-prompt
+    content: |
+      ## Tier-Specific UX Specifications
+
+      Prerequisites: Ensure BAM context loaded via `bam-freya-context`
+
+      **Load patterns:** `{project-root}/_bmad/bam/data/bam-patterns.csv` → filter: `customization, tenant-lifecycle`
+
+      ### Objective
+      Create detailed UX specifications for each tier ensuring differentiated
+      experiences that justify tier pricing while maintaining brand consistency.
+
+      ### Process
+
+      1. **Dashboard Experience Specification**
+         - Define dashboard components per tier
+         - Specify data visualization depth
+         - Document customization options
+
+         | Component | FREE | PRO | ENTERPRISE |
+         |-----------|------|-----|------------|
+         | Overview widgets | 3 fixed | 6 configurable | Unlimited custom |
+         | Data range | 7 days | 90 days | Unlimited |
+         | Refresh rate | Manual | 15 min auto | Real-time |
+         | Export | None | CSV | CSV, PDF, API |
+         | Sharing | None | Team view | Public dashboards |
+
+         **Dashboard UX Specifications:**
+         | Spec | FREE | PRO | ENTERPRISE |
+         |------|------|-----|------------|
+         | Layout | Fixed grid | Drag-drop | Full custom |
+         | Themes | Platform default | 3 themes | Custom branding |
+         | Mobile | Read-only | Full access | Native app |
+
+      2. **Settings Experience Specification**
+         - Define settings depth per tier
+         - Specify configuration options
+         - Document admin capabilities
+
+         | Settings Area | FREE | PRO | ENTERPRISE |
+         |---------------|------|-----|------------|
+         | Profile | Basic | Full | Managed by admin |
+         | Notifications | Email only | All channels | Custom rules |
+         | Integrations | None | 5 connectors | Unlimited + custom |
+         | Security | Password only | 2FA optional | 2FA required, SSO |
+         | API access | None | Personal tokens | Service accounts |
+
+         **Settings UX Specifications:**
+         | Spec | FREE | PRO | ENTERPRISE |
+         |------|------|-----|------------|
+         | Navigation depth | 2 levels | 3 levels | Full admin portal |
+         | Bulk actions | None | Basic | Advanced + API |
+         | Audit trail | None | View own | Full org audit |
+
+      3. **Branding Experience Specification**
+         - Define branding capabilities per tier
+         - Specify customization depth
+         - Document white-label options
+
+         | Branding Element | FREE | PRO | ENTERPRISE |
+         |------------------|------|-----|------------|
+         | Logo | Platform logo | Custom logo | Full white-label |
+         | Colors | Platform colors | Primary color | Full palette |
+         | Domain | app.platform.com | app.platform.com | custom.client.com |
+         | Emails | Platform sender | Custom reply-to | Custom sender |
+         | Documentation | Platform docs | Platform docs | Custom docs |
+
+         **Branding UX Specifications:**
+         | Spec | FREE | PRO | ENTERPRISE |
+         |------|------|-----|------------|
+         | Preview | N/A | Live preview | Staging environment |
+         | Approval | N/A | Instant | Admin approval |
+         | Rollback | N/A | One version | Full history |
+
+      4. **Feature Gating UX Specification**
+         - Define how locked features appear
+         - Specify upgrade prompts
+         - Document graceful degradation
+
+         | Gating Pattern | When to Use | UX Treatment |
+         |----------------|-------------|--------------|
+         | Hidden | Feature not relevant to tier | Not shown |
+         | Locked | Feature visible but disabled | Lock icon + tooltip |
+         | Limited | Feature works with constraints | Usage meter + warning |
+         | Teaser | Feature preview available | Preview + upgrade CTA |
+
+      ### Verification Checklist
+      - [ ] All major features have tier specifications
+      - [ ] UX treatments defined for each tier difference
+      - [ ] Branding options clearly differentiated
+      - [ ] Feature gating patterns appropriate
+      - [ ] Upgrade paths clear from each limitation
+      - [ ] Accessibility maintained across all tiers
+      - [ ] Specifications reviewed with engineering
+
+      ### Output
+      Produce tier UX specifications using template:
+      `{project-root}/_bmad/bam/data/templates/tier-ux-spec-template.md`
+
+  - id: tier-empathy-map-prompt
+    content: |
+      ## Tier-Based Empathy Maps
+
+      Prerequisites: Ensure BAM context loaded via `bam-freya-context`
+
+      **Load patterns:** `{project-root}/_bmad/bam/data/bam-patterns.csv` → filter: `customization, tenant-lifecycle`
+
+      ### Objective
+      Create empathy maps for users at each tier to understand their perspective,
+      frustrations, and motivations for upgrading or staying.
+
+      ### Process
+
+      1. **FREE Tier Empathy Map**
+         - Understand the evaluator mindset
+         - Identify conversion blockers
+         - Find upgrade motivation points
+
+         | Quadrant | Insights |
+         |----------|----------|
+         | **THINK** | "Is this worth paying for?" |
+         | | "Can I get by with free forever?" |
+         | | "What am I really missing?" |
+         | | "Are the limits reasonable?" |
+         | **FEEL** | Curious about premium features |
+         | | Slightly frustrated by limits |
+         | | Grateful for free value |
+         | | Cautious about commitment |
+         | **DO** | Try every free feature first |
+         | | Hit limits and evaluate |
+         | | Compare with alternatives |
+         | | Invite teammates to evaluate |
+         | **SAY** | "I'll upgrade when I really need it" |
+         | | "The free tier is actually pretty good" |
+         | | "I wish X was included" |
+         | | "Let me see what Pro gets me" |
+
+         **Conversion Opportunities:**
+         | Trigger | Emotion | Opportunity |
+         |---------|---------|-------------|
+         | First limit hit | Frustration | Show value of removing |
+         | Team need | Aspiration | Highlight collaboration |
+         | Growth | Excitement | Show scaling features |
+
+      2. **PRO Tier Empathy Map**
+         - Understand the power user mindset
+         - Identify satisfaction drivers
+         - Find enterprise upgrade triggers
+
+         | Quadrant | Insights |
+         |----------|----------|
+         | **THINK** | "Am I getting full value?" |
+         | | "Do I need more than this?" |
+         | | "Is this the right tool for scale?" |
+         | | "What would enterprise give me?" |
+         | **FEEL** | Invested in the platform |
+         | | Confident in the tool |
+         | | Occasionally limited |
+         | | Curious about enterprise |
+         | **DO** | Use advanced features regularly |
+         | | Build workflows and automations |
+         | | Advocate internally |
+         | | Push against limits |
+         | **SAY** | "This has become essential" |
+         | | "We need more seats" |
+         | | "Can we get SSO?" |
+         | | "Our security team is asking..." |
+
+         **Enterprise Triggers:**
+         | Trigger | Emotion | Opportunity |
+         |---------|---------|-------------|
+         | Team growth | Urgency | User management needs |
+         | Compliance request | Stress | Security features |
+         | Executive visibility | Ambition | Advanced reporting |
+
+      3. **ENTERPRISE Tier Empathy Map**
+         - Understand the organizational buyer
+         - Identify retention drivers
+         - Find expansion opportunities
+
+         | Quadrant | Insights |
+         |----------|----------|
+         | **THINK** | "Is our investment paying off?" |
+         | | "Are we using all we paid for?" |
+         | | "How does this compare to alternatives?" |
+         | | "What else can this platform do?" |
+         | **FEEL** | Committed to the relationship |
+         | | Accountable for ROI |
+         | | Secure in compliance |
+         | | Interested in expansion |
+         | **DO** | Track usage and ROI |
+         | | Work closely with CSM |
+         | | Request custom features |
+         | | Expand to new teams |
+         | **SAY** | "We need better reporting on usage" |
+         | | "Can we get this customized?" |
+         | | "Other departments want access" |
+         | | "What's on the roadmap?" |
+
+         **Retention and Expansion:**
+         | Trigger | Emotion | Opportunity |
+         |---------|---------|-------------|
+         | Contract renewal | Evaluation | Show value delivered |
+         | New team interest | Expansion | Easy onboarding |
+         | Feature request | Engagement | Custom development |
+
+      4. **Cross-Tier Insights Synthesis**
+         - Identify common patterns
+         - Find tier transition friction
+         - Document experience gaps
+
+         | Insight | FREE | PRO | ENTERPRISE |
+         |---------|------|-----|------------|
+         | Primary concern | Value | Capability | ROI |
+         | Main emotion | Curiosity | Confidence | Accountability |
+         | Key action | Evaluate | Build | Expand |
+         | Upgrade driver | Need | Growth | Compliance |
+
+      ### Verification Checklist
+      - [ ] Each tier has complete empathy map
+      - [ ] Insights based on research, not assumptions
+      - [ ] Conversion/upgrade triggers identified
+      - [ ] Retention factors documented
+      - [ ] Cross-tier patterns synthesized
+      - [ ] Actionable opportunities highlighted
+
+      ### Output
+      Produce empathy maps using template:
+      `{project-root}/_bmad/bam/data/templates/empathy-map-template.md`
+
+  - id: tier-journey-mapping-prompt
+    content: |
+      ## Tier Journey Mapping
+
+      Prerequisites: Ensure BAM context loaded via `bam-freya-context`
+
+      **Load patterns:** `{project-root}/_bmad/bam/data/bam-patterns.csv` → filter: `tenant-lifecycle, customization`
+
+      ### Objective
+      Map complete user journeys for each tier, identifying touchpoints, emotions,
+      and opportunities to demonstrate tier value and support upgrade decisions.
+
+      ### Process
+
+      1. **Journey Stage Mapping**
+         - Define journey stages per tier
+         - Map touchpoints at each stage
+         - Identify tier-specific variations
+
+         | Stage | FREE Journey | PRO Journey | ENTERPRISE Journey |
+         |-------|--------------|-------------|-------------------|
+         | Awareness | Organic, word-of-mouth | Marketing, trials | Sales outreach |
+         | Consideration | Self-serve evaluation | Guided trial | POC, custom demo |
+         | Onboarding | Quick start tutorial | Setup wizard | White-glove setup |
+         | Activation | First success moment | Team collaboration | Org-wide rollout |
+         | Engagement | Core feature usage | Advanced features | Full platform adoption |
+         | Expansion | Upgrade consideration | Seat/feature expansion | Enterprise expansion |
+         | Advocacy | Reviews, referrals | Case studies | Reference customers |
+
+         **Journey Touchpoints:**
+         | Touchpoint Type | FREE | PRO | ENTERPRISE |
+         |-----------------|------|-----|------------|
+         | In-app | All interactions | All + admin | All + custom |
+         | Email | Transactional | Lifecycle | Personalized |
+         | Human | Community | Chat support | Dedicated CSM |
+         | Content | Help docs | Best practices | Custom training |
+
+      2. **Emotional Journey Mapping**
+         - Map user emotions at each stage
+         - Identify pain points and delights
+         - Find opportunities for improvement
+
+         | Stage | FREE Emotion | PRO Emotion | ENTERPRISE Emotion |
+         |-------|--------------|-------------|-------------------|
+         | Onboarding | Curious, cautious | Invested, eager | Accountable, methodical |
+         | First limit | Frustrated, evaluating | Confident, adjusting | Consulting, escalating |
+         | Success moment | Delighted, sharing | Satisfied, expanding | Validated, measuring |
+         | Upgrade consideration | Torn, calculating | Growth-focused | Strategic, approval-seeking |
+
+         **Emotion-Driven Opportunities:**
+         - Frustration moments: Offer clear upgrade path
+         - Delight moments: Encourage sharing, upsell
+         - Uncertainty moments: Provide guidance, support
+
+      3. **Conversion Journey Mapping**
+         - Map upgrade decision journeys
+         - Identify conversion triggers
+         - Design conversion support
+
+         | Conversion Path | Journey | Key Decision Points |
+         |-----------------|---------|---------------------|
+         | FREE to PRO | Evaluate → Hit limit → Compare → Decide | Limit experience, value visibility |
+         | PRO to ENTERPRISE | Grow → Need compliance → Evaluate → Negotiate | Team growth, security needs |
+         | Trial to Paid | Explore → Activate → Measure → Commit | Time-to-value, success metrics |
+
+      4. **Journey Optimization Opportunities**
+         - Identify friction points per tier
+         - Document improvement opportunities
+         - Prioritize by impact
+
+         | Journey Friction | Tier Impact | Optimization |
+         |------------------|-------------|--------------|
+         | Slow onboarding | All, esp FREE | Progressive disclosure |
+         | Unclear limits | FREE | Transparent usage meters |
+         | Upgrade complexity | FREE to PRO | One-click upgrade |
+         | Team onboarding | PRO, ENT | Batch invitation |
+         | Feature discovery | All | Contextual education |
+
+      ### Verification Checklist
+      - [ ] All tier journeys mapped end-to-end
+      - [ ] Touchpoints documented per stage
+      - [ ] Emotions mapped with evidence
+      - [ ] Conversion paths clearly defined
+      - [ ] Friction points identified with solutions
+      - [ ] Opportunities prioritized by impact
+      - [ ] Journey maps validated with users
+
+      ### Output
+      Produce tier journey maps using template:
+      `{project-root}/_bmad/bam/data/templates/tier-journey-map-template.md`
+
+  - id: upgrade-experience-prompt
+    content: |
+      ## Complete Upgrade Experience Design
+
+      Prerequisites: Ensure BAM context loaded via `bam-freya-context`
+
+      **Load patterns:** `{project-root}/_bmad/bam/data/bam-patterns.csv` → filter: `tenant-lifecycle, customization`
+
+      ### Objective
+      Design the complete upgrade experience from awareness through completion,
+      ensuring users feel confident and supported throughout the transition.
+
+      ### Process
+
+      1. **Upgrade Awareness Design**
+         - Design how users discover upgrade options
+         - Create value-focused messaging
+         - Balance visibility with non-intrusiveness
+
+         | Awareness Method | Context | Design Approach |
+         |------------------|---------|-----------------|
+         | Feature gates | Locked feature click | Show feature preview + value |
+         | Usage meters | Approaching limits | Progressive warning levels |
+         | Contextual hints | Related feature use | Subtle enhancement mentions |
+         | Settings page | Account section | Clear tier comparison |
+         | In-app marketing | Dashboard | Feature spotlights |
+
+         **Awareness UX Principles:**
+         - Show value before asking for money
+         - Respect user's current task
+         - Remember dismissal preferences
+         - Vary messaging to avoid fatigue
+
+      2. **Upgrade Decision Support**
+         - Design comparison tools
+         - Create ROI calculators
+         - Provide social proof
+
+         | Decision Support | Purpose | Implementation |
+         |------------------|---------|----------------|
+         | Tier comparison | Understand differences | Interactive comparison page |
+         | Cost calculator | Budget planning | Usage-based estimation |
+         | ROI projection | Justify investment | Value metrics visualization |
+         | Testimonials | Build confidence | Tier-specific success stories |
+         | FAQ | Address concerns | Upgrade-specific questions |
+
+         **Decision UX Patterns:**
+         - Recommend based on usage patterns
+         - Highlight most relevant features
+         - Address common objections proactively
+         - Offer trial where appropriate
+
+      3. **Upgrade Transaction Design**
+         - Design seamless payment flows
+         - Handle edge cases gracefully
+         - Confirm success clearly
+
+         | Transaction Element | FREE to PRO | PRO to ENTERPRISE |
+         |--------------------|-------------|-------------------|
+         | Initiation | One-click upgrade button | Contact sales form |
+         | Information | Payment details | Requirements questionnaire |
+         | Confirmation | Instant confirmation | Sales follow-up |
+         | Activation | Immediate | Coordinated kickoff |
+         | Celebration | In-app welcome | Personal welcome |
+
+         **Transaction UX:**
+         - Minimize form fields for self-serve
+         - Save progress for enterprise forms
+         - Clear confirmation and next steps
+         - Immediate access to new features
+
+      4. **Post-Upgrade Experience**
+         - Design new tier onboarding
+         - Guide to new features
+         - Confirm value realization
+
+         | Post-Upgrade Element | Purpose | Design |
+         |---------------------|---------|--------|
+         | Welcome message | Celebrate upgrade | Tier-specific greeting |
+         | Feature tour | Discover new features | Guided walkthrough |
+         | Quick win | Prove value fast | Suggested first action |
+         | Check-in | Ensure satisfaction | Timed follow-up |
+         | Resources | Enable success | Tier-specific content |
+
+      ### Verification Checklist
+      - [ ] Upgrade awareness is helpful, not pushy
+      - [ ] Decision support tools are comprehensive
+      - [ ] Transaction flow is minimal friction
+      - [ ] Post-upgrade experience celebrates and guides
+      - [ ] Edge cases handled gracefully
+      - [ ] Success metrics defined and tracked
+      - [ ] A/B testing plan established
+
+      ### Output
+      Produce upgrade experience designs using template:
+      `{project-root}/_bmad/bam/data/templates/upgrade-experience-template.md`
+
+  - id: feature-discovery-prompt
+    content: |
+      ## Feature Discovery and Education Patterns
+
+      Prerequisites: Ensure BAM context loaded via `bam-freya-context`
+
+      **Load patterns:** `{project-root}/_bmad/bam/data/bam-patterns.csv` → filter: `customization, tenant-lifecycle`
+
+      ### Objective
+      Design patterns for helping users discover features relevant to their tier,
+      educating them on available capabilities, and guiding them to success.
+
+      ### Process
+
+      1. **Feature Discovery Architecture**
+         - Design discovery entry points
+         - Categorize features by tier
+         - Create discovery paths
+
+         | Discovery Method | When | Target Users |
+         |------------------|------|--------------|
+         | Onboarding tour | First login | All new users |
+         | Contextual tips | Feature use | In-context learners |
+         | Feature menu | Exploration | Self-directed users |
+         | What's new | Updates | Returning users |
+         | Search | Intent | Goal-oriented users |
+
+         **Tier-Aware Discovery:**
+         | Feature Status | FREE User | PRO User | ENTERPRISE User |
+         |----------------|-----------|----------|-----------------|
+         | Available | Full discovery | Full discovery | Full discovery |
+         | Tier-locked | Preview + upgrade | Preview + upgrade | Available |
+         | Coming soon | Roadmap preview | Roadmap + influence | Priority access |
+
+      2. **In-Context Education Design**
+         - Design tooltips and hints
+         - Create progressive tutorials
+         - Build contextual help
+
+         | Education Pattern | Use Case | Implementation |
+         |-------------------|----------|----------------|
+         | First-use tooltip | New feature encounter | Single hint with dismiss |
+         | Progressive tip | Complex feature | Multi-step guidance |
+         | Contextual help | Stuck moment | Help button + panel |
+         | Video tutorial | Visual learning | Inline video player |
+         | Interactive demo | Hands-on learning | Guided sandbox |
+
+         **Education Principles:**
+         - Just-in-time, not just-in-case
+         - Respect user expertise level
+         - Offer escape from education
+         - Track completion, don't repeat
+
+      3. **Feature Promotion Design**
+         - Design feature spotlights
+         - Create upgrade previews
+         - Build feature awareness
+
+         | Promotion Type | Purpose | Tier Application |
+         |----------------|---------|------------------|
+         | Feature spotlight | Highlight underused | All tiers, tier-appropriate |
+         | What's new | Announce updates | All tiers |
+         | Upgrade preview | Show locked features | FREE, PRO |
+         | Success story | Inspire usage | All tiers |
+         | Best practice | Guide advanced use | PRO, ENTERPRISE |
+
+      4. **Feature Adoption Tracking**
+         - Define adoption metrics
+         - Design adoption nudges
+         - Create re-engagement
+
+         | Adoption Signal | Indication | Response |
+         |-----------------|------------|----------|
+         | Feature viewed, not used | Awareness, no activation | Tutorial offer |
+         | Feature used once | Trial, no adoption | Follow-up prompt |
+         | Feature used regularly | Adoption | Celebrate, advance |
+         | Feature abandoned | Drop-off | Re-engagement |
+
+      ### Verification Checklist
+      - [ ] Discovery methods cover all user types
+      - [ ] Tier-locked features have clear preview
+      - [ ] Education is contextual and helpful
+      - [ ] Promotions are valuable, not salesy
+      - [ ] Adoption tracking informs improvements
+      - [ ] User preferences respected
+      - [ ] Accessibility maintained throughout
+
+      ### Output
+      Produce feature discovery designs using template:
+      `{project-root}/_bmad/bam/data/templates/feature-discovery-template.md`
+
+  - id: limit-notifications-prompt
+    content: |
+      ## Limit and Quota Notification UX
+
+      Prerequisites: Ensure BAM context loaded via `bam-freya-context`
+
+      **Load patterns:** `{project-root}/_bmad/bam/data/bam-patterns.csv` → filter: `tenant-lifecycle, customization`
+
+      ### Objective
+      Design notification patterns for communicating usage limits and quotas
+      that are transparent, helpful, and guide users toward appropriate actions.
+
+      ### Process
+
+      1. **Limit Notification Taxonomy**
+         - Categorize limit types
+         - Define notification thresholds
+         - Map notification channels
+
+         | Limit Type | Examples | Notification Strategy |
+         |------------|----------|----------------------|
+         | Usage quota | Storage, API calls, exports | Progressive warnings |
+         | Seat limit | Team members | At limit notification |
+         | Feature limit | Agents, integrations | Soft gate at attempt |
+         | Time limit | Trial period | Countdown notifications |
+         | Rate limit | API rate, actions/min | Real-time throttle notice |
+
+         **Threshold Notification Design:**
+         | Threshold | Notification | Tone | Action |
+         |-----------|--------------|------|--------|
+         | 50% | Optional email | Informational | Track usage |
+         | 75% | In-app indicator | Awareness | Plan ahead |
+         | 90% | Warning banner | Cautionary | Take action |
+         | 100% | Blocking modal | Urgent | Upgrade or reduce |
+         | Exceeded | Error + guidance | Critical | Immediate action |
+
+      2. **Progressive Warning Design**
+         - Design escalating notifications
+         - Balance urgency with helpfulness
+         - Provide actionable guidance
+
+         | Warning Level | Visual Design | Message Pattern |
+         |---------------|---------------|-----------------|
+         | Low (50-75%) | Subtle indicator, gray/blue | "You've used X of Y" |
+         | Medium (75-90%) | Visible badge, yellow | "Running low on X" |
+         | High (90-99%) | Prominent banner, orange | "Almost at X limit" |
+         | Critical (100%) | Modal, red | "X limit reached" |
+
+         **Warning UX Principles:**
+         - Show specific numbers, not just percentages
+         - Provide context (daily/monthly reset)
+         - Offer immediate actions (upgrade, reduce)
+         - Remember dismissals, respect preferences
+
+      3. **Limit Experience Design**
+         - Design the at-limit experience
+         - Create graceful degradation
+         - Provide clear paths forward
+
+         | At Limit Scenario | User Experience | Path Forward |
+         |-------------------|-----------------|--------------|
+         | Storage full | Can view, can't add | Delete or upgrade |
+         | Seats maxed | Can't invite | Remove or upgrade |
+         | Feature limit | Can use existing, can't add | Upgrade |
+         | Trial ended | Read-only mode | Convert or export |
+         | Rate limited | Temporary block | Wait or upgrade |
+
+         **Graceful Degradation:**
+         - Never lose user data
+         - Allow access to existing work
+         - Provide export options
+         - Clear communication of status
+
+      4. **Notification Channel Strategy**
+         - Design multi-channel approach
+         - Respect user preferences
+         - Ensure important messages reach users
+
+         | Channel | Use Case | Frequency |
+         |---------|----------|-----------|
+         | In-app banner | Active session warning | Real-time |
+         | In-app modal | Blocking limit | At limit |
+         | Email | Approaching limit | Daily/weekly digest |
+         | Email | At limit | Immediate |
+         | Push (mobile) | Critical limits | Immediate |
+
+      ### Verification Checklist
+      - [ ] All limit types have notification strategy
+      - [ ] Thresholds are clear and consistent
+      - [ ] Progressive warnings escalate appropriately
+      - [ ] At-limit experience is graceful
+      - [ ] Clear paths forward at all stages
+      - [ ] User preferences respected
+      - [ ] Multi-channel strategy coordinated
+
+      ### Output
+      Produce limit notification designs using template:
+      `{project-root}/_bmad/bam/data/templates/limit-notification-template.md`
+
+  - id: web-research-freya-prompt
+    content: |
+      ## BAM Web Research - Tier-Based UX
+
+      Research current best practices for tier-based UX.
+
+      **Research Focus:** {{research_topic}}
+
+      Search the web: "{{research_topic}} tier-based UX patterns {date}"
+      Search the web: "{{research_topic}} enterprise SaaS {date}"
+
+      Return findings with: _Source: [URL]_

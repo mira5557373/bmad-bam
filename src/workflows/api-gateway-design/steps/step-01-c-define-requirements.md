@@ -143,8 +143,8 @@ Select an option:
 - Gateway requirements document
 - Endpoint catalog
 - Authentication mapping
-- **Load template:** `{project-root}/_bmad/bam/templates/api-gateway-template.md`
-- **Load template:** `{project-root}/_bmad/bam/templates/api-strategy-template.md`
+- **Load template:** `{project-root}/_bmad/bam/data/templates/api-gateway-template.md`
+- **Load template:** `{project-root}/_bmad/bam/data/templates/api-strategy-template.md`
 
 ## Next Step
 

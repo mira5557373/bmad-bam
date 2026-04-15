@@ -38,7 +38,7 @@ Create comprehensive documentation for the notification system including archite
 
 - All previous step outputs
 - Pattern registry: `{project-root}/_bmad/bam/data/bam-patterns.csv`
-- Template: `{project-root}/_bmad/bam/templates/notification-system-template.md`
+- Template: `{project-root}/_bmad/bam/data/templates/notification-system-template.md`
 
 ---
 
@@ -126,7 +126,7 @@ Create documentation deliverables:
 
 ### Output Document Assembly
 
-Using template: `{project-root}/_bmad/bam/templates/notification-system-template.md`
+Using template: `{project-root}/_bmad/bam/data/templates/notification-system-template.md`
 
 Assemble final notification system specification:
 
@@ -207,7 +207,7 @@ Select an option:
 - `notification-system-spec.md` - Complete notification system specification
 - Integration guide outlines
 - Runbook templates
-- **Load template:** `{project-root}/_bmad/bam/templates/tenant-notification-template.md`
+- **Load template:** `{project-root}/_bmad/bam/data/templates/tenant-notification-template.md`
 
 ---
 

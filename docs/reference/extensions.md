@@ -4,7 +4,7 @@ BAM provides **31 extensions** that enhance existing BMAD agents with multi-tena
 
 ## Overview
 
-Extensions are located in `src/extensions/` and follow the WDS agent-guides pattern. Each extension enhances a base agent with menu items that load domain context and execute capabilities.
+Extensions are located in `src/data/extensions/` and follow the WDS agent-guides pattern. Each extension enhances a base agent with menu items that load domain context and execute capabilities.
 
 ---
 

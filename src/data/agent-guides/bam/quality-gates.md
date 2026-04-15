@@ -130,7 +130,7 @@ Final validation before production.
 
 When running gate validations:
 
-1. **Load checklist** from `{project-root}/_bmad/bam/checklists/{checklist}.md`
+1. **Load checklist** from `{project-root}/_bmad/bam/data/checklists/{checklist}.md`
 2. **Execute checks** - mark items PASS/FAIL/N/A
 3. **Document failures** with details and reproduction steps
 4. **Calculate pass rate** - CRITICAL vs non-critical separately

@@ -27,7 +27,7 @@ Execute contract tests to verify tool behavior matches specification.
 - Tenant context validated (Step 4)
 - **Load patterns:** `{project-root}/_bmad/bam/data/bam-patterns.csv → filter: testing-isolation`
 - **Load patterns:** `{project-root}/_bmad/bam/data/bam-patterns.csv → filter: run-contracts`
-- **Load checklist:** `{project-root}/_bmad/bam/checklists/qg-m3-tools.md`
+- **Load checklist:** `{project-root}/_bmad/bam/data/checklists/qg-m3-tools.md`
 
 ---
 
@@ -36,7 +36,7 @@ Execute contract tests to verify tool behavior matches specification.
 
 - Output from previous step(s) in this workflow
 - Pattern registry: `{project-root}/_bmad/bam/data/bam-patterns.csv`
-- Relevant templates from `{project-root}/_bmad/bam/templates/`
+- Relevant templates from `{project-root}/_bmad/bam/data/templates/`
 - User feedback and refinements from previous steps
 
 ---
@@ -152,7 +152,7 @@ Include:
 
 - Tool validation report
 - Contract test results
-- **Load template:** `{project-root}/_bmad/bam/templates/tool-definition-template.md`
+- **Load template:** `{project-root}/_bmad/bam/data/templates/tool-definition-template.md`
 
 ## Next Step
 

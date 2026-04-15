@@ -8,7 +8,7 @@ Execute validation checks to verify the AI security assessment meets required cr
 
 - Step 20 complete (document loaded)
 - **Load patterns:** `{project-root}/_bmad/bam/data/bam-patterns.csv` -> filter: `ai-security`
-- **Load checklist:** `{project-root}/_bmad/bam/checklists/qg-security-continuous.md`
+- **Load checklist:** `{project-root}/_bmad/bam/data/checklists/qg-security-continuous.md`
 
 ## Actions
 

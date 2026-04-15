@@ -117,7 +117,7 @@ _Source: [URL]_
 - Threshold analysis
 - Risk assessment matrix
 - Mitigation plan
-- **Load template:** `{project-root}/_bmad/bam/templates/data-processing-agreement-template.md`
+- **Load template:** `{project-root}/_bmad/bam/data/templates/data-processing-agreement-template.md`
 
 ## Next Step
 

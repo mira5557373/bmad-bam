@@ -27,7 +27,7 @@ Validate the data synchronization design against data architecture criteria, ens
 
 - Step 20 completed: Artifact loaded successfully
 - **Load patterns:** `{project-root}/_bmad/bam/data/bam-patterns.csv` -> filter: data-sync
-- **Load checklist:** `{project-root}/_bmad/bam/checklists/tenant-isolation.md`
+- **Load checklist:** `{project-root}/_bmad/bam/data/checklists/tenant-isolation.md`
 
 ---
 

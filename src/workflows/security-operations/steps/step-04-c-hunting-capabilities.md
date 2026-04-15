@@ -107,7 +107,7 @@ After completing hunting setup, if 'C' (Continue):
 - Hunting playbooks
 - Hunting schedule
 - Security operations configuration (complete)
-- **Load template:** `{project-root}/_bmad/bam/templates/hunting-playbook-template.md`
+- **Load template:** `{project-root}/_bmad/bam/data/templates/hunting-playbook-template.md`
 
 ---
 

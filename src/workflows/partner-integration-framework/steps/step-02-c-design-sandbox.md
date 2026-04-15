@@ -37,7 +37,7 @@ Configure sandbox provisioning, set up data isolation, plan resource limits, and
 - Output from Step 1 (Partner tiers)
 - Infrastructure capabilities
 - Pattern registry: `{project-root}/_bmad/bam/data/bam-patterns.csv`
-- Relevant templates from `{project-root}/_bmad/bam/templates/`
+- Relevant templates from `{project-root}/_bmad/bam/data/templates/`
 
 ---
 

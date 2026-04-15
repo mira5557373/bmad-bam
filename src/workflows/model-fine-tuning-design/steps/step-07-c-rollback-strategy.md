@@ -36,7 +36,7 @@ Design rollback mechanisms that enable instant, gradual, or automatic reversion 
 
 - Output from previous step(s) in this workflow
 - Pattern registry: `{project-root}/_bmad/bam/data/bam-patterns.csv`
-- Relevant templates from `{project-root}/_bmad/bam/templates/`
+- Relevant templates from `{project-root}/_bmad/bam/data/templates/`
 - User feedback and refinements from previous steps
 
 ---
@@ -199,7 +199,7 @@ Select an option:
 - Automatic trigger definitions
 - Audit trail schema
 - Rollback runbook
-- **Load template:** `{project-root}/_bmad/bam/templates/rollback-plan-template.md`
+- **Load template:** `{project-root}/_bmad/bam/data/templates/rollback-plan-template.md`
 
 ---
 

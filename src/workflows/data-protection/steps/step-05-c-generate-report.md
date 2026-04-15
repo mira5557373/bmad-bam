@@ -8,7 +8,7 @@ Compile all findings into a comprehensive data protection verification report.
 
 - Steps 1-4 complete
 - All findings documented
-- **Load templates:** `{project-root}/_bmad/bam/templates/rls-policy-template.md`
+- **Load templates:** `{project-root}/_bmad/bam/data/templates/rls-policy-template.md`
 
 ## Actions
 

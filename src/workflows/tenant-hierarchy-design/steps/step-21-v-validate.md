@@ -79,7 +79,7 @@ This step validates the completeness and quality of the tenant hierarchy design,
 
 **Gate Reference:** Load from `{project-root}/_bmad/bam/data/quality-gates.csv` -> filter: `QG-M2`
 
-**Load Checklist:** `{project-root}/_bmad/bam/checklists/tenant-isolation.md`
+**Load Checklist:** `{project-root}/_bmad/bam/data/checklists/tenant-isolation.md`
 
 - **PASS**: All hierarchy levels defined, permission inheritance complete, billing and quota rules operational
 - **CONDITIONAL**: Minor gaps (e.g., specific timeout values, edge case handling) - document gaps and proceed

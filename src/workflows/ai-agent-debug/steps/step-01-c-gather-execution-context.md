@@ -168,7 +168,7 @@ Select an option:
 - Agent configuration snapshot
 - Trace analysis summary
 - Memory state snapshot
-- **Load template:** `{project-root}/_bmad/bam/templates/execution-context-report-template.md`
+- **Load template:** `{project-root}/_bmad/bam/data/templates/execution-context-report-template.md`
 
 ---
 

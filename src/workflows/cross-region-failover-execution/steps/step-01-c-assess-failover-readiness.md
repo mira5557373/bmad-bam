@@ -229,7 +229,7 @@ _Source: [URL]_
 - Pre-failover health check results
 - Replication status documentation
 - Baseline system metrics
-- **Load template:** `{project-root}/_bmad/bam/templates/failover-execution-template.md`
+- **Load template:** `{project-root}/_bmad/bam/data/templates/failover-execution-template.md`
 
 ## Next Step
 

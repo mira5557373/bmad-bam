@@ -15,7 +15,7 @@ Design comprehensive RAG pipeline observability for multi-tenant AI platforms in
 1. Load project context from `{project-root}/**/project-context.md`
 2. Load RAG observability guide from `{project-root}/_bmad/bam/data/agent-guides/bam/rag-observability.md`
 3. Execute steps in selected mode
-4. Generate output using `{project-root}/_bmad/bam/templates/rag-observability-template.md`
+4. Generate output using `{project-root}/_bmad/bam/data/templates/rag-observability-template.md`
 5. Verify against QG-AI2 RAG Pipeline Observability section
 
 ## Quality Gate Integration

@@ -27,7 +27,7 @@ Verify that AI agents operate safely within defined boundaries, fail gracefully 
 
 - Tenant safety verified (Step 2)
 - **Load patterns:** `{project-root}/_bmad/bam/data/bam-patterns.csv` → filter: tenant-isolation
-- **Load checklist:** `{project-root}/_bmad/bam/checklists/qg-i3-agent-safety.md`
+- **Load checklist:** `{project-root}/_bmad/bam/data/checklists/qg-i3-agent-safety.md`
 
 
 ---
@@ -36,7 +36,7 @@ Verify that AI agents operate safely within defined boundaries, fail gracefully 
 
 - Output from previous step(s) in this workflow
 - Pattern registry: `{project-root}/_bmad/bam/data/bam-patterns.csv`
-- Relevant templates from `{project-root}/_bmad/bam/templates/`
+- Relevant templates from `{project-root}/_bmad/bam/data/templates/`
 - User feedback and refinements from previous steps
 
 ---
@@ -87,7 +87,7 @@ _Source: [URL]_
 - Fallback behavior verification matrix
 - Kill switch test results
 - Safety test suite results with vulnerability assessment
-- **Load template:** `{project-root}/_bmad/bam/templates/capacity-planning-template.md`
+- **Load template:** `{project-root}/_bmad/bam/data/templates/capacity-planning-template.md`
 
 ---
 

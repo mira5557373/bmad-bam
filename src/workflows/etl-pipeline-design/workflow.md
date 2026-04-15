@@ -88,5 +88,5 @@ Load the existing output artifact, then follow `steps/` for validation against q
 
 ## Templates
 
-- **Load template:** `{project-root}/_bmad/bam/templates/etl-pipeline-template.md`
-- **Load template:** `{project-root}/_bmad/bam/templates/data-integration-template.md`
+- **Load template:** `{project-root}/_bmad/bam/data/templates/etl-pipeline-template.md`
+- **Load template:** `{project-root}/_bmad/bam/data/templates/data-integration-template.md`

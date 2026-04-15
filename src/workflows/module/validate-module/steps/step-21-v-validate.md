@@ -28,7 +28,7 @@ This step performs meta-validation of the module validation report, ensuring rep
 - Step 1: Load Artifact completed successfully
 - **Load patterns:** `{project-root}/_bmad/bam/data/bam-patterns.csv` → filter: module-boundaries,tenant-isolation
 - **Load quality gate:** `{project-root}/_bmad/bam/data/quality-gates.csv` -> filter: `QG-S1,QG-S2`
-- **Load checklist:** `{project-root}/_bmad/bam/checklists/module-readiness.md`
+- **Load checklist:** `{project-root}/_bmad/bam/data/checklists/module-readiness.md`
 
 
 

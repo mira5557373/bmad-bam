@@ -67,5 +67,5 @@ Load the existing output artifact, then follow `steps/` for validation against q
 
 ## Templates
 
-- **Load template:** `{project-root}/_bmad/bam/templates/golden-dataset-template.md`
-- **Load template:** `{project-root}/_bmad/bam/templates/test-case-template.md`
+- **Load template:** `{project-root}/_bmad/bam/data/templates/golden-dataset-template.md`
+- **Load template:** `{project-root}/_bmad/bam/data/templates/test-case-template.md`

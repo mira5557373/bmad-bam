@@ -29,7 +29,7 @@ Design comprehensive reporting procedures for penetration testing findings, incl
 
 - Step 3 completed: Tenant isolation and AI agent test cases defined
 - **Load patterns:** `{project-root}/_bmad/bam/data/bam-patterns.csv` -> filter: security
-- **Load checklist:** `{project-root}/_bmad/bam/checklists/qg-i3-agent-safety.md`
+- **Load checklist:** `{project-root}/_bmad/bam/data/checklists/qg-i3-agent-safety.md`
 
 ---
 

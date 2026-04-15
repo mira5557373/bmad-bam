@@ -121,5 +121,5 @@ Design tenant-scoped session management:
 
 - Pattern: `compliance` (sso-integration-patterns)
 - Pattern: `tenant-isolation`
-- Multi-Tenant Patterns: `bam/knowledge/multi-tenant-patterns.md`
-- Security Patterns: `bam/knowledge/security-patterns.md`
+- Multi-Tenant Patterns: `{project-root}/_bmad/bam/data/agent-guides/bam/multi-tenant-patterns.md`
+- Security Patterns: `{project-root}/_bmad/bam/data/agent-guides/bam/security-patterns.md`

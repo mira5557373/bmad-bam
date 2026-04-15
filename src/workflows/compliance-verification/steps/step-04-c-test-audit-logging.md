@@ -8,7 +8,7 @@ Verify audit logging meets compliance requirements for traceability and forensic
 
 - Steps 1-3 complete
 - Audit logging infrastructure deployed
-- **Load template:** `{project-root}/_bmad/bam/templates/audit-logging-template.md`
+- **Load template:** `{project-root}/_bmad/bam/data/templates/audit-logging-template.md`
 
 ## Actions
 

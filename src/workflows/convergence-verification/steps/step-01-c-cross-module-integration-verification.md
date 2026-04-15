@@ -27,7 +27,7 @@ Verify that all modules integrate correctly through their defined facades and co
 
 - All modules developed and tested
 - **Load patterns:** `{project-root}/_bmad/bam/data/bam-patterns.csv` → filter: tenant-isolation
-- **Load checklist:** `{project-root}/_bmad/bam/checklists/qg-i1-convergence.md`
+- **Load checklist:** `{project-root}/_bmad/bam/data/checklists/qg-i1-convergence.md`
 
 
 ---
@@ -83,7 +83,7 @@ _Source: [URL]_
 - Event flow verification matrix
 - Contract compliance audit document
 - Version mismatch report with remediation plan
-- **Load template:** `{project-root}/_bmad/bam/templates/compliance-checklist-template.md`
+- **Load template:** `{project-root}/_bmad/bam/data/templates/compliance-checklist-template.md`
 
 ---
 

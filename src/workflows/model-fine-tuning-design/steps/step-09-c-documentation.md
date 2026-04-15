@@ -36,7 +36,7 @@ Complete all documentation for the fine-tuning pipeline including tenant-facing 
 
 - Output from previous step(s) in this workflow
 - Pattern registry: `{project-root}/_bmad/bam/data/bam-patterns.csv`
-- Relevant templates from `{project-root}/_bmad/bam/templates/`
+- Relevant templates from `{project-root}/_bmad/bam/data/templates/`
 - User feedback and refinements from previous steps
 
 ---
@@ -236,7 +236,7 @@ Select an option:
 - Integration specifications
 - Final specification document
 - **Output to:** `{output_folder}/planning-artifacts/model-fine-tuning-spec.md`
-- **Load template:** `{project-root}/_bmad/bam/templates/model-fine-tuning-template.md`
+- **Load template:** `{project-root}/_bmad/bam/data/templates/model-fine-tuning-template.md`
 
 ---
 

@@ -232,7 +232,7 @@ Select an option:
 - Hybrid search configuration
 - Multi-index strategy
 - Fallback procedures
-- **Load template:** `{project-root}/_bmad/bam/templates/rag-architecture-template.md`
+- **Load template:** `{project-root}/_bmad/bam/data/templates/rag-architecture-template.md`
 
 ---
 

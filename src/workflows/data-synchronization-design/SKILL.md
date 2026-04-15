@@ -116,8 +116,8 @@ Configure sync monitoring:
 
 ## References
 
-- Template: `bam/templates/data-template.md`
-- Multi-Tenant Patterns: `bam/knowledge/multi-tenant-patterns.md`
+- Template: `{project-root}/_bmad/bam/data/templates/data-template.md`
+- Multi-Tenant Patterns: `{project-root}/_bmad/bam/data/agent-guides/bam/multi-tenant-patterns.md`
 
 ## Web Research
 

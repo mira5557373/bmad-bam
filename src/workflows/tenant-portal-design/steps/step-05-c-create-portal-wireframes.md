@@ -38,7 +38,7 @@ Create the information architecture and key wireframes for the tenant portal.
 
 - Output from previous step(s) in this workflow
 - Pattern registry: `{project-root}/_bmad/bam/data/bam-patterns.csv`
-- Relevant templates from `{project-root}/_bmad/bam/templates/`
+- Relevant templates from `{project-root}/_bmad/bam/data/templates/`
 - User feedback and refinements from previous steps
 
 ---
@@ -216,7 +216,7 @@ Select an option:
 
 - Tenant portal design document
 - Information architecture diagram
-- **Load template:** `{project-root}/_bmad/bam/templates/ux-design-template.md`
+- **Load template:** `{project-root}/_bmad/bam/data/templates/ux-design-template.md`
 
 ---
 

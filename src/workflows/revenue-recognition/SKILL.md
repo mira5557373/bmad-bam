@@ -124,4 +124,4 @@ Design audit and compliance:
 
 ## References
 
-- Knowledge: `bam/knowledge/multi-tenant-patterns.md`
+- Knowledge: `{project-root}/_bmad/bam/data/agent-guides/bam/multi-tenant-patterns.md`

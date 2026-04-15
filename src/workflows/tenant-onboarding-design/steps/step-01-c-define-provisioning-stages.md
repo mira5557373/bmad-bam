@@ -134,10 +134,10 @@ Select an option:
 
 - Provisioning stage definitions
 - Rollback strategy matrix
-- **Load template:** `{project-root}/_bmad/bam/templates/tenant-requirements-template.md`
-- **Load template:** `{project-root}/_bmad/bam/templates/tenant-persona-template.md`
-- **Load template:** `{project-root}/_bmad/bam/templates/tenant-persona-analysis-template.md`
-- **Load template:** `{project-root}/_bmad/bam/templates/tenant-story-template.md`
+- **Load template:** `{project-root}/_bmad/bam/data/templates/tenant-requirements-template.md`
+- **Load template:** `{project-root}/_bmad/bam/data/templates/tenant-persona-template.md`
+- **Load template:** `{project-root}/_bmad/bam/data/templates/tenant-persona-analysis-template.md`
+- **Load template:** `{project-root}/_bmad/bam/data/templates/tenant-story-template.md`
 
 ---
 

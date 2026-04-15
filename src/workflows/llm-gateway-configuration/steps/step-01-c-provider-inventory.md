@@ -153,7 +153,7 @@ Select an option:
 - Embedding provider catalog
 - Self-hosted model options
 - Health monitoring configuration
-- **Load template:** `{project-root}/_bmad/bam/templates/llm-gateway-configuration-template.md`
+- **Load template:** `{project-root}/_bmad/bam/data/templates/llm-gateway-configuration-template.md`
 
 ---
 

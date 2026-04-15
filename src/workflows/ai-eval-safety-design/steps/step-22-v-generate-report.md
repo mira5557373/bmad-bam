@@ -134,9 +134,9 @@ Select an option:
 - AI Eval/Safety Design Validation Report
 - Category-level findings summary
 - Safety readiness assessment
-- **Load template:** `{project-root}/_bmad/bam/templates/golden-dataset-template.md`
-- **Load template:** `{project-root}/_bmad/bam/templates/golden-tasks-template.md`
-- **Load template:** `{project-root}/_bmad/bam/templates/human-eval-rubric-template.md`
+- **Load template:** `{project-root}/_bmad/bam/data/templates/golden-dataset-template.md`
+- **Load template:** `{project-root}/_bmad/bam/data/templates/golden-tasks-template.md`
+- **Load template:** `{project-root}/_bmad/bam/data/templates/human-eval-rubric-template.md`
 
 ## Next Step
 

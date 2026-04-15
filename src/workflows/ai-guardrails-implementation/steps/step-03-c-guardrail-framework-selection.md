@@ -151,7 +151,7 @@ Select an option:
 - Framework selection with justification
 - Hybrid architecture specification
 - Integration design document
-- **Load template:** `{project-root}/_bmad/bam/templates/ai-guardrails-template.md`
+- **Load template:** `{project-root}/_bmad/bam/data/templates/ai-guardrails-template.md`
 
 ---
 

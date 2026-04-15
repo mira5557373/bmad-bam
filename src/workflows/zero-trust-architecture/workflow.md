@@ -37,4 +37,4 @@ Default: **Create** mode.
 ## References
 
 - **Patterns:** Load from `{project-root}/_bmad/bam/data/bam-patterns.csv` filter: `security`
-- **Templates:** `{project-root}/_bmad/bam/templates/zero-trust-template.md`
+- **Templates:** `{project-root}/_bmad/bam/data/templates/zero-trust-template.md`

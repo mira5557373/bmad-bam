@@ -147,7 +147,7 @@ Select an option:
 - DNS verification matrix
 - Propagation monitoring design
 - Complete custom domain design document
-- **Load template:** `{project-root}/_bmad/bam/templates/custom-domain-template.md`
+- **Load template:** `{project-root}/_bmad/bam/data/templates/custom-domain-template.md`
 
 ---
 

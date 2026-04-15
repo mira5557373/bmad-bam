@@ -117,7 +117,7 @@ For each knowledge directive found:
 
 ## References
 
-- Patterns: `bam/data/bam-patterns.csv`
+- Patterns: `{project-root}/_bmad/bam/data/bam-patterns.csv`
 - Migration mapping in workflow steps
 
 ## Headless Mode

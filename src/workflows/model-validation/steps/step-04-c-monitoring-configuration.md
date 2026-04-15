@@ -108,7 +108,7 @@ After completing monitoring configuration, if 'C' (Continue):
 - Alert rules
 - Dashboard definitions
 - Model validation report (complete)
-- **Load template:** `{project-root}/_bmad/bam/templates/model-monitoring-config-template.md`
+- **Load template:** `{project-root}/_bmad/bam/data/templates/model-monitoring-config-template.md`
 
 ---
 

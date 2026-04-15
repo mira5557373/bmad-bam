@@ -27,7 +27,7 @@ Generate a comprehensive validation report summarizing findings from the AI agen
 
 - Step 20 completed: Debug report artifact loaded successfully
 - Step 21 completed: Validation performed against debug report criteria
-- **Load template:** `{project-root}/_bmad/bam/templates/quality-gate-report-template.md`
+- **Load template:** `{project-root}/_bmad/bam/data/templates/quality-gate-report-template.md`
 
 ---
 
@@ -140,7 +140,7 @@ Select an option:
 - AI Agent Debug Validation Report
 - Section-level findings summary
 - Debug resolution readiness assessment
-- **Load template:** `{project-root}/_bmad/bam/templates/debug-session-template.md`
+- **Load template:** `{project-root}/_bmad/bam/data/templates/debug-session-template.md`
 - **Output to:** `{output_folder}/planning-artifacts/debug/agent-debug-validation-report.md`
 
 ---

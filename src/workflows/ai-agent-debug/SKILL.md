@@ -125,4 +125,4 @@ This workflow contributes to:
 
 ## References
 
-- Knowledge: `bam/knowledge/agent-runtime-patterns.md`, `bam/knowledge/memory-tiers.md`, `bam/knowledge/tool-execution-middleware.md`
+- Knowledge: `{project-root}/_bmad/bam/data/agent-guides/bam/agent-runtime-patterns.md`, `{project-root}/_bmad/bam/data/agent-guides/bam/memory-tiers.md`, `{project-root}/_bmad/bam/data/agent-guides/bam/tool-execution-middleware.md`

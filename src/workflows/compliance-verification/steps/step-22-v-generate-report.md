@@ -152,7 +152,7 @@ Select an option:
 - Gate decision (PASS/CONDITIONAL/FAIL)
 - QG-CP1 gate status with evidence
 - Remediation recommendations (if CONDITIONAL or FAIL)
-- **Load template:** `{project-root}/_bmad/bam/templates/compliance-framework-template.md`
+- **Load template:** `{project-root}/_bmad/bam/data/templates/compliance-framework-template.md`
 
 ---
 

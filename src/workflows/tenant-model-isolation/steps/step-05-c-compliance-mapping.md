@@ -40,7 +40,7 @@ Map regulatory compliance requirements to the tenant data model, ensuring the ar
 
 - Output from previous step(s) in this workflow
 - Pattern registry: `{project-root}/_bmad/bam/data/bam-patterns.csv`
-- Relevant templates from `{project-root}/_bmad/bam/templates/`
+- Relevant templates from `{project-root}/_bmad/bam/data/templates/`
 - User feedback and refinements from previous steps
 
 ---
@@ -140,8 +140,8 @@ Select an option:
 - Deletion workflow documentation
 - Audit schema and retention policies
 - Data residency configuration guide
-- **Load template:** `{project-root}/_bmad/bam/templates/tenant-lifecycle-template.md`
-- **Load template:** `{project-root}/_bmad/bam/templates/isolation-test-template.md`
+- **Load template:** `{project-root}/_bmad/bam/data/templates/tenant-lifecycle-template.md`
+- **Load template:** `{project-root}/_bmad/bam/data/templates/isolation-test-template.md`
 
 ---
 

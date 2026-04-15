@@ -127,7 +127,7 @@ Select an option:
 
 - Tenant segment definitions
 - Initial isolation requirements matrix
-- **Load template:** `{project-root}/_bmad/bam/templates/tenant-tier-matrix.md`
+- **Load template:** `{project-root}/_bmad/bam/data/templates/tenant-tier-matrix.md`
 
 ## Next Step
 

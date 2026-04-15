@@ -30,7 +30,7 @@ Assemble all disaster recovery decisions into a comprehensive DR plan document u
 - Backup strategy designed (Step 2)
 - Failover procedures designed (Step 3)
 - **Load patterns:** `{project-root}/_bmad/bam/data/bam-patterns.csv` → filter: disaster-recovery
-- **Load template:** `{project-root}/_bmad/bam/templates/disaster-recovery-plan-template.md`
+- **Load template:** `{project-root}/_bmad/bam/data/templates/disaster-recovery-plan-template.md`
 
 
 ---
@@ -39,7 +39,7 @@ Assemble all disaster recovery decisions into a comprehensive DR plan document u
 
 - Output from previous step(s) in this workflow
 - Pattern registry: `{project-root}/_bmad/bam/data/bam-patterns.csv`
-- Relevant templates from `{project-root}/_bmad/bam/templates/`
+- Relevant templates from `{project-root}/_bmad/bam/data/templates/`
 - User feedback and refinements from previous steps
 
 ---
@@ -235,7 +235,7 @@ _Source: [URL]_
 ## Outputs
 
 - `{output_folder}/planning-artifacts/disaster-recovery-plan.md`
-- **Load template:** `{project-root}/_bmad/bam/templates/disaster-recovery-template.md`
+- **Load template:** `{project-root}/_bmad/bam/data/templates/disaster-recovery-template.md`
 
 ## Next Step
 

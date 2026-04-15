@@ -21,7 +21,7 @@
 
 - Convergence Verification Report artifact exists to validate
 - **Load patterns:** `{project-root}/_bmad/bam/data/bam-patterns.csv` → filter: tenant-isolation
-- **Load checklist:** `{project-root}/_bmad/bam/checklists/qg-i1-convergence.md`
+- **Load checklist:** `{project-root}/_bmad/bam/data/checklists/qg-i1-convergence.md`
 
 ## Purpose
 
@@ -62,7 +62,7 @@ If the file exists but lacks required sections or contains broken cross-referenc
 ## Inputs
 
 - Artifact file path for validation
-- Quality gate checklist: `{project-root}/_bmad/bam/checklists/`
+- Quality gate checklist: `{project-root}/_bmad/bam/data/checklists/`
 - Pattern registry: `{project-root}/_bmad/bam/data/bam-patterns.csv`
 
 ---

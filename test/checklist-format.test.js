@@ -7,7 +7,7 @@ const fs = require('fs');
 const path = require('path');
 
 const ROOT_DIR = path.join(__dirname, '..');
-const CHECKLISTS_DIR = path.join(ROOT_DIR, 'src', 'checklists');
+const CHECKLISTS_DIR = path.join(ROOT_DIR, 'src', 'data', 'checklists');
 
 describe('Checklist Format Validation', () => {
   const checklistFiles = fs.readdirSync(CHECKLISTS_DIR)

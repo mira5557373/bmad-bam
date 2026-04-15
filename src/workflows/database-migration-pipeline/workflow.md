@@ -98,5 +98,5 @@ This workflow produces artifacts that must pass QG-MG1 validation:
 
 ## Templates
 
-- **Load template:** `{project-root}/_bmad/bam/templates/migration-execution-template.md`
-- **Load template:** `{project-root}/_bmad/bam/templates/data-validation-template.md`
+- **Load template:** `{project-root}/_bmad/bam/data/templates/migration-execution-template.md`
+- **Load template:** `{project-root}/_bmad/bam/data/templates/data-validation-template.md`

@@ -166,7 +166,7 @@ Select an option:
 - Prompt versioning schema specification
 - Metadata structure definition
 - Tenant override hierarchy
-- **Load template:** `{project-root}/_bmad/bam/templates/prompt-version-template.md`
+- **Load template:** `{project-root}/_bmad/bam/data/templates/prompt-version-template.md`
 
 ---
 

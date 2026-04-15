@@ -98,7 +98,7 @@ _Source: [URL]_
 - Billing integration specification
 - Revenue sharing model
 - Usage tracking configuration
-- **Load template:** `{project-root}/_bmad/bam/templates/marketplace-template.md`
+- **Load template:** `{project-root}/_bmad/bam/data/templates/marketplace-template.md`
 
 ## Next Step
 

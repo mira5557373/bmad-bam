@@ -8,7 +8,7 @@ Analyze integration test coverage across module boundaries and cross-module work
 
 - Tenant isolation assessed
 - **Load patterns:** `{project-root}/_bmad/bam/data/bam-patterns.csv` -> filter: `module-boundaries, facade-contracts`
-- **Load checklist:** `{project-root}/_bmad/bam/checklists/qg-i1-convergence.md`
+- **Load checklist:** `{project-root}/_bmad/bam/data/checklists/qg-i1-convergence.md`
 
 ## Actions
 

@@ -160,7 +160,7 @@ Select an option:
 - Incident classification document
 - Severity assignment
 - Impact scope assessment
-- **Load template:** `{project-root}/_bmad/bam/templates/incident-report-template.md`
+- **Load template:** `{project-root}/_bmad/bam/data/templates/incident-report-template.md`
 
 ---
 

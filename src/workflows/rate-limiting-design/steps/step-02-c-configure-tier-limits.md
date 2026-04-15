@@ -39,7 +39,7 @@ Configure rate limits and quotas for each tenant tier with appropriate burst han
 
 - Output from previous step(s) in this workflow
 - Pattern registry: `{project-root}/_bmad/bam/data/bam-patterns.csv`
-- Relevant templates from `{project-root}/_bmad/bam/templates/`
+- Relevant templates from `{project-root}/_bmad/bam/data/templates/`
 - User feedback and refinements from previous steps
 
 ---
@@ -189,7 +189,7 @@ Ask for confirmation before proceeding to enforcement design.
 - Tier rate limit matrix
 - Burst handling configuration
 - Quota dimension catalog
-- **Load template:** `{project-root}/_bmad/bam/templates/quota-management-template.md`
+- **Load template:** `{project-root}/_bmad/bam/data/templates/quota-management-template.md`
 
 ---
 

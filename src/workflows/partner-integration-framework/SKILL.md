@@ -89,4 +89,4 @@ This workflow contributes to:
 
 ## References
 
-- Template: `bam/templates/partner-framework-template.md`
+- Template: `{project-root}/_bmad/bam/data/templates/partner-framework-template.md`

@@ -139,4 +139,4 @@ Rejected because:
 
 - [CLAUDE.md](../../CLAUDE.md) - Quality Gates & Recovery section
 - [Workflow Reference](../reference/workflows.md) - Workflow Dependencies section
-- [module-help.csv](../../src/workflows/module-help.csv) - Workflow metadata with dependencies
+- [module-help.csv](../../src/module-help.csv) - Workflow metadata with dependencies

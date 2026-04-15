@@ -161,7 +161,7 @@ Select an option:
 - Supported models matrix
 - Fine-tuning method selection by tier
 - Compute budget allocation
-- **Load template:** `{project-root}/_bmad/bam/templates/model-fine-tuning-template.md`
+- **Load template:** `{project-root}/_bmad/bam/data/templates/model-fine-tuning-template.md`
 
 ---
 

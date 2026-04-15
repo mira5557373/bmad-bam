@@ -131,32 +131,32 @@ This workflow contributes to:
 
 ## References
 
-- Template: `bam/templates/agent-runtime-architecture-template.md`, `bam/templates/tool-contract-template.md`
-- AI Model Versioning: `bam/knowledge/llm-versioning.md`
-- Agent Runtime Patterns: `bam/knowledge/agent-runtime-patterns.md`
-- Memory Tier Patterns: `bam/knowledge/memory-tiers.md`
-- Tool Execution Middleware: `bam/knowledge/tool-execution-middleware.md`
-- Run Contract Patterns: `bam/knowledge/run-contracts.md`
-- Context Compiler Patterns: `bam/knowledge/context-compiler-patterns.md`
-- Action Gateway Patterns: `bam/knowledge/action-gateway-patterns.md`
-- Agent Resilience Patterns: `bam/knowledge/agent-resilience-patterns.md`
-- Agent Lifecycle Versioning: `bam/knowledge/agent-lifecycle-versioning-patterns.md`
-- Agent Identity TBAC: `bam/knowledge/agent-identity-tbac-patterns.md`
-- WDS Integration Patterns: `bam/knowledge/wds-integration-patterns.md`
+- Template: `{project-root}/_bmad/bam/data/templates/agent-runtime-architecture-template.md`, `{project-root}/_bmad/bam/data/templates/tool-contract-template.md`
+- AI Model Versioning: `{project-root}/_bmad/bam/data/agent-guides/bam/llm-versioning.md`
+- Agent Runtime Patterns: `{project-root}/_bmad/bam/data/agent-guides/bam/agent-runtime-patterns.md`
+- Memory Tier Patterns: `{project-root}/_bmad/bam/data/agent-guides/bam/memory-tiers.md`
+- Tool Execution Middleware: `{project-root}/_bmad/bam/data/agent-guides/bam/tool-execution-middleware.md`
+- Run Contract Patterns: `{project-root}/_bmad/bam/data/agent-guides/bam/run-contracts.md`
+- Context Compiler Patterns: `{project-root}/_bmad/bam/data/agent-guides/bam/context-compiler-patterns.md`
+- Action Gateway Patterns: `{project-root}/_bmad/bam/data/agent-guides/bam/action-gateway-patterns.md`
+- Agent Resilience Patterns: `{project-root}/_bmad/bam/data/agent-guides/bam/agent-resilience-patterns.md`
+- Agent Lifecycle Versioning: `{project-root}/_bmad/bam/data/agent-guides/bam/agent-lifecycle-versioning-patterns.md`
+- Agent Identity TBAC: `{project-root}/_bmad/bam/data/agent-guides/bam/agent-identity-tbac-patterns.md`
+- WDS Integration Patterns: `{project-root}/_bmad/bam/data/agent-guides/bam/wds-integration-patterns.md`
 
-- Knowledge: `bam/knowledge/agent-runtime-patterns.md`, `bam/knowledge/memory-tiers.md`, `bam/knowledge/tool-execution-middleware.md`, `bam/knowledge/run-contracts.md`, `bam/knowledge/action-gateway-patterns.md`, `bam/knowledge/context-compiler-patterns.md`, `bam/knowledge/llm-versioning.md`, `bam/knowledge/agent-lifecycle-versioning-patterns.md`, `bam/knowledge/agent-identity-tbac-patterns.md`, `bam/knowledge/agent-resilience-patterns.md`
-- Checklist: `bam/checklists/qg-m3-agent-runtime.md`
-- AI Model Versioning: `bam/knowledge/llm-versioning.md`
-- Agent Runtime Patterns: `bam/knowledge/agent-runtime-patterns.md`
-- Memory Tier Patterns: `bam/knowledge/memory-tiers.md`
-- Tool Execution Middleware: `bam/knowledge/tool-execution-middleware.md`
-- Run Contract Patterns: `bam/knowledge/run-contracts.md`
-- Context Compiler Patterns: `bam/knowledge/context-compiler-patterns.md`
-- Action Gateway Patterns: `bam/knowledge/action-gateway-patterns.md`
-- Agent Resilience Patterns: `bam/knowledge/agent-resilience-patterns.md`
-- Agent Lifecycle Versioning: `bam/knowledge/agent-lifecycle-versioning-patterns.md`
-- Agent Identity TBAC: `bam/knowledge/agent-identity-tbac-patterns.md`
-- WDS Integration Patterns: `bam/knowledge/wds-integration-patterns.md`
+- Knowledge: `{project-root}/_bmad/bam/data/agent-guides/bam/agent-runtime-patterns.md`, `{project-root}/_bmad/bam/data/agent-guides/bam/memory-tiers.md`, `{project-root}/_bmad/bam/data/agent-guides/bam/tool-execution-middleware.md`, `{project-root}/_bmad/bam/data/agent-guides/bam/run-contracts.md`, `{project-root}/_bmad/bam/data/agent-guides/bam/action-gateway-patterns.md`, `{project-root}/_bmad/bam/data/agent-guides/bam/context-compiler-patterns.md`, `{project-root}/_bmad/bam/data/agent-guides/bam/llm-versioning.md`, `{project-root}/_bmad/bam/data/agent-guides/bam/agent-lifecycle-versioning-patterns.md`, `{project-root}/_bmad/bam/data/agent-guides/bam/agent-identity-tbac-patterns.md`, `{project-root}/_bmad/bam/data/agent-guides/bam/agent-resilience-patterns.md`
+- Checklist: `{project-root}/_bmad/bam/data/checklists/qg-m3-agent-runtime.md`
+- AI Model Versioning: `{project-root}/_bmad/bam/data/agent-guides/bam/llm-versioning.md`
+- Agent Runtime Patterns: `{project-root}/_bmad/bam/data/agent-guides/bam/agent-runtime-patterns.md`
+- Memory Tier Patterns: `{project-root}/_bmad/bam/data/agent-guides/bam/memory-tiers.md`
+- Tool Execution Middleware: `{project-root}/_bmad/bam/data/agent-guides/bam/tool-execution-middleware.md`
+- Run Contract Patterns: `{project-root}/_bmad/bam/data/agent-guides/bam/run-contracts.md`
+- Context Compiler Patterns: `{project-root}/_bmad/bam/data/agent-guides/bam/context-compiler-patterns.md`
+- Action Gateway Patterns: `{project-root}/_bmad/bam/data/agent-guides/bam/action-gateway-patterns.md`
+- Agent Resilience Patterns: `{project-root}/_bmad/bam/data/agent-guides/bam/agent-resilience-patterns.md`
+- Agent Lifecycle Versioning: `{project-root}/_bmad/bam/data/agent-guides/bam/agent-lifecycle-versioning-patterns.md`
+- Agent Identity TBAC: `{project-root}/_bmad/bam/data/agent-guides/bam/agent-identity-tbac-patterns.md`
+- WDS Integration Patterns: `{project-root}/_bmad/bam/data/agent-guides/bam/wds-integration-patterns.md`
 
 ## Web Research
 

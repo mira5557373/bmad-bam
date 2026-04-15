@@ -2,7 +2,7 @@
 
 ## Overview
 
-BAM provides 67 workflows organized by domain for multi-tenant AI SaaS development.
+BAM provides 191 workflows organized by domain for multi-tenant AI SaaS development.
 
 ## Directory Structure
 

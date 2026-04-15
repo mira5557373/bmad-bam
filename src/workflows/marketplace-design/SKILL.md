@@ -82,5 +82,5 @@ This workflow contributes to:
 
 ## References
 
-- Template: `bam/templates/marketplace-template.md`
+- Template: `{project-root}/_bmad/bam/data/templates/marketplace-template.md`
 - Partner Framework: `bmad-bam-partner-integration-framework`

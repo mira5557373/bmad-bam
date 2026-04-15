@@ -100,4 +100,4 @@ This workflow contributes to QG-S4 by verifying AI-specific security controls:
 ## References
 
 - **Patterns:** Load from `{project-root}/_bmad/bam/data/bam-patterns.csv`
-- **Checklist:** `{project-root}/_bmad/bam/checklists/qg-i3-agent-safety.md`
+- **Checklist:** `{project-root}/_bmad/bam/data/checklists/qg-i3-agent-safety.md`

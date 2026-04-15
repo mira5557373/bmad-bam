@@ -120,7 +120,7 @@ Select an option:
 - Experiment catalog
 - Hypothesis definitions
 - Priority matrix
-- **Load template:** `{project-root}/_bmad/bam/templates/chaos-test-plan-template.md`
+- **Load template:** `{project-root}/_bmad/bam/data/templates/chaos-test-plan-template.md`
 
 ---
 

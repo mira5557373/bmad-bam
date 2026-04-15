@@ -101,8 +101,8 @@ This workflow contributes to:
 
 ## References
 
-- Template: `bam/templates/ai-observability-template.md`
-- Knowledge: `bam/knowledge/ai-observability-patterns.md`
+- Template: `{project-root}/_bmad/bam/data/templates/ai-observability-template.md`
+- Knowledge: `{project-root}/_bmad/bam/data/agent-guides/bam/ai-observability-patterns.md`
 
 ## Web Research
 

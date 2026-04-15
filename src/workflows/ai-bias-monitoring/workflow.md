@@ -67,5 +67,5 @@ Load the existing output artifact, then follow `steps/` for validation against q
 
 ## Templates
 
-- **Load template:** `{project-root}/_bmad/bam/templates/bias-assessment-template.md`
-- **Load template:** `{project-root}/_bmad/bam/templates/fairness-monitoring-template.md`
+- **Load template:** `{project-root}/_bmad/bam/data/templates/bias-assessment-template.md`
+- **Load template:** `{project-root}/_bmad/bam/data/templates/fairness-monitoring-template.md`

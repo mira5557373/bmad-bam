@@ -25,7 +25,7 @@ This step loads the Event Streaming Design artifact for validation. The design d
 
 - Streaming design artifact exists to validate
 - **Load patterns:** `{project-root}/_bmad/bam/data/bam-patterns.csv` -> filter: event-driven
-- **Load checklist:** `{project-root}/_bmad/bam/checklists/production-readiness.md`
+- **Load checklist:** `{project-root}/_bmad/bam/data/checklists/production-readiness.md`
 
 Load the existing streaming design documents:
 - `{output_folder}/planning-artifacts/streaming/event-streaming-design.md`
@@ -40,7 +40,7 @@ Parse the document structure and prepare for validation against the quality crit
 ## Inputs
 
 - Artifact file path for validation
-- Quality gate checklist: `{project-root}/_bmad/bam/checklists/`
+- Quality gate checklist: `{project-root}/_bmad/bam/data/checklists/`
 - Pattern registry: `{project-root}/_bmad/bam/data/bam-patterns.csv`
 
 ---

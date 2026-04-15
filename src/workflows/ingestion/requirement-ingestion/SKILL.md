@@ -124,10 +124,10 @@ This workflow contributes to:
 
 ## References
 
-- Template: `bam/templates/sprint-status-template.yaml`
-- Independent Development: `bam/knowledge/independent-development.md`
-- DDD Module Patterns: `bam/knowledge/ddd-module-patterns.md`
+- Template: `{project-root}/_bmad/bam/data/templates/sprint-status-template.yaml`
+- Independent Development: `{project-root}/_bmad/bam/data/agent-guides/bam/independent-development.md`
+- DDD Module Patterns: `{project-root}/_bmad/bam/data/agent-guides/bam/ddd-module-patterns.md`
 
-- Knowledge: `bam/knowledge/ddd-module-patterns.md`, `bam/knowledge/independent-development.md`
-- Independent Development: `bam/knowledge/independent-development.md`
-- DDD Module Patterns: `bam/knowledge/ddd-module-patterns.md`
+- Knowledge: `{project-root}/_bmad/bam/data/agent-guides/bam/ddd-module-patterns.md`, `{project-root}/_bmad/bam/data/agent-guides/bam/independent-development.md`
+- Independent Development: `{project-root}/_bmad/bam/data/agent-guides/bam/independent-development.md`
+- DDD Module Patterns: `{project-root}/_bmad/bam/data/agent-guides/bam/ddd-module-patterns.md`

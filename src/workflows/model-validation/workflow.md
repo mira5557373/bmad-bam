@@ -98,5 +98,5 @@ This workflow produces artifacts that must pass QG-AI1 validation:
 
 ## Templates
 
-- **Load template:** `{project-root}/_bmad/bam/templates/model-validation-report-template.md`
-- **Load template:** `{project-root}/_bmad/bam/templates/model-rollout-plan-template.md`
+- **Load template:** `{project-root}/_bmad/bam/data/templates/model-validation-report-template.md`
+- **Load template:** `{project-root}/_bmad/bam/data/templates/model-rollout-plan-template.md`

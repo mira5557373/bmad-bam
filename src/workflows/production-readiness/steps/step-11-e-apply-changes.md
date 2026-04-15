@@ -26,7 +26,7 @@ This step applies the identified changes to the existing production readiness ar
 ## Prerequisites
 
 - Step 10 completed with identified changes
-- **Load checklists:** `{project-root}/_bmad/bam/checklists/production-checklist.md`
+- **Load checklists:** `{project-root}/_bmad/bam/data/checklists/production-checklist.md`
 
 ---
 
@@ -35,7 +35,7 @@ This step applies the identified changes to the existing production readiness ar
 - Loaded artifacts from previous edit step
 - Identified modification targets
 - User-confirmed changes to apply
-- Checklist: `{project-root}/_bmad/bam/checklists/production-checklist.md`
+- Checklist: `{project-root}/_bmad/bam/data/checklists/production-checklist.md`
 
 ---
 

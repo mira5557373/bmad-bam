@@ -105,7 +105,7 @@ After completing model validation, if 'C' (Continue):
 - Model validation report
 - Evaluation results
 - Baseline comparison
-- **Load template:** `{project-root}/_bmad/bam/templates/model-validation-report-template.md`
+- **Load template:** `{project-root}/_bmad/bam/data/templates/model-validation-report-template.md`
 
 ---
 

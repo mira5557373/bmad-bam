@@ -38,7 +38,7 @@ Assemble the comprehensive security incident response plan incorporating inciden
 
 - All outputs from Steps 1-3
 - Pattern registry: `{project-root}/_bmad/bam/data/bam-patterns.csv`
-- Template: `{project-root}/_bmad/bam/templates/security-incident-response-template.md`
+- Template: `{project-root}/_bmad/bam/data/templates/security-incident-response-template.md`
 
 ---
 
@@ -140,7 +140,7 @@ _Source: [URL]_
 ## Outputs
 
 - `{output_folder}/planning-artifacts/security-incident-response-plan.md`
-- **Load template:** `{project-root}/_bmad/bam/templates/security-incident-response-template.md`
+- **Load template:** `{project-root}/_bmad/bam/data/templates/security-incident-response-template.md`
 
 ## Next Step
 

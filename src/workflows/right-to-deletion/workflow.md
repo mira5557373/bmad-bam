@@ -49,4 +49,4 @@ Default: **Create** mode.
 
 - **Patterns:** Load from `{project-root}/_bmad/bam/data/bam-patterns.csv` filter: `compliance`
 - **Compliance:** Load from `{project-root}/_bmad/bam/data/compliance-frameworks.csv`
-- **Templates:** `{project-root}/_bmad/bam/templates/deletion-procedure-template.md`
+- **Templates:** `{project-root}/_bmad/bam/data/templates/deletion-procedure-template.md`

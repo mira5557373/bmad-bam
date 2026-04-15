@@ -7,7 +7,7 @@ Generate the complete dashboard specification document.
 ## Prerequisites
 
 - All components designed
-- **Load template:** `{project-root}/_bmad/bam/templates/dashboard-spec-template.md`
+- **Load template:** `{project-root}/_bmad/bam/data/templates/dashboard-spec-template.md`
 
 ## Actions
 

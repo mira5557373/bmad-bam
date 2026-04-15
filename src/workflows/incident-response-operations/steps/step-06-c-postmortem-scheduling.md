@@ -176,7 +176,7 @@ Select an option:
 - Initial postmortem document
 - Action items tracker
 - Runbook update plan
-- **Load template:** `{project-root}/_bmad/bam/templates/postmortem-template.md`
+- **Load template:** `{project-root}/_bmad/bam/data/templates/postmortem-template.md`
 
 ---
 

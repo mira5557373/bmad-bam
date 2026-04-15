@@ -37,7 +37,7 @@ Design data isolation mechanisms for fine-tuning datasets to ensure tenant data 
 
 - Output from previous step(s) in this workflow
 - Pattern registry: `{project-root}/_bmad/bam/data/bam-patterns.csv`
-- Relevant templates from `{project-root}/_bmad/bam/templates/`
+- Relevant templates from `{project-root}/_bmad/bam/data/templates/`
 - User feedback and refinements from previous steps
 
 ---
@@ -166,7 +166,7 @@ Select an option:
 - Validation pipeline specification
 - PII handling configuration
 - Retention policy documentation
-- **Load template:** `{project-root}/_bmad/bam/templates/tenant-model-template.md`
+- **Load template:** `{project-root}/_bmad/bam/data/templates/tenant-model-template.md`
 
 ---
 

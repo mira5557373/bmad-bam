@@ -29,7 +29,7 @@ Create operational runbook for API key management operations.
 ## Prerequisites
 
 - Steps 1-4 completed
-- **Load template:** `{project-root}/_bmad/bam/templates/tenant-lifecycle-template.md`
+- **Load template:** `{project-root}/_bmad/bam/data/templates/tenant-lifecycle-template.md`
 
 ---
 

@@ -8,7 +8,7 @@ Compile all findings into a comprehensive tenant safety verification report.
 
 - Steps 1-4 complete
 - All tests documented
-- **Load checklists:** `{project-root}/_bmad/bam/checklists/tenant-checklist.md`
+- **Load checklists:** `{project-root}/_bmad/bam/data/checklists/tenant-checklist.md`
 
 ## Actions
 

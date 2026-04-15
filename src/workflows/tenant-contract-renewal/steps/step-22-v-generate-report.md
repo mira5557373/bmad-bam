@@ -27,7 +27,7 @@ Generate a comprehensive validation report summarizing findings from the contrac
 
 - Step 20 completed: Contract renewal artifact loaded successfully
 - Step 21 completed: Validation performed against quality criteria
-- **Load template:** `{project-root}/_bmad/bam/templates/quality-gate-report-template.md`
+- **Load template:** `{project-root}/_bmad/bam/data/templates/quality-gate-report-template.md`
 
 ---
 

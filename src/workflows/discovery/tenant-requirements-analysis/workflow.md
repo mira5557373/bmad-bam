@@ -78,4 +78,4 @@ Follow steps with `-v-` prefix (20-22).
 
 - **Patterns:** Load from `{project-root}/_bmad/bam/data/bam-patterns.csv` filter: `tenant-isolation,tenant-lifecycle`
 - **Tenant Models:** Load from `{project-root}/_bmad/bam/data/tenant-models.csv`
-- **Templates:** `{project-root}/_bmad/bam/templates/tenant-requirements-template.md`
+- **Templates:** `{project-root}/_bmad/bam/data/templates/tenant-requirements-template.md`

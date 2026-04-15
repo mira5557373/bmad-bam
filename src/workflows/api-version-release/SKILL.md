@@ -109,8 +109,8 @@ This workflow contributes to:
 
 ## References
 
-- Template: `bam/templates/api-version-release-template.md`
-- API Version Routing: `bam/knowledge/api-version-routing.md`
+- Template: `{project-root}/_bmad/bam/data/templates/api-version-release-template.md`
+- API Version Routing: `{project-root}/_bmad/bam/data/agent-guides/bam/api-version-routing.md`
 
-- Knowledge: `bam/knowledge/api-version-routing.md`
-- API Version Routing: `bam/knowledge/api-version-routing.md`
+- Knowledge: `{project-root}/_bmad/bam/data/agent-guides/bam/api-version-routing.md`
+- API Version Routing: `{project-root}/_bmad/bam/data/agent-guides/bam/api-version-routing.md`

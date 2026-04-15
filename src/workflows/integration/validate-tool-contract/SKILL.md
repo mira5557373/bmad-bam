@@ -85,9 +85,9 @@ For each tool in the contract:
 
 ## References
 
-- Template: `bam/templates/tool-contract-template.md`
-- Tool Execution Middleware: `bam/knowledge/tool-execution-middleware.md`
+- Template: `{project-root}/_bmad/bam/data/templates/tool-contract-template.md`
+- Tool Execution Middleware: `{project-root}/_bmad/bam/data/agent-guides/bam/tool-execution-middleware.md`
 
-- Checklist: `bam/checklists/qg-m3-tools.md`
-- Knowledge: `bam/knowledge/tool-execution-middleware.md`, `bam/knowledge/agent-runtime-patterns.md`
-- Tool Execution Middleware: `bam/knowledge/tool-execution-middleware.md`
+- Checklist: `{project-root}/_bmad/bam/data/checklists/qg-m3-tools.md`
+- Knowledge: `{project-root}/_bmad/bam/data/agent-guides/bam/tool-execution-middleware.md`, `{project-root}/_bmad/bam/data/agent-guides/bam/agent-runtime-patterns.md`
+- Tool Execution Middleware: `{project-root}/_bmad/bam/data/agent-guides/bam/tool-execution-middleware.md`

@@ -99,5 +99,5 @@ This workflow produces artifacts that must pass QG-S8 validation:
 
 ## Templates
 
-- **Load template:** `{project-root}/_bmad/bam/templates/threat-detection-config-template.md`
-- **Load template:** `{project-root}/_bmad/bam/templates/correlation-rules-template.md`
+- **Load template:** `{project-root}/_bmad/bam/data/templates/threat-detection-config-template.md`
+- **Load template:** `{project-root}/_bmad/bam/data/templates/correlation-rules-template.md`

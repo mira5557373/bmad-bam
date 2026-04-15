@@ -141,11 +141,11 @@ Select an option:
 
 - Safety criteria document
 - Measurable thresholds
-- **Load template:** `{project-root}/_bmad/bam/templates/bias-assessment-template.md`
-- **Load template:** `{project-root}/_bmad/bam/templates/evaluation-criteria-template.md`
-- **Load template:** `{project-root}/_bmad/bam/templates/ai-ethics-review-template.md`
-- **Load template:** `{project-root}/_bmad/bam/templates/ai-eval-safety-template.md`
-- **Load template:** `{project-root}/_bmad/bam/templates/ai-safety-spec-template.md`
+- **Load template:** `{project-root}/_bmad/bam/data/templates/bias-assessment-template.md`
+- **Load template:** `{project-root}/_bmad/bam/data/templates/evaluation-criteria-template.md`
+- **Load template:** `{project-root}/_bmad/bam/data/templates/ai-ethics-review-template.md`
+- **Load template:** `{project-root}/_bmad/bam/data/templates/ai-eval-safety-template.md`
+- **Load template:** `{project-root}/_bmad/bam/data/templates/ai-safety-spec-template.md`
 
 ## Next Step
 

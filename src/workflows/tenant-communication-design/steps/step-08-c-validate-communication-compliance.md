@@ -208,7 +208,7 @@ Select an option:
 - Compliance validation report
 - Compliance gap remediation plan
 - Compliance matrix
-- **Load template:** `{project-root}/_bmad/bam/templates/communication-compliance-template.md`
+- **Load template:** `{project-root}/_bmad/bam/data/templates/communication-compliance-template.md`
 
 ---
 

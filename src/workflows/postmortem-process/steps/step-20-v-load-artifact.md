@@ -27,14 +27,14 @@ Load the postmortem process documents for validation against operations and reli
 
 - Postmortem process artifact exists to validate
 - **Load patterns:** `{project-root}/_bmad/bam/data/bam-patterns.csv` -> filter: operations
-- **Load checklist:** `{project-root}/_bmad/bam/checklists/qg-operations-continuous.md`
+- **Load checklist:** `{project-root}/_bmad/bam/data/checklists/qg-operations-continuous.md`
 
 ---
 
 ## Inputs
 
 - Artifact file path for validation
-- Quality gate checklist: `{project-root}/_bmad/bam/checklists/`
+- Quality gate checklist: `{project-root}/_bmad/bam/data/checklists/`
 - Pattern registry: `{project-root}/_bmad/bam/data/bam-patterns.csv`
 
 ---

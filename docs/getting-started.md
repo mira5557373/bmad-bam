@@ -473,7 +473,7 @@ cat _bmad/bam/data/bam-patterns.csv
 
 ```bash
 # Verify BAM installation
-ls _bmad/bam/extensions/
+ls _bmad/bam/data/extensions/
 
 # Check configuration
 cat _bmad/config.yaml | grep -A5 "bam:"

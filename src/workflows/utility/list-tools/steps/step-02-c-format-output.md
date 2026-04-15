@@ -38,7 +38,7 @@ Format the tool inventory for display.
 
 - Output from previous step(s) in this workflow
 - Pattern registry: `{project-root}/_bmad/bam/data/bam-patterns.csv`
-- Relevant templates from `{project-root}/_bmad/bam/templates/`
+- Relevant templates from `{project-root}/_bmad/bam/data/templates/`
 - User feedback and refinements from previous steps
 
 ---
@@ -193,7 +193,7 @@ Select an option:
 ## Outputs
 
 - Formatted tool listing
-- **Load template:** `{project-root}/_bmad/bam/templates/tool-inventory-template.md`
+- **Load template:** `{project-root}/_bmad/bam/data/templates/tool-inventory-template.md`
 
 ---
 

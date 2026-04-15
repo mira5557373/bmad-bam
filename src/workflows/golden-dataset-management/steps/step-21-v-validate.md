@@ -24,7 +24,7 @@ Validate the golden dataset management document against QG-M3 (Agent Runtime) qu
 ## Prerequisites
 
 - Artifact loaded (Step 20)
-- **Load checklist:** `{project-root}/_bmad/bam/checklists/qg-m3-agent-runtime.md`
+- **Load checklist:** `{project-root}/_bmad/bam/data/checklists/qg-m3-agent-runtime.md`
 
 ---
 

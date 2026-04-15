@@ -30,7 +30,7 @@ Perform final QG-F1 (Foundation Gate) validation and generate gate report.
 - Tenant model verified (Step 3)
 - **Load patterns:** `{project-root}/_bmad/bam/data/bam-patterns.csv` → filter: agent-runtime,testing-agent-safety
 - **Load patterns:** `{project-root}/_bmad/bam/data/bam-patterns.csv` → filter: testing-isolation
-- **Load checklist:** `{project-root}/_bmad/bam/checklists/foundation-gate.md`
+- **Load checklist:** `{project-root}/_bmad/bam/data/checklists/foundation-gate.md`
 
 **Verify current best practices with web search:**
 Search the web: "quality gate validation best practices {date}"
@@ -46,7 +46,7 @@ _Source: [URL]_ for key findings.
 
 - Output from previous step(s) in this workflow
 - Pattern registry: `{project-root}/_bmad/bam/data/bam-patterns.csv`
-- Relevant templates from `{project-root}/_bmad/bam/templates/`
+- Relevant templates from `{project-root}/_bmad/bam/data/templates/`
 - User feedback and refinements from previous steps
 
 ---
@@ -234,8 +234,8 @@ Select an option:
 
 - Foundation gate report
 - Updated sprint status
-- **Load template:** `{project-root}/_bmad/bam/templates/quality-gate-report-template.md`
-- **Load template:** `{project-root}/_bmad/bam/templates/foundation-review-template.md`
+- **Load template:** `{project-root}/_bmad/bam/data/templates/quality-gate-report-template.md`
+- **Load template:** `{project-root}/_bmad/bam/data/templates/foundation-review-template.md`
 
 ---
 

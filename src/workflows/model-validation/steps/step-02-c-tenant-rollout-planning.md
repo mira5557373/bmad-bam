@@ -110,7 +110,7 @@ After completing rollout planning, if 'C' (Continue):
 - Tenant rollout plan
 - Feature flag configuration
 - Success criteria matrix
-- **Load template:** `{project-root}/_bmad/bam/templates/model-rollout-plan-template.md`
+- **Load template:** `{project-root}/_bmad/bam/data/templates/model-rollout-plan-template.md`
 
 ---
 

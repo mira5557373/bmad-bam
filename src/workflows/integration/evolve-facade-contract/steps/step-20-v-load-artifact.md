@@ -15,7 +15,7 @@ Load the contract evolution artifacts including new contract version, migration 
 ## Inputs
 
 - Artifact file path for validation
-- Quality gate checklist: `{project-root}/_bmad/bam/checklists/`
+- Quality gate checklist: `{project-root}/_bmad/bam/data/checklists/`
 - Pattern registry: `{project-root}/_bmad/bam/data/bam-patterns.csv`
 
 ---
@@ -118,7 +118,7 @@ Load the contract evolution artifacts including new contract version, migration 
 - Document completeness report
 - Consistency verification results
 - Validation context summary
-- **Load template:** `{project-root}/_bmad/bam/templates/facade-contract-template.md`
+- **Load template:** `{project-root}/_bmad/bam/data/templates/facade-contract-template.md`
 
 ---
 

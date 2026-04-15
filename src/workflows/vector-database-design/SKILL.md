@@ -147,9 +147,9 @@ This workflow contributes to:
 
 ## References
 
-- Template: `bam/templates/vector-database-template.md`
-- Knowledge: `bam/knowledge/vector-database-patterns.md`
-- Checklist: `bam/checklists/qg-m3-agent-runtime.md`
+- Template: `{project-root}/_bmad/bam/data/templates/vector-database-template.md`
+- Knowledge: `{project-root}/_bmad/bam/data/agent-guides/bam/vector-database-patterns.md`
+- Checklist: `{project-root}/_bmad/bam/data/checklists/qg-m3-agent-runtime.md`
 
 ## Web Research
 

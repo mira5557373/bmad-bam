@@ -28,7 +28,7 @@ Assemble all data anonymization components into a complete design document.
 ## Prerequisites
 
 - Steps 1-4 completed
-- **Load template:** `{project-root}/_bmad/bam/templates/tenant-lifecycle-template.md`
+- **Load template:** `{project-root}/_bmad/bam/data/templates/tenant-lifecycle-template.md`
 
 ---
 

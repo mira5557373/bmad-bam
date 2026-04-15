@@ -51,7 +51,7 @@ FAIL
 **Recovery Steps:**
 
 1. **Review the foundation gate report** to identify specific failing items
-2. **Load the checklist:** `src/checklists/foundation-gate.md`
+2. **Load the checklist:** `src/data/checklists/foundation-gate.md`
 3. **Address critical failures first:**
    - Missing TenantContext: Run `create-master-architecture` workflow Section 5
    - RLS not implemented: Run `tenant-model-isolation` workflow
@@ -76,7 +76,7 @@ FAIL
 **Recovery Steps:**
 
 1. **Review the module validation report** for specific failures
-2. **Load the checklist:** `src/checklists/module-architecture.md`
+2. **Load the checklist:** `src/data/checklists/module-architecture.md`
 3. **Address by category:**
    - Bounded context unclear: Revisit domain analysis, clarify aggregate roots
    - Facade contract issues: Ensure DTOs at boundaries, no internal domain leakage
@@ -102,7 +102,7 @@ FAIL
 **Recovery Steps:**
 
 1. **Review the tenant isolation report** for specific failures
-2. **Load the checklist:** `src/checklists/tenant-isolation.md`
+2. **Load the checklist:** `src/data/checklists/tenant-isolation.md`
 3. **Address by layer:**
    - Database: Create RLS policies for all tenant tables, enable FORCE RLS
    - Application: Implement tenant context middleware, verify JWT extraction
@@ -129,7 +129,7 @@ FAIL
 **Recovery Steps:**
 
 1. **Review the agent runtime report** for specific failures
-2. **Load the checklist:** `src/checklists/qg-m3-agent-runtime.md`
+2. **Load the checklist:** `src/data/checklists/qg-m3-agent-runtime.md`
 3. **Address by component:**
    - Tool Registry: Register all tools with schemas, implement permission model
    - Memory Tiers: Configure scope enforcement, verify tenant isolation
@@ -153,7 +153,7 @@ FAIL
 **Recovery Steps:**
 
 1. **Review the convergence report** for incompatibilities
-2. **Load the checklist:** `src/checklists/qg-i1-convergence.md`
+2. **Load the checklist:** `src/data/checklists/qg-i1-convergence.md`
 3. **Address by category:**
    - Contract breaking changes: Add migration path or bump major version
    - Circular dependencies: Refactor to introduce abstraction or event-driven decoupling
@@ -176,7 +176,7 @@ FAIL
 **Recovery Steps:**
 
 1. **Review the tenant safety report** for leakage vectors
-2. **Load the checklist:** `src/checklists/qg-i2-tenant-safety.md`
+2. **Load the checklist:** `src/data/checklists/qg-i2-tenant-safety.md`
 3. **Address isolation failures:**
    - Database leakage: Verify RLS policies, check FORCE RLS enabled
    - Cache leakage: Add tenant prefix validation
@@ -204,7 +204,7 @@ FAIL
 **Recovery Steps:**
 
 1. **Review the agent safety report** for specific failures
-2. **Load the checklist:** `src/checklists/qg-i3-agent-safety.md`
+2. **Load the checklist:** `src/data/checklists/qg-i3-agent-safety.md`
 3. **Address by category:**
    - Tool restrictions: Implement permission checks, verify sandbox (E2B)
    - Guardrails: Configure NeMo Guardrails for input/output filtering
@@ -232,7 +232,7 @@ FAIL
 **Recovery Steps:**
 
 1. **Review the production readiness report** for blocking items
-2. **Load the checklist:** `src/checklists/production-readiness.md`
+2. **Load the checklist:** `src/data/checklists/production-readiness.md`
 3. **Verify all prerequisite gates passed:**
    - If any prior gate failed, address that gate first
 4. **Address production-specific gaps:**
@@ -278,6 +278,6 @@ After two failed recovery attempts:
 ## Related Resources
 
 - **Quality Gates Reference:** `docs/reference/quality-gates.md`
-- **Checklists:** `src/checklists/`
+- **Checklists:** `src/data/checklists/`
 - **Validation Workflows:** `src/workflows/foundation/validate-foundation/`, `src/workflows/module/validate-module/`
 - **Convergence Workflow:** `src/workflows/convergence-verification/`

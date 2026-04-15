@@ -200,7 +200,7 @@ _Source: [URL]_
 - Data access mapping documentation
 - Report specification standards
 - Tier-specific capability descriptions
-- **Load template:** `{project-root}/_bmad/bam/templates/tenant-self-service-reporting-template.md`
+- **Load template:** `{project-root}/_bmad/bam/data/templates/tenant-self-service-reporting-template.md`
 
 ## Next Step
 

@@ -90,7 +90,7 @@ Your options:
 - Rollback mechanism design
 - A/B testing integration
 - **Output to:** `{output_folder}/planning-artifacts/architecture/ai-model-registry-design.md`
-- **Load template:** `{project-root}/_bmad/bam/templates/model-registry-template.md`
+- **Load template:** `{project-root}/_bmad/bam/data/templates/model-registry-template.md`
 
 ---
 

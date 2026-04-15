@@ -100,7 +100,7 @@ Select an option:
 
 - Budget alert configuration
 - Cost optimization review summary
-- **Load template:** `{project-root}/_bmad/bam/templates/cost-optimization-template.md`
+- **Load template:** `{project-root}/_bmad/bam/data/templates/cost-optimization-template.md`
 
 ---
 

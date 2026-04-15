@@ -141,7 +141,7 @@ Select an option:
 - Partner tier definition document
 - Access level matrix
 - Certification path overview
-- **Load template:** `{project-root}/_bmad/bam/templates/partner-program-template.md`
+- **Load template:** `{project-root}/_bmad/bam/data/templates/partner-program-template.md`
 
 ## Next Step
 

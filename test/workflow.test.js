@@ -409,8 +409,8 @@ describe('Workflow Dependency Graph Validation', () => {
       });
     }
 
-    // Read module-help.csv to find required workflows
-    const helpPath = path.join(__dirname, '..', 'src', 'workflows', 'module-help.csv');
+    // Read module-help.csv to find required workflows (now at src/ root for BMB compatibility)
+    const helpPath = path.join(__dirname, '..', 'src', 'module-help.csv');
     const helpContent = fs.readFileSync(helpPath, 'utf-8');
     const lines = helpContent.trim().split('\n');
     const headers = lines[0].split(',');

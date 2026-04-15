@@ -26,7 +26,7 @@ Apply targeted modifications to the existing tenant self-service reporting desig
 - Reporting design loaded (Step 10)
 - Modification scope confirmed
 - **Load patterns:** `{project-root}/_bmad/bam/data/bam-patterns.csv` → filter: reporting
-- **Load template:** `{project-root}/_bmad/bam/templates/tenant-self-service-reporting-template.md`
+- **Load template:** `{project-root}/_bmad/bam/data/templates/tenant-self-service-reporting-template.md`
 
 
 ---
@@ -179,7 +179,7 @@ Create change documentation:
 
 - Updated `{output_folder}/planning-artifacts/tenant-self-service-reporting.md`
 - Change summary for audit trail
-- **Load template:** `{project-root}/_bmad/bam/templates/tenant-self-service-reporting-template.md`
+- **Load template:** `{project-root}/_bmad/bam/data/templates/tenant-self-service-reporting-template.md`
 
 ## Next Step
 

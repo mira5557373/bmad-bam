@@ -7,7 +7,7 @@ const fs = require('fs');
 const path = require('path');
 
 const ROOT_DIR = path.join(__dirname, '..');
-const TEMPLATES_DIR = path.join(ROOT_DIR, 'src', 'templates');
+const TEMPLATES_DIR = path.join(ROOT_DIR, 'src', 'data', 'templates');
 
 // Allowed template variables (lowercase with underscores)
 const ALLOWED_VARIABLES = [
@@ -306,7 +306,7 @@ describe('Template Content Quality', () => {
 });
 
 describe('Template Change Log Section', () => {
-  const templatesDir = path.join(__dirname, '..', 'src', 'templates');
+  const templatesDir = path.join(__dirname, '..', 'src', 'data', 'templates');
   
   test('all templates have Change Log section (except README)', () => {
     const templates = fs.readdirSync(templatesDir)
@@ -325,7 +325,7 @@ describe('Template Change Log Section', () => {
 });
 
 describe('Template Verification Checklist Section', () => {
-  const templatesDir = path.join(__dirname, '..', 'src', 'templates');
+  const templatesDir = path.join(__dirname, '..', 'src', 'data', 'templates');
   
   test('all templates have Verification Checklist section (except README and sidecar)', () => {
     const templates = fs.readdirSync(templatesDir)

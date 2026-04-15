@@ -160,7 +160,7 @@ Select an option:
 - Compliance gap analysis
 - Remediation timeline
 - Security audit report (complete)
-- **Load template:** `{project-root}/_bmad/bam/templates/compliance-verification-template.md`
+- **Load template:** `{project-root}/_bmad/bam/data/templates/compliance-verification-template.md`
 
 ---
 

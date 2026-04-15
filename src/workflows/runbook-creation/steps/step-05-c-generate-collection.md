@@ -8,7 +8,7 @@ Compile all runbooks into an organized collection with index and cross-reference
 
 - Steps 1-4 complete
 - All runbooks created
-- **Load checklists:** `{project-root}/_bmad/bam/checklists/production-checklist.md`
+- **Load checklists:** `{project-root}/_bmad/bam/data/checklists/production-checklist.md`
 
 ## Actions
 

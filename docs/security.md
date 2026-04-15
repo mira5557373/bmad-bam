@@ -349,10 +349,10 @@ BAM provides patterns for AI Act compliance:
 
 ### Security Checklists
 
-- `src/checklists/qg-i2-tenant-safety.md` - Tenant safety verification
-- `src/checklists/qg-i3-agent-safety.md` - Agent safety verification
-- `src/checklists/tenant-isolation.md` - Isolation implementation
-- `src/checklists/production-readiness.md` - Production security
+- `src/data/checklists/qg-i2-tenant-safety.md` - Tenant safety verification
+- `src/data/checklists/qg-i3-agent-safety.md` - Agent safety verification
+- `src/data/checklists/tenant-isolation.md` - Isolation implementation
+- `src/data/checklists/production-readiness.md` - Production security
 
 ---
 

@@ -105,7 +105,7 @@ Your options:
 - Sync pattern specification
 - Pattern-to-data mapping
 - Replication topology documentation
-- **Load template:** `{project-root}/_bmad/bam/templates/data-integration-template.md`
+- **Load template:** `{project-root}/_bmad/bam/data/templates/data-integration-template.md`
 
 ---
 

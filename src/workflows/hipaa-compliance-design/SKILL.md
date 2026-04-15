@@ -138,8 +138,8 @@ This workflow contributes to:
 
 ## References
 
-- Knowledge: `bam/knowledge/audit-logging-patterns.md`, `bam/knowledge/compliance-reporting-patterns.md`
-- Template: `bam/templates/hipaa-compliance-template.md`
+- Knowledge: `{project-root}/_bmad/bam/data/agent-guides/bam/audit-logging-patterns.md`, `{project-root}/_bmad/bam/data/agent-guides/bam/compliance-reporting-patterns.md`
+- Template: `{project-root}/_bmad/bam/data/templates/hipaa-compliance-template.md`
 
 ## Headless Mode
 

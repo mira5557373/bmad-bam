@@ -84,7 +84,7 @@ FAIL test/schema.test.js
 
 1. Check the extension file:
    ```bash
-   cat src/extensions/analyst-bam.yaml
+   cat src/data/extensions/analyst-bam.yaml
    ```
 
 2. Verify required fields:
@@ -457,7 +457,7 @@ Gate QG-F1 FAIL: 3 CRITICAL items not checked
 
 1. Load the checklist:
    ```bash
-   cat src/checklists/foundation-gate.md
+   cat src/data/checklists/foundation-gate.md
    ```
 
 2. Identify CRITICAL items:

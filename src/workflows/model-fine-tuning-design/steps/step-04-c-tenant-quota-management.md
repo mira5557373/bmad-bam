@@ -36,7 +36,7 @@ Design quota and limit systems to ensure fair resource allocation across tenants
 
 - Output from previous step(s) in this workflow
 - Pattern registry: `{project-root}/_bmad/bam/data/bam-patterns.csv`
-- Relevant templates from `{project-root}/_bmad/bam/templates/`
+- Relevant templates from `{project-root}/_bmad/bam/data/templates/`
 - User feedback and refinements from previous steps
 
 ---
@@ -184,7 +184,7 @@ Select an option:
 - Dataset size limits
 - Concurrency configuration
 - Quota tracking design
-- **Load template:** `{project-root}/_bmad/bam/templates/metering-event-spec.md`
+- **Load template:** `{project-root}/_bmad/bam/data/templates/metering-event-spec.md`
 
 ---
 

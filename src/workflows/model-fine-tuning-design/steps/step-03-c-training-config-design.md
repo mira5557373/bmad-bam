@@ -36,7 +36,7 @@ Define training infrastructure configuration including compute allocation, job o
 
 - Output from previous step(s) in this workflow
 - Pattern registry: `{project-root}/_bmad/bam/data/bam-patterns.csv`
-- Relevant templates from `{project-root}/_bmad/bam/templates/`
+- Relevant templates from `{project-root}/_bmad/bam/data/templates/`
 - User feedback and refinements from previous steps
 
 ---
@@ -179,7 +179,7 @@ Select an option:
 - Hyperparameter configuration schema
 - Checkpoint storage specification
 - Monitoring configuration
-- **Load template:** `{project-root}/_bmad/bam/templates/model-governance-template.md`
+- **Load template:** `{project-root}/_bmad/bam/data/templates/model-governance-template.md`
 
 ---
 

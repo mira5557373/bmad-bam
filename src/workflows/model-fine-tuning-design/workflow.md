@@ -108,6 +108,6 @@ Load the existing output artifact, then follow:
 
 ## Templates
 
-- **Load template:** `{project-root}/_bmad/bam/templates/model-fine-tuning-template.md`
-- **Load template:** `{project-root}/_bmad/bam/templates/model-card-template.md`
-- **Load template:** `{project-root}/_bmad/bam/templates/model-governance-template.md`
+- **Load template:** `{project-root}/_bmad/bam/data/templates/model-fine-tuning-template.md`
+- **Load template:** `{project-root}/_bmad/bam/data/templates/model-card-template.md`
+- **Load template:** `{project-root}/_bmad/bam/data/templates/model-governance-template.md`

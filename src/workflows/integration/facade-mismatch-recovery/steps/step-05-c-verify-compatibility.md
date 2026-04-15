@@ -38,7 +38,7 @@ Confirm the mismatch is resolved and document learnings.
 
 - Output from previous step(s) in this workflow
 - Pattern registry: `{project-root}/_bmad/bam/data/bam-patterns.csv`
-- Relevant templates from `{project-root}/_bmad/bam/templates/`
+- Relevant templates from `{project-root}/_bmad/bam/data/templates/`
 - User feedback and refinements from previous steps
 
 ---
@@ -170,7 +170,7 @@ Select an option:
 - Recovery report
 - Verification results
 - Prevention measures documentation
-- **Load template:** `{project-root}/_bmad/bam/templates/mismatch-recovery-template.md`
+- **Load template:** `{project-root}/_bmad/bam/data/templates/mismatch-recovery-template.md`
 
 ---
 

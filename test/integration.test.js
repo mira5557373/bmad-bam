@@ -8,7 +8,7 @@ const path = require('path');
 const yaml = require('js-yaml');
 
 const SRC_DIR = path.join(__dirname, '..', 'src');
-const EXTENSIONS_DIR = path.join(SRC_DIR, 'extensions');
+const EXTENSIONS_DIR = path.join(SRC_DIR, 'data', 'extensions');
 
 describe('Tier 4: Ecosystem Integration', () => {
   describe('BMM Integration', () => {

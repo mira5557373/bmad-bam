@@ -118,5 +118,5 @@ This workflow contributes to QG-P1 by establishing data integrity capabilities:
 ## References
 
 - **Patterns:** Load from `{project-root}/_bmad/bam/data/bam-patterns.csv` filter: `data-integrity`
-- **Templates:** `{project-root}/_bmad/bam/templates/data-reconciliation-dr-template.md`
-- **Checklists:** `{project-root}/_bmad/bam/checklists/production-readiness.md`
+- **Templates:** `{project-root}/_bmad/bam/data/templates/data-reconciliation-dr-template.md`
+- **Checklists:** `{project-root}/_bmad/bam/data/checklists/production-readiness.md`

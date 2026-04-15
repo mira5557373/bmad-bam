@@ -106,9 +106,9 @@ This workflow contributes to:
 
 ## References
 
-- Template: `bam/templates/cicd-pipeline-template.md`
-- Knowledge: `bam/knowledge/deployment-patterns.md`
-- Checklist: `bam/checklists/production-readiness.md`
+- Template: `{project-root}/_bmad/bam/data/templates/cicd-pipeline-template.md`
+- Knowledge: `{project-root}/_bmad/bam/data/agent-guides/bam/deployment-patterns.md`
+- Checklist: `{project-root}/_bmad/bam/data/checklists/production-readiness.md`
 
 ## Web Research
 

@@ -37,7 +37,7 @@ Design auth flows per endpoint type, configure token validation, plan tenant con
 - Output from Steps 1-2 (Requirements, rate limiting)
 - Authentication strategy
 - Pattern registry: `{project-root}/_bmad/bam/data/bam-patterns.csv`
-- Relevant templates from `{project-root}/_bmad/bam/templates/`
+- Relevant templates from `{project-root}/_bmad/bam/data/templates/`
 
 ---
 

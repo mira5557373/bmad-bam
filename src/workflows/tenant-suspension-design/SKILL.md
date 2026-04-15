@@ -132,6 +132,6 @@ Design notification sequences for each trigger:
 
 ## References
 
-- Template: `bam/templates/tenant-lifecycle-template.md`
-- Multi-Tenant Patterns: `bam/knowledge/multi-tenant-patterns.md`
-- Event-Driven Patterns: `bam/knowledge/event-driven-patterns.md`
+- Template: `{project-root}/_bmad/bam/data/templates/tenant-lifecycle-template.md`
+- Multi-Tenant Patterns: `{project-root}/_bmad/bam/data/agent-guides/bam/multi-tenant-patterns.md`
+- Event-Driven Patterns: `{project-root}/_bmad/bam/data/agent-guides/bam/event-driven-patterns.md`

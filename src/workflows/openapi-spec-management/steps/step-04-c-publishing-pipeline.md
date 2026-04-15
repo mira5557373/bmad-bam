@@ -280,7 +280,7 @@ Select an option:
 - Documentation generation config
 - SDK generation templates
 - Complete OpenAPI Spec Management document
-- **Load template:** `{project-root}/_bmad/bam/templates/openapi-management-template.md`
+- **Load template:** `{project-root}/_bmad/bam/data/templates/openapi-management-template.md`
 
 ---
 

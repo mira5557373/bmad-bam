@@ -30,8 +30,8 @@ Execute final quality gate checks and generate validation report.
 
 - Isolation validated (Step 4)
 - **Load patterns:** `{project-root}/_bmad/bam/data/bam-patterns.csv` → filter: agent-runtime
-- **Load checklist:** `{project-root}/_bmad/bam/checklists/module-architecture.md`
-- **Load checklist:** `{project-root}/_bmad/bam/checklists/tenant-isolation.md`
+- **Load checklist:** `{project-root}/_bmad/bam/data/checklists/module-architecture.md`
+- **Load checklist:** `{project-root}/_bmad/bam/data/checklists/tenant-isolation.md`
 
 ---
 
@@ -40,7 +40,7 @@ Execute final quality gate checks and generate validation report.
 
 - Output from previous step(s) in this workflow
 - Pattern registry: `{project-root}/_bmad/bam/data/bam-patterns.csv`
-- Relevant templates from `{project-root}/_bmad/bam/templates/`
+- Relevant templates from `{project-root}/_bmad/bam/data/templates/`
 - User feedback and refinements from previous steps
 
 ---
@@ -214,7 +214,7 @@ Select an option:
 
 - Module validation report
 - Updated sprint-status.yaml
-- **Load template:** `{project-root}/_bmad/bam/templates/module-validation-report-template.md`
+- **Load template:** `{project-root}/_bmad/bam/data/templates/module-validation-report-template.md`
 
 ---
 

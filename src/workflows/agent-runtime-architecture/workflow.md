@@ -150,8 +150,8 @@ This workflow contributes to several security-related gates:
 
 ## Templates
 
-- **Load template:** `{project-root}/_bmad/bam/templates/deployment-template.md`
-- **Load template:** `{project-root}/_bmad/bam/templates/llmops-template.md`
-- **Load template:** `{project-root}/_bmad/bam/templates/local-dev-template.md`
-- **Load template:** `{project-root}/_bmad/bam/templates/memory-tiers-template.md`
-- **Load template:** `{project-root}/_bmad/bam/templates/run-contract-template.md`
+- **Load template:** `{project-root}/_bmad/bam/data/templates/deployment-template.md`
+- **Load template:** `{project-root}/_bmad/bam/data/templates/llmops-template.md`
+- **Load template:** `{project-root}/_bmad/bam/data/templates/local-dev-template.md`
+- **Load template:** `{project-root}/_bmad/bam/data/templates/memory-tiers-template.md`
+- **Load template:** `{project-root}/_bmad/bam/data/templates/run-contract-template.md`

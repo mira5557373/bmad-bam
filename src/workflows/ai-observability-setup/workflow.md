@@ -123,4 +123,4 @@ This workflow produces artifacts that must pass QG-AI2 validation. Upon completi
 
 ## Templates
 
-- **Load template:** `{project-root}/_bmad/bam/templates/ai-observability-template.md`
+- **Load template:** `{project-root}/_bmad/bam/data/templates/ai-observability-template.md`

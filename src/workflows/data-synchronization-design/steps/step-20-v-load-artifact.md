@@ -27,14 +27,14 @@ Load the data synchronization design artifact for validation against data archit
 
 - Data synchronization design artifact exists to validate
 - **Load patterns:** `{project-root}/_bmad/bam/data/bam-patterns.csv` -> filter: data-sync
-- **Load checklist:** `{project-root}/_bmad/bam/checklists/tenant-isolation.md`
+- **Load checklist:** `{project-root}/_bmad/bam/data/checklists/tenant-isolation.md`
 
 ---
 
 ## Inputs
 
 - Artifact file path for validation
-- Quality gate checklist: `{project-root}/_bmad/bam/checklists/`
+- Quality gate checklist: `{project-root}/_bmad/bam/data/checklists/`
 - Pattern registry: `{project-root}/_bmad/bam/data/bam-patterns.csv`
 
 ---

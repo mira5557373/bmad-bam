@@ -82,5 +82,5 @@ This workflow contributes to:
 
 ## References
 
-- Template: `bam/templates/graphql-template.md`
+- Template: `{project-root}/_bmad/bam/data/templates/graphql-template.md`
 - API Gateway: `bmad-bam-api-gateway-design`

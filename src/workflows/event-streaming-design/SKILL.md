@@ -102,5 +102,5 @@ This workflow contributes to:
 
 ## References
 
-- Template: `bam/templates/event-streaming-template.md`
+- Template: `{project-root}/_bmad/bam/data/templates/event-streaming-template.md`
 - Internal Contract Design: `bmad-bam-internal-contract-design`

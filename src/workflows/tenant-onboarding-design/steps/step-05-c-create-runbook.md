@@ -39,7 +39,7 @@ Generate the operational runbook for tenant onboarding.
 
 - Output from previous step(s) in this workflow
 - Pattern registry: `{project-root}/_bmad/bam/data/bam-patterns.csv`
-- Relevant templates from `{project-root}/_bmad/bam/templates/`
+- Relevant templates from `{project-root}/_bmad/bam/data/templates/`
 - User feedback and refinements from previous steps
 
 ---
@@ -179,9 +179,9 @@ Select an option:
 
 - Tenant onboarding runbook
 - Provisioning flow document
-- **Load template:** `{project-root}/_bmad/bam/templates/onboarding-runbook-template.md`
-- **Load template:** `{project-root}/_bmad/bam/templates/operational-runbook-template.md`
-- **Load template:** `{project-root}/_bmad/bam/templates/onboarding-design-template.md`
+- **Load template:** `{project-root}/_bmad/bam/data/templates/onboarding-runbook-template.md`
+- **Load template:** `{project-root}/_bmad/bam/data/templates/operational-runbook-template.md`
+- **Load template:** `{project-root}/_bmad/bam/data/templates/onboarding-design-template.md`
 
 ---
 

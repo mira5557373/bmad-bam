@@ -108,4 +108,4 @@ This workflow contributes to:
 
 ## References
 
-- Knowledge: `bam/knowledge/ddd-module-patterns.md`, `bam/knowledge/module-facade-patterns.md`, `bam/knowledge/independent-development.md`
+- Knowledge: `{project-root}/_bmad/bam/data/agent-guides/bam/ddd-module-patterns.md`, `{project-root}/_bmad/bam/data/agent-guides/bam/module-facade-patterns.md`, `{project-root}/_bmad/bam/data/agent-guides/bam/independent-development.md`

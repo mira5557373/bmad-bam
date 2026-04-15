@@ -114,7 +114,7 @@ Select an option:
 - Backup scope matrix
 - Frequency and retention policies
 - Replication strategy
-- **Load template:** `{project-root}/_bmad/bam/templates/tenant-backup-plan-template.md`
+- **Load template:** `{project-root}/_bmad/bam/data/templates/tenant-backup-plan-template.md`
 
 ---
 

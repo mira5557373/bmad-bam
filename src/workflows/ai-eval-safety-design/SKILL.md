@@ -122,8 +122,8 @@ This workflow contributes to:
 
 ## References
 
-- Knowledge: `bam/knowledge/agent-runtime-patterns.md`, `bam/knowledge/agent-resilience-patterns.md`, `bam/knowledge/testing-agent-safety.md`
-- AI Model Versioning: `bam/knowledge/llm-versioning.md`
+- Knowledge: `{project-root}/_bmad/bam/data/agent-guides/bam/agent-runtime-patterns.md`, `{project-root}/_bmad/bam/data/agent-guides/bam/agent-resilience-patterns.md`, `{project-root}/_bmad/bam/data/agent-guides/bam/testing-agent-safety.md`
+- AI Model Versioning: `{project-root}/_bmad/bam/data/agent-guides/bam/llm-versioning.md`
 
-- Checklist: `bam/checklists/qg-i3-agent-safety.md`
-- AI Model Versioning: `bam/knowledge/llm-versioning.md`
+- Checklist: `{project-root}/_bmad/bam/data/checklists/qg-i3-agent-safety.md`
+- AI Model Versioning: `{project-root}/_bmad/bam/data/agent-guides/bam/llm-versioning.md`

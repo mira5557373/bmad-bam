@@ -62,7 +62,7 @@ Load the existing output artifact, then follow `steps/` for validation against q
 
 **Gate:** QG-M3-T (Tool Contract Validation)
 
-**Checklist:** `{project-root}/_bmad/bam/checklists/qg-m3-tools.md`
+**Checklist:** `{project-root}/_bmad/bam/data/checklists/qg-m3-tools.md`
 
 ---
 

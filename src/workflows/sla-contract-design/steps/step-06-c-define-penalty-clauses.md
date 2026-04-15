@@ -211,7 +211,7 @@ Select an option:
 - Credit claim process documentation
 - Termination rights matrix
 - Liability limitation clauses
-- **Load template:** `{project-root}/_bmad/bam/templates/error-budget-policy-template.md`
+- **Load template:** `{project-root}/_bmad/bam/data/templates/error-budget-policy-template.md`
 
 ---
 

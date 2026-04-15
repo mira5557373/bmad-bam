@@ -99,7 +99,7 @@ After completing data validation, if 'C' (Continue):
 - Data validation results
 - Consistency check report
 - Tenant isolation verification
-- **Load template:** `{project-root}/_bmad/bam/templates/data-validation-template.md`
+- **Load template:** `{project-root}/_bmad/bam/data/templates/data-validation-template.md`
 
 ---
 

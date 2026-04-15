@@ -109,8 +109,8 @@ This workflow contributes to:
 
 ## References
 
-- Template: `bam/templates/story-template.md`
-- Parallel Development Guide: `bam/knowledge/parallel-development-guide.md`
+- Template: `{project-root}/_bmad/bam/data/templates/story-template.md`
+- Parallel Development Guide: `{project-root}/_bmad/bam/data/agent-guides/bam/parallel-development-guide.md`
 
-- Knowledge: `bam/knowledge/module-facade-patterns.md`, `bam/knowledge/parallel-development-guide.md`
-- Parallel Development Guide: `bam/knowledge/parallel-development-guide.md`
+- Knowledge: `{project-root}/_bmad/bam/data/agent-guides/bam/module-facade-patterns.md`, `{project-root}/_bmad/bam/data/agent-guides/bam/parallel-development-guide.md`
+- Parallel Development Guide: `{project-root}/_bmad/bam/data/agent-guides/bam/parallel-development-guide.md`

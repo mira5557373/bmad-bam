@@ -100,5 +100,5 @@ This workflow contributes to QG-P1. Upon completion, the following patterns must
 
 ## Templates
 
-- **Load template:** `{project-root}/_bmad/bam/templates/distributed-tracing-template.md`
-- **Load template:** `{project-root}/_bmad/bam/templates/observability-design-template.md`
+- **Load template:** `{project-root}/_bmad/bam/data/templates/distributed-tracing-template.md`
+- **Load template:** `{project-root}/_bmad/bam/data/templates/observability-design-template.md`

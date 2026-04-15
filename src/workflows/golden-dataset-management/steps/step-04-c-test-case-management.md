@@ -35,7 +35,7 @@ Create test case organization including categorization, coverage tracking, and r
 
 - Output from previous step(s) in this workflow
 - Pattern registry: `{project-root}/_bmad/bam/data/bam-patterns.csv`
-- Relevant templates from `{project-root}/_bmad/bam/templates/`
+- Relevant templates from `{project-root}/_bmad/bam/data/templates/`
 - User feedback and refinements from previous steps
 
 ---
@@ -227,7 +227,7 @@ Select an option:
 - `{output_folder}/planning-artifacts/quality/golden-dataset.md`
 - Test case management documentation
 - Coverage tracking procedures
-- **Load template:** `{project-root}/_bmad/bam/templates/test-case-management-template.md`
+- **Load template:** `{project-root}/_bmad/bam/data/templates/test-case-management-template.md`
 
 ## Workflow Complete
 

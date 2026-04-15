@@ -44,7 +44,7 @@ _Source: [URL]_ for key findings.
 
 - Output from previous step(s) in this workflow
 - Pattern registry: `{project-root}/_bmad/bam/data/bam-patterns.csv`
-- Relevant templates from `{project-root}/_bmad/bam/templates/`
+- Relevant templates from `{project-root}/_bmad/bam/data/templates/`
 - User feedback and refinements from previous steps
 
 ---
@@ -158,7 +158,7 @@ Ask for confirmation before proceeding to code patterns.
 - EventBus interface specification
 - ModuleFacade template with documentation
 - Contract validation utilities/schemas
-- **Load template:** `{project-root}/_bmad/bam/templates/facade-contract-template.md`
+- **Load template:** `{project-root}/_bmad/bam/data/templates/facade-contract-template.md`
 
 ---
 

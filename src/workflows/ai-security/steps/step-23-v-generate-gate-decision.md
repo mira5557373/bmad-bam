@@ -10,7 +10,7 @@ Generate the final QG-S4 AI Security quality gate decision based on validation r
 - Step 21 complete (remediation verified)
 - Step 22 complete (compliance checked)
 - **Load patterns:** `{project-root}/_bmad/bam/data/quality-gates.csv` -> filter: `QG-S4`
-- **Load checklist:** `{project-root}/_bmad/bam/checklists/qg-security-continuous.md`
+- **Load checklist:** `{project-root}/_bmad/bam/data/checklists/qg-security-continuous.md`
 
 ## Actions
 

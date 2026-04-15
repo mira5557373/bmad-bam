@@ -9,9 +9,9 @@ Verify tenant data isolation controls across all data stores and processing laye
 - Step 1 complete
 - Tenant architecture documented
 - **Load templates:**
-  - `{project-root}/_bmad/bam/templates/rls-policy-template.md`
-  - `{project-root}/_bmad/bam/templates/cache-isolation-template.md`
-  - `{project-root}/_bmad/bam/templates/memory-isolation-template.md`
+  - `{project-root}/_bmad/bam/data/templates/rls-policy-template.md`
+  - `{project-root}/_bmad/bam/data/templates/cache-isolation-template.md`
+  - `{project-root}/_bmad/bam/data/templates/memory-isolation-template.md`
 
 ## Actions
 

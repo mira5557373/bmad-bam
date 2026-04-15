@@ -27,7 +27,7 @@ Verify that the system meets performance requirements under realistic multi-tena
 
 - Agent safety verified (Step 3)
 - **Load patterns:** `{project-root}/_bmad/bam/data/bam-patterns.csv` → filter: tenant-isolation
-- **Load checklist:** `{project-root}/_bmad/bam/checklists/production-readiness.md`
+- **Load checklist:** `{project-root}/_bmad/bam/data/checklists/production-readiness.md`
 
 
 ---
@@ -36,7 +36,7 @@ Verify that the system meets performance requirements under realistic multi-tena
 
 - Output from previous step(s) in this workflow
 - Pattern registry: `{project-root}/_bmad/bam/data/bam-patterns.csv`
-- Relevant templates from `{project-root}/_bmad/bam/templates/`
+- Relevant templates from `{project-root}/_bmad/bam/data/templates/`
 - User feedback and refinements from previous steps
 
 ---
@@ -87,7 +87,7 @@ _Source: [URL]_
 - Noisy-neighbor analysis report
 - SLO compliance matrix by tier
 - Cost model validation document
-- **Load template:** `{project-root}/_bmad/bam/templates/convergence-report-template.md`
+- **Load template:** `{project-root}/_bmad/bam/data/templates/convergence-report-template.md`
 
 ---
 

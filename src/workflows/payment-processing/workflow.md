@@ -88,5 +88,5 @@ Load the existing output artifact, then follow `steps/` for validation against q
 
 ## Templates
 
-- **Load template:** `{project-root}/_bmad/bam/templates/payment-processing-template.md`
-- **Load template:** `{project-root}/_bmad/bam/templates/billing-integration-template.md`
+- **Load template:** `{project-root}/_bmad/bam/data/templates/payment-processing-template.md`
+- **Load template:** `{project-root}/_bmad/bam/data/templates/billing-integration-template.md`

@@ -107,9 +107,9 @@ This workflow contributes to:
 
 ## References
 
-- Template: `bam/templates/ai-guardrails-template.md`
-- Knowledge: `bam/knowledge/agent-runtime-patterns.md`
-- Checklist: `bam/checklists/qg-m3-agent-runtime.md`
+- Template: `{project-root}/_bmad/bam/data/templates/ai-guardrails-template.md`
+- Knowledge: `{project-root}/_bmad/bam/data/agent-guides/bam/agent-runtime-patterns.md`
+- Checklist: `{project-root}/_bmad/bam/data/checklists/qg-m3-agent-runtime.md`
 
 ## Web Research
 

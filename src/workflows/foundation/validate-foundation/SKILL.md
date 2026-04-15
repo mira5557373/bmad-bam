@@ -57,7 +57,7 @@ Verify all three sub-gates passed before running the full Foundation Gate.
 
 ## Validation Checklist
 
-Load the foundation gate checklist from `bam/checklists/foundation-gate.md` — this is the single source of truth for all gate items. Run each check and record pass/fail per category as defined in that checklist.
+Load the foundation gate checklist from `{project-root}/_bmad/bam/data/checklists/foundation-gate.md` — this is the single source of truth for all gate items. Run each check and record pass/fail per category as defined in that checklist.
 
 The checklist covers 6 categories: Artifacts, Shared Kernel Implementation, Control Plane Implementation, AI Runtime Implementation, Tests Passing, and Documentation. See the checklist file for the complete item list and critical vs non-critical classification.
 
@@ -115,21 +115,21 @@ foundation:
 
 ## References
 
-- Checklist: `bam/checklists/foundation-gate.md`
-- Run Contract Patterns: `bam/knowledge/run-contracts.md`
-- Context Compiler Patterns: `bam/knowledge/context-compiler-patterns.md`
-- Action Gateway Patterns: `bam/knowledge/action-gateway-patterns.md`
-- Tenant Isolation Testing: `bam/knowledge/testing-tenant-isolation.md`
-- Multi-Tenant Test Fixtures: `bam/knowledge/testing-multi-tenant-fixtures.md`
-- Section Reference Map: `bam/knowledge/section-reference-map.md`
-- Workflow Ownership: `bam/knowledge/workflow-ownership.md`
+- Checklist: `{project-root}/_bmad/bam/data/checklists/foundation-gate.md`
+- Run Contract Patterns: `{project-root}/_bmad/bam/data/agent-guides/bam/run-contracts.md`
+- Context Compiler Patterns: `{project-root}/_bmad/bam/data/agent-guides/bam/context-compiler-patterns.md`
+- Action Gateway Patterns: `{project-root}/_bmad/bam/data/agent-guides/bam/action-gateway-patterns.md`
+- Tenant Isolation Testing: `{project-root}/_bmad/bam/data/agent-guides/bam/testing-tenant-isolation.md`
+- Multi-Tenant Test Fixtures: `{project-root}/_bmad/bam/data/agent-guides/bam/testing-multi-tenant-fixtures.md`
+- Section Reference Map: `{project-root}/_bmad/bam/data/agent-guides/bam/section-reference-map.md`
+- Workflow Ownership: `{project-root}/_bmad/bam/data/agent-guides/bam/workflow-ownership.md`
 
-- Template: `bam/templates/sprint-status-template.yaml`
-- Knowledge: `bam/knowledge/run-contracts.md`, `bam/knowledge/action-gateway-patterns.md`, `bam/knowledge/context-compiler-patterns.md`, `bam/knowledge/section-reference-map.md`
-- Run Contract Patterns: `bam/knowledge/run-contracts.md`
-- Context Compiler Patterns: `bam/knowledge/context-compiler-patterns.md`
-- Action Gateway Patterns: `bam/knowledge/action-gateway-patterns.md`
-- Tenant Isolation Testing: `bam/knowledge/testing-tenant-isolation.md`
-- Multi-Tenant Test Fixtures: `bam/knowledge/testing-multi-tenant-fixtures.md`
-- Section Reference Map: `bam/knowledge/section-reference-map.md`
-- Workflow Ownership: `bam/knowledge/workflow-ownership.md`
+- Template: `{project-root}/_bmad/bam/data/templates/sprint-status-template.yaml`
+- Knowledge: `{project-root}/_bmad/bam/data/agent-guides/bam/run-contracts.md`, `{project-root}/_bmad/bam/data/agent-guides/bam/action-gateway-patterns.md`, `{project-root}/_bmad/bam/data/agent-guides/bam/context-compiler-patterns.md`, `{project-root}/_bmad/bam/data/agent-guides/bam/section-reference-map.md`
+- Run Contract Patterns: `{project-root}/_bmad/bam/data/agent-guides/bam/run-contracts.md`
+- Context Compiler Patterns: `{project-root}/_bmad/bam/data/agent-guides/bam/context-compiler-patterns.md`
+- Action Gateway Patterns: `{project-root}/_bmad/bam/data/agent-guides/bam/action-gateway-patterns.md`
+- Tenant Isolation Testing: `{project-root}/_bmad/bam/data/agent-guides/bam/testing-tenant-isolation.md`
+- Multi-Tenant Test Fixtures: `{project-root}/_bmad/bam/data/agent-guides/bam/testing-multi-tenant-fixtures.md`
+- Section Reference Map: `{project-root}/_bmad/bam/data/agent-guides/bam/section-reference-map.md`
+- Workflow Ownership: `{project-root}/_bmad/bam/data/agent-guides/bam/workflow-ownership.md`

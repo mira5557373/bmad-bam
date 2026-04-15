@@ -25,7 +25,7 @@ Perform comprehensive validation of the failover execution report against comple
 
 - Execution report loaded (Step 20)
 - **Load patterns:** `{project-root}/_bmad/bam/data/bam-patterns.csv` → filter: disaster-recovery
-- **Load checklist:** `{project-root}/_bmad/bam/checklists/production-readiness.md`
+- **Load checklist:** `{project-root}/_bmad/bam/data/checklists/production-readiness.md`
 
 ## Validation Categories
 

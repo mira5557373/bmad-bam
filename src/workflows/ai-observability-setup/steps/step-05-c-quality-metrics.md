@@ -116,7 +116,7 @@ Select an option:
 
 - Quality metrics configuration
 - AI observability setup complete
-- **Load template:** `{project-root}/_bmad/bam/templates/ai-observability-template.md`
+- **Load template:** `{project-root}/_bmad/bam/data/templates/ai-observability-template.md`
 
 ---
 

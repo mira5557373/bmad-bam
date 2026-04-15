@@ -136,7 +136,7 @@ Select an option:
 
 - Model provenance design document
 - Verification workflows
-- **Load template:** `{project-root}/_bmad/bam/templates/model-provenance-template.md`
+- **Load template:** `{project-root}/_bmad/bam/data/templates/model-provenance-template.md`
 
 ## Next Step
 

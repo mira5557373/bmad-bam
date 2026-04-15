@@ -96,7 +96,7 @@ All SLA data preserved for:
 - Audit trail retention and access requirements
 - Complete SLA monitoring design document
 - **Output to:** `{output_folder}/planning-artifacts/operations/tenant-sla-monitoring.md`
-- **Load template:** `{project-root}/_bmad/bam/templates/sla-monitoring-template.md`
+- **Load template:** `{project-root}/_bmad/bam/data/templates/sla-monitoring-template.md`
 
 ---
 

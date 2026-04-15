@@ -28,7 +28,7 @@ Validate the distributed tracing design artifact against quality criteria and pr
 - Previous step completed (step-20-v-load-artifact.md)
 - **Load patterns:** `{project-root}/_bmad/bam/data/bam-patterns.csv -> filter: observability`
 - **Load quality gate:** `{project-root}/_bmad/bam/data/quality-gates.csv -> filter: QG-P1`
-- **Load checklist:** `{project-root}/_bmad/bam/checklists/production-readiness.md`
+- **Load checklist:** `{project-root}/_bmad/bam/data/checklists/production-readiness.md`
 
 ---
 

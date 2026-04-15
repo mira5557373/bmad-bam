@@ -90,4 +90,4 @@ This workflow contributes to QG-P1 by establishing capacity planning capabilitie
 
 ## Templates
 
-- **Load template:** `{project-root}/_bmad/bam/templates/capacity-planning-template.md`
+- **Load template:** `{project-root}/_bmad/bam/data/templates/capacity-planning-template.md`

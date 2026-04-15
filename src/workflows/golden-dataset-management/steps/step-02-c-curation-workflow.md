@@ -35,7 +35,7 @@ Design the dataset curation process including collection, quality review, and an
 
 - Output from previous step(s) in this workflow
 - Pattern registry: `{project-root}/_bmad/bam/data/bam-patterns.csv`
-- Relevant templates from `{project-root}/_bmad/bam/templates/`
+- Relevant templates from `{project-root}/_bmad/bam/data/templates/`
 - User feedback and refinements from previous steps
 
 ---
@@ -197,7 +197,7 @@ Select an option:
 
 - Curation workflow documentation
 - Quality review procedures
-- **Load template:** `{project-root}/_bmad/bam/templates/curation-workflow-template.md`
+- **Load template:** `{project-root}/_bmad/bam/data/templates/curation-workflow-template.md`
 
 ## Next Step
 

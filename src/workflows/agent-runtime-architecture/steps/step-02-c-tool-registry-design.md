@@ -37,7 +37,7 @@ Design a centralized registry that catalogs all available tools, manages permiss
 
 - Output from previous step(s) in this workflow
 - Pattern registry: `{project-root}/_bmad/bam/data/bam-patterns.csv`
-- Relevant templates from `{project-root}/_bmad/bam/templates/`
+- Relevant templates from `{project-root}/_bmad/bam/data/templates/`
 - User feedback and refinements from previous steps
 
 ---
@@ -134,8 +134,8 @@ Select an option:
 - Permission matrix (roles x tools x tenants)
 - Sandbox configuration templates
 - Policy rule definitions
-- **Load template:** `{project-root}/_bmad/bam/templates/tool-contract-template.md`
-- **Load template:** `{project-root}/_bmad/bam/templates/prompt-template-catalog.md`
+- **Load template:** `{project-root}/_bmad/bam/data/templates/tool-contract-template.md`
+- **Load template:** `{project-root}/_bmad/bam/data/templates/prompt-template-catalog.md`
 
 ---
 

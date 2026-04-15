@@ -204,7 +204,7 @@ Select an option:
 - Tenant preference design document
 - Contact management specification
 - Preference hierarchy diagram
-- **Load template:** `{project-root}/_bmad/bam/templates/tenant-preference-template.md`
+- **Load template:** `{project-root}/_bmad/bam/data/templates/tenant-preference-template.md`
 
 ---
 

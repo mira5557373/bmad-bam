@@ -43,12 +43,12 @@ describe('Tier 1: Installation Validation', () => {
 
   describe('Module Definition', () => {
     test('module.yaml exists', () => {
-      const modulePath = path.join(WORKFLOWS_DIR, 'module.yaml');
+      const modulePath = path.join(SRC_DIR, 'module.yaml');
       expect(fs.existsSync(modulePath)).toBe(true);
     });
 
     test('module.yaml has required fields', () => {
-      const modulePath = path.join(WORKFLOWS_DIR, 'module.yaml');
+      const modulePath = path.join(SRC_DIR, 'module.yaml');
       const content = fs.readFileSync(modulePath, 'utf-8');
       const module = yaml.load(content);
 
@@ -58,7 +58,7 @@ describe('Tier 1: Installation Validation', () => {
     });
 
     test('module.yaml has configuration variables', () => {
-      const modulePath = path.join(WORKFLOWS_DIR, 'module.yaml');
+      const modulePath = path.join(SRC_DIR, 'module.yaml');
       const content = fs.readFileSync(modulePath, 'utf-8');
       const module = yaml.load(content);
 
@@ -69,13 +69,16 @@ describe('Tier 1: Installation Validation', () => {
   });
 
   describe('Directory Structure', () => {
+    // BMB-compatible structure: all resources under src/data/
     const requiredDirs = [
       'src/workflows',
-      'src/extensions',
       'src/data',
-      'src/checklists',
-      'src/templates',
+      'src/data/extensions',
+      'src/data/checklists',
+      'src/data/templates',
       'src/data/agent-guides/bam',
+      'src/agents',  // Empty, for BMB compatibility
+      'src/skills',  // Empty, for BMB compatibility
     ];
 
     requiredDirs.forEach(dir => {
@@ -88,12 +91,12 @@ describe('Tier 1: Installation Validation', () => {
 
   describe('Help System', () => {
     test('module-help.csv exists', () => {
-      const helpPath = path.join(WORKFLOWS_DIR, 'module-help.csv');
+      const helpPath = path.join(SRC_DIR, 'module-help.csv');
       expect(fs.existsSync(helpPath)).toBe(true);
     });
 
     test('module-help.csv has correct column count', () => {
-      const helpPath = path.join(WORKFLOWS_DIR, 'module-help.csv');
+      const helpPath = path.join(SRC_DIR, 'module-help.csv');
       const content = fs.readFileSync(helpPath, 'utf-8');
       const lines = content.trim().split('\n');
       const header = lines[0].split(',');
@@ -103,7 +106,7 @@ describe('Tier 1: Installation Validation', () => {
     });
 
     test('all module-help entries have module=bam', () => {
-      const helpPath = path.join(WORKFLOWS_DIR, 'module-help.csv');
+      const helpPath = path.join(SRC_DIR, 'module-help.csv');
       const content = fs.readFileSync(helpPath, 'utf-8');
       const lines = content.trim().split('\n').slice(1); // Skip header
 
@@ -128,7 +131,7 @@ describe('File Counts', () => {
   });
 
   test('has 31 extensions', () => {
-    const extensionsDir = path.join(SRC_DIR, 'extensions');
+    const extensionsDir = path.join(SRC_DIR, 'data', 'extensions');
     const extensions = fs.readdirSync(extensionsDir)
       .filter(f => f.endsWith('.yaml'));
     // Increased from 28 to 31 after adding billing-bam, analytics-bam, reseller-bam
@@ -143,7 +146,7 @@ describe('File Counts', () => {
   });
 
   test('has 36 checklists', () => {
-    const checklistsDir = path.join(SRC_DIR, 'checklists');
+    const checklistsDir = path.join(SRC_DIR, 'data', 'checklists');
     const checklists = fs.readdirSync(checklistsDir)
       .filter(f => f.endsWith('.md') && f !== 'README.md');
     // Increased to 22 after adding qg-compliance-continuous.md, qg-ai-observability.md,

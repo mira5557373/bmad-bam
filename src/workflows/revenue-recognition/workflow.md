@@ -79,4 +79,4 @@ Default: **Create** mode. In headless mode, always use Create.
 
 ## Templates
 
-- **Load template:** `{project-root}/_bmad/bam/templates/revenue-recognition-template.md`
+- **Load template:** `{project-root}/_bmad/bam/data/templates/revenue-recognition-template.md`

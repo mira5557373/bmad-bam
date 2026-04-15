@@ -99,7 +99,7 @@ _Source: [URL]_
 - Marketplace architecture document
 - Category taxonomy
 - Discovery UX specification
-- **Load template:** `{project-root}/_bmad/bam/templates/marketplace-strategy-template.md`
+- **Load template:** `{project-root}/_bmad/bam/data/templates/marketplace-strategy-template.md`
 
 ## Next Step
 

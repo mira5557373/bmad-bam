@@ -153,11 +153,11 @@ Select an option:
 - Escalation justification (if applicable)
 - Kill switch specification
 - ADR document (if applicable)
-- **Load template:** `{project-root}/_bmad/bam/templates/model-card-template.md`
-- **Load template:** `{project-root}/_bmad/bam/templates/llm-provider-comparison-template.md`
-- **Load template:** `{project-root}/_bmad/bam/templates/agent-coordination-template.md`
-- **Load template:** `{project-root}/_bmad/bam/templates/agent-runtime-template.md`
-- **Load template:** `{project-root}/_bmad/bam/templates/ai-runtime-config-template.md`
+- **Load template:** `{project-root}/_bmad/bam/data/templates/model-card-template.md`
+- **Load template:** `{project-root}/_bmad/bam/data/templates/llm-provider-comparison-template.md`
+- **Load template:** `{project-root}/_bmad/bam/data/templates/agent-coordination-template.md`
+- **Load template:** `{project-root}/_bmad/bam/data/templates/agent-runtime-template.md`
+- **Load template:** `{project-root}/_bmad/bam/data/templates/ai-runtime-config-template.md`
 
 ---
 

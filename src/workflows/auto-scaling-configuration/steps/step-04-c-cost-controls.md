@@ -114,7 +114,7 @@ Your options:
 - Reserved capacity plan
 - Scale-to-zero configuration
 - Budget alert rules
-- **Load template:** `{project-root}/_bmad/bam/templates/auto-scaling-template.md`
+- **Load template:** `{project-root}/_bmad/bam/data/templates/auto-scaling-template.md`
 
 ---
 

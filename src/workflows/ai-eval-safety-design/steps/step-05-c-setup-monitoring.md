@@ -36,7 +36,7 @@ Configure real-time monitoring for safety in production.
 
 - Output from previous step(s) in this workflow
 - Pattern registry: `{project-root}/_bmad/bam/data/bam-patterns.csv`
-- Relevant templates from `{project-root}/_bmad/bam/templates/`
+- Relevant templates from `{project-root}/_bmad/bam/data/templates/`
 - User feedback and refinements from previous steps
 
 ---
@@ -157,7 +157,7 @@ Select an option:
 - Alerting rules
 - Dashboard specifications
 - Audit logging configuration
-- **Load template:** `{project-root}/_bmad/bam/templates/ai-eval-report-template.md`
+- **Load template:** `{project-root}/_bmad/bam/data/templates/ai-eval-report-template.md`
 
 ## Next Step
 

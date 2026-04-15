@@ -69,7 +69,7 @@ Load the existing output artifact, then follow `steps/` for validation against q
 
 ## Templates
 
-- **Load template:** `{project-root}/_bmad/bam/templates/escalation-template.md`
-- **Load template:** `{project-root}/_bmad/bam/templates/incident-response-template.md`
-- **Load template:** `{project-root}/_bmad/bam/templates/playbook-template.md`
-- **Load template:** `{project-root}/_bmad/bam/templates/postmortem-template.md`
+- **Load template:** `{project-root}/_bmad/bam/data/templates/escalation-template.md`
+- **Load template:** `{project-root}/_bmad/bam/data/templates/incident-response-template.md`
+- **Load template:** `{project-root}/_bmad/bam/data/templates/playbook-template.md`
+- **Load template:** `{project-root}/_bmad/bam/data/templates/postmortem-template.md`

@@ -26,7 +26,7 @@ Apply targeted modifications to the existing partner certification program based
 - Certification program loaded (Step 10)
 - Modification scope confirmed
 - **Load patterns:** `{project-root}/_bmad/bam/data/bam-patterns.csv` -> filter: partner-ecosystem
-- **Load template:** `{project-root}/_bmad/bam/templates/partner-certification-template.md`
+- **Load template:** `{project-root}/_bmad/bam/data/templates/partner-certification-template.md`
 
 
 ---

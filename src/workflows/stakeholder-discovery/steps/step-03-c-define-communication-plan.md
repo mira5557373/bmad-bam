@@ -193,7 +193,7 @@ _Source: [URL]_
 - Communication templates
 - Touchpoint schedule
 - Escalation procedures
-- **Load template:** `{project-root}/_bmad/bam/templates/stakeholder-map-template.md`
+- **Load template:** `{project-root}/_bmad/bam/data/templates/stakeholder-map-template.md`
 
 ## Next Step
 

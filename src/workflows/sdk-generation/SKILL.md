@@ -104,5 +104,5 @@ This workflow contributes to:
 
 ## References
 
-- Template: `bam/templates/sdk-generation-template.md`
+- Template: `{project-root}/_bmad/bam/data/templates/sdk-generation-template.md`
 - API Version Release: `bmad-bam-api-version-release`

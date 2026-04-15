@@ -123,6 +123,6 @@ Design audit and compliance reporting:
 
 ## References
 
-- Template: `bam/templates/data-retention-template.md`
-- Multi-Tenant Patterns: `bam/knowledge/multi-tenant-patterns.md`
-- Compliance Patterns: `bam/data/compliance-frameworks.csv`
+- Template: `{project-root}/_bmad/bam/data/templates/data-retention-template.md`
+- Multi-Tenant Patterns: `{project-root}/_bmad/bam/data/agent-guides/bam/multi-tenant-patterns.md`
+- Compliance Patterns: `{project-root}/_bmad/bam/data/compliance-frameworks.csv`

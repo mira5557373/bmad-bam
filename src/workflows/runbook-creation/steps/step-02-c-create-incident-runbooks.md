@@ -8,7 +8,7 @@ Create comprehensive incident response runbooks for platform operations.
 
 - Step 1 complete
 - Incident categories identified
-- **Load template:** `{project-root}/_bmad/bam/templates/observability-template.md`
+- **Load template:** `{project-root}/_bmad/bam/data/templates/observability-template.md`
 
 ## Actions
 

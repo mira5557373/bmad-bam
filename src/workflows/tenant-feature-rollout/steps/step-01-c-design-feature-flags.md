@@ -99,7 +99,7 @@ _Source: [URL]_
 - Targeting rule specifications with examples
 - Evaluation context requirements
 - Design decisions documented in frontmatter
-- **Load template:** `{project-root}/_bmad/bam/templates/feature-flags-template.md`
+- **Load template:** `{project-root}/_bmad/bam/data/templates/feature-flags-template.md`
 
 ---
 

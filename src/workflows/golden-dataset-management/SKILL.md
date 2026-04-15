@@ -118,6 +118,6 @@ This workflow contributes to:
 
 ## References
 
-- Knowledge: `bam/knowledge/testing-agent-safety.md`, `bam/knowledge/llmops.md`
-- Patterns: `bam/data/bam-patterns.csv` (ai-testing, llmops, model-versioning)
-- Checklist: `bam/checklists/qg-m3-agent-runtime.md`
+- Knowledge: `{project-root}/_bmad/bam/data/agent-guides/bam/testing-agent-safety.md`, `{project-root}/_bmad/bam/data/agent-guides/bam/llmops.md`
+- Patterns: `{project-root}/_bmad/bam/data/bam-patterns.csv` (ai-testing, llmops, model-versioning)
+- Checklist: `{project-root}/_bmad/bam/data/checklists/qg-m3-agent-runtime.md`

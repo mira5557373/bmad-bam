@@ -181,7 +181,7 @@ Select an option:
 - Notification channel design document
 - Channel routing matrix
 - Delivery SLA specifications
-- **Load template:** `{project-root}/_bmad/bam/templates/notification-channel-template.md`
+- **Load template:** `{project-root}/_bmad/bam/data/templates/notification-channel-template.md`
 
 ---
 

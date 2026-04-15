@@ -152,7 +152,7 @@ Select an option:
 - Systems inventory
 - Compliance framework mapping
 - Audit timeline
-- **Load template:** `{project-root}/_bmad/bam/templates/security-audit-scope-template.md`
+- **Load template:** `{project-root}/_bmad/bam/data/templates/security-audit-scope-template.md`
 
 ---
 

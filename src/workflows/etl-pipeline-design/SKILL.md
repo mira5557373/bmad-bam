@@ -125,5 +125,5 @@ This workflow contributes to:
 
 ## References
 
-- Knowledge: `bam/knowledge/multi-tenant-patterns.md`
-- Checklist: `bam/checklists/qg-i2-tenant-safety.md`
+- Knowledge: `{project-root}/_bmad/bam/data/agent-guides/bam/multi-tenant-patterns.md`
+- Checklist: `{project-root}/_bmad/bam/data/checklists/qg-i2-tenant-safety.md`

@@ -109,5 +109,5 @@ This workflow contributes to QG-P1 by establishing partner ecosystem governance:
 ## References
 
 - **Patterns:** Load from `{project-root}/_bmad/bam/data/bam-patterns.csv` filter: `partner-ecosystem`
-- **Templates:** `{project-root}/_bmad/bam/templates/partner-certification-template.md`
-- **Checklists:** `{project-root}/_bmad/bam/checklists/production-readiness.md`
+- **Templates:** `{project-root}/_bmad/bam/data/templates/partner-certification-template.md`
+- **Checklists:** `{project-root}/_bmad/bam/data/checklists/production-readiness.md`

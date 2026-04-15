@@ -119,7 +119,7 @@ Select an option:
 ## Outputs
 
 - LLM metrics collection configuration
-- **Load template:** `{project-root}/_bmad/bam/templates/ai-observability-template.md`
+- **Load template:** `{project-root}/_bmad/bam/data/templates/ai-observability-template.md`
 
 ---
 

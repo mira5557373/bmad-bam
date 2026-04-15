@@ -52,7 +52,7 @@ QG-I2 (Tenant Safety)  QG-I3 (Agent Safety)
 
 **When to Run:** After completing `create-master-architecture` workflow.
 
-**Checklist:** `src/checklists/foundation-gate.md`
+**Checklist:** `src/data/checklists/foundation-gate.md`
 
 ### How to Run
 
@@ -91,7 +91,7 @@ See [Recovering from Quality Gate Failures](recover-from-gate-failure.md#qg-f1-f
 
 **When to Run:** After completing `create-module-architecture` workflow for each module.
 
-**Checklist:** `src/checklists/module-architecture.md`
+**Checklist:** `src/data/checklists/module-architecture.md`
 
 ### How to Run
 
@@ -131,7 +131,7 @@ See [Recovering from Quality Gate Failures](recover-from-gate-failure.md#qg-m1-m
 
 **When to Run:** After completing `tenant-model-isolation` workflow.
 
-**Checklist:** `src/checklists/tenant-isolation.md`
+**Checklist:** `src/data/checklists/tenant-isolation.md`
 
 ### How to Run
 
@@ -169,8 +169,8 @@ See [Recovering from Quality Gate Failures](recover-from-gate-failure.md#qg-m2-t
 **When to Run:** After completing `agent-runtime-architecture` workflow.
 
 **Checklists:**
-- `src/checklists/qg-m3-agent-runtime.md`
-- `src/checklists/qg-m3-tools.md`
+- `src/data/checklists/qg-m3-agent-runtime.md`
+- `src/data/checklists/qg-m3-tools.md`
 
 ### How to Run
 
@@ -211,7 +211,7 @@ See [Recovering from Quality Gate Failures](recover-from-gate-failure.md#qg-m3-a
 
 **When to Run:** After all module gates (QG-M1, QG-M2, QG-M3) pass for all modules.
 
-**Checklist:** `src/checklists/qg-i1-convergence.md`
+**Checklist:** `src/data/checklists/qg-i1-convergence.md`
 
 ### How to Run
 
@@ -250,7 +250,7 @@ See [Recovering from Quality Gate Failures](recover-from-gate-failure.md#qg-i1-f
 
 **When to Run:** After QG-I1 passes.
 
-**Checklist:** `src/checklists/qg-i2-tenant-safety.md`
+**Checklist:** `src/data/checklists/qg-i2-tenant-safety.md`
 
 ### How to Run
 
@@ -286,7 +286,7 @@ See [Recovering from Quality Gate Failures](recover-from-gate-failure.md#qg-i2-t
 
 **When to Run:** After QG-I1 passes (can run parallel with QG-I2).
 
-**Checklist:** `src/checklists/qg-i3-agent-safety.md`
+**Checklist:** `src/data/checklists/qg-i3-agent-safety.md`
 
 ### How to Run
 
@@ -326,7 +326,7 @@ See [Recovering from Quality Gate Failures](recover-from-gate-failure.md#qg-i3-a
 
 **When to Run:** After QG-I1, QG-I2, and QG-I3 all pass.
 
-**Checklist:** `src/checklists/production-readiness.md`
+**Checklist:** `src/data/checklists/production-readiness.md`
 
 ### How to Run
 
@@ -465,5 +465,5 @@ Emergency overrides require:
 
 - **Quality Gates Reference:** `docs/reference/quality-gates.md`
 - **Gate Recovery Guide:** `docs/how-to/recover-from-gate-failure.md`
-- **Checklists:** `src/checklists/`
+- **Checklists:** `src/data/checklists/`
 - **Quality Gates CSV:** `src/data/quality-gates.csv`

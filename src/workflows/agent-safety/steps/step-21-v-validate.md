@@ -8,7 +8,7 @@ Execute validation checks to verify the agent safety assessment meets required c
 
 - Step 20 complete (document loaded)
 - **Load patterns:** `{project-root}/_bmad/bam/data/bam-patterns.csv` -> filter: `testing-agent-safety`
-- **Load checklist:** `{project-root}/_bmad/bam/checklists/qg-i3-agent-safety.md`
+- **Load checklist:** `{project-root}/_bmad/bam/data/checklists/qg-i3-agent-safety.md`
 
 ## Actions
 

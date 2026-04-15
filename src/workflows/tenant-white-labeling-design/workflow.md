@@ -88,5 +88,5 @@ Load the existing output artifact, then follow `steps/` for validation against q
 
 ## Templates
 
-- **Load template:** `{project-root}/_bmad/bam/templates/white-labeling-template.md`
-- **Load template:** `{project-root}/_bmad/bam/templates/branding-config-template.md`
+- **Load template:** `{project-root}/_bmad/bam/data/templates/white-labeling-template.md`
+- **Load template:** `{project-root}/_bmad/bam/data/templates/branding-config-template.md`

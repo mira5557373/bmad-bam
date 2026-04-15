@@ -3,6 +3,13 @@
   "version": "1.0.0",
   "description": "BAM - Multi-Tenant Agentic AI SaaS extension for BMAD Method",
   "license": "MIT",
+  "files": [
+    ".claude-plugin/",
+    "src/",
+    "scripts/",
+    "CLAUDE.md",
+    "LICENSE"
+  ],
   "publishConfig": {
     "access": "public"
   },

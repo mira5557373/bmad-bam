@@ -117,9 +117,9 @@ Design comprehensive audit trail:
 
 ## References
 
-- Template: `bam/templates/tenant-lifecycle-template.md`
-- Security Patterns: `bam/knowledge/security-patterns.md`
-- Knowledge: `bam/knowledge/multi-tenant-patterns.md`
+- Template: `{project-root}/_bmad/bam/data/templates/tenant-lifecycle-template.md`
+- Security Patterns: `{project-root}/_bmad/bam/data/agent-guides/bam/security-patterns.md`
+- Knowledge: `{project-root}/_bmad/bam/data/agent-guides/bam/multi-tenant-patterns.md`
 
 ## Web Research
 

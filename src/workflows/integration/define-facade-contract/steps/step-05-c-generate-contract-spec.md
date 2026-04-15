@@ -35,7 +35,7 @@ Assemble the complete facade contract specification document.
 
 - Output from previous step(s) in this workflow
 - Pattern registry: `{project-root}/_bmad/bam/data/bam-patterns.csv`
-- Relevant templates from `{project-root}/_bmad/bam/templates/`
+- Relevant templates from `{project-root}/_bmad/bam/data/templates/`
 - User feedback and refinements from previous steps
 
 ---
@@ -97,7 +97,7 @@ The document should include:
 - Complete facade contract specification
 - TypeScript interface file
 - JSON Schema for validation
-- **Load template:** `{project-root}/_bmad/bam/templates/facade-contract-template.md`
+- **Load template:** `{project-root}/_bmad/bam/data/templates/facade-contract-template.md`
 
 ---
 

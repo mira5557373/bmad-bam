@@ -27,14 +27,14 @@ This step loads the runbook collection and individual runbooks for validation. T
 
 - Previous step completed (workflow selection)
 - **Load patterns:** `{project-root}/_bmad/bam/data/bam-patterns.csv → filter: operations`
-- **Load checklist:** `{project-root}/_bmad/bam/checklists/production-checklist.md`
+- **Load checklist:** `{project-root}/_bmad/bam/data/checklists/production-checklist.md`
 
 ---
 
 ## Inputs
 
 - Artifact file path for validation
-- Quality gate checklist: `{project-root}/_bmad/bam/checklists/`
+- Quality gate checklist: `{project-root}/_bmad/bam/data/checklists/`
 - Pattern registry: `{project-root}/_bmad/bam/data/bam-patterns.csv`
 
 ---

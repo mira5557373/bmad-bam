@@ -150,7 +150,7 @@ _Source: [URL]_
 - Requirement count and categories summary
 - Working memory state updated
 - Validation report
-- **Load template:** `{project-root}/_bmad/bam/templates/requirement-summary-template.md`
+- **Load template:** `{project-root}/_bmad/bam/data/templates/requirement-summary-template.md`
 
 ## Next Step
 

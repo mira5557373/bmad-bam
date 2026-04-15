@@ -87,5 +87,5 @@ This workflow also contributes to QG-S4 by identifying AI-specific threats:
 ## References
 
 - **Patterns:** Load from `{project-root}/_bmad/bam/data/bam-patterns.csv` filter: `security`
-- **Templates:** `{project-root}/_bmad/bam/templates/threat-model-template.md`
-- **Checklists:** `{project-root}/_bmad/bam/checklists/production-readiness.md`
+- **Templates:** `{project-root}/_bmad/bam/data/templates/threat-model-template.md`
+- **Checklists:** `{project-root}/_bmad/bam/data/checklists/production-readiness.md`

@@ -38,7 +38,7 @@ Set up noisy neighbor detection and alerting to identify and respond to resource
 
 - Output from previous step(s) in this workflow
 - Pattern registry: `{project-root}/_bmad/bam/data/bam-patterns.csv`
-- Relevant templates from `{project-root}/_bmad/bam/templates/`
+- Relevant templates from `{project-root}/_bmad/bam/data/templates/`
 - User feedback and refinements from previous steps
 
 ---
@@ -194,8 +194,8 @@ Select an option:
 - Detection algorithm documentation
 - Dashboard specifications
 - Automated remediation playbook
-- **Load template:** `{project-root}/_bmad/bam/templates/fair-scheduling-template.md`
-- **Load template:** `{project-root}/_bmad/bam/templates/operational-runbook-template.md`
+- **Load template:** `{project-root}/_bmad/bam/data/templates/fair-scheduling-template.md`
+- **Load template:** `{project-root}/_bmad/bam/data/templates/operational-runbook-template.md`
 
 ---
 

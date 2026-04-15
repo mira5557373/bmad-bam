@@ -38,7 +38,7 @@ Design the automated evaluation pipeline for continuous safety assessment.
 
 - Output from previous step(s) in this workflow
 - Pattern registry: `{project-root}/_bmad/bam/data/bam-patterns.csv`
-- Relevant templates from `{project-root}/_bmad/bam/templates/`
+- Relevant templates from `{project-root}/_bmad/bam/data/templates/`
 - User feedback and refinements from previous steps
 
 ---
@@ -163,7 +163,7 @@ Select an option:
 
 - Eval pipeline architecture
 - Implementation specifications
-- **Load template:** `{project-root}/_bmad/bam/templates/benchmark-results-template.md`
+- **Load template:** `{project-root}/_bmad/bam/data/templates/benchmark-results-template.md`
 
 ## Next Step
 

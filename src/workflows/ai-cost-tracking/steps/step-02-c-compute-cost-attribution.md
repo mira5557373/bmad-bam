@@ -132,7 +132,7 @@ Select an option:
 
 - Compute cost attribution specification
 - Cost event schema
-- **Load template:** `{project-root}/_bmad/bam/templates/cost-allocation-template.md`
+- **Load template:** `{project-root}/_bmad/bam/data/templates/cost-allocation-template.md`
 
 ---
 

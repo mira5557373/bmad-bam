@@ -127,6 +127,6 @@ This workflow contributes to:
 
 ## References
 
-- Template: `bam/templates/compliance-design-template.md`
-- GDPR Compliance: `bam/knowledge/gdpr-compliance-patterns.md`
-- Multi-Tenant Patterns: `bam/knowledge/multi-tenant-patterns.md`
+- Template: `{project-root}/_bmad/bam/data/templates/compliance-design-template.md`
+- GDPR Compliance: `{project-root}/_bmad/bam/data/agent-guides/bam/gdpr-compliance-patterns.md`
+- Multi-Tenant Patterns: `{project-root}/_bmad/bam/data/agent-guides/bam/multi-tenant-patterns.md`

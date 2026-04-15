@@ -107,9 +107,9 @@ This workflow contributes to:
 
 ## References
 
-- Template: `bam/templates/pii-detection-template.md`
-- Knowledge: `bam/knowledge/agent-runtime-patterns.md`
-- Checklist: `bam/checklists/qg-i3-agent-safety.md`
+- Template: `{project-root}/_bmad/bam/data/templates/pii-detection-template.md`
+- Knowledge: `{project-root}/_bmad/bam/data/agent-guides/bam/agent-runtime-patterns.md`
+- Checklist: `{project-root}/_bmad/bam/data/checklists/qg-i3-agent-safety.md`
 
 ## Web Research
 

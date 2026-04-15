@@ -51,8 +51,8 @@ This workflow contributes to:
 
 ## References
 
-- Template: `bam/templates/ddos-protection-template.md`
-- Knowledge: `bam/knowledge/security-patterns.md`
+- Template: `{project-root}/_bmad/bam/data/templates/ddos-protection-template.md`
+- Knowledge: `{project-root}/_bmad/bam/data/agent-guides/bam/security-patterns.md`
 
 ## Headless Mode
 

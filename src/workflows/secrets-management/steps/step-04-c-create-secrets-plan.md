@@ -38,7 +38,7 @@ Assemble the comprehensive secrets management plan incorporating secret classifi
 
 - All outputs from Steps 1-3
 - Pattern registry: `{project-root}/_bmad/bam/data/bam-patterns.csv`
-- Template: `{project-root}/_bmad/bam/templates/secrets-management-template.md`
+- Template: `{project-root}/_bmad/bam/data/templates/secrets-management-template.md`
 
 ---
 

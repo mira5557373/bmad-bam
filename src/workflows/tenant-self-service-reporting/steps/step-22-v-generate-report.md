@@ -146,7 +146,7 @@ Create validation report summarizing:
 - Category-level findings summary
 - Reporting readiness assessment
 - Implementation recommendations
-- **Load template:** `{project-root}/_bmad/bam/templates/tenant-self-service-reporting-template.md`
+- **Load template:** `{project-root}/_bmad/bam/data/templates/tenant-self-service-reporting-template.md`
 
 ## Next Step
 

@@ -113,9 +113,9 @@ This workflow contributes to:
 
 ## References
 
-- Template: `bam/templates/sli-slo-template.md`
-- Knowledge: `bam/knowledge/sre-patterns.md`, `bam/knowledge/observability-patterns.md`
-- Checklist: `bam/checklists/production-readiness.md`
+- Template: `{project-root}/_bmad/bam/data/templates/sli-slo-template.md`
+- Knowledge: `{project-root}/_bmad/bam/data/agent-guides/bam/sre-patterns.md`, `{project-root}/_bmad/bam/data/agent-guides/bam/observability-patterns.md`
+- Checklist: `{project-root}/_bmad/bam/data/checklists/production-readiness.md`
 
 ## Web Research
 

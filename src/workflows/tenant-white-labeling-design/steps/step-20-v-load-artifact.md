@@ -27,14 +27,14 @@ This step loads the Tenant White-Labeling Design artifacts for validation agains
 
 - White-Labeling Design has been executed (Create mode completed)
 - **Load patterns:** `{project-root}/_bmad/bam/data/bam-patterns.csv` -> filter: `tenant-isolation`
-- **Load checklist:** `{project-root}/_bmad/bam/checklists/tenant-isolation.md`
+- **Load checklist:** `{project-root}/_bmad/bam/data/checklists/tenant-isolation.md`
 
 ---
 
 ## Inputs
 
 - Artifact file path for validation
-- Quality gate checklist: `{project-root}/_bmad/bam/checklists/tenant-isolation.md`
+- Quality gate checklist: `{project-root}/_bmad/bam/data/checklists/tenant-isolation.md`
 - Pattern registry: `{project-root}/_bmad/bam/data/bam-patterns.csv`
 
 ---

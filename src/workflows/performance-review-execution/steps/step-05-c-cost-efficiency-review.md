@@ -179,7 +179,7 @@ Select an option:
 - AI cost breakdown
 - Infrastructure cost attribution
 - Optimization recommendations
-- **Load template:** `{project-root}/_bmad/bam/templates/performance-review-template.md`
+- **Load template:** `{project-root}/_bmad/bam/data/templates/performance-review-template.md`
 
 ---
 

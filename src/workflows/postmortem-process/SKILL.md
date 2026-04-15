@@ -115,8 +115,8 @@ This workflow has no specific quality gates as it is an operational workflow.
 
 ## References
 
-- Template: `bam/templates/operations-template.md`
-- Incident Management Patterns: `bam/knowledge/incident-patterns.md`
+- Template: `{project-root}/_bmad/bam/data/templates/operations-template.md`
+- Incident Management Patterns: `{project-root}/_bmad/bam/data/agent-guides/bam/incident-patterns.md`
 
 ## Web Research
 

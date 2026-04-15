@@ -112,7 +112,7 @@ Select an option:
 
 - Resource allocation verification
 - Capacity plan summary
-- **Load template:** `{project-root}/_bmad/bam/templates/capacity-planning-template.md`
+- **Load template:** `{project-root}/_bmad/bam/data/templates/capacity-planning-template.md`
 
 ---
 

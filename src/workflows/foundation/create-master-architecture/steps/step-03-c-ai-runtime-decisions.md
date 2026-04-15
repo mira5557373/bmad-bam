@@ -45,7 +45,7 @@ _Source: [URL]_ for key findings.
 
 - Output from previous step(s) in this workflow
 - Pattern registry: `{project-root}/_bmad/bam/data/bam-patterns.csv`
-- Relevant templates from `{project-root}/_bmad/bam/templates/`
+- Relevant templates from `{project-root}/_bmad/bam/data/templates/`
 - User feedback and refinements from previous steps
 
 ---
@@ -169,7 +169,7 @@ Ask for confirmation before proceeding to module boundary rules.
 - Memory architecture design
 - Safety requirements specification
 - Evaluation framework documentation
-- **Load template:** `{project-root}/_bmad/bam/templates/agent-runtime-architecture-template.md`
+- **Load template:** `{project-root}/_bmad/bam/data/templates/agent-runtime-architecture-template.md`
 
 ---
 

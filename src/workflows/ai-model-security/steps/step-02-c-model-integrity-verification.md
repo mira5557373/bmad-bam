@@ -35,7 +35,7 @@ Design model integrity verification controls to detect tampering and ensure mode
 
 - Output from previous step(s) in this workflow
 - Pattern registry: `{project-root}/_bmad/bam/data/bam-patterns.csv`
-- Relevant templates from `{project-root}/_bmad/bam/templates/`
+- Relevant templates from `{project-root}/_bmad/bam/data/templates/`
 - User feedback and refinements from previous steps
 
 ---
@@ -146,7 +146,7 @@ Select an option:
 
 - Integrity verification controls document
 - Detection and response procedures
-- **Load template:** `{project-root}/_bmad/bam/templates/integrity-verification-template.md`
+- **Load template:** `{project-root}/_bmad/bam/data/templates/integrity-verification-template.md`
 
 ## Next Step
 

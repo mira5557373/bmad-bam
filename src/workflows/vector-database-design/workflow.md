@@ -107,5 +107,5 @@ Load the existing output artifact, then follow:
 
 ## Templates
 
-- **Load template:** `{project-root}/_bmad/bam/templates/vector-database-template.md`
-- **Load template:** `{project-root}/_bmad/bam/templates/operational-runbook-template.md`
+- **Load template:** `{project-root}/_bmad/bam/data/templates/vector-database-template.md`
+- **Load template:** `{project-root}/_bmad/bam/data/templates/operational-runbook-template.md`

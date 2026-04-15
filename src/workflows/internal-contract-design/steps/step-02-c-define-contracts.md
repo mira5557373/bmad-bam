@@ -37,7 +37,7 @@ Create formal contract definitions for each identified interface between interna
 
 - Output from previous step(s) in this workflow
 - Pattern registry: `{project-root}/_bmad/bam/data/bam-patterns.csv`
-- Relevant templates from `{project-root}/_bmad/bam/templates/`
+- Relevant templates from `{project-root}/_bmad/bam/data/templates/`
 - User feedback and refinements from previous steps
 
 ---
@@ -171,8 +171,8 @@ Ask for confirmation before proceeding to boundary specification.
 - Formal contract definitions
 - Data type specifications
 - Behavior contract documentation
-- **Load template:** `{project-root}/_bmad/bam/templates/internal-contract-spec.md`
-- **Load template:** `{project-root}/_bmad/bam/templates/event-schema-template.md`
+- **Load template:** `{project-root}/_bmad/bam/data/templates/internal-contract-spec.md`
+- **Load template:** `{project-root}/_bmad/bam/data/templates/event-schema-template.md`
 
 ## Next Step
 

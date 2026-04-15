@@ -104,5 +104,5 @@ This workflow produces artifacts that must pass QG-SA1 validation. Upon completi
 
 ## Templates
 
-- **Load template:** `{project-root}/_bmad/bam/templates/security-audit-report-template.md`
-- **Load template:** `{project-root}/_bmad/bam/templates/vulnerability-report-template.md`
+- **Load template:** `{project-root}/_bmad/bam/data/templates/security-audit-report-template.md`
+- **Load template:** `{project-root}/_bmad/bam/data/templates/vulnerability-report-template.md`

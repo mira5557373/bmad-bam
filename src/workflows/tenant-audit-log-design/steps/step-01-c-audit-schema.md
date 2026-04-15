@@ -215,7 +215,7 @@ Select an option:
 - Tenant isolation design
 - AI agent audit extension
 - Immutability controls
-- **Load template:** `{project-root}/_bmad/bam/templates/tenant-audit-log-design-template.md`
+- **Load template:** `{project-root}/_bmad/bam/data/templates/tenant-audit-log-design-template.md`
 
 ---
 

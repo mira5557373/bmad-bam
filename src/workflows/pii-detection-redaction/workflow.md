@@ -102,5 +102,5 @@ Load the existing output artifact, then follow:
 
 ## Templates
 
-- **Load template:** `{project-root}/_bmad/bam/templates/pii-detection-template.md`
-- **Load template:** `{project-root}/_bmad/bam/templates/privacy-policy-template.md`
+- **Load template:** `{project-root}/_bmad/bam/data/templates/pii-detection-template.md`
+- **Load template:** `{project-root}/_bmad/bam/data/templates/privacy-policy-template.md`

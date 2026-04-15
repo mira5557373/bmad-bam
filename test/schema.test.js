@@ -74,7 +74,7 @@ describe('Agent Schema Validation', () => {
 });
 
 describe('Extension Schema Validation', () => {
-  const extensionsDir = path.join(SRC_DIR, 'extensions');
+  const extensionsDir = path.join(SRC_DIR, 'data', 'extensions');
 
   const getExtensions = () => {
     if (!fs.existsSync(extensionsDir)) return [];
@@ -151,7 +151,7 @@ describe('Extension Schema Validation', () => {
 
 describe('Module Configuration Validation', () => {
   test('module.yaml exists and is valid', () => {
-    const modulePath = path.join(WORKFLOWS_DIR, 'module.yaml');
+    const modulePath = path.join(SRC_DIR, 'module.yaml');
     expect(fs.existsSync(modulePath)).toBe(true);
 
     const content = fs.readFileSync(modulePath, 'utf-8');
@@ -163,7 +163,7 @@ describe('Module Configuration Validation', () => {
   });
 
   test('module-help.csv exists and has entries', () => {
-    const helpPath = path.join(WORKFLOWS_DIR, 'module-help.csv');
+    const helpPath = path.join(SRC_DIR, 'module-help.csv');
     expect(fs.existsSync(helpPath)).toBe(true);
 
     const content = fs.readFileSync(helpPath, 'utf-8');

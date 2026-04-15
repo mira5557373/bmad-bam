@@ -119,6 +119,6 @@ This workflow contributes to:
 
 ## References
 
-- Knowledge: `bam/knowledge/testing-agent-safety.md`, `bam/knowledge/agent-runtime-patterns.md`
-- Patterns: `bam/data/bam-patterns.csv` (ai-safety, ai-testing, compliance)
-- Checklist: `bam/checklists/qg-i3-agent-safety.md`
+- Knowledge: `{project-root}/_bmad/bam/data/agent-guides/bam/testing-agent-safety.md`, `{project-root}/_bmad/bam/data/agent-guides/bam/agent-runtime-patterns.md`
+- Patterns: `{project-root}/_bmad/bam/data/bam-patterns.csv` (ai-safety, ai-testing, compliance)
+- Checklist: `{project-root}/_bmad/bam/data/checklists/qg-i3-agent-safety.md`

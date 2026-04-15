@@ -205,7 +205,7 @@ _Source: [URL]_
 - Priority-based verification checklists
 - Manual verification procedures
 - Verification workflow documentation
-- **Load template:** `{project-root}/_bmad/bam/templates/data-reconciliation-dr-template.md`
+- **Load template:** `{project-root}/_bmad/bam/data/templates/data-reconciliation-dr-template.md`
 
 ## Next Step
 

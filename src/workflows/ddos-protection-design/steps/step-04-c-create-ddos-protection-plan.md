@@ -97,7 +97,7 @@ _Source: [URL]_
 ## Outputs
 
 - `{output_folder}/planning-artifacts/ddos-protection-design.md`
-- **Load template:** `{project-root}/_bmad/bam/templates/ddos-protection-template.md`
+- **Load template:** `{project-root}/_bmad/bam/data/templates/ddos-protection-template.md`
 
 ## Next Step
 

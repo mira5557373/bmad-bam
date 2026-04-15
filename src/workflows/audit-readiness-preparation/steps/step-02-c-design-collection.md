@@ -111,7 +111,7 @@ _Source: [URL]_
 - Manual collection runbooks
 - Storage architecture
 - Chain of custody requirements
-- **Load template:** `{project-root}/_bmad/bam/templates/audit-evidence-collection-template.md`
+- **Load template:** `{project-root}/_bmad/bam/data/templates/audit-evidence-collection-template.md`
 
 ## Next Step
 

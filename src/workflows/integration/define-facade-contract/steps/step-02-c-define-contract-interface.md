@@ -34,7 +34,7 @@ Design the facade interface that will be exposed by the provider module.
 
 - Output from previous step(s) in this workflow
 - Pattern registry: `{project-root}/_bmad/bam/data/bam-patterns.csv`
-- Relevant templates from `{project-root}/_bmad/bam/templates/`
+- Relevant templates from `{project-root}/_bmad/bam/data/templates/`
 - User feedback and refinements from previous steps
 
 ---
@@ -126,7 +126,7 @@ Ask for confirmation before proceeding to data transfer specification.
 - Facade interface specification
 - Request/Response DTO definitions
 - Error contract documentation
-- **Load template:** `{project-root}/_bmad/bam/templates/facade-contract-template.md`
+- **Load template:** `{project-root}/_bmad/bam/data/templates/facade-contract-template.md`
 
 ---
 

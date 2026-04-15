@@ -111,7 +111,7 @@ Ask for confirmation before proceeding to Edit or Validate modes.
 
 - Escalation path specification
 - Automatic action rules
-- **Load template:** `{project-root}/_bmad/bam/templates/usage-alerts-template.md`
+- **Load template:** `{project-root}/_bmad/bam/data/templates/usage-alerts-template.md`
 
 ---
 

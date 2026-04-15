@@ -154,7 +154,7 @@ Select an option:
 - Experiment framework specification
 - Assignment algorithm documentation
 - Traffic allocation strategy
-- **Load template:** `{project-root}/_bmad/bam/templates/ai-ab-testing-template.md`
+- **Load template:** `{project-root}/_bmad/bam/data/templates/ai-ab-testing-template.md`
 
 ---
 

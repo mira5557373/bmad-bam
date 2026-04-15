@@ -101,7 +101,7 @@ Expected 'module' field in module.yaml
 **Cause:** The module.yaml file is missing or malformed.
 
 **Solution:**
-1. Verify module.yaml exists in `src/workflows/module.yaml`
+1. Verify module.yaml exists in `src/module.yaml`
 2. Check YAML syntax:
    ```bash
    npm run lint
@@ -193,13 +193,13 @@ File not found: steps/step-01-c-initialize.md
 **Symptom:**
 ```
 Error: Template not found
-Cannot resolve: {project-root}/_bmad/bam/templates/master-architecture-template.md
+Cannot resolve: {project-root}/_bmad/bam/data/templates/master-architecture-template.md
 ```
 
 **Cause:** Template path placeholder not resolved or template missing.
 
 **Solution:**
-1. Verify template exists in `src/templates/`
+1. Verify template exists in `src/data/templates/`
 2. Check `{project-root}` is properly configured
 3. Run install to copy templates:
    ```bash

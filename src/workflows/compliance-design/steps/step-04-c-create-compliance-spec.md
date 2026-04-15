@@ -29,7 +29,7 @@ Generate the comprehensive compliance specification document that consolidates a
 - Compliance frameworks identified
 - Audit logging architecture designed
 - Controls mapped to frameworks
-- **Load template:** `{project-root}/_bmad/bam/templates/compliance-checklist-template.md`
+- **Load template:** `{project-root}/_bmad/bam/data/templates/compliance-checklist-template.md`
 - **Load patterns:** `{project-root}/_bmad/bam/data/bam-patterns.csv` → filter: compliance
 
 
@@ -39,7 +39,7 @@ Generate the comprehensive compliance specification document that consolidates a
 
 - Output from previous step(s) in this workflow
 - Pattern registry: `{project-root}/_bmad/bam/data/bam-patterns.csv`
-- Relevant templates from `{project-root}/_bmad/bam/templates/`
+- Relevant templates from `{project-root}/_bmad/bam/data/templates/`
 - User feedback and refinements from previous steps
 
 ---
@@ -239,8 +239,8 @@ _Source: [URL]_
 - Evidence collection procedures
 - Retention policy document
 - Dashboard specifications
-- **Load template:** `{project-root}/_bmad/bam/templates/module-compliance-template.md`
-- **Load template:** `{project-root}/_bmad/bam/templates/ccpa-compliance-template.md`
+- **Load template:** `{project-root}/_bmad/bam/data/templates/module-compliance-template.md`
+- **Load template:** `{project-root}/_bmad/bam/data/templates/ccpa-compliance-template.md`
 
 ## Quality Gate Summary
 

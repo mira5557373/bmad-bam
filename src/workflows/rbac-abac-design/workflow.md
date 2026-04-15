@@ -102,5 +102,5 @@ Load the existing output artifact, then follow:
 
 ## Templates
 
-- **Load template:** `{project-root}/_bmad/bam/templates/rbac-abac-template.md`
-- **Load template:** `{project-root}/_bmad/bam/templates/permission-model-template.md`
+- **Load template:** `{project-root}/_bmad/bam/data/templates/rbac-abac-template.md`
+- **Load template:** `{project-root}/_bmad/bam/data/templates/permission-model-template.md`

@@ -131,7 +131,7 @@ Select an option:
 - DR plan execution log
 - Pre-drill checklist
 - Procedure completion status
-- **Load template:** `{project-root}/_bmad/bam/templates/dr-execution-log-template.md`
+- **Load template:** `{project-root}/_bmad/bam/data/templates/dr-execution-log-template.md`
 
 ---
 

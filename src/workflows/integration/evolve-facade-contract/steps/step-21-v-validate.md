@@ -129,7 +129,7 @@ Document any issues found:
 - Validation checklist results
 - Findings list with severity
 - Gate decision recommendation
-- **Load template:** `{project-root}/_bmad/bam/templates/facade-contract-template.md`
+- **Load template:** `{project-root}/_bmad/bam/data/templates/facade-contract-template.md`
 
 ---
 

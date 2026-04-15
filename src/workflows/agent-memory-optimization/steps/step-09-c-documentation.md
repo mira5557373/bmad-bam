@@ -29,7 +29,7 @@ Generate comprehensive documentation for the memory optimization design includin
 
 - Steps 1-8 completed
 - **Load patterns:** `{project-root}/_bmad/bam/data/bam-patterns.csv` -> filter: documentation
-- **Load template:** `{project-root}/_bmad/bam/templates/memory-tiers-template.md`
+- **Load template:** `{project-root}/_bmad/bam/data/templates/memory-tiers-template.md`
 
 ---
 
@@ -37,7 +37,7 @@ Generate comprehensive documentation for the memory optimization design includin
 
 - All decisions from previous steps
 - Pattern registry: `{project-root}/_bmad/bam/data/bam-patterns.csv`
-- Template: `{project-root}/_bmad/bam/templates/memory-tiers-template.md`
+- Template: `{project-root}/_bmad/bam/data/templates/memory-tiers-template.md`
 
 ---
 

@@ -109,7 +109,7 @@ Your options:
 - Pipeline architecture specification
 - Data flow diagrams
 - Storage and retention policy
-- **Load template:** `{project-root}/_bmad/bam/templates/gtm-scale-template.md`
+- **Load template:** `{project-root}/_bmad/bam/data/templates/gtm-scale-template.md`
 
 ---
 

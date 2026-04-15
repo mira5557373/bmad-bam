@@ -115,7 +115,7 @@ Select an option:
 - Health metrics catalog
 - SLI definitions
 - Collection strategy
-- **Load template:** `{project-root}/_bmad/bam/templates/tenant-health-monitoring-template.md`
+- **Load template:** `{project-root}/_bmad/bam/data/templates/tenant-health-monitoring-template.md`
 
 ---
 

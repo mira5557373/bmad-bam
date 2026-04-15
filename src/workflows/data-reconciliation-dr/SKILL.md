@@ -107,10 +107,10 @@ This workflow contributes to:
 
 ## References
 
-- Template: `bam/templates/data-reconciliation-dr-template.md`
-- Knowledge: `bam/knowledge/disaster-recovery-patterns.md`
-- Knowledge: `bam/knowledge/data-integrity-patterns.md`
-- Checklist: `bam/checklists/production-readiness.md`
+- Template: `{project-root}/_bmad/bam/data/templates/data-reconciliation-dr-template.md`
+- Knowledge: `{project-root}/_bmad/bam/data/agent-guides/bam/disaster-recovery-patterns.md`
+- Knowledge: `{project-root}/_bmad/bam/data/agent-guides/bam/data-integrity-patterns.md`
+- Checklist: `{project-root}/_bmad/bam/data/checklists/production-readiness.md`
 
 ## Headless Mode
 

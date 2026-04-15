@@ -141,7 +141,7 @@ Document the confirmed modification scope for the next step.
 - Summary of current reconciliation design configuration
 - Confirmed list of sections to modify
 - Change rationale documented
-- **Load template:** `{project-root}/_bmad/bam/templates/data-reconciliation-dr-template.md`
+- **Load template:** `{project-root}/_bmad/bam/data/templates/data-reconciliation-dr-template.md`
 
 ## Next Step
 

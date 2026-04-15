@@ -80,4 +80,4 @@ Load the existing output artifact, then follow:
 
 ## Templates
 
-- **Load template:** `{project-root}/_bmad/bam/templates/tenant-lifecycle-template.md`
+- **Load template:** `{project-root}/_bmad/bam/data/templates/tenant-lifecycle-template.md`

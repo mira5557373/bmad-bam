@@ -9,7 +9,7 @@ const yaml = require('js-yaml');
 
 const SRC_DIR = path.join(__dirname, '..', '..', 'src');
 const WORKFLOWS_DIR = path.join(SRC_DIR, 'workflows');
-const TEMPLATES_DIR = path.join(SRC_DIR, 'templates');
+const TEMPLATES_DIR = path.join(SRC_DIR, 'data', 'templates');
 
 // Helper functions
 const getAllWorkflows = () => {

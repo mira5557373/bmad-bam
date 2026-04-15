@@ -134,7 +134,7 @@ Select an option:
 
 - Token metering specification
 - Pricing configuration schema
-- **Load template:** `{project-root}/_bmad/bam/templates/llm-cost-tracking-template.md`
+- **Load template:** `{project-root}/_bmad/bam/data/templates/llm-cost-tracking-template.md`
 
 ---
 

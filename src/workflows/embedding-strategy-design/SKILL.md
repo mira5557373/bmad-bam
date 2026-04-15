@@ -139,9 +139,9 @@ This workflow contributes to:
 
 ## References
 
-- Template: `bam/templates/embedding-strategy-template.md`
-- Knowledge: `bam/knowledge/embedding-patterns.md`
-- Checklist: `bam/checklists/qg-m3-agent-runtime.md`
+- Template: `{project-root}/_bmad/bam/data/templates/embedding-strategy-template.md`
+- Knowledge: `{project-root}/_bmad/bam/data/agent-guides/bam/embedding-patterns.md`
+- Checklist: `{project-root}/_bmad/bam/data/checklists/qg-m3-agent-runtime.md`
 
 ## Web Research
 

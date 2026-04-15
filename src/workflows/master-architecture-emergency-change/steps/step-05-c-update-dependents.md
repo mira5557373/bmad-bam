@@ -37,7 +37,7 @@ Propagate the architecture change to all dependent artifacts and systems.
 
 - Output from previous step(s) in this workflow
 - Pattern registry: `{project-root}/_bmad/bam/data/bam-patterns.csv`
-- Relevant templates from `{project-root}/_bmad/bam/templates/`
+- Relevant templates from `{project-root}/_bmad/bam/data/templates/`
 - User feedback and refinements from previous steps
 
 ---
@@ -168,7 +168,7 @@ Select an option:
 
 - Closure report
 - Post-emergency action items
-- **Load template:** `{project-root}/_bmad/bam/templates/emergency-change-template.md`
+- **Load template:** `{project-root}/_bmad/bam/data/templates/emergency-change-template.md`
 
 ---
 

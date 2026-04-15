@@ -115,7 +115,7 @@ This step loads the existing contract evolution artifacts for modification. Edit
 - Loaded evolution state
 - Document inventory
 - Modification scope document
-- **Load template:** `{project-root}/_bmad/bam/templates/facade-contract-template.md`
+- **Load template:** `{project-root}/_bmad/bam/data/templates/facade-contract-template.md`
 
 ---
 

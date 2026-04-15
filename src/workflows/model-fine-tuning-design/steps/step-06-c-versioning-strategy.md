@@ -36,7 +36,7 @@ Define the versioning approach for fine-tuned models including semantic versioni
 
 - Output from previous step(s) in this workflow
 - Pattern registry: `{project-root}/_bmad/bam/data/bam-patterns.csv`
-- Relevant templates from `{project-root}/_bmad/bam/templates/`
+- Relevant templates from `{project-root}/_bmad/bam/data/templates/`
 - User feedback and refinements from previous steps
 
 ---
@@ -200,7 +200,7 @@ Select an option:
 - Promotion workflow documentation
 - Immutability rules
 - Retention policy configuration
-- **Load template:** `{project-root}/_bmad/bam/templates/prompt-version-template.md`
+- **Load template:** `{project-root}/_bmad/bam/data/templates/prompt-version-template.md`
 
 ---
 

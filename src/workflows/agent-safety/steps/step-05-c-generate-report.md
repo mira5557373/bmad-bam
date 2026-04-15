@@ -8,7 +8,7 @@ Compile all safety test results into a comprehensive validation report and deter
 
 - Steps 1-4 complete
 - All test results available
-- **Load template:** `{project-root}/_bmad/bam/templates/agent-test-report-template.md`
+- **Load template:** `{project-root}/_bmad/bam/data/templates/agent-test-report-template.md`
 
 ## Actions
 

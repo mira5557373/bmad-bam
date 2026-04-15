@@ -38,7 +38,7 @@ Design the module's domain model including aggregate roots, entities, value obje
 
 - Output from previous step(s) in this workflow
 - Pattern registry: `{project-root}/_bmad/bam/data/bam-patterns.csv`
-- Relevant templates from `{project-root}/_bmad/bam/templates/`
+- Relevant templates from `{project-root}/_bmad/bam/data/templates/`
 - User feedback and refinements from previous steps
 
 ---
@@ -162,7 +162,7 @@ Ask for confirmation before proceeding to public facade design.
 - Aggregate boundary documentation
 - Invariant rule specifications
 - Entity lifecycle state machines
-- **Load template:** `{project-root}/_bmad/bam/templates/data-model-template.md`
+- **Load template:** `{project-root}/_bmad/bam/data/templates/data-model-template.md`
 
 ---
 

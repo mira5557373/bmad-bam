@@ -37,7 +37,7 @@ Select and configure code generators for each target programming language with a
 - Output from Step 1 (OpenAPI analysis)
 - Target programming languages
 - Pattern registry: `{project-root}/_bmad/bam/data/bam-patterns.csv`
-- Relevant templates from `{project-root}/_bmad/bam/templates/`
+- Relevant templates from `{project-root}/_bmad/bam/data/templates/`
 
 ---
 

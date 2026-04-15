@@ -6,7 +6,7 @@ Generate CI/CD pipeline configuration files with quality gate integration.
 
 ## Prerequisites
 
-- **Load template:** `{project-root}/_bmad/bam/templates/pipeline-config-template.yaml`
+- **Load template:** `{project-root}/_bmad/bam/data/templates/pipeline-config-template.yaml`
 
 ## Actions
 

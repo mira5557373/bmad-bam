@@ -37,7 +37,7 @@ Configure tier-based quotas, design burst handling, plan quota enforcement, and 
 - Output from Step 1 (Gateway requirements)
 - Tenant tier definitions
 - Pattern registry: `{project-root}/_bmad/bam/data/bam-patterns.csv`
-- Relevant templates from `{project-root}/_bmad/bam/templates/`
+- Relevant templates from `{project-root}/_bmad/bam/data/templates/`
 
 ---
 

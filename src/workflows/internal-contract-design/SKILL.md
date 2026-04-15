@@ -105,12 +105,12 @@ This workflow contributes to:
 
 ## References
 
-- Template: `bam/templates/facade-contract-template.md`
-- Module Facade Patterns: `bam/knowledge/module-facade-patterns.md`
-- Shared Kernel Patterns: `bam/knowledge/shared-kernel-patterns.md`
-- Event-Driven Patterns: `bam/knowledge/event-driven-patterns.md`
+- Template: `{project-root}/_bmad/bam/data/templates/facade-contract-template.md`
+- Module Facade Patterns: `{project-root}/_bmad/bam/data/agent-guides/bam/module-facade-patterns.md`
+- Shared Kernel Patterns: `{project-root}/_bmad/bam/data/agent-guides/bam/shared-kernel-patterns.md`
+- Event-Driven Patterns: `{project-root}/_bmad/bam/data/agent-guides/bam/event-driven-patterns.md`
 
-- Knowledge: `bam/knowledge/module-facade-patterns.md`, `bam/knowledge/event-driven-patterns.md`, `bam/knowledge/shared-kernel-patterns.md`
-- Module Facade Patterns: `bam/knowledge/module-facade-patterns.md`
-- Shared Kernel Patterns: `bam/knowledge/shared-kernel-patterns.md`
-- Event-Driven Patterns: `bam/knowledge/event-driven-patterns.md`
+- Knowledge: `{project-root}/_bmad/bam/data/agent-guides/bam/module-facade-patterns.md`, `{project-root}/_bmad/bam/data/agent-guides/bam/event-driven-patterns.md`, `{project-root}/_bmad/bam/data/agent-guides/bam/shared-kernel-patterns.md`
+- Module Facade Patterns: `{project-root}/_bmad/bam/data/agent-guides/bam/module-facade-patterns.md`
+- Shared Kernel Patterns: `{project-root}/_bmad/bam/data/agent-guides/bam/shared-kernel-patterns.md`
+- Event-Driven Patterns: `{project-root}/_bmad/bam/data/agent-guides/bam/event-driven-patterns.md`

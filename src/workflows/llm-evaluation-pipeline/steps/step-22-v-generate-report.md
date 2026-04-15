@@ -94,7 +94,7 @@ Select an option:
 ## Outputs
 
 - Validation report: `{output_folder}/planning-artifacts/validation/llm-evaluation-validation-report.md`
-- **Load template:** `{project-root}/_bmad/bam/templates/ai-eval-report-template.md`
+- **Load template:** `{project-root}/_bmad/bam/data/templates/ai-eval-report-template.md`
 
 ---
 

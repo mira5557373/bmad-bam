@@ -40,7 +40,7 @@ Define the usage aggregation strategy for billing.
 
 - Output from previous step(s) in this workflow
 - Pattern registry: `{project-root}/_bmad/bam/data/bam-patterns.csv`
-- Relevant templates from `{project-root}/_bmad/bam/templates/`
+- Relevant templates from `{project-root}/_bmad/bam/data/templates/`
 - User feedback and refinements from previous steps
 
 ---
@@ -67,7 +67,7 @@ Level 4: Billing Period Aggregates
 
 ## Aggregation Schema
 
-**Load template:** `{project-root}/_bmad/bam/templates/usage-aggregation-schema-template.md`
+**Load template:** `{project-root}/_bmad/bam/data/templates/usage-aggregation-schema-template.md`
 
 Refer to the template for schema design patterns. Use web research for current best practices.
 

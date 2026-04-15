@@ -139,8 +139,8 @@ Select an option:
 - Tier feature matrix
 - Lifecycle state machine diagram
 - Transition rules documentation
-- **Load template:** `{project-root}/_bmad/bam/templates/tenant-tier-matrix.md`
-- **Load template:** `{project-root}/_bmad/bam/templates/tenant-model-doc-template.md`
+- **Load template:** `{project-root}/_bmad/bam/data/templates/tenant-tier-matrix.md`
+- **Load template:** `{project-root}/_bmad/bam/data/templates/tenant-model-doc-template.md`
 
 ---
 

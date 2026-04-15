@@ -1,0 +1,366 @@
+# BAM Extension for CIS Platform Strategy
+# Pattern: WDS agent-guides (NO memories: field)
+
+agent:
+  metadata:
+    extends: 'bmad-cis-agent-innovation-strategist'
+    module: 'bam'
+    description: "Adds platform strategy capabilities for multi-tenant SaaS"
+
+menu:
+  - trigger: bam-cis-platform-context
+    action: "#load-bam-platform-context-prompt"
+    description: Load BAM platform strategy context
+  - trigger: bam-platform-analysis
+    action: "#platform-analysis-prompt"
+    description: Analyze platform strategy for multi-tenant SaaS
+  - trigger: bam-platform-research
+    action: "#web-research-platform-prompt"
+    description: Conduct web research for platform patterns
+  - trigger: bam-platform-integration
+    action: "#integration-patterns-prompt"
+    description: Design integration patterns for platform connectivity
+  - trigger: bam-platform-partnership
+    action: "#partnership-analysis-prompt"
+    description: Analyze partnership opportunities for ecosystem growth
+  - trigger: bam-platform-ecosystem
+    action: "#ecosystem-mapping-prompt"
+    description: Map and design platform ecosystem architecture
+  - trigger: bam-platform-marketplace
+    action: "#marketplace-strategy-prompt"
+    description: Design marketplace strategy for platform extensions
+  - trigger: bam-platform-api
+    action: "#api-strategy-prompt"
+    description: Design API strategy for platform connectivity
+
+prompts:
+  - id: load-bam-platform-context-prompt
+    content: |
+      ## Load BAM Platform Context
+
+      Read and internalize the multi-tenant SaaS platform guide:
+      `{project-root}/_bmad/bam/data/agent-guides/bam/saas-innovation.md`
+
+      Also load the platform-specific guides:
+      `{project-root}/_bmad/bam/data/agent-guides/bam/innovation-guide.md`
+      `{project-root}/_bmad/bam/data/agent-guides/bam/platform-architecture.md`
+
+      This guide provides comprehensive context for platform strategy in
+      multi-tenant AI platforms. It covers the following key areas:
+
+      1. **Platform Economics**: Understanding network effects, switching
+         costs, and platform value creation in multi-tenant SaaS.
+      2. **Ecosystem Development**: Building partner ecosystems, integrations,
+         and platform extensions.
+      3. **Platform Governance**: Managing platform rules, policies, and
+         tenant relationships.
+      4. **Platform Evolution**: Staging platform capability development
+         and managing platform transitions.
+
+      Apply this platform lens to all strategic planning. Once loaded, confirm
+      by stating: "BAM platform context loaded. Ready to analyze platform strategy."
+
+  - id: platform-analysis-prompt
+    content: |
+      ## Platform Strategy Analysis
+
+      Prerequisites: Ensure BAM context loaded via `bam-platform-context`
+
+      **Load patterns:** `{project-root}/_bmad/bam/data/bam-patterns.csv` → filter: `customization, tenant-lifecycle`
+
+      ### Objective
+      Develop platform strategy for multi-tenant SaaS platforms,
+      with focus on ecosystem development and platform economics.
+
+      ### Process
+
+      1. **Platform Economics Assessment**
+         - Map network effects and value creation
+         - Analyze switching costs and lock-in
+         - Evaluate platform defensibility
+
+      2. **Ecosystem Development Planning**
+         - Identify partner ecosystem opportunities
+         - Design integration architecture
+         - Plan marketplace development
+
+      3. **Platform Governance Design**
+         - Define platform rules and policies
+         - Design tenant relationship management
+         - Plan dispute resolution mechanisms
+
+      ### Verification Checklist
+      - [ ] Platform economics documented
+      - [ ] Ecosystem strategy outlined
+      - [ ] Governance framework defined
+      - [ ] Evolution roadmap created
+
+      ### Output
+      Produce platform strategy using template:
+      `{project-root}/_bmad/bam/data/templates/platform-strategy-template.md`
+
+  - id: web-research-platform-prompt
+    content: |
+      ## BAM Web Research - Platform
+
+      Research current best practices for platform.
+
+      **Research Focus:** {{research_topic}}
+
+      Search the web: "{{research_topic}} platform patterns {date}"
+      Search the web: "{{research_topic}} enterprise SaaS {date}"
+
+      Return findings with: _Source: [URL]_
+
+  - id: integration-patterns-prompt
+    content: |
+      ## Integration Patterns for Multi-Tenant Platforms
+
+      Prerequisites: Ensure BAM context loaded via `bam-cis-platform-context`
+
+      **Load patterns:** `{project-root}/_bmad/bam/data/bam-patterns.csv` → filter: `tenant-isolation, customization`
+
+      ### Objective
+      Design integration patterns that enable platform connectivity
+      while maintaining multi-tenant isolation and security.
+
+      ### Process
+
+      1. **Integration Pattern Categories**
+         | Pattern | Use Case | Tenant Consideration |
+         |---------|----------|---------------------|
+         | Webhook | Event notifications | Tenant-scoped endpoints |
+         | REST API | Data sync | Per-tenant auth |
+         | GraphQL | Flexible queries | Field-level isolation |
+         | Real-time | Live updates | Tenant channels |
+         | Batch | Bulk operations | Isolated job queues |
+
+      2. **Tenant-Aware Integration Design**
+         - Design authentication per tenant
+         - Implement data isolation in payloads
+         - Handle tenant-specific configurations
+
+      3. **Integration Security Matrix**
+         | Layer | Control | Implementation |
+         |-------|---------|----------------|
+         | Authentication | OAuth/API key | Per-tenant credentials |
+         | Authorization | Scoped access | Tenant context validation |
+         | Data | Isolation | Filter by tenant_id |
+         | Audit | Logging | Tenant-tagged events |
+
+      4. **Integration Reliability**
+         - Design retry mechanisms
+         - Handle tenant-specific failures
+         - Implement circuit breakers
+
+      ### Verification Checklist
+      - [ ] Integration patterns selected
+      - [ ] Tenant isolation maintained
+      - [ ] Security controls implemented
+      - [ ] Reliability patterns applied
+
+      ### Output
+      Produce integration patterns using template:
+      `{project-root}/_bmad/bam/data/templates/integration-patterns-template.md`
+
+  - id: partnership-analysis-prompt
+    content: |
+      ## Partnership Analysis for Ecosystem Growth
+
+      Prerequisites: Ensure BAM context loaded via `bam-cis-platform-context`
+
+      **Load patterns:** `{project-root}/_bmad/bam/data/bam-patterns.csv` → filter: `customization, tenant-lifecycle`
+
+      ### Objective
+      Analyze partnership opportunities to accelerate ecosystem growth
+      and expand platform value for multi-tenant customers.
+
+      ### Process
+
+      1. **Partner Type Analysis**
+         | Partner Type | Value Exchange | Example |
+         |--------------|---------------|---------|
+         | Technology | Integration depth | CRM, ERP providers |
+         | Channel | Distribution reach | Resellers, consultants |
+         | Content | Domain expertise | Industry specialists |
+         | Platform | Ecosystem expansion | Complementary SaaS |
+
+      2. **Partnership Opportunity Mapping**
+         - Identify gaps in platform capabilities
+         - Map potential partners to fill gaps
+         - Evaluate strategic vs tactical partnerships
+
+      3. **Partner Economics**
+         | Model | Revenue Share | Commitment Level |
+         |-------|--------------|-----------------|
+         | Referral | Commission | Low |
+         | Reseller | Margin | Medium |
+         | OEM | Licensing | High |
+         | Co-sell | Split | High |
+
+      4. **Partnership Framework**
+         - Define partner tiers
+         - Design enablement programs
+         - Create success metrics
+
+      ### Verification Checklist
+      - [ ] Partner opportunities identified
+      - [ ] Economics modeled
+      - [ ] Framework designed
+      - [ ] Success metrics defined
+
+      ### Output
+      Produce partnership analysis using template:
+      `{project-root}/_bmad/bam/data/templates/partnership-analysis-template.md`
+
+  - id: ecosystem-mapping-prompt
+    content: |
+      ## Platform Ecosystem Architecture
+
+      Prerequisites: Ensure BAM context loaded via `bam-cis-platform-context`
+
+      **Load patterns:** `{project-root}/_bmad/bam/data/bam-patterns.csv` → filter: `customization, experimentation`
+
+      ### Objective
+      Map and design platform ecosystem architecture that maximizes
+      network effects and value creation across tenants.
+
+      ### Process
+
+      1. **Ecosystem Component Mapping**
+         | Component | Role | Multi-Tenant Impact |
+         |-----------|------|-------------------|
+         | Core platform | Value creation | Shared infrastructure |
+         | Extensions | Capability expansion | Tenant customization |
+         | Marketplace | Discovery/distribution | Cross-tenant commerce |
+         | Developer platform | Third-party innovation | Ecosystem growth |
+
+      2. **Network Effect Design**
+         - Direct: User-to-user value
+         - Indirect: User-to-developer-to-user
+         - Data: Aggregate intelligence benefits
+
+      3. **Ecosystem Governance**
+         | Aspect | Centralized | Federated | Decentralized |
+         |--------|-------------|-----------|---------------|
+         | Standards | Platform sets | Community input | Open source |
+         | Quality | Platform enforces | Peer review | Market decides |
+         | Monetization | Platform takes cut | Revenue share | Direct payment |
+
+      4. **Ecosystem Roadmap**
+         - Phase 1: Core platform value
+         - Phase 2: API/integration layer
+         - Phase 3: Developer platform
+         - Phase 4: Marketplace launch
+
+      ### Verification Checklist
+      - [ ] Ecosystem components mapped
+      - [ ] Network effects identified
+      - [ ] Governance model chosen
+      - [ ] Roadmap staged
+
+      ### Output
+      Produce ecosystem map using template:
+      `{project-root}/_bmad/bam/data/templates/ecosystem-mapping-template.md`
+
+  - id: marketplace-strategy-prompt
+    content: |
+      ## Marketplace Strategy for Platform Extensions
+
+      Prerequisites: Ensure BAM context loaded via `bam-cis-platform-context`
+
+      **Load patterns:** `{project-root}/_bmad/bam/data/bam-patterns.csv` → filter: `customization, tenant-lifecycle`
+
+      ### Objective
+      Design marketplace strategy that enables third-party extensions
+      while maintaining multi-tenant platform integrity.
+
+      ### Process
+
+      1. **Marketplace Model Design**
+         | Model | Control Level | Revenue Model |
+         |-------|---------------|---------------|
+         | Curated | High - platform selects | Higher commission |
+         | Open | Medium - guidelines only | Lower commission |
+         | Hybrid | Tiered - verified/open | Variable commission |
+
+      2. **Extension Categories**
+         - Integrations: Connect external systems
+         - Automations: Workflow extensions
+         - Templates: Pre-built configurations
+         - AI models: Specialized capabilities
+
+      3. **Multi-Tenant Extension Design**
+         | Requirement | Implementation |
+         |-------------|----------------|
+         | Tenant isolation | Sandboxed execution |
+         | Data access | Scoped permissions |
+         | Resource limits | Quota enforcement |
+         | Security | Code review/scanning |
+
+      4. **Developer Experience**
+         - SDKs and documentation
+         - Testing environments
+         - Certification programs
+         - Revenue sharing model
+
+      ### Verification Checklist
+      - [ ] Marketplace model selected
+      - [ ] Extension categories defined
+      - [ ] Isolation requirements specified
+      - [ ] Developer experience designed
+
+      ### Output
+      Produce marketplace strategy using template:
+      `{project-root}/_bmad/bam/data/templates/marketplace-strategy-template.md`
+
+  - id: api-strategy-prompt
+    content: |
+      ## API Strategy for Platform Connectivity
+
+      Prerequisites: Ensure BAM context loaded via `bam-cis-platform-context`
+
+      **Load patterns:** `{project-root}/_bmad/bam/data/bam-patterns.csv` → filter: `tenant-isolation, observability`
+
+      ### Objective
+      Design API strategy that enables platform connectivity
+      while maintaining tenant isolation and security standards.
+
+      ### Process
+
+      1. **API Product Design**
+         | API Type | Audience | Governance |
+         |----------|----------|------------|
+         | Internal | Platform services | Private |
+         | Partner | Certified partners | Limited access |
+         | Public | All developers | Open with limits |
+
+      2. **Multi-Tenant API Considerations**
+         - Per-tenant rate limiting
+         - Tenant-scoped authentication
+         - Data isolation in responses
+         - Tenant context propagation
+
+      3. **API Versioning Strategy**
+         | Strategy | Pros | Cons |
+         |----------|------|------|
+         | URL versioning | Clear, easy routing | URL clutter |
+         | Header versioning | Clean URLs | Less visible |
+         | Query param | Simple | Caching issues |
+
+      4. **API Monetization**
+         | Model | Implementation | Tenant Impact |
+         |-------|----------------|---------------|
+         | Free tier | Rate limited | All tenants |
+         | Paid usage | Metered billing | Usage-based |
+         | Premium | Higher limits | Enterprise tier |
+
+      ### Verification Checklist
+      - [ ] API products defined
+      - [ ] Multi-tenant considerations addressed
+      - [ ] Versioning strategy selected
+      - [ ] Monetization aligned with tiers
+
+      ### Output
+      Produce API strategy using template:
+      `{project-root}/_bmad/bam/data/templates/api-strategy-template.md`

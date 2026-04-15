@@ -123,9 +123,9 @@ This workflow contributes to:
 
 ## References
 
-- Template: `bam/templates/incident-report-template.md`
-- Checklist: `bam/checklists/qg-incident-response.md`
-- Knowledge: `bam/knowledge/incident-response-patterns.md`
+- Template: `{project-root}/_bmad/bam/data/templates/incident-report-template.md`
+- Checklist: `{project-root}/_bmad/bam/data/checklists/qg-incident-response.md`
+- Knowledge: `{project-root}/_bmad/bam/data/agent-guides/bam/incident-response-patterns.md`
 
 ## Web Research
 

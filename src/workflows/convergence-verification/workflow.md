@@ -131,4 +131,4 @@ This workflow validates all three integration gates:
 
 ## Templates
 
-- **Load template:** `{project-root}/_bmad/bam/templates/performance-baseline-template.md`
+- **Load template:** `{project-root}/_bmad/bam/data/templates/performance-baseline-template.md`

@@ -76,6 +76,6 @@ Default: **Create** mode. In headless mode, always use Create.
 
 ## References
 
-- Template: `bam/templates/fair-scheduling-template.md`
-- Multi-Tenant Patterns: `bam/knowledge/multi-tenant-patterns.md`
-- Scaling Patterns: `bam/knowledge/scaling-patterns.md`
+- Template: `{project-root}/_bmad/bam/data/templates/fair-scheduling-template.md`
+- Multi-Tenant Patterns: `{project-root}/_bmad/bam/data/agent-guides/bam/multi-tenant-patterns.md`
+- Scaling Patterns: `{project-root}/_bmad/bam/data/agent-guides/bam/scaling-patterns.md`

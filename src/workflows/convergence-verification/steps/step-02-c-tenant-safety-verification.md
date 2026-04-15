@@ -27,7 +27,7 @@ Verify that tenant isolation is maintained under all conditions, including concu
 
 - Cross-module integration verified (Step 1)
 - **Load patterns:** `{project-root}/_bmad/bam/data/bam-patterns.csv` → filter: tenant-isolation
-- **Load checklist:** `{project-root}/_bmad/bam/checklists/qg-i2-tenant-safety.md`
+- **Load checklist:** `{project-root}/_bmad/bam/data/checklists/qg-i2-tenant-safety.md`
 
 
 ---
@@ -36,7 +36,7 @@ Verify that tenant isolation is maintained under all conditions, including concu
 
 - Output from previous step(s) in this workflow
 - Pattern registry: `{project-root}/_bmad/bam/data/bam-patterns.csv`
-- Relevant templates from `{project-root}/_bmad/bam/templates/`
+- Relevant templates from `{project-root}/_bmad/bam/data/templates/`
 - User feedback and refinements from previous steps
 
 ---
@@ -164,7 +164,7 @@ _Source: [URL]_
 3. Rotate any exposed API keys/tokens
 4. Enable enhanced audit logging
 
-**Load template:** `{project-root}/_bmad/bam/templates/rls-policy-doc-template.md` for emergency policy patterns
+**Load template:** `{project-root}/_bmad/bam/data/templates/rls-policy-doc-template.md` for emergency policy patterns
 
 **Assessment:**
 1. Query audit logs to determine exposure window

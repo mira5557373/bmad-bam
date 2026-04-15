@@ -8,7 +8,7 @@ Compile all findings into a comprehensive AI security audit report with remediat
 
 - Steps 1-5 complete
 - All findings documented
-- **Load template:** `{project-root}/_bmad/bam/templates/ai-security-test-plan-template.md`
+- **Load template:** `{project-root}/_bmad/bam/data/templates/ai-security-test-plan-template.md`
 
 ## Actions
 

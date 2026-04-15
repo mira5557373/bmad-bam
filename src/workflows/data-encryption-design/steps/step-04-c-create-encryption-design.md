@@ -101,8 +101,8 @@ _Source: [URL]_
 ## Outputs
 
 - `{output_folder}/planning-artifacts/data-encryption-design.md`
-- **Load template:** `{project-root}/_bmad/bam/templates/encryption-design-template.md`
-- **Load template:** `{project-root}/_bmad/bam/templates/encryption-key-management-template.md`
+- **Load template:** `{project-root}/_bmad/bam/data/templates/encryption-design-template.md`
+- **Load template:** `{project-root}/_bmad/bam/data/templates/encryption-key-management-template.md`
 
 ---
 

@@ -107,9 +107,9 @@ This workflow contributes to:
 
 ## References
 
-- Template: `bam/templates/facade-contract-template.md`
-- Module Facade Patterns: `bam/knowledge/module-facade-patterns.md`
+- Template: `{project-root}/_bmad/bam/data/templates/facade-contract-template.md`
+- Module Facade Patterns: `{project-root}/_bmad/bam/data/agent-guides/bam/module-facade-patterns.md`
 
-- Template: `bam/templates/sprint-status-template.yaml`
-- Knowledge: `bam/knowledge/module-facade-patterns.md`
-- Module Facade Patterns: `bam/knowledge/module-facade-patterns.md`
+- Template: `{project-root}/_bmad/bam/data/templates/sprint-status-template.yaml`
+- Knowledge: `{project-root}/_bmad/bam/data/agent-guides/bam/module-facade-patterns.md`
+- Module Facade Patterns: `{project-root}/_bmad/bam/data/agent-guides/bam/module-facade-patterns.md`

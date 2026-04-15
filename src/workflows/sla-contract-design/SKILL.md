@@ -170,10 +170,10 @@ This workflow contributes to:
 
 ## References
 
-- Template: `{project-root}/_bmad/bam/templates/sla-contract-template.md`
+- Template: `{project-root}/_bmad/bam/data/templates/sla-contract-template.md`
 - Patterns: `{project-root}/_bmad/bam/data/bam-patterns.csv` (filter: sla-contract)
 - Quality Gates: `{project-root}/_bmad/bam/data/quality-gates.csv` (filter: QG-SLA1, QG-P1)
-- Checklist: `{project-root}/_bmad/bam/checklists/production-readiness.md`
+- Checklist: `{project-root}/_bmad/bam/data/checklists/production-readiness.md`
 
 ## Headless Mode
 

@@ -116,10 +116,10 @@ This workflow contributes to:
 
 ## References
 
-- Template: `bam/templates/agent-handoff-template.md`
-- Agent Runtime Patterns: `bam/knowledge/agent-runtime-patterns.md`
-- Agent Resilience Patterns: `bam/knowledge/agent-resilience-patterns.md`
-- Checklist: `bam/checklists/qg-m3-agent-runtime.md`
+- Template: `{project-root}/_bmad/bam/data/templates/agent-handoff-template.md`
+- Agent Runtime Patterns: `{project-root}/_bmad/bam/data/agent-guides/bam/agent-runtime-patterns.md`
+- Agent Resilience Patterns: `{project-root}/_bmad/bam/data/agent-guides/bam/agent-resilience-patterns.md`
+- Checklist: `{project-root}/_bmad/bam/data/checklists/qg-m3-agent-runtime.md`
 
 ## Web Research
 

@@ -108,7 +108,7 @@ Present summary of:
 ## Outputs
 
 - Expiration handling specification
-- **Load template:** `{project-root}/_bmad/bam/templates/credit-management-template.md`
+- **Load template:** `{project-root}/_bmad/bam/data/templates/credit-management-template.md`
 
 ---
 

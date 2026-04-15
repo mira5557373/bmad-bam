@@ -25,7 +25,7 @@ Validate the API version release plan against quality criteria ensuring complete
 
 - Step 20 completed: Artifact loaded successfully
 - **Load patterns:** `{project-root}/_bmad/bam/data/bam-patterns.csv` → filter: tenant-routing
-- **Load checklist:** `{project-root}/_bmad/bam/checklists/production-readiness.md`
+- **Load checklist:** `{project-root}/_bmad/bam/data/checklists/production-readiness.md`
 
 ## Validation Checklist
 
@@ -68,7 +68,7 @@ Validate the API version release plan against quality criteria ensuring complete
 ## Gate Decision
 
 - **PASS**: All sections complete, migration plan clear, release ready
-- **CONDITIONAL**: Minor gaps (e.g., some migration guides pending — reference `{project-root}/_bmad/bam/templates/migration-guide-template.md` for creating endpoint-specific migration documentation with version mapping, breaking change handling, and rollback procedures) - document and proceed with caution
+- **CONDITIONAL**: Minor gaps (e.g., some migration guides pending — reference `{project-root}/_bmad/bam/data/templates/migration-guide-template.md` for creating endpoint-specific migration documentation with version mapping, breaking change handling, and rollback procedures) - document and proceed with caution
 - **FAIL**: Missing compatibility assessment, no migration plan for breaking changes, or security concerns
 
 Present validation results with specific findings for each component.

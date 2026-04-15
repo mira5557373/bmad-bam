@@ -29,7 +29,7 @@ Generate the comprehensive GDPR deletion procedure specification document consol
 - Request intake (Step 1), Data discovery (Step 2), Deletion execution (Step 3) complete
 - Soft gate checkpoint passed
 - **Load patterns:** `{project-root}/_bmad/bam/data/bam-patterns.csv` → filter: compliance
-- **Load template:** `{project-root}/_bmad/bam/templates/deletion-procedure-template.md`
+- **Load template:** `{project-root}/_bmad/bam/data/templates/deletion-procedure-template.md`
 
 
 ---

@@ -39,7 +39,7 @@ Design reconciliation processes between usage metering, billing system, and paym
 
 - Output from previous step(s) in this workflow
 - Pattern registry: `{project-root}/_bmad/bam/data/bam-patterns.csv`
-- Relevant templates from `{project-root}/_bmad/bam/templates/`
+- Relevant templates from `{project-root}/_bmad/bam/data/templates/`
 - User feedback and refinements from previous steps
 
 ---
@@ -380,8 +380,8 @@ Select an option:
 - Billing integration specification
 - Reconciliation runbook
 - Audit trail configuration
-- **Load template:** `{project-root}/_bmad/bam/templates/billing-integration-template.md`
-- **Load template:** `{project-root}/_bmad/bam/templates/usage-billing-template.md`
+- **Load template:** `{project-root}/_bmad/bam/data/templates/billing-integration-template.md`
+- **Load template:** `{project-root}/_bmad/bam/data/templates/usage-billing-template.md`
 
 ---
 

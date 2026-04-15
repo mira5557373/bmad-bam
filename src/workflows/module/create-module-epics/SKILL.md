@@ -94,12 +94,12 @@ Create a spike story when:
 
 ## References
 
-- Template: `bam/templates/story-template.md`
-- Parallel Development Guide: `bam/knowledge/parallel-development-guide.md`
+- Template: `{project-root}/_bmad/bam/data/templates/story-template.md`
+- Parallel Development Guide: `{project-root}/_bmad/bam/data/agent-guides/bam/parallel-development-guide.md`
 
-- Template: `bam/templates/sprint-status-template.yaml`
-- Knowledge: `bam/knowledge/independent-development.md`, `bam/knowledge/parallel-development-guide.md`
-- Parallel Development Guide: `bam/knowledge/parallel-development-guide.md`
+- Template: `{project-root}/_bmad/bam/data/templates/sprint-status-template.yaml`
+- Knowledge: `{project-root}/_bmad/bam/data/agent-guides/bam/independent-development.md`, `{project-root}/_bmad/bam/data/agent-guides/bam/parallel-development-guide.md`
+- Parallel Development Guide: `{project-root}/_bmad/bam/data/agent-guides/bam/parallel-development-guide.md`
 
 ## Quality Gates
 

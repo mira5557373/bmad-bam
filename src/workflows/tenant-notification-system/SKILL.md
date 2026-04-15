@@ -143,6 +143,6 @@ This workflow contributes to:
 
 ## References
 
-- Template: `bam/templates/notification-system-template.md`
-- Patterns: `bam/data/bam-patterns.csv` (filter: notification, event-driven)
-- Checklist: `bam/checklists/` (notification system validation)
+- Template: `{project-root}/_bmad/bam/data/templates/notification-system-template.md`
+- Patterns: `{project-root}/_bmad/bam/data/bam-patterns.csv` (filter: notification, event-driven)
+- Checklist: `{project-root}/_bmad/bam/data/checklists/` (notification system validation)

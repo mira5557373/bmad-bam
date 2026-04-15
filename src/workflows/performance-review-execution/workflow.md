@@ -126,4 +126,4 @@ This workflow produces artifacts that must pass QG-PR1 validation. Upon completi
 
 ## Templates
 
-- **Load template:** `{project-root}/_bmad/bam/templates/performance-review-template.md`
+- **Load template:** `{project-root}/_bmad/bam/data/templates/performance-review-template.md`

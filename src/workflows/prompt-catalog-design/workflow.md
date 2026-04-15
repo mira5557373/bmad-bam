@@ -107,4 +107,4 @@ Load the existing output artifact, then follow:
 
 ## Templates
 
-- **Load template:** `{project-root}/_bmad/bam/templates/prompt-catalog-template.md`
+- **Load template:** `{project-root}/_bmad/bam/data/templates/prompt-catalog-template.md`

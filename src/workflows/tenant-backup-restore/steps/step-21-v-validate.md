@@ -52,7 +52,7 @@ Validate completeness and quality of backup/restore design.
 
 **Gate Reference:** Load from `{project-root}/_bmad/bam/data/quality-gates.csv` -> filter: `QG-P1`
 
-**Load Checklist:** `{project-root}/_bmad/bam/checklists/production-readiness.md`
+**Load Checklist:** `{project-root}/_bmad/bam/data/checklists/production-readiness.md`
 
 - **PASS**: All backup/restore requirements complete
 - **CONDITIONAL**: Minor gaps - document and proceed

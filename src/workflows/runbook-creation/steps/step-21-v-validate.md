@@ -28,7 +28,7 @@ Validate the runbook collection against QG-OC (Operational Checklist Gate) crite
 - Previous step completed (step-20-v-load-artifact.md)
 - **Load patterns:** `{project-root}/_bmad/bam/data/bam-patterns.csv` -> filter: `operations`
 - **Load quality gate:** `{project-root}/_bmad/bam/data/quality-gates.csv` -> filter: `QG-OC`
-- **Load checklist:** `{project-root}/_bmad/bam/checklists/qg-operations-continuous.md`
+- **Load checklist:** `{project-root}/_bmad/bam/data/checklists/qg-operations-continuous.md`
 
 ---
 

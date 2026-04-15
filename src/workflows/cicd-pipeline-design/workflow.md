@@ -102,5 +102,5 @@ Load the existing output artifact, then follow:
 
 ## Templates
 
-- **Load template:** `{project-root}/_bmad/bam/templates/cicd-pipeline-template.md`
-- **Load template:** `{project-root}/_bmad/bam/templates/deployment-strategy-template.md`
+- **Load template:** `{project-root}/_bmad/bam/data/templates/cicd-pipeline-template.md`
+- **Load template:** `{project-root}/_bmad/bam/data/templates/deployment-strategy-template.md`

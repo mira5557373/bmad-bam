@@ -185,8 +185,8 @@ _Source: [URL]_
 - Benefits matrix by tier
 - Progression requirements
 - Branding guidelines
-- **Load template:** `{project-root}/_bmad/bam/templates/partner-certification-template.md`
-- **Load template:** `{project-root}/_bmad/bam/templates/ecosystem-mapping-template.md`
+- **Load template:** `{project-root}/_bmad/bam/data/templates/partner-certification-template.md`
+- **Load template:** `{project-root}/_bmad/bam/data/templates/ecosystem-mapping-template.md`
 
 ## Next Step
 

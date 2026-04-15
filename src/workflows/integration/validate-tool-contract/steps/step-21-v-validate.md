@@ -148,7 +148,7 @@ Before proceeding, confirm:
 
 **Gate Reference:** Load from `{project-root}/_bmad/bam/data/quality-gates.csv` -> filter: `QG-M3-T`
 
-**Load Checklist:** `{project-root}/_bmad/bam/checklists/qg-m3-tools.md`
+**Load Checklist:** `{project-root}/_bmad/bam/data/checklists/qg-m3-tools.md`
 
 - **PASS**: All validation areas covered, no critical failures, recommendations documented
 - **CONDITIONAL**: Minor gaps in validation coverage - note gaps

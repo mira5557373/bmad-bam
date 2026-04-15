@@ -249,7 +249,7 @@ Select an option:
 - Orchestration selection rationale
 - Source/destination matrix
 - Resource allocation table
-- **Load template:** `{project-root}/_bmad/bam/templates/data-template.md`
+- **Load template:** `{project-root}/_bmad/bam/data/templates/data-template.md`
 
 ---
 

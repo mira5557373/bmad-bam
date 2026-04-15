@@ -39,7 +39,7 @@ Define the metering event structure and collection strategy for usage-based bill
 
 - Output from previous step(s) in this workflow
 - Pattern registry: `{project-root}/_bmad/bam/data/bam-patterns.csv`
-- Relevant templates from `{project-root}/_bmad/bam/templates/`
+- Relevant templates from `{project-root}/_bmad/bam/data/templates/`
 - User feedback and refinements from previous steps
 
 ---
@@ -196,7 +196,7 @@ Ask for confirmation before proceeding to aggregation configuration.
 - Metering event schema document
 - Event type catalog
 - Collection pipeline diagram
-- **Load template:** `{project-root}/_bmad/bam/templates/metering-event-spec.md`
+- **Load template:** `{project-root}/_bmad/bam/data/templates/metering-event-spec.md`
 
 ---
 

@@ -101,9 +101,9 @@ Gather from the user (or from args in headless mode):
 
 ## References
 
-- Patterns: `bam/data/bam-patterns.csv`
-- Tenant Models: `bam/data/tenant-models.csv`
-- AI Runtimes: `bam/data/ai-runtimes.csv`
+- Patterns: `{project-root}/_bmad/bam/data/bam-patterns.csv`
+- Tenant Models: `{project-root}/_bmad/bam/data/tenant-models.csv`
+- AI Runtimes: `{project-root}/_bmad/bam/data/ai-runtimes.csv`
 
 ## Headless Mode
 

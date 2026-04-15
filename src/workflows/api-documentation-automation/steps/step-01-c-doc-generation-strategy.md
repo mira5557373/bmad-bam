@@ -144,7 +144,7 @@ Select an option:
 - Documentation structure specification
 - Code-to-docs workflow
 - Static site configuration
-- **Load template:** `{project-root}/_bmad/bam/templates/api-documentation-template.md`
+- **Load template:** `{project-root}/_bmad/bam/data/templates/api-documentation-template.md`
 
 ---
 

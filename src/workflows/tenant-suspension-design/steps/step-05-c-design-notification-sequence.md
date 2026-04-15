@@ -39,7 +39,7 @@ Design the notification sequences for each stage of the suspension lifecycle.
 
 - Output from previous step(s) in this workflow
 - Pattern registry: `{project-root}/_bmad/bam/data/bam-patterns.csv`
-- Relevant templates from `{project-root}/_bmad/bam/templates/`
+- Relevant templates from `{project-root}/_bmad/bam/data/templates/`
 - User feedback and refinements from previous steps
 
 ---
@@ -201,8 +201,8 @@ Select an option:
 
 - Notification sequence catalog
 - Notification templates
-- **Load template:** `{project-root}/_bmad/bam/templates/suspension-runbook-template.md`
-- **Load template:** `{project-root}/_bmad/bam/templates/operational-runbook-template.md`
+- **Load template:** `{project-root}/_bmad/bam/data/templates/suspension-runbook-template.md`
+- **Load template:** `{project-root}/_bmad/bam/data/templates/operational-runbook-template.md`
 
 ---
 

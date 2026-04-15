@@ -99,7 +99,7 @@ Document findings with citations: _Source: [URL]_
 - Rollout template specifications by risk level
 - Gate criteria with failure actions
 - Design decisions documented in frontmatter
-- **Load template:** `{project-root}/_bmad/bam/templates/feature-rollout-template.md`
+- **Load template:** `{project-root}/_bmad/bam/data/templates/feature-rollout-template.md`
 
 ---
 

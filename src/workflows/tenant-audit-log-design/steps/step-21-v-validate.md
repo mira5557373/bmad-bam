@@ -26,7 +26,7 @@ Validate the audit log design against QG-I2 quality gate criteria, compliance re
 ## Prerequisites
 
 - Step 20 completed: Artifact loaded and parsed
-- **Load checklist:** `{project-root}/_bmad/bam/checklists/qg-i2-tenant-safety.md`
+- **Load checklist:** `{project-root}/_bmad/bam/data/checklists/qg-i2-tenant-safety.md`
 - **Load patterns:** `{project-root}/_bmad/bam/data/compliance-frameworks.csv`
 
 ---
@@ -34,7 +34,7 @@ Validate the audit log design against QG-I2 quality gate criteria, compliance re
 ## Inputs
 
 - Loaded artifact from Step 20
-- Quality gate checklist: `{project-root}/_bmad/bam/checklists/qg-i2-tenant-safety.md`
+- Quality gate checklist: `{project-root}/_bmad/bam/data/checklists/qg-i2-tenant-safety.md`
 - Compliance frameworks: `{project-root}/_bmad/bam/data/compliance-frameworks.csv`
 
 ---

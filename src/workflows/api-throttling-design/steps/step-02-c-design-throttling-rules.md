@@ -153,7 +153,7 @@ Select an option:
 - Throttling rules matrix
 - Per-endpoint limit configuration
 - Response header specification
-- **Load template:** `{project-root}/_bmad/bam/templates/api-throttling-template.md`
+- **Load template:** `{project-root}/_bmad/bam/data/templates/api-throttling-template.md`
 
 ---
 

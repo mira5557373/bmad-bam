@@ -37,7 +37,7 @@ Generate implementation recommendations based on complexity classification.
 
 - Output from previous step(s) in this workflow
 - Pattern registry: `{project-root}/_bmad/bam/data/bam-patterns.csv`
-- Relevant templates from `{project-root}/_bmad/bam/templates/`
+- Relevant templates from `{project-root}/_bmad/bam/data/templates/`
 - User feedback and refinements from previous steps
 
 ---
@@ -116,7 +116,7 @@ modules:
 - Complexity assessment document
 - Implementation recommendations
 - Updated sprint-status.yaml
-- **Load template:** `{project-root}/_bmad/bam/templates/complexity-assessment-template.md`
+- **Load template:** `{project-root}/_bmad/bam/data/templates/complexity-assessment-template.md`
 
 ## Next Step
 

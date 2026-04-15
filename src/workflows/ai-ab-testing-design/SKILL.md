@@ -93,8 +93,8 @@ This workflow contributes to:
 
 ## References
 
-- Template: `bam/templates/ai-ab-testing-template.md`
-- Knowledge: `bam/knowledge/agent-runtime-patterns.md`
+- Template: `{project-root}/_bmad/bam/data/templates/ai-ab-testing-template.md`
+- Knowledge: `{project-root}/_bmad/bam/data/agent-guides/bam/agent-runtime-patterns.md`
 
 ## Web Research
 

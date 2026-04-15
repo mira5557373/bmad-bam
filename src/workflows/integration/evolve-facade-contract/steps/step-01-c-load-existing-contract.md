@@ -124,7 +124,7 @@ _Source: [URL]_
 - Contract baseline document
 - Consumer inventory table
 - Evolution history summary
-- **Load template:** `{project-root}/_bmad/bam/templates/facade-contract-template.md`
+- **Load template:** `{project-root}/_bmad/bam/data/templates/facade-contract-template.md`
 
 ---
 

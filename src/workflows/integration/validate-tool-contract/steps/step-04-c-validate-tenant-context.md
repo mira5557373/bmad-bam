@@ -36,7 +36,7 @@ Verify the tool correctly handles multi-tenant context.
 
 - Output from previous step(s) in this workflow
 - Pattern registry: `{project-root}/_bmad/bam/data/bam-patterns.csv`
-- Relevant templates from `{project-root}/_bmad/bam/templates/`
+- Relevant templates from `{project-root}/_bmad/bam/data/templates/`
 - User feedback and refinements from previous steps
 
 ---
@@ -139,7 +139,7 @@ Tenant context validation report:
 
 - Tenant context validation report
 - Cross-tenant leakage risk assessment
-- **Load template:** `{project-root}/_bmad/bam/templates/mcp-server-isolation-template.md`
+- **Load template:** `{project-root}/_bmad/bam/data/templates/mcp-server-isolation-template.md`
 
 ## Next Step
 

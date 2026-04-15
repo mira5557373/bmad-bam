@@ -30,7 +30,7 @@ Generate final documentation for the tenant analytics dashboard specification in
 
 - Access control defined (Step 8)
 - All previous steps completed
-- **Load template:** `{project-root}/_bmad/bam/templates/analytics-dashboard-template.md`
+- **Load template:** `{project-root}/_bmad/bam/data/templates/analytics-dashboard-template.md`
 
 ---
 
@@ -169,7 +169,7 @@ Write final document to:
 `{output_folder}/planning-artifacts/analytics-dashboard-spec.md`
 
 Use template from:
-`{project-root}/_bmad/bam/templates/analytics-dashboard-template.md`
+`{project-root}/_bmad/bam/data/templates/analytics-dashboard-template.md`
 
 **Verify current best practices with web search:**
 Search the web: "analytics dashboard documentation best practices {date}"
@@ -236,7 +236,7 @@ Select an option:
 - `{output_folder}/planning-artifacts/analytics-dashboard-spec.md`
 - Implementation checklist
 - Technical appendix
-- **Load template:** `{project-root}/_bmad/bam/templates/embedded-analytics-template.md`
+- **Load template:** `{project-root}/_bmad/bam/data/templates/embedded-analytics-template.md`
 
 ---
 

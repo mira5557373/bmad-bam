@@ -26,7 +26,7 @@ Validate the agent handoff architecture against QG-M3 (Agent Runtime) quality ga
 ## Prerequisites
 
 - Step 20 completed: Artifact loaded
-- **Load checklist:** `{project-root}/_bmad/bam/checklists/qg-m3-agent-runtime.md`
+- **Load checklist:** `{project-root}/_bmad/bam/data/checklists/qg-m3-agent-runtime.md`
 - **Load patterns:** `{project-root}/_bmad/bam/data/bam-patterns.csv` → filter: agent-orchestration
 
 ---
@@ -34,7 +34,7 @@ Validate the agent handoff architecture against QG-M3 (Agent Runtime) quality ga
 ## Inputs
 
 - Loaded artifact from Step 20
-- Quality gate checklist: `{project-root}/_bmad/bam/checklists/qg-m3-agent-runtime.md`
+- Quality gate checklist: `{project-root}/_bmad/bam/data/checklists/qg-m3-agent-runtime.md`
 - Pattern registry: `{project-root}/_bmad/bam/data/bam-patterns.csv`
 
 ---

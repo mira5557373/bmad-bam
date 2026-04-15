@@ -35,7 +35,7 @@ Design bias detection methods and fairness metrics for the AI system.
 
 - Output from previous step(s) in this workflow
 - Pattern registry: `{project-root}/_bmad/bam/data/bam-patterns.csv`
-- Relevant templates from `{project-root}/_bmad/bam/templates/`
+- Relevant templates from `{project-root}/_bmad/bam/data/templates/`
 - User feedback and refinements from previous steps
 
 ---
@@ -163,7 +163,7 @@ Select an option:
 
 - Detection methods document
 - Metrics and thresholds
-- **Load template:** `{project-root}/_bmad/bam/templates/bias-detection-template.md`
+- **Load template:** `{project-root}/_bmad/bam/data/templates/bias-detection-template.md`
 
 ## Next Step
 

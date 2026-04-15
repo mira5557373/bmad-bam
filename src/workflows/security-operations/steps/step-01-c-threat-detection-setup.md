@@ -112,7 +112,7 @@ After completing threat detection setup, present options:
 - Threat detection configuration
 - Detection rules inventory
 - Alert routing matrix
-- **Load template:** `{project-root}/_bmad/bam/templates/threat-detection-config-template.md`
+- **Load template:** `{project-root}/_bmad/bam/data/templates/threat-detection-config-template.md`
 
 ---
 

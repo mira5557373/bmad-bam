@@ -45,7 +45,7 @@ _Source: [URL]_ for key findings.
 
 - Output from previous step(s) in this workflow
 - Pattern registry: `{project-root}/_bmad/bam/data/bam-patterns.csv`
-- Relevant templates from `{project-root}/_bmad/bam/templates/`
+- Relevant templates from `{project-root}/_bmad/bam/data/templates/`
 - User feedback and refinements from previous steps
 
 ---
@@ -151,7 +151,7 @@ Select an option:
 - TenantContext interface definition
 - Lifecycle state machine diagram
 - Isolation matrix spreadsheet
-- **Load template:** `{project-root}/_bmad/bam/templates/tenant-isolation-matrix.md`
+- **Load template:** `{project-root}/_bmad/bam/data/templates/tenant-isolation-matrix.md`
 
 ---
 

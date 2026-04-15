@@ -126,9 +126,9 @@ This workflow contributes to:
 
 ## References
 
-- Template: `bam/templates/ai-eval-report-template.md`
-- Agent Runtime Patterns: `bam/knowledge/agent-runtime-patterns.md`
-- Checklist: `bam/checklists/qg-i3-agent-safety.md`
+- Template: `{project-root}/_bmad/bam/data/templates/ai-eval-report-template.md`
+- Agent Runtime Patterns: `{project-root}/_bmad/bam/data/agent-guides/bam/agent-runtime-patterns.md`
+- Checklist: `{project-root}/_bmad/bam/data/checklists/qg-i3-agent-safety.md`
 
 ## Web Research
 

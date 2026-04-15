@@ -237,14 +237,14 @@ _Source: [URL]_
 - Escalation procedures
 - Sign-off requirements matrix
 - Remediation runbook index
-- **Load template:** `{project-root}/_bmad/bam/templates/data-reconciliation-dr-template.md`
+- **Load template:** `{project-root}/_bmad/bam/data/templates/data-reconciliation-dr-template.md`
 
 ## Next Step
 
 This completes the Create mode for data-reconciliation-dr workflow.
 
 Generate the final reconciliation design document using template:
-`{project-root}/_bmad/bam/templates/data-reconciliation-dr-template.md`
+`{project-root}/_bmad/bam/data/templates/data-reconciliation-dr-template.md`
 
 Output to: `{output_folder}/planning-artifacts/data-reconciliation-dr.md`
 

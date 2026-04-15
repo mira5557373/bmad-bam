@@ -26,7 +26,7 @@ The `module.yaml` file defines BAM configuration options presented during instal
 
 ### 1. Understand module.yaml Structure
 
-The module.yaml file is located at `src/workflows/module.yaml`:
+The module.yaml file is located at `src/module.yaml`:
 
 ```yaml
 # Module metadata

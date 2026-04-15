@@ -238,7 +238,7 @@ Select an option:
 - Deployment pipeline specification
 - Feature flag configuration
 - Monitoring requirements
-- **Load template:** `{project-root}/_bmad/bam/templates/prompt-version-template.md`
+- **Load template:** `{project-root}/_bmad/bam/data/templates/prompt-version-template.md`
 
 ---
 

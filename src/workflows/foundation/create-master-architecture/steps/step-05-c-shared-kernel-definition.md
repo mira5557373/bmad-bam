@@ -44,7 +44,7 @@ _Source: [URL]_ for key findings.
 
 - Output from previous step(s) in this workflow
 - Pattern registry: `{project-root}/_bmad/bam/data/bam-patterns.csv`
-- Relevant templates from `{project-root}/_bmad/bam/templates/`
+- Relevant templates from `{project-root}/_bmad/bam/data/templates/`
 - User feedback and refinements from previous steps
 
 ---
@@ -170,7 +170,7 @@ Ask for confirmation before proceeding to technology stack.
 - Value object library specification
 - Exception hierarchy documentation
 - Shared kernel package structure
-- **Load template:** `{project-root}/_bmad/bam/templates/platform-governance-template.md`
+- **Load template:** `{project-root}/_bmad/bam/data/templates/platform-governance-template.md`
 
 ---
 

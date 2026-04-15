@@ -100,7 +100,7 @@ Select an option:
 
 - Incident automation configuration
 - Security runbooks
-- **Load template:** `{project-root}/_bmad/bam/templates/security-config-template.md`
+- **Load template:** `{project-root}/_bmad/bam/data/templates/security-config-template.md`
 
 ---
 

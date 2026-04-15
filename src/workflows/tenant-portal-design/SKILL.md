@@ -125,6 +125,6 @@ Create information architecture and key wireframes:
 
 ## References
 
-- Template: `bam/templates/ux-design-template.md`
-- Multi-Tenant Patterns: `bam/knowledge/multi-tenant-patterns.md`
-- Tier UX Patterns: `bam/knowledge/tier-ux-patterns.md`
+- Template: `{project-root}/_bmad/bam/data/templates/ux-design-template.md`
+- Multi-Tenant Patterns: `{project-root}/_bmad/bam/data/agent-guides/bam/multi-tenant-patterns.md`
+- Tier UX Patterns: `{project-root}/_bmad/bam/data/agent-guides/bam/tier-ux-patterns.md`

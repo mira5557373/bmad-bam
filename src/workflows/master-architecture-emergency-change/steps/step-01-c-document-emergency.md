@@ -161,7 +161,7 @@ Select an option:
 
 - Emergency change request document
 - Evidence collection
-- **Load template:** `{project-root}/_bmad/bam/templates/change-request-template.md`
+- **Load template:** `{project-root}/_bmad/bam/data/templates/change-request-template.md`
 
 ---
 

@@ -93,7 +93,7 @@ _Source: [URL]_
 - CI/CD integration specifications for security testing
 - Detection metrics and alert thresholds
 - Design decisions documented in frontmatter
-- **Load template:** `{project-root}/_bmad/bam/templates/ai-security-test-plan-template.md`
+- **Load template:** `{project-root}/_bmad/bam/data/templates/ai-security-test-plan-template.md`
 
 ---
 

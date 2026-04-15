@@ -169,17 +169,17 @@ This workflow contributes to:
 
 ## References
 
-- Template: `bam/templates/model-deployment-template.md`
-- Agent Runtime Architecture: `bam/knowledge/agent-runtime-patterns.md`
-- AI Model Versioning: `bam/knowledge/llm-versioning.md`
-- Canary Deployment Patterns: `bam/knowledge/deployment-patterns.md`
-- Tenant Lifecycle Patterns: `bam/knowledge/multi-tenant-patterns.md`
+- Template: `{project-root}/_bmad/bam/data/templates/model-deployment-template.md`
+- Agent Runtime Architecture: `{project-root}/_bmad/bam/data/agent-guides/bam/agent-runtime-patterns.md`
+- AI Model Versioning: `{project-root}/_bmad/bam/data/agent-guides/bam/llm-versioning.md`
+- Canary Deployment Patterns: `{project-root}/_bmad/bam/data/agent-guides/bam/deployment-patterns.md`
+- Tenant Lifecycle Patterns: `{project-root}/_bmad/bam/data/agent-guides/bam/multi-tenant-patterns.md`
 
-- Knowledge: `bam/knowledge/agent-runtime-patterns.md`, `bam/knowledge/llm-versioning.md`, `bam/knowledge/multi-tenant-patterns.md`
-- Checklist: `bam/checklists/qg-m3-agent-runtime.md`
-- Agent Runtime Patterns: `bam/knowledge/agent-runtime-patterns.md`
-- AI Model Versioning: `bam/knowledge/llm-versioning.md`
-- Multi-Tenant Patterns: `bam/knowledge/multi-tenant-patterns.md`
+- Knowledge: `{project-root}/_bmad/bam/data/agent-guides/bam/agent-runtime-patterns.md`, `{project-root}/_bmad/bam/data/agent-guides/bam/llm-versioning.md`, `{project-root}/_bmad/bam/data/agent-guides/bam/multi-tenant-patterns.md`
+- Checklist: `{project-root}/_bmad/bam/data/checklists/qg-m3-agent-runtime.md`
+- Agent Runtime Patterns: `{project-root}/_bmad/bam/data/agent-guides/bam/agent-runtime-patterns.md`
+- AI Model Versioning: `{project-root}/_bmad/bam/data/agent-guides/bam/llm-versioning.md`
+- Multi-Tenant Patterns: `{project-root}/_bmad/bam/data/agent-guides/bam/multi-tenant-patterns.md`
 
 ## Web Research
 

@@ -39,7 +39,7 @@ Generate the operational runbook for tenant offboarding.
 
 - Output from previous step(s) in this workflow
 - Pattern registry: `{project-root}/_bmad/bam/data/bam-patterns.csv`
-- Relevant templates from `{project-root}/_bmad/bam/templates/`
+- Relevant templates from `{project-root}/_bmad/bam/data/templates/`
 - User feedback and refinements from previous steps
 
 ---
@@ -214,7 +214,7 @@ Select an option:
 - Tenant offboarding runbook
 - Deprovisioning flow document
 - Data retention policy
-- **Load template:** `{project-root}/_bmad/bam/templates/offboarding-runbook-template.md`
+- **Load template:** `{project-root}/_bmad/bam/data/templates/offboarding-runbook-template.md`
 
 ---
 

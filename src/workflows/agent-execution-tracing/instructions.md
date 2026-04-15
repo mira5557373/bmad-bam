@@ -15,7 +15,7 @@ Design comprehensive agent execution tracing for multi-tenant AI platforms inclu
 1. Load project context from `{project-root}/**/project-context.md`
 2. Load agent tracing guide from `{project-root}/_bmad/bam/data/agent-guides/bam/agent-tracing.md`
 3. Execute steps in selected mode
-4. Generate output using `{project-root}/_bmad/bam/templates/agent-execution-trace-template.md`
+4. Generate output using `{project-root}/_bmad/bam/data/templates/agent-execution-trace-template.md`
 5. Verify against QG-AI2 criteria
 
 ## Quality Gate Integration

@@ -131,8 +131,8 @@ Select an option:
 - Tier hierarchy specification
 - Feature entitlement matrix
 - Usage limit configuration
-- **Load template:** `{project-root}/_bmad/bam/templates/tier-comparison-ux-template.md`
-- **Load template:** `{project-root}/_bmad/bam/templates/tier-ux-spec-template.md`
+- **Load template:** `{project-root}/_bmad/bam/data/templates/tier-comparison-ux-template.md`
+- **Load template:** `{project-root}/_bmad/bam/data/templates/tier-ux-spec-template.md`
 
 ---
 

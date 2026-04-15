@@ -37,7 +37,7 @@ Configure the integration between usage metering and invoice line item generatio
 
 - Output from previous step(s) in this workflow
 - Pattern registry: `{project-root}/_bmad/bam/data/bam-patterns.csv`
-- Relevant templates from `{project-root}/_bmad/bam/templates/`
+- Relevant templates from `{project-root}/_bmad/bam/data/templates/`
 - User feedback and refinements from previous steps
 
 ---
@@ -175,7 +175,7 @@ Ask for confirmation before proceeding to scheduling and delivery design.
 - Usage aggregation integration specification
 - Line item mapping rules
 - Proration calculation documentation
-- **Load template:** `{project-root}/_bmad/bam/templates/billing-integration-template.md`
+- **Load template:** `{project-root}/_bmad/bam/data/templates/billing-integration-template.md`
 
 ---
 

@@ -32,7 +32,7 @@ Create comprehensive documentation of the deprecation process, including lessons
 - Rollback window expired or waived
 - All migration data collected
 - **Load patterns:** `{project-root}/_bmad/bam/data/bam-patterns.csv` -> filter: documentation
-- **Load template:** `{project-root}/_bmad/bam/templates/deprecation-report-template.md`
+- **Load template:** `{project-root}/_bmad/bam/data/templates/deprecation-report-template.md`
 
 ---
 
@@ -228,7 +228,7 @@ _Source: [URL]_
 - Artifact archive manifest
 - Process update checklist
 
-**Load template:** `{project-root}/_bmad/bam/templates/deprecation-report-template.md`
+**Load template:** `{project-root}/_bmad/bam/data/templates/deprecation-report-template.md`
 
 ---
 

@@ -20,16 +20,16 @@ Check that all required elements are configured:
 ### 2. Generate Validation Report
 
 Use template for gate reporting:
-**Load template:** `{project-root}/_bmad/bam/templates/gate-outcome-report-template.md`
+**Load template:** `{project-root}/_bmad/bam/data/templates/gate-outcome-report-template.md`
 
 For waivers:
-**Load template:** `{project-root}/_bmad/bam/templates/gate-waiver-request-template.md`
+**Load template:** `{project-root}/_bmad/bam/data/templates/gate-waiver-request-template.md`
 
 For recovery plans:
-**Load template:** `{project-root}/_bmad/bam/templates/gate-recovery-plan-template.md`
+**Load template:** `{project-root}/_bmad/bam/data/templates/gate-recovery-plan-template.md`
 
 For evidence collection:
-**Load template:** `{project-root}/_bmad/bam/templates/gate-evidence-collection-template.md`
+**Load template:** `{project-root}/_bmad/bam/data/templates/gate-evidence-collection-template.md`
 
 **Verify current best practices with web search:**
 Search the web: "quarterly operations validation checklist {date}"

@@ -193,7 +193,7 @@ Select an option:
 - Escalation path design document
 - Escalation SLA matrix
 - On-call integration specification
-- **Load template:** `{project-root}/_bmad/bam/templates/escalation-path-template.md`
+- **Load template:** `{project-root}/_bmad/bam/data/templates/escalation-path-template.md`
 
 ---
 

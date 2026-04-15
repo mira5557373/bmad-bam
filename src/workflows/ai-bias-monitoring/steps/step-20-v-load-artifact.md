@@ -25,8 +25,8 @@ Load the AI bias monitoring artifacts for validation against QG-M3 and QG-I3 qua
 
 - AI bias monitoring artifact exists to validate
 - **Load patterns:** `{project-root}/_bmad/bam/data/bam-patterns.csv` → filter: ai-safety, ai-testing
-- **Load checklist:** `{project-root}/_bmad/bam/checklists/qg-i3-agent-safety.md`
-- **Load checklist:** `{project-root}/_bmad/bam/checklists/qg-m3-agent-runtime.md`
+- **Load checklist:** `{project-root}/_bmad/bam/data/checklists/qg-i3-agent-safety.md`
+- **Load checklist:** `{project-root}/_bmad/bam/data/checklists/qg-m3-agent-runtime.md`
 
 Load the existing AI bias monitoring documents:
 - `{output_folder}/planning-artifacts/quality/bias-monitoring.md`

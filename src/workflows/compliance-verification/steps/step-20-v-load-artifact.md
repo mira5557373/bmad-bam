@@ -34,7 +34,7 @@ This step loads the Compliance Verification artifacts for validation. These docu
 ## Inputs
 
 - Artifact file path for validation
-- Quality gate checklist: `{project-root}/_bmad/bam/checklists/compliance-checklist.md`
+- Quality gate checklist: `{project-root}/_bmad/bam/data/checklists/compliance-checklist.md`
 - Pattern registry: `{project-root}/_bmad/bam/data/bam-patterns.csv`
 
 ---

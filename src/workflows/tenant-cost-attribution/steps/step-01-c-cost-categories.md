@@ -158,7 +158,7 @@ Select an option:
 - Operational cost catalog
 - Attribution type classification
 - Cost center structure
-- **Load template:** `{project-root}/_bmad/bam/templates/tenant-cost-attribution-template.md`
+- **Load template:** `{project-root}/_bmad/bam/data/templates/tenant-cost-attribution-template.md`
 
 ---
 

@@ -124,7 +124,7 @@ Before finalizing, confirm:
 ## Outputs
 
 - Validation report document
-- **Load template:** `{project-root}/_bmad/bam/templates/quality-gate-report-template.md`
+- **Load template:** `{project-root}/_bmad/bam/data/templates/quality-gate-report-template.md`
 - **Output to:** `{output_folder}/planning-artifacts/{tool-name}-contract-validation-report.md`
 
 ## Next Step

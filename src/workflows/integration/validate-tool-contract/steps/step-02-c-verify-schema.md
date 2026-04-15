@@ -35,7 +35,7 @@ Validate the tool definition against the ToolDefinition schema.
 
 - Output from previous step(s) in this workflow
 - Pattern registry: `{project-root}/_bmad/bam/data/bam-patterns.csv`
-- Relevant templates from `{project-root}/_bmad/bam/templates/`
+- Relevant templates from `{project-root}/_bmad/bam/data/templates/`
 - User feedback and refinements from previous steps
 
 ---
@@ -149,7 +149,7 @@ Ask for confirmation before proceeding to permission checks.
 
 - Schema validation report
 - Description quality assessment
-- **Load template:** `{project-root}/_bmad/bam/templates/mcp-client-patterns-template.md`
+- **Load template:** `{project-root}/_bmad/bam/data/templates/mcp-client-patterns-template.md`
 
 ## Next Step
 

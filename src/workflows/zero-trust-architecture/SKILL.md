@@ -52,8 +52,8 @@ This workflow contributes to:
 
 ## References
 
-- Template: `bam/templates/zero-trust-template.md`
-- Knowledge: `bam/knowledge/security-patterns.md`
+- Template: `{project-root}/_bmad/bam/data/templates/zero-trust-template.md`
+- Knowledge: `{project-root}/_bmad/bam/data/agent-guides/bam/security-patterns.md`
 
 ## Headless Mode
 

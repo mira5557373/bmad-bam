@@ -16,7 +16,7 @@ Combine all compliance continuous verification designs into a comprehensive desi
 ## Prerequisites
 
 - Steps 1-4 completed
-- **Load template:** `{project-root}/_bmad/bam/templates/compliance-design-template.md`
+- **Load template:** `{project-root}/_bmad/bam/data/templates/compliance-design-template.md`
 
 ---
 

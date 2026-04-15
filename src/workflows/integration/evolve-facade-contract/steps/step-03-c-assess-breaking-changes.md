@@ -17,7 +17,7 @@ Analyze the impact of proposed changes on consumers.
 
 - Output from previous step(s) in this workflow
 - Pattern registry: `{project-root}/_bmad/bam/data/bam-patterns.csv`
-- Relevant templates from `{project-root}/_bmad/bam/templates/`
+- Relevant templates from `{project-root}/_bmad/bam/data/templates/`
 - User feedback and refinements from previous steps
 
 ---
@@ -127,7 +127,7 @@ For HIGH severity changes, explore:
 - Consumer impact matrix
 - Risk assessment document
 - Alternative approaches document
-- **Load template:** `{project-root}/_bmad/bam/templates/facade-migration-template.md`
+- **Load template:** `{project-root}/_bmad/bam/data/templates/facade-migration-template.md`
 
 ---
 

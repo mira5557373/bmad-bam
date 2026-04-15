@@ -102,7 +102,7 @@ Search the web: "assembly multi-tenant SaaS {date}"
 
 - On-call rotation design at `{output_folder}/planning-artifacts/operations/on-call-rotation-design.md`
 - Updated frontmatter with completed steps
-- **Load template:** `{project-root}/_bmad/bam/templates/on-call-runbook-template.md`
+- **Load template:** `{project-root}/_bmad/bam/data/templates/on-call-runbook-template.md`
 
 ---
 

@@ -125,6 +125,6 @@ This workflow contributes to:
 
 ## References
 
-- Template: `bam/templates/architecture-template.md`
-- Compliance Patterns: `bam/knowledge/compliance-patterns.md`
-- Multi-Tenant Patterns: `bam/knowledge/multi-tenant-patterns.md`
+- Template: `{project-root}/_bmad/bam/data/templates/architecture-template.md`
+- Compliance Patterns: `{project-root}/_bmad/bam/data/agent-guides/bam/compliance-patterns.md`
+- Multi-Tenant Patterns: `{project-root}/_bmad/bam/data/agent-guides/bam/multi-tenant-patterns.md`

@@ -117,7 +117,7 @@ Your options:
 
 - Failover logic specification
 - Health check configuration
-- **Load template:** `{project-root}/_bmad/bam/templates/circuit-breaker-template.md`
+- **Load template:** `{project-root}/_bmad/bam/data/templates/circuit-breaker-template.md`
 
 ---
 

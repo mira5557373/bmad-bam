@@ -37,7 +37,7 @@ Configure automated archival rules including storage tier transitions, compressi
 
 - Output from previous step(s) in this workflow
 - Pattern registry: `{project-root}/_bmad/bam/data/bam-patterns.csv`
-- Relevant templates from `{project-root}/_bmad/bam/templates/`
+- Relevant templates from `{project-root}/_bmad/bam/data/templates/`
 - User feedback and refinements from previous steps
 
 ---
@@ -156,7 +156,7 @@ Select an option:
 - Tier transition rules matrix
 - Archival processing specifications
 - Retrieval SLA catalog
-- **Load template:** `{project-root}/_bmad/bam/templates/data-archival-template.md`
+- **Load template:** `{project-root}/_bmad/bam/data/templates/data-archival-template.md`
 
 ---
 

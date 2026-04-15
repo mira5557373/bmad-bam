@@ -139,8 +139,8 @@ Ask for confirmation before proceeding to Edit or Validate modes.
 - Price versioning specification
 - Grandfathering policy documentation
 - Migration procedures
-- **Load template:** `{project-root}/_bmad/bam/templates/pricing-tier-template.md`
-- **Load template:** `{project-root}/_bmad/bam/templates/subscription-lifecycle-template.md`
+- **Load template:** `{project-root}/_bmad/bam/data/templates/pricing-tier-template.md`
+- **Load template:** `{project-root}/_bmad/bam/data/templates/subscription-lifecycle-template.md`
 
 ---
 

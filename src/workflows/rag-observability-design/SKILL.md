@@ -102,8 +102,8 @@ This workflow contributes to:
 
 ## References
 
-- Template: `bam/templates/rag-observability-template.md`
-- Guide: `bam/data/agent-guides/bam/rag-observability.md`
+- Template: `{project-root}/_bmad/bam/data/templates/rag-observability-template.md`
+- Guide: `{project-root}/_bmad/bam/data/agent-guides/bam/rag-observability.md`
 
 ## Web Research
 
