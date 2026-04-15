@@ -45,7 +45,7 @@ BAM (BMAD Agentic Multi-tenant) is a **pure extension module** for the BMAD Meth
 - **Extends, never replaces** - Enhances BMM, TEA, WDS, CIS agents
 - **No `memories:` field** - Uses WDS agent-guides pattern instead
 - **Pattern registry** - 6 CSV files in `src/data/` replace static knowledge fragments
-- **Sidecar templates** - Flat in `src/templates/sidecar-*.md` (BMM-compatible naming)
+- **Sidecar templates** - Flat in `src/data/templates/sidecar-*.md` (BMM-compatible naming)
 
 **What BAM Adds:**
 - Multi-tenant isolation patterns (RLS, schema, database)
@@ -112,7 +112,7 @@ BAM Extension Module (Pure Extension - 0 Standalone Agents)
 **BMM Consolidation Applied:**
 - Atlas/Nova/Kai → `architect-bam.yaml` (44 menu items - intentionally above 5-10 target due to 3-persona consolidation)
 - QA/SM → `dev-bam.yaml` (merged per BMM guidelines)
-- Sidecar templates → `src/templates/sidecar-*.md` (flat, BMM-compatible naming)
+- Sidecar templates → `src/data/templates/sidecar-*.md` (flat, BMM-compatible naming)
 
 > **Note:** `architect-bam.yaml` has 44 menu items (above the 5-10 recommendation) because it consolidates three architect personas: Atlas (Platform), Nova (AI Runtime), and Kai (Integration). This is an intentional design decision to keep related capabilities together rather than fragmenting into multiple extensions.
 
@@ -159,23 +159,17 @@ During `npx bmad-method install`, users select these options:
 
 ## Directory Structure
 
+> **BMB Compatibility:** This structure is optimized for the BMB (BMAD Method Base) installer. All resources are consolidated under `src/data/` so BMB copies them correctly during installation. The `agents/` and `skills/` directories are empty placeholders for BMB compatibility.
+
 ```
 src/
-├── extensions/                  # 28 agent capability extensions
-│   ├── analyst-bam.yaml         # Extends bmad-agent-analyst
-│   ├── architect-bam.yaml       # Extends bmad-agent-architect (Atlas+Nova+Kai merged)
-│   ├── dev-bam.yaml             # Extends bmad-agent-dev (QA+SM merged)
-│   ├── pm-bam.yaml              # Extends bmad-agent-pm
-│   ├── ux-bam.yaml              # Extends bmad-agent-ux-designer
-│   ├── tech-writer-bam.yaml     # Extends bmad-agent-tech-writer
-│   ├── tea-bam.yaml             # Extends bmad-tea
-│   ├── wds-saga-bam.yaml        # Extends wds-agent-saga-analyst
-│   ├── wds-freya-bam.yaml       # Extends wds-agent-freya-ux
-│   ├── cis-*-bam.yaml (12)      # Extends CIS agents (all with web research)
-│   └── master-architect-bam.yaml
+├── module.yaml                  # Module configuration (BMB-required location)
+├── module-help.csv              # Help system entries (166 rows)
+├── agents/                      # Empty (BAM has 0 standalone agents)
+├── skills/                      # Empty (BMB compatibility placeholder)
 │
 ├── workflows/                   # 191 workflows (174 flat + 17 nested in containers)
-│   ├── {flat-workflow}/              # 61 flat workflows (e.g., tenant-model-isolation/)
+│   ├── {flat-workflow}/              # Flat workflows (e.g., tenant-model-isolation/)
 │   │   ├── bmad-skill-manifest.yaml
 │   │   ├── SKILL.md
 │   │   ├── workflow.md
@@ -207,59 +201,88 @@ src/
 │   └── utility/                       # Container: 1 nested workflow
 │       └── list-tools/
 │
-├── data/                        # Pattern registry + agent guides
-│   ├── bam-patterns.csv              # Core patterns with decision criteria
-│   ├── tenant-models.csv             # Tenant isolation patterns
-│   ├── ai-runtimes.csv               # AI runtime patterns
-│   ├── quality-gates.csv             # Quality gate requirements
-│   ├── compliance-frameworks.csv     # Compliance matrix
-│   ├── section-pattern-map.csv       # Section to pattern mapping
-│   └── agent-guides/
-│       └── bam/                 # 189 context injection guides (all with Web Research)
-│           ├── platform-architecture.md
-│           ├── ai-runtime.md
-│           ├── tenant-isolation.md
-│           ├── module-architecture.md
-│           ├── saas-lifecycle.md
-│           ├── tenant-testing.md
-│           ├── tier-ux.md
-│           ├── integration-patterns.md
-│           └── ...
-│
-├── checklists/                  # 36 quality gate checklists
-│   ├── foundation-gate.md            # QG-F1 (with 3-step recovery)
-│   ├── module-architecture.md        # QG-M1
-│   ├── module-readiness.md           # Module readiness
-│   ├── tenant-isolation.md           # QG-M2 (with 3-step recovery)
-│   ├── qg-m3-agent-runtime.md        # QG-M3
-│   ├── qg-m3-tools.md                # QG-M3
-│   ├── qg-i1-convergence.md          # QG-I1
-│   ├── qg-i2-tenant-safety.md        # QG-I2
-│   ├── qg-i3-agent-safety.md         # QG-I3
-│   ├── qg-security-continuous.md     # Continuous security (with 3-step recovery)
-│   ├── qg-operations-continuous.md   # QG-OC (with 3-step recovery)
-│   ├── qg-compliance-continuous.md   # QG-CC Continuous compliance
-│   ├── qg-ai-observability.md        # QG-AI2 AI/LLM observability
-│   ├── qg-capacity-planning.md       # QG-CP1 Capacity planning
-│   ├── qg-disaster-recovery-drill.md # QG-DR1 DR drill validation
-│   └── production-readiness.md       # QG-P1 (with 3-step recovery)
-│
-├── templates/                   # 453 templates (output artifacts + sidecar + specs)
-│   ├── master-architecture-template.md
-│   ├── module-architecture-template.md
-│   ├── facade-contract-template.md
-│   ├── tenant-model-template.md
-│   ├── sidecar-architecture-decisions.md  # Agent memory templates (flat, BMM-compatible)
-│   ├── sidecar-contract-history.md
-│   ├── sidecar-runtime-preferences.md
+└── data/                        # ALL resources consolidated here (BMB copies this)
+    ├── bam-patterns.csv              # Core patterns with decision criteria
+    ├── tenant-models.csv             # Tenant isolation patterns
+    ├── ai-runtimes.csv               # AI runtime patterns
+    ├── quality-gates.csv             # Quality gate requirements
+    ├── compliance-frameworks.csv     # Compliance matrix
+    ├── section-pattern-map.csv       # Section to pattern mapping
+    │
+    ├── agent-guides/
+    │   └── bam/                 # 189 context injection guides (all with Web Research)
+    │       ├── platform-architecture.md
+    │       ├── ai-runtime.md
+    │       ├── tenant-isolation.md
+    │       └── ...
+    │
+    ├── extensions/              # 31 agent capability extensions
+    │   ├── analyst-bam.yaml         # Extends bmad-agent-analyst
+    │   ├── architect-bam.yaml       # Extends bmad-agent-architect (Atlas+Nova+Kai)
+    │   ├── dev-bam.yaml             # Extends bmad-agent-dev (QA+SM merged)
+    │   ├── pm-bam.yaml              # Extends bmad-agent-pm
+    │   ├── ux-bam.yaml              # Extends bmad-agent-ux-designer
+    │   ├── tea-bam.yaml             # Extends bmad-tea
+    │   ├── wds-saga-bam.yaml        # Extends wds-agent-saga-analyst
+    │   ├── wds-freya-bam.yaml       # Extends wds-agent-freya-ux
+    │   ├── cis-*-bam.yaml (12)      # Extends CIS agents
+    │   └── master-architect-bam.yaml
+    │
+    ├── checklists/              # 36 quality gate checklists
+    │   ├── foundation-gate.md            # QG-F1 (with 3-step recovery)
+    │   ├── module-architecture.md        # QG-M1
+    │   ├── tenant-isolation.md           # QG-M2 (with 3-step recovery)
+    │   ├── qg-m3-agent-runtime.md        # QG-M3
+    │   ├── qg-i1-convergence.md          # QG-I1
+    │   ├── qg-i2-tenant-safety.md        # QG-I2
+    │   ├── qg-i3-agent-safety.md         # QG-I3
+    │   ├── qg-security-continuous.md     # Continuous security
+    │   ├── production-readiness.md       # QG-P1 (with 3-step recovery)
+    │   └── ...
+    │
+    └── templates/               # 453 templates (output artifacts + sidecar)
+        ├── master-architecture-template.md
+        ├── module-architecture-template.md
+        ├── facade-contract-template.md
+        ├── sidecar-architecture-decisions.md
+        └── ...
+```
+
+### Post-Installation Structure
+
+After `npx bmad-method install`, BAM resources are at:
+
+```
+{project-root}/
+├── .claude/skills/              # 191 BAM skill directories
+│   ├── agent-execution-tracing/
+│   ├── tenant-model-isolation/
 │   └── ...
 │
-├── workflows/
-│   ├── module.yaml              # Module configuration (at skills common parent)
-│   ├── module-help.csv          # Help system entries (166 rows)
-│   └── {workflow-directories}/   # 191 workflows (174 flat + 17 nested)
-└── extensions/                   # 31 agent extensions
+└── _bmad/bam/                   # BAM module resources
+    ├── config.yaml              # User configuration
+    ├── module-help.csv          # Help system entries
+    └── data/                    # All resources
+        ├── agent-guides/bam/    # 189 agent guides
+        ├── extensions/          # 31 extension YAMLs
+        ├── templates/           # 453 templates
+        ├── checklists/          # 36 checklists
+        └── *.csv                # 6 pattern registry CSVs
 ```
+
+### Installation Verification
+
+Run `./scripts/verify-install.sh _bmad/bam` to verify installation:
+
+```bash
+# Expected output:
+# [PASS] Agent guides: 189 files
+# [PASS] Templates: 453 files
+# [PASS] Checklists: 36 files
+# [PASS] Extensions: 31 files
+```
+
+If installation is incomplete, run `./scripts/post-install.sh _bmad/bam` to fix.
 
 ---
 
@@ -284,6 +307,50 @@ BAM uses these placeholders throughout:
 - `{tenant_model}` and `{ai_runtime}` resolve from user selection
 - `{{variable}}` (double braces) are template placeholders filled during workflow execution
 
+### Runtime Variable Resolution
+
+**How `{project-root}` Resolves:**
+
+```
+1. Claude Code IDE provides workspace root path
+2. BMB installer writes to _bmad/bam/config.yaml:
+   output_folder: "{project-root}/_bmad-output"
+   
+3. At runtime, agent reads config.yaml
+4. IDE resolves {project-root} to actual path:
+   /home/user/my-project/_bmad-output
+```
+
+**How `{date}` Resolves in Web Queries:**
+
+Pattern registry CSVs contain web_queries with `{date}` placeholder:
+```csv
+web_queries
+"PostgreSQL RLS multi-tenant best practices {date}"
+```
+
+At runtime:
+```
+1. Agent reads pattern CSV row
+2. Extracts web_queries column
+3. Replaces {date} with current year (e.g., 2026)
+4. Executes: "PostgreSQL RLS multi-tenant best practices 2026"
+```
+
+This ensures web searches always use current best practices.
+
+**Config File Example (`_bmad/bam/config.yaml`):**
+
+```yaml
+# Generated by BMAD installer
+tenant_model: row-level-security
+ai_runtime: langgraph
+design_first: "true"
+test_architecture: "true"
+user_name: Ajay
+output_folder: "{project-root}/_bmad-output"
+```
+
 ---
 
 ## Extension Pattern (WDS)
@@ -293,7 +360,7 @@ Every extension follows the WDS agent-guides pattern.
 ### Required Structure
 
 ```yaml
-# src/extensions/{agent}-bam.yaml
+# src/data/extensions/{agent}-bam.yaml
 
 agent:
   metadata:
@@ -479,7 +546,7 @@ Present summary and ask for confirmation before proceeding.
 
 - {Artifact 1}
 - {Artifact 2}
-- **Load template:** `{project-root}/_bmad/bam/templates/{template}.md`
+- **Load template:** `{project-root}/_bmad/bam/data/templates/{template}.md`
 
 ## Next Step
 
@@ -1107,7 +1174,7 @@ Sidecar memory persists agent preferences across sessions.
 ### Template Location (Flat, BMM-Compatible)
 
 ```
-src/templates/
+src/data/templates/
 ├── sidecar-architecture-decisions.md    # For Winston+Atlas capabilities
 ├── sidecar-runtime-preferences.md       # For Winston+Nova capabilities
 ├── sidecar-contract-history.md          # For Winston+Kai capabilities
@@ -1245,7 +1312,7 @@ ls src/data/agent-guides/bam/ | grep -i "runtime"
 | `llm-versioning.md` | `ai-model-versioning.md` (LLM-specific) |
 | `ml-model-versioning.md` | `model-versioning-patterns.md` (ML artifacts) |
 
-### Templates (`src/templates/`)
+### Templates (`src/data/templates/`)
 
 | Pattern | Rule | Examples |
 |---------|------|----------|
@@ -1312,8 +1379,8 @@ npm test
 ### Adding a New Extension
 
 ```bash
-# 1. Create extension file
-touch src/extensions/{agent}-bam.yaml
+# 1. Create extension file (note: now in data/extensions/)
+touch src/data/extensions/{agent}-bam.yaml
 
 # 2. Create agent guide
 touch src/data/agent-guides/bam/{domain}.md
@@ -1343,8 +1410,8 @@ npm test
 ### Updating Quality Gate Checklist
 
 ```bash
-# 1. Edit checklist
-vim src/checklists/{gate}.md
+# 1. Edit checklist (note: now in data/checklists/)
+vim src/data/checklists/{gate}.md
 
 # 2. Ensure format:
 #    - [ ] {Check item}
@@ -1425,14 +1492,16 @@ npm test -- test/schema.test.js   # Specific file
 
 | Need | Location |
 |------|----------|
-| Add extension | `src/extensions/{agent}-bam.yaml` |
+| Add extension | `src/data/extensions/{agent}-bam.yaml` |
 | Add workflow | `src/workflows/{name}/` |
 | Add pattern | `src/data/bam-patterns.csv` (add row) |
 | Add agent guide | `src/data/agent-guides/bam/{domain}.md` |
-| Add checklist | `src/checklists/{gate}.md` |
-| Add template | `src/templates/{artifact}-template.md` |
-| Add to help | `src/workflows/module-help.csv` |
-| Configure module | `src/workflows/module.yaml` |
+| Add checklist | `src/data/checklists/{gate}.md` |
+| Add template | `src/data/templates/{artifact}-template.md` |
+| Add to help | `src/module-help.csv` |
+| Configure module | `src/module.yaml` |
+| Verify install | `./scripts/verify-install.sh _bmad/bam` |
+| Fix install | `./scripts/post-install.sh _bmad/bam` |
 
 ### Key Commands
 
