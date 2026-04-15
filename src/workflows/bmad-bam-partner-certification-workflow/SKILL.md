@@ -111,7 +111,7 @@ This workflow contributes to:
 | Workflow | Relationship | When to Use |
 |----------|--------------|-------------|
 | `bmad-bam-create-master-architecture` | Context | Master architecture defines APIs for partner integration |
-| `bmad-bam-api-design` | Related | API design informs partner integration requirements |
+| `bmad-bam-api-gateway-design` | Related | API design informs partner integration requirements |
 | `bmad-bam-tenant-onboarding-design` | Related | Partner onboarding follows similar patterns |
 
 ## References

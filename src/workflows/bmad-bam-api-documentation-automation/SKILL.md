@@ -89,7 +89,7 @@ This workflow is a **utility workflow** without quality gate requirements.
 
 - `bmad-bam-api-version-release` - API versioning coordination
 - `bmad-bam-sdk-generation` - SDK generation from OpenAPI specs
-- `bmad-bam-tech-writer-bam` - Technical writing extension
+- `bmad-agent-tech-writer` - Technical writing extension
 
 ## Output
 
