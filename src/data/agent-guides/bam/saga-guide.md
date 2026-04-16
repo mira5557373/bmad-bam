@@ -228,7 +228,7 @@ PENDING → RUNNING → COMPLETED
 
 ## Related Workflows
 
-- `bmad-bam-tenant-requirements-analysis` - Analyze tenant requirements for saga decomposition
+- `tenant-requirements-analysis` - Analyze tenant requirements for saga decomposition
 - `bmad-bam-tenant-onboarding-design` - Design tenant onboarding sagas
 
 ## Related Patterns

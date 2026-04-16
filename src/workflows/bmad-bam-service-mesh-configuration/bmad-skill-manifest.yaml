@@ -1,5 +1,5 @@
 type: workflow
-name: service-mesh-configuration
+name: bmad-bam-service-mesh-configuration
 displayName: Service Mesh Configuration
 description: "Design service mesh for multi-tenant microservices. Use when the user requests to 'design service mesh' or 'configure mesh networking'."
 module: bam

@@ -1,5 +1,5 @@
 type: workflow
-name: ai-fallback-chains
+name: bmad-bam-ai-fallback-chains
 displayName: AI Fallback Chains
 description: "Design multi-provider fallback with quality thresholds. Use when the user requests to 'design AI fallbacks' or 'create provider failover'."
 module: bam

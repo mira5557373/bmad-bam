@@ -112,10 +112,10 @@ This workflow contributes to:
 
 ## Related Workflows
 
-- `bmad-bam-create-master-architecture` - Tenant model selection prerequisite
+- `create-master-architecture` - Tenant model selection prerequisite
 - `bmad-bam-tenant-data-migration` - Uses isolation boundaries
 - `bmad-bam-tenant-data-export` - Uses tenant data boundaries
-- `bmad-bam-validate-module` - Validates tenant isolation in modules
+- `validate-module` - Validates tenant isolation in modules
 
 ## Output
 

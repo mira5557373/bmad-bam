@@ -166,9 +166,9 @@ Configure build-time checks to prevent forbidden dependencies:
 
 ### Workflow Integration
 
-- `bmad-bam-create-module-architecture` → Per-module design
+- `create-module-architecture` → Per-module design
 - `bmad-bam-module-boundary-design` → Boundary rules
-- `bmad-bam-define-facade-contract` → Contract definition
+- `define-facade-contract` → Contract definition
 
 ## Related Patterns
 
@@ -199,8 +199,8 @@ Use the `web_queries` column from pattern registry to search for current best pr
 
 ## Related Workflows
 
-- `bmad-bam-create-module-architecture` - Design module boundaries and internal structure
-- `bmad-bam-define-facade-contract` - Define stable facade contracts for modules
+- `create-module-architecture` - Design module boundaries and internal structure
+- `define-facade-contract` - Define stable facade contracts for modules
 - `bmad-bam-tenant-model-isolation` - Apply tenant isolation within modules
 - `bmad-bam-convergence-verification` - Validate cross-module integration
-- `bmad-bam-create-master-architecture` - Establish overall architecture for module design
+- `create-master-architecture` - Establish overall architecture for module design

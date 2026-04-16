@@ -18,7 +18,7 @@ menu:
     action: "#web-research-market-prompt"
     description: Conduct web research for market patterns
   - trigger: bam-market-competitive
-    action: "#competitive-analysis-prompt"
+    action: "#cis-market-competitive-analysis-prompt"
     description: Conduct competitive landscape analysis
   - trigger: bam-market-segment
     action: "#segment-analysis-prompt"
@@ -115,7 +115,7 @@ prompts:
 
       Return findings with: _Source: [URL]_
 
-  - id: competitive-analysis-prompt
+  - id: cis-market-competitive-analysis-prompt
     content: |
       ## Competitive Landscape Analysis
 

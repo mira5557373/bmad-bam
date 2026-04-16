@@ -1,5 +1,5 @@
 type: workflow
-name: model-fine-tuning-design
+name: bmad-bam-model-fine-tuning-design
 displayName: Model Fine-tuning Design
 description: "Design tenant-specific LLM model fine-tuning pipelines. Use when the user requests to 'design model fine-tuning' or 'create fine-tuning pipeline'."
 module: bam

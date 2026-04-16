@@ -1,0 +1,14 @@
+{
+  "module-code": "bam",
+  "capabilities": [{
+    "name": "create-module-epics",
+    "menu-code": "CME",
+    "description": "Create epics and stories scoped to single module",
+    "supports-headless": true,
+    "phase-name": "2-planning",
+    "after": ["create-module-architecture"],
+    "before": [],
+    "is-required": false,
+    "output-location": "{output_folder}/planning-artifacts"
+  }]
+}

@@ -42,7 +42,7 @@ Design a comprehensive tenant notification and communication system for a multi-
 
 ## Related Workflows
 
-- `bmad-bam-create-master-architecture` - Master architecture defines platform for communication
+- `create-master-architecture` - Master architecture defines platform for communication
 - `bmad-bam-ai-model-deprecation` - Uses communication templates for deprecation notices
 - `bmad-bam-tenant-onboarding-design` - Onboarding uses welcome notifications
 - `bmad-bam-tenant-notification-system` - Notification system implementation

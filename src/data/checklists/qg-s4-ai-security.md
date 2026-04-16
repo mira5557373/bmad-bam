@@ -197,7 +197,7 @@ Verify AI-specific security controls are properly implemented and tested before 
 
 - `bmad-bam-agent-runtime-architecture` - AI runtime configuration
 - `bmad-bam-ai-agent-debug` - Agent safety debugging
-- `bmad-bam-validate-tool-contract` - Tool permission validation
+- `validate-tool-contract` - Tool permission validation
 - `tea-trace` - Formal agent safety verification
 
 ---

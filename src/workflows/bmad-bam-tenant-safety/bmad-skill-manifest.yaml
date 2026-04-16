@@ -1,5 +1,5 @@
 type: workflow
-name: tenant-safety
+name: bmad-bam-tenant-safety
 displayName: Tenant Safety
 description: Verify tenant safety controls and isolation for multi-tenant AI platforms
 module: bam

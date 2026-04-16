@@ -6,7 +6,7 @@
     "description": "Design tier-aware disaster recovery strategy with RTO/RPO objectives. Use when the user requests to 'design disaster recovery' or 'create DR plan'.",
     "supports-headless": true,
     "phase-name": "3-solutioning",
-    "after": ["bmad-bam-create-master-architecture"],
+    "after": ["create-master-architecture"],
     "before": [],
     "is-required": false,
     "output-location": "{output_folder}/planning-artifacts",

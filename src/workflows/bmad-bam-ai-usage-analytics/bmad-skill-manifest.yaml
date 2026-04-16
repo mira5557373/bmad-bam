@@ -1,5 +1,5 @@
 type: workflow
-name: ai-usage-analytics
+name: bmad-bam-ai-usage-analytics
 displayName: AI Usage Analytics
 description: "Design AI-specific analytics including token usage, latency tracking, model performance, and cost attribution. Use when the user requests to 'design AI analytics' or 'plan LLM usage tracking'."
 module: bam

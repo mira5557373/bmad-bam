@@ -1,5 +1,5 @@
 type: workflow
-name: chaos-engineering-design
+name: bmad-bam-chaos-engineering-design
 displayName: Chaos Engineering Design
 description: "Design chaos engineering practices for multi-tenant resilience. Use when the user requests to 'design chaos engineering' or 'plan resilience testing'."
 module: bam

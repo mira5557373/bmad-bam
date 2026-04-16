@@ -1,5 +1,5 @@
 type: workflow
-name: tenant-custom-domain-design
+name: bmad-bam-tenant-custom-domain-design
 displayName: Tenant Custom Domain Design
 description: "Design custom domain and subdomain routing per tenant. Use when the user requests to 'design custom domains' or 'configure tenant domains'."
 module: bam

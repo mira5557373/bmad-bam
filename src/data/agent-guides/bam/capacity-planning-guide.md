@@ -154,7 +154,7 @@ Monthly Platform Cost =
 
 ## Related Workflows
 
-- `bmad-bam-create-master-architecture` - Include capacity strategy in platform design
+- `create-master-architecture` - Include capacity strategy in platform design
 - `bmad-bam-tenant-onboarding-design` - Resource provisioning during onboarding
 - `bmad-bam-tenant-aware-observability` - Capacity monitoring and alerting
 

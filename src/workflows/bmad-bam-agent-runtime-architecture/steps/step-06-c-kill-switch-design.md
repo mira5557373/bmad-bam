@@ -115,7 +115,7 @@ Select an option:
 #### If 'C' (Continue):
 - Save kill switch design to output document
 - Update frontmatter `stepsCompleted: [1, 2, 3, 4, 5, 6]`
-- Submit agent runtime architecture for validation via `bmad-bam-validate-module`
+- Submit agent runtime architecture for validation via `validate-module`
 
 ---
 
@@ -141,4 +141,4 @@ Select an option:
 
 ## Next Step
 
-Submit agent runtime architecture for validation via `bmad-bam-validate-module`.
+Submit agent runtime architecture for validation via `validate-module`.

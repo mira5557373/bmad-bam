@@ -1,5 +1,5 @@
 type: workflow
-name: zero-trust-architecture
+name: bmad-bam-zero-trust-architecture
 displayName: Zero Trust Architecture
 description: "Design zero-trust network and identity architecture for multi-tenant AI platforms. Use when the user requests to 'design zero trust' or 'create zero trust architecture'."
 module: bam

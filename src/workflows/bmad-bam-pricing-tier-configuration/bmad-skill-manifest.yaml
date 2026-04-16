@@ -1,5 +1,5 @@
 type: workflow
-name: pricing-tier-configuration
+name: bmad-bam-pricing-tier-configuration
 displayName: Pricing Tier Configuration
 description: "Design dynamic pricing tier configuration system. Use when the user requests to 'configure pricing tiers' or 'design tier management'."
 module: bam

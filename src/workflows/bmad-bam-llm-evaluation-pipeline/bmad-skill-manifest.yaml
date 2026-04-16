@@ -1,5 +1,5 @@
 type: workflow
-name: llm-evaluation-pipeline
+name: bmad-bam-llm-evaluation-pipeline
 displayName: LLM Evaluation Pipeline
 description: "Design automated LLM evaluation for CI/CD including metrics, benchmarks, and regression testing. Use when the user requests to 'design LLM evaluation'."
 module: bam

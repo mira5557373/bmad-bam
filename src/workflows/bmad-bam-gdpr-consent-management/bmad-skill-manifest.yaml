@@ -1,5 +1,5 @@
 type: workflow
-name: gdpr-consent-management
+name: bmad-bam-gdpr-consent-management
 displayName: GDPR Consent Management
 description: "Design GDPR consent collection and tracking for personal data processing. Use when the user requests to 'design consent management', 'implement GDPR consent', or 'track user consent'."
 module: bam

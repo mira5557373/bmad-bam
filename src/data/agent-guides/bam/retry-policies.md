@@ -205,7 +205,7 @@ Limit total retry impact per tenant.
 
 ## Related Workflows
 
-- `bmad-bam-create-master-architecture` - Design resilience patterns
+- `create-master-architecture` - Design resilience patterns
 - `bmad-bam-convergence-verification` - Verify retry behavior
 - `bmad-bam-agent-runtime-architecture` - Agent retry policies
 

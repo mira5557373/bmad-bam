@@ -1,5 +1,5 @@
 type: workflow
-name: etl-pipeline-design
+name: bmad-bam-etl-pipeline-design
 displayName: ETL Pipeline Design
 description: "Design ETL pipelines for multi-tenant data processing. Use when the user requests to 'design ETL pipeline' or 'create data integration'."
 module: bam

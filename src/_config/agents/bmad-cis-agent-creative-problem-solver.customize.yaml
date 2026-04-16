@@ -1,0 +1,472 @@
+# BAM Extension for bmad-cis-agent-creative-problem-solver
+# Auto-generated from: cis-problem-solver-bam.yaml
+# Adds SaaS problem-solving to agent
+#
+# This file uses BMAD's native customization system.
+# Menu items and prompts APPEND to the base agent's capabilities.
+
+memories:
+  - BAM module installed - Adds SaaS problem-solving to agent
+  - Multi-tenant SaaS architecture capabilities enabled
+menu:
+  - trigger: bam-ps-context
+    action: '#load-bam-ps-context-prompt'
+    description: Load BAM problem-solving context
+  - trigger: bam-ps-isolation-problems
+    action: '#isolation-problems-prompt'
+    description: Solve tenant isolation challenges
+  - trigger: bam-ps-research
+    action: '#web-research-problem-solver-prompt'
+    description: Conduct web research for problem-solving decisions
+  - trigger: bam-ps-performance
+    action: '#performance-diagnosis-prompt'
+    description: Diagnose multi-tenant performance issues
+  - trigger: bam-ps-scaling
+    action: '#scaling-challenges-prompt'
+    description: Solve multi-tenant scaling challenges
+  - trigger: bam-ps-security-incident
+    action: '#security-incident-prompt'
+    description: Resolve security incidents with tenant isolation
+  - trigger: bam-ps-tier-enforcement
+    action: '#tier-enforcement-prompt'
+    description: Solve tier and entitlement enforcement issues
+  - trigger: bam-ps-root-cause
+    action: '#root-cause-analysis-prompt'
+    description: Conduct structured root cause analysis
+prompts:
+  - id: load-bam-ps-context-prompt
+    content: |
+      ## Load BAM Problem-Solving Context
+
+      Read and internalize the multi-tenant problem-solving guide:
+      `{project-root}/_bmad/bam/data/agent-guides/bam/saas-problem-solving.md`
+
+      This guide provides comprehensive context for approaching complex problems in
+      multi-tenant SaaS systems. It covers the following key areas:
+
+      1. **Isolation Problem Patterns**: Common patterns of tenant isolation challenges
+         including data leakage, context propagation failures, and boundary violations.
+      2. **Performance Problem Diagnosis**: Systematic approaches to diagnosing noisy
+         neighbor issues, resource contention, and tier-specific performance problems.
+      3. **Scaling Challenge Solutions**: Creative solutions to multi-tenant scaling
+         challenges while maintaining isolation guarantees and cost efficiency.
+      4. **Security Problem Resolution**: Methodologies for identifying and resolving
+         security issues in multi-tenant contexts without disrupting other tenants.
+
+      Apply this multi-tenant lens to all problem-solving activities. Once loaded, confirm
+      by stating: "BAM problem-solving context loaded. Ready to tackle multi-tenant
+      challenges."
+  - id: isolation-problems-prompt
+    content: |
+      ## Tenant Isolation Problem-Solving
+
+      Prerequisites: Ensure BAM context loaded via `bam-ps-context`
+
+      **Load patterns:** `{project-root}/_bmad/bam/data/bam-patterns.csv` → filter: `tenant-isolation, observability`
+
+      ### Objective
+      Systematically diagnose and resolve tenant isolation challenges using
+      structured problem-solving frameworks and proven resolution patterns.
+
+      ### Process
+
+      1. **Problem Classification**
+         - Identify the type of isolation failure
+         - Assess severity and blast radius
+         - Determine immediate vs root cause
+
+         | Problem Type | Symptoms | Severity | Immediate Action |
+         |--------------|----------|----------|-----------------|
+         | Data leakage | Tenant A sees Tenant B data | CRITICAL | Disable affected feature |
+         | Noisy neighbor | Performance degradation for others | HIGH | Throttle offending tenant |
+         | Tier bypass | Feature access without upgrade | MEDIUM | Audit access logs |
+         | Context loss | Operations execute without tenant | HIGH | Add context validation |
+
+      2. **Cross-Tenant Data Leakage Diagnosis**
+         - Trace the data flow path
+         - Identify isolation boundary failure point
+         - Determine if RLS, cache, or application layer
+
+         | Layer | Check | Resolution Pattern |
+         |-------|-------|-------------------|
+         | Database | RLS policy active on table? | Enable RLS, add policy |
+         | Cache | Tenant prefix in cache key? | Add tenant_id to key |
+         | Application | Tenant context in query? | Add context middleware |
+         | API | Tenant validated on request? | Add auth middleware |
+         | Background job | Context in job payload? | Include tenant_id |
+
+         **Diagnostic Steps:**
+         a. Reproduce the issue with test tenants
+         b. Enable query logging with tenant context
+         c. Trace request through all layers
+         d. Identify first point where isolation fails
+
+      3. **Noisy Neighbor Performance Resolution**
+         - Identify the resource being contended
+         - Implement fair usage controls
+         - Design isolation mechanisms
+
+         | Resource | Detection | Isolation Strategy |
+         |----------|-----------|-------------------|
+         | CPU | Per-tenant CPU time tracking | Rate limiting, queue prioritization |
+         | Memory | Tenant memory allocation monitoring | Memory quotas, LRU eviction |
+         | Database | Query time per tenant | Connection pool per tenant |
+         | API | Request rate per tenant | Rate limiting by tier |
+         | Storage | Tenant storage usage | Quota enforcement |
+
+         **Resolution Framework:**
+         a. Measure baseline performance per tenant
+         b. Identify correlation between tenant activity and degradation
+         c. Implement resource isolation at appropriate layer
+         d. Monitor for recurrence
+
+      4. **Tier Enforcement Gap Analysis**
+         - Audit all feature gates
+         - Check entitlement validation points
+         - Verify upgrade/downgrade handling
+
+         | Gap Type | How It Happens | Prevention |
+         |----------|---------------|------------|
+         | Missing check | New feature without tier gate | Feature flag checklist |
+         | Cached entitlement | Stale tier data after downgrade | Entitlement refresh on access |
+         | API bypass | Direct API without UI tier check | Server-side validation |
+         | Admin override leak | Admin access flags persist | Session-bound overrides |
+
+      5. **Context Propagation Repair**
+         - Map all entry points that need context
+         - Identify context loss patterns
+         - Implement guaranteed propagation
+
+         | Entry Point | Context Source | Propagation Method |
+         |-------------|---------------|-------------------|
+         | HTTP request | JWT/session | Middleware extraction |
+         | Background job | Job payload | Job wrapper |
+         | Event handler | Event header | Event envelope |
+         | WebSocket | Connection auth | Connection context |
+         | Cron job | N/A (system) | Explicit tenant iteration |
+
+      ### Verification Checklist
+      - [ ] Problem root cause identified (not just symptom)
+      - [ ] Resolution tested with multi-tenant scenarios
+      - [ ] Similar patterns audited across codebase
+      - [ ] Monitoring added for recurrence detection
+      - [ ] Runbook updated for future incidents
+      - [ ] Post-mortem documented if severity was HIGH+
+
+      ### Output
+      Produce problem resolution document including:
+      - Root cause analysis
+      - Resolution steps taken
+      - Prevention measures implemented
+      - Related patterns to audit
+  - id: web-research-problem-solver-prompt
+    content: |
+      ## BAM Web Research - Problem Solving
+
+      Conduct targeted web research for multi-tenant SaaS problem analysis and root cause decisions.
+
+      **Research Focus:** {{research_topic}}
+
+      Execute 2-3 targeted searches:
+      - "{{research_topic}} problem analysis best practices {date}"
+      - "{{research_topic}} SaaS patterns {date}"
+      - "{{research_topic}} root cause analysis techniques {date}"
+
+      Return findings as structured summary:
+
+      ### Key Findings
+      - {Finding 1} _Source: [URL]_
+      - {Finding 2} _Source: [URL]_
+
+      ### Applicable Patterns
+      - {Pattern 1}
+
+      ### Sources
+      - [URL 1]
+      - [URL 2]
+  - id: performance-diagnosis-prompt
+    content: |
+      ## Multi-Tenant Performance Diagnosis
+
+      Prerequisites: Ensure BAM context loaded via `bam-ps-context`
+
+      **Load patterns:** `{project-root}/_bmad/bam/data/bam-patterns.csv` → filter: `tenant-isolation, observability`
+
+      ### Objective
+      Systematically diagnose performance issues in multi-tenant systems,
+      identifying root causes and tenant-specific vs platform-wide impacts.
+
+      ### Process
+
+      1. **Performance Issue Classification**
+         | Issue Type | Symptoms | Diagnostic Approach |
+         |------------|----------|---------------------|
+         | Global degradation | All tenants affected | Platform-wide investigation |
+         | Tenant-specific | Single tenant impacted | Tenant context analysis |
+         | Noisy neighbor | Subset affected | Resource correlation |
+         | Tier-related | Specific tier impacted | Entitlement/limit check |
+
+      2. **Diagnostic Data Collection**
+         - Per-tenant metrics aggregation
+         - Resource usage correlation
+         - Request tracing with tenant context
+         - Database query analysis
+
+         | Layer | Metrics | Tenant Attribution |
+         |-------|---------|-------------------|
+         | Application | Response time, error rate | Request tenant_id |
+         | Database | Query time, connections | Session tenant context |
+         | Cache | Hit rate, memory | Key prefix analysis |
+         | Infrastructure | CPU, memory, I/O | Process/container labels |
+
+      3. **Root Cause Isolation**
+         - Eliminate platform-wide issues
+         - Identify tenant-specific patterns
+         - Correlate with resource consumption
+         - Trace cross-service dependencies
+
+      4. **Resolution Strategy**
+         | Root Cause | Short-term Fix | Long-term Solution |
+         |------------|----------------|-------------------|
+         | Query inefficiency | Query optimization | Index strategy |
+         | Resource exhaustion | Tenant throttling | Capacity scaling |
+         | Noisy neighbor | Rate limiting | Fair scheduling |
+         | Configuration drift | Config reset | Config management |
+
+      ### Verification Checklist
+      - [ ] Issue scope determined (global vs tenant)
+      - [ ] Root cause identified
+      - [ ] Resolution applied and verified
+      - [ ] Monitoring enhanced for detection
+
+      ### Output
+      Produce performance analysis report with root cause, resolution
+      steps, and prevention recommendations.
+  - id: scaling-challenges-prompt
+    content: |
+      ## Multi-Tenant Scaling Challenge Resolution
+
+      Prerequisites: Ensure BAM context loaded via `bam-ps-context`
+
+      **Load patterns:** `{project-root}/_bmad/bam/data/bam-patterns.csv` → filter: `tenant-isolation, tenant-lifecycle`
+
+      ### Objective
+      Solve scaling challenges that arise from multi-tenant growth,
+      maintaining isolation and performance guarantees.
+
+      ### Process
+
+      1. **Scaling Challenge Categories**
+         | Challenge | Trigger | Multi-Tenant Impact |
+         |-----------|---------|---------------------|
+         | Tenant count growth | New tenants | Metadata scaling |
+         | Per-tenant data growth | Usage increase | Storage/query scaling |
+         | Concurrent users | Peak load | Connection/resource scaling |
+         | Feature complexity | New capabilities | Compute scaling |
+
+      2. **Scaling Strategy Selection**
+         | Strategy | Best For | Isolation Impact |
+         |----------|----------|-----------------|
+         | Vertical scaling | Quick fix | None |
+         | Horizontal scaling | Sustained growth | Connection pooling |
+         | Sharding | Large tenants | Shard-per-tenant option |
+         | Caching | Read-heavy | Tenant-scoped caches |
+
+      3. **Multi-Tenant Scaling Patterns**
+         - Tenant-aware load balancing
+         - Fair resource allocation
+         - Graceful degradation per tier
+         - Elastic tenant isolation
+
+      4. **Scale Testing**
+         | Test Type | Focus | Tenant Scenarios |
+         |-----------|-------|------------------|
+         | Load test | Throughput | Multi-tenant load |
+         | Stress test | Breaking point | Noisy neighbor |
+         | Endurance | Sustained load | Tenant churn |
+         | Spike test | Burst capacity | Viral tenant growth |
+
+      ### Verification Checklist
+      - [ ] Scaling bottleneck identified
+      - [ ] Strategy selected and implemented
+      - [ ] Isolation maintained at scale
+      - [ ] Performance validated
+
+      ### Output
+      Produce scaling resolution document with architecture changes,
+      implementation steps, and validation results.
+  - id: security-incident-prompt
+    content: |
+      ## Security Incident Resolution with Tenant Isolation
+
+      Prerequisites: Ensure BAM context loaded via `bam-ps-context`
+
+      **Load patterns:** `{project-root}/_bmad/bam/data/bam-patterns.csv` → filter: `tenant-isolation, compliance-frameworks`
+
+      ### Objective
+      Resolve security incidents in multi-tenant systems while
+      maintaining isolation and minimizing blast radius.
+
+      ### Process
+
+      1. **Incident Classification**
+         | Severity | Definition | Response Time |
+         |----------|------------|---------------|
+         | Critical | Data breach, cross-tenant exposure | Immediate |
+         | High | Single tenant compromise | 1 hour |
+         | Medium | Suspicious activity | 4 hours |
+         | Low | Policy violation | 24 hours |
+
+      2. **Containment Strategy**
+         - Isolate affected tenant(s)
+         - Preserve evidence
+         - Prevent lateral movement
+         - Notify affected parties
+
+         | Containment Level | Action | Impact |
+         |-------------------|--------|--------|
+         | Tenant isolation | Disable tenant access | Single tenant offline |
+         | Feature isolation | Disable specific feature | Feature unavailable |
+         | Service isolation | Isolate microservice | Partial platform impact |
+         | Platform isolation | Full maintenance mode | All tenants offline |
+
+      3. **Investigation Process**
+         - Timeline reconstruction
+         - Tenant boundary audit
+         - Access log analysis
+         - Data exposure assessment
+
+      4. **Recovery and Remediation**
+         - Restore affected tenants
+         - Implement fixes
+         - Enhance monitoring
+         - Update runbooks
+
+      ### Verification Checklist
+      - [ ] Incident contained
+      - [ ] Root cause identified
+      - [ ] Affected tenants notified
+      - [ ] Remediation complete
+      - [ ] Post-mortem documented
+
+      ### Output
+      Produce incident report with timeline, impact assessment,
+      remediation actions, and prevention recommendations.
+  - id: tier-enforcement-prompt
+    content: |
+      ## Tier and Entitlement Enforcement Problem Resolution
+
+      Prerequisites: Ensure BAM context loaded via `bam-ps-context`
+
+      **Load patterns:** `{project-root}/_bmad/bam/data/bam-patterns.csv` → filter: `tenant-lifecycle, customization`
+
+      ### Objective
+      Resolve issues with tier enforcement and entitlement management
+      in multi-tenant SaaS platforms.
+
+      ### Process
+
+      1. **Enforcement Issue Types**
+         | Issue | Symptom | Business Impact |
+         |-------|---------|-----------------|
+         | Feature bypass | Access without entitlement | Revenue leakage |
+         | Limit bypass | Exceed usage quotas | Resource abuse |
+         | Upgrade failure | Entitlement not applied | Customer frustration |
+         | Downgrade lag | Old entitlements persist | Revenue leakage |
+
+      2. **Enforcement Point Audit**
+         | Layer | Enforcement | Verification |
+         |-------|-------------|--------------|
+         | API gateway | Rate limits | Request counting |
+         | Application | Feature flags | Flag evaluation |
+         | Database | Row limits | Query constraints |
+         | Storage | Quota limits | Usage tracking |
+
+      3. **Entitlement System Analysis**
+         - Entitlement source of truth
+         - Propagation mechanisms
+         - Caching strategies
+         - Refresh triggers
+
+      4. **Resolution Patterns**
+         | Issue | Resolution | Prevention |
+         |-------|------------|------------|
+         | Missing check | Add enforcement | Code review checklist |
+         | Cache staleness | Force refresh | TTL reduction |
+         | Race condition | Pessimistic locking | Atomic updates |
+         | Edge case | Explicit handling | Test coverage |
+
+      ### Verification Checklist
+      - [ ] Enforcement gap identified
+      - [ ] Root cause resolved
+      - [ ] Similar patterns audited
+      - [ ] Tests added for prevention
+
+      ### Output
+      Produce enforcement analysis with gaps identified, resolution
+      implemented, and prevention measures documented.
+  - id: root-cause-analysis-prompt
+    content: |
+      ## Structured Root Cause Analysis for Multi-Tenant Issues
+
+      Prerequisites: Ensure BAM context loaded via `bam-ps-context`
+
+      **Load patterns:** `{project-root}/_bmad/bam/data/bam-patterns.csv` → filter: `tenant-isolation, observability`
+
+      ### Objective
+      Conduct systematic root cause analysis for complex issues
+      in multi-tenant systems using proven methodologies.
+
+      ### Process
+
+      1. **Problem Statement Definition**
+         - What happened (observable symptoms)
+         - When it happened (timeline)
+         - Who was affected (tenant scope)
+         - What changed (recent deployments, configs)
+
+         | Element | Description |
+         |---------|-------------|
+         | Symptom | {What users experienced} |
+         | Timeline | {When started, duration} |
+         | Scope | {Tenants affected: specific/all} |
+         | Changes | {Recent deployments/configs} |
+
+      2. **RCA Methodology Selection**
+         | Method | Best For | Process |
+         |--------|----------|---------|
+         | 5 Whys | Simple causal chains | Sequential why questions |
+         | Fishbone | Multiple potential causes | Category-based brainstorm |
+         | Fault Tree | Complex system failures | Top-down logic tree |
+         | Timeline | Sequence-dependent issues | Event reconstruction |
+
+      3. **Multi-Tenant RCA Considerations**
+         - Tenant isolation boundary integrity
+         - Cross-tenant impact assessment
+         - Shared resource contention
+         - Configuration drift per tenant
+
+      4. **Contributing Factor Analysis**
+         | Factor Category | Examples | Multi-Tenant Lens |
+         |-----------------|----------|-------------------|
+         | Technical | Code bug, config error | Per-tenant execution paths |
+         | Process | Missing review, rushed deploy | Tenant impact assessment |
+         | Human | Misunderstanding, fatigue | Tenant context awareness |
+         | Environmental | Dependency failure, load spike | Multi-tenant load patterns |
+
+      5. **Corrective Action Planning**
+         - Immediate fix (stop the bleeding)
+         - Root cause resolution
+         - Prevention measures
+         - Detection improvements
+
+      ### Verification Checklist
+      - [ ] Problem statement clear and scoped
+      - [ ] Root cause identified (not just symptoms)
+      - [ ] Contributing factors documented
+      - [ ] Corrective actions prioritized
+      - [ ] Prevention measures planned
+
+      ### Output
+      Produce RCA document with problem statement, analysis process,
+      root cause identification, and action plan with owners and timelines.

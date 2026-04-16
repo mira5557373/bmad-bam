@@ -1,5 +1,5 @@
 type: workflow
-name: threat-modeling
+name: bmad-bam-threat-modeling
 displayName: Threat Modeling
 description: "Design threat modeling processes for multi-tenant AI platforms. Use when the user requests to 'design threat model' or 'create threat assessment'."
 module: bam

@@ -303,6 +303,6 @@ Use the `web_queries` column from pattern registry to search for current best pr
 
 ## Related Workflows
 
-- `bmad-bam-create-master-architecture` - Serverless architecture decisions
+- `create-master-architecture` - Serverless architecture decisions
 - `bmad-bam-tenant-model-isolation` - Isolation strategy selection
-- `bmad-bam-validate-foundation` - Serverless implementation verification
+- `validate-foundation` - Serverless implementation verification

@@ -349,6 +349,6 @@ Use the `web_queries` column from pattern registry to search for current best pr
 
 ## Related Workflows
 
-- `bmad-bam-create-master-architecture` - API layer decisions
-- `bmad-bam-define-facade-contract` - GraphQL schema contracts
+- `create-master-architecture` - API layer decisions
+- `define-facade-contract` - GraphQL schema contracts
 - `bmad-bam-tenant-model-isolation` - Data access isolation

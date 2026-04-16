@@ -156,6 +156,6 @@ For non-critical items that cannot be addressed:
 ## Related Workflows
 
 - `bmad-bam-agent-runtime-architecture` - Tool registry design
-- `bmad-bam-validate-tool-contract` - Tool contract validation
-- `bmad-bam-define-facade-contract` - Facade to tool mapping
+- `validate-tool-contract` - Tool contract validation
+- `define-facade-contract` - Facade to tool mapping
 - `tea-trace` - Tool execution verification

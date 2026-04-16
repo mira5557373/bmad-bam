@@ -188,7 +188,7 @@ When implementing idempotency:
 
 ## Related Workflows
 
-- `bmad-bam-define-facade-contract` - Include idempotency requirements
+- `define-facade-contract` - Include idempotency requirements
 - `bmad-bam-api-version-release` - Idempotency in API design
 - `bmad-bam-convergence-verification` - Verify idempotency implementation
 

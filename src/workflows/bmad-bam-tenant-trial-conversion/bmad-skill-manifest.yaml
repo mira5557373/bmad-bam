@@ -1,5 +1,5 @@
 type: workflow
-name: tenant-trial-conversion
+name: bmad-bam-tenant-trial-conversion
 displayName: Tenant Trial Conversion
 description: 'Design trial-to-paid conversion workflows with engagement tracking'
 module: bam

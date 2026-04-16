@@ -1,0 +1,679 @@
+# BAM Extension for bmad-agent-tech-writer
+# Auto-generated from: tech-writer-bam.yaml
+# Adds tenant isolation documentation capabilities
+#
+# This file uses BMAD's native customization system.
+# Menu items and prompts APPEND to the base agent's capabilities.
+
+memories:
+  - BAM module installed - Adds tenant isolation documentation capabilities
+  - Multi-tenant SaaS architecture capabilities enabled
+menu:
+  - trigger: bam-docs-context
+    action: '#load-bam-docs-context-prompt'
+    description: Load BAM documentation context
+  - trigger: bam-docs-doc-tenant-model
+    action: '#doc-tenant-model-prompt'
+    description: Document tenant model
+  - trigger: bam-docs-doc-rls-policies
+    action: '#doc-rls-policies-prompt'
+    description: Document RLS policies
+  - trigger: bam-docs-research
+    action: '#web-research-docs-prompt'
+    description: Conduct web research for documentation decisions
+  - trigger: bam-docs-api-documentation
+    action: '#api-documentation-prompt'
+    description: Create multi-tenant API documentation
+  - trigger: bam-docs-runbook-creation
+    action: '#runbook-creation-prompt'
+    description: Create operational runbooks for tenant operations
+  - trigger: bam-docs-architecture-diagrams
+    action: '#architecture-diagrams-prompt'
+    description: Create architecture diagrams for multi-tenant systems
+  - trigger: bam-docs-decision-records
+    action: '#decision-records-prompt'
+    description: Document architecture decision records (ADRs)
+  - trigger: bam-ai-documentation-patterns-context
+    action: '#load-ai-documentation-patterns-context-prompt'
+    description: Load BAM AI documentation patterns
+  - trigger: bam-ai-transparency-patterns-context
+    action: '#load-ai-transparency-patterns-context-prompt'
+    description: Load BAM AI transparency patterns
+  - trigger: bam-api-documentation-context
+    action: '#load-api-documentation-context-prompt'
+    description: Load BAM API documentation context
+prompts:
+  - id: load-bam-docs-context-prompt
+    content: |
+      ## Load BAM Documentation Context
+
+      Read and internalize the RLS documentation standards guide:
+      `{project-root}/_bmad/bam/data/agent-guides/bam/rls-documentation.md`
+
+      Also load the tech writer-specific guide:
+      `{project-root}/_bmad/bam/data/agent-guides/bam/tech-writer-guide.md`
+
+      This guide provides comprehensive context for documenting tenant isolation and
+      multi-tenant architecture for various audiences. It covers the following key areas:
+
+      1. **Technical Documentation**: Standards for documenting RLS policies, tenant context
+         propagation, and isolation mechanisms for developer audiences.
+      2. **API Documentation**: How to document tenant-scoped APIs including authentication,
+         tenant context headers, and error responses for isolation violations.
+      3. **Compliance Documentation**: Creating audit-ready documentation for security reviews,
+         SOC2 compliance, and GDPR data isolation requirements.
+      4. **Operational Runbooks**: Documenting procedures for tenant provisioning, data
+         migration, isolation breach response, and tenant offboarding.
+      5. **Multi-Tenant Documentation Patterns**: Best practices for technical writing in SaaS.
+
+      Once loaded, confirm by stating: "BAM documentation context loaded. Ready to create
+      tenant isolation documentation."
+  - id: doc-tenant-model-prompt
+    content: |
+      ## Document Tenant Model
+
+      Prerequisites: Ensure BAM docs context loaded via `bam-docs-context`
+
+      **Load patterns:** `{project-root}/_bmad/bam/data/bam-patterns.csv` → filter: `compliance, observability, tenant-isolation`
+
+      ### Objective
+      Create comprehensive tenant model documentation for developers, operators,
+      and compliance auditors.
+
+      ### Process
+
+      1. **Tenant Hierarchy Documentation**
+         - Document the complete tenant structure
+         - Explain relationships between levels
+         - Provide visual diagrams
+
+         | Level | Description | Contains | Permissions |
+         |-------|-------------|----------|-------------|
+         | Organization | Top-level billing entity | Workspaces, settings | Org admin controls |
+         | Workspace | Logical project grouping | Users, agents, data | Workspace admin controls |
+         | User | Individual account | Personal settings | User controls |
+
+         **Document Sections:**
+         - Hierarchy diagram (visual)
+         - Relationship descriptions
+         - Permission inheritance model
+         - Common configurations
+
+      2. **Isolation Strategy Documentation**
+         - Explain the chosen isolation approach
+         - Document security guarantees
+         - Provide architecture diagrams
+
+         | Isolation Layer | Mechanism | Guarantee | Documentation |
+         |-----------------|-----------|-----------|---------------|
+         | Database | RLS policies | Row-level separation | Policy reference |
+         | Cache | Key prefixing | Tenant-scoped caching | Key format spec |
+         | API | Auth middleware | Request-level validation | Middleware docs |
+         | AI Memory | Scoped storage | Agent memory isolation | Memory model docs |
+
+         **Document Sections:**
+         - Security architecture overview
+         - Data flow diagrams
+         - Isolation verification procedures
+         - Incident response for isolation breach
+
+      3. **Tier Differences Documentation**
+         - Document feature availability per tier
+         - Explain limit differences
+         - Provide upgrade guidance
+
+         | Feature | FREE | PRO | ENTERPRISE | Notes |
+         |---------|------|-----|------------|-------|
+         | Users | 1 | 25 | Unlimited | Per workspace |
+         | Workspaces | 1 | 5 | Unlimited | Per org |
+         | Agents | 1 | 5 | Unlimited | Concurrent |
+         | Storage | 1 GB | 10 GB | Custom | Per workspace |
+         | API calls | 100/min | 1000/min | Custom | Rate limited |
+
+         **Document Sections:**
+         - Feature comparison matrix
+         - Limit enforcement behavior
+         - Upgrade/downgrade procedures
+         - Tier-specific configurations
+
+      4. **Admin Access Procedures**
+         - Document administrative access levels
+         - Explain break-glass procedures
+         - Provide audit requirements
+
+         | Access Level | Who | What | When | Audit |
+         |--------------|-----|------|------|-------|
+         | Tenant admin | Customer org admin | Full tenant access | Always | Logged |
+         | Support access | Support team | Read-only tenant view | With ticket | Logged + approved |
+         | Engineering | Platform team | Debug access | Incident only | Logged + justified |
+         | Break-glass | Senior engineer | Full access | Emergency | Full audit trail |
+
+         **Document Sections:**
+         - Access level definitions
+         - Request procedures
+         - Approval workflows
+         - Audit log requirements
+
+      ### Verification Checklist
+      - [ ] Tenant hierarchy clearly explained with diagrams
+      - [ ] Isolation strategy documented with security guarantees
+      - [ ] Tier differences in comprehensive comparison table
+      - [ ] Admin access procedures with audit requirements
+      - [ ] Documentation reviewed by security team
+      - [ ] Compliance requirements addressed
+
+      ### Output
+      Produce tenant model documentation using template:
+      `{project-root}/_bmad/bam/data/templates/tenant-model-doc-template.md`
+  - id: doc-rls-policies-prompt
+    content: |
+      ## Document RLS Policies
+
+      Prerequisites: Ensure BAM docs context loaded via `bam-docs-context`
+
+      **Load patterns:** `{project-root}/_bmad/bam/data/bam-patterns.csv` → filter: `tenant-isolation, compliance, observability`
+
+      ### Objective
+      Create detailed RLS policy documentation for developers implementing
+      and maintaining tenant isolation at the database level.
+
+      ### Process
+
+      1. **Policy Inventory Documentation**
+         - List all tables with RLS policies
+         - Document policy type per table
+         - Note any exceptions
+
+         | Table | Policy Name | Operations | Condition | Notes |
+         |-------|-------------|------------|-----------|-------|
+         | users | tenant_isolation | ALL | tenant_id = current_tenant() | Core table |
+         | workspaces | tenant_isolation | ALL | org_id = current_org() | Org-scoped |
+         | audit_logs | tenant_read | SELECT | tenant_id = current_tenant() | Write by system |
+         | {table} | {policy} | {ops} | {condition} | {notes} |
+
+      2. **Context Requirements Documentation**
+         - Document required context for each policy
+         - Explain context setting procedure
+         - Provide code examples
+
+         | Context Variable | Type | Set By | Used In |
+         |------------------|------|--------|---------|
+         | app.current_tenant | UUID | Middleware | RLS policies |
+         | app.current_user | UUID | Middleware | Audit logging |
+         | app.is_admin | BOOLEAN | Auth layer | Bypass checks |
+
+         **Context Setting Documentation:**
+         - When to set context (before any query)
+         - How to set context (SET LOCAL, never SET)
+         - Connection pooling considerations
+         - Error handling for missing context
+
+      3. **Bypass Procedures Documentation**
+         - Document legitimate bypass scenarios
+         - Explain authorization requirements
+         - Provide audit requirements
+
+         | Bypass Scenario | Authorization | Method | Audit |
+         |-----------------|---------------|--------|-------|
+         | Platform admin | Admin role verified | BYPASSRLS role | Full logging |
+         | Migration scripts | Deployment context | Service account | Deployment log |
+         | Support access | Ticket + approval | Temp admin grant | Support ticket |
+         | Emergency | Incident declared | Break-glass role | Incident report |
+
+         **Bypass Documentation Sections:**
+         - When bypass is appropriate
+         - Authorization workflow
+         - How to execute bypass safely
+         - Required audit trail
+
+      4. **Testing Instructions Documentation**
+         - Provide RLS testing procedures
+         - Include test case templates
+         - Document verification steps
+
+         | Test Category | Test Case | Expected Result | How to Run |
+         |---------------|-----------|-----------------|------------|
+         | Basic isolation | Query as Tenant B | 0 rows from Tenant A | {instructions} |
+         | No context | Query without SET | Error or 0 rows | {instructions} |
+         | Insert isolation | Insert for Tenant A | tenant_id auto-set | {instructions} |
+         | Update isolation | Update Tenant A as B | 0 rows affected | {instructions} |
+
+         **Testing Documentation Sections:**
+         - Test environment setup
+         - Test data preparation
+         - Test execution steps
+         - Result verification
+         - Automated test integration
+
+      ### Verification Checklist
+      - [ ] All RLS-enabled tables documented
+      - [ ] Context requirements clearly explained
+      - [ ] Bypass procedures documented with authorization
+      - [ ] Testing instructions comprehensive
+      - [ ] Code examples provided and tested
+      - [ ] Security review completed
+
+      ### Output
+      Produce RLS policy documentation using template:
+      `{project-root}/_bmad/bam/data/templates/rls-policy-doc-template.md`
+  - id: web-research-docs-prompt
+    content: |
+      ## BAM Web Research - Technical Documentation
+
+      Conduct targeted web research for documentation decisions in multi-tenant SaaS.
+
+      **Research Focus:** {{research_topic}}
+
+      Execute 2-3 targeted searches:
+      Search the web: "{{research_topic}} technical documentation best practices {date}"
+      Search the web: "{{research_topic}} SaaS patterns {date}"
+      Search the web: "{{research_topic}} multi-tenant documentation {date}"
+
+      **Research Areas:**
+      - API documentation for multi-tenant systems
+      - Tenant isolation documentation standards
+      - RLS and security documentation patterns
+      - Compliance documentation (SOC2, GDPR)
+      - Developer portal and SDK documentation
+      - Runbook and operational documentation
+
+      Return findings with source citations: _Source: [URL]_
+
+      **Output Format:**
+      1. Key findings summary
+      2. Applicable documentation patterns for multi-tenant SaaS
+      3. Documentation recommendations with rationale
+      4. Sources consulted
+  - id: api-documentation-prompt
+    content: |
+      ## Multi-Tenant API Documentation
+
+      Prerequisites: Ensure BAM docs context loaded via `bam-docs-context`
+
+      **Load patterns:** `{project-root}/_bmad/bam/data/bam-patterns.csv` → filter: `facade-contracts, tenant-isolation, compliance`
+
+      ### Objective
+      Create comprehensive API documentation that clearly communicates tenant
+      isolation requirements, authentication flows, and multi-tenant considerations.
+
+      ### Process
+
+      1. **Authentication Documentation**
+         - Document tenant-scoped authentication
+         - Explain token structure
+         - Provide example flows
+
+         | Auth Type | Tenant Scope | Header/Parameter | Example |
+         |-----------|--------------|------------------|---------|
+         | Bearer JWT | Embedded in token | Authorization: Bearer {token} | Org + user claims |
+         | API Key | Key-tenant binding | X-API-Key: {key} | Workspace-scoped |
+         | OAuth2 | Token scope | Authorization + X-Tenant-ID | Multi-workspace |
+         | Service account | Fixed tenant | X-Service-Account + X-Tenant-ID | Automation |
+
+      2. **Endpoint Documentation**
+         - Document tenant context requirements
+         - Explain response scoping
+         - Provide tenant-aware examples
+
+         | Endpoint | Method | Tenant Context | Response Scope | Example |
+         |----------|--------|----------------|----------------|---------|
+         | /api/v1/users | GET | From token | Workspace users only | List users in workspace |
+         | /api/v1/agents | POST | From token | Workspace agents | Create agent in workspace |
+         | /api/v1/runs/{id} | GET | Token + path | Single run if authorized | Get run details |
+         | /api/admin/tenants | GET | Admin + tenant param | Platform admin view | List all tenants |
+
+      3. **Error Response Documentation**
+         - Document tenant-specific errors
+         - Explain isolation error codes
+         - Provide troubleshooting guidance
+
+         | Error Code | Status | Meaning | Tenant Implication | Resolution |
+         |------------|--------|---------|-------------------|------------|
+         | TENANT_NOT_FOUND | 404 | Invalid tenant ID | No access or doesn't exist | Verify tenant ID |
+         | TENANT_MISMATCH | 403 | Token tenant != resource tenant | Cross-tenant attempt blocked | Use correct credentials |
+         | TENANT_SUSPENDED | 403 | Tenant account suspended | All access blocked | Contact support |
+         | QUOTA_EXCEEDED | 429 | Tenant tier limit hit | Rate/resource limit | Upgrade or wait |
+
+      4. **Rate Limiting Documentation**
+         - Document per-tenant limits
+         - Explain tier differences
+         - Provide header information
+
+         | Tier | Rate Limit | Burst | Headers | Retry-After |
+         |------|------------|-------|---------|-------------|
+         | Free | 100 req/min | 20 | X-RateLimit-* | Yes |
+         | Pro | 1000 req/min | 100 | X-RateLimit-* | Yes |
+         | Enterprise | Custom | Custom | X-RateLimit-* | Yes |
+
+      5. **SDK/Client Documentation**
+         - Document tenant initialization
+         - Provide language-specific examples
+         - Show multi-tenant patterns
+
+         | Language | Initialization | Tenant Switching | Example |
+         |----------|----------------|-----------------|---------|
+         | JavaScript | new Client({ tenantId }) | client.setTenant(id) | SDK init with tenant |
+         | Python | Client(tenant_id=...) | client.tenant_id = id | Context manager |
+         | Go | NewClient(WithTenant(id)) | client.WithTenant(id) | Functional options |
+
+      ### Verification Checklist
+      - [ ] Authentication flows documented with examples
+      - [ ] All endpoints show tenant context requirements
+      - [ ] Error responses include tenant-specific codes
+      - [ ] Rate limiting documented per tier
+      - [ ] SDK examples show tenant initialization
+      - [ ] OpenAPI spec includes tenant headers
+
+      ### Output
+      Produce API documentation using template:
+      `{project-root}/_bmad/bam/data/templates/api-documentation-template.md`
+  - id: runbook-creation-prompt
+    content: |
+      ## Operational Runbook Creation
+
+      Prerequisites: Ensure BAM docs context loaded via `bam-docs-context`
+
+      **Load patterns:** `{project-root}/_bmad/bam/data/bam-patterns.csv` → filter: `observability, compliance, tenant-isolation`
+
+      ### Objective
+      Create operational runbooks for tenant lifecycle operations, incident response,
+      and platform maintenance in a multi-tenant SaaS environment.
+
+      ### Process
+
+      1. **Tenant Onboarding Runbook**
+         - Document provisioning steps
+         - Include verification procedures
+         - Provide rollback instructions
+
+         | Step | Action | Verification | Rollback |
+         |------|--------|--------------|----------|
+         | 1 | Create tenant record | Query tenant table | Delete record |
+         | 2 | Provision database resources | Test connection | Drop resources |
+         | 3 | Initialize default settings | Settings API check | Restore defaults |
+         | 4 | Send welcome notification | Email delivery check | N/A |
+         | 5 | Enable billing | Billing API check | Disable billing |
+
+      2. **Tenant Offboarding Runbook**
+         - Document data export procedures
+         - Include deletion verification
+         - Provide compliance evidence
+
+         | Step | Action | Data Affected | Compliance |
+         |------|--------|---------------|------------|
+         | 1 | Notify tenant | N/A | GDPR notification |
+         | 2 | Export tenant data | All tenant data | Right to portability |
+         | 3 | Disable access | Auth records | Access termination |
+         | 4 | Archive billing | Billing records | Retention requirement |
+         | 5 | Delete tenant data | All tenant data | Right to erasure |
+         | 6 | Remove resources | Infrastructure | Cleanup |
+
+      3. **Incident Response Runbook**
+         - Document isolation breach response
+         - Include escalation procedures
+         - Provide communication templates
+
+         | Incident Type | Severity | First Response | Escalation | Communication |
+         |---------------|----------|----------------|------------|---------------|
+         | Data leak suspected | P1 | Isolate affected tenant | Security lead | Immediate exec notify |
+         | Cross-tenant access | P1 | Block affected tokens | Platform lead | Affected tenant notify |
+         | Performance degradation | P2 | Identify noisy neighbor | Ops lead | Status page update |
+         | Tenant complaint | P3 | Investigate claim | Support lead | Direct response |
+
+      4. **Maintenance Runbook**
+         - Document tenant-aware maintenance
+         - Include impact assessment
+         - Provide tenant communication
+
+         | Maintenance Type | Tenant Impact | Pre-maintenance | During | Post-maintenance |
+         |------------------|---------------|-----------------|--------|------------------|
+         | Database migration | Potential downtime | Notify 48h ahead | Status updates | Verification |
+         | Security patch | None if rolling | Notify 24h ahead | Monitor | Confirm patch |
+         | Schema change | Per-tenant migration | Notify 1 week | Progress tracking | Validation |
+         | AI model update | Response changes | Notify + opt-in | A/B testing | Feedback collection |
+
+      5. **Break-Glass Runbook**
+         - Document emergency access procedures
+         - Include authorization requirements
+         - Provide audit requirements
+
+         | Scenario | Authorization | Access Method | Duration | Audit |
+         |----------|---------------|---------------|----------|-------|
+         | Customer emergency | Customer + manager | Temp admin grant | 1 hour max | Full log + justification |
+         | Security incident | Security lead | Incident role | Until resolved | Incident report |
+         | Data recovery | Customer + ops lead | Backup access | As needed | Recovery log |
+         | Compliance audit | Legal + security | Read-only elevated | Audit duration | Audit trail |
+
+      ### Verification Checklist
+      - [ ] Onboarding runbook complete with verification
+      - [ ] Offboarding runbook includes compliance steps
+      - [ ] Incident response covers isolation breaches
+      - [ ] Maintenance procedures are tenant-aware
+      - [ ] Break-glass procedures properly documented
+      - [ ] All runbooks reviewed by ops team
+
+      ### Output
+      Produce runbooks using template:
+      `{project-root}/_bmad/bam/data/templates/runbook-template.md`
+  - id: architecture-diagrams-prompt
+    content: |
+      ## Architecture Diagram Creation
+
+      Prerequisites: Ensure BAM docs context loaded via `bam-docs-context`
+
+      **Load patterns:** `{project-root}/_bmad/bam/data/bam-patterns.csv` → filter: `module-boundaries, tenant-isolation, facade-contracts`
+
+      ### Objective
+      Create architecture diagrams that clearly communicate multi-tenant isolation,
+      module boundaries, and data flow in the platform.
+
+      ### Process
+
+      1. **System Context Diagram**
+         - Show platform boundaries
+         - Identify external systems
+         - Highlight tenant entry points
+
+         | Element | Type | Description | Tenant Relevance |
+         |---------|------|-------------|------------------|
+         | Multi-tenant Platform | System | Core platform | Contains all tenants |
+         | Tenant Users | Actor | End users | Tenant-scoped access |
+         | Admin Users | Actor | Platform admins | Cross-tenant access |
+         | Identity Provider | External | Auth system | Tenant identity source |
+         | Payment Provider | External | Billing | Tenant billing |
+
+      2. **Container Diagram**
+         - Show major components
+         - Highlight isolation boundaries
+         - Indicate tenant context flow
+
+         | Container | Technology | Purpose | Tenant Isolation |
+         |-----------|------------|---------|------------------|
+         | API Gateway | Kong/Envoy | Request routing | Tenant header injection |
+         | Auth Service | Custom | Authentication | Token scoping |
+         | Core Module | Node.js | Business logic | RLS enforcement |
+         | AI Runtime | LangGraph | Agent execution | Memory isolation |
+         | Database | PostgreSQL | Data storage | RLS policies |
+         | Cache | Redis | Caching | Key prefixing |
+
+      3. **Module Boundary Diagram**
+         - Show module structure
+         - Indicate allowed dependencies
+         - Highlight facade contracts
+
+         | Module | Boundary | Facades Exposed | Dependencies |
+         |--------|----------|-----------------|--------------|
+         | Core | Strict | UserFacade, OrgFacade | None (kernel only) |
+         | Auth | Strict | AuthFacade | Core (facade) |
+         | Billing | Strict | BillingFacade | Core, Auth (facades) |
+         | AI Runtime | Strict | AgentFacade, RunFacade | Core, Auth (facades) |
+         | Analytics | Read-only | AnalyticsFacade | All (read models) |
+
+      4. **Data Flow Diagram**
+         - Show tenant data flow
+         - Highlight isolation points
+         - Indicate validation checkpoints
+
+         | Flow | Source | Destination | Tenant Validation | Data Classification |
+         |------|--------|-------------|-------------------|---------------------|
+         | API Request | Client | API Gateway | Token validation | Tenant-scoped |
+         | Auth Check | Gateway | Auth Service | Token decode | Tenant context |
+         | Business Logic | Auth | Core Module | RLS setting | Tenant data |
+         | AI Execution | Core | AI Runtime | Context propagation | Tenant memory |
+         | Data Storage | Service | Database | RLS enforcement | Tenant-isolated |
+
+      5. **Deployment Diagram**
+         - Show infrastructure layout
+         - Indicate tenant resource allocation
+         - Highlight scaling boundaries
+
+         | Component | Deployment | Tenant Allocation | Scaling |
+         |-----------|------------|-------------------|---------|
+         | API Gateway | Shared cluster | Shared | Horizontal |
+         | Application | Shared pods | Fair scheduling | Horizontal |
+         | Database | Shared cluster | RLS isolation | Vertical + read replicas |
+         | Cache | Shared cluster | Key namespace | Horizontal |
+         | AI Models | Shared pool | Queue isolation | Horizontal |
+
+      ### Diagram Specifications
+
+      | Diagram Type | Tool/Format | Audience | Detail Level |
+      |--------------|-------------|----------|--------------|
+      | System Context | C4/Mermaid | Executives | High-level |
+      | Container | C4/Mermaid | Architects | Medium |
+      | Module Boundary | C4/Mermaid | Developers | Detailed |
+      | Data Flow | Sequence/Flow | Security | Detailed |
+      | Deployment | Infrastructure | Ops | Detailed |
+
+      ### Verification Checklist
+      - [ ] System context shows tenant boundaries
+      - [ ] Container diagram shows isolation mechanisms
+      - [ ] Module boundaries clearly defined
+      - [ ] Data flow shows all validation points
+      - [ ] Deployment shows resource allocation
+      - [ ] Diagrams use consistent notation
+
+      ### Output
+      Produce diagrams using template:
+      `{project-root}/_bmad/bam/data/templates/architecture-diagrams-template.md`
+  - id: decision-records-prompt
+    content: |
+      ## Architecture Decision Records (ADRs)
+
+      Prerequisites: Ensure BAM docs context loaded via `bam-docs-context`
+
+      **Load patterns:** `{project-root}/_bmad/bam/data/bam-patterns.csv` → filter: `tenant-isolation, module-boundaries, facade-contracts`
+
+      ### Objective
+      Document architecture decisions for the multi-tenant platform using
+      Architecture Decision Records (ADRs) to capture context, rationale,
+      and consequences for future reference.
+
+      ### Process
+
+      1. **ADR Template Structure**
+         - Use consistent format
+         - Capture full context
+         - Document alternatives
+
+         | Section | Content | Purpose |
+         |---------|---------|---------|
+         | Title | ADR-NNN: Decision Title | Identification |
+         | Status | Proposed/Accepted/Deprecated/Superseded | Lifecycle |
+         | Context | Problem and constraints | Why decision needed |
+         | Decision | What we decided | The choice made |
+         | Consequences | Positive and negative outcomes | Impact analysis |
+         | Alternatives | Options considered | Decision transparency |
+
+      2. **Multi-Tenant ADR Categories**
+         - Categorize decisions by domain
+         - Track dependencies between ADRs
+         - Maintain decision history
+
+         | Category | Example Decisions | Priority |
+         |----------|-------------------|----------|
+         | Tenant Isolation | RLS vs Schema isolation | Foundation |
+         | Module Architecture | Monolith vs microservices | Foundation |
+         | AI Runtime | LangGraph vs CrewAI vs custom | Module |
+         | Data Model | Tenant hierarchy structure | Foundation |
+         | API Design | Versioning strategy | Integration |
+         | Security | Authentication approach | Cross-cutting |
+
+      3. **Key ADRs for Multi-Tenant SaaS**
+         - Document foundational decisions
+         - Reference BAM patterns
+         - Link to implementation
+
+         | ADR | Title | Status | Impact |
+         |-----|-------|--------|--------|
+         | ADR-001 | Use Row-Level Security for tenant isolation | Accepted | All data access |
+         | ADR-002 | Modular monolith over microservices | Accepted | Architecture |
+         | ADR-003 | TenantContext as shared kernel type | Accepted | All modules |
+         | ADR-004 | Facade-only cross-module access | Accepted | Module coupling |
+         | ADR-005 | Event-driven module integration | Accepted | Async flows |
+         | ADR-006 | LangGraph for AI orchestration | Accepted | AI module |
+
+      4. **ADR Lifecycle Management**
+         - Define review process
+         - Plan for supersession
+         - Maintain living documentation
+
+         | State | Trigger | Action | Owner |
+         |-------|---------|--------|-------|
+         | Proposed | New decision needed | Create draft ADR | Proposer |
+         | Review | Draft complete | Architecture review | Architecture team |
+         | Accepted | Review approved | Implement decision | Module owner |
+         | Deprecated | Better approach found | Mark and link new | Architecture team |
+         | Superseded | New ADR replaces | Update references | New ADR owner |
+
+      5. **ADR Review Process**
+         - Define reviewers
+         - Establish approval criteria
+         - Document in decision record
+
+         | Decision Scope | Required Reviewers | Approval Criteria | Timeline |
+         |----------------|-------------------|-------------------|----------|
+         | Module-internal | Module architect | Follows patterns | 2 days |
+         | Cross-module | Platform + module architects | Contract compatibility | 1 week |
+         | Foundation | Architecture board | Full impact analysis | 2 weeks |
+         | Security | Security + platform | Security review | 1 week |
+
+      ### ADR Index Template
+
+      | ID | Title | Category | Status | Date | Supersedes |
+      |----|-------|----------|--------|------|------------|
+      | ADR-001 | Tenant isolation strategy | Isolation | Accepted | {date} | - |
+      | ADR-002 | Module architecture pattern | Architecture | Accepted | {date} | - |
+      | ADR-003 | Shared kernel design | Architecture | Accepted | {date} | - |
+      | ADR-004 | Cross-module contracts | Integration | Accepted | {date} | - |
+      | ADR-005 | Event schema versioning | Integration | Accepted | {date} | - |
+
+      ### Verification Checklist
+      - [ ] ADR template follows standard format
+      - [ ] All foundational decisions documented
+      - [ ] Alternatives section captures considered options
+      - [ ] Consequences include multi-tenant impact
+      - [ ] ADR index maintained and current
+      - [ ] Review process documented and followed
+
+      ### Output
+      Produce ADRs using template:
+      `{project-root}/_bmad/bam/data/templates/adr-template.md`
+  - id: load-ai-documentation-patterns-context-prompt
+    content: |
+      Read and internalize the BAM guide:
+      `{project-root}/_bmad/bam/data/agent-guides/bam/ai-documentation-patterns.md`
+
+      Confirm when loaded.
+  - id: load-ai-transparency-patterns-context-prompt
+    content: |
+      Read and internalize the BAM guide:
+      `{project-root}/_bmad/bam/data/agent-guides/bam/ai-transparency-patterns.md`
+
+      Confirm when loaded.
+  - id: load-api-documentation-context-prompt
+    content: |
+      Read and internalize the BAM guide:
+      `{project-root}/_bmad/bam/data/agent-guides/bam/api-documentation.md`
+
+      Confirm when loaded.

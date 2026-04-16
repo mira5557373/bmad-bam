@@ -6,7 +6,7 @@
     "description": "Verify multi-tenant AI platform compliance with regulatory frameworks",
     "supports-headless": true,
     "phase-name": "5-quality",
-    "after": ["bmad-bam-validate-module"],
+    "after": ["validate-module"],
     "before": ["bmad-bam-production-readiness"],
     "is-required": false,
     "output-location": "{output_folder}/compliance"

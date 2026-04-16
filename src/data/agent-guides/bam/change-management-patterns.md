@@ -106,7 +106,7 @@ When managing changes in multi-tenant environments:
 
 - `bmad-bam-compliance-design` - Design change management compliance controls
 - `bmad-bam-api-version-release` - Implement versioned change releases
-- `bmad-bam-validate-foundation` - Validate change management processes
+- `validate-foundation` - Validate change management processes
 
 ## Related Patterns
 

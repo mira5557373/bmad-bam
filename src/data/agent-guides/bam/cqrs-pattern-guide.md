@@ -260,7 +260,7 @@ When implementing CQRS for multi-tenant:
 
 ## Related Workflows
 
-- `bmad-bam-create-master-architecture` - CQRS in platform design
+- `create-master-architecture` - CQRS in platform design
 - `bmad-bam-event-streaming-design` - CQRS with event sourcing
 - `bmad-bam-module-boundary-design` - Module read/write separation
 

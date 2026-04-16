@@ -193,7 +193,7 @@ When designing vector storage for multi-tenant:
 ## Related Workflows
 
 - `bmad-bam-agent-runtime-architecture` - Vector DB integration with agents
-- `bmad-bam-create-module-architecture` - RAG module design
+- `create-module-architecture` - RAG module design
 - `bmad-bam-tenant-offboarding-design` - Vector data deletion
 
 ## Related Patterns

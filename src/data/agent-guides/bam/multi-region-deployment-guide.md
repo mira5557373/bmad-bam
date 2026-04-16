@@ -218,7 +218,7 @@ When implementing multi-region deployment:
 
 ## Related Workflows
 
-- `bmad-bam-create-master-architecture` - Multi-region in platform design
+- `create-master-architecture` - Multi-region in platform design
 - `bmad-bam-disaster-recovery-design` - Regional failover procedures
 - `bmad-bam-tenant-onboarding-design` - Region assignment during onboarding
 

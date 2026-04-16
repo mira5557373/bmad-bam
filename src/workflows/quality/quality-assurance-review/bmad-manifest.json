@@ -1,0 +1,14 @@
+{
+  "module-code": "bam",
+  "capabilities": [{
+    "name": "quality-assurance-review",
+    "menu-code": "QAR",
+    "description": "Comprehensive QA review for multi-tenant SaaS platforms consolidating all quality gates",
+    "supports-headless": true,
+    "phase-name": "5-quality",
+    "after": ["bmad-bam-convergence-verification"],
+    "before": [],
+    "is-required": true,
+    "output-location": "{output_folder}/quality-artifacts"
+  }]
+}

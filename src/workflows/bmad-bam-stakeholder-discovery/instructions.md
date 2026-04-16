@@ -37,7 +37,7 @@ Discover and document key stakeholders for a multi-tenant SaaS platform initiati
 
 ## Related Workflows
 
-- `bmad-bam-create-master-architecture` - Master architecture requires stakeholder alignment
+- `create-master-architecture` - Master architecture requires stakeholder alignment
 - `bmad-bam-tenant-model-isolation` - Tenant decisions require stakeholder input
 - `bmad-bam-compliance-design` - Compliance stakeholders must be identified
 - `bmad-bam-tenant-communication-design` - Communication templates per stakeholder

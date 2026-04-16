@@ -1,5 +1,5 @@
 type: workflow
-name: ai-model-deprecation
+name: bmad-bam-ai-model-deprecation
 displayName: AI Model Deprecation
 description: "Operations workflow for deprecating AI models in multi-tenant platforms. Covers tenant impact assessment, migration planning, model sunset communication, and safe decommissioning."
 module: bam

@@ -243,7 +243,7 @@ When implementing event sourcing for multi-tenant:
 
 ## Related Workflows
 
-- `bmad-bam-create-master-architecture` - Event sourcing in platform design
+- `create-master-architecture` - Event sourcing in platform design
 - `bmad-bam-module-boundary-design` - Event-driven module boundaries
 - `bmad-bam-tenant-offboarding-design` - Tenant event deletion
 

@@ -1,5 +1,5 @@
 type: workflow
-name: model-deployment-pipeline
+name: bmad-bam-model-deployment-pipeline
 displayName: Model Deployment Pipeline
 description: "Design model deployment and release pipeline for multi-tenant AI platforms. Use when the user requests to 'design model deployment' or 'create model release pipeline'."
 module: bam

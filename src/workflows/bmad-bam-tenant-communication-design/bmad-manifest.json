@@ -6,7 +6,7 @@
     "description": "Design tenant notification templates and communication workflows. Use when the user requests to 'design notifications' or 'create communication templates'.",
     "supports-headless": true,
     "phase-name": "6-operations",
-    "after": ["bmad-bam-create-master-architecture"],
+    "after": ["create-master-architecture"],
     "before": ["bmad-bam-ai-model-deprecation", "bmad-bam-tenant-onboarding-design"],
     "is-required": false,
     "output-location": "{output_folder}/planning-artifacts"

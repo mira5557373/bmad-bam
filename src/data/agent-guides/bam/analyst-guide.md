@@ -151,8 +151,8 @@ When analyzing requirements for SaaS platforms:
 
 ## Related Workflows
 
-- `bmad-bam-requirement-ingestion` - Ingest and structure tenant requirements from various sources
-- `bmad-bam-tenant-requirements-analysis` - Analyze tenant-specific requirements across tiers
+- `requirement-ingestion` - Ingest and structure tenant requirements from various sources
+- `tenant-requirements-analysis` - Analyze tenant-specific requirements across tiers
 
 ## Related Patterns
 

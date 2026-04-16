@@ -277,7 +277,7 @@
 
 - `bmad-bam-ai-eval-safety-design` - Comprehensive AI safety review including injection protection
 - `bmad-bam-agent-runtime-architecture` - Design runtime with security controls
-- `bmad-bam-validate-tool-contract` - Verify tool execution security
+- `validate-tool-contract` - Verify tool execution security
 - `bmad-bam-security-review` - Overall security architecture review
 - `bmad-bam-tenant-model-isolation` - Tenant isolation for shared LLM resources
 

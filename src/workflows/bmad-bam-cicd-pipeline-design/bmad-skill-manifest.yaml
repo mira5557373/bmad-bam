@@ -1,5 +1,5 @@
 type: workflow
-name: cicd-pipeline-design
+name: bmad-bam-cicd-pipeline-design
 displayName: CI/CD Pipeline Design
 description: "Design CI/CD pipeline for multi-tenant AI platform deployments. Use when the user requests to 'design CI/CD' or 'implement deployment pipeline'."
 module: bam

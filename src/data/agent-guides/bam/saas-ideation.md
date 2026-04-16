@@ -253,7 +253,7 @@ WHAT'S THE COST MODEL?
 
 ## Integration with BAM Workflows
 
-- `bmad-bam-create-master-architecture` - Platform feature design
+- `create-master-architecture` - Platform feature design
 - `bmad-bam-tenant-model-isolation` - Isolation for new features
 - `bmad-bam-tenant-tier-migration` - Tier experience for new features
 - PM workflows for roadmap prioritization
@@ -274,7 +274,7 @@ Use the `web_queries` column from pattern registry to search for current best pr
 
 ## Related Workflows
 
-- `bmad-bam-create-master-architecture` - Implement platform features from ideation
+- `create-master-architecture` - Implement platform features from ideation
 - `bmad-bam-tenant-model-isolation` - Design isolation for new tier-gated features
 - `bmad-bam-tenant-tier-migration` - Design tier experiences for new features
 - `bmad-bam-tenant-billing-integration` - Implement monetization strategies from ideation

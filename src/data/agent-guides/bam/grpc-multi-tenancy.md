@@ -340,6 +340,6 @@ Use the `web_queries` column from pattern registry to search for current best pr
 
 ## Related Workflows
 
-- `bmad-bam-create-master-architecture` - Service communication decisions
-- `bmad-bam-define-facade-contract` - gRPC service contracts
+- `create-master-architecture` - Service communication decisions
+- `define-facade-contract` - gRPC service contracts
 - `bmad-bam-module-boundary-design` - Inter-module communication

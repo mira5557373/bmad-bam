@@ -6,7 +6,7 @@
     "description": "Verify cross-module integration before release (QG-I1/I2/I3)",
     "supports-headless": true,
     "phase-name": "4-implementation",
-    "after": ["bmad-bam-create-module-architecture", "bmad-bam-validate-module"],
+    "after": ["create-module-architecture", "validate-module"],
     "before": [],
     "is-required": true,
     "output-location": "{output_folder}/planning-artifacts",

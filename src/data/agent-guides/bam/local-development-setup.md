@@ -220,5 +220,5 @@ Use the `web_queries` column from pattern registry to search for current best pr
 
 - `bmad-bam-tenant-onboarding-design` - Design tenant seed data provisioning scripts
 - `bmad-bam-chaos-engineering-design` - Test multi-tenant behavior in local environment
-- `bmad-bam-create-module-architecture` - Design modules for local development compatibility
+- `create-module-architecture` - Design modules for local development compatibility
 - `bmad-bam-tenant-model-isolation` - Verify RLS policies work in local PostgreSQL

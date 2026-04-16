@@ -1,5 +1,5 @@
 type: workflow
-name: ai-eval-safety-design
+name: bmad-bam-ai-eval-safety-design
 displayName: AI Eval Safety Design
 description: "Design AI evaluation metrics and safety strategy. Use when the user requests to 'design AI eval strategy' or 'create safety cases'."
 module: bam

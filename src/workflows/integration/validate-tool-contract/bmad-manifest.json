@@ -1,0 +1,14 @@
+{
+  "module-code": "bam",
+  "capabilities": [{
+    "name": "validate-tool-contract",
+    "menu-code": "VTC",
+    "description": "Validate a module's tool contract against the ToolDefinition schema and QG-M3-TOOLS checklist",
+    "supports-headless": true,
+    "phase-name": "3-solutioning",
+    "after": ["bmad-bam-agent-runtime-architecture"],
+    "before": ["bmad-bam-convergence-verification"],
+    "is-required": false,
+    "output-location": "{output_folder}/planning-artifacts"
+  }]
+}

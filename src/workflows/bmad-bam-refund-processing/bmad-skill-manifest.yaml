@@ -1,5 +1,5 @@
 type: workflow
-name: refund-processing
+name: bmad-bam-refund-processing
 displayName: Refund Processing
 description: "Design refund workflow with audit trail. Use when the user requests to 'design refund processing' or 'configure refund workflow'."
 module: bam

@@ -1,5 +1,5 @@
 type: workflow
-name: module-boundary-design
+name: bmad-bam-module-boundary-design
 displayName: Module Boundary Design
 description: "Design module boundaries and data ownership. Use when the user requests to 'design module boundaries' or 'identify bounded contexts'."
 module: bam

@@ -1,5 +1,5 @@
 type: workflow
-name: model-validation
+name: bmad-bam-model-validation
 displayName: Model Validation
 description: "Validate AI model releases including model validation, tenant rollout planning, rollback testing, and monitoring configuration. Use for AI model releases."
 module: bam

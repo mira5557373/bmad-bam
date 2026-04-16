@@ -227,8 +227,8 @@ For each tenant-scoped table:
 
 ## Related Workflows
 
-- `bmad-bam-validate-foundation` - Validate foundation against QG-F1 quality gate
-- `bmad-bam-validate-module` - Validate module against QG-M1/M2/M3 quality gates
+- `validate-foundation` - Validate foundation against QG-F1 quality gate
+- `validate-module` - Validate module against QG-M1/M2/M3 quality gates
 - `bmad-bam-ai-eval-safety-design` - Design AI evaluation and safety test automation
 
 ## Related Patterns

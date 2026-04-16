@@ -161,7 +161,7 @@ This workflow contributes to:
 
 | Workflow | Relationship | When to Use |
 |----------|--------------|-------------|
-| `bmad-bam-create-master-architecture` | Prerequisite | Master architecture defines infrastructure for SLA planning |
+| `create-master-architecture` | Prerequisite | Master architecture defines infrastructure for SLA planning |
 | `bmad-bam-sli-slo-definition` | Follow-up | Define SLIs/SLOs aligned with SLA commitments |
 | `bmad-bam-tenant-sla-monitoring` | Follow-up | Implement SLA monitoring per these requirements |
 | `bmad-bam-incident-response-operations` | Related | Align incident response with SLA obligations |

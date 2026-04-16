@@ -1,5 +1,5 @@
 type: workflow
-name: penetration-testing-design
+name: bmad-bam-penetration-testing-design
 displayName: Penetration Testing Design
 description: 'Design security penetration testing procedures for multi-tenant AI platforms'
 module: bam

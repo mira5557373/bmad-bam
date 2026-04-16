@@ -125,8 +125,8 @@ For non-critical items that cannot be addressed:
 
 ## Related Workflows
 
-- `bmad-bam-create-master-architecture` - Foundation artifact creation
-- `bmad-bam-validate-foundation` - Foundation validation
+- `create-master-architecture` - Foundation artifact creation
+- `validate-foundation` - Foundation validation
 - `bmad-bam-tenant-model-isolation` - Tenant isolation setup
 
 ---

@@ -1,9 +1,0 @@
-# Workflow metadata for bmad-bam-evolve-facade-contract
-config_variables:
-  - user_name
-  - communication_language
-  - document_output_language
-  - output_folder
-required_tools: []
-tags: [integration]
-mode: simple

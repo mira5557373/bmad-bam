@@ -160,7 +160,7 @@ AWARENESS → EVALUATION → ONBOARDING → ACTIVATION → EXPANSION → ADVOCAC
 ## Integration with BAM Workflows
 
 - `bmad-bam-tenant-model-isolation` - Isolation requirements from empathy mapping
-- `bmad-bam-create-master-architecture` - Architecture decisions from ideation
+- `create-master-architecture` - Architecture decisions from ideation
 - `bmad-bam-tenant-onboarding-design` - Onboarding flows from journey prototyping
 - WDS workflows with BAM extension for UX testing
 
@@ -197,4 +197,4 @@ Use the `web_queries` column from pattern registry to search for current best pr
 - `bmad-bam-tenant-onboarding-design` - Design onboarding flows from journey prototyping
 - `bmad-bam-tenant-tier-migration` - Design tier upgrade/downgrade experiences
 - `bmad-bam-tenant-model-isolation` - Translate isolation requirements from empathy mapping
-- `bmad-bam-create-master-architecture` - Implement architecture decisions from ideation
+- `create-master-architecture` - Implement architecture decisions from ideation

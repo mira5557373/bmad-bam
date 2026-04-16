@@ -140,7 +140,7 @@ This workflow contributes to:
 
 | Workflow | Relationship | When to Use |
 |----------|--------------|-------------|
-| `bmad-bam-create-master-architecture` | Context | Master architecture informs compliance requirements |
+| `create-master-architecture` | Context | Master architecture informs compliance requirements |
 | `bmad-bam-tenant-model-isolation` | Related | Tenant isolation patterns affect audit logging scope |
 | `bmad-bam-convergence-verification` | Downstream | Verify compliance controls during convergence |
 

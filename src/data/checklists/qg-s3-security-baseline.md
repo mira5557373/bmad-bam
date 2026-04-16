@@ -172,7 +172,7 @@ Verify security baseline configuration is complete and properly configured befor
 
 - `bmad-bam-security-operations-verification` - Full security audit
 - `bmad-bam-tenant-model-isolation` - Tenant isolation design
-- `bmad-bam-validate-module` - Module security validation
+- `validate-module` - Module security validation
 
 ---
 

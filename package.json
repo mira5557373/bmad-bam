@@ -43,7 +43,9 @@
     "test:security:isolation": "jest test/security/tenant-isolation.test.js",
     "test:workflow-execution": "jest test/integration/workflow-execution.test.js",
     "validate-tsa": "node tools/validate-tsa-sync.mjs",
-    "lint": "yaml-lint src/**/*.yaml"
+    "lint": "yaml-lint src/**/*.yaml",
+    "generate-customize": "node scripts/generate-customize-files.js",
+    "prebuild": "npm run generate-customize"
   },
   "devDependencies": {
     "jest": "^29.7.0",

@@ -18,7 +18,7 @@ menu:
     action: "#web-research-disruption-prompt"
     description: Conduct web research for disruption patterns
   - trigger: bam-disruption-competitive
-    action: "#competitive-analysis-prompt"
+    action: "#cis-disruption-competitive-analysis-prompt"
     description: Analyze competitive landscape and disruption opportunities
   - trigger: bam-disruption-innovation
     action: "#innovation-opportunities-prompt"
@@ -112,7 +112,7 @@ prompts:
 
       Return findings with: _Source: [URL]_
 
-  - id: competitive-analysis-prompt
+  - id: cis-disruption-competitive-analysis-prompt
     content: |
       ## Competitive Landscape Analysis
 

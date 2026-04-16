@@ -1,5 +1,5 @@
 type: workflow
-name: tenant-audit-log-design
+name: bmad-bam-tenant-audit-log-design
 displayName: Tenant Audit Log Design
 description: 'Design tenant-scoped audit trail architecture for compliance and security'
 module: bam

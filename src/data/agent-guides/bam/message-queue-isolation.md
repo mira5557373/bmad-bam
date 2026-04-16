@@ -285,7 +285,7 @@ Use the `web_queries` column from pattern registry to search for current best pr
 
 ## Integration with BAM Workflows
 
-- `bmad-bam-create-master-architecture` -> Define message queue topology for tenants
+- `create-master-architecture` -> Define message queue topology for tenants
 - `bmad-bam-tenant-model-isolation` -> Map tenant model to queue isolation strategy
 - `bmad-bam-internal-contract-design` -> Design event flows with tenant context
 - `bmad-bam-tenant-onboarding-design` -> Automate topic/vhost provisioning

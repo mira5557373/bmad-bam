@@ -107,10 +107,10 @@ For non-critical items that cannot be addressed:
 
 ## Related Workflows
 
-- `bmad-bam-validate-foundation` - Foundation gate validation
-- `bmad-bam-create-module-architecture` - Module architecture creation
-- `bmad-bam-create-module-epics` - Epic and story creation
-- `bmad-bam-define-facade-contract` - Facade contract definition
+- `validate-foundation` - Foundation gate validation
+- `create-module-architecture` - Module architecture creation
+- `create-module-epics` - Epic and story creation
+- `define-facade-contract` - Facade contract definition
 
 **PASS CRITERIA:** All CRITICAL checkboxes completed, module ready for sprint
 **OWNER:** BAM

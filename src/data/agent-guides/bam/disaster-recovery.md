@@ -235,6 +235,6 @@ Use the `web_queries` column from pattern registry to search for current best pr
 
 ## Related Workflows
 
-- `bmad-bam-create-master-architecture` - DR strategy in architecture
-- `bmad-bam-validate-foundation` - DR readiness verification
+- `create-master-architecture` - DR strategy in architecture
+- `validate-foundation` - DR readiness verification
 - `bmad-bam-tenant-offboarding-design` - Tenant data export procedures

@@ -63,8 +63,8 @@ describe('Cross-Module Workflow Chain Integration', () => {
         name: 'Module Architecture Chain',
         sequence: [
           'create-master-architecture',
-          'tenant-model-isolation',
-          'module-boundary-design',
+          'bmad-bam-tenant-model-isolation',
+          'bmad-bam-module-boundary-design',
           'create-module-architecture',
           'validate-module'
         ],
@@ -75,7 +75,7 @@ describe('Cross-Module Workflow Chain Integration', () => {
         sequence: [
           'create-module-architecture',
           'define-facade-contract',
-          'convergence-verification'
+          'bmad-bam-convergence-verification'
         ],
         description: 'Module to Integration validation'
       },
@@ -84,7 +84,7 @@ describe('Cross-Module Workflow Chain Integration', () => {
         sequence: [
           'validate-foundation',
           'validate-module',
-          'convergence-verification',
+          'bmad-bam-convergence-verification',
           'quality-assurance-review'
         ],
         description: 'Validation workflow chain'

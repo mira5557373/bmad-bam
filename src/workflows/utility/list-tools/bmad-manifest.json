@@ -1,0 +1,14 @@
+{
+  "module-code": "bam",
+  "capabilities": [{
+    "name": "list-tools",
+    "menu-code": "LT",
+    "description": "List all registered AI tools with filtering",
+    "supports-headless": true,
+    "phase-name": "anytime",
+    "after": [],
+    "before": [],
+    "is-required": false,
+    "output-location": ""
+  }]
+}

@@ -1,5 +1,5 @@
 type: workflow
-name: security-review
+name: bmad-bam-security-review
 displayName: Security Review
 description: 'Dedicated security assessment workflow for multi-tenant platforms'
 module: bam

@@ -1,5 +1,5 @@
 type: workflow
-name: security-operations-verification
+name: bmad-bam-security-operations-verification
 displayName: Security Operations Verification
 description: Verify security operations readiness for multi-tenant AI platforms
 module: bam

@@ -1,0 +1,15 @@
+{
+  "module-code": "bam",
+  "capabilities": [{
+    "name": "validate-foundation",
+    "menu-code": "VF",
+    "description": "Validate foundation gate checklist (QG-F1)",
+    "supports-headless": true,
+    "phase-name": "3-solutioning",
+    "after": ["create-master-architecture", "scaffold-foundation"],
+    "before": ["create-module-architecture"],
+    "is-required": true,
+    "output-location": "{output_folder}/planning-artifacts",
+    "qualityGates": ["QG-F1"]
+  }]
+}

@@ -81,7 +81,7 @@ Agentic AI capabilities create unique value opportunities:
 
 - `bmad-bam-usage-metering-design` - Track value delivery
 - `bmad-bam-tenant-tier-migration` - Move tenants to appropriate value tier
-- `bmad-bam-create-master-architecture` - Build value into architecture
+- `create-master-architecture` - Build value into architecture
 
 ---
 

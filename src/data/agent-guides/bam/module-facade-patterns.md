@@ -215,7 +215,7 @@ Use the `web_queries` column from pattern registry to search for current best pr
 
 ## Related Workflows
 
-- `bmad-bam-define-facade-contract` - Design and document facade contracts
+- `define-facade-contract` - Design and document facade contracts
 - `bmad-bam-api-deprecation-strategy` - Plan facade version management and migration
-- `bmad-bam-create-module-architecture` - Design module structure with facade boundaries
+- `create-module-architecture` - Design module structure with facade boundaries
 - `bmad-bam-convergence-verification` - Validate facade contract compliance across modules

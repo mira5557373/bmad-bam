@@ -310,7 +310,7 @@ Use the `web_queries` column from pattern registry to search for current best pr
 ## Integration with BAM Workflows
 
 - `bmad-bam-tenant-model-isolation` → Design isolation strategy
-- `bmad-bam-validate-foundation` → Verify isolation implementation
+- `validate-foundation` → Verify isolation implementation
 
 ## Related Workflows
 
@@ -318,4 +318,4 @@ Use the `web_queries` column from pattern registry to search for current best pr
 - `bmad-bam-security-review` - Audit isolation security boundaries
 - `bmad-bam-chaos-engineering-design` - Verify RLS and isolation policies
 - `bmad-bam-ai-eval-safety-design` - Ensure AI runtime isolation
-- `bmad-bam-validate-foundation` - Validate isolation implementation
+- `validate-foundation` - Validate isolation implementation

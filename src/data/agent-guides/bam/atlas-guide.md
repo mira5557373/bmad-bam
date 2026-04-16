@@ -191,9 +191,9 @@ When documenting multi-tenant patterns:
 
 ## Related Workflows
 
-- `bmad-bam-create-master-architecture` - Create the frozen master architecture document
-- `bmad-bam-scaffold-foundation` - Scaffold the initial platform foundation
-- `bmad-bam-validate-foundation` - Validate foundation against QG-F1 quality gate
+- `create-master-architecture` - Create the frozen master architecture document
+- `scaffold-foundation` - Scaffold the initial platform foundation
+- `validate-foundation` - Validate foundation against QG-F1 quality gate
 
 ## Related Patterns
 

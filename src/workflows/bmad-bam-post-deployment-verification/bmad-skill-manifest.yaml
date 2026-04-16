@@ -1,5 +1,5 @@
 type: workflow
-name: post-deployment-verification
+name: bmad-bam-post-deployment-verification
 displayName: Post-Deployment Verification
 description: "Verify deployment success with smoke tests, monitoring activation, tenant health checks, and rollback readiness. Use when completing deployment to production or staging environments."
 module: bam

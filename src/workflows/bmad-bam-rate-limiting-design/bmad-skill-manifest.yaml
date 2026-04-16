@@ -1,5 +1,5 @@
 type: workflow
-name: rate-limiting-design
+name: bmad-bam-rate-limiting-design
 displayName: Rate Limiting Design
 description: "Design per-tenant rate limiting strategy with tier-based limits and enforcement. Use when the user requests to 'design rate limiting' or 'plan API throttling'."
 module: bam

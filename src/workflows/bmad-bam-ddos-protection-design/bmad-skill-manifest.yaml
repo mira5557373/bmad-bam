@@ -1,5 +1,5 @@
 type: workflow
-name: ddos-protection-design
+name: bmad-bam-ddos-protection-design
 displayName: DDoS Protection Design
 description: "Design DDoS mitigation strategies for multi-tenant AI platforms. Use when the user requests to 'design DDoS protection' or 'create DDoS mitigation'."
 module: bam

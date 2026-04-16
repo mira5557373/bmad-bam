@@ -1,5 +1,5 @@
 type: workflow
-name: production-readiness
+name: bmad-bam-production-readiness
 displayName: Production Readiness
 description: "Comprehensive production readiness assessment for multi-tenant AI platforms. Use when the user requests 'production readiness check', 'go-live assessment', or 'launch readiness'."
 module: bam

@@ -114,8 +114,8 @@ This workflow contributes to:
 
 ## Related Workflows
 
-- `bmad-bam-create-master-architecture` - Original architecture creation
-- `bmad-bam-validate-foundation` - Foundation revalidation after changes
+- `create-master-architecture` - Original architecture creation
+- `validate-foundation` - Foundation revalidation after changes
 
 ## References
 

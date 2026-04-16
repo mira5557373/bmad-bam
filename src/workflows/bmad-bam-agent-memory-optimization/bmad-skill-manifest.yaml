@@ -1,5 +1,5 @@
 type: workflow
-name: agent-memory-optimization
+name: bmad-bam-agent-memory-optimization
 displayName: Agent Memory Optimization
 description: "Design memory tier optimization for AI agents. Use when the user requests to 'optimize agent memory' or 'design memory architecture'."
 module: bam

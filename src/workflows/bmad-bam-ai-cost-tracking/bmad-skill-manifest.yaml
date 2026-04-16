@@ -1,5 +1,5 @@
 type: workflow
-name: ai-cost-tracking
+name: bmad-bam-ai-cost-tracking
 displayName: AI Cost Tracking
 description: "Design per-tenant AI token and compute cost tracking. Use when the user requests to 'track AI costs' or 'design token metering'."
 module: bam

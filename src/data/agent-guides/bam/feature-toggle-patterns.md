@@ -230,5 +230,5 @@ Use the `web_queries` column from pattern registry to search for current best pr
 
 - `bmad-bam-tenant-tier-migration` - Manage feature access during tier transitions
 - `bmad-bam-tenant-onboarding-design` - Configure feature flags for new tenant provisioning
-- `bmad-bam-create-module-architecture` - Design toggle evaluation as cross-cutting concern
+- `create-module-architecture` - Design toggle evaluation as cross-cutting concern
 - `bmad-bam-chaos-engineering-design` - Test feature flag combinations across tenant tiers

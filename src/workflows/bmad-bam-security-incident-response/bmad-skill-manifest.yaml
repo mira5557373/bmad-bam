@@ -1,5 +1,5 @@
 type: workflow
-name: security-incident-response
+name: bmad-bam-security-incident-response
 displayName: Security Incident Response
 description: "Design security-specific incident response procedures for multi-tenant AI platforms. Use when the user requests to 'design security incident response' or 'create security incident procedures'."
 module: bam

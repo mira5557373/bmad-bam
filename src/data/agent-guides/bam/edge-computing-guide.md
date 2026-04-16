@@ -228,7 +228,7 @@ When implementing edge computing for multi-tenant:
 
 ## Related Workflows
 
-- `bmad-bam-create-master-architecture` - Edge in platform architecture
+- `create-master-architecture` - Edge in platform architecture
 - `bmad-bam-multi-region-architecture` - Edge with regional strategy
 - `bmad-bam-api-gateway-design` - Edge + gateway integration
 

@@ -6,7 +6,7 @@
     "description": "Design multi-region deployment architecture for data residency and GDPR compliance. Use when the user requests to 'design multi-region' or 'plan data residency'.",
     "supports-headless": true,
     "phase-name": "3-solutioning",
-    "after": ["bmad-bam-create-master-architecture"],
+    "after": ["create-master-architecture"],
     "before": [],
     "is-required": false,
     "output-location": "{output_folder}/planning-artifacts"

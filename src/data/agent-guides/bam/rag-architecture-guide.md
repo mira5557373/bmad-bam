@@ -203,7 +203,7 @@ When designing RAG for multi-tenant systems:
 ## Related Workflows
 
 - `bmad-bam-agent-runtime-architecture` - RAG integration with agent framework
-- `bmad-bam-create-module-architecture` - Knowledge module design
+- `create-module-architecture` - Knowledge module design
 - `bmad-bam-tenant-onboarding-design` - Knowledge base initialization
 
 ## Related Patterns

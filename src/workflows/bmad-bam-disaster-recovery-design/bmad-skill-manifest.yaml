@@ -1,5 +1,5 @@
 type: workflow
-name: disaster-recovery-design
+name: bmad-bam-disaster-recovery-design
 displayName: Disaster Recovery Design
 description: "Design tier-aware disaster recovery strategy with RTO/RPO objectives. Use when the user requests to 'design disaster recovery' or 'create DR plan'."
 module: bam

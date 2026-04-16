@@ -98,7 +98,7 @@ Pre-release security verification:
 ## Related Workflows
 
 - `bmad-bam-tenant-model-isolation` → Isolation design
-- `bmad-bam-validate-foundation` → Security gate
+- `validate-foundation` → Security gate
 - `bmad-bam-convergence-verification` → Pre-release security check
 - `bmad-bam-ai-eval-safety-design` → AI security evaluation
 

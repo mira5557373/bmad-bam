@@ -162,7 +162,7 @@ When implementing agent coordination:
 
 - `bmad-bam-agent-runtime-architecture` - Configure agent coordination framework
 - `bmad-bam-ai-eval-safety-design` - Validate coordination safety
-- `bmad-bam-create-master-architecture` - Integrate coordination into platform
+- `create-master-architecture` - Integrate coordination into platform
 
 ## Related Patterns
 

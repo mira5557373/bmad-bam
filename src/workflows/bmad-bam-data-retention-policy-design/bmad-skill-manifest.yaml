@@ -1,5 +1,5 @@
 type: workflow
-name: data-retention-policy-design
+name: bmad-bam-data-retention-policy-design
 displayName: Data Retention Policy Design
 description: "Design GDPR-compliant data retention policies with archival rules and deletion procedures. Use when designing data lifecycle management."
 module: bam

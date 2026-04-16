@@ -352,7 +352,7 @@ Isolation Issue Reported
 
 ## Related Workflows
 
-- `bmad-bam-define-facade-contract` - Define public facade contracts between modules
+- `define-facade-contract` - Define public facade contracts between modules
 - `bmad-bam-internal-contract-design` - Design internal contracts within modules
 - `bmad-bam-convergence-verification` - Verify convergence across module boundaries
 

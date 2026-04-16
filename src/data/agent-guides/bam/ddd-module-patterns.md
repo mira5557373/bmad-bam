@@ -221,8 +221,8 @@ Use the `web_queries` column from pattern registry to search for current best pr
 
 ## Related Workflows
 
-- `bmad-bam-create-module-architecture` - Design module boundaries using DDD strategic patterns
-- `bmad-bam-define-facade-contract` - Define bounded context interfaces as facade contracts
+- `create-module-architecture` - Design module boundaries using DDD strategic patterns
+- `define-facade-contract` - Define bounded context interfaces as facade contracts
 - `bmad-bam-convergence-verification` - Verify context map relationships between modules
-- `bmad-bam-create-master-architecture` - Establish domain boundaries at platform level
+- `create-master-architecture` - Establish domain boundaries at platform level
 - `bmad-bam-tenant-model-isolation` - Include tenant_id in aggregate root identities

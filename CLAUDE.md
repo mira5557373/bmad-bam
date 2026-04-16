@@ -1,6 +1,6 @@
 # CLAUDE.md - BAM Extension Module
 
-> **Quick Start:** BAM is a **pure extension module** with 0 standalone agents and 31 extensions. Atlas, Nova, Kai personas are consolidated into `architect-bam.yaml`. Run `npm test` before any PR. Never use `memories:` field. Step files use `Search the web: "{topic} {date}"` directives for current best practices. Pattern registry CSVs provide `web_queries` column for dynamic research.
+> **Quick Start:** BAM is a **pure extension module** with 0 standalone agents, 31 extensions, and 15 customize files. Atlas, Nova, Kai personas are consolidated into `architect-bam.yaml`. Extensions are auto-converted to BMAD's native `.customize.yaml` format via `npm run generate-customize`. Run `npm test` before any PR. Never use `memories:` field. Step files use `Search the web: "{topic} {date}"` directives for current best practices.
 
 ---
 
@@ -13,24 +13,25 @@
 5. [Directory Structure](#directory-structure)
 6. [Variable Placeholders](#variable-placeholders)
 7. [Extension Pattern (WDS)](#extension-pattern-wds)
-8. [WDS Agent Coexistence Model](#wds-agent-coexistence-model)
-9. [Step File Pattern (BMM)](#step-file-pattern-bmm)
-10. [Pattern Registry Structure](#pattern-registry-structure)
-11. [Web Search Integration](#web-search-integration)
-12. [Agent Guide Pattern](#agent-guide-pattern)
-13. [Workflow Structure (CEV)](#workflow-structure-cev)
-14. [Module Help CSV Schema](#module-help-csv-schema)
-15. [Quality Gates & Recovery](#quality-gates--recovery)
-16. [Tenant Model Deep Dive](#tenant-model-deep-dive)
-17. [AI Runtime Deep Dive](#ai-runtime-deep-dive)
-18. [Sidecar Memory Pattern](#sidecar-memory-pattern)
-19. [Context Flow](#context-flow)
-20. [Template Variables](#template-variables)
-21. [Naming Conventions](#naming-conventions)
-22. [Common Tasks](#common-tasks)
-23. [Anti-Patterns](#anti-patterns)
-24. [Testing](#testing)
-25. [Quick Reference](#quick-reference)
+8. [Customize Files (Extension Loading)](#customize-files-extension-loading)
+9. [WDS Agent Coexistence Model](#wds-agent-coexistence-model)
+10. [Step File Pattern (BMM)](#step-file-pattern-bmm)
+11. [Pattern Registry Structure](#pattern-registry-structure)
+12. [Web Search Integration](#web-search-integration)
+13. [Agent Guide Pattern](#agent-guide-pattern)
+14. [Workflow Structure (CEV)](#workflow-structure-cev)
+15. [Module Help CSV Schema](#module-help-csv-schema)
+16. [Quality Gates & Recovery](#quality-gates--recovery)
+17. [Tenant Model Deep Dive](#tenant-model-deep-dive)
+18. [AI Runtime Deep Dive](#ai-runtime-deep-dive)
+19. [Sidecar Memory Pattern](#sidecar-memory-pattern)
+20. [Context Flow](#context-flow)
+21. [Template Variables](#template-variables)
+22. [Naming Conventions](#naming-conventions)
+23. [Common Tasks](#common-tasks)
+24. [Anti-Patterns](#anti-patterns)
+25. [Testing](#testing)
+26. [Quick Reference](#quick-reference)
 
 ---
 
@@ -93,9 +94,10 @@ requirement-ingestion
 BAM Extension Module (Pure Extension - 0 Standalone Agents)
 ├── 0 agents (Atlas, Nova, Kai consolidated into architect-bam.yaml)
 ├── 31 extensions (enhance existing BMAD agents, all with web research capability)
+├── 15 customize files (auto-generated from extensions, enables BMAD native loading)
 ├── 191 workflows (174 flat + 17 nested in 7 container directories)
 ├── 6 pattern registry CSVs (106 patterns with decision criteria + web queries with {date} placeholder)
-├── 189 agent guides (context injection via WDS pattern, all with Web Research sections)
+├── 223 agent guides (context injection via WDS pattern, all with Web Research sections)
 ├── 36 checklists (quality gates with web research verification)
 └── 453 templates (output artifacts + sidecar-*.md + spec/catalog files)
 ```
@@ -168,6 +170,15 @@ src/
 ├── agents/                      # Empty (BAM has 0 standalone agents)
 ├── skills/                      # Empty (BMB compatibility placeholder)
 │
+├── _config/                     # BMAD native customization files
+│   └── agents/                  # 15 customize files (auto-generated)
+│       ├── bmad-agent-architect.customize.yaml   # 5 extensions merged
+│       ├── bmad-agent-analyst.customize.yaml     # 3 extensions merged
+│       ├── bmad-agent-pm.customize.yaml          # 4 extensions merged
+│       ├── bmad-agent-dev.customize.yaml         # 2 extensions merged
+│       ├── bmad-cis-agent-innovation-strategist.customize.yaml  # 7 extensions merged
+│       └── ... (10 more single-extension files)
+│
 ├── workflows/                   # 191 workflows (174 flat + 17 nested in containers)
 │   ├── {flat-workflow}/              # Flat workflows (e.g., tenant-model-isolation/)
 │   │   ├── bmad-skill-manifest.yaml
@@ -210,7 +221,7 @@ src/
     ├── section-pattern-map.csv       # Section to pattern mapping
     │
     ├── agent-guides/
-    │   └── bam/                 # 189 context injection guides (all with Web Research)
+    │   └── bam/                 # 223 context injection guides (all with Web Research)
     │       ├── platform-architecture.md
     │       ├── ai-runtime.md
     │       ├── tenant-isolation.md
@@ -263,7 +274,7 @@ After `npx bmad-method install`, BAM resources are at:
     ├── config.yaml              # User configuration
     ├── module-help.csv          # Help system entries
     └── data/                    # All resources
-        ├── agent-guides/bam/    # 189 agent guides
+        ├── agent-guides/bam/    # 223 agent guides
         ├── extensions/          # 31 extension YAMLs
         ├── templates/           # 453 templates
         ├── checklists/          # 36 checklists
@@ -276,7 +287,7 @@ Run `./scripts/verify-install.sh _bmad/bam` to verify installation:
 
 ```bash
 # Expected output:
-# [PASS] Agent guides: 189 files
+# [PASS] Agent guides: 223 files
 # [PASS] Templates: 453 files
 # [PASS] Checklists: 36 files
 # [PASS] Extensions: 31 files
@@ -412,6 +423,95 @@ memories:
 capabilities:
   - "capability one"
   - "capability two"
+```
+
+---
+
+## Customize Files (Extension Loading)
+
+BAM extensions are converted to BMAD's native `.customize.yaml` format for automatic loading. This bridges the gap between BAM extension files (`src/data/extensions/*.yaml`) and BMAD's agent customization system.
+
+### How It Works
+
+1. **Extensions** live in `src/data/extensions/` (31 files)
+2. **Converter script** reads extensions and generates `.customize.yaml` files
+3. **Customize files** are placed in `src/_config/agents/` (15 files)
+4. **BMAD framework** automatically merges customize files with base agents
+
+### Extension → Customize File Mapping
+
+Multiple extensions targeting the same agent are **merged** into a single customize file:
+
+| Customize File | Source Extensions | Menu Items |
+|----------------|-------------------|------------|
+| `bmad-agent-architect.customize.yaml` | architect, data, master-architect, ml, security | 99 |
+| `bmad-agent-analyst.customize.yaml` | analyst, analytics, compliance | 31 |
+| `bmad-agent-pm.customize.yaml` | pm, billing, po, reseller | 31 |
+| `bmad-agent-dev.customize.yaml` | dev, devops | 57 |
+| `bmad-cis-agent-innovation-strategist.customize.yaml` | 7 CIS extensions | 59 |
+| + 10 single-extension files | 1 extension each | varies |
+| **Total** | 31 extensions | 368 unique |
+
+### Generation
+
+```bash
+# Generate customize files from extensions
+npm run generate-customize
+
+# This runs automatically before build
+npm run prebuild
+```
+
+The script (`scripts/generate-customize-files.js`):
+- Cleans output directory before generation (prevents duplicates)
+- Merges multiple extensions targeting the same agent
+- Deduplicates menu items by trigger, prompts by ID
+- Produces idempotent output (same result on repeated runs)
+
+### Customize File Format
+
+```yaml
+# BAM Extensions for bmad-agent-architect
+# Auto-generated by generate-customize-files.js
+
+memories:
+  - 'BAM module installed - Multi-tenant architecture capabilities'
+  - 'Multi-tenant SaaS architecture capabilities enabled'
+
+menu:
+  - trigger: bam-platform-context
+    action: '#load-platform-context-prompt'
+    description: Load BAM platform architecture context
+  # ... more menu items
+
+prompts:
+  - id: load-platform-context-prompt
+    content: |
+      Read and internalize the BAM platform architecture guide...
+  # ... more prompts
+```
+
+### Key Behaviors
+
+| Behavior | Description |
+|----------|-------------|
+| **APPEND** | `menu:` and `prompts:` sections APPEND to base agent |
+| **Deduplicate** | Same trigger/id won't appear twice |
+| **Merge** | Multiple extensions → single customize file |
+| **Clean** | Script cleans output dir before regenerating |
+
+### Testing
+
+```bash
+# Test customize file generation
+npm test -- test/customize-files.test.js
+
+# Tests verify:
+# - 15 customize files exist
+# - All 31 extensions processed
+# - Valid YAML
+# - No duplicate triggers or prompt IDs
+# - All menu actions reference valid prompts
 ```
 
 ---
@@ -1451,6 +1551,88 @@ npm test
 
 ---
 
+## Capability Preservation Rules
+
+**CRITICAL: Never remove files that represent planned or existing capabilities.**
+
+### What NOT To Remove
+
+| Asset Type | Rule | Rationale |
+|------------|------|-----------|
+| Agent guides | Fill content, don't delete | Each guide is referenced by extensions/workflows |
+| Workflows | Enhance, don't remove | Each workflow is a distinct capability |
+| Extensions | Maintain all 31 | Extensions add agent capabilities |
+| Templates | Keep all 453 | Templates produce artifacts |
+| Checklists | Maintain all 36 | Checklists ensure quality gates |
+
+### When Content Is Missing
+
+If a file has placeholder content ("TODO", empty sections):
+1. **FILL the content** - Generate proper domain-specific content following guide template
+2. **DO NOT delete** - Deletion loses planned capability and breaks cross-references
+3. **Update references** - Ensure all cross-references remain valid
+
+### Guide Content Requirements
+
+Every agent guide MUST have:
+```markdown
+# BAM {Domain} Guide
+
+**When to load:** {Trigger conditions}
+**Integrates with:** {Agent names and roles}
+
+---
+
+## Core Concepts
+{Domain-specific concepts with tables/diagrams}
+
+## Application Guidelines
+{Multi-tenant implementation guidance}
+
+## Decision Framework
+| Question | Recommendation | Rationale |
+|----------|----------------|-----------|
+
+## Related Patterns
+Load from pattern registry:
+- **{Category}:** `{project-root}/_bmad/bam/data/bam-patterns.csv` → filter: `{category}`
+
+### Web Research
+- Search: "{topic} multi-tenant {date}"
+
+## Related Workflows
+- `{workflow-name}` - {When to use}
+```
+
+### Verification Commands
+
+```bash
+# Check all guides have required sections
+npm test -- test/guide-structure.test.js
+
+# Check guide count
+ls src/data/agent-guides/bam/*.md | wc -l
+# Expected: 223
+
+# Check for TODO placeholders
+grep -l "TODO" src/data/agent-guides/bam/*.md | wc -l
+# Expected: 0
+```
+
+If tests fail due to missing content, **generate content** rather than adjusting expectations or deleting files.
+
+### Asset Count Expectations
+
+| Component | Count | If Below | If Above |
+|-----------|-------|----------|----------|
+| Agent guides | 223 | Fill missing content | Document new additions |
+| Workflows | 191 | Create if needed | Document new additions |
+| Extensions | 31 | Restore from backup | Document additions |
+| Templates | 453 | Regenerate | Document additions |
+| Checklists | 36 | Restore | Document additions |
+
+---
+
 ## Testing
 
 ### Run All Tests
@@ -1471,6 +1653,7 @@ npm test -- test/schema.test.js   # Specific file
 | `test/workflow.test.js` | CEV structure, manifest presence |
 | `test/install.test.js` | BMB compatibility, package.json, module.yaml |
 | `test/integration.test.js` | Ecosystem integration (BMM, TEA, WDS, CIS) |
+| `test/customize-files.test.js` | Customize file generation, deduplication, YAML validity |
 
 ### Expected Counts
 
@@ -1478,9 +1661,10 @@ npm test -- test/schema.test.js   # Specific file
 |-----------|-------|------------|
 | Agents | 0 (BAM is a pure extension module) | N/A |
 | Extensions | 31 | 100% (all have `bam-*-research` menu) |
+| Customize Files | 15 | N/A (auto-generated from extensions) |
 | Workflows | 191 | 100% (Create-mode steps with directives) |
 | Pattern CSVs | 6 | 100% (`web_queries` column with `{date}`) |
-| Agent Guides | 189 | 100% (all have Web Research section) |
+| Agent Guides | 223 | 100% (all have Web Research section) |
 | Checklists | 36 | 100% have web research verification |
 | Templates | 453 | 100% (all have Web Research section) |
 
@@ -1500,6 +1684,8 @@ npm test -- test/schema.test.js   # Specific file
 | Add template | `src/data/templates/{artifact}-template.md` |
 | Add to help | `src/module-help.csv` |
 | Configure module | `src/module.yaml` |
+| Customize files | `src/_config/agents/*.customize.yaml` (auto-generated) |
+| Generate customize | `npm run generate-customize` |
 | Verify install | `./scripts/verify-install.sh _bmad/bam` |
 | Fix install | `./scripts/post-install.sh _bmad/bam` |
 
@@ -1509,6 +1695,7 @@ npm test -- test/schema.test.js   # Specific file
 npm test                    # Run all tests
 npm test -- --watch         # Watch mode
 npm run lint               # Lint (if configured)
+npm run generate-customize  # Generate customize files from extensions
 ```
 
 ### Extension Base Agents
@@ -1610,7 +1797,7 @@ These fields extend BMM manifests for enhanced functionality:
 
 Before submitting changes:
 
-- [ ] `npm test` passes (all 327 tests)
+- [ ] `npm test` passes (all tests)
 - [ ] No `memories:` field in extensions
 - [ ] Step files reference pattern registry (no inline code)
 - [ ] New workflows use unified steps/ with step-NN-mode-description.md naming
@@ -1620,6 +1807,7 @@ Before submitting changes:
 - [ ] Templates use `{{lowercase_variable}}` format
 - [ ] Pattern registry has web_queries column with `{date}` placeholder
 - [ ] Checklists use `- [ ]` format
+- [ ] Run `npm run generate-customize` after modifying extensions
 
 **Naming Convention Requirements:**
 - [ ] New agent guides use canonical names (see [Naming Conventions](#naming-conventions))

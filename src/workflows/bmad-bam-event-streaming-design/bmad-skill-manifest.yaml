@@ -1,5 +1,5 @@
 type: workflow
-name: event-streaming-design
+name: bmad-bam-event-streaming-design
 displayName: Event Streaming Design
 description: "Design event streaming architecture with Kafka or EventBridge. Use when the user requests to 'design event streaming' or 'configure message bus'."
 module: bam

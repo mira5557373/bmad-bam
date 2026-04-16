@@ -213,4 +213,4 @@ Use the `web_queries` column from pattern registry to search for current best pr
 - `bmad-bam-tenant-model-isolation` - Design customization isolation strategy
 - `bmad-bam-tenant-onboarding-design` - Configure default tenant customizations
 - `bmad-bam-tenant-tier-migration` - Handle customization changes during tier migration
-- `bmad-bam-define-facade-contract` - Define customization API contracts
+- `define-facade-contract` - Define customization API contracts

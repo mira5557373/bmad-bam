@@ -1,5 +1,5 @@
 type: workflow
-name: soc2-evidence-collection
+name: bmad-bam-soc2-evidence-collection
 displayName: SOC2 Evidence Collection
 description: 'Design SOC2 audit evidence automation for multi-tenant AI platforms'
 module: bam

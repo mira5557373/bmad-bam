@@ -1,5 +1,5 @@
 type: workflow
-name: tenant-suspension-design
+name: bmad-bam-tenant-suspension-design
 displayName: Tenant Suspension Design
 description: "Design tenant suspension and reactivation lifecycle with grace periods and notification sequences. Use when the user requests to 'design tenant suspension' or 'plan tenant lifecycle states'."
 module: bam

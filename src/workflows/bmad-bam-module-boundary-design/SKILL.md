@@ -97,9 +97,9 @@ This workflow contributes to:
 
 ## Related Workflows
 
-- `bmad-bam-create-master-architecture` - Precedes boundary design
-- `bmad-bam-create-module-architecture` - Uses boundary definitions
-- `bmad-bam-define-facade-contract` - Defines module public interfaces
+- `create-master-architecture` - Precedes boundary design
+- `create-module-architecture` - Uses boundary definitions
+- `define-facade-contract` - Defines module public interfaces
 
 ## Output
 

@@ -1,5 +1,5 @@
 type: workflow
-name: tenant-analytics-dashboard
+name: bmad-bam-tenant-analytics-dashboard
 displayName: Tenant Analytics Dashboard
 description: "Design analytics dashboards for multi-tenant SaaS platforms. Use when the user requests to 'design analytics' or 'create tenant dashboard'."
 module: bam

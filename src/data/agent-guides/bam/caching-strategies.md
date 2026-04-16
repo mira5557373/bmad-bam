@@ -298,6 +298,6 @@ Use the `web_queries` column from pattern registry to search for current best pr
 
 ## Related Workflows
 
-- `bmad-bam-create-master-architecture` - Cache architecture decisions
+- `create-master-architecture` - Cache architecture decisions
 - `bmad-bam-agent-runtime-architecture` - LLM caching design
-- `bmad-bam-validate-foundation` - Cache implementation verification
+- `validate-foundation` - Cache implementation verification

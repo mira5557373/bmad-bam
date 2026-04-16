@@ -110,7 +110,7 @@ This workflow contributes to:
 
 | Workflow | Relationship | When to Use |
 |----------|--------------|-------------|
-| `bmad-bam-create-master-architecture` | Successor | Master architecture requires stakeholder alignment |
+| `create-master-architecture` | Successor | Master architecture requires stakeholder alignment |
 | `bmad-bam-tenant-model-isolation` | Related | Tenant decisions require stakeholder input |
 | `bmad-bam-compliance-design` | Related | Compliance stakeholders must be identified |
 

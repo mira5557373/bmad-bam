@@ -1,5 +1,5 @@
 type: workflow
-name: tenant-sla-monitoring
+name: bmad-bam-tenant-sla-monitoring
 displayName: Tenant SLA Monitoring
 description: "Design SLA compliance tracking with definitions, monitoring, breach handling, and reporting. Use when the user requests to 'design SLA monitoring' or 'plan SLA compliance'."
 module: bam

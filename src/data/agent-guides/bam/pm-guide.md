@@ -213,9 +213,9 @@ When defining metering strategy:
 
 ## Related Workflows
 
-- `bmad-bam-create-module-epics` - Create epics for module development
+- `create-module-epics` - Create epics for module development
 - `bmad-bam-cross-module-story` - Create stories that span multiple modules
-- `bmad-bam-triage-module-complexity` - Triage and assess module complexity
+- `triage-module-complexity` - Triage and assess module complexity
 
 ## Related Patterns
 

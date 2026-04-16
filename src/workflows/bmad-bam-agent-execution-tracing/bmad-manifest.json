@@ -2,7 +2,7 @@
   "name": "bmad-bam-agent-execution-tracing",
   "phase": "3-solutioning",
   "after": ["bmad-bam-agent-runtime-architecture"],
-  "before": ["bmad-bam-validate-foundation"],
+  "before": ["validate-foundation"],
   "qualityGates": ["QG-AI2"],
   "outputs": [
     "{output_folder}/operations/ai/agent-tracing-config.md",

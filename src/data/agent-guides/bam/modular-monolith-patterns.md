@@ -225,8 +225,8 @@ Use the `web_queries` column from pattern registry to search for current best pr
 
 ## Related Workflows
 
-- `bmad-bam-create-master-architecture` - Design overall modular monolith structure
-- `bmad-bam-create-module-architecture` - Define individual module boundaries and structure
-- `bmad-bam-define-facade-contract` - Design stable cross-module interfaces
+- `create-master-architecture` - Design overall modular monolith structure
+- `create-module-architecture` - Define individual module boundaries and structure
+- `define-facade-contract` - Design stable cross-module interfaces
 - `bmad-bam-convergence-verification` - Verify module integration and dependencies
-- `bmad-bam-validate-foundation` - Validate modular architecture foundation
+- `validate-foundation` - Validate modular architecture foundation

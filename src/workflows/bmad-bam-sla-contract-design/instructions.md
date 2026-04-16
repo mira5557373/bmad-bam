@@ -43,7 +43,7 @@ Design comprehensive Service Level Agreements for multi-tenant AI platforms cove
 
 ## Related Workflows
 
-- `bmad-bam-create-master-architecture` - Master architecture defines infrastructure for SLA planning
+- `create-master-architecture` - Master architecture defines infrastructure for SLA planning
 - `bmad-bam-sli-slo-definition` - Define SLIs/SLOs aligned with SLA commitments
 - `bmad-bam-tenant-sla-monitoring` - Implement SLA monitoring per these requirements
 - `bmad-bam-incident-response-operations` - Align incident response with SLA obligations

@@ -1,5 +1,5 @@
 type: workflow
-name: tenant-data-anonymization
+name: bmad-bam-tenant-data-anonymization
 displayName: Tenant Data Anonymization
 description: "Design GDPR-compliant data anonymization for analytics with data classification, anonymization rules, and verification. Use when the user requests to 'design data anonymization' or 'plan GDPR compliance'."
 module: bam

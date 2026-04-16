@@ -218,7 +218,7 @@ When implementing webhook delivery:
 ## Related Workflows
 
 - `bmad-bam-tenant-onboarding-design` - Configure initial webhooks
-- `bmad-bam-define-facade-contract` - Webhook event contracts
+- `define-facade-contract` - Webhook event contracts
 - `bmad-bam-convergence-verification` - Verify delivery reliability
 
 ## Related Patterns

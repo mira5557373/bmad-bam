@@ -1,5 +1,5 @@
 type: workflow
-name: rag-observability-design
+name: bmad-bam-rag-observability-design
 displayName: RAG Observability Design
 description: "Design RAG pipeline observability for multi-tenant platform. Use when the user requests to 'setup RAG monitoring' or 'design retrieval observability'."
 module: bam

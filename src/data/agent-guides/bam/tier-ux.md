@@ -147,4 +147,4 @@ Use the `web_queries` column from pattern registry to search for current best pr
 - `bmad-bam-tenant-tier-migration` - Implement upgrade and downgrade flows
 - `bmad-bam-tenant-onboarding-design` - Design tier-specific onboarding UX
 - `bmad-bam-tenant-billing-integration` - Integrate billing with upgrade flows
-- `bmad-bam-define-facade-contract` - Define tier entitlement API contracts
+- `define-facade-contract` - Define tier entitlement API contracts

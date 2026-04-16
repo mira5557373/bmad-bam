@@ -1,5 +1,5 @@
 type: workflow
-name: partner-certification-workflow
+name: bmad-bam-partner-certification-workflow
 displayName: Partner Certification Workflow
 description: "Design ISV/partner certification program for multi-tenant platform ecosystem. Use when the user requests to 'create partner program' or 'design certification tiers'."
 module: bam

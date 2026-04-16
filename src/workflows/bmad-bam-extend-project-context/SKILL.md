@@ -96,7 +96,7 @@ Gather from the user (or from args in headless mode):
 
 | Workflow | Relationship | When to Use |
 |----------|--------------|-------------|
-| `bmad-bam-create-master-architecture` | Downstream | Create master architecture after configuring BAM |
+| `create-master-architecture` | Downstream | Create master architecture after configuring BAM |
 | `bmad-bam-validate-patterns` | Related | Validate pattern registry after configuration |
 
 ## References

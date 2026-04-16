@@ -1,5 +1,5 @@
 type: workflow
-name: churn-prediction
+name: bmad-bam-churn-prediction
 displayName: Churn Prediction
 description: "Design churn prediction model with leading indicators, risk scoring, and intervention strategies. Use when the user requests to 'design churn prediction' or 'plan retention analytics'."
 module: bam

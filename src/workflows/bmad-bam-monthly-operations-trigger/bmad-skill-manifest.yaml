@@ -1,5 +1,5 @@
 type: workflow
-name: monthly-operations-trigger
+name: bmad-bam-monthly-operations-trigger
 displayName: Monthly Operations Trigger
 description: 'Scheduled trigger for monthly operational reviews'
 module: bam

@@ -1,5 +1,5 @@
 type: workflow
-name: pci-dss-compliance
+name: bmad-bam-pci-dss-compliance
 displayName: PCI-DSS Compliance
 description: "Design PCI-DSS compliance for payment data handling and cardholder data protection. Use when the user requests to 'design PCI compliance', 'protect payment data', or 'secure cardholder data'."
 module: bam

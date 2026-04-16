@@ -1,5 +1,5 @@
 type: workflow
-name: security-baseline-config
+name: bmad-bam-security-baseline-config
 displayName: Security Baseline Config
 description: "Design security configuration baselines for multi-tenant AI platforms. Use when the user requests to 'create security baseline' or 'design security configuration'."
 module: bam

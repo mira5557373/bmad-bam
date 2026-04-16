@@ -1,5 +1,5 @@
 type: workflow
-name: tenant-white-labeling-design
+name: bmad-bam-tenant-white-labeling-design
 displayName: Tenant White-Labeling Design
 description: "Design white-labeling and branding customization per tenant. Use when the user requests to 'design white-labeling' or 'configure tenant branding'."
 module: bam

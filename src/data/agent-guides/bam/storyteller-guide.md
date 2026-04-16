@@ -240,7 +240,7 @@ The Journey Continues:
 
 ## Related Workflows
 
-- `bmad-bam-tenant-requirements-analysis` - Analyze tenant requirements for narrative development
+- `tenant-requirements-analysis` - Analyze tenant requirements for narrative development
 
 ## Related Patterns
 

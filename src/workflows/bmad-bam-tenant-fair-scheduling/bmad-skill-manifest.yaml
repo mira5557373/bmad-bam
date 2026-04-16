@@ -1,5 +1,5 @@
 type: workflow
-name: tenant-fair-scheduling
+name: bmad-bam-tenant-fair-scheduling
 displayName: Tenant Fair Scheduling
 description: 'Design fair resource scheduling to prevent noisy neighbor issues'
 module: bam

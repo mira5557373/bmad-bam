@@ -6,8 +6,8 @@
     "description": "Specify module facades, commands, queries, domain events, and policy interfaces for the BAM platform",
     "supports-headless": true,
     "phase-name": "3-solutioning",
-    "after": ["bmad-bam-create-module-architecture"],
-    "before": ["bmad-bam-define-facade-contract", "bmad-bam-convergence-verification"],
+    "after": ["create-module-architecture"],
+    "before": ["define-facade-contract", "bmad-bam-convergence-verification"],
     "is-required": false,
     "output-location": "{output_folder}/planning-artifacts"
   }]

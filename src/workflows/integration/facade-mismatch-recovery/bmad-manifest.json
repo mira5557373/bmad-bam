@@ -1,0 +1,14 @@
+{
+  "module-code": "bam",
+  "capabilities": [{
+    "name": "facade-mismatch-recovery",
+    "menu-code": "FMR",
+    "description": "Recover from situations where a module's implementation has diverged from its documented facade contract",
+    "supports-headless": true,
+    "phase-name": "4-implementation",
+    "after": ["define-facade-contract"],
+    "before": ["bmad-bam-convergence-verification"],
+    "is-required": false,
+    "output-location": "{output_folder}/planning-artifacts"
+  }]
+}

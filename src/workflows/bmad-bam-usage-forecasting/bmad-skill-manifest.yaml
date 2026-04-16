@@ -1,5 +1,5 @@
 type: workflow
-name: usage-forecasting
+name: bmad-bam-usage-forecasting
 displayName: Usage Forecasting
 description: "Design usage forecasting models for capacity planning with trend analysis and demand prediction. Use when the user requests to 'design usage forecasting' or 'plan capacity prediction'."
 module: bam

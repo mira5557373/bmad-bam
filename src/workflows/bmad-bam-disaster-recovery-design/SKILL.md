@@ -110,7 +110,7 @@ This workflow contributes to:
 
 | Workflow | Relationship | When to Use |
 |----------|--------------|-------------|
-| `bmad-bam-create-master-architecture` | Context | Master architecture defines infrastructure for DR planning |
+| `create-master-architecture` | Context | Master architecture defines infrastructure for DR planning |
 | `bmad-bam-tenant-data-migration` | Related | Data migration procedures align with DR backup strategy |
 | `bmad-bam-compliance-design` | Related | Compliance requirements inform DR retention policies |
 

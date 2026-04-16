@@ -107,7 +107,7 @@ User ──> Global LB ──> Geo Router
 
 - `bmad-bam-compliance-design` - Design data residency compliance controls
 - `bmad-bam-tenant-onboarding-design` - Configure regional data placement during onboarding
-- `bmad-bam-create-master-architecture` - Design multi-region architecture foundation
+- `create-master-architecture` - Design multi-region architecture foundation
 
 ## Related Patterns
 

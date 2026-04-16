@@ -110,7 +110,7 @@ This workflow contributes to:
 
 | Workflow | Relationship | When to Use |
 |----------|--------------|-------------|
-| `bmad-bam-create-master-architecture` | Context | Master architecture defines data sources for reporting |
+| `create-master-architecture` | Context | Master architecture defines data sources for reporting |
 | `bmad-bam-tenant-model-isolation` | Related | Tenant isolation patterns affect report data access |
 | `bmad-bam-tenant-aware-observability` | Related | Observability data may feed into tenant reports |
 

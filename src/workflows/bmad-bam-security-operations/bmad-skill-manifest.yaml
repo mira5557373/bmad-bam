@@ -1,5 +1,5 @@
 type: workflow
-name: security-operations
+name: bmad-bam-security-operations
 displayName: Security Operations
 description: "Set up security operations including threat detection, correlation rules, AI threat detection, and hunting capabilities. Use for SOC/SIEM configuration."
 module: bam

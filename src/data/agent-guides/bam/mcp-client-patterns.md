@@ -190,7 +190,7 @@ When implementing MCP clients:
 ## Related Workflows
 
 - `bmad-bam-agent-runtime-architecture` - Design MCP integration
-- `bmad-bam-validate-tool-contract` - Verify tool contracts
+- `validate-tool-contract` - Verify tool contracts
 - `bmad-bam-ai-eval-safety-design` - Tool safety validation
 
 ## Related Patterns

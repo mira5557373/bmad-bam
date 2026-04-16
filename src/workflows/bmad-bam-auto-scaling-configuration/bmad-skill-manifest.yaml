@@ -1,5 +1,5 @@
 type: workflow
-name: auto-scaling-configuration
+name: bmad-bam-auto-scaling-configuration
 displayName: Auto-Scaling Configuration
 description: "Design auto-scaling for multi-tenant workloads. Use when the user requests to 'design auto-scaling' or 'configure scaling policies'."
 module: bam

@@ -258,5 +258,5 @@ For current best practices, use the `web_queries` column from the pattern regist
 ## Related Workflows
 
 - `bmad-bam-agent-runtime-architecture` - Design MCP server architecture and tool isolation
-- `bmad-bam-define-facade-contract` - Define MCP tool contracts and interfaces
+- `define-facade-contract` - Define MCP tool contracts and interfaces
 - `bmad-bam-security-review` - Review MCP security controls and credential isolation

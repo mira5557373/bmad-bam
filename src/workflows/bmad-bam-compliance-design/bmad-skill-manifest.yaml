@@ -1,5 +1,5 @@
 type: workflow
-name: compliance-design
+name: bmad-bam-compliance-design
 displayName: Compliance Design
 description: "Design audit logging architecture and compliance framework alignment. Use when the user requests to 'design compliance', 'setup audit logging', or 'align with SOC2/GDPR/HIPAA'."
 module: bam

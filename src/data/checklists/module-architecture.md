@@ -131,8 +131,8 @@ For non-critical items that cannot be addressed:
 
 ## Related Workflows
 
-- `bmad-bam-create-module-architecture` - Module architecture creation
-- `bmad-bam-define-facade-contract` - Facade contract definition
+- `create-module-architecture` - Module architecture creation
+- `define-facade-contract` - Facade contract definition
 - `bmad-bam-tenant-model-isolation` - Tenant isolation design
 - `bmad-bam-agent-runtime-architecture` - AI behavior configuration
 

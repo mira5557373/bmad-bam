@@ -1,5 +1,5 @@
 type: workflow
-name: tenant-data-migration
+name: bmad-bam-tenant-data-migration
 displayName: Tenant Data Migration
 description: 'Design and execute tenant data migration between environments or tiers'
 module: bam

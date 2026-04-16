@@ -1,5 +1,5 @@
 type: workflow
-name: tenant-contract-renewal
+name: bmad-bam-tenant-contract-renewal
 displayName: Tenant Contract Renewal
 description: 'Design contract renewal automation with pricing updates'
 module: bam

@@ -1,5 +1,5 @@
 type: workflow
-name: tenant-self-service-reporting
+name: bmad-bam-tenant-self-service-reporting
 displayName: Tenant Self-Service Reporting
 description: "Design tenant self-service custom reporting capabilities. Use when the user requests to 'design tenant reporting' or 'create self-service reports'."
 module: bam

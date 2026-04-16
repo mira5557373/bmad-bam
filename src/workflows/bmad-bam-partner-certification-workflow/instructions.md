@@ -37,7 +37,7 @@ Design a comprehensive ISV/partner certification program for a multi-tenant SaaS
 
 ## Related Workflows
 
-- `bmad-bam-create-master-architecture` - Master architecture defines APIs for partner integration
+- `create-master-architecture` - Master architecture defines APIs for partner integration
 - `bmad-bam-api-gateway-design` - API design informs partner integration requirements
 - `bmad-bam-tenant-onboarding-design` - Partner onboarding follows similar patterns
 - `bmad-bam-marketplace-design` - Partner certification enables marketplace listing

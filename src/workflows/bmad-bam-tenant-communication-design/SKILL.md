@@ -160,7 +160,7 @@ This workflow contributes to:
 
 | Workflow | Relationship | When to Use |
 |----------|--------------|-------------|
-| `bmad-bam-create-master-architecture` | Context | Master architecture defines platform for communication |
+| `create-master-architecture` | Context | Master architecture defines platform for communication |
 | `bmad-bam-ai-model-deprecation` | Uses | Uses communication templates for deprecation notices |
 | `bmad-bam-tenant-onboarding-design` | Related | Onboarding uses welcome notifications |
 

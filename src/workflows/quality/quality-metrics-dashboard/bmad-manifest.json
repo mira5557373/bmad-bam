@@ -1,0 +1,14 @@
+{
+  "module-code": "bam",
+  "capabilities": [{
+    "name": "quality-metrics-dashboard",
+    "menu-code": "QMD",
+    "description": "Design quality metrics dashboard for multi-tenant SaaS monitoring",
+    "supports-headless": true,
+    "phase-name": "5-quality",
+    "after": [],
+    "before": [],
+    "is-required": false,
+    "output-location": "{output_folder}/quality-artifacts"
+  }]
+}

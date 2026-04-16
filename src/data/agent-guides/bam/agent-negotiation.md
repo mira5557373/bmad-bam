@@ -192,7 +192,7 @@ When implementing negotiation:
 
 - `bmad-bam-agent-runtime-architecture` - Configure negotiation framework
 - `bmad-bam-ai-eval-safety-design` - Validate negotiation safety
-- `bmad-bam-create-master-architecture` - Integrate negotiation into platform
+- `create-master-architecture` - Integrate negotiation into platform
 
 ## Related Patterns
 

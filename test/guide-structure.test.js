@@ -177,12 +177,13 @@ describe('Agent Guide Structure Validation', () => {
   });
 
   describe('Guide Count Validation', () => {
-    test('has expected number of agent guides (158-190)', () => {
+    test('has expected number of agent guides (200-250)', () => {
       // Allow variance during development - module may grow
       // Increased from 158-175 to 158-185 after adding billing, analytics, reseller, tenant-hierarchy guides
       // Increased from 158-185 to 158-190 after adding 6 observability guides
-      expect(guideFiles.length).toBeGreaterThanOrEqual(158);
-      expect(guideFiles.length).toBeLessThanOrEqual(190);
+      // Increased from 158-190 to 200-250 after adding 34 domain-specific pattern guides
+      expect(guideFiles.length).toBeGreaterThanOrEqual(200);
+      expect(guideFiles.length).toBeLessThanOrEqual(250);
     });
   });
 });
@@ -237,9 +238,14 @@ describe('Agent Guide Related Workflows Section', () => {
         missing.push(guide + ' (missing section)');
       } else {
         // Check if section has at least one workflow reference
+        // Accept both bmad-bam- prefix (flat workflows) and short names (nested workflows)
         const match = content.match(/## Related Workflows[\s\S]*?(?=##|$)/);
-        if (match && !match[0].includes('bmad-bam-')) {
-          missing.push(guide + ' (empty section)');
+        if (match) {
+          const hasWorkflowRef = match[0].includes('bmad-bam-') ||
+                                 match[0].match(/- `[a-z]+-[a-z]+/); // Short name pattern for nested workflows
+          if (!hasWorkflowRef) {
+            missing.push(guide + ' (empty section)');
+          }
         }
       }
     });

@@ -199,7 +199,7 @@ When implementing MCP server isolation:
 ## Related Workflows
 
 - `bmad-bam-agent-runtime-architecture` - Design MCP integration
-- `bmad-bam-validate-tool-contract` - Verify tool security
+- `validate-tool-contract` - Verify tool security
 - `bmad-bam-security-review` - MCP security review
 
 ## Related Patterns

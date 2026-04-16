@@ -1,5 +1,5 @@
 type: workflow
-name: quarterly-operations-trigger
+name: bmad-bam-quarterly-operations-trigger
 displayName: Quarterly Operations Trigger
 description: 'Scheduled trigger for quarterly operational reviews and audits'
 module: bam

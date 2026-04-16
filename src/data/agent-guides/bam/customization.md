@@ -126,7 +126,7 @@ All extension points are sandboxed and execute with tenant-scoped permissions on
 
 - `bmad-bam-tenant-onboarding-design` - Configure tenant customizations during onboarding
 - `bmad-bam-tenant-model-isolation` - Implement tenant-scoped customization boundaries
-- `bmad-bam-create-master-architecture` - Design customization architecture foundation
+- `create-master-architecture` - Design customization architecture foundation
 
 ## Related Patterns
 

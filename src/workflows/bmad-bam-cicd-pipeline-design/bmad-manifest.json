@@ -6,7 +6,7 @@
     "description": "Design CI/CD pipeline for multi-tenant deployments",
     "supports-headless": true,
     "phase-name": "3-solutioning",
-    "after": ["bmad-bam-create-master-architecture"],
+    "after": ["create-master-architecture"],
     "before": ["bmad-bam-post-deployment-verification"],
     "is-required": false,
     "output-location": "{output_folder}/planning-artifacts/devops"

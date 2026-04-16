@@ -210,7 +210,7 @@ and enable [$Z] in new revenue through platform capabilities."
 ## Integration with BAM Workflows
 
 - `bmad-bam-tenant-onboarding-design` - Onboarding success stories
-- `bmad-bam-create-master-architecture` - Platform capability narratives
+- `create-master-architecture` - Platform capability narratives
 - WDS workflows for storytelling UX patterns
 - PM workflows for feature value articulation
 
@@ -244,5 +244,5 @@ Use the `web_queries` column from pattern registry to search for current best pr
 
 - `bmad-bam-tenant-onboarding-design` - Document onboarding success stories
 - `bmad-bam-tenant-tier-migration` - Capture tier transition narratives
-- `bmad-bam-create-master-architecture` - Articulate platform capability value
+- `create-master-architecture` - Articulate platform capability value
 - `bmad-bam-tenant-analytics-dashboard` - Track ROI proof points

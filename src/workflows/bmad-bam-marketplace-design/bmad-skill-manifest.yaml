@@ -1,5 +1,5 @@
 type: workflow
-name: marketplace-design
+name: bmad-bam-marketplace-design
 displayName: Marketplace Design
 description: "Design marketplace for tenant add-ons and integrations. Use when the user requests to 'design marketplace' or 'create app store'."
 module: bam

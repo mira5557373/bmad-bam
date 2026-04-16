@@ -1,5 +1,5 @@
 type: workflow
-name: migrate-v2
+name: bmad-bam-migrate-v2
 displayName: BAM Migration v2
 description: "Migrate BAM project from v1 (knowledge fragments) to v2 (pattern registry). Use when upgrading existing BAM projects."
 module: bam

@@ -230,7 +230,7 @@ The following templates must be completed before this gate can pass:
 
 - `bmad-bam-ai-agent-debug` - Agent safety debugging
 - `bmad-bam-agent-runtime-architecture` - Runtime safety configuration
-- `bmad-bam-validate-tool-contract` - Tool permission validation
+- `validate-tool-contract` - Tool permission validation
 - `tea-trace` - Formal agent safety verification
 
 ## Web Research Verification

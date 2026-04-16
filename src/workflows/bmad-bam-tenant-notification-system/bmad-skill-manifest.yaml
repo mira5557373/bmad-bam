@@ -1,5 +1,5 @@
 type: workflow
-name: tenant-notification-system
+name: bmad-bam-tenant-notification-system
 displayName: Tenant Notification System
 description: "Design multi-tenant notification and communication system. Use when the user requests to 'design notification system' or 'plan tenant communications'."
 module: bam

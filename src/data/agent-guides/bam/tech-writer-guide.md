@@ -258,7 +258,7 @@ Free tier users can access basic analytics in Settings > Dashboard.
 ## Related Workflows
 
 - `bmad-bam-api-version-release` - Document API version releases and migrations
-- `bmad-bam-define-facade-contract` - Document facade contracts for integration
+- `define-facade-contract` - Document facade contracts for integration
 
 ## Related Patterns
 

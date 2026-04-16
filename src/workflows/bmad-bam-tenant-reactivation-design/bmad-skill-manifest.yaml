@@ -1,5 +1,5 @@
 type: workflow
-name: tenant-reactivation-design
+name: bmad-bam-tenant-reactivation-design
 displayName: Tenant Reactivation Design
 description: 'Design tenant reactivation workflows after suspension or churn'
 module: bam

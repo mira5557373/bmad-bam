@@ -122,7 +122,7 @@ When implementing access control in multi-tenant systems:
 
 - `bmad-bam-tenant-model-isolation` - Design tenant-aware authorization
 - `bmad-bam-security-review` - Validate access control implementation
-- `bmad-bam-validate-foundation` - Verify authorization patterns
+- `validate-foundation` - Verify authorization patterns
 
 ## Related Patterns
 

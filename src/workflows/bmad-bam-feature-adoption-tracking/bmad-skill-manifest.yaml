@@ -1,5 +1,5 @@
 type: workflow
-name: feature-adoption-tracking
+name: bmad-bam-feature-adoption-tracking
 displayName: Feature Adoption Tracking
 description: "Design feature adoption analytics with activation funnels and usage patterns. Use when the user requests to 'design feature tracking' or 'plan adoption analytics'."
 module: bam

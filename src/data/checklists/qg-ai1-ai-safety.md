@@ -309,7 +309,7 @@ For non-critical items that cannot be addressed:
 
 - `bmad-bam-ai-eval-safety-design` - Safety evaluation design
 - `bmad-bam-agent-runtime-architecture` - AI runtime setup
-- `bmad-bam-validate-tool-contract` - Tool permission validation
+- `validate-tool-contract` - Tool permission validation
 - `bmad-bam-ai-agent-debug` - Agent safety debugging
 - `bmad-bam-agent-execution-tracing` - Agent tracing design
 

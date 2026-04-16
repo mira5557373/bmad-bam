@@ -1,5 +1,5 @@
 type: workflow
-name: data-protection
+name: bmad-bam-data-protection
 displayName: Data Protection
 description: Verify data protection controls for multi-tenant AI platforms including encryption, isolation, and privacy
 module: bam

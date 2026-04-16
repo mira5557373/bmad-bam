@@ -169,8 +169,8 @@ When implementing API documentation for multi-tenant systems:
 ## Related Workflows
 
 - `bmad-bam-api-version-release` - API versioning documentation
-- `bmad-bam-define-facade-contract` - Contract-first API design
-- `bmad-bam-evolve-facade-contract` - API evolution documentation
+- `define-facade-contract` - Contract-first API design
+- `evolve-facade-contract` - API evolution documentation
 
 ## Related Patterns
 

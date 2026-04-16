@@ -6,7 +6,7 @@
     "description": "Design complete AI runtime architecture with orchestration framework",
     "supports-headless": true,
     "phase-name": "3-solutioning",
-    "after": ["bmad-bam-validate-foundation"],
+    "after": ["validate-foundation"],
     "before": ["bmad-bam-ai-eval-safety-design"],
     "is-required": false,
     "output-location": "{output_folder}/planning-artifacts",

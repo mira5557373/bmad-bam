@@ -133,9 +133,9 @@ When making feature gating decisions:
 
 ## Related Workflows
 
-- `bmad-bam-create-module-epics` - Create tier-aware epic structure for modules
+- `create-module-epics` - Create tier-aware epic structure for modules
 - `bmad-bam-cross-module-story` - Write stories that span tier boundaries
-- `bmad-bam-requirement-ingestion` - Capture tier requirements from stakeholders
+- `requirement-ingestion` - Capture tier requirements from stakeholders
 
 ## Related Patterns
 

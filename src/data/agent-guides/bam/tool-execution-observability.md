@@ -206,5 +206,5 @@ Use the `web_queries` column from pattern registry to search for current best pr
 ## Related Workflows
 
 - `bmad-bam-agent-runtime-architecture` - Tool registry and execution design
-- `bmad-bam-validate-tool-contract` - Tool contract validation
+- `validate-tool-contract` - Tool contract validation
 - `bmad-bam-ai-agent-debug` - Tool execution debugging

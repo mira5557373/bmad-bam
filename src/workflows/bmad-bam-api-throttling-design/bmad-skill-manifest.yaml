@@ -1,5 +1,5 @@
 type: workflow
-name: api-throttling-design
+name: bmad-bam-api-throttling-design
 displayName: API Throttling Design
 description: "Design API throttling with per-endpoint limits, burst handling, and tier-based quotas. Use when designing request rate management."
 module: bam

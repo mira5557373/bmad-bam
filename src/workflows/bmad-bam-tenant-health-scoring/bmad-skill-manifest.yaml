@@ -1,5 +1,5 @@
 type: workflow
-name: tenant-health-scoring
+name: bmad-bam-tenant-health-scoring
 displayName: Tenant Health Scoring
 description: "Design tenant health scoring algorithm with weighted metrics, composite scores, and predictive indicators. Use when the user requests to 'design health scoring' or 'plan tenant health algorithm'."
 module: bam

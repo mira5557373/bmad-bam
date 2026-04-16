@@ -118,7 +118,7 @@ For non-critical items that cannot be addressed:
 ## Related Workflows
 
 - `bmad-bam-agent-runtime-architecture` - Runtime configuration
-- `bmad-bam-validate-tool-contract` - Tool registry validation
+- `validate-tool-contract` - Tool registry validation
 - `bmad-bam-ai-agent-debug` - Runtime debugging
 
 ## Web Research Verification

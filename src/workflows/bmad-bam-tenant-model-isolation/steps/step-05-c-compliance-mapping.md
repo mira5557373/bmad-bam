@@ -165,4 +165,4 @@ This workflow is the entry workflow for QG-S7. Ensure the following patterns are
 
 ## Next Step
 
-Submit tenant model for validation via `bmad-bam-validate-module` with tenant isolation checklist and QG-S7 verification.
+Submit tenant model for validation via `validate-module` with tenant isolation checklist and QG-S7 verification.

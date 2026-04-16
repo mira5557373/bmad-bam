@@ -228,7 +228,7 @@ Use the `web_queries` column from pattern registry to search for current best pr
 ## Integration with BAM Workflows
 
 - TEA workflows with BAM extension
-- `bmad-bam-validate-foundation` → Foundation tests
+- `validate-foundation` → Foundation tests
 - `bmad-bam-convergence-verification` → Integration tests
 
 ## Related Workflows
@@ -237,4 +237,4 @@ Use the `web_queries` column from pattern registry to search for current best pr
 - `bmad-bam-performance-baseline` - Configure tier-specific load testing
 - `bmad-bam-security-review` - Plan penetration testing for isolation
 - `bmad-bam-tenant-model-isolation` - Define isolation to test
-- `bmad-bam-validate-foundation` - Validate testing coverage requirements
+- `validate-foundation` - Validate testing coverage requirements

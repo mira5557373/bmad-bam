@@ -239,6 +239,6 @@ For current best practices, use the `web_queries` column from the pattern regist
 
 ## Related Workflows
 
-- `bmad-bam-define-facade-contract` - Define module public interfaces and contracts
+- `define-facade-contract` - Define module public interfaces and contracts
 - `bmad-bam-convergence-verification` - Verify contract compatibility across modules
 - `bmad-bam-api-version-release` - Manage API versioning and deprecation

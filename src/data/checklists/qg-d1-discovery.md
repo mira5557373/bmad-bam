@@ -166,9 +166,9 @@ For non-critical items that cannot be addressed:
 
 ## Related Workflows
 
-- `bmad-bam-tenant-requirements-analysis` - Requirements gathering
-- `bmad-bam-requirement-ingestion` - Requirements ingestion
-- `bmad-bam-triage-module-complexity` - Complexity assessment
+- `tenant-requirements-analysis` - Requirements gathering
+- `requirement-ingestion` - Requirements ingestion
+- `triage-module-complexity` - Complexity assessment
 
 **PASS CRITERIA:** All CRITICAL requirements documented with stakeholder sign-off
 **OWNER:** Product Owner / Business Analyst

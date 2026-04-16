@@ -217,7 +217,7 @@
 - `bmad-bam-tenant-onboarding-design` - New tenant provisioning workflows
 - `bmad-bam-tenant-offboarding-design` - Tenant data cleanup and archival
 - `bmad-bam-disaster-recovery-design` - DR failover procedures
-- `bmad-bam-validate-foundation` - Verify migration infrastructure readiness
+- `validate-foundation` - Verify migration infrastructure readiness
 
 ## Related Patterns
 

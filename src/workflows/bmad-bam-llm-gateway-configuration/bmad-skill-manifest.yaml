@@ -1,5 +1,5 @@
 type: workflow
-name: llm-gateway-configuration
+name: bmad-bam-llm-gateway-configuration
 displayName: LLM Gateway Configuration
 description: 'Design LLM provider routing, fallback chains, and cost optimization'
 module: bam

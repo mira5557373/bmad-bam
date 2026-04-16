@@ -87,7 +87,7 @@ When Mary/Saga discovers requirements:
 ## Integration with BAM Workflows
 
 After discovery, route to:
-- `bmad-bam-create-master-architecture` → Foundation design
+- `create-master-architecture` → Foundation design
 - `bmad-bam-tenant-model-isolation` → Isolation strategy
 - `bmad-bam-module-boundary-design` → Context boundaries
 
@@ -133,4 +133,4 @@ Use the `web_queries` column from pattern registry to search for current best pr
 - `bmad-bam-tenant-model-isolation` - Design tenant isolation strategy based on discovery
 - `bmad-bam-tenant-onboarding-design` - Define tenant hierarchy provisioning flows
 - `bmad-bam-tenant-tier-migration` - Handle tier upgrade and downgrade transitions
-- `bmad-bam-create-master-architecture` - Establish foundation for multi-tenant design
+- `create-master-architecture` - Establish foundation for multi-tenant design

@@ -250,7 +250,7 @@ AUDIENCE → CONCERNS → MESSAGE → FORMAT → DEPTH
 ## Integration with BAM Workflows
 
 - `bmad-bam-tenant-model-isolation` - Source for isolation diagrams
-- `bmad-bam-create-master-architecture` - Architecture deck content
+- `create-master-architecture` - Architecture deck content
 - `bmad-bam-tenant-tier-migration` - Tier comparison visuals
 - PM workflows for roadmap presentations
 
@@ -271,7 +271,7 @@ Use the `web_queries` column from pattern registry to search for current best pr
 ## Related Workflows
 
 - `bmad-bam-tenant-model-isolation` - Source isolation diagram content
-- `bmad-bam-create-master-architecture` - Architecture deck foundation
+- `create-master-architecture` - Architecture deck foundation
 - `bmad-bam-tenant-tier-migration` - Tier comparison visual content
 - `bmad-bam-security-review` - Security compliance presentation material
-- `bmad-bam-validate-foundation` - Validate architecture for stakeholder review
+- `validate-foundation` - Validate architecture for stakeholder review

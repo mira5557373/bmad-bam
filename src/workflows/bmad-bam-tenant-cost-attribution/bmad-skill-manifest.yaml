@@ -1,5 +1,5 @@
 type: workflow
-name: tenant-cost-attribution
+name: bmad-bam-tenant-cost-attribution
 displayName: Tenant Cost Attribution
 description: 'Design cost allocation and chargeback for multi-tenant platforms'
 module: bam

@@ -1,5 +1,5 @@
 type: workflow
-name: ai-context-management
+name: bmad-bam-ai-context-management
 displayName: AI Context Management
 description: "Design context window optimization. Use when the user requests to 'optimize context' or 'design context management'."
 module: bam

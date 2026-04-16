@@ -77,7 +77,7 @@ When analyzing competitors, evaluate their isolation approach and AI sophisticat
 
 ## Related Workflows
 
-- `bmad-bam-create-master-architecture` - Market position informs architecture
+- `create-master-architecture` - Market position informs architecture
 - `bmad-bam-tenant-model-isolation` - Competitive isolation requirements
 - `bmad-bam-agent-runtime-architecture` - AI capability differentiation
 

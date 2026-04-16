@@ -342,6 +342,6 @@ Use the `web_queries` column from pattern registry to search for current best pr
 
 ## Related Workflows
 
-- `bmad-bam-create-master-architecture` - Real-time architecture decisions
+- `create-master-architecture` - Real-time architecture decisions
 - `bmad-bam-module-boundary-design` - WebSocket module isolation
 - `bmad-bam-tenant-model-isolation` - Connection isolation strategy

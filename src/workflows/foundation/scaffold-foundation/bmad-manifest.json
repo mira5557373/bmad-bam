@@ -1,0 +1,14 @@
+{
+  "module-code": "bam",
+  "capabilities": [{
+    "name": "scaffold-foundation",
+    "menu-code": "SF",
+    "description": "Scaffold BAM foundation code and infrastructure",
+    "supports-headless": true,
+    "phase-name": "3-solutioning",
+    "after": ["create-master-architecture"],
+    "before": ["validate-foundation"],
+    "is-required": false,
+    "output-location": "{output_folder}/planning-artifacts"
+  }]
+}

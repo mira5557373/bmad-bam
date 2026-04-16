@@ -1,5 +1,5 @@
 type: workflow
-name: validate-patterns
+name: bmad-bam-validate-patterns
 displayName: Validate Pattern Registry
 description: "Validate BAM pattern registry completeness and consistency. Use to verify pattern configuration."
 module: bam

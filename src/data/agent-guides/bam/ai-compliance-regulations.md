@@ -234,7 +234,7 @@
 
 - `bmad-bam-agent-runtime-architecture` - Design AI runtime with compliance controls
 - `bmad-bam-ai-eval-safety-design` - Review AI system safety controls
-- `bmad-bam-validate-tool-contract` - Verify tool governance compliance
+- `validate-tool-contract` - Verify tool governance compliance
 - `bmad-bam-tenant-aware-observability` - Compliance monitoring infrastructure
 - `bmad-bam-security-review` - Security controls for compliance
 

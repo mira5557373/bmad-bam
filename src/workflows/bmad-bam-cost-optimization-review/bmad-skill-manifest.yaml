@@ -1,5 +1,5 @@
 type: workflow
-name: cost-optimization-review
+name: bmad-bam-cost-optimization-review
 displayName: Cost Optimization Review
 description: "Execute cost optimization reviews for multi-tenant AI platform. Use when the user requests to 'review costs' or 'optimize costs'."
 module: bam

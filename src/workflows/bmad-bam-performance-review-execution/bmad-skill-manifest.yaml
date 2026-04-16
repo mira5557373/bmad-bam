@@ -1,5 +1,5 @@
 type: workflow
-name: performance-review-execution
+name: bmad-bam-performance-review-execution
 displayName: Performance Review Execution
 description: "Execute periodic performance reviews for multi-tenant AI platform. Use when the user requests to 'review performance' or 'execute performance review'."
 module: bam

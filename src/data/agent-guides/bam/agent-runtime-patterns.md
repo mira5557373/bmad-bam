@@ -109,7 +109,7 @@ Best for debate and consensus patterns:
 
 - `bmad-bam-agent-runtime-architecture` - Design and configure agent orchestration framework
 - `bmad-bam-ai-eval-safety-design` - Evaluate AI agent safety and runtime constraints
-- `bmad-bam-create-master-architecture` - Integrate agent runtime into platform architecture
+- `create-master-architecture` - Integrate agent runtime into platform architecture
 
 ## Related Patterns
 

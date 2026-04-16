@@ -1,5 +1,5 @@
 type: workflow
-name: dev-trigger
+name: bmad-bam-dev-trigger
 displayName: Development Trigger
 description: 'Event trigger for development workflow gates'
 module: bam

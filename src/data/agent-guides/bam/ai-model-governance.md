@@ -308,7 +308,7 @@
 
 - `bmad-bam-agent-runtime-architecture` - Design AI runtime with model governance
 - `bmad-bam-ai-eval-safety-design` - Review model safety and bias controls
-- `bmad-bam-validate-tool-contract` - Verify model-tool integration governance
+- `validate-tool-contract` - Verify model-tool integration governance
 - `bmad-bam-tenant-aware-observability` - Model monitoring infrastructure
 - `bmad-bam-api-version-release` - Model version release management
 

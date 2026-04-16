@@ -248,9 +248,9 @@ IDENTIFY → MONITOR → ANALYZE → ACT
 
 ## Integration with BAM Workflows
 
-- `bmad-bam-create-master-architecture` - Platform evolution architecture
+- `create-master-architecture` - Platform evolution architecture
 - `bmad-bam-tenant-model-isolation` - Isolation evolution paths
-- `bmad-bam-create-master-architecture` - Feature innovation process
+- `create-master-architecture` - Feature innovation process
 - PM workflows for roadmap and competitive analysis
 
 ## Related Patterns
@@ -269,7 +269,7 @@ Use the `web_queries` column from pattern registry to search for current best pr
 
 ## Related Workflows
 
-- `bmad-bam-create-master-architecture` - Design platform evolution architecture
+- `create-master-architecture` - Design platform evolution architecture
 - `bmad-bam-tenant-tier-migration` - Implement tier progression strategies
 - `bmad-bam-product-analytics-instrumentation` - Build feedback loop analytics
 - `bmad-bam-performance-baseline` - Validate innovation impact on performance

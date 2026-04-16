@@ -1,5 +1,5 @@
 type: workflow
-name: embedding-strategy-design
+name: bmad-bam-embedding-strategy-design
 displayName: Embedding Strategy Design
 description: "Design embedding models and tenant isolation for vector search. Use when the user requests to 'design embedding strategy' or 'create embedding architecture'."
 module: bam

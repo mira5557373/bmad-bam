@@ -320,7 +320,7 @@ Use the `web_queries` column from pattern registry to search for current best pr
 
 ## Related Workflows
 
-- `bmad-bam-create-master-architecture` - Define cluster topology for tenants
+- `create-master-architecture` - Define cluster topology for tenants
 - `bmad-bam-tenant-model-isolation` - Map tenant model to Kubernetes isolation
 - `bmad-bam-tenant-network-isolation-design` - Verify Kubernetes isolation implementation
 - `bmad-bam-tenant-onboarding-design` - Automate namespace provisioning

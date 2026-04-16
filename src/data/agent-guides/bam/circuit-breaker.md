@@ -186,7 +186,7 @@ When implementing circuit breakers:
 
 ## Related Workflows
 
-- `bmad-bam-create-master-architecture` - Design resilience patterns
+- `create-master-architecture` - Design resilience patterns
 - `bmad-bam-convergence-verification` - Verify resilience
 - `bmad-bam-disaster-recovery-design` - Failure handling
 

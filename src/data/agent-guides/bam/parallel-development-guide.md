@@ -221,8 +221,8 @@ Use the `web_queries` column from pattern registry to search for current best pr
 
 ## Related Workflows
 
-- `bmad-bam-define-facade-contract` - Define stable interfaces for parallel team work
-- `bmad-bam-create-module-architecture` - Establish module boundaries for team ownership
+- `define-facade-contract` - Define stable interfaces for parallel team work
+- `create-module-architecture` - Establish module boundaries for team ownership
 - `bmad-bam-convergence-verification` - Verify integration from parallel development streams
 - `bmad-bam-chaos-engineering-design` - Validate cross-module integration from multiple teams
-- `bmad-bam-validate-foundation` - Ensure code quality across parallel development
+- `validate-foundation` - Ensure code quality across parallel development

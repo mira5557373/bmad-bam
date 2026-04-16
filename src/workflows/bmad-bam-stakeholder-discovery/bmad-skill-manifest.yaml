@@ -1,5 +1,5 @@
 type: workflow
-name: stakeholder-discovery
+name: bmad-bam-stakeholder-discovery
 displayName: Stakeholder Discovery
 description: "Discover and document key stakeholders for multi-tenant SaaS platform initiatives. Use when the user requests to 'identify stakeholders' or 'create stakeholder map'."
 module: bam

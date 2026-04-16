@@ -6,7 +6,7 @@
     "description": "Design auto-scaling for multi-tenant workloads. Use when the user requests to 'design auto-scaling' or 'configure scaling policies'.",
     "supports-headless": true,
     "phase-name": "3-solutioning",
-    "after": ["bmad-bam-create-master-architecture"],
+    "after": ["create-master-architecture"],
     "before": [],
     "is-required": false,
     "output-location": "{output_folder}/planning-artifacts/infrastructure"

@@ -1,5 +1,5 @@
 type: workflow
-name: usage-alerts-design
+name: bmad-bam-usage-alerts-design
 displayName: Usage Alerts Design
 description: "Design usage threshold alerts and notification system. Use when the user requests to 'design usage alerts' or 'configure billing notifications'."
 module: bam

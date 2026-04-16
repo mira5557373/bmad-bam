@@ -1,0 +1,14 @@
+{
+  "module-code": "bam",
+  "capabilities": [{
+    "name": "requirement-ingestion",
+    "menu-code": "RI",
+    "description": "Decompose large feature catalogs into module definitions",
+    "supports-headless": true,
+    "phase-name": "2-planning",
+    "after": [],
+    "before": ["triage-module-complexity", "create-master-architecture"],
+    "is-required": false,
+    "output-location": "{output_folder}/planning-artifacts"
+  }]
+}

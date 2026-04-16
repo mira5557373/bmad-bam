@@ -1,5 +1,5 @@
 type: workflow
-name: tenant-communication-design
+name: bmad-bam-tenant-communication-design
 displayName: Tenant Communication Design
 description: "Design tenant notification templates and communication workflows. Use when the user requests to 'design notifications' or 'create communication templates'."
 module: bam

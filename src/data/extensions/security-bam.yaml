@@ -10,7 +10,7 @@ agent:
 
 menu:
   - trigger: bam-security-prerequisites
-    action: '#bam-prerequisites-prompt'
+    action: '#bam-security-prerequisites-prompt'
     description: Check BAM Prerequisites
   - trigger: bam-security-context
     action: '#load-security-context-prompt'
@@ -108,7 +108,7 @@ menu:
     description: Load BAM API key management guide
 
 prompts:
-  - id: bam-prerequisites-prompt
+  - id: bam-security-prerequisites-prompt
     content: |
       ## BAM Prerequisites Check
 

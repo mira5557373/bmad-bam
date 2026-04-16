@@ -1,5 +1,5 @@
 type: workflow
-name: change-management-process
+name: bmad-bam-change-management-process
 displayName: Change Management Process
 description: "Design change management with tenant impact assessment. Use when the user requests to 'design change management' or 'plan change control'."
 module: bam

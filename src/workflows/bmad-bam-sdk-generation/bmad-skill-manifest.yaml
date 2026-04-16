@@ -1,5 +1,5 @@
 type: workflow
-name: sdk-generation
+name: bmad-bam-sdk-generation
 displayName: SDK Generation Pipeline
 description: "Generate SDKs for multiple programming languages from OpenAPI spec. Use when the user requests to 'generate SDK' or 'create client libraries'."
 module: bam

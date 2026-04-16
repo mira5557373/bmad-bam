@@ -1,0 +1,216 @@
+#!/usr/bin/env node
+/**
+ * BAM Extension to BMAD .customize.yaml Converter
+ *
+ * Converts BAM extension YAML files to BMAD's native .customize.yaml format.
+ * This enables BAM capabilities to be automatically merged with base agents.
+ *
+ * Usage: node scripts/generate-customize-files.js
+ *
+ * Features:
+ * - Cleans output directory before generation (prevents duplicates)
+ * - Merges multiple extensions targeting the same agent
+ * - Deduplicates menu items and prompts by trigger/id
+ */
+
+const fs = require('fs');
+const path = require('path');
+const yaml = require('js-yaml');
+
+// Configuration
+const EXTENSIONS_DIR = path.join(__dirname, '../src/data/extensions');
+const OUTPUT_DIR = path.join(__dirname, '../src/_config/agents');
+
+/**
+ * Clean output directory before generation
+ */
+function cleanOutputDirectory() {
+  if (fs.existsSync(OUTPUT_DIR)) {
+    const files = fs.readdirSync(OUTPUT_DIR).filter(f => f.endsWith('.customize.yaml'));
+    for (const file of files) {
+      fs.unlinkSync(path.join(OUTPUT_DIR, file));
+    }
+    console.log(`Cleaned ${files.length} existing customize files`);
+  }
+}
+
+// Clean and ensure output directory exists
+cleanOutputDirectory();
+if (!fs.existsSync(OUTPUT_DIR)) {
+  fs.mkdirSync(OUTPUT_DIR, { recursive: true });
+}
+
+/**
+ * Convert BAM extension to BMAD customize format
+ */
+function convertExtension(extensionPath) {
+  const content = fs.readFileSync(extensionPath, 'utf8');
+  const extension = yaml.load(content);
+
+  // Extract the base agent name from extends field
+  const extendsAgent = extension.agent?.metadata?.extends;
+  if (!extendsAgent) {
+    console.warn(`Skipping ${extensionPath}: no 'extends' field found`);
+    return null;
+  }
+
+  const description = extension.agent?.metadata?.description || '';
+  const extensionName = path.basename(extensionPath, '.yaml');
+
+  // Build customize object
+  const customize = {
+    // Add memories to indicate BAM is installed
+    memories: [
+      `BAM module installed - ${description}`,
+      'Multi-tenant SaaS architecture capabilities enabled'
+    ],
+    // Copy menu items (APPENDS to base agent)
+    menu: extension.menu || [],
+    // Copy prompts (APPENDS to base agent)
+    prompts: extension.prompts || []
+  };
+
+  // Generate header comment
+  const header = `# BAM Extension for ${extendsAgent}
+# Auto-generated from: ${extensionName}.yaml
+# ${description}
+#
+# This file uses BMAD's native customization system.
+# Menu items and prompts APPEND to the base agent's capabilities.
+
+`;
+
+  return {
+    agentName: extendsAgent,
+    content: header + yaml.dump(customize, { lineWidth: -1 }),
+    extensionName
+  };
+}
+
+/**
+ * Process all extensions in the directory
+ */
+function processAllExtensions() {
+  const files = fs.readdirSync(EXTENSIONS_DIR)
+    .filter(f => f.endsWith('.yaml') || f.endsWith('.yml'));
+
+  console.log(`Found ${files.length} extension files to convert`);
+
+  const results = {
+    success: [],
+    skipped: [],
+    errors: []
+  };
+
+  for (const file of files) {
+    const extensionPath = path.join(EXTENSIONS_DIR, file);
+
+    try {
+      const result = convertExtension(extensionPath);
+
+      if (!result) {
+        results.skipped.push(file);
+        continue;
+      }
+
+      // Write customize file
+      const outputPath = path.join(OUTPUT_DIR, `${result.agentName}.customize.yaml`);
+
+      // Check if file already exists - merge if so
+      if (fs.existsSync(outputPath)) {
+        console.log(`  Merging into existing: ${result.agentName}.customize.yaml`);
+        const existing = yaml.load(fs.readFileSync(outputPath, 'utf8'));
+
+        // Parse new content
+        const newData = yaml.load(result.content);
+
+        // Merge and deduplicate memories
+        const allMemories = [...(existing.memories || []), ...(newData.memories || [])];
+        const uniqueMemories = [...new Set(allMemories)];
+
+        // Merge and deduplicate menu items by trigger
+        const existingMenu = existing.menu || [];
+        const newMenu = newData.menu || [];
+        const seenTriggers = new Set(existingMenu.map(m => m.trigger));
+        const uniqueMenu = [...existingMenu];
+        for (const item of newMenu) {
+          if (!seenTriggers.has(item.trigger)) {
+            uniqueMenu.push(item);
+            seenTriggers.add(item.trigger);
+          }
+        }
+
+        // Merge and deduplicate prompts by id
+        const existingPrompts = existing.prompts || [];
+        const newPrompts = newData.prompts || [];
+        const seenIds = new Set(existingPrompts.map(p => p.id));
+        const uniquePrompts = [...existingPrompts];
+        for (const prompt of newPrompts) {
+          if (!seenIds.has(prompt.id)) {
+            uniquePrompts.push(prompt);
+            seenIds.add(prompt.id);
+          }
+        }
+
+        const merged = {
+          memories: uniqueMemories,
+          menu: uniqueMenu,
+          prompts: uniquePrompts
+        };
+
+        // Generate new header
+        const header = `# BAM Extensions for ${result.agentName}
+# Auto-generated by generate-customize-files.js
+# Multiple BAM extensions merged into this file
+#
+# This file uses BMAD's native customization system.
+# Menu items and prompts APPEND to the base agent's capabilities.
+
+`;
+        fs.writeFileSync(outputPath, header + yaml.dump(merged, { lineWidth: -1 }));
+      } else {
+        fs.writeFileSync(outputPath, result.content);
+      }
+
+      results.success.push({
+        extension: file,
+        agent: result.agentName,
+        output: `${result.agentName}.customize.yaml`
+      });
+
+      console.log(`  Converted: ${file} -> ${result.agentName}.customize.yaml`);
+
+    } catch (error) {
+      results.errors.push({
+        file,
+        error: error.message
+      });
+      console.error(`  Error processing ${file}: ${error.message}`);
+    }
+  }
+
+  // Summary
+  console.log('\n=== Conversion Summary ===');
+  console.log(`Success: ${results.success.length}`);
+  console.log(`Skipped: ${results.skipped.length}`);
+  console.log(`Errors: ${results.errors.length}`);
+
+  if (results.errors.length > 0) {
+    console.log('\nErrors:');
+    results.errors.forEach(e => console.log(`  - ${e.file}: ${e.error}`));
+  }
+
+  // List output files
+  const outputFiles = fs.readdirSync(OUTPUT_DIR).filter(f => f.endsWith('.customize.yaml'));
+  console.log(`\nGenerated ${outputFiles.length} customize files:`);
+  outputFiles.forEach(f => console.log(`  - ${f}`));
+
+  return results;
+}
+
+// Run if called directly
+if (require.main === module) {
+  processAllExtensions();
+}
+
+module.exports = { convertExtension, processAllExtensions };

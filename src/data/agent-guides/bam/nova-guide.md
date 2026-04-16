@@ -238,7 +238,7 @@ Use this framework to select the appropriate AI runtime for your multi-tenant pl
 
 - `bmad-bam-agent-runtime-architecture` - Design AI agent runtime architectures
 - `bmad-bam-ai-eval-safety-design` - Design AI evaluation and safety mechanisms
-- `bmad-bam-validate-tool-contract` - Validate tool contracts for agent actions
+- `validate-tool-contract` - Validate tool contracts for agent actions
 
 ## Related Patterns
 

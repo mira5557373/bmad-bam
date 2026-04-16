@@ -1,5 +1,5 @@
 type: workflow
-name: data-reconciliation-dr
+name: bmad-bam-data-reconciliation-dr
 displayName: Data Reconciliation DR
 description: "Validate data integrity and reconciliation after DR failover events. Use when the user requests to 'design data reconciliation' or 'verify DR data integrity'."
 module: bam

@@ -1,5 +1,5 @@
 type: workflow
-name: ai-security
+name: bmad-bam-ai-security
 displayName: AI Security Audit
 description: 'Comprehensive security audit for AI/LLM systems including model security and inference protection'
 module: bam

@@ -171,8 +171,8 @@ Use this decision matrix when evaluating architectural options for multi-tenant 
 
 ## Related Workflows
 
-- `bmad-bam-create-master-architecture` - Create the frozen master architecture document
-- `bmad-bam-create-module-architecture` - Design individual module architectures
+- `create-master-architecture` - Create the frozen master architecture document
+- `create-module-architecture` - Design individual module architectures
 - `bmad-bam-module-boundary-design` - Define clear boundaries between modules
 
 ## Related Patterns

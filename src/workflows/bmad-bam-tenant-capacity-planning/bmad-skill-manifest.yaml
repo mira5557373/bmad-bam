@@ -1,5 +1,5 @@
 type: workflow
-name: tenant-capacity-planning
+name: bmad-bam-tenant-capacity-planning
 displayName: Tenant Capacity Planning
 description: 'Design capacity forecasting and resource planning per tenant'
 module: bam

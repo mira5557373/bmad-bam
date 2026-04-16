@@ -1,5 +1,5 @@
 type: workflow
-name: security-audit-execution
+name: bmad-bam-security-audit-execution
 displayName: Security Audit Execution
 description: "Execute quarterly security audits including access control review, vulnerability assessment, and compliance verification. Use for scheduled security assessments."
 module: bam

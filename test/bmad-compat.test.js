@@ -560,12 +560,13 @@ describe('BMAD Method Compatibility', () => {
   });
 
   describe('Core Workflows Have bmad-manifest.json', () => {
+    // Note: Nested workflows use short names, flat workflows use full bmad-bam-* names
     const coreWorkflows = [
       'foundation/create-master-architecture',
       'foundation/validate-foundation',
-      'convergence-verification',
+      'bmad-bam-convergence-verification',
       'integration/define-facade-contract',
-      'agent-runtime-architecture'
+      'bmad-bam-agent-runtime-architecture'
     ];
 
     test('core workflows have bmad-manifest.json for dependency chains', () => {

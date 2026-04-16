@@ -10,7 +10,7 @@ agent:
 
 menu:
   - trigger: bam-devops-prerequisites
-    action: '#bam-prerequisites-prompt'
+    action: '#bam-devops-prerequisites-prompt'
     description: Check BAM Prerequisites
   - trigger: bam-devops-context
     action: '#load-devops-context-prompt'
@@ -114,7 +114,7 @@ menu:
     description: Load BAM sandbox provisioning guide
 
 prompts:
-  - id: bam-prerequisites-prompt
+  - id: bam-devops-prerequisites-prompt
     content: |
       ## BAM Prerequisites Check
 

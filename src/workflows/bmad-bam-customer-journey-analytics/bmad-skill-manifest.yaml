@@ -1,5 +1,5 @@
 type: workflow
-name: customer-journey-analytics
+name: bmad-bam-customer-journey-analytics
 displayName: Customer Journey Analytics
 description: "Design customer journey tracking with touchpoint analysis and conversion optimization. Use when the user requests to 'design journey analytics' or 'plan customer journey tracking'."
 module: bam

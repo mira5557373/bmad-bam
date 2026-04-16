@@ -261,6 +261,6 @@ Use the `web_queries` column from pattern registry to search for current best pr
 
 ## Related Workflows
 
-- `bmad-bam-create-master-architecture` - Scaling architecture decisions
-- `bmad-bam-validate-foundation` - Scaling readiness verification
+- `create-master-architecture` - Scaling architecture decisions
+- `validate-foundation` - Scaling readiness verification
 - `bmad-bam-tenant-aware-observability` - Scaling metrics setup

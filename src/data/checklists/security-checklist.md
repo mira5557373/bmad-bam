@@ -474,7 +474,7 @@ For non-critical items that cannot be addressed:
 
 - `bmad-bam-security-audit-execution` - Comprehensive security audit
 - `bmad-bam-ai-agent-debug` - Agent safety debugging
-- `bmad-bam-validate-tool-contract` - Tool permission validation
+- `validate-tool-contract` - Tool permission validation
 - `bmad-bam-tenant-model-isolation` - Tenant isolation design
 - `bmad-bam-convergence-verification` - Integration security
 

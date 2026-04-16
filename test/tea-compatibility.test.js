@@ -373,7 +373,8 @@ describe('TEA Checklist Format Tests', () => {
 
 describe('TEA Handoff Documentation Tests', () => {
   describe('convergence-verification Workflow Mentions tea-trace Handoff', () => {
-    const convergenceWorkflowDir = path.join(WORKFLOWS_DIR, 'convergence-verification');
+    // Note: convergence-verification is a FLAT workflow (not nested), so uses full name
+    const convergenceWorkflowDir = path.join(WORKFLOWS_DIR, 'bmad-bam-convergence-verification');
 
     test('convergence-verification workflow directory exists', () => {
       expect(fs.existsSync(convergenceWorkflowDir)).toBe(true);

@@ -1,5 +1,5 @@
 type: workflow
-name: ai-ab-testing-design
+name: bmad-bam-ai-ab-testing-design
 displayName: AI A/B Testing Design
 description: "Design A/B testing framework for AI models and prompts. Use when the user requests to 'design AI A/B testing' or 'create prompt testing framework'."
 module: bam

@@ -99,7 +99,7 @@ Every provisioning operation needs:
 - `bmad-bam-tenant-onboarding-design` → Provisioning automation
 - `bmad-bam-tenant-offboarding-design` → Cleanup automation
 - `bmad-bam-tenant-aware-observability` → Monitoring design
-- `bmad-bam-create-master-architecture` → Infrastructure decisions
+- `create-master-architecture` → Infrastructure decisions
 
 ---
 

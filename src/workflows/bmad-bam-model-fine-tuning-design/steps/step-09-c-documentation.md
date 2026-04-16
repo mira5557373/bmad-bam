@@ -213,7 +213,7 @@ Select an option:
 #### If 'C' (Continue):
 - Save all documentation to output location
 - Update frontmatter `stepsCompleted: [1, 2, 3, 4, 5, 6, 7, 8, 9]`
-- Submit fine-tuning pipeline design for validation via `bmad-bam-validate-module`
+- Submit fine-tuning pipeline design for validation via `validate-module`
 
 ---
 
@@ -242,4 +242,4 @@ Select an option:
 
 ## Next Step
 
-Submit fine-tuning pipeline design for validation via `bmad-bam-validate-module`.
+Submit fine-tuning pipeline design for validation via `validate-module`.

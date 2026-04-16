@@ -1,5 +1,5 @@
 type: workflow
-name: tenant-merge-acquisition
+name: bmad-bam-tenant-merge-acquisition
 displayName: Tenant Merge Acquisition
 description: 'Design tenant consolidation workflows for M&A scenarios'
 module: bam

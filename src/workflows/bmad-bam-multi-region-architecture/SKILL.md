@@ -113,7 +113,7 @@ This workflow contributes to:
 
 ## Related Workflows
 
-- `bmad-bam-create-master-architecture` - Regional decisions inform master architecture
+- `create-master-architecture` - Regional decisions inform master architecture
 - `bmad-bam-tenant-model-isolation` - Data residency affects tenant isolation
 - `bmad-bam-disaster-recovery-design` - Failover design coordination
 

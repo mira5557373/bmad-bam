@@ -37,7 +37,7 @@ Design a comprehensive tenant self-service reporting capability for a multi-tena
 
 ## Related Workflows
 
-- `bmad-bam-create-master-architecture` - Master architecture defines data sources for reporting
+- `create-master-architecture` - Master architecture defines data sources for reporting
 - `bmad-bam-tenant-model-isolation` - Tenant isolation patterns affect report data access
 - `bmad-bam-tenant-aware-observability` - Observability data may feed into tenant reports
 - `bmad-bam-tenant-analytics-dashboard` - Dashboard design complements reporting

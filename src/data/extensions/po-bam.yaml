@@ -10,7 +10,7 @@ agent:
 
 menu:
   - trigger: bam-po-prerequisites
-    action: '#bam-prerequisites-prompt'
+    action: '#bam-po-prerequisites-prompt'
     description: Check BAM Prerequisites
   - trigger: bam-po-context
     action: '#load-po-context-prompt'
@@ -29,7 +29,7 @@ menu:
     description: Conduct web research for product owner decisions
 
 prompts:
-  - id: bam-prerequisites-prompt
+  - id: bam-po-prerequisites-prompt
     content: |
       ## BAM Prerequisites Check
 

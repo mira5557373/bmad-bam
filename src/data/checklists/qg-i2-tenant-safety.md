@@ -103,7 +103,7 @@ For non-critical items that cannot be addressed:
 ## Related Workflows
 
 - `bmad-bam-tenant-model-isolation` - Isolation pattern audit
-- `bmad-bam-validate-module` - Module-level tenant checks (QG-M2)
+- `validate-module` - Module-level tenant checks (QG-M2)
 - `tea-trace` - Formal tenant safety verification
 
 ## Required Templates

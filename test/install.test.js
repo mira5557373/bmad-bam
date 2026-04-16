@@ -162,7 +162,7 @@ describe('File Counts', () => {
     expect(checklists.length).toBe(36);
   });
 
-  test('has 189 agent guides', () => {
+  test('has 223 agent guides', () => {
     const guidesDir = path.join(SRC_DIR, 'data', 'agent-guides', 'bam');
     const guides = fs.readdirSync(guidesDir)
       .filter(f => f.endsWith('.md'));
@@ -176,6 +176,7 @@ describe('File Counts', () => {
     // rag-observability.md, tool-execution-observability.md, agent-tracing.md,
     // vector-store-observability.md, embedding-observability.md, context-window-observability.md
     // Increased to 189 after adding tenant-data-anonymization.md
-    expect(guides.length).toBe(189);
+    // Increased to 223 after adding 34 domain-specific pattern guides
+    expect(guides.length).toBe(223);
   });
 });

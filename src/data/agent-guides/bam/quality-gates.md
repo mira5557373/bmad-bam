@@ -155,10 +155,10 @@ When running gate validations:
 
 ## Related Workflows
 
-- `bmad-bam-validate-foundation` - Execute QG-F1 validation
-- `bmad-bam-validate-module` - Execute QG-M1, QG-M2, QG-M3 validations
+- `validate-foundation` - Execute QG-F1 validation
+- `validate-module` - Execute QG-M1, QG-M2, QG-M3 validations
 - `bmad-bam-convergence-verification` - Execute QG-I1 validation
-- `bmad-bam-create-master-architecture` - Artifacts validated by QG-F1
+- `create-master-architecture` - Artifacts validated by QG-F1
 - `bmad-bam-tenant-model-isolation` - Artifacts validated by QG-M2
 - `bmad-bam-agent-runtime-architecture` - Artifacts validated by QG-M3
 

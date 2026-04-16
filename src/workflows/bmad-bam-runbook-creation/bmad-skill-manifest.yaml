@@ -1,5 +1,5 @@
 type: workflow
-name: runbook-creation
+name: bmad-bam-runbook-creation
 displayName: Runbook Creation
 description: Create comprehensive operational runbooks for multi-tenant AI platform operations
 module: bam

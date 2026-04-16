@@ -1,0 +1,15 @@
+{
+  "module-code": "bam",
+  "capabilities": [{
+    "name": "validate-module",
+    "menu-code": "VM",
+    "description": "Validate module architecture against master architecture",
+    "supports-headless": true,
+    "phase-name": "3-solutioning",
+    "after": ["create-module-architecture"],
+    "before": ["bmad-bam-convergence-verification"],
+    "is-required": true,
+    "output-location": "{output_folder}/planning-artifacts",
+    "qualityGates": ["QG-M1", "QG-M2", "QG-M3"]
+  }]
+}

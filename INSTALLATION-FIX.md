@@ -72,7 +72,7 @@ After fix, verify data/ directory exists:
 ls _bmad/bmad-bam/data/
 # Should show: agent-guides/, checklists/, extensions/, templates/, *.csv
 
-ls _bmad/bmad-bam/data/agent-guides/bam/ | wc -l  # Should be 189+
+ls _bmad/bmad-bam/data/agent-guides/bam/ | wc -l  # Should be 223+
 ls _bmad/bmad-bam/data/templates/ | wc -l         # Should be 456+
 ls _bmad/bmad-bam/data/checklists/ | wc -l        # Should be 37+
 ls _bmad/bmad-bam/data/extensions/ | wc -l        # Should be 32+

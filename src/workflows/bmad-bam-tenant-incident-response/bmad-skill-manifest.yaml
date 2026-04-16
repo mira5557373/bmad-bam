@@ -1,5 +1,5 @@
 type: workflow
-name: tenant-incident-response
+name: bmad-bam-tenant-incident-response
 displayName: Tenant Incident Response
 description: 'Design tenant-isolated incident handling procedures'
 module: bam

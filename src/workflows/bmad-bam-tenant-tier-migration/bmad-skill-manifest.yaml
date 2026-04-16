@@ -1,5 +1,5 @@
 type: workflow
-name: tenant-tier-migration
+name: bmad-bam-tenant-tier-migration
 displayName: Tenant Tier Migration
 description: 'Design and execute tenant tier upgrades and downgrades'
 module: bam

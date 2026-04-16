@@ -85,7 +85,7 @@ For non-critical items that cannot be addressed:
 
 1. **Attempt 1:** Address identified integration gaps (target: 1-2 days)
    - Review failed checks and identify root cause (facade mismatch, event schema drift, dependency violation)
-   - Run `bmad-bam-facade-mismatch-recovery` workflow for contract issues
+   - Run `facade-mismatch-recovery` workflow for contract issues
    - Re-validate affected cross-module journeys
    - Re-run QG-I1 validation
    - **Lock passed categories**
@@ -108,7 +108,7 @@ For non-critical items that cannot be addressed:
 
 | Category | Immediate Action | Escalation Trigger |
 |----------|------------------|-------------------|
-| Facade Contract Stability | Run `bmad-bam-facade-mismatch-recovery` workflow; verify contract versioning and migration paths | Breaking changes detected without migration path |
+| Facade Contract Stability | Run `facade-mismatch-recovery` workflow; verify contract versioning and migration paths | Breaking changes detected without migration path |
 | Cross-Module Journey Integration | Review dependency graph for circular dependencies; verify facade-only communication | Module depends on another module's internals |
 | Event Flow Verification | Audit event schemas for backward compatibility; configure dead-letter handling | Breaking event schema change without major version |
 | Data Consistency | Test saga compensations; document eventual consistency windows | Cross-module transaction failures or data corruption |
@@ -116,9 +116,9 @@ For non-critical items that cannot be addressed:
 
 ## Related Workflows
 
-- `bmad-bam-facade-mismatch-recovery` - Contract alignment issues
+- `facade-mismatch-recovery` - Contract alignment issues
 - `bmad-bam-convergence-verification` - Full re-validation
-- `bmad-bam-define-facade-contract` - Contract redesign if needed
+- `define-facade-contract` - Contract redesign if needed
 
 ## Required Templates
 

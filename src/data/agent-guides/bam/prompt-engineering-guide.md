@@ -203,7 +203,7 @@ prompt_template:
 
 - `bmad-bam-agent-runtime-architecture` - Prompt integration with agent framework
 - `bmad-bam-ai-agent-debug` - Debug prompt-related issues
-- `bmad-bam-create-module-architecture` - AI module design
+- `create-module-architecture` - AI module design
 
 ## Related Patterns
 

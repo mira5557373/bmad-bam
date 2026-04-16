@@ -1,5 +1,5 @@
 type: workflow
-name: openapi-spec-management
+name: bmad-bam-openapi-spec-management
 displayName: OpenAPI Spec Management
 description: "Design OpenAPI specification lifecycle management. Use when the user requests to 'manage API specs' or 'design API documentation workflow'."
 module: bam

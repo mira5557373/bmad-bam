@@ -1,5 +1,5 @@
 type: workflow
-name: prompt-versioning-management
+name: bmad-bam-prompt-versioning-management
 displayName: Prompt Versioning Management
 description: "Design prompt versioning, A/B testing, and rollback strategies. Use when the user requests to 'design prompt versioning' or 'manage prompt lifecycle'."
 module: bam

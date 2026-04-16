@@ -211,5 +211,5 @@ Use the `web_queries` column from pattern registry to search for current best pr
 ## Related Workflows
 
 - `bmad-bam-tenant-aware-observability` - Full observability design workflow
-- `bmad-bam-validate-foundation` - Verify observability implementation
-- `bmad-bam-create-master-architecture` - Architecture-level observability decisions
+- `validate-foundation` - Verify observability implementation
+- `create-master-architecture` - Architecture-level observability decisions

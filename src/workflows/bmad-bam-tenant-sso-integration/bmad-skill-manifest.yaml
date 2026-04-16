@@ -1,5 +1,5 @@
 type: workflow
-name: tenant-sso-integration
+name: bmad-bam-tenant-sso-integration
 displayName: Tenant SSO Integration
 description: "Design enterprise SSO integration with SAML/OIDC, IdP provisioning, and session management. Use when designing tenant authentication."
 module: bam

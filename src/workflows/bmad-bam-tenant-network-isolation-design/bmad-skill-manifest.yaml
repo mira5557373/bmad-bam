@@ -1,5 +1,5 @@
 type: workflow
-name: tenant-network-isolation-design
+name: bmad-bam-tenant-network-isolation-design
 displayName: Tenant Network Isolation Design
 description: "Design network-level tenant isolation using VPC and security groups. Use when the user requests to 'design network isolation' or 'configure VPC security'."
 module: bam

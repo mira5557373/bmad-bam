@@ -1,5 +1,5 @@
 type: workflow
-name: rbac-abac-design
+name: bmad-bam-rbac-abac-design
 displayName: RBAC/ABAC Design
 description: "Design role-based and attribute-based access control for multi-tenant platforms. Use when the user requests to 'design access control' or 'implement RBAC/ABAC'."
 module: bam

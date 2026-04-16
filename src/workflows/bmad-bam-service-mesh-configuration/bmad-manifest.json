@@ -6,7 +6,7 @@
     "description": "Design service mesh for multi-tenant microservices. Use when the user requests to 'design service mesh' or 'configure mesh networking'.",
     "supports-headless": true,
     "phase-name": "3-solutioning",
-    "after": ["bmad-bam-create-master-architecture"],
+    "after": ["create-master-architecture"],
     "before": [],
     "is-required": false,
     "output-location": "{output_folder}/planning-artifacts/infrastructure"

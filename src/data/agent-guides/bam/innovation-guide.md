@@ -205,7 +205,7 @@ Innovation includes knowing when to stop:
 
 ## Related Workflows
 
-- `bmad-bam-tenant-requirements-analysis` - Analyze tenant requirements for innovation opportunities
+- `tenant-requirements-analysis` - Analyze tenant requirements for innovation opportunities
 - `bmad-bam-agent-runtime-architecture` - Design AI agent runtime architectures
 
 ## Related Patterns

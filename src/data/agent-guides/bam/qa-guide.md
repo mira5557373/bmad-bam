@@ -212,8 +212,8 @@ Use this matrix to prioritize testing efforts across multi-tenant scenarios:
 
 ## Related Workflows
 
-- `bmad-bam-validate-foundation` - Validate foundation against QG-F1 quality gate
-- `bmad-bam-validate-module` - Validate module against QG-M1/M2/M3 quality gates
+- `validate-foundation` - Validate foundation against QG-F1 quality gate
+- `validate-module` - Validate module against QG-M1/M2/M3 quality gates
 - `bmad-bam-convergence-verification` - Verify convergence across module boundaries
 
 ## Related Patterns

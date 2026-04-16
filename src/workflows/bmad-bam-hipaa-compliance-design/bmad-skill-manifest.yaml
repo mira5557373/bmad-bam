@@ -1,5 +1,5 @@
 type: workflow
-name: hipaa-compliance-design
+name: bmad-bam-hipaa-compliance-design
 displayName: HIPAA Compliance Design
 description: "Design HIPAA controls and BAA management for healthcare data protection. Use when the user requests to 'design HIPAA compliance', 'setup PHI protection', or 'manage business associate agreements'."
 module: bam

@@ -211,8 +211,8 @@ Protect domain from external concerns.
 ## Related Workflows
 
 - `bmad-bam-module-boundary-design` - Design module boundaries
-- `bmad-bam-define-facade-contract` - Define module interfaces
-- `bmad-bam-create-module-architecture` - Module architecture design
+- `define-facade-contract` - Define module interfaces
+- `create-module-architecture` - Module architecture design
 
 ## Related Patterns
 

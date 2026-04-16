@@ -212,8 +212,8 @@ Design contracts that support tier-based functionality:
 
 ## Related Workflows
 
-- `bmad-bam-define-facade-contract` - Define public facade contracts between modules
-- `bmad-bam-evolve-facade-contract` - Evolve existing facade contracts with versioning
+- `define-facade-contract` - Define public facade contracts between modules
+- `evolve-facade-contract` - Evolve existing facade contracts with versioning
 - `bmad-bam-convergence-verification` - Verify convergence across module integrations
 
 ## Related Patterns

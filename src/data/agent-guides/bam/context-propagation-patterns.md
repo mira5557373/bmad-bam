@@ -217,6 +217,6 @@ Use the `web_queries` column from pattern registry to search for current best pr
 ## Related Workflows
 
 - `bmad-bam-tenant-model-isolation` - Define context propagation requirements for tenant isolation
-- `bmad-bam-create-module-architecture` - Design context flow across module boundaries
+- `create-module-architecture` - Design context flow across module boundaries
 - `bmad-bam-chaos-engineering-design` - Test context propagation in distributed scenarios
-- `bmad-bam-define-facade-contract` - Include TenantContext in all facade method signatures
+- `define-facade-contract` - Include TenantContext in all facade method signatures

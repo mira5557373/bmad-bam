@@ -1,5 +1,5 @@
 type: workflow
-name: data-encryption-design
+name: bmad-bam-data-encryption-design
 displayName: Data Encryption Design
 description: "Design encryption at rest and in transit with tenant-specific keys for multi-tenant AI platforms. Use when the user requests to 'design encryption' or 'create key management'."
 module: bam

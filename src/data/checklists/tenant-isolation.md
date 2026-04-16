@@ -149,7 +149,7 @@ The following templates must be completed before this gate can pass:
 ## Related Workflows
 
 - `bmad-bam-tenant-model-isolation` - Tenant isolation design
-- `bmad-bam-validate-module` - Module validation (QG-M2)
+- `validate-module` - Module validation (QG-M2)
 - `bmad-bam-convergence-verification` - Integration validation (QG-I2)
 
 **PASS CRITERIA:** All CRITICAL checkboxes completed, tenant isolation verified

@@ -188,9 +188,9 @@ For non-critical items that cannot be addressed:
 
 ## Related Workflows
 
-- `bmad-bam-requirement-ingestion` - Requirements ingestion
-- `bmad-bam-triage-module-complexity` - Complexity assessment
-- `bmad-bam-create-module-epics` - Epic creation
+- `requirement-ingestion` - Requirements ingestion
+- `triage-module-complexity` - Complexity assessment
+- `create-module-epics` - Epic creation
 - `bmad-bam-cross-module-story` - Cross-module stories
 
 **PASS CRITERIA:** Roadmap approved, resources allocated, risks documented

@@ -278,7 +278,7 @@ When implementing isolation patterns:
 
 ## Related Workflows
 
-- `bmad-bam-create-master-architecture` - Create the frozen master architecture document
+- `create-master-architecture` - Create the frozen master architecture document
 - `bmad-bam-module-boundary-design` - Define clear boundaries between modules
 - `bmad-bam-disaster-recovery-design` - Design disaster recovery for the platform
 

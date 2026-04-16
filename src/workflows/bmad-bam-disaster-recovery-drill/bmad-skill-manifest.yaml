@@ -1,5 +1,5 @@
 type: workflow
-name: disaster-recovery-drill
+name: bmad-bam-disaster-recovery-drill
 displayName: Disaster Recovery Drill
 description: "Execute disaster recovery drills including DR plan execution, failover testing, recovery validation, and RTO/RPO verification. Use for scheduled DR exercises."
 module: bam
