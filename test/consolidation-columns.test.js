@@ -144,19 +144,43 @@ describe('Pattern Registry Consolidation Columns', () => {
     });
   });
 
-  test('ai/agent patterns should map to ai-runtime or ai-lifecycle guides', () => {
+  test('ai/agent patterns should map to appropriate guides', () => {
+    // AI category patterns can go to ai-* guides OR specialized guides (mcp, rag) based on pattern name
     const aiPatterns = csv.rows.filter(row =>
       row.category.toLowerCase().startsWith('ai') ||
       row.category.toLowerCase().startsWith('agent')
     );
+
     const validAiGuides = [
       'ai-runtime-patterns-guide.md',
       'ai-lifecycle-patterns-guide.md',
       'ai-safety-patterns-guide.md',
       'ai-observability-patterns-guide.md',
     ];
+
+    // Specialized guides for specific pattern prefixes
+    const specializedGuides = {
+      'mcp-': 'mcp-patterns-guide.md',
+      'rag-': 'rag-patterns-guide.md',
+    };
+
     aiPatterns.forEach(row => {
-      expect(validAiGuides).toContain(row.consolidated_guide);
+      // Check if pattern has a specialized prefix
+      let expectedGuide = null;
+      for (const [prefix, guide] of Object.entries(specializedGuides)) {
+        if (row.pattern_id.startsWith(prefix)) {
+          expectedGuide = guide;
+          break;
+        }
+      }
+
+      if (expectedGuide) {
+        // Pattern has specialized prefix - must go to that guide
+        expect(row.consolidated_guide).toBe(expectedGuide);
+      } else {
+        // Regular AI pattern - must go to ai-* guide
+        expect(validAiGuides).toContain(row.consolidated_guide);
+      }
     });
   });
 });
