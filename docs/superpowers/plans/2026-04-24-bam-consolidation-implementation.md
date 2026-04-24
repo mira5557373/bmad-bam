@@ -354,11 +354,67 @@ Expected: Header ending with `...,consolidated_guide,section_anchor,phase`
 Run: `grep "tenant-isolation" src/data/bam-patterns.csv | head -1`
 Expected: Row containing `tenant-patterns-guide.md,tenant-isolation,solutioning`
 
-- [ ] **Step 5: Commit**
+- [ ] **Step 5: Commit initial script-added columns**
 
 ```bash
 git add src/data/bam-patterns.csv scripts/add-consolidation-columns.py
-git commit -m "feat: add consolidation columns to pattern registry"
+git commit -m "feat: add consolidation columns to pattern registry (script-generated)"
+```
+
+---
+
+### Task 1.2.1: Manual Verification of Pattern-to-Guide Mappings
+
+> **CRITICAL:** The script uses category prefix matching which may produce incorrect mappings. Every pattern's `consolidated_guide` assignment MUST be manually verified.
+
+**Time estimate:** 4 hours (193 patterns × ~1.25 min each)
+
+- [ ] **Step 1: Export patterns for review**
+
+```bash
+# Create review spreadsheet
+cut -d',' -f1,3,14,15,16 src/data/bam-patterns.csv > _consolidation/pattern-review.csv
+```
+
+- [ ] **Step 2: Manual review checklist for EACH pattern**
+
+For each of the 193 patterns, verify:
+
+| Check | Question | Action if Wrong |
+|-------|----------|-----------------|
+| Guide Match | Does the pattern's topic fit this guide's scope? | Reassign to correct guide |
+| Section Exists | Will this §anchor exist in the consolidated guide? | Verify section will be created |
+| Phase Correct | Is this the right implementation phase? | Adjust phase value |
+| Category Alignment | Does category make sense for this guide? | Consider if category needs updating |
+
+- [ ] **Step 3: Document corrections in review log**
+
+Create `_consolidation/pattern-mapping-corrections.md`:
+```markdown
+# Pattern Mapping Corrections
+
+## Patterns Reassigned
+| pattern_id | Original Guide | Corrected Guide | Reason |
+|------------|----------------|-----------------|--------|
+
+## Phases Corrected
+| pattern_id | Original Phase | Corrected Phase | Reason |
+|------------|----------------|-----------------|--------|
+
+## Section Anchors Fixed
+| pattern_id | Original Anchor | Corrected Anchor | Reason |
+|------------|-----------------|------------------|--------|
+```
+
+- [ ] **Step 4: Apply corrections to CSV**
+
+Manually edit `src/data/bam-patterns.csv` to fix any incorrect mappings.
+
+- [ ] **Step 5: Commit verified mappings**
+
+```bash
+git add src/data/bam-patterns.csv _consolidation/pattern-mapping-corrections.md
+git commit -m "fix: manually verify and correct pattern-to-guide mappings"
 ```
 
 ---
@@ -435,6 +491,137 @@ Expected: All tests pass
 ```bash
 git add test/consolidation-columns.test.js
 git commit -m "test: add consolidation columns validation"
+```
+
+---
+
+### Task 1.4: Create Pre-Consolidation Inventory
+
+> **CRITICAL:** Before consolidating any content, create a complete inventory of what exists. This enables post-consolidation verification that NOTHING was lost.
+
+**Time estimate:** 2 hours
+
+- [ ] **Step 1: Create content inventory spreadsheet**
+
+Create `_consolidation/pre-consolidation-inventory.md`:
+
+```markdown
+# Pre-Consolidation Inventory
+
+Generated: {date}
+
+## Agent Guides Summary
+
+| Domain | File | Lines | Code Blocks | Tables | Unique Sections |
+|--------|------|-------|-------------|--------|-----------------|
+| tenant | tenant-isolation.md | 322 | 5 | 3 | 8 |
+| tenant | tenant-lifecycle.md | 275 | 3 | 2 | 6 |
+| ... | ... | ... | ... | ... | ... |
+
+**Total Files:** ___
+**Total Lines:** ___
+**Total Code Blocks:** ___
+**Total Tables:** ___
+
+## BAM Conventions Found
+
+| Convention | Files Containing | Example |
+|------------|------------------|---------|
+| `app.current_tenant` | tenant-isolation.md, tenant-context.md, ... | Context key |
+| `tenant:{id}:{ns}:{key}` | caching-strategy.md, ... | Cache key pattern |
+| `tenants/{id}/{cat}/{file}` | file-storage.md, ... | File path pattern |
+| `X-Tenant-ID` | authentication.md, ... | Header |
+| `X-Correlation-ID` | distributed-tracing.md, ... | Header |
+
+## Workflows Summary
+
+| Category | Count | Files |
+|----------|-------|-------|
+| tenant-* | ___ | (list) |
+| ai-* | ___ | (list) |
+| ... | ... | ... |
+
+**Total Workflows:** 186
+```
+
+- [ ] **Step 2: Populate inventory by reading each file**
+
+For each of the 233 agent guides:
+1. Read the file
+2. Count lines, code blocks, tables
+3. Identify unique section headers
+4. Note any BAM conventions present
+
+- [ ] **Step 3: Commit inventory**
+
+```bash
+git add _consolidation/pre-consolidation-inventory.md
+git commit -m "docs: create pre-consolidation inventory for verification"
+```
+
+---
+
+### Task 1.5: Extract BAM Conventions Checklist
+
+> **CRITICAL:** Extract ALL BAM conventions from CLAUDE.md into a checklist. Every convention MUST be preserved in consolidated guides.
+
+**Time estimate:** 1 hour
+
+- [ ] **Step 1: Read CLAUDE.md and extract conventions**
+
+From CLAUDE.md, extract all naming patterns, formats, and standards:
+
+Create `_consolidation/bam-conventions-checklist.md`:
+
+```markdown
+# BAM Conventions Preservation Checklist
+
+Use this checklist after creating EACH consolidated guide to verify all BAM conventions are preserved.
+
+## Context Keys
+- [ ] `app.current_tenant` - Tenant context storage
+- [ ] `app.tenant_tier` - Subscription tier
+- [ ] `app.tenant_config` - Tenant configuration
+
+## Cache Key Patterns
+- [ ] `tenant:{tenant_id}:{namespace}:{key}` - Standard cache key format
+- [ ] Examples: `tenant:abc123:cache:user_profile`, `tenant:abc123:query:orders_page_1`
+
+## File Path Patterns
+- [ ] `tenants/{tenant_id}/{category}/{filename}` - S3/file storage path
+- [ ] Examples: `tenants/abc123/uploads/`, `tenants/abc123/exports/`
+
+## Headers
+- [ ] `X-Tenant-ID` - Tenant identifier header
+- [ ] `X-User-ID` - User identifier header
+- [ ] `X-Correlation-ID` - Request correlation header
+- [ ] `X-Request-Source` - Origin service header
+
+## Secret Naming
+- [ ] `{tenant_id}/{service}/{secret_type}/{name}` - Vault secret path
+
+## Permission Format
+- [ ] `{domain}:{resource}:{action}` - Permission string format
+
+## Metric Naming
+- [ ] `{service}_{component}_{metric}_{unit}` - Prometheus metric format
+- [ ] Labels: `tenant_id`, `environment`, `region`
+
+## Log Format
+- [ ] Structured JSON with: timestamp, level, message, tenant_id, user_id, correlation_id
+
+## Verification per Guide
+After creating each domain guide, verify:
+- [ ] All applicable conventions appear in ## BAM Conventions section
+- [ ] Examples use correct placeholder formats
+- [ ] No typos in convention patterns
+```
+
+- [ ] **Step 2: Commit checklist**
+
+```bash
+git add _consolidation/bam-conventions-checklist.md
+git commit -m "docs: extract BAM conventions checklist for preservation verification"
 ```
 
 ---
@@ -2020,7 +2207,147 @@ Analysis: {unique} unique lines, {duplicate} duplicates eliminated
 
 ---
 
-## Phase 3: Workflow Consolidation
+## Phase 3: Workflow Consolidation (Manual Analysis Approach)
+
+> **CRITICAL METHODOLOGY:** Like domain guides, workflow consolidation uses MANUAL analysis. The existing 186 workflows must be analyzed to determine: (1) which workflows overlap and should be merged, (2) which should be kept as-is, (3) which should be archived. Do NOT create composite workflows without first analyzing existing workflows.
+
+**Phase 3 Time Estimate:** 30 hours (manual workflow analysis + composite workflow creation)
+
+---
+
+### Task 3.0.0: Workflow Analysis Template
+
+> **MANDATORY:** Complete this template for EACH of the 186 existing workflows before deciding on consolidation.
+
+**Time estimate:** 15 hours (186 workflows × ~5 min each)
+
+#### Workflow Analysis Template
+
+```markdown
+## Workflow Analysis: {workflow-name}
+
+### 1. Basic Information
+- **Path:** src/workflows/{workflow-name}/
+- **Lines in SKILL.md:** ___
+- **Number of steps:** ___
+- **Quality Gate:** ___
+
+### 2. Functionality Assessment
+- **Primary purpose:** (one sentence)
+- **Input artifacts:** (what does it require?)
+- **Output artifacts:** (what does it produce?)
+- **Unique value:** (what does this do that others don't?)
+
+### 3. Overlap Detection
+- **Similar workflows:** (list workflows with overlapping purpose)
+- **Overlap %:** ___
+- **Can be merged with:** {workflow-name} because ___
+
+### 4. Consolidation Decision
+- **Action:** {KEEP_STANDALONE | MERGE_INTO | ARCHIVE_DUPLICATE}
+- **If MERGE_INTO:** Target composite workflow: ___
+- **If ARCHIVE:** Reason: ___
+
+### 5. Content Migration Notes
+- **Unique steps to preserve:** ___
+- **References to update:** ___
+```
+
+---
+
+### Task 3.0.1: Create Workflow Consolidation Map
+
+> **MANDATORY:** Before creating ANY composite workflow, analyze all 186 existing workflows and create a consolidation map.
+
+**Time estimate:** 3 hours
+
+- [ ] **Step 1: Group existing workflows by domain**
+
+Create `_consolidation/workflow-consolidation-map.md`:
+
+```markdown
+# Workflow Consolidation Map
+
+## Workflow Inventory by Domain
+
+### Tenant Workflows (estimated: 15-20)
+| Workflow | Purpose | Decision | Target |
+|----------|---------|----------|--------|
+| tenant-model-isolation | Design tenant isolation | MERGE_INTO | bmad-bam-tenant-setup |
+| tenant-onboarding-design | Design onboarding flow | MERGE_INTO | bmad-bam-tenant-lifecycle |
+| ... | ... | ... | ... |
+
+### AI/Agent Workflows (estimated: 25-30)
+| Workflow | Purpose | Decision | Target |
+|----------|---------|----------|--------|
+
+### Integration Workflows (estimated: 15-20)
+| Workflow | Purpose | Decision | Target |
+|----------|---------|----------|--------|
+
+### Validation Workflows (estimated: 20-25)
+| Workflow | Purpose | Decision | Target |
+|----------|---------|----------|--------|
+
+### Foundation Workflows (estimated: 10-15)
+| Workflow | Purpose | Decision | Target |
+|----------|---------|----------|--------|
+
+### Other Workflows
+| Workflow | Purpose | Decision | Target |
+|----------|---------|----------|--------|
+
+## Composite Workflow Plan
+
+| New Composite Workflow | Source Workflows | Unique Steps Combined |
+|------------------------|------------------|----------------------|
+| bmad-bam-tenant-setup | tenant-model-isolation, tenant-context-propagation, ... | 12 |
+| bmad-bam-tenant-lifecycle | tenant-onboarding-design, tenant-offboarding-design, ... | 10 |
+| bmad-bam-ai-agent-setup | agent-runtime-architecture, agent-coordination, ... | 15 |
+| ... | ... | ... |
+
+## Archive List
+
+| Workflow | Reason for Archive | Content Migrated To |
+|----------|-------------------|---------------------|
+| {workflow} | Duplicate of {other} | {composite-workflow} |
+```
+
+- [ ] **Step 2: Analyze each workflow**
+
+For each of the 186 workflows:
+1. Read SKILL.md and workflow.md
+2. Complete Workflow Analysis Template
+3. Assign to domain group
+4. Decide: KEEP_STANDALONE, MERGE_INTO, or ARCHIVE_DUPLICATE
+
+- [ ] **Step 3: Define composite workflows**
+
+Based on analysis, define which composite workflows will be created and which existing workflows will feed into each.
+
+- [ ] **Step 4: Commit consolidation map**
+
+```bash
+git add _consolidation/workflow-consolidation-map.md
+git commit -m "docs: create workflow consolidation map (manual analysis)"
+```
+
+---
+
+### Task 3.0.2: Workflow Consolidation Rules
+
+> **Apply these rules when deciding on workflow consolidation:**
+
+| Situation | Rule | Example |
+|-----------|------|---------|
+| **Same output artifact** | Merge workflows producing same artifact type | tenant-design-a + tenant-design-b → tenant-setup |
+| **Sequential dependency** | Keep as separate workflows with clear handoff | foundation → module → integration (keep separate) |
+| **Different quality gates** | Keep separate if different QG checkpoints | QG-F1 workflows separate from QG-M1 |
+| **Overlapping steps** | Merge, keep richer step version | Like guide consolidation |
+| **Mode variants** | Merge into single workflow with C/E/V modes | design-tenant + edit-tenant + validate-tenant → tenant-setup |
+| **Domain coherence** | Group by domain, not by technical similarity | tenant-* workflows together even if different patterns |
+
+---
 
 ### Task 3.0: Create Rollback Procedure
 
@@ -2933,25 +3260,52 @@ After:
     Filter: category contains 'tenant'
 ```
 
-- [ ] **Step 3: Repeat for all extensions**
+- [ ] **Step 3: Manual verification for EACH extension prompt**
 
-Update all extension files in `src/data/extensions/`:
-- `analyst-bam.yaml`
-- `architect-bam.yaml`
-- `dev-bam.yaml`
-- `pm-bam.yaml`
-- etc.
+> **CRITICAL:** Before updating each prompt, verify the target guide contains the referenced sections.
 
-- [ ] **Step 4: Commit**
+For each prompt that references a consolidated guide:
+
+| Check | Verification |
+|-------|--------------|
+| Guide exists | `ls src/data/agent-guides/bam/{guide-name}.md` |
+| §Section exists | `grep "## §{section-name}" {guide-name}.md` |
+| Content relevant | Read the section, verify it matches the prompt's purpose |
+
+- [ ] **Step 4: Update all extensions with verification**
+
+For each extension file in `src/data/extensions/`:
+- `analyst-bam.yaml` - verify → update
+- `architect-bam.yaml` - verify → update
+- `dev-bam.yaml` - verify → update
+- `pm-bam.yaml` - verify → update
+- (continue for all 31 extensions)
+
+Create verification log `_consolidation/extension-update-log.md`:
+```markdown
+# Extension Prompt Update Log
+
+| Extension | Prompts Updated | Sections Verified | Issues Found |
+|-----------|-----------------|-------------------|--------------|
+| architect-bam.yaml | 12 | 12 ✓ | None |
+| analyst-bam.yaml | 8 | 8 ✓ | None |
+| ... | ... | ... | ... |
+```
+
+- [ ] **Step 5: Commit**
 
 ```bash
-git add src/data/extensions/
-git commit -m "refactor: update extension prompts to use consolidated guides"
+git add src/data/extensions/ _consolidation/extension-update-log.md
+git commit -m "refactor: update extension prompts to use consolidated guides (verified)"
 ```
 
 ---
 
-### Task 4.2: Archive Old Guide Files
+### Task 4.2: Archive Old Guide Files (Manual Verification)
+
+> **CRITICAL:** Before archiving ANY file, verify its content has been preserved in consolidated guides. Do NOT archive files based on assumption.
+
+**Time estimate:** 3 hours (233 files to verify)
 
 **Files:**
 - Move: Old individual guide files to `_archive/agent-guides/`
@@ -2962,31 +3316,69 @@ git commit -m "refactor: update extension prompts to use consolidated guides"
 mkdir -p _archive/agent-guides/bam
 ```
 
-- [ ] **Step 2: Move files that have been consolidated**
+- [ ] **Step 2: Create pre-archive verification checklist**
 
-```bash
-# Move tenant-related old guides (keep for one release cycle)
-mv src/data/agent-guides/bam/tenant-isolation.md _archive/agent-guides/bam/
-mv src/data/agent-guides/bam/tenant-lifecycle.md _archive/agent-guides/bam/
-mv src/data/agent-guides/bam/tenant-lifecycle-patterns.md _archive/agent-guides/bam/
-mv src/data/agent-guides/bam/tenant-onboarding-patterns.md _archive/agent-guides/bam/
-# ... repeat for all consolidated files
+For EACH file being archived, verify:
+
+| File | Consolidated Into | Sections Preserved | Conventions Preserved | Safe to Archive |
+|------|-------------------|-------------------|----------------------|-----------------|
+| tenant-isolation.md | tenant-patterns-guide.md | §tenant-isolation ✓ | app.current_tenant ✓ | YES |
+| tenant-lifecycle.md | tenant-patterns-guide.md | §tenant-lifecycle ✓ | - | YES |
+| ... | ... | ... | ... | ... |
+
+- [ ] **Step 3: Manual verification for EACH file**
+
+For each file to be archived:
+
+```markdown
+## Archive Verification: {filename}
+
+1. [ ] Read original file completely
+2. [ ] Find corresponding §section in consolidated guide
+3. [ ] Verify unique content is present:
+   - [ ] Code blocks preserved
+   - [ ] Tables preserved
+   - [ ] Decision frameworks preserved
+   - [ ] BAM conventions preserved
+4. [ ] Note any content NOT migrated: ___
+5. [ ] Safe to archive: YES / NO
 ```
 
-- [ ] **Step 3: Create archive manifest**
+- [ ] **Step 4: Move ONLY verified files**
 
 ```bash
-ls _archive/agent-guides/bam/ > _archive/agent-guides/MANIFEST.txt
-echo "Archived on: $(date)" >> _archive/agent-guides/MANIFEST.txt
-echo "Reason: Consolidated into domain guides" >> _archive/agent-guides/MANIFEST.txt
+# Only move files that passed verification
+mv src/data/agent-guides/bam/{verified-file}.md _archive/agent-guides/bam/
 ```
 
-- [ ] **Step 4: Commit**
+- [ ] **Step 5: Create archive manifest with verification status**
+
+Create `_archive/agent-guides/ARCHIVE-MANIFEST.md`:
+```markdown
+# Archive Manifest
+
+Archived on: {date}
+Verified by: {who}
+
+## Archived Files
+
+| Original File | Consolidated Into | Verification Status |
+|---------------|-------------------|---------------------|
+| tenant-isolation.md | tenant-patterns-guide.md | VERIFIED ✓ |
+| ... | ... | ... |
+
+## Files NOT Archived (Verification Failed)
+
+| File | Reason | Action Needed |
+|------|--------|---------------|
+```
+
+- [ ] **Step 6: Commit**
 
 ```bash
 git add _archive/
 git add src/data/agent-guides/bam/
-git commit -m "chore: archive old guides after consolidation"
+git commit -m "chore: archive verified consolidated guides"
 ```
 
 ---
@@ -3020,56 +3412,238 @@ git commit -m "feat: complete BAM consolidation Phase 1-4"
 
 ---
 
-## Phase 5: Add 110 New Patterns (Post-Consolidation)
+## Phase 5: Add 110 New Patterns (Manual Research Approach)
 
-### Task 5.1: Create Pattern Addition Script
+> **CRITICAL METHODOLOGY:** New patterns must be RESEARCHED and DOCUMENTED manually. Do NOT use scripts with hardcoded pattern values. Each new pattern requires research to establish proper decision_criteria and web_queries.
+
+**Phase 5 Time Estimate:** 25 hours (110 patterns × ~13 min each for research + documentation)
+
+---
+
+### Task 5.0: Pattern Research Template
+
+> **MANDATORY:** Complete this template for EACH new pattern before adding to registry.
+
+#### New Pattern Research Template
+
+```markdown
+## New Pattern Research: {pattern_id}
+
+### 1. Pattern Identification
+- **Pattern ID:** {kebab-case}
+- **Pattern Name:** {Human Readable Name}
+- **Category:** {existing category or new}
+- **Phase:** {discovery|planning|foundation|solutioning|integration|production|anytime}
+
+### 2. Research Conducted
+- **Search queries used:**
+  1. "{pattern-name} best practices 2026"
+  2. "{pattern-name} implementation guide"
+  3. "{related technology} {pattern-name}"
+- **Sources found:**
+  - {URL 1}: {summary}
+  - {URL 2}: {summary}
+
+### 3. Decision Criteria (researched, not invented)
+- **When to use:** {specific conditions based on research}
+- **When NOT to use:** {contraindications}
+- **Trade-offs:** {pros/cons from research}
+
+### 4. Web Queries for Registry
+- Primary: "{researched query} {date}"
+- Secondary: "{alternate query} {date}"
+
+### 5. Consolidated Guide Placement
+- **Guide:** {domain}-patterns-guide.md
+- **Section anchor:** §{section-name}
+- **Related patterns:** {list existing patterns this relates to}
+
+### 6. §Section Content to Add
+```markdown
+## §{pattern-anchor}
+
+### Pattern: {Pattern Name}
+
+**When to use:** {decision_criteria from research}
+**Variants:** {variants discovered}
+
+#### Pattern Structure
+
+{Code/structure from research}
+
+#### Web Research
+
+For current implementation details, search:
+- "{web_query_1} {date}"
+- "{web_query_2} {date}"
+```
+```
+
+---
+
+### Task 5.1: Manual Pattern Research and Addition
+
+> **CRITICAL:** Do NOT use scripts with hardcoded pattern values. Each pattern must be individually researched.
 
 **Files:**
-- Create: `scripts/add-new-patterns.py`
+- Modify: `src/data/bam-patterns.csv`
 
-- [ ] **Step 1: Create the script**
+- [ ] **Step 1: Create pattern research tracker**
 
-```python
-#!/usr/bin/env python3
-"""Add new patterns to consolidated bam-patterns.csv."""
+Create `_consolidation/new-pattern-research.md`:
 
-import csv
-import sys
-from datetime import date
+```markdown
+# New Pattern Research Tracker
 
-# New patterns to add (from complete-consolidation-analysis.md)
-NEW_PATTERNS = [
-    # Phase 2: MCP & Integration (18 patterns)
-    {'pattern_id': 'mcp-server-lifecycle', 'name': 'MCP Server Lifecycle', 'category': 'mcp', 
-     'consolidated_guide': 'mcp-patterns-guide.md', 'section_anchor': 'mcp-server-lifecycle', 'phase': 'integration',
-     'decision_criteria': 'managing MCP server instances', 'web_queries': 'MCP server lifecycle management {date}'},
-    {'pattern_id': 'mcp-tool-discovery', 'name': 'MCP Tool Discovery', 'category': 'mcp',
-     'consolidated_guide': 'mcp-patterns-guide.md', 'section_anchor': 'tool-discovery', 'phase': 'integration',
-     'decision_criteria': 'dynamic tool capability discovery', 'web_queries': 'MCP tool discovery protocol {date}'},
-    {'pattern_id': 'mcp-authentication', 'name': 'MCP Authentication', 'category': 'mcp',
-     'consolidated_guide': 'mcp-patterns-guide.md', 'section_anchor': 'mcp-auth', 'phase': 'integration',
-     'decision_criteria': 'MCP server authentication patterns', 'web_queries': 'MCP authentication best practices {date}'},
-    {'pattern_id': 'mcp-federation', 'name': 'MCP Federation', 'category': 'mcp',
-     'consolidated_guide': 'mcp-patterns-guide.md', 'section_anchor': 'mcp-federation', 'phase': 'integration',
-     'decision_criteria': 'cross-server MCP routing', 'web_queries': 'MCP federation multi-server {date}'},
-    {'pattern_id': 'a2a-protocol', 'name': 'A2A Protocol', 'category': 'integration',
-     'consolidated_guide': 'integration-patterns-guide.md', 'section_anchor': 'a2a-protocol', 'phase': 'integration',
-     'decision_criteria': 'agent-to-agent communication', 'web_queries': 'agent to agent protocol {date}'},
-    {'pattern_id': 'agent-delegation', 'name': 'Agent Delegation', 'category': 'integration',
-     'consolidated_guide': 'integration-patterns-guide.md', 'section_anchor': 'agent-delegation', 'phase': 'integration',
-     'decision_criteria': 'task delegation between agents', 'web_queries': 'multi-agent task delegation {date}'},
-    
-    # Phase 3: RAG & Advanced AI (20 patterns)
-    {'pattern_id': 'rag-pipeline', 'name': 'RAG Pipeline Design', 'category': 'rag',
-     'consolidated_guide': 'rag-patterns-guide.md', 'section_anchor': 'rag-pipeline', 'phase': 'solutioning',
-     'decision_criteria': 'building end-to-end RAG systems', 'web_queries': 'RAG pipeline architecture {date}'},
-    {'pattern_id': 'semantic-chunking', 'name': 'Semantic Chunking', 'category': 'rag',
-     'consolidated_guide': 'rag-patterns-guide.md', 'section_anchor': 'semantic-chunking', 'phase': 'solutioning',
-     'decision_criteria': 'intelligent document chunking', 'web_queries': 'semantic chunking strategies {date}'},
-    {'pattern_id': 'hybrid-search', 'name': 'Hybrid Search', 'category': 'rag',
-     'consolidated_guide': 'rag-patterns-guide.md', 'section_anchor': 'hybrid-search', 'phase': 'solutioning',
-     'decision_criteria': 'combining vector and keyword search', 'web_queries': 'hybrid search vector keyword {date}'},
-    {'pattern_id': 'reranking', 'name': 'Reranking Patterns', 'category': 'rag',
+## Research Progress
+
+| Pattern ID | Status | Researched By | Date | Notes |
+|------------|--------|---------------|------|-------|
+| mcp-server-lifecycle | PENDING | | | |
+| mcp-tool-discovery | PENDING | | | |
+| ... | ... | ... | ... | ... |
+
+## Patterns by Category
+
+### MCP Patterns (18 new)
+- [ ] mcp-server-lifecycle
+- [ ] mcp-tool-discovery
+- [ ] mcp-authentication
+- [ ] mcp-federation
+- [ ] ...
+
+### RAG Patterns (20 new)
+- [ ] rag-pipeline
+- [ ] semantic-chunking
+- [ ] hybrid-search
+- [ ] reranking
+- [ ] ...
+
+### Enterprise Patterns (22 new)
+- [ ] sso-integration
+- [ ] soc2-compliance
+- [ ] gdpr-patterns
+- [ ] data-residency
+- [ ] ...
+
+### Scale Patterns (20 new)
+- [ ] auto-scaling-agents
+- [ ] geo-distribution
+- [ ] white-label
+- [ ] ...
+
+### Integration Patterns (additional)
+- [ ] a2a-protocol
+- [ ] agent-delegation
+- [ ] ...
+```
+
+- [ ] **Step 2: Research EACH pattern individually**
+
+For each of the 110 new patterns:
+1. Complete the Pattern Research Template
+2. Web search to validate decision_criteria
+3. Document sources and findings
+4. Write §section content for consolidated guide
+
+- [ ] **Step 3: Add patterns to CSV (manually)**
+
+After research is complete for each pattern, manually add to CSV:
+
+```csv
+pattern_id,name,category,decision_criteria,web_queries,consolidated_guide,section_anchor,phase,...
+mcp-server-lifecycle,MCP Server Lifecycle,mcp,"managing MCP server instances across tenant contexts","MCP server lifecycle management {date}",mcp-patterns-guide.md,mcp-server-lifecycle,integration,...
+```
+
+- [ ] **Step 4: Verify each pattern entry**
+
+For each new pattern added:
+- [ ] decision_criteria is specific and researched (not generic)
+- [ ] web_queries will return relevant results
+- [ ] consolidated_guide exists
+- [ ] section_anchor will exist in guide
+
+- [ ] **Step 5: Commit in batches by domain**
+
+```bash
+git add src/data/bam-patterns.csv _consolidation/new-pattern-research.md
+git commit -m "feat: add {N} researched MCP patterns to registry"
+```
+
+---
+
+### Task 5.1.1: Example Pattern Research (mcp-server-lifecycle)
+
+> **Example of properly researched pattern:**
+
+```markdown
+## New Pattern Research: mcp-server-lifecycle
+
+### 1. Pattern Identification
+- **Pattern ID:** mcp-server-lifecycle
+- **Pattern Name:** MCP Server Lifecycle
+- **Category:** mcp
+- **Phase:** integration
+
+### 2. Research Conducted
+- **Search queries used:**
+  1. "MCP server lifecycle management 2026"
+  2. "Model Context Protocol server patterns"
+  3. "Claude MCP server best practices"
+- **Sources found:**
+  - Anthropic MCP docs: Server lifecycle events, startup/shutdown handling
+  - Community patterns: Health checks, graceful degradation
+
+### 3. Decision Criteria (researched)
+- **When to use:** When deploying MCP servers that must handle tenant isolation, support graceful shutdown, or integrate with container orchestration
+- **When NOT to use:** Simple single-tenant MCP setups, development environments
+- **Trade-offs:** Added complexity vs operational reliability
+
+### 4. Web Queries for Registry
+- Primary: "MCP server lifecycle management multi-tenant {date}"
+- Secondary: "Model Context Protocol server patterns {date}"
+
+### 5. Consolidated Guide Placement
+- **Guide:** mcp-patterns-guide.md
+- **Section anchor:** §mcp-server-lifecycle
+- **Related patterns:** mcp-tool-discovery, mcp-authentication
+```
+
+---
+
+### Task 5.1.2: Batch Pattern Addition (with individual research)
+
+For efficiency, research patterns in domain batches, but ensure EACH pattern is individually researched:
+
+| Batch | Patterns | Research Time | CSV Addition |
+|-------|----------|---------------|--------------|
+| MCP batch | 18 patterns | 4h | Add after all 18 researched |
+| RAG batch | 20 patterns | 4.5h | Add after all 20 researched |
+| Enterprise batch | 22 patterns | 5h | Add after all 22 researched |
+| Scale batch | 20 patterns | 4.5h | Add after all 20 researched |
+| Integration batch | 30 patterns | 7h | Add after all 30 researched |
+
+**DO NOT:**
+- Copy/paste pattern values from old script
+- Use generic decision_criteria like "handles X"
+- Invent web_queries without testing they return results
+
+**DO:**
+- Actually search for each pattern's best practices
+- Write decision_criteria that helps users decide when to use
+- Test web_queries return relevant results
+
+---
+
+### Task 5.1-OLD-SCRIPT-REMOVED
+
+The following Python script approach has been REMOVED in favor of manual research:
+
+```
+# REMOVED: scripts/add-new-patterns.py with hardcoded NEW_PATTERNS array
+# Reason: Hardcoded patterns lack proper research, decision_criteria is generic
+# Replaced with: Manual research template (Task 5.0) and individual pattern research
+```
      'consolidated_guide': 'rag-patterns-guide.md', 'section_anchor': 'reranking', 'phase': 'solutioning',
      'decision_criteria': 'improving retrieval quality with reranking', 'web_queries': 'reranking models RAG {date}'},
     {'pattern_id': 'chain-of-thought', 'name': 'Chain-of-Thought', 'category': 'ai',
@@ -3347,16 +3921,28 @@ git commit -m "feat: complete BAM consolidation with 110 new patterns"
 
 ## Summary
 
-> **METHODOLOGY:** Phase 2 uses MANUAL file-by-file consolidation (no extraction scripts). This ensures quality variance is detected and richer content is preserved.
+> **METHODOLOGY v4.0:** ALL consolidation phases now use MANUAL analysis and verification. No scripts for content extraction, pattern addition, or archive decisions. Scripts are only used for validation tests and file operations (mkdir, mv, git).
 
 | Phase | Tasks | Estimated Time | Method |
 |-------|-------|----------------|--------|
-| Phase 1 | 3 tasks | 2 hours | Automated (scripts OK) |
-| Phase 2 | 29 tasks (2.1-2.28 + analysis templates) | **35 hours** | **Manual consolidation** |
-| Phase 3 | 47 tasks (rollback + 40 workflows + 6 validation) | 24 hours | Automated |
-| Phase 4 | 4 tasks (module-help + extensions + archive + test) | 5 hours | Automated |
-| Phase 5 | 3 tasks (add patterns + sections + validate) | 4 hours | Automated |
-| **Total** | **86 tasks** | **~70 hours** | Mixed |
+| Phase 1 | 5 tasks (backup + columns + verify + inventory + conventions) | **9 hours** | **Manual verification** |
+| Phase 2 | 29 tasks (template + 25 domains + validation) | **35 hours** | **Manual consolidation** |
+| Phase 3 | 50+ tasks (analysis + rollback + 40 workflows + validation) | **30 hours** | **Manual workflow analysis** |
+| Phase 4 | 4 tasks (module-help + extensions + archive + test) | **11 hours** | **Manual verification** |
+| Phase 5 | 3 tasks (research + add patterns + validate) | **25 hours** | **Manual pattern research** |
+| **Total** | **91+ tasks** | **~110 hours** | **Fully Manual** |
+
+---
+
+## Methodology Overview
+
+| Phase | What's Manual | Why Manual |
+|-------|---------------|------------|
+| Phase 1 | Pattern-to-guide mapping verification | Script may mis-assign patterns |
+| Phase 2 | File-by-file content analysis | Quality variance detection |
+| Phase 3 | Workflow overlap analysis | Determine which workflows merge |
+| Phase 4 | Extension and archive verification | Prevent content loss |
+| Phase 5 | Pattern research and documentation | Hardcoded values lack proper research |
 
 ---
 
@@ -3364,12 +3950,15 @@ git commit -m "feat: complete BAM consolidation with 110 new patterns"
 
 | Risk | Mitigation | Recovery |
 |------|------------|----------|
-| Content loss | Git branches, archive directory, manual analysis | Rollback script |
+| Content loss | Git branches, archive directory, **manual pre-archive verification** | Rollback script |
 | Quality variance missed | **File Analysis Template (5-question checklist)** | Re-analyze source files |
 | Richer content discarded | **Consolidation Rules (keep richer version)** | Restore from source |
-| Broken references | Cross-reference validation tests | Fix before archive |
-| Missing patterns | Manual domain-to-files mapping table | Add missing sources |
-| Workflow failures | Workflow-guide dependency tests | Fix references |
+| Pattern mis-assignment | **Manual pattern-to-guide verification (Task 1.2.1)** | Correct CSV mappings |
+| Workflow merge errors | **Workflow Analysis Template (Task 3.0.0)** | Keep original workflows |
+| Extension broken refs | **Manual §section verification (Task 4.1)** | Fix before commit |
+| Archive without verification | **Pre-archive verification checklist (Task 4.2)** | Don't archive unverified |
+| Generic pattern values | **Pattern Research Template (Task 5.0)** | Research each pattern |
+| Missing conventions | **BAM Conventions Checklist (Task 1.5)** | Verify per guide |
 | Regression | Full test suite at each phase | Rollback to previous commit |
 
 ---
@@ -3378,29 +3967,39 @@ git commit -m "feat: complete BAM consolidation with 110 new patterns"
 
 | Category | Count | Action |
 |----------|-------|--------|
-| Domain guides | 25 | CREATE |
-| Composite workflows | 40 | CREATE |
-| Pattern CSV columns | 3 | MODIFY |
-| New patterns | 110 | ADD |
-| Scripts | 6 | CREATE |
+| Domain guides | 25 | CREATE (manual consolidation) |
+| Composite workflows | 40 | CREATE (after manual analysis) |
+| Pattern CSV columns | 3 | MODIFY + VERIFY |
+| New patterns | 110 | ADD (manual research) |
+| Scripts | 2 | CREATE (rollback, validation only) |
 | Tests | 4 | CREATE |
-| Extensions | ~10 | MODIFY |
-| Archived files | ~230 | ARCHIVE |
+| Extensions | 31 | MODIFY + VERIFY |
+| Archived files | ~230 | ARCHIVE (after verification) |
+| Analysis documents | ~10 | CREATE (consolidation maps, checklists) |
 
 ---
 
-**Plan Status:** COMPLETE (Manual Consolidation Enforced)
-**Plan Version:** 3.0
-**Gaps Addressed:** All gaps + Manual Consolidation Methodology
+**Plan Status:** COMPLETE (Fully Manual Consolidation)
+**Plan Version:** 4.0
+**Gaps Addressed:** All 8 identified gaps addressed
 
-**Key Changes in v3.0:**
-- Replaced Task 2.5.1 extraction script with Manual Domain-to-Files Mapping Table
-- Added Task 2.5.2: File Analysis Template (5-question checklist per file)
-- Added Task 2.5.3: Consolidation Rules (which version to keep)
-- Added Task 2.5.4: Per-Domain Manual Consolidation Steps
-- Added Task 2.5.5: Domain Guide Verification Checklist
-- Updated time estimate: 20h → 35h for Phase 2 (quality over speed)
-- Total time: ~55h → ~70h
+**Key Changes in v4.0:**
+- **Phase 1:** Added Task 1.2.1 (Manual Pattern-to-Guide Verification), Task 1.4 (Pre-Consolidation Inventory), Task 1.5 (BAM Conventions Checklist)
+- **Phase 2:** Retained manual consolidation from v3.0
+- **Phase 3:** Added Task 3.0.0 (Workflow Analysis Template), Task 3.0.1 (Workflow Consolidation Map), Task 3.0.2 (Workflow Consolidation Rules)
+- **Phase 4:** Added manual verification to Task 4.1 (Extension §section verification) and Task 4.2 (Pre-archive verification)
+- **Phase 5:** Replaced script-based pattern addition with Task 5.0 (Pattern Research Template) and individual pattern research
+- **Time estimate:** ~70h → ~110h (quality over speed, but reduced risk)
+
+**Scripts REMOVED:**
+- ❌ `scripts/extract-guide-content.py` - Replaced with File Analysis Template
+- ❌ `scripts/add-new-patterns.py` - Replaced with Pattern Research Template
+
+**Scripts KEPT (validation/operations only):**
+- ✓ `scripts/add-consolidation-columns.py` - Column addition only, values verified manually
+- ✓ `scripts/rollback-consolidation.sh` - Safety mechanism
+
+---
 
 **Next Action:** Choose execution method:
 1. **Subagent-Driven (recommended)** - Fresh subagent per task, review between tasks
