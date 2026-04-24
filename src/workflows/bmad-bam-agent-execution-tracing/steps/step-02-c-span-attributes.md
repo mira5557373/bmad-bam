@@ -73,6 +73,12 @@ Search the web: "Langfuse span attributes {date}"
 - [ ] Tool span attributes include status and latency
 - [ ] Required vs optional clearly marked
 
+## Outputs
+
+- Span attribute specification per span type
+- Required vs optional attribute matrix
+- Semantic conventions documentation
+
 ## Next Step
 
 Proceed to `step-03-c-platform-integration.md` with attributes defined.

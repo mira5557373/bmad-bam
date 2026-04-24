@@ -95,11 +95,11 @@ BAM Extension Module (Pure Extension - 0 Standalone Agents)
 ├── 0 agents (Atlas, Nova, Kai consolidated into architect-bam.yaml)
 ├── 31 extensions (enhance existing BMAD agents, all with web research capability)
 ├── 15 customize files (auto-generated from extensions, enables BMAD native loading)
-├── 191 workflows (174 flat + 17 nested in 7 container directories)
-├── 6 pattern registry CSVs (106 patterns with decision criteria + web queries with {date} placeholder)
-├── 223 agent guides (context injection via WDS pattern, all with Web Research sections)
-├── 36 checklists (quality gates with web research verification)
-└── 453 templates (output artifacts + sidecar-*.md + spec/catalog files)
+├── 196 workflows (179 flat + 17 nested in 7 container directories)
+├── 6 pattern registry CSVs (192 patterns with decision criteria + web queries with {date} placeholder)
+├── 233 agent guides (context injection via WDS pattern, all with Web Research sections)
+├── 38 checklists (all QG-named, with web research verification)
+└── 460 templates (output artifacts + sidecar-*.md + spec/catalog files)
 ```
 
 **Extension Distribution:**
@@ -179,7 +179,7 @@ src/
 │       ├── bmad-cis-agent-innovation-strategist.customize.yaml  # 7 extensions merged
 │       └── ... (10 more single-extension files)
 │
-├── workflows/                   # 191 workflows (174 flat + 17 nested in containers)
+├── workflows/                   # 194 workflows (177 flat + 17 nested in containers)
 │   ├── {flat-workflow}/              # Flat workflows (e.g., tenant-model-isolation/)
 │   │   ├── bmad-skill-manifest.yaml
 │   │   ├── SKILL.md
@@ -221,7 +221,7 @@ src/
     ├── section-pattern-map.csv       # Section to pattern mapping
     │
     ├── agent-guides/
-    │   └── bam/                 # 223 context injection guides (all with Web Research)
+    │   └── bam/                 # 233 context injection guides (all with Web Research)
     │       ├── platform-architecture.md
     │       ├── ai-runtime.md
     │       ├── tenant-isolation.md
@@ -239,7 +239,7 @@ src/
     │   ├── cis-*-bam.yaml (12)      # Extends CIS agents
     │   └── master-architect-bam.yaml
     │
-    ├── checklists/              # 36 quality gate checklists
+    ├── checklists/              # 39 quality gate checklists
     │   ├── foundation-gate.md            # QG-F1 (with 3-step recovery)
     │   ├── module-architecture.md        # QG-M1
     │   ├── tenant-isolation.md           # QG-M2 (with 3-step recovery)
@@ -251,7 +251,7 @@ src/
     │   ├── production-readiness.md       # QG-P1 (with 3-step recovery)
     │   └── ...
     │
-    └── templates/               # 453 templates (output artifacts + sidecar)
+    └── templates/               # 460 templates (output artifacts + sidecar)
         ├── master-architecture-template.md
         ├── module-architecture-template.md
         ├── facade-contract-template.md
@@ -274,10 +274,10 @@ After `npx bmad-method install`, BAM resources are at:
     ├── config.yaml              # User configuration
     ├── module-help.csv          # Help system entries
     └── data/                    # All resources
-        ├── agent-guides/bam/    # 223 agent guides
+        ├── agent-guides/bam/    # 233 agent guides
         ├── extensions/          # 31 extension YAMLs
-        ├── templates/           # 453 templates
-        ├── checklists/          # 36 checklists
+        ├── templates/           # 460 templates
+        ├── checklists/          # 38 checklists
         └── *.csv                # 6 pattern registry CSVs
 ```
 
@@ -287,9 +287,9 @@ Run `./scripts/verify-install.sh _bmad/bam` to verify installation:
 
 ```bash
 # Expected output:
-# [PASS] Agent guides: 223 files
-# [PASS] Templates: 453 files
-# [PASS] Checklists: 36 files
+# [PASS] Agent guides: 233 files
+# [PASS] Templates: 460 files
+# [PASS] Checklists: 38 files
 # [PASS] Extensions: 31 files
 ```
 
@@ -1562,8 +1562,8 @@ npm test
 | Agent guides | Fill content, don't delete | Each guide is referenced by extensions/workflows |
 | Workflows | Enhance, don't remove | Each workflow is a distinct capability |
 | Extensions | Maintain all 31 | Extensions add agent capabilities |
-| Templates | Keep all 453 | Templates produce artifacts |
-| Checklists | Maintain all 36 | Checklists ensure quality gates |
+| Templates | Keep all 460 | Templates produce artifacts |
+| Checklists | Maintain all 38 | Checklists ensure quality gates |
 
 ### When Content Is Missing
 
@@ -1612,7 +1612,7 @@ npm test -- test/guide-structure.test.js
 
 # Check guide count
 ls src/data/agent-guides/bam/*.md | wc -l
-# Expected: 223
+# Expected: 233
 
 # Check for TODO placeholders
 grep -l "TODO" src/data/agent-guides/bam/*.md | wc -l
@@ -1625,11 +1625,11 @@ If tests fail due to missing content, **generate content** rather than adjusting
 
 | Component | Count | If Below | If Above |
 |-----------|-------|----------|----------|
-| Agent guides | 223 | Fill missing content | Document new additions |
+| Agent guides | 233 | Fill missing content | Document new additions |
 | Workflows | 191 | Create if needed | Document new additions |
 | Extensions | 31 | Restore from backup | Document additions |
-| Templates | 453 | Regenerate | Document additions |
-| Checklists | 36 | Restore | Document additions |
+| Templates | 460 | Regenerate | Document additions |
+| Checklists | 38 | Restore | Document additions |
 
 ---
 
@@ -1664,9 +1664,9 @@ npm test -- test/schema.test.js   # Specific file
 | Customize Files | 15 | N/A (auto-generated from extensions) |
 | Workflows | 191 | 100% (Create-mode steps with directives) |
 | Pattern CSVs | 6 | 100% (`web_queries` column with `{date}`) |
-| Agent Guides | 223 | 100% (all have Web Research section) |
-| Checklists | 36 | 100% have web research verification |
-| Templates | 453 | 100% (all have Web Research section) |
+| Agent Guides | 233 | 100% (all have Web Research section) |
+| Checklists | 38 | 100% have web research verification |
+| Templates | 460 | 100% (all have Web Research section) |
 
 ---
 

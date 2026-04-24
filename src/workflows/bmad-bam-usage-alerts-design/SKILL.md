@@ -20,6 +20,19 @@ Act as a Platform Architect designing a production-grade usage alerting system.
 - Configuring cost alerting systems
 - Building proactive billing communications
 
+## Modes
+
+| Mode | Purpose | Step Range |
+|------|---------|------------|
+| Create | Generate new artifact | `step-01-c-*` to `step-09-c-*` |
+| Edit | Modify existing artifact | `step-10-e-*` to `step-11-e-*` |
+| Validate | Check against criteria | `step-20-v-*` to `step-22-v-*` |
+
+## Prerequisites
+
+- Previous workflow outputs available (if applicable)
+- **Config required:** See `On Activation` section
+
 ## Workflow
 
 ### Step 1: Define Alert Thresholds

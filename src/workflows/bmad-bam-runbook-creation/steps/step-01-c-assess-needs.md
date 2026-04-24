@@ -8,7 +8,7 @@ Assess operational needs and identify required runbooks for the multi-tenant AI 
 
 - Architecture documentation available
 - Operational context understood
-- **Load checklists:** `{project-root}/_bmad/bam/data/checklists/production-checklist.md`
+- **Load checklists:** `{project-root}/_bmad/bam/data/checklists/qg-prod-checklist.md`
 
 ## Actions
 

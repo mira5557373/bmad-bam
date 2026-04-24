@@ -28,14 +28,14 @@ describe('Quality Gate Inventory', () => {
 
   describe('Core Quality Gates', () => {
     const coreGates = [
-      { id: 'QG-F1', desc: 'Foundation Gate', possibleFiles: ['foundation-gate.md', 'qg-f1.md'] },
-      { id: 'QG-M1', desc: 'Module Architecture', possibleFiles: ['module-architecture.md', 'qg-m1.md'] },
-      { id: 'QG-M2', desc: 'Tenant Isolation', possibleFiles: ['tenant-isolation.md', 'qg-m2.md'] },
+      { id: 'QG-F1', desc: 'Foundation Gate', possibleFiles: ['qg-f1-foundation.md', 'qg-f1.md'] },
+      { id: 'QG-M1', desc: 'Module Architecture', possibleFiles: ['qg-m1-module-architecture.md', 'qg-m1.md'] },
+      { id: 'QG-M2', desc: 'Tenant Isolation', possibleFiles: ['qg-m2-tenant-isolation.md', 'qg-m2.md'] },
       { id: 'QG-M3', desc: 'Agent Runtime', possibleFiles: ['qg-m3-agent-runtime.md', 'qg-m3.md'] },
       { id: 'QG-I1', desc: 'Convergence', possibleFiles: ['qg-i1-convergence.md', 'qg-i1.md'] },
       { id: 'QG-I2', desc: 'Tenant Safety', possibleFiles: ['qg-i2-tenant-safety.md', 'qg-i2.md'] },
       { id: 'QG-I3', desc: 'Agent Safety', possibleFiles: ['qg-i3-agent-safety.md', 'qg-i3.md'] },
-      { id: 'QG-P1', desc: 'Production Readiness', possibleFiles: ['production-readiness.md', 'qg-p1.md'] }
+      { id: 'QG-P1', desc: 'Production Readiness', possibleFiles: ['qg-p1-production-readiness.md', 'qg-p1.md'] }
     ];
 
     coreGates.forEach(gate => {
@@ -128,9 +128,9 @@ describe('TEA Handoff Gates', () => {
 describe('Recovery Protocol Documentation', () => {
   test('critical gates have 3-step recovery protocol', () => {
     const criticalGates = [
-      { name: 'foundation-gate.md', gate: 'QG-F1' },
-      { name: 'tenant-isolation.md', gate: 'QG-M2' },
-      { name: 'production-readiness.md', gate: 'QG-P1' }
+      { name: 'qg-f1-foundation.md', gate: 'QG-F1' },
+      { name: 'qg-m2-tenant-isolation.md', gate: 'QG-M2' },
+      { name: 'qg-p1-production-readiness.md', gate: 'QG-P1' }
     ];
 
     criticalGates.forEach(({ name, gate }) => {
@@ -152,9 +152,9 @@ describe('Recovery Protocol Documentation', () => {
 
   test('checklists have CRITICAL markers for blocking items', () => {
     const criticalChecklists = [
-      'tenant-isolation.md',
-      'foundation-gate.md',
-      'production-readiness.md'
+      'qg-m2-tenant-isolation.md',
+      'qg-f1-foundation.md',
+      'qg-p1-production-readiness.md'
     ];
 
     criticalChecklists.forEach(filename => {
@@ -307,7 +307,7 @@ describe('Security and Compliance Gates', () => {
   });
 
   test('tenant isolation checklist has RLS verification', () => {
-    const filePath = path.join(CHECKLISTS_DIR, 'tenant-isolation.md');
+    const filePath = path.join(CHECKLISTS_DIR, 'qg-m2-tenant-isolation.md');
     if (fs.existsSync(filePath)) {
       const content = fs.readFileSync(filePath, 'utf-8');
 
@@ -317,7 +317,7 @@ describe('Security and Compliance Gates', () => {
   });
 
   test('production readiness covers security', () => {
-    const filePath = path.join(CHECKLISTS_DIR, 'production-readiness.md');
+    const filePath = path.join(CHECKLISTS_DIR, 'qg-p1-production-readiness.md');
     if (fs.existsSync(filePath)) {
       const content = fs.readFileSync(filePath, 'utf-8');
 

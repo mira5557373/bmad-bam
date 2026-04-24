@@ -110,6 +110,15 @@ Your options:
 
 ---
 
+## Outputs
+
+- Action tracking design document
+- Priority level specification
+- Owner assignment process documentation
+- Escalation procedures document
+
+---
+
 ## Next Step
 
 Proceed to `step-04-c-knowledge-base.md` to build incident learning repository.

@@ -42,6 +42,11 @@ Verify tenant safety implementation:
 3. Verify resource limits
 4. Generate validation report
 
+## Prerequisites
+
+- Previous workflow outputs available (if applicable)
+- **Config required:** See `On Activation` section
+
 ## Quality Gate
 
 **Gate ID:** QG-AI2  

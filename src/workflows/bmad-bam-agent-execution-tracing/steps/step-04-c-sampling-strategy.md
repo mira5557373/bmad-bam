@@ -64,6 +64,12 @@ Search the web: "observability cost optimization {date}"
 - [ ] Privacy masking specified
 - [ ] Cost optimization considered
 
+## Outputs
+
+- Sampling strategy specification
+- Per-tier sampling configuration
+- Privacy masking rules
+
 ## Next Step
 
 Proceed to `step-05-c-debug-workflows.md` with sampling strategy designed.

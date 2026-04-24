@@ -28,7 +28,7 @@ Deploy the new API version following the release process.
 
 - Changelog generated (Step 4)
 - **Load patterns:** `{project-root}/_bmad/bam/data/bam-patterns.csv` → filter: agent-runtime,deployment
-- **Load checklist:** `{project-root}/_bmad/bam/data/checklists/production-readiness.md`
+- **Load checklist:** `{project-root}/_bmad/bam/data/checklists/qg-p1-production-readiness.md`
 
 
 ---

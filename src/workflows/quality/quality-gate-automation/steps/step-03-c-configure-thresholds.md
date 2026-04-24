@@ -4,6 +4,12 @@
 
 Configure pass/fail thresholds for automated gate checks.
 
+## Prerequisites
+
+- Steps 1-2 completed (gate selection and integration points defined)
+- **Load patterns:** `{project-root}/_bmad/bam/data/quality-gates.csv` → filter: threshold configuration
+- **Load checklist:** `{project-root}/_bmad/bam/data/checklists/qg-p1-production-readiness.md`
+
 ## Actions
 
 ### 1. Define Coverage Thresholds

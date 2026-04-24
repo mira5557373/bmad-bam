@@ -4,6 +4,11 @@
 
 Load the cost optimization review for validation against QG-CS1 criteria.
 
+## Prerequisites
+
+- Cost configuration exists at `{output_folder}/planning-artifacts/cost-config.md`
+- **Load patterns:** `{project-root}/_bmad/bam/data/bam-patterns.csv` → filter: `cost-*`
+
 ## Actions
 
 ### 1. Load Existing Documents

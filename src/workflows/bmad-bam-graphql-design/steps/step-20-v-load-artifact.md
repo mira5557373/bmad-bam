@@ -24,7 +24,7 @@ This step loads the GraphQL Design artifact for validation.
 
 - GraphQL design artifact exists to validate
 - **Load patterns:** `{project-root}/_bmad/bam/data/bam-patterns.csv` -> filter: graphql
-- **Load checklist:** `{project-root}/_bmad/bam/data/checklists/production-readiness.md`
+- **Load checklist:** `{project-root}/_bmad/bam/data/checklists/qg-p1-production-readiness.md`
 
 ---
 

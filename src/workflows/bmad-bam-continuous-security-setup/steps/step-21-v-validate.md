@@ -4,6 +4,11 @@
 
 Validate the security configuration against QG-S5 quality gate criteria.
 
+## Prerequisites
+
+- Step 20 complete (artifact loaded)
+- **Load checklist:** `{project-root}/_bmad/bam/data/checklists/qg-security-continuous.md`
+
 ## Actions
 
 ### 1. QG-S5 Validation Checks

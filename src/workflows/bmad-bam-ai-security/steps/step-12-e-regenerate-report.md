@@ -112,4 +112,4 @@ Search the web: "LLM security assessment change management {date}"
 
 ## Next Step
 
-Edit mode complete. Proceed to Validate mode (`step-20-v-load-report.md`) to verify updated report against QG-S4 AI Security gate criteria.
+Edit mode complete. Proceed to Validate mode (`step-20-v-load-artifact.md`) to verify updated report against QG-S4 AI Security gate criteria.

@@ -4,6 +4,11 @@
 
 Apply targeted modifications to the security configuration.
 
+## Prerequisites
+
+- Step 10 complete (existing configuration loaded)
+- **Load patterns:** `{project-root}/_bmad/bam/data/bam-patterns.csv` → filter: `security-*`
+
 ## Actions
 
 ### 1. Apply Section Updates

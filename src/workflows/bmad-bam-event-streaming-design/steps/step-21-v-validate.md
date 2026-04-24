@@ -25,7 +25,7 @@ Validate the streaming design against quality criteria ensuring complete topic c
 
 - Step 20 completed: Artifact loaded successfully
 - **Load patterns:** `{project-root}/_bmad/bam/data/bam-patterns.csv` -> filter: event-driven
-- **Load checklist:** `{project-root}/_bmad/bam/data/checklists/production-readiness.md`
+- **Load checklist:** `{project-root}/_bmad/bam/data/checklists/qg-p1-production-readiness.md`
 
 ## Validation Checklist
 

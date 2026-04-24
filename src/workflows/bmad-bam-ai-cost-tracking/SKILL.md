@@ -35,6 +35,11 @@ Load available config from `{project-root}/_bmad/config.yaml` and `{project-root
 | Edit | Modify existing cost tracking | `step-10-e-*` to `step-11-e-*` |
 | Validate | Check against cost criteria | `step-20-v-*` to `step-22-v-*` |
 
+## Prerequisites
+
+- Previous workflow outputs available (if applicable)
+- **Config required:** See `On Activation` section
+
 ## Workflow
 
 ### Step 1: Token Usage Metering Design

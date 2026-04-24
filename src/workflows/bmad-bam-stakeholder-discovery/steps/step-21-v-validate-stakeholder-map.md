@@ -25,7 +25,7 @@ Perform comprehensive validation of the stakeholder map against completeness cri
 
 - Stakeholder map loaded (Step 20)
 - **Load patterns:** `{project-root}/_bmad/bam/data/bam-patterns.csv` -> filter: governance
-- **Load checklist:** `{project-root}/_bmad/bam/data/checklists/foundation-gate.md`
+- **Load checklist:** `{project-root}/_bmad/bam/data/checklists/qg-f1-foundation.md`
 
 ## Validation Categories
 

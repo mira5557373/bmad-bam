@@ -27,6 +27,11 @@ This workflow defines context window optimization strategies for managing token 
 | Edit | Modify existing context system | `step-10-e-*` to `step-11-e-*` |
 | Validate | Check against performance criteria | `step-20-v-*` to `step-22-v-*` |
 
+## Prerequisites
+
+- Previous workflow outputs available (if applicable)
+- **Config required:** See `On Activation` section
+
 ## Workflow
 
 ### Step 1: Context Strategy Design

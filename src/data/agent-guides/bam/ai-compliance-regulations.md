@@ -14,7 +14,7 @@
 |------------|--------------|----------------|---------------|---------------------|
 | EU AI Act | European Union | Aug 2026 (full) | Up to 7% global revenue | High - per-tenant risk classification |
 | NIST AI RMF | United States | Voluntary | N/A (best practice) | Medium - framework for governance |
-| UK AI Regulation | United Kingdom | 2025+ | TBD | High - UK GDPR intersection |
+| UK AI Regulation | United Kingdom | 2025+ | Penalties to be determined | High - UK GDPR intersection |
 | CCPA/CPRA AI | California | 2024+ | $7,500/violation | Medium - automated decision-making |
 | FTC AI Guidelines | United States | Ongoing | Varies | Medium - deceptive AI practices |
 | GDPR Art. 22 | European Union | Active | 4% global revenue | High - automated decision rights |

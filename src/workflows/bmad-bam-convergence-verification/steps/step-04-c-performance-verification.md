@@ -27,7 +27,7 @@ Verify that the system meets performance requirements under realistic multi-tena
 
 - Agent safety verified (Step 3)
 - **Load patterns:** `{project-root}/_bmad/bam/data/bam-patterns.csv` → filter: tenant-isolation
-- **Load checklist:** `{project-root}/_bmad/bam/data/checklists/production-readiness.md`
+- **Load checklist:** `{project-root}/_bmad/bam/data/checklists/qg-p1-production-readiness.md`
 
 
 ---

@@ -96,6 +96,15 @@ Your options:
 
 ---
 
+## Outputs
+
+- Scaling policy design document
+- Web/API tier policy specification
+- AI inference policy configuration
+- Background job policy specification
+
+---
+
 ## Next Step
 
 Proceed to `step-03-c-tenant-fairness.md` to implement fairness mechanisms.

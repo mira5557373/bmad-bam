@@ -95,6 +95,15 @@ Your options:
 
 ---
 
+## Outputs
+
+- Tenant routing design document
+- Header-based routing configuration
+- Namespace isolation specification
+- Canary deployment configuration
+
+---
+
 ## Next Step
 
 Proceed to `step-04-c-observability-integration.md` to configure observability features.

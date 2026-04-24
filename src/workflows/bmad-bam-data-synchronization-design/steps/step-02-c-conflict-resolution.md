@@ -107,6 +107,15 @@ Your options:
 
 ---
 
+## Outputs
+
+- Conflict resolution design document
+- Resolution strategy specification per data type
+- Merge strategy configuration
+- Manual resolution workflow documentation
+
+---
+
 ## Next Step
 
 Proceed to `step-03-c-tenant-isolation.md` to ensure tenant isolation in synchronization.

@@ -30,6 +30,13 @@ This step applies the identified changes to the existing migration artifacts.
 
 ---
 
+## Outputs
+
+- Updated migration artifacts
+- Modified configuration files
+
+---
+
 ## Next Step
 
 Run migration pipeline validation (QG-MG1) to verify changes.

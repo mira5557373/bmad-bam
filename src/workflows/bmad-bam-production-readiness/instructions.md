@@ -34,7 +34,7 @@ Perform comprehensive production readiness assessment for multi-tenant AI platfo
 
 ## Quality Gates
 
-- Reference: `production-readiness.md`
+- Reference: `qg-p1-production-readiness.md`
 - Required for QG-OC (Operational Checklist Gate) passage
 
 ## Recovery Protocol

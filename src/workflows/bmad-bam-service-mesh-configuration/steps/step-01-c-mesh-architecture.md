@@ -98,6 +98,14 @@ Your options:
 
 ---
 
+## Outputs
+
+- Service mesh selection decision
+- Mesh architecture diagram
+- mTLS configuration specification
+
+---
+
 ## Next Step
 
 Proceed to `step-02-c-traffic-management.md` to configure traffic management policies.

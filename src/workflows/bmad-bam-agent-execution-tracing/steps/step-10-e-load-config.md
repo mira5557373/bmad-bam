@@ -35,6 +35,12 @@ Identify sections requiring updates based on user request.
 - [ ] Current state documented
 - [ ] Modification scope identified
 
+## Outputs
+
+- Loaded configuration state
+- Modification scope documentation
+- Prepared configuration for editing
+
 ## Next Step
 
 Proceed to `step-11-e-apply-changes.md` with configuration loaded.

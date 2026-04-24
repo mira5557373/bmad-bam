@@ -34,7 +34,7 @@ Search for and load `{project-root}/**/project-context.md` as foundational refer
 - Creating internal service interfaces
 - Establishing module-internal boundaries
 
-## Mode
+## Modes
 
 Select execution mode:
 
@@ -45,6 +45,11 @@ Select execution mode:
 | **Validate** | Check existing artifact against quality criteria |
 
 Default: **Create** mode. In headless mode, always use Create.
+
+## Prerequisites
+
+- Previous workflow outputs available (if applicable)
+- **Config required:** See `On Activation` section
 
 ## Workflow
 
@@ -97,7 +102,7 @@ This workflow contributes to:
 ### Exit Gate
 - All module facades documented with versioning strategy
 - Event schemas include tenant_id and follow naming conventions
-- QG-M1 contract-related checklist items from `module-architecture.md` verified
+- QG-M1 contract-related checklist items from `qg-m1-module-architecture.md` verified
 
 ## Output
 

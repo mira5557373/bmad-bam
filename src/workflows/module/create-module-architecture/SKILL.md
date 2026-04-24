@@ -51,6 +51,11 @@ Ask for or detect the target module name.
 | Edit | Modify existing module architecture | `step-10-e-*` to `step-11-e-*` |
 | Validate | Check against QG-M1 criteria | `step-20-v-*` to `step-22-v-*` |
 
+## Prerequisites
+
+- Previous workflow outputs available (if applicable)
+- **Config required:** See `On Activation` section
+
 ## Workflow
 
 ### Step 0: Complexity Confirmation
@@ -154,7 +159,7 @@ Define agents, tool permissions, and memory scope rules for this module.
 
 - Template: `{project-root}/_bmad/bam/data/templates/sprint-status-template.yaml`
 - Knowledge: `{project-root}/_bmad/bam/data/agent-guides/bam/ddd-module-patterns.md`, `{project-root}/_bmad/bam/data/agent-guides/bam/module-facade-patterns.md`, `{project-root}/_bmad/bam/data/agent-guides/bam/independent-development.md`
-- Checklist: `{project-root}/_bmad/bam/data/checklists/module-readiness.md`
+- Checklist: `{project-root}/_bmad/bam/data/checklists/qg-s1-module-readiness.md`
 - DDD Module Patterns: `{project-root}/_bmad/bam/data/agent-guides/bam/ddd-module-patterns.md`
 - Workflow Sequence: `{project-root}/_bmad/bam/data/agent-guides/bam/workflow-sequence.md`
 
@@ -168,7 +173,7 @@ This workflow contributes to:
 - Module must not already have an architecture document (if it does, use Edit mode)
 
 ### Exit Gate
-- QG-M1 checklist items from `module-architecture.md` verified
+- QG-M1 checklist items from `qg-m1-module-architecture.md` verified
 - Module identity, domain model, facade, dependencies, events, and AI behaviors defined
 - Architecture inherits from master architecture
 - Module registered in sprint-status.yaml as 'architecture-complete'

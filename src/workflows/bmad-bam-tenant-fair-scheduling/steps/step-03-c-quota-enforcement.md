@@ -30,7 +30,7 @@ Design per-tenant quota enforcement mechanisms to ensure resource limits are res
 - Scheduling strategy completed (Step 2)
 - **Load patterns:** `{project-root}/_bmad/bam/data/bam-patterns.csv` -> filter: `tenant-isolation`
 - **Load patterns:** `{project-root}/_bmad/bam/data/bam-patterns.csv` -> filter: `rate-limiting`
-- **Load guide:** `{project-root}/_bmad/bam/data/agent-guides/bam/tenant-isolation.md`
+- **Load guide:** `{project-root}/_bmad/bam/data/agent-guides/bam/multi-tenant-patterns.md`
 
 ---
 

@@ -30,6 +30,10 @@ This step validates the completeness and quality of the custom domain design, en
 
 ---
 
+## Actions
+
+Execute the validation checklist below to verify custom domain design artifacts.
+
 ## Inputs
 
 - Loaded artifact from validation step 20

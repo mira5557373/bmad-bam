@@ -43,6 +43,11 @@ Search for and load `{project-root}/**/project-context.md` as foundational refer
 | Edit | Modify existing isolation design | `step-10-e-*` to `step-11-e-*` |
 | Validate | Check against QG-M2 criteria | `step-20-v-*` to `step-22-v-*` |
 
+## Prerequisites
+
+- Previous workflow outputs available (if applicable)
+- **Config required:** See `On Activation` section
+
 ## Workflow
 
 ### Step 1: Tenant Model Definition
@@ -104,7 +109,7 @@ This workflow contributes to:
 - QG-F1 (Foundation) must pass (master architecture defined with tenant model selection)
 
 ### Exit Gate
-- QG-M2 checklist items from `tenant-isolation.md` verified:
+- QG-M2 checklist items from `qg-m2-tenant-isolation.md` verified:
   - [ ] Isolation matrix complete for all asset types
   - [ ] Context propagation design covers all boundaries
   - [ ] No implicit sharing of tenant data
@@ -130,6 +135,6 @@ This workflow contributes to:
 
 - Knowledge: `{project-root}/_bmad/bam/data/agent-guides/bam/multi-tenant-patterns.md`, `{project-root}/_bmad/bam/data/agent-guides/bam/rls-best-practices.md`
 - Template: `{project-root}/_bmad/bam/data/templates/rls-policy.sql`
-- Checklist: `{project-root}/_bmad/bam/data/checklists/tenant-isolation.md`
+- Checklist: `{project-root}/_bmad/bam/data/checklists/qg-m2-tenant-isolation.md`
 - RLS Best Practices: `{project-root}/_bmad/bam/data/agent-guides/bam/rls-best-practices.md`
 - Multi-Tenant Patterns: `{project-root}/_bmad/bam/data/agent-guides/bam/multi-tenant-patterns.md`

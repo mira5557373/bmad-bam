@@ -27,6 +27,11 @@ This workflow defines the user feedback collection and model improvement archite
 | Edit | Modify existing feedback system | `step-10-e-*` to `step-11-e-*` |
 | Validate | Check against feedback criteria | `step-20-v-*` to `step-22-v-*` |
 
+## Prerequisites
+
+- Previous workflow outputs available (if applicable)
+- **Config required:** See `On Activation` section
+
 ## Workflow
 
 ### Step 1: Feedback Collection Design

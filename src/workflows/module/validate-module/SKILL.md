@@ -36,9 +36,14 @@ Search for and load `{project-root}/**/project-context.md` as foundational refer
 - Checking module completeness and quality
 - Verifying module quality gate requirements
 
-## Mode
+## Modes
 
 This workflow operates in **Validate** mode — checking existing artifacts against quality criteria.
+
+## Prerequisites
+
+- Previous workflow outputs available (if applicable)
+- **Config required:** See `On Activation` section
 
 ## Validation Steps
 
@@ -94,7 +99,7 @@ Load `master-architecture.md` and `modules/{module}/architecture.md`.
 
 ## References
 
-- Checklist: `{project-root}/_bmad/bam/data/checklists/module-readiness.md`
+- Checklist: `{project-root}/_bmad/bam/data/checklists/qg-s1-module-readiness.md`
 - Template: `{project-root}/_bmad/bam/data/templates/sprint-status-template.yaml`
 - Knowledge: `{project-root}/_bmad/bam/data/agent-guides/bam/module-facade-patterns.md`, `{project-root}/_bmad/bam/data/agent-guides/bam/ddd-module-patterns.md`
 

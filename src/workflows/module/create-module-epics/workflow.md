@@ -58,7 +58,7 @@ Load the existing output artifact, then follow `steps/` for validation against q
 
 - **Config required:** `{tenant_model}`, `{ai_runtime}`
 - **Required artifacts:**
-  - `module-architecture.md` (from create-module-architecture) - provides module structure
+  - `qg-m1-module-architecture.md` (from create-module-architecture) - provides module structure
   - `facade-contract.md` (from define-facade-contract) - provides external interface definitions
 - **Required gates passed:** QG-S1 (Module Architecture Readiness)
 

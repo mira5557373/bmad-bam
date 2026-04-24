@@ -1,6 +1,6 @@
 # Production Readiness Workflow
 
-## Mode Router
+## Mode Selection
 
 | Mode | Entry Point | Steps |
 |------|-------------|-------|
@@ -52,7 +52,7 @@ step-22-v-generate-report.md
 
 - **Templates:** `observability-template.md`, `testing-strategy-template.md`
 - **Data:** `bam-patterns.csv` (filter: `operations`)
-- **Checklists:** `production-checklist.md`, `security-checklist.md`
+- **Checklists:** `qg-prod-checklist.md`, `qg-sec-checklist.md`
 - **Workflows:** `bmad-bam-ai-security`, `bmad-bam-data-protection`, `bmad-bam-compliance-verification`
 
 ## Gate Integration

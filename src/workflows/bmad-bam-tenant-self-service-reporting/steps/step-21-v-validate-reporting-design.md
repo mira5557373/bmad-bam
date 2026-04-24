@@ -25,7 +25,7 @@ Perform comprehensive validation of the tenant self-service reporting design aga
 
 - Reporting design loaded (Step 20)
 - **Load patterns:** `{project-root}/_bmad/bam/data/bam-patterns.csv` → filter: reporting
-- **Load checklist:** `{project-root}/_bmad/bam/data/checklists/production-readiness.md`
+- **Load checklist:** `{project-root}/_bmad/bam/data/checklists/qg-p1-production-readiness.md`
 
 ## Validation Categories
 

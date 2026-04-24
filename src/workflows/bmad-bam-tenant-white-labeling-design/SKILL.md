@@ -43,6 +43,11 @@ Search for and load `{project-root}/**/project-context.md` as foundational refer
 | Edit | Modify existing white-labeling design | `step-10-e-*` to `step-11-e-*` |
 | Validate | Check against QG-M2 criteria | `step-20-v-*` to `step-22-v-*` |
 
+## Prerequisites
+
+- Previous workflow outputs available (if applicable)
+- **Config required:** See `On Activation` section
+
 ## Workflow
 
 ### Step 1: Branding Asset Management
@@ -125,4 +130,4 @@ This workflow contributes to:
 ## References
 
 - Knowledge: `{project-root}/_bmad/bam/data/agent-guides/bam/multi-tenant-patterns.md`
-- Checklist: `{project-root}/_bmad/bam/data/checklists/tenant-isolation.md`
+- Checklist: `{project-root}/_bmad/bam/data/checklists/qg-m2-tenant-isolation.md`

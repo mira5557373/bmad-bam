@@ -4,6 +4,11 @@
 
 Apply targeted modifications to the cost optimization review.
 
+## Prerequisites
+
+- Step 10 complete (existing configuration loaded)
+- **Load patterns:** `{project-root}/_bmad/bam/data/bam-patterns.csv` → filter: `cost-*`
+
 ## Actions
 
 ### 1. Apply Section Updates

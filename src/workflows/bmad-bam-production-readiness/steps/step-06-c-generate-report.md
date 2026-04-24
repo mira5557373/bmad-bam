@@ -8,7 +8,7 @@ Compile all findings into a comprehensive production readiness report with go-li
 
 - Steps 1-5 complete
 - All assessments documented
-- **Load checklists:** `{project-root}/_bmad/bam/data/checklists/production-checklist.md`
+- **Load checklists:** `{project-root}/_bmad/bam/data/checklists/qg-prod-checklist.md`
 
 ## Actions
 

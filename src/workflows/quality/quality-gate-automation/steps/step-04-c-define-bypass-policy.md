@@ -4,6 +4,12 @@
 
 Define policies for bypassing quality gates in exceptional circumstances.
 
+## Prerequisites
+
+- Step 3 completed (thresholds configured)
+- **Load patterns:** `{project-root}/_bmad/bam/data/quality-gates.csv` → filter: bypass policies
+- **Load checklist:** `{project-root}/_bmad/bam/data/checklists/qg-p1-production-readiness.md`
+
 ## Actions
 
 ### 1. Define Bypass Conditions

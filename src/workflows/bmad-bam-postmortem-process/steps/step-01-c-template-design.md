@@ -102,6 +102,14 @@ Your options:
 
 ---
 
+## Outputs
+
+- Post-mortem document template
+- Severity classification matrix
+- Impact measurement framework
+
+---
+
 ## Next Step
 
 Proceed to `step-02-c-facilitation-guide.md` to create facilitation guidelines.

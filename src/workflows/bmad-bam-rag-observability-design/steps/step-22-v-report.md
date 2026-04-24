@@ -48,6 +48,16 @@ Create report with:
 {recommendations}
 ```
 
+## Verification
+
+- [ ] Report includes configuration summary
+- [ ] QG-AI2 checklist results documented
+- [ ] Gate outcome clearly stated (PASS/CONDITIONAL/FAIL)
+- [ ] Retrieval metrics validated
+- [ ] RAG quality metrics verified
+- [ ] RAG alerting configuration confirmed
+- [ ] Gaps and recommendations documented (if applicable)
+
 ## Outputs
 
 - Validation report with QG-AI2 compliance status

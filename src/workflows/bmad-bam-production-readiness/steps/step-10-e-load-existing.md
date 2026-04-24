@@ -26,7 +26,7 @@ This step loads the existing production readiness artifacts for modification. Ed
 ## Prerequisites
 
 - Existing production readiness artifacts to modify
-- **Load checklists:** `{project-root}/_bmad/bam/data/checklists/production-checklist.md`
+- **Load checklists:** `{project-root}/_bmad/bam/data/checklists/qg-prod-checklist.md`
 
 ---
 
@@ -34,7 +34,7 @@ This step loads the existing production readiness artifacts for modification. Ed
 
 - Existing artifact file path
 - User-specified modifications or update requirements
-- Checklist: `{project-root}/_bmad/bam/data/checklists/production-checklist.md`
+- Checklist: `{project-root}/_bmad/bam/data/checklists/qg-prod-checklist.md`
 
 ---
 

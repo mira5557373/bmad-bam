@@ -145,7 +145,7 @@ describe('File Counts', () => {
     expect(csvFiles.length).toBe(6);
   });
 
-  test('has 36 checklists', () => {
+  test('has 38 checklists', () => {
     const checklistsDir = path.join(SRC_DIR, 'data', 'checklists');
     const checklists = fs.readdirSync(checklistsDir)
       .filter(f => f.endsWith('.md') && f !== 'README.md');
@@ -159,7 +159,10 @@ describe('File Counts', () => {
     // qg-d1-discovery.md, qg-pl1-planning.md
     // Increased to 35 after adding additional checklists
     // Increased to 36 after adding qg-ai1-ai-safety.md
-    expect(checklists.length).toBe(36);
+    // Increased to 38 after adding NEXUS checklists: qg-ai3-agent-contracts.md
+    // Increased to 39 after adding qg-prg-production.md for PRG workflow
+    // Decreased to 38 after removing orphan qg-prg-production-readiness.md (duplicate of qg-prg-production.md)
+    expect(checklists.length).toBe(38);
   });
 
   test('has 223 agent guides', () => {
@@ -177,6 +180,10 @@ describe('File Counts', () => {
     // vector-store-observability.md, embedding-observability.md, context-window-observability.md
     // Increased to 189 after adding tenant-data-anonymization.md
     // Increased to 223 after adding 34 domain-specific pattern guides
-    expect(guides.length).toBe(223);
+    // Increased to 231 after adding 8 NEXUS guides: 8-field-action-contract, prg-gate-implementation,
+    // request-loop-patterns, control-loop-patterns, learning-loop-patterns, economic-loop-patterns,
+    // recovery-loop-patterns, tier-h-federation-patterns
+    // Increased to 233 after adding facade-contract-patterns.md, production-deployment.md
+    expect(guides.length).toBe(233);
   });
 });

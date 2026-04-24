@@ -42,6 +42,11 @@ Verify data protection implementation:
 3. Test privacy mechanisms
 4. Generate validation report
 
+## Prerequisites
+
+- Previous workflow outputs available (if applicable)
+- **Config required:** See `On Activation` section
+
 ## Quality Gate
 
 **Gate ID:** QG-DR1  

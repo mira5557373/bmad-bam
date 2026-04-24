@@ -64,6 +64,12 @@ Search the web: "OpenTelemetry LLM tracing {date}"
 - [ ] Tenant isolation strategy defined
 - [ ] Export settings configured
 
+## Outputs
+
+- Platform selection decision document
+- OpenTelemetry configuration specification
+- Tenant isolation configuration
+
 ## Next Step
 
 Proceed to `step-04-c-sampling-strategy.md` with platform integration configured.

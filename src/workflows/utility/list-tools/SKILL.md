@@ -43,6 +43,11 @@ Search for and load `{project-root}/**/project-context.md` as foundational refer
 
 **Intent Check:** Confirm the user's intent and any filter criteria before processing. Verify the requested tier, module, or category filters are valid.
 
+## Prerequisites
+
+- Previous workflow outputs available (if applicable)
+- **Config required:** See `On Activation` section
+
 ## Workflow
 
 ### Step 1: Load Tool Registry

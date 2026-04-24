@@ -43,6 +43,11 @@ Search for and load `{project-root}/**/project-context.md` as foundational refer
 | Edit | Modify existing tracing design | `step-10-e-*` to `step-11-e-*` |
 | Validate | Check against QG-P1 criteria | `step-20-v-*` to `step-22-v-*` |
 
+## Prerequisites
+
+- Previous workflow outputs available (if applicable)
+- **Config required:** See `On Activation` section
+
 ## Workflow
 
 ### Step 1: Tracing Architecture (OpenTelemetry)
@@ -92,7 +97,7 @@ This workflow contributes to:
 - QG-M2 (Tenant Isolation) recommended for proper tenant context design
 
 ### Exit Gate
-- QG-P1 checklist items from `production-readiness.md` verified:
+- QG-P1 checklist items from `qg-p1-production-readiness.md` verified:
   - [ ] Distributed tracing configured with tenant correlation
   - [ ] Sampling strategy defined per tenant tier
   - [ ] Context propagation covers all service boundaries
@@ -116,7 +121,7 @@ This workflow contributes to:
 
 - Template: `{project-root}/_bmad/bam/data/templates/distributed-tracing-template.md`
 - Knowledge: `{project-root}/_bmad/bam/data/agent-guides/bam/multi-tenant-patterns.md`, `{project-root}/_bmad/bam/data/agent-guides/bam/observability-patterns.md`
-- Checklist: `{project-root}/_bmad/bam/data/checklists/production-readiness.md`
+- Checklist: `{project-root}/_bmad/bam/data/checklists/qg-p1-production-readiness.md`
 
 ## Web Research
 

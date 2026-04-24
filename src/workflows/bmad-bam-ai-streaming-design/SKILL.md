@@ -27,6 +27,11 @@ This workflow defines real-time streaming response architecture for LLM outputs 
 | Edit | Modify existing streaming | `step-10-e-*` to `step-11-e-*` |
 | Validate | Check against real-time criteria | `step-20-v-*` to `step-22-v-*` |
 
+## Prerequisites
+
+- Previous workflow outputs available (if applicable)
+- **Config required:** See `On Activation` section
+
 ## Workflow
 
 ### Step 1: Transport Layer Design

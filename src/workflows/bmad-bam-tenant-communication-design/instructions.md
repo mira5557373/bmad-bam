@@ -37,7 +37,7 @@ Design a comprehensive tenant notification and communication system for a multi-
 
 ## Quality Gates
 
-- Reference: `production-readiness.md`
+- Reference: `qg-p1-production-readiness.md`
 - Contributes to QG-P1 (Production), QG-I2 (Tenant Safety)
 
 ## Related Workflows

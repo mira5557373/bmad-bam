@@ -1,0 +1,14 @@
+{
+  "module-code": "bam",
+  "capabilities": [{
+    "name": "bmad-bam-validate-facade-contract",
+    "menu-code": "VFC",
+    "description": "Validate a facade contract specification against quality criteria and facade contract checklist",
+    "supports-headless": true,
+    "phase-name": "3-solutioning",
+    "after": ["define-facade-contract", "evolve-facade-contract"],
+    "before": ["bmad-bam-convergence-verification"],
+    "is-required": false,
+    "output-location": "{output_folder}/planning-artifacts/quality"
+  }]
+}

@@ -43,6 +43,11 @@ Search for and load `{project-root}/**/project-context.md` as foundational refer
 | Edit | Modify existing SLI/SLO definitions | `step-10-e-*` to `step-11-e-*` |
 | Validate | Check against QG-P1 criteria | `step-20-v-*` to `step-22-v-*` |
 
+## Prerequisites
+
+- Previous workflow outputs available (if applicable)
+- **Config required:** See `On Activation` section
+
 ## Workflow
 
 ### Step 1: SLI Identification
@@ -90,7 +95,7 @@ This workflow contributes to:
 - Observability infrastructure designed (metrics available)
 
 ### Exit Gate
-- QG-P1 checklist items from `production-readiness.md` verified:
+- QG-P1 checklist items from `qg-p1-production-readiness.md` verified:
   - [ ] SLIs defined for all critical services
   - [ ] SLO targets set with measurement windows
   - [ ] Error budget policies documented
@@ -115,7 +120,7 @@ This workflow contributes to:
 
 - Template: `{project-root}/_bmad/bam/data/templates/sli-slo-template.md`
 - Knowledge: `{project-root}/_bmad/bam/data/agent-guides/bam/sre-patterns.md`, `{project-root}/_bmad/bam/data/agent-guides/bam/observability-patterns.md`
-- Checklist: `{project-root}/_bmad/bam/data/checklists/production-readiness.md`
+- Checklist: `{project-root}/_bmad/bam/data/checklists/qg-p1-production-readiness.md`
 
 ## Web Research
 

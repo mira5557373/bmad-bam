@@ -32,7 +32,7 @@ Discover and document key stakeholders for a multi-tenant SaaS platform initiati
 
 ## Quality Gates
 
-- Reference: `foundation-gate.md`
+- Reference: `qg-f1-foundation.md`
 - Contributes to QG-F1 (Foundation), QG-P1 (Production)
 
 ## Related Workflows

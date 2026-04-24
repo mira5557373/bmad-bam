@@ -107,6 +107,15 @@ Your options:
 
 ---
 
+## Outputs
+
+- Tenant isolation design document
+- Change stream isolation configuration
+- Sync queue isolation specification
+- Cross-tenant prevention rules
+
+---
+
 ## Next Step
 
 Proceed to `step-04-c-monitoring.md` to configure sync monitoring.

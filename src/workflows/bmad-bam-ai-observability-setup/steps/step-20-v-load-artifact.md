@@ -4,6 +4,11 @@
 
 Load the AI observability configuration for validation against QG-AI2 criteria.
 
+## Prerequisites
+
+- AI observability configuration exists at `{output_folder}/planning-artifacts/ai-observability-config.md`
+- **Load patterns:** `{project-root}/_bmad/bam/data/bam-patterns.csv` → filter: `observability-*`
+
 ## Actions
 
 ### 1. Load Existing Documents

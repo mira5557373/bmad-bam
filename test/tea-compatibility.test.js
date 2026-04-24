@@ -208,9 +208,9 @@ describe('TEA Pattern Registry Tests', () => {
         line.startsWith('testing-isolation,')
       );
       expect(testingIsolationLine).toBeDefined();
-      // Second column should be 'testing'
+      // Third column (index 2) should be 'testing' (after pattern_id, name)
       const columns = testingIsolationLine.split(',');
-      expect(columns[1]).toBe('testing');
+      expect(columns[2]).toBe('testing');
     });
   });
 
@@ -239,9 +239,9 @@ describe('TEA Pattern Registry Tests', () => {
         line.startsWith('testing-agent-safety,')
       );
       expect(testingAgentSafetyLine).toBeDefined();
-      // Second column should be 'testing'
+      // Third column (index 2) should be 'testing' (after pattern_id, name)
       const columns = testingAgentSafetyLine.split(',');
-      expect(columns[1]).toBe('testing');
+      expect(columns[2]).toBe('testing');
     });
   });
 

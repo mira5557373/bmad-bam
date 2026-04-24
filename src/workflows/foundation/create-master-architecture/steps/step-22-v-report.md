@@ -27,7 +27,7 @@ Generate a comprehensive validation report summarizing QG-F1 foundation gate fin
 
 - Step 20 completed: Artifact loaded successfully
 - Step 21 completed: Validation performed against QG-F1 criteria
-- **Load checklist:** `{project-root}/_bmad/bam/data/checklists/foundation-gate.md`
+- **Load checklist:** `{project-root}/_bmad/bam/data/checklists/qg-f1-foundation.md`
 - **Load template:** `{project-root}/_bmad/bam/data/templates/quality-gate-report-template.md`
 
 ---
@@ -68,7 +68,7 @@ Organize findings from Step 21 by category:
 | WARNING | Non-critical gap | Missing version pins for non-critical tech, incomplete documentation | Should address before module development |
 | INFO | Improvement | Style suggestions, optional enhancements | Consider for future iterations |
 
-Reference the Critical vs Non-Critical Classification table in `foundation-gate.md`:
+Reference the Critical vs Non-Critical Classification table in `qg-f1-foundation.md`:
 - Shared Kernel Implementation: CRITICAL
 - Tests Passing (tenant isolation): CRITICAL
 - Control Plane Implementation: CRITICAL

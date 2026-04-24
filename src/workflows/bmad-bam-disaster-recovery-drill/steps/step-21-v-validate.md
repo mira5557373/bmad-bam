@@ -26,6 +26,10 @@ Validate the DR drill artifacts against QG-DR1 quality criteria.
 
 ---
 
+## Actions
+
+Execute the validation checklist below to verify DR drill artifacts.
+
 ## Validation Checklist
 
 ### DR Plan Execution

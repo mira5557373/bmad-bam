@@ -43,6 +43,11 @@ Search for and load `{project-root}/**/project-context.md` as foundational refer
 | Edit | Modify existing pipeline design | `step-10-e-*` to `step-11-e-*` |
 | Validate | Check against production readiness criteria | `step-20-v-*` to `step-22-v-*` |
 
+## Prerequisites
+
+- Previous workflow outputs available (if applicable)
+- **Config required:** See `On Activation` section
+
 ## Workflow
 
 ### Step 1: Pipeline Architecture
@@ -108,7 +113,7 @@ This workflow contributes to:
 
 - Template: `{project-root}/_bmad/bam/data/templates/cicd-pipeline-template.md`
 - Knowledge: `{project-root}/_bmad/bam/data/agent-guides/bam/deployment-patterns.md`
-- Checklist: `{project-root}/_bmad/bam/data/checklists/production-readiness.md`
+- Checklist: `{project-root}/_bmad/bam/data/checklists/qg-p1-production-readiness.md`
 
 ## Web Research
 

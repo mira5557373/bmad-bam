@@ -56,6 +56,12 @@ Search the web: "LLM groundedness scoring {date}"
 - [ ] Context utilization tracking enabled
 - [ ] Baseline thresholds documented
 
+## Outputs
+
+- Quality baseline specification
+- Quality metrics configuration
+- Evaluation pipeline design
+
 ## Next Step
 
 Proceed to `step-05-c-tenant-dashboards.md` with quality baselines established.

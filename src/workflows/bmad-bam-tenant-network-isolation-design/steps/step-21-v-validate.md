@@ -26,6 +26,10 @@ Validate the completeness and quality of the network isolation design.
 
 ---
 
+## Actions
+
+Execute the validation checklist below to verify network isolation design artifacts.
+
 ## Verification
 
 ### VPC Architecture

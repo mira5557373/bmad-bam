@@ -4,6 +4,11 @@
 
 Generate a comprehensive validation report documenting QG-CS1 gate results.
 
+## Prerequisites
+
+- Step 21 complete (validation performed)
+- **Load template:** `{project-root}/_bmad/bam/data/templates/quality-gate-report-template.md`
+
 ## Actions
 
 ### 1. Generate Validation Report

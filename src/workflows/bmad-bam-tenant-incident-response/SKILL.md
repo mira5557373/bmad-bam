@@ -66,7 +66,7 @@ This workflow contributes to:
 
 ### Exit Gate
 - QG-I2 checklist items from `qg-i2-tenant-safety.md` verified
-- QG-P1 checklist items from `production-readiness.md` verified
+- QG-P1 checklist items from `qg-p1-production-readiness.md` verified
 - Incident playbooks complete with tenant isolation protocols
 
 ## Related Workflows

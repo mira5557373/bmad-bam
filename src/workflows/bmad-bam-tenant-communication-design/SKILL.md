@@ -168,7 +168,7 @@ This workflow contributes to:
 
 - Template: `{project-root}/_bmad/bam/data/templates/tenant-communication-design-template.md`
 - Knowledge: `{project-root}/_bmad/bam/data/agent-guides/bam/multi-tenant-patterns.md`
-- Checklist: `{project-root}/_bmad/bam/data/checklists/production-readiness.md`
+- Checklist: `{project-root}/_bmad/bam/data/checklists/qg-p1-production-readiness.md`
 
 ## Headless Mode
 

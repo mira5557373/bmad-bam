@@ -28,7 +28,7 @@ Apply the confirmed modifications to the compliance verification documents while
 - Step 10 completed: Existing artifacts loaded
 - Modification targets confirmed with user
 - **Load patterns:** `{project-root}/_bmad/bam/data/compliance-frameworks.csv`
-- **Load checklist:** `{project-root}/_bmad/bam/data/checklists/compliance-checklist.md`
+- **Load checklist:** `{project-root}/_bmad/bam/data/checklists/qg-cp1-compliance.md`
 
 ---
 

@@ -30,6 +30,13 @@ This step applies the identified changes to the existing model validation artifa
 
 ---
 
+## Outputs
+
+- Updated model validation artifacts
+- Modified configuration files
+
+---
+
 ## Next Step
 
 Run model validation (QG-AI1) to verify changes.

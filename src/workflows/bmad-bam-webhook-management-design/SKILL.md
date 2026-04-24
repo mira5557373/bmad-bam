@@ -35,7 +35,7 @@ Search for and load `{project-root}/**/project-context.md` as foundational refer
 - Building event-driven integrations
 - Implementing reliable message delivery
 
-## Mode
+## Modes
 
 Select execution mode:
 
@@ -46,6 +46,11 @@ Select execution mode:
 | **Validate** | Check existing artifact against quality criteria |
 
 Default: **Create** mode. In headless mode, always use Create.
+
+## Prerequisites
+
+- Previous workflow outputs available (if applicable)
+- **Config required:** See `On Activation` section
 
 ## Workflow
 

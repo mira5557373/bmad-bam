@@ -29,7 +29,7 @@ Design automated report generation for audit evidence packages, compliance dashb
 
 - Step 3 completed: Collection automation with storage architecture
 - **Load patterns:** `{project-root}/_bmad/bam/data/compliance-frameworks.csv`
-- **Load checklist:** `{project-root}/_bmad/bam/data/checklists/production-readiness.md`
+- **Load checklist:** `{project-root}/_bmad/bam/data/checklists/qg-p1-production-readiness.md`
 
 ---
 

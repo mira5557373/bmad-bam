@@ -1,4 +1,4 @@
-# AI Security Gate Checklist
+# QG-S4: AI Security Gate Checklist
 
 **Gate ID:** QG-S4
 **Phase:** 3-solutioning (Pre-Deployment)

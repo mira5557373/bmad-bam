@@ -28,7 +28,7 @@ Load the foundation gate report and sprint status for meta-validation, verifying
 - Foundation gate report artifact exists to validate
 - **Load patterns:** `{project-root}/_bmad/bam/data/bam-patterns.csv` → filter: tenant-isolation
 - **Load patterns:** `{project-root}/_bmad/bam/data/bam-patterns.csv` → filter: testing-isolation
-- **Load checklist:** `{project-root}/_bmad/bam/data/checklists/foundation-gate.md`
+- **Load checklist:** `{project-root}/_bmad/bam/data/checklists/qg-f1-foundation.md`
 
 ---
 

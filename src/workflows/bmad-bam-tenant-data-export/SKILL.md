@@ -34,7 +34,7 @@ Search for and load `{project-root}/**/project-context.md` as foundational refer
 - Creating data portability features
 - Building GDPR data subject access request support
 
-## Mode
+## Modes
 
 Select execution mode:
 
@@ -45,6 +45,11 @@ Select execution mode:
 | **Validate** | Check existing artifact against quality criteria |
 
 Default: **Create** mode. In headless mode, always use Create.
+
+## Prerequisites
+
+- Previous workflow outputs available (if applicable)
+- **Config required:** See `On Activation` section
 
 ## Workflow
 
@@ -106,7 +111,7 @@ This workflow contributes to:
 - QG-M2 (Tenant Isolation) must pass for data boundary definitions
 
 ### Exit Gate
-- QG-M2 and QG-I2 checklist items from `tenant-isolation.md` and `qg-i2-tenant-safety.md` verified:
+- QG-M2 and QG-I2 checklist items from `qg-m2-tenant-isolation.md` and `qg-i2-tenant-safety.md` verified:
   - [ ] All data categories identified
   - [ ] Export formats specified
   - [ ] Pipeline designed

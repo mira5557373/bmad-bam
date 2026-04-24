@@ -111,6 +111,15 @@ Your options:
 
 ---
 
+## Outputs
+
+- Knowledge base design document
+- Incident database schema specification
+- Pattern identification configuration
+- Trend analysis dashboard specification
+
+---
+
 ## Workflow Complete
 
 Create mode complete for postmortem-process workflow.

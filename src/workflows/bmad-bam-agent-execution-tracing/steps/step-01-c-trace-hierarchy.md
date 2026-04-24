@@ -66,6 +66,12 @@ Search the web: "OpenTelemetry agent spans {date}"
 - [ ] Context propagation strategy specified
 - [ ] Tenant context included in all spans
 
+## Outputs
+
+- Trace hierarchy specification
+- Span relationship diagram
+- Context propagation configuration
+
 ## Next Step
 
 Proceed to `step-02-c-span-attributes.md` with hierarchy defined.

@@ -223,8 +223,9 @@ describe('SKILL.md Validation', () => {
       // Increased from 145-170 to 145-180 after adding 8 phase coverage workflows
       // Increased to 145-190 after adding quality/safety workflows
       // Increased to 145-195 to accommodate additional workflows
+      // Increased to 145-200 after adding NEXUS workflows: action-contract-design, prg-gate-setup
       expect(workflowDirs.length).toBeGreaterThanOrEqual(145);
-      expect(workflowDirs.length).toBeLessThanOrEqual(195);
+      expect(workflowDirs.length).toBeLessThanOrEqual(200);
     });
 
     test('all workflows have SKILL.md', () => {

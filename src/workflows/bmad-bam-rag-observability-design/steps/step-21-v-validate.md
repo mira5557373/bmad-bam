@@ -48,6 +48,12 @@ Check against QG-AI2 RAG Pipeline Observability:
 - [ ] Gate outcome determined
 - [ ] Gaps documented
 
+## Outputs
+
+- Validation results
+- Gate outcome determination
+- Gap analysis documentation
+
 ## Next Step
 
 Proceed to `step-22-v-report.md` with validation results.

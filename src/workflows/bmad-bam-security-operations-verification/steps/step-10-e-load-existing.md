@@ -27,7 +27,7 @@ This step loads the existing security operations verification documents for modi
 
 - Existing security operations verification documents to modify
 - **Load patterns:** `{project-root}/_bmad/bam/data/bam-patterns.csv` → filter: `security`
-- **Load checklists:** `{project-root}/_bmad/bam/data/checklists/security-checklist.md`
+- **Load checklists:** `{project-root}/_bmad/bam/data/checklists/qg-sec-checklist.md`
 
 ---
 

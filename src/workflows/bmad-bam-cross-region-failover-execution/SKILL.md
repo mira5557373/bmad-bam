@@ -100,7 +100,7 @@ This workflow contributes to:
 - DR plan and failover architecture must be complete
 
 ### Exit Gate
-- Failover execution documented with `production-readiness.md` checklist items verified
+- Failover execution documented with `qg-p1-production-readiness.md` checklist items verified
 - All services restored and validated
 - Lessons learned captured and DR plan updated
 
@@ -121,7 +121,7 @@ This workflow contributes to:
 - Template: `{project-root}/_bmad/bam/data/templates/failover-execution-template.md`
 - Knowledge: `{project-root}/_bmad/bam/data/agent-guides/bam/disaster-recovery-patterns.md`
 - Knowledge: `{project-root}/_bmad/bam/data/agent-guides/bam/multi-tenant-patterns.md`
-- Checklist: `{project-root}/_bmad/bam/data/checklists/production-readiness.md`
+- Checklist: `{project-root}/_bmad/bam/data/checklists/qg-p1-production-readiness.md`
 
 ## Headless Mode
 

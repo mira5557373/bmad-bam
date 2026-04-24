@@ -32,7 +32,7 @@ Design data reconciliation capabilities following disaster recovery incidents, c
 
 ## Quality Gates
 
-- Reference: `production-readiness.md`
+- Reference: `qg-p1-production-readiness.md`
 - Contributes to QG-DR1 (Disaster Recovery Drill), QG-P1 (Production)
 
 ## Related Workflows

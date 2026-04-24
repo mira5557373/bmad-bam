@@ -1,0 +1,5 @@
+type: workflow
+name: bmad-bam-validate-facade-contract
+displayName: Validate Facade Contract
+description: "Validate facade contract specification against quality criteria. Use when the user requests to 'validate facade contract' or 'check facade spec'."
+module: bam

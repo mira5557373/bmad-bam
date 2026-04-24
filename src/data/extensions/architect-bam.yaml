@@ -426,7 +426,7 @@ prompts:
 
       Prerequisites: Load platform context via `bam-platform-context`
 
-      **Load checklist:** `{project-root}/_bmad/bam/data/checklists/foundation-gate.md`
+      **Load checklist:** `{project-root}/_bmad/bam/data/checklists/qg-f1-foundation.md`
 
       Perform comprehensive review against QG-F1 (Foundation Gate):
 
@@ -1073,14 +1073,14 @@ prompts:
 
          | Phase | Gate ID | Gate Name | Checklist |
          |-------|---------|-----------|-----------|
-         | Foundation | QG-F1 | Foundation Gate | `foundation-gate.md` |
-         | Module Architecture | QG-M1 | Module Architecture | `module-architecture.md` |
-         | Tenant Isolation | QG-M2 | Tenant Isolation | `tenant-isolation.md` |
+         | Foundation | QG-F1 | Foundation Gate | `qg-f1-foundation.md` |
+         | Module Architecture | QG-M1 | Module Architecture | `qg-m1-module-architecture.md` |
+         | Tenant Isolation | QG-M2 | Tenant Isolation | `qg-m2-tenant-isolation.md` |
          | Agent Runtime | QG-M3 | Agent Runtime | `qg-m3-agent-runtime.md` |
          | Convergence | QG-I1 | Convergence | `qg-i1-convergence.md` |
          | Tenant Safety | QG-I2 | Tenant Safety | `qg-i2-tenant-safety.md` |
          | Agent Safety | QG-I3 | Agent Safety | `qg-i3-agent-safety.md` |
-         | Production | QG-P1 | Production Readiness | `production-readiness.md` |
+         | Production | QG-P1 | Production Readiness | `qg-p1-production-readiness.md` |
 
       2. **Load Gate Checklist**
          Load the appropriate checklist from:

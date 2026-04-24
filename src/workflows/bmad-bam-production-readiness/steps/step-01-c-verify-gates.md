@@ -8,7 +8,7 @@ Verify all prerequisite quality gates have passed before production readiness as
 
 - All dependent workflows completed
 - Gate results documented
-- **Load checklists:** `{project-root}/_bmad/bam/data/checklists/production-checklist.md`
+- **Load checklists:** `{project-root}/_bmad/bam/data/checklists/qg-prod-checklist.md`
 
 ## Actions
 

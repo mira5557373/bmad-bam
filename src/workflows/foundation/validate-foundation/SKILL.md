@@ -34,9 +34,14 @@ Search for and load `{project-root}/**/project-context.md` as foundational refer
 - Checking master architecture completeness
 - Verifying foundation quality gate requirements
 
-## Mode
+## Modes
 
 This workflow operates in **Validate** mode — checking existing artifacts against quality criteria.
+
+## Prerequisites
+
+- Previous workflow outputs available (if applicable)
+- **Config required:** See `On Activation` section
 
 ## Quality Gates
 
@@ -57,7 +62,7 @@ Verify all three sub-gates passed before running the full Foundation Gate.
 
 ## Validation Checklist
 
-Load the foundation gate checklist from `{project-root}/_bmad/bam/data/checklists/foundation-gate.md` — this is the single source of truth for all gate items. Run each check and record pass/fail per category as defined in that checklist.
+Load the foundation gate checklist from `{project-root}/_bmad/bam/data/checklists/qg-f1-foundation.md` — this is the single source of truth for all gate items. Run each check and record pass/fail per category as defined in that checklist.
 
 The checklist covers 6 categories: Artifacts, Shared Kernel Implementation, Control Plane Implementation, AI Runtime Implementation, Tests Passing, and Documentation. See the checklist file for the complete item list and critical vs non-critical classification.
 
@@ -115,7 +120,7 @@ foundation:
 
 ## References
 
-- Checklist: `{project-root}/_bmad/bam/data/checklists/foundation-gate.md`
+- Checklist: `{project-root}/_bmad/bam/data/checklists/qg-f1-foundation.md`
 - Run Contract Patterns: `{project-root}/_bmad/bam/data/agent-guides/bam/run-contracts.md`
 - Context Compiler Patterns: `{project-root}/_bmad/bam/data/agent-guides/bam/context-compiler-patterns.md`
 - Action Gateway Patterns: `{project-root}/_bmad/bam/data/agent-guides/bam/action-gateway-patterns.md`

@@ -98,6 +98,14 @@ Your options:
 
 ---
 
+## Outputs
+
+- Scaling metrics specification
+- AI workload metrics configuration
+- Composite scaling rules document
+
+---
+
 ## Next Step
 
 Proceed to `step-02-c-policy-design.md` to configure scaling policies.

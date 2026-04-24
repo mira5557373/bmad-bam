@@ -98,7 +98,9 @@ Winston (Architect) with BAM extension loads this on activation to maintain cont
 
 ```mermaid
 graph TD
-  User --> TBD[To Be Designed]
+  User --> Orchestrator[Agent Orchestrator]
+  Orchestrator --> Agent1[Agent 1]
+  Orchestrator --> Agent2[Agent 2]
 ```
 
 ### AI Runtime Gate Status (QG-M3)

@@ -26,7 +26,7 @@ This step loads the production readiness artifacts for validation against QG-OC 
 ## Prerequisites
 
 - Previous step completed (workflow selection)
-- **Load checklists:** `{project-root}/_bmad/bam/data/checklists/production-checklist.md`
+- **Load checklists:** `{project-root}/_bmad/bam/data/checklists/qg-prod-checklist.md`
 - **Load checklists:** `{project-root}/_bmad/bam/data/checklists/qg-operations-continuous.md`
 
 ---
@@ -35,7 +35,7 @@ This step loads the production readiness artifacts for validation against QG-OC 
 
 - Artifact file paths for validation
 - Quality gate checklist: `{project-root}/_bmad/bam/data/checklists/`
-- Production checklist: `{project-root}/_bmad/bam/data/checklists/production-checklist.md`
+- Production checklist: `{project-root}/_bmad/bam/data/checklists/qg-prod-checklist.md`
 
 ---
 

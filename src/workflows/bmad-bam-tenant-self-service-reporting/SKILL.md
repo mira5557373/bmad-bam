@@ -98,7 +98,7 @@ This workflow contributes to:
 - Master architecture and tenant tier definitions must be complete
 
 ### Exit Gate
-- Reporting design document complete with `production-readiness.md` checklist items verified
+- Reporting design document complete with `qg-p1-production-readiness.md` checklist items verified
 - Report types aligned with tier capabilities
 - Data isolation verified for all report types
 
@@ -119,7 +119,7 @@ This workflow contributes to:
 - Template: `{project-root}/_bmad/bam/data/templates/tenant-self-service-reporting-template.md`
 - Knowledge: `{project-root}/_bmad/bam/data/agent-guides/bam/multi-tenant-patterns.md`
 - Knowledge: `{project-root}/_bmad/bam/data/agent-guides/bam/tenant-lifecycle-patterns.md`
-- Checklist: `{project-root}/_bmad/bam/data/checklists/production-readiness.md`
+- Checklist: `{project-root}/_bmad/bam/data/checklists/qg-p1-production-readiness.md`
 
 ## Headless Mode
 

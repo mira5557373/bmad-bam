@@ -34,7 +34,7 @@ Search for and load `{project-root}/**/project-context.md` as foundational refer
 - Creating ADRs for architecture exceptions
 - Managing critical architecture updates
 
-## Mode
+## Modes
 
 Select execution mode:
 
@@ -45,6 +45,11 @@ Select execution mode:
 | **Validate** | Check existing artifact against quality criteria |
 
 Default: **Create** mode. In headless mode, always use Create.
+
+## Prerequisites
+
+- Previous workflow outputs available (if applicable)
+- **Config required:** See `On Activation` section
 
 ## Workflow
 
@@ -110,7 +115,7 @@ This workflow contributes to:
 ### Exit Gate
 - ADR approved with full impact analysis
 - Affected modules identified for revalidation
-- QG-F1 checklist items from `foundation-gate.md` scheduled for re-verification
+- QG-F1 checklist items from `qg-f1-foundation.md` scheduled for re-verification
 
 ## Related Workflows
 

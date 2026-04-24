@@ -26,7 +26,7 @@ Query gate status from all validation workflows:
 | QG-I1 | convergence-verification | `{output_folder}/planning-artifacts/convergence-report.md` | |
 | QG-I2 | convergence-verification | `{output_folder}/planning-artifacts/tenant-safety-report.md` | |
 | QG-I3 | convergence-verification | `{output_folder}/planning-artifacts/agent-safety-report.md` | |
-| QG-P1 | (this workflow) | `{output_folder}/quality-artifacts/production-readiness.md` | |
+| QG-P1 | (this workflow) | `{output_folder}/quality-artifacts/qg-p1-production-readiness.md` | |
 
 ### 2. Collect Gate Artifacts
 

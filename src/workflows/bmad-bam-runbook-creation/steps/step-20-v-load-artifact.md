@@ -27,7 +27,7 @@ This step loads the runbook collection and individual runbooks for validation. T
 
 - Previous step completed (workflow selection)
 - **Load patterns:** `{project-root}/_bmad/bam/data/bam-patterns.csv → filter: operations`
-- **Load checklist:** `{project-root}/_bmad/bam/data/checklists/production-checklist.md`
+- **Load checklist:** `{project-root}/_bmad/bam/data/checklists/qg-prod-checklist.md`
 
 ---
 

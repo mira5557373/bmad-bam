@@ -35,6 +35,12 @@ Create validation checklist based on:
 - [ ] Validation criteria loaded
 - [ ] Checklist prepared
 
+## Outputs
+
+- Loaded configuration artifacts
+- Validation criteria document
+- Prepared validation checklist
+
 ## Next Step
 
 Proceed to `step-21-v-validate.md` with configuration and criteria loaded.

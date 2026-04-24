@@ -30,8 +30,8 @@ Execute final quality gate checks and generate validation report.
 
 - Isolation validated (Step 4)
 - **Load patterns:** `{project-root}/_bmad/bam/data/bam-patterns.csv` → filter: agent-runtime
-- **Load checklist:** `{project-root}/_bmad/bam/data/checklists/module-architecture.md`
-- **Load checklist:** `{project-root}/_bmad/bam/data/checklists/tenant-isolation.md`
+- **Load checklist:** `{project-root}/_bmad/bam/data/checklists/qg-m1-module-architecture.md`
+- **Load checklist:** `{project-root}/_bmad/bam/data/checklists/qg-m2-tenant-isolation.md`
 
 ---
 

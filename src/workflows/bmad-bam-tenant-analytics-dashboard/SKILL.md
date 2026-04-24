@@ -35,7 +35,7 @@ Search for and load `{project-root}/**/project-context.md` as foundational refer
 - Building real-time and batch analytics pipelines
 - Implementing tenant-scoped data export capabilities
 
-## Mode
+## Modes
 
 Select execution mode:
 

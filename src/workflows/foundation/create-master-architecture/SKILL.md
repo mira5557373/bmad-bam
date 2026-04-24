@@ -47,6 +47,11 @@ Detect headless mode from args or user intent.
 | Edit | Modify existing architecture (requires ADR) | `step-10-e-*` to `step-11-e-*` |
 | Validate | Check against QG-F1 criteria | `step-20-v-*` to `step-22-v-*` |
 
+## Prerequisites
+
+- Previous workflow outputs available (if applicable)
+- **Config required:** See `On Activation` section
+
 ## Workflow
 
 ### Step 1: Discovery
@@ -166,7 +171,7 @@ Present summary of what was produced. If not headless, ask if adjustments are ne
 - Workflow Ownership: `{project-root}/_bmad/bam/data/agent-guides/bam/workflow-ownership.md`
 
 - Knowledge: `{project-root}/_bmad/bam/data/agent-guides/bam/multi-tenant-patterns.md`, `{project-root}/_bmad/bam/data/agent-guides/bam/agent-runtime-patterns.md`, `{project-root}/_bmad/bam/data/agent-guides/bam/shared-kernel-patterns.md`, `{project-root}/_bmad/bam/data/agent-guides/bam/module-facade-patterns.md`, `{project-root}/_bmad/bam/data/agent-guides/bam/rls-best-practices.md`, `{project-root}/_bmad/bam/data/agent-guides/bam/workflow-sequence.md`, `{project-root}/_bmad/bam/data/agent-guides/bam/workflow-ownership.md`
-- Checklist: `{project-root}/_bmad/bam/data/checklists/foundation-gate.md`
+- Checklist: `{project-root}/_bmad/bam/data/checklists/qg-f1-foundation.md`
 - Independent Development: `{project-root}/_bmad/bam/data/agent-guides/bam/independent-development.md`
 - Shared Kernel Patterns: `{project-root}/_bmad/bam/data/agent-guides/bam/shared-kernel-patterns.md`
 - RLS Best Practices: `{project-root}/_bmad/bam/data/agent-guides/bam/rls-best-practices.md`
@@ -182,7 +187,7 @@ This workflow contributes to:
 - No prerequisite gates (first workflow in foundation phase)
 
 ### Exit Gate
-- QG-F1 checklist items from `foundation-gate.md` verified
+- QG-F1 checklist items from `qg-f1-foundation.md` verified
 - All 7 required sections present (tenant model, AI runtime, module boundaries, shared kernel, tech stack, contracts, code patterns)
 - All TSA technologies have version pins
 - All isolation strategies defined

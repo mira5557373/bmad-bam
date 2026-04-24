@@ -13,6 +13,10 @@ Validate the model validation artifacts against QG-AI1 quality criteria.
 
 ---
 
+## Actions
+
+Execute the validation checklist below to verify model validation artifacts.
+
 ## Validation Checklist
 
 ### Model Quality

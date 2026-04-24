@@ -8,7 +8,7 @@ Assess effectiveness of security controls in preventing, detecting, and respondi
 
 - Steps 1-3 complete
 - Control framework documented
-- **Load checklists:** `{project-root}/_bmad/bam/data/checklists/security-checklist.md`
+- **Load checklists:** `{project-root}/_bmad/bam/data/checklists/qg-sec-checklist.md`
 
 ## Actions
 

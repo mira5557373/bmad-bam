@@ -1,0 +1,9 @@
+type: workflow
+name: bmad-bam-prg-gate-setup
+displayName: PRG Gate Setup
+description: 'Configure Production-Readiness Gate with 10 mandatory checks for AI agent deployment'
+module: bam
+config_variables:
+  - tenant_model
+  - ai_runtime
+step_naming_convention: "step-NN-mode-description"

@@ -53,6 +53,12 @@ Search the web: "chunk quality metrics {date}"
 - [ ] Degradation alerts configured
 - [ ] Per-tenant relevance tracking enabled
 
+## Outputs
+
+- Relevance monitoring configuration
+- Baseline threshold specification
+- Degradation alerting rules
+
 ## Next Step
 
 Proceed to `step-03-c-embedding-observability.md` with relevance monitoring configured.

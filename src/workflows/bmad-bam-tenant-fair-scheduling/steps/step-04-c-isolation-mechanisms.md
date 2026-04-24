@@ -30,7 +30,7 @@ Configure cgroups, namespaces, and resource limits to provide strong isolation b
 - Quota enforcement completed (Step 3)
 - **Load patterns:** `{project-root}/_bmad/bam/data/bam-patterns.csv` -> filter: `tenant-isolation`
 - **Load patterns:** `{project-root}/_bmad/bam/data/bam-patterns.csv` -> filter: `security`
-- **Load guide:** `{project-root}/_bmad/bam/data/agent-guides/bam/tenant-isolation.md`
+- **Load guide:** `{project-root}/_bmad/bam/data/agent-guides/bam/multi-tenant-patterns.md`
 
 ---
 

@@ -18,7 +18,7 @@
 
 **Prerequisites:**
 - `master-architecture.md` with platform architecture documented
-- `module-architecture.md` with module structure documented
+- `qg-m1-module-architecture.md` with module structure documented
 - Understanding of deployment requirements
 - `tenant-model.md` for tenant-aware deployments (recommended)
 
@@ -90,7 +90,7 @@ Load the existing output artifact, then follow:
 - **Config required:** `{tenant_model}`
 - **Required artifacts:**
   - `master-architecture.md` (from create-master-architecture) - provides platform context
-  - `module-architecture.md` (from create-module-architecture) - provides module structure
+  - `qg-m1-module-architecture.md` (from create-module-architecture) - provides module structure
   - `project-context.md` (if exists)
 - **Required gates passed:** None (runs after module architecture)
 

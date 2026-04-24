@@ -27,7 +27,7 @@ Load the data synchronization design artifact for validation against data archit
 
 - Data synchronization design artifact exists to validate
 - **Load patterns:** `{project-root}/_bmad/bam/data/bam-patterns.csv` -> filter: data-sync
-- **Load checklist:** `{project-root}/_bmad/bam/data/checklists/tenant-isolation.md`
+- **Load checklist:** `{project-root}/_bmad/bam/data/checklists/qg-m2-tenant-isolation.md`
 
 ---
 

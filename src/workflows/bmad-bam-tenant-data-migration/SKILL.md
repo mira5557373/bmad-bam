@@ -70,7 +70,7 @@ This workflow contributes to:
 - QG-M2 (Tenant Isolation) must pass for data boundary definitions
 
 ### Exit Gate
-- QG-M2 and QG-I2 checklist items from `tenant-isolation.md` and `qg-i2-tenant-safety.md` verified
+- QG-M2 and QG-I2 checklist items from `qg-m2-tenant-isolation.md` and `qg-i2-tenant-safety.md` verified
 - Migration runbook complete with rollback procedures
 - Data integrity verification mechanisms defined
 

@@ -81,7 +81,7 @@ Load the existing compliance-design.md, then follow `step-2X-v-` (20 through 21)
 - **Patterns:** Load from `{project-root}/_bmad/bam/data/bam-patterns.csv` filter: `compliance`
 - **Compliance:** Load from `{project-root}/_bmad/bam/data/compliance-frameworks.csv`
 - **Templates:** `{project-root}/_bmad/bam/data/templates/compliance-design-template.md`
-- **Checklists:** `{project-root}/_bmad/bam/data/checklists/production-readiness.md`
+- **Checklists:** `{project-root}/_bmad/bam/data/checklists/qg-p1-production-readiness.md`
 
 ## Templates
 

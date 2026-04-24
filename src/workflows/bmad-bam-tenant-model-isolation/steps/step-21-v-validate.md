@@ -28,7 +28,7 @@ Validate the tenant model and isolation artifacts against quality criteria and m
 - Previous step completed (step-20-v-load-artifact.md)
 - **Load patterns:** `{project-root}/_bmad/bam/data/bam-patterns.csv` -> filter: `tenant-isolation`
 - **Load quality gate:** `{project-root}/_bmad/bam/data/quality-gates.csv` -> filter: `QG-S7,QG-DC1`
-- **Load checklist:** `{project-root}/_bmad/bam/data/checklists/tenant-isolation.md`
+- **Load checklist:** `{project-root}/_bmad/bam/data/checklists/qg-m2-tenant-isolation.md`
 
 
 

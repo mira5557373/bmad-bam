@@ -134,7 +134,7 @@ This workflow contributes to:
 ### Exit Gate
 - Compliance specification document complete
 - Control mapping matrix verified against framework requirements
-- Audit logging architecture aligned with `production-readiness.md` checklist
+- Audit logging architecture aligned with `qg-p1-production-readiness.md` checklist
 
 ## Related Workflows
 

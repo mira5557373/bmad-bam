@@ -4,6 +4,11 @@
 
 Validate the AI observability configuration against QG-AI2 quality gate criteria.
 
+## Prerequisites
+
+- Step 20 complete (artifact loaded)
+- **Load checklist:** `{project-root}/_bmad/bam/data/checklists/qg-ai-observability.md`
+
 ## Actions
 
 ### 1. QG-AI2 Validation Checks

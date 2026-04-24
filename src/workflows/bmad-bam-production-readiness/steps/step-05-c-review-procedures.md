@@ -8,7 +8,7 @@ Review operational procedures, runbooks, and team readiness for production opera
 
 - Steps 1-4 complete
 - Operational documentation available
-- **Load checklists:** `{project-root}/_bmad/bam/data/checklists/production-checklist.md`
+- **Load checklists:** `{project-root}/_bmad/bam/data/checklists/qg-prod-checklist.md`
 
 ## Actions
 

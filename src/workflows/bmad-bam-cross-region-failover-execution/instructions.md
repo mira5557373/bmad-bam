@@ -32,7 +32,7 @@ Execute cross-region failover procedures during disaster recovery events for a m
 
 ## Quality Gates
 
-- Reference: `production-readiness.md`
+- Reference: `qg-p1-production-readiness.md`
 - Contributes to QG-P1 (Production), QG-DR1 (Disaster Recovery)
 
 ## Related Workflows

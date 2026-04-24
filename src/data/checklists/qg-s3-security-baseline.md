@@ -1,4 +1,4 @@
-# Security Baseline Gate Checklist
+# QG-S3: Security Baseline Gate Checklist
 
 **Gate ID:** QG-S3
 **Phase:** 3-solutioning (Pre-Deployment)

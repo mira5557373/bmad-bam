@@ -99,6 +99,15 @@ Your options:
 
 ---
 
+## Outputs
+
+- Tenant fairness design document
+- Resource quota specification per tier
+- Burst capacity configuration
+- Noisy neighbor detection rules
+
+---
+
 ## Next Step
 
 Proceed to `step-04-c-cost-controls.md` to define cost optimization strategies.

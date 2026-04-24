@@ -209,9 +209,9 @@ describe('Workflow Checklist References', () => {
         const possibleNames = [
           `${gate.toLowerCase()}.md`,
           `${gate.toLowerCase()}-*.md`,
-          'foundation-gate.md',
-          'tenant-isolation.md',
-          'production-readiness.md'
+          'qg-f1-foundation.md',
+          'qg-m2-tenant-isolation.md',
+          'qg-p1-production-readiness.md'
         ];
 
         // At least one checklist should exist

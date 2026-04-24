@@ -8,7 +8,7 @@ Review tenant isolation test coverage and verify all isolation boundaries are ad
 
 - Gate evidence collected
 - **Load patterns:** `{project-root}/_bmad/bam/data/bam-patterns.csv` -> filter: `tenant-isolation, testing-isolation`
-- **Load checklist:** `{project-root}/_bmad/bam/data/checklists/tenant-isolation.md`
+- **Load checklist:** `{project-root}/_bmad/bam/data/checklists/qg-m2-tenant-isolation.md`
 
 ## Actions
 

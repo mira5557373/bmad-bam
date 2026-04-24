@@ -4,6 +4,11 @@
 
 Load and review existing security configuration to identify sections requiring modification.
 
+## Prerequisites
+
+- Existing security configuration at `{output_folder}/planning-artifacts/security-config.md`
+- **Load patterns:** `{project-root}/_bmad/bam/data/bam-patterns.csv` → filter: `security-*`
+
 ## Actions
 
 ### 1. Load Existing Documents

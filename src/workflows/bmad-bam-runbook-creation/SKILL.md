@@ -42,6 +42,11 @@ Verify runbook completeness:
 3. Verify accessibility
 4. Generate validation report
 
+## Prerequisites
+
+- Previous workflow outputs available (if applicable)
+- **Config required:** See `On Activation` section
+
 ## Quality Gate
 
 **Gate ID:** QG-OC  

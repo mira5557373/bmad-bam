@@ -34,7 +34,7 @@ Search for and load `{project-root}/**/project-context.md` as foundational refer
 - Creating data residency and sovereignty patterns
 - Building cross-region failover systems
 
-## Mode
+## Modes
 
 Select execution mode:
 
@@ -45,6 +45,11 @@ Select execution mode:
 | **Validate** | Check existing artifact against quality criteria |
 
 Default: **Create** mode. In headless mode, always use Create.
+
+## Prerequisites
+
+- Previous workflow outputs available (if applicable)
+- **Config required:** See `On Activation` section
 
 ## Workflow
 
@@ -104,7 +109,7 @@ This workflow contributes to:
 - QG-F1 (Foundation) must pass before finalizing regional architecture
 
 ### Exit Gate
-- QG-F1 and QG-P1 checklist items from `foundation-gate.md` and `production-readiness.md` verified:
+- QG-F1 and QG-P1 checklist items from `qg-f1-foundation.md` and `qg-p1-production-readiness.md` verified:
   - [ ] Regional topology defined
   - [ ] Data residency requirements mapped
   - [ ] Cross-region sync strategy documented

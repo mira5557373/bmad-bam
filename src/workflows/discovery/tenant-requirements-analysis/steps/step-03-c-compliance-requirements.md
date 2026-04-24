@@ -122,7 +122,7 @@ Select an option:
 - [ ] Data residency requirements mapped
 - [ ] Audit requirements documented
 - [ ] Patterns align with pattern registry
-- **Load checklist:** `{project-root}/_bmad/bam/data/checklists/tenant-isolation.md` (preview items)
+- **Load checklist:** `{project-root}/_bmad/bam/data/checklists/qg-m2-tenant-isolation.md` (preview items)
 
 ## Outputs
 

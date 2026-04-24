@@ -4,6 +4,11 @@
 
 Validate the cost optimization review against QG-CS1 quality gate criteria.
 
+## Prerequisites
+
+- Step 20 complete (artifact loaded)
+- **Load checklist:** `{project-root}/_bmad/bam/data/checklists/qg-p1-production-readiness.md`
+
 ## Actions
 
 ### 1. QG-CS1 Validation Checks

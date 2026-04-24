@@ -26,7 +26,7 @@ Validate the production readiness artifacts against QG-OC (Operational Checklist
 ## Prerequisites
 
 - Previous step completed (step-20-v-load-artifact.md)
-- **Load checklist:** `{project-root}/_bmad/bam/data/checklists/production-checklist.md`
+- **Load checklist:** `{project-root}/_bmad/bam/data/checklists/qg-prod-checklist.md`
 - **Load checklist:** `{project-root}/_bmad/bam/data/checklists/qg-operations-continuous.md`
 
 ---

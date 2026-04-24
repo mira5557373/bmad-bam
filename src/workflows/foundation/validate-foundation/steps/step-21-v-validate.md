@@ -28,7 +28,7 @@ Validate the foundation gate report structure and consistency against QG-F1 crit
 - Step 20 completed: Artifact loaded successfully
 - **Load patterns:** `{project-root}/_bmad/bam/data/bam-patterns.csv` → filter: tenant-isolation
 - **Load patterns:** `{project-root}/_bmad/bam/data/bam-patterns.csv` → filter: testing-isolation
-- **Load checklist:** `{project-root}/_bmad/bam/data/checklists/foundation-gate.md`
+- **Load checklist:** `{project-root}/_bmad/bam/data/checklists/qg-f1-foundation.md`
 
 ---
 

@@ -25,7 +25,7 @@ This step loads the API Deprecation Strategy artifact for validation. The strate
 
 - Deprecation strategy artifact exists to validate
 - **Load patterns:** `{project-root}/_bmad/bam/data/bam-patterns.csv` -> filter: api-lifecycle
-- **Load checklist:** `{project-root}/_bmad/bam/data/checklists/production-readiness.md`
+- **Load checklist:** `{project-root}/_bmad/bam/data/checklists/qg-p1-production-readiness.md`
 
 Load the existing deprecation strategy documents:
 - `{output_folder}/planning-artifacts/api/deprecation-strategy.md`

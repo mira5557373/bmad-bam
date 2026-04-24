@@ -38,7 +38,7 @@ Design comprehensive Service Level Agreements for multi-tenant AI platforms cove
 
 ## Quality Gates
 
-- Reference: `production-readiness.md`
+- Reference: `qg-p1-production-readiness.md`
 - Contributes to QG-SLA1 (SLA Contract Gate), QG-P1 (Production Readiness)
 
 ## Related Workflows

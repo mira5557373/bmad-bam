@@ -27,14 +27,14 @@ This step loads the Security Operations Verification artifacts for validation. T
 
 - Previous step completed (workflow selection)
 - **Load patterns:** `{project-root}/_bmad/bam/data/bam-patterns.csv` → filter: `security`
-- **Load checklists:** `{project-root}/_bmad/bam/data/checklists/security-checklist.md`
+- **Load checklists:** `{project-root}/_bmad/bam/data/checklists/qg-sec-checklist.md`
 
 ---
 
 ## Inputs
 
 - Artifact file paths for validation
-- Quality gate checklist: `{project-root}/_bmad/bam/data/checklists/security-checklist.md`
+- Quality gate checklist: `{project-root}/_bmad/bam/data/checklists/qg-sec-checklist.md`
 - Pattern registry: `{project-root}/_bmad/bam/data/bam-patterns.csv`
 
 ---

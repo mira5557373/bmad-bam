@@ -30,6 +30,11 @@ Act as a Security Architect specializing in cryptographic systems for multi-tena
 | **Edit** | Modify existing encryption design | `steps/step-10-e-*` through `step-11-e-*` |
 | **Validate** | Check against security criteria | `steps/step-20-v-*` through `step-22-v-*` |
 
+## Prerequisites
+
+- Previous workflow outputs available (if applicable)
+- **Config required:** See `On Activation` section
+
 ## Workflow
 
 ### Step 1: Define Data Classification
@@ -72,7 +77,7 @@ This workflow contributes to:
 
 - Template: `{project-root}/_bmad/bam/data/templates/encryption-design-template.md`
 - Knowledge: `{project-root}/_bmad/bam/data/agent-guides/bam/security-patterns.md`
-- Checklist: `{project-root}/_bmad/bam/data/checklists/production-readiness.md`
+- Checklist: `{project-root}/_bmad/bam/data/checklists/qg-p1-production-readiness.md`
 
 ## Headless Mode
 

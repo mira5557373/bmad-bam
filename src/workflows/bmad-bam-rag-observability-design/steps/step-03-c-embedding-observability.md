@@ -53,6 +53,12 @@ Search the web: "embedding cost optimization {date}"
 - [ ] Drift detection scheduled
 - [ ] Model version monitoring active
 
+## Outputs
+
+- Embedding observability configuration
+- Cost attribution specification
+- Drift detection schedule
+
 ## Next Step
 
 Proceed to `step-04-c-quality-baselines.md` with embedding observability configured.

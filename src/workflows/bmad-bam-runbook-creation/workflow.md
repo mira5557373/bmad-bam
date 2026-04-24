@@ -1,6 +1,6 @@
 # Runbook Creation Workflow
 
-## Mode Router
+## Mode Selection
 
 | Mode | Entry Point | Steps |
 |------|-------------|-------|
@@ -50,7 +50,7 @@ step-22-v-generate-report.md
 
 - **Templates:** `observability-template.md`
 - **Data:** `bam-patterns.csv` (filter: `operations`)
-- **Checklists:** `production-checklist.md`
+- **Checklists:** `qg-prod-checklist.md`
 
 ## Gate Integration
 

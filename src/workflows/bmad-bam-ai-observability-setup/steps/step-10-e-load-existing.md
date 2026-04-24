@@ -4,6 +4,11 @@
 
 Load and review existing AI observability configuration to identify sections requiring modification.
 
+## Prerequisites
+
+- Existing AI observability configuration at `{output_folder}/planning-artifacts/ai-observability-config.md`
+- **Load patterns:** `{project-root}/_bmad/bam/data/bam-patterns.csv` → filter: `observability-*`
+
 ## Actions
 
 ### 1. Load Existing Documents

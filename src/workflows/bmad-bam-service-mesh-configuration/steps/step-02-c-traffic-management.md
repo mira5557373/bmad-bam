@@ -93,6 +93,15 @@ Your options:
 
 ---
 
+## Outputs
+
+- Traffic management design document
+- Circuit breaker configuration
+- Retry policy specification
+- Load balancing strategy document
+
+---
+
 ## Next Step
 
 Proceed to `step-03-c-tenant-routing.md` to implement tenant-aware routing.

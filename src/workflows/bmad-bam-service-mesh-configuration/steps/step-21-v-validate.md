@@ -27,7 +27,7 @@ Validate the service mesh configuration against infrastructure criteria, ensurin
 
 - Step 20 completed: Artifact loaded successfully
 - **Load patterns:** `{project-root}/_bmad/bam/data/bam-patterns.csv` -> filter: infrastructure
-- **Load checklist:** `{project-root}/_bmad/bam/data/checklists/module-readiness.md`
+- **Load checklist:** `{project-root}/_bmad/bam/data/checklists/qg-s1-module-readiness.md`
 
 ---
 

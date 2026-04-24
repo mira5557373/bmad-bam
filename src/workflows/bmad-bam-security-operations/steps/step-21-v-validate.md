@@ -13,6 +13,10 @@ Validate the security operations artifacts against QG-S8 quality criteria.
 
 ---
 
+## Actions
+
+Execute the validation checklist below to verify security operations artifacts.
+
 ## Validation Checklist
 
 ### Threat Detection

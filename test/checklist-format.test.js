@@ -151,7 +151,7 @@ describe('Checklist Format Validation', () => {
   });
 
   describe('Checklist Count', () => {
-    test('has expected number of checklists (36)', () => {
+    test('has expected number of checklists (38)', () => {
       // Increased to 22 after adding qg-compliance-continuous.md, qg-ai-observability.md,
       // qg-capacity-planning.md, qg-disaster-recovery-drill.md for specialized quality gates
       // Increased to 24 after adding production-checklist.md, security-checklist.md
@@ -162,7 +162,10 @@ describe('Checklist Format Validation', () => {
       // qg-d1-discovery.md, qg-pl1-planning.md
       // Increased to 35 after additional checklist additions
       // Increased to 36 after adding qg-ai1-ai-safety.md
-      expect(checklistFiles.length).toBe(36);
+      // Increased to 38 after adding NEXUS checklists: qg-ai3-agent-contracts.md
+      // Increased to 39 after adding qg-prg-production.md for PRG workflow
+      // Decreased to 38 after removing orphan qg-prg-production-readiness.md (duplicate of qg-prg-production.md)
+      expect(checklistFiles.length).toBe(38);
     });
   });
 });

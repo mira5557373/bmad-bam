@@ -24,7 +24,7 @@ Validate the tenant requirements analysis against BAM patterns and best practice
 ## Prerequisites
 
 - Step 20 complete (artifact loaded)
-- **Load checklist:** `{project-root}/_bmad/bam/data/checklists/tenant-isolation.md`
+- **Load checklist:** `{project-root}/_bmad/bam/data/checklists/qg-m2-tenant-isolation.md`
 
 
 ---

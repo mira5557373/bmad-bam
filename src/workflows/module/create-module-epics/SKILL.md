@@ -41,7 +41,7 @@ Verify prerequisites:
 - Breaking down module scope into development phases
 - Planning module implementation milestones
 
-## Mode
+## Modes
 
 Select execution mode:
 
@@ -52,6 +52,11 @@ Select execution mode:
 | **Validate** | Check existing artifact against quality criteria |
 
 Default: **Create** mode. In headless mode, always use Create.
+
+## Prerequisites
+
+- Previous workflow outputs available (if applicable)
+- **Config required:** See `On Activation` section
 
 ## Context Loading (Module-Scoped)
 

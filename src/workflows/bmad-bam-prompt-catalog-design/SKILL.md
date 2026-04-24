@@ -44,6 +44,11 @@ Search for and load `{project-root}/**/project-context.md` as foundational refer
 | Edit | Modify existing prompt catalog | `step-10-e-*` to `step-11-e-*` |
 | Validate | Check against QG-M3 criteria | `step-20-v-*` to `step-22-v-*` |
 
+## Prerequisites
+
+- Previous workflow outputs available (if applicable)
+- **Config required:** See `On Activation` section
+
 ## Workflow
 
 ### Step 1: Catalog Requirements

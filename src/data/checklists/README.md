@@ -2,7 +2,18 @@
 
 ## Overview
 
-22 checklists enforcing quality gates throughout the multi-tenant AI SaaS development lifecycle.
+36 checklists enforcing 43 quality gates throughout the multi-tenant AI SaaS development lifecycle. This includes gate-tied checklists and supplementary reference checklists.
+
+## Supplementary Checklists
+
+These checklists are general-purpose reference materials not tied to specific quality gates:
+
+| File | Purpose |
+|------|---------|
+| `compliance-checklist.md` | General compliance verification reference |
+| `production-checklist.md` | General production deployment reference |
+| `security-checklist.md` | General security verification reference |
+| `tenant-checklist.md` | General tenant configuration reference |
 
 ## Quality Gate Sequence
 
@@ -70,6 +81,10 @@
 | `qg-ai-observability.md` | QG-AI2 | AI/LLM observability verification |
 | `qg-capacity-planning.md` | QG-CP1 | Capacity planning quarterly review |
 | `qg-disaster-recovery-drill.md` | QG-DR1 | Disaster recovery drill validation |
+| `qg-ai1-ai-safety.md` | QG-AI1 | AI agent safety evaluation |
+| `qg-bv1-billing-validation.md` | QG-BV1 | Billing accuracy validation |
+| `qg-ce1-chaos-engineering.md` | QG-CE1 | Chaos engineering verification |
+| `qg-lt1-load-testing.md` | QG-LT1 | Load testing completion |
 
 ## Checklist Format
 

@@ -1,6 +1,6 @@
 # Compliance Verification Workflow
 
-## Mode Router
+## Mode Selection
 
 | Mode | Entry Point | Steps |
 |------|-------------|-------|
@@ -50,7 +50,7 @@ step-22-v-generate-report.md
 
 - **Templates:** `compliance-framework-template.md`, `audit-logging-template.md`
 - **Data:** `bam-patterns.csv` (filter: `compliance`)
-- **Checklists:** `compliance-checklist.md`
+- **Checklists:** `qg-cp1-compliance.md`
 
 ## Gate Integration
 

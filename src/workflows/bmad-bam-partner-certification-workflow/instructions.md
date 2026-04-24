@@ -32,7 +32,7 @@ Design a comprehensive ISV/partner certification program for a multi-tenant SaaS
 
 ## Quality Gates
 
-- Reference: `production-readiness.md`
+- Reference: `qg-p1-production-readiness.md`
 - Contributes to QG-F1 (Foundation), QG-P1 (Production)
 
 ## Related Workflows

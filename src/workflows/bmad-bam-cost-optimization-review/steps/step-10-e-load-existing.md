@@ -4,6 +4,11 @@
 
 Load and review existing cost optimization review to identify sections requiring modification.
 
+## Prerequisites
+
+- Existing cost configuration at `{output_folder}/planning-artifacts/cost-config.md`
+- **Load patterns:** `{project-root}/_bmad/bam/data/bam-patterns.csv` → filter: `cost-*`
+
 ## Actions
 
 ### 1. Load Existing Documents

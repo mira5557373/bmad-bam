@@ -55,6 +55,12 @@ Search the web: "semantic search metrics production {date}"
 - [ ] Empty retrieval tracking enabled
 - [ ] Per-tier SLOs documented
 
+## Outputs
+
+- Retrieval metrics specification
+- Latency bucket configuration
+- Per-tier SLO documentation
+
 ## Next Step
 
 Proceed to `step-02-c-relevance-monitoring.md` with retrieval metrics defined.

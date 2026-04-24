@@ -35,12 +35,11 @@ describe('Workflow Step Resource References', () => {
   let existingWorkflows;
 
   beforeAll(() => {
-    // Find all step files in source
+    // Find all step files in source ONLY
+    // Note: Previously included installed step files, but installed environments
+    // can become stale and out of sync with source. Source files are the canonical
+    // reference for validation.
     allStepFiles = glob.sync(`${WORKFLOWS_DIR}/**/steps/*.md`);
-
-    // Also include installed step files
-    const installedSteps = glob.sync(`${INSTALLED_SKILLS_DIR}/bmad-bam-*/steps/*.md`);
-    allStepFiles = [...new Set([...allStepFiles, ...installedSteps])];
 
     // Build sets of existing resources
     existingTemplates = new Set(

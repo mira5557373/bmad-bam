@@ -533,7 +533,11 @@ describe('BMAD Method Compatibility', () => {
         'rls-policy-template.md',
         'shared-kernel-template.md',
         'tenant-context-template.md',
-        'testing-strategy-template.md'
+        'testing-strategy-template.md',
+        // Template management meta-templates (used for template lifecycle)
+        'template-catalog-template.md',
+        'template-management-template.md',
+        'template-requirements-template.md'
       ];
       const unexpectedOrphans = orphaned.filter(t => !allowedOrphans.includes(t));
       if (unexpectedOrphans.length > 0) {

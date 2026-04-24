@@ -1,0 +1,9 @@
+type: workflow
+name: bmad-bam-action-contract-design
+displayName: Action Contract Design
+description: 'Design 8-field action contracts for AI agent decisions with tenant isolation and proof certificates'
+module: bam
+config_variables:
+  - tenant_model
+  - ai_runtime
+step_naming_convention: "step-NN-mode-description"

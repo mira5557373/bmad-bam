@@ -1,0 +1,5 @@
+type: workflow
+name: bmad-bam-validate-internal-contract
+displayName: Validate Internal Contract
+description: "Validate internal module contract specification against quality criteria. Use when the user requests to 'validate internal contract' or 'check internal spec'."
+module: bam

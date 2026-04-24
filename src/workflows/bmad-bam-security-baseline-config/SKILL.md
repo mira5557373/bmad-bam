@@ -30,6 +30,11 @@ Act as a Security Architect specializing in security baselines for multi-tenant 
 | **Edit** | Modify existing baseline | `steps/step-10-e-*` through `step-11-e-*` |
 | **Validate** | Check against security criteria | `steps/step-20-v-*` through `step-22-v-*` |
 
+## Prerequisites
+
+- Previous workflow outputs available (if applicable)
+- **Config required:** See `On Activation` section
+
 ## Workflow
 
 ### Step 1: Define Infrastructure Baselines

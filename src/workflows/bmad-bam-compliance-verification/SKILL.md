@@ -42,6 +42,11 @@ Verify compliance implementation:
 3. Test audit capabilities
 4. Generate validation report
 
+## Prerequisites
+
+- Previous workflow outputs available (if applicable)
+- **Config required:** See `On Activation` section
+
 ## Quality Gate
 
 **Gate ID:** QG-CP1  

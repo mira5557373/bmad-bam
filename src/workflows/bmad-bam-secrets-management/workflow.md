@@ -55,4 +55,4 @@ Default: **Create** mode.
 
 - **Patterns:** Load from `{project-root}/_bmad/bam/data/bam-patterns.csv` filter: `security`
 - **Templates:** `{project-root}/_bmad/bam/data/templates/secrets-management-template.md`
-- **Checklists:** `{project-root}/_bmad/bam/data/checklists/production-readiness.md`
+- **Checklists:** `{project-root}/_bmad/bam/data/checklists/qg-p1-production-readiness.md`

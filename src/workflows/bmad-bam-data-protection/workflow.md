@@ -1,6 +1,6 @@
 # Data Protection Workflow
 
-## Mode Router
+## Mode Selection
 
 | Mode | Entry Point | Steps |
 |------|-------------|-------|
@@ -50,7 +50,7 @@ step-22-v-generate-report.md
 
 - **Templates:** `rls-policy-template.md`, `cache-isolation-template.md`, `memory-isolation-template.md`
 - **Data:** `bam-patterns.csv` (filter: `data-protection`, `tenant-isolation`)
-- **Checklists:** `security-checklist.md`
+- **Checklists:** `qg-sec-checklist.md`
 
 ## Gate Integration
 

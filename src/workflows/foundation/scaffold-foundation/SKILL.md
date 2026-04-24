@@ -36,7 +36,7 @@ Verify prerequisite: `master-architecture.md` must exist. If missing, inform the
 - Creating foundation directories and files
 - Setting up base project configuration
 
-## Mode
+## Modes
 
 Select execution mode:
 
@@ -47,6 +47,11 @@ Select execution mode:
 | **Validate** | Check existing artifact against quality criteria |
 
 Default: **Create** mode. In headless mode, always use Create.
+
+## Prerequisites
+
+- Previous workflow outputs available (if applicable)
+- **Config required:** See `On Activation` section
 
 ## Workflow
 

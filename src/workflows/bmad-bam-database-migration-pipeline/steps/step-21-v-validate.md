@@ -13,6 +13,10 @@ Validate the migration pipeline artifacts against QG-MG1 quality criteria.
 
 ---
 
+## Actions
+
+Execute the validation checklist below to verify migration pipeline artifacts.
+
 ## Validation Checklist
 
 ### Migration Execution

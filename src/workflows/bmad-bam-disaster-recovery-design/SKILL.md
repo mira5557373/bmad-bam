@@ -98,7 +98,7 @@ This workflow contributes to:
 - Master architecture and tenant tier definitions must be complete
 
 ### Exit Gate
-- DR plan document complete with `production-readiness.md` checklist items verified
+- DR plan document complete with `qg-p1-production-readiness.md` checklist items verified
 - RTO/RPO objectives aligned with tier SLAs
 - DR testing schedule established and documented
 
@@ -119,7 +119,7 @@ This workflow contributes to:
 - Template: `{project-root}/_bmad/bam/data/templates/disaster-recovery-plan-template.md`
 - Knowledge: `{project-root}/_bmad/bam/data/agent-guides/bam/disaster-recovery-patterns.md`
 - Knowledge: `{project-root}/_bmad/bam/data/agent-guides/bam/multi-tenant-patterns.md`
-- Checklist: `{project-root}/_bmad/bam/data/checklists/production-readiness.md`
+- Checklist: `{project-root}/_bmad/bam/data/checklists/qg-p1-production-readiness.md`
 
 ## Headless Mode
 

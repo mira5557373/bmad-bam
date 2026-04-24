@@ -305,18 +305,18 @@ describe('E2E Foundation Chain - Template Structure', () => {
 describe('E2E Foundation Chain - Checklist Structure', () => {
   const checklistsDir = path.join(DATA_DIR, 'checklists');
 
-  test('foundation-gate.md (QG-F1) checklist exists', () => {
-    const checklistPath = path.join(checklistsDir, 'foundation-gate.md');
+  test('qg-f1-foundation.md (QG-F1) checklist exists', () => {
+    const checklistPath = path.join(checklistsDir, 'qg-f1-foundation.md');
     expect(fs.existsSync(checklistPath)).toBe(true);
   });
 
-  test('tenant-isolation.md (QG-M2) checklist exists', () => {
-    const checklistPath = path.join(checklistsDir, 'tenant-isolation.md');
+  test('qg-m2-tenant-isolation.md (QG-M2) checklist exists', () => {
+    const checklistPath = path.join(checklistsDir, 'qg-m2-tenant-isolation.md');
     expect(fs.existsSync(checklistPath)).toBe(true);
   });
 
   test('QG-F1 checklist has checkbox format', () => {
-    const checklistPath = path.join(checklistsDir, 'foundation-gate.md');
+    const checklistPath = path.join(checklistsDir, 'qg-f1-foundation.md');
     const content = fs.readFileSync(checklistPath, 'utf-8');
 
     // Should have checkbox items
@@ -324,7 +324,7 @@ describe('E2E Foundation Chain - Checklist Structure', () => {
   });
 
   test('QG-M2 checklist has CRITICAL markers', () => {
-    const checklistPath = path.join(checklistsDir, 'tenant-isolation.md');
+    const checklistPath = path.join(checklistsDir, 'qg-m2-tenant-isolation.md');
     const content = fs.readFileSync(checklistPath, 'utf-8');
 
     // Should have CRITICAL items marked

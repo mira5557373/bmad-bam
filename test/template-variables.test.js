@@ -252,8 +252,9 @@ describe('Template Variable Validation', () => {
       // - Phase 7: Bug fix session added missing templates referenced by workflows
       // - Phase 8: SOC2 compliance template + data retention templates added
       // - Phase 9: Added 5 observability templates (RAG, tool-execution, agent-trace, vector-store, memory)
+      // - Phase 10: Added 3 NEXUS templates (action-contract-spec, prg-gate-spec, runtime-loop-config)
       expect(templateFiles.length).toBeGreaterThanOrEqual(360);
-      expect(templateFiles.length).toBeLessThanOrEqual(455);
+      expect(templateFiles.length).toBeLessThanOrEqual(460);
     });
   });
 });

@@ -34,7 +34,7 @@ Search for and load `{project-root}/**/project-context.md` as foundational refer
 - Defining module responsibilities and ownership
 - Establishing inter-module communication patterns
 
-## Mode
+## Modes
 
 Select execution mode:
 
@@ -45,6 +45,11 @@ Select execution mode:
 | **Validate** | Check existing artifact against quality criteria |
 
 Default: **Create** mode. In headless mode, always use Create.
+
+## Prerequisites
+
+- Previous workflow outputs available (if applicable)
+- **Config required:** See `On Activation` section
 
 ## Workflow
 
@@ -89,7 +94,7 @@ This workflow contributes to:
 - QG-F1 (Foundation) should pass or be in progress (master architecture defined)
 
 ### Exit Gate
-- QG-M1 checklist items from `module-architecture.md` verified:
+- QG-M1 checklist items from `qg-m1-module-architecture.md` verified:
   - [ ] All data has clear module ownership
   - [ ] No circular dependencies
   - [ ] Each module has defined public facade

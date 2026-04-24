@@ -128,7 +128,7 @@ Select an option:
 #### If 'C' (Continue):
 - Save AI behaviors to output document
 - Update frontmatter `stepsCompleted: [1, 2, 3, 4, 5, 6, 7, 8, 9]`
-- Proceed to next step: `step-09b-c-assembly.md`
+- Proceed to next step: `step-10-c-assembly.md`
 
 ---
 

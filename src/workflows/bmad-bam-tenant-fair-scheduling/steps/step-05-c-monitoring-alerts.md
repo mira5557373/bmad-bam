@@ -30,7 +30,7 @@ Set up noisy neighbor detection and alerting to identify and respond to resource
 - Isolation mechanisms completed (Step 4)
 - **Load patterns:** `{project-root}/_bmad/bam/data/bam-patterns.csv` -> filter: `observability`
 - **Load patterns:** `{project-root}/_bmad/bam/data/bam-patterns.csv` -> filter: `tenant-isolation`
-- **Load guide:** `{project-root}/_bmad/bam/data/agent-guides/bam/tenant-isolation.md`
+- **Load guide:** `{project-root}/_bmad/bam/data/agent-guides/bam/multi-tenant-patterns.md`
 
 ---
 

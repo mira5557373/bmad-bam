@@ -31,6 +31,10 @@ Validate the security audit artifacts against QG-SA1 quality criteria.
 
 ---
 
+## Actions
+
+Execute the validation checklist below to verify security audit artifacts.
+
 ## Validation Checklist
 
 ### Audit Scope

@@ -109,4 +109,4 @@ This workflow contributes to QG-F1 by establishing stakeholder alignment:
 
 - **Patterns:** Load from `{project-root}/_bmad/bam/data/bam-patterns.csv` filter: `governance`
 - **Templates:** `{project-root}/_bmad/bam/data/templates/stakeholder-map-template.md`
-- **Checklists:** `{project-root}/_bmad/bam/data/checklists/foundation-gate.md`
+- **Checklists:** `{project-root}/_bmad/bam/data/checklists/qg-f1-foundation.md`

@@ -108,6 +108,15 @@ Your options:
 
 ---
 
+## Outputs
+
+- Facilitation guide document
+- Scheduling guidelines specification
+- Blameless culture principles document
+- Roles and responsibilities matrix
+
+---
+
 ## Next Step
 
 Proceed to `step-03-c-action-tracking.md` to configure action item management.

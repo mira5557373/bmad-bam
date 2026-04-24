@@ -25,7 +25,7 @@ This step loads the API Gateway Design artifact for validation. The design docum
 
 - Gateway design artifact exists to validate
 - **Load patterns:** `{project-root}/_bmad/bam/data/bam-patterns.csv` -> filter: api-gateway
-- **Load checklist:** `{project-root}/_bmad/bam/data/checklists/production-readiness.md`
+- **Load checklist:** `{project-root}/_bmad/bam/data/checklists/qg-p1-production-readiness.md`
 
 Load the existing gateway design documents:
 - `{output_folder}/planning-artifacts/gateway/api-gateway-design.md`

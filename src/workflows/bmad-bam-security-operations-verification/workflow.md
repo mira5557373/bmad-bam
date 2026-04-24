@@ -1,6 +1,6 @@
 # Security Operations Verification Workflow
 
-## Mode Router
+## Mode Selection
 
 | Mode | Entry Point | Steps |
 |------|-------------|-------|
@@ -50,7 +50,7 @@ step-22-v-generate-report.md
 
 - **Templates:** `audit-logging-template.md`, `observability-template.md`
 - **Data:** `bam-patterns.csv` (filter: `security`)
-- **Checklists:** `security-checklist.md`
+- **Checklists:** `qg-sec-checklist.md`
 - **Workflows:** `bmad-bam-ai-security`
 
 ## Gate Integration

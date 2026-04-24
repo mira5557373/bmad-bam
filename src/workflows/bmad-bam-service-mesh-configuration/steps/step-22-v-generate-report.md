@@ -27,7 +27,7 @@ Generate a comprehensive validation report summarizing findings from the service
 
 - Step 20 completed: Service mesh configuration artifact loaded successfully
 - Step 21 completed: Validation performed against infrastructure criteria
-- **Load checklist:** `{project-root}/_bmad/bam/data/checklists/module-readiness.md`
+- **Load checklist:** `{project-root}/_bmad/bam/data/checklists/qg-s1-module-readiness.md`
 - **Load template:** `{project-root}/_bmad/bam/data/templates/quality-gate-report-template.md`
 
 ---

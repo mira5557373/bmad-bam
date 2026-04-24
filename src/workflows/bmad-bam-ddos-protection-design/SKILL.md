@@ -30,6 +30,11 @@ Act as a Security Architect specializing in DDoS mitigation for multi-tenant AI 
 | **Edit** | Modify existing design | `steps/step-10-e-*` through `step-11-e-*` |
 | **Validate** | Check against security criteria | `steps/step-20-v-*` through `step-22-v-*` |
 
+## Prerequisites
+
+- Previous workflow outputs available (if applicable)
+- **Config required:** See `On Activation` section
+
 ## Workflow
 
 ### Step 1: Analyze Attack Vectors

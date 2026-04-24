@@ -28,7 +28,7 @@ Validate the data protection artifacts against quality criteria and security sta
 - Previous step completed (step-20-v-load-artifact.md)
 - **Load patterns:** `{project-root}/_bmad/bam/data/bam-patterns.csv` → filter: `data-protection`
 - **Load quality gate:** `{project-root}/_bmad/bam/data/quality-gates.csv` → filter: `QG-DR1`
-- **Load checklist:** `{project-root}/_bmad/bam/data/checklists/security-checklist.md`
+- **Load checklist:** `{project-root}/_bmad/bam/data/checklists/qg-sec-checklist.md`
 
 ---
 

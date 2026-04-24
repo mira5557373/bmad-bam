@@ -27,6 +27,11 @@ This workflow defines batch inference pipeline architecture for high-volume AI p
 | Edit | Modify existing batch pipeline | `step-10-e-*` to `step-11-e-*` |
 | Validate | Check against batch criteria | `step-20-v-*` to `step-22-v-*` |
 
+## Prerequisites
+
+- Previous workflow outputs available (if applicable)
+- **Config required:** See `On Activation` section
+
 ## Workflow
 
 ### Step 1: Job Queue Design

@@ -29,6 +29,11 @@ Act as an MLOps Architect specializing in model lifecycle management for multi-t
 | Edit | Modify existing registry | `step-10-e-*` to `step-11-e-*` |
 | Validate | Check against MLOps criteria | `step-20-v-*` to `step-22-v-*` |
 
+## Prerequisites
+
+- Previous workflow outputs available (if applicable)
+- **Config required:** See `On Activation` section
+
 ## Workflow
 
 ### Step 1: Registry Schema Design

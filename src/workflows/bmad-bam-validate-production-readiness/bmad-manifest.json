@@ -1,0 +1,14 @@
+{
+  "module-code": "bam",
+  "capabilities": [{
+    "name": "bmad-bam-validate-production-readiness",
+    "menu-code": "VPR",
+    "description": "Validate system production readiness against QG-P1 quality gate criteria",
+    "supports-headless": true,
+    "phase-name": "5-quality",
+    "after": ["bmad-bam-convergence-verification", "bmad-bam-agent-safety", "bmad-bam-tenant-safety"],
+    "before": [],
+    "is-required": true,
+    "output-location": "{output_folder}/planning-artifacts/quality"
+  }]
+}

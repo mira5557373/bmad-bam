@@ -1,6 +1,6 @@
 # Tenant Safety Workflow
 
-## Mode Router
+## Mode Selection
 
 | Mode | Entry Point | Steps |
 |------|-------------|-------|
@@ -50,7 +50,7 @@ step-22-v-generate-report.md
 
 - **Templates:** `rls-policy-template.md`, `cache-isolation-template.md`, `memory-isolation-template.md`, `tenant-context-template.md`
 - **Data:** `bam-patterns.csv` (filter: `tenant-isolation`)
-- **Checklists:** `tenant-checklist.md`
+- **Checklists:** `qg-tenant-checklist.md`
 
 ## Gate Integration
 

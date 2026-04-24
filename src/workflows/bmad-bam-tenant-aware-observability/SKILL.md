@@ -34,7 +34,7 @@ Search for and load `{project-root}/**/project-context.md` as foundational refer
 - Creating per-tenant metrics and dashboards
 - Building tenant context propagation in telemetry
 
-## Mode
+## Modes
 
 Select execution mode:
 
@@ -45,6 +45,11 @@ Select execution mode:
 | **Validate** | Check existing artifact against quality criteria |
 
 Default: **Create** mode. In headless mode, always use Create.
+
+## Prerequisites
+
+- Previous workflow outputs available (if applicable)
+- **Config required:** See `On Activation` section
 
 ## Workflow
 
@@ -127,7 +132,7 @@ This workflow contributes to:
 - QG-M2 (Tenant Isolation) recommended for proper tenant context design
 
 ### Exit Gate
-- QG-M2 and QG-P1 checklist items from `tenant-isolation.md` and `production-readiness.md` verified
+- QG-M2 and QG-P1 checklist items from `qg-m2-tenant-isolation.md` and `qg-p1-production-readiness.md` verified
 - Telemetry design complete with tenant context propagation
 - Audit event catalog defined
 

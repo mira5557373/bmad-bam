@@ -120,4 +120,4 @@ This workflow contributes to QG-P1 by establishing self-service reporting capabi
 
 - **Patterns:** Load from `{project-root}/_bmad/bam/data/bam-patterns.csv` filter: `reporting`
 - **Templates:** `{project-root}/_bmad/bam/data/templates/tenant-self-service-reporting-template.md`
-- **Checklists:** `{project-root}/_bmad/bam/data/checklists/production-readiness.md`
+- **Checklists:** `{project-root}/_bmad/bam/data/checklists/qg-p1-production-readiness.md`

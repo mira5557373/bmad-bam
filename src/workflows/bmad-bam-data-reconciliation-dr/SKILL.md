@@ -89,7 +89,7 @@ This workflow contributes to:
 - Disaster recovery plan and failover procedures must be documented
 
 ### Exit Gate
-- Reconciliation design document complete with `production-readiness.md` checklist items verified
+- Reconciliation design document complete with `qg-p1-production-readiness.md` checklist items verified
 - Verification procedures aligned with RPO objectives
 - Automated checks cover critical data assets
 
@@ -110,7 +110,7 @@ This workflow contributes to:
 - Template: `{project-root}/_bmad/bam/data/templates/data-reconciliation-dr-template.md`
 - Knowledge: `{project-root}/_bmad/bam/data/agent-guides/bam/disaster-recovery-patterns.md`
 - Knowledge: `{project-root}/_bmad/bam/data/agent-guides/bam/data-integrity-patterns.md`
-- Checklist: `{project-root}/_bmad/bam/data/checklists/production-readiness.md`
+- Checklist: `{project-root}/_bmad/bam/data/checklists/qg-p1-production-readiness.md`
 
 ## Headless Mode
 

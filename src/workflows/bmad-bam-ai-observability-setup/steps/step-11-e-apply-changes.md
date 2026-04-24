@@ -4,6 +4,11 @@
 
 Apply targeted modifications to the AI observability configuration.
 
+## Prerequisites
+
+- Step 10 complete (existing configuration loaded)
+- **Load patterns:** `{project-root}/_bmad/bam/data/bam-patterns.csv` → filter: `observability-*`
+
 ## Actions
 
 ### 1. Apply Section Updates

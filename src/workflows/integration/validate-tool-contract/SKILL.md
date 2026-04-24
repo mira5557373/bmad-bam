@@ -36,9 +36,14 @@ Search for and load `{project-root}/**/project-context.md` as foundational refer
 - Checking tool permission configurations
 - Verifying tool safety requirements
 
-## Mode
+## Modes
 
 This workflow operates in **Validate** mode — checking existing artifacts against quality criteria.
+
+## Prerequisites
+
+- Previous workflow outputs available (if applicable)
+- **Config required:** See `On Activation` section
 
 ## Quality Gates
 

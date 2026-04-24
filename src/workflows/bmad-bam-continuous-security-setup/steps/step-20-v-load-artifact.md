@@ -4,6 +4,11 @@
 
 Load the security configuration for validation against QG-S5 criteria.
 
+## Prerequisites
+
+- Security configuration exists at `{output_folder}/planning-artifacts/security-config.md`
+- **Load patterns:** `{project-root}/_bmad/bam/data/bam-patterns.csv` → filter: `security-*`
+
 ## Actions
 
 ### 1. Load Existing Documents

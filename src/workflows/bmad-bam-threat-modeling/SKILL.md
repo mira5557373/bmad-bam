@@ -96,7 +96,7 @@ This workflow contributes to:
 
 - Template: `{project-root}/_bmad/bam/data/templates/threat-model-template.md`
 - Knowledge: `{project-root}/_bmad/bam/data/agent-guides/bam/security-patterns.md`
-- Checklist: `{project-root}/_bmad/bam/data/checklists/production-readiness.md`
+- Checklist: `{project-root}/_bmad/bam/data/checklists/qg-p1-production-readiness.md`
 
 ## Headless Mode
 
