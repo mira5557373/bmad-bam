@@ -439,7 +439,11 @@ git commit -m "test: add consolidation columns validation"
 
 ---
 
-## Phase 2: Domain Guide Creation (Proof of Concept - Tenant Domain)
+## Phase 2: Domain Guide Creation (Manual Consolidation Approach)
+
+> **CRITICAL METHODOLOGY:** This phase uses MANUAL file-by-file analysis, NOT automated extraction scripts. Each source file is read by a human/agent, analyzed using the File Analysis Template (Task 2.5.2), quality variance is assessed, and the best content is selected using Consolidation Rules (Task 2.5.3). This ensures no valuable content is lost and duplicates are intelligently merged rather than mechanically concatenated.
+
+**Phase 2 Time Estimate:** 35 hours (manual analysis + guide creation for 25 domains)
 
 ### Task 2.1: Create Domain Guide Template
 
@@ -584,7 +588,7 @@ git commit -m "chore: add domain guide template"
 
 **Files:**
 - Create: `src/data/agent-guides/bam/tenant-patterns-guide.md`
-- Read: `src/data/agent-guides/bam/tenant-isolation.md` (for content extraction)
+- Read: `src/data/agent-guides/bam/tenant-isolation.md` (for manual analysis)
 
 - [ ] **Step 1: Create the consolidated guide**
 
@@ -1186,262 +1190,206 @@ git commit -m "feat: create ai-runtime-patterns-guide.md"
 
 ---
 
-### Task 2.5.1: Create Content Extraction Script
+### Task 2.5.1: Manual Domain-to-Files Mapping
 
-**Files:**
-- Create: `scripts/extract-guide-content.py`
+> **CRITICAL:** Manual consolidation approach - NO extraction scripts. Read each file, analyze quality variance, preserve richer content, eliminate duplicates through human judgment.
 
-- [ ] **Step 1: Create the extraction script**
+**Time estimate:** 35 hours total for Phase 2 (manual analysis + guide creation)
 
-```python
-#!/usr/bin/env python3
-"""Extract content from existing guides for consolidation."""
+#### Master Domain-to-Files Mapping Table
 
-import os
-import re
-import sys
-from pathlib import Path
-from collections import defaultdict
+| Domain Guide | Source Files | Est. Time |
+|--------------|--------------|-----------|
+| `tenant-patterns-guide.md` | `tenant-isolation.md`, `tenant-lifecycle.md`, `tenant-lifecycle-patterns.md`, `tenant-onboarding-patterns.md`, `tenant-routing.md`, `tenant-context.md` | 2h |
+| `ai-runtime-patterns-guide.md` | `agent-runtime.md`, `agent-runtime-patterns.md`, `agent-coordination.md`, `memory-tiers.md`, `run-contracts.md`, `tool-execution.md`, `agent-negotiation.md`, `agent-delegation.md` | 2.5h |
+| `security-patterns-guide.md` | `all-security-patterns.md`, `rbac-patterns.md`, `abac-patterns.md`, `zero-trust-patterns.md`, `secrets-management.md`, `authentication.md` | 2h |
+| `observability-patterns-guide.md` | `observability-patterns.md`, `distributed-tracing.md`, `log-aggregation.md`, `apm-integration.md`, `monitoring-patterns.md`, `alerting-patterns.md` | 1.5h |
+| `reliability-patterns-guide.md` | `circuit-breaker.md`, `retry-policies.md`, `disaster-recovery.md`, `resilience-patterns.md`, `fallback-patterns.md`, `bulkhead-patterns.md` | 1.5h |
+| `governance-patterns-guide.md` | `compliance-patterns.md`, `governance.md`, `audit-logging.md`, `data-residency.md`, `policy-enforcement.md` | 1.5h |
+| `integration-patterns-guide.md` | `event-driven.md`, `saga-orchestration.md`, `facade-contracts.md`, `webhook-delivery.md`, `api-versioning.md`, `a2a-protocol.md` | 1.5h |
+| `cost-patterns-guide.md` | `cost-tracking.md`, `usage-metering.md`, `llm-cost-tracking.md`, `billing-integration.md`, `quota-management.md` | 1h |
+| `state-patterns-guide.md` | `caching-strategy.md`, `session-management.md`, `event-sourcing.md`, `cqrs-patterns.md`, `checkpoint-patterns.md` | 1.5h |
+| `discovery-patterns-guide.md` | `discovery-patterns.md`, `requirements-patterns.md`, `planning-patterns.md`, `triage-patterns.md` | 1h |
+| `testing-patterns-guide.md` | `testing-isolation.md`, `testing-agent-safety.md`, `ai-testing.md`, `integration-testing.md`, `contract-testing.md` | 1.5h |
+| `operations-patterns-guide.md` | `deployment-patterns.md`, `devops-patterns.md`, `sre-patterns.md`, `sla-patterns.md`, `incident-response.md`, `runbook-patterns.md` | 1.5h |
+| `scaling-patterns-guide.md` | `auto-scaling.md`, `capacity-patterns.md`, `performance-patterns.md`, `rate-limiting.md`, `load-balancing.md` | 1h |
+| `ai-lifecycle-patterns-guide.md` | `model-fine-tuning.md`, `model-deployment.md`, `model-versioning.md`, `prompt-catalog.md`, `model-registry.md` | 1.5h |
+| `ai-safety-patterns-guide.md` | `ai-safety-patterns.md`, `guardrails.md`, `kill-switch.md`, `grounding-patterns.md`, `prg-gate.md` | 1.5h |
+| `ai-observability-patterns-guide.md` | `llm-observability.md`, `rag-observability.md`, `embedding-observability.md`, `token-tracking.md`, `inference-metrics.md` | 1h |
+| `runtime-loops-patterns-guide.md` | `request-loop.md`, `control-loop.md`, `learning-loop.md`, `economic-loop.md`, `feedback-loop.md` | 1h |
+| `mcp-patterns-guide.md` | `mcp-server-isolation.md`, `mcp-client-patterns.md`, `tool-schema-validation.md`, `mcp-federation.md`, `tool-permission.md` | 1.5h |
+| `data-patterns-guide.md` | `connection-pooling.md`, `query-routing.md`, `migration-per-tenant.md`, `database-patterns.md`, `data-lifecycle.md` | 1.5h |
+| `rag-patterns-guide.md` | `rag-retrieval.md`, `rag-generation.md`, `embedding-management.md`, `vector-store.md`, `chunking-patterns.md`, `reranking.md` | 1.5h |
+| `architecture-patterns-guide.md` | `module-boundaries.md`, `idempotency.md`, `cache-aside.md`, `architecture-decision.md`, `domain-modeling.md` | 1.5h |
+| `analytics-patterns-guide.md` | `analytics-patterns.md`, `dashboard-patterns.md`, `reporting-patterns.md`, `health-scoring.md`, `metrics-aggregation.md` | 1h |
+| `gate-verification-patterns-guide.md` | `qg-foundation.md`, `qg-module.md`, `qg-integration.md`, `qg-production.md`, `qg-security.md`, `qg-ai.md` | 1.5h |
+| `federation-patterns-guide.md` | `federation-a2a.md`, `partner-ecosystem.md`, `cross-tenant.md`, `federated-identity.md` | 1h |
+| `documentation-patterns-guide.md` | `documentation-patterns.md`, `api-design.md`, `api-documentation.md`, `changelog-patterns.md` | 1h |
 
-# Domain to source file mapping
-DOMAIN_SOURCES = {
-    'security': [
-        'all-security-patterns.md', 'rbac-patterns.md', 'abac-patterns.md',
-        'zero-trust-patterns.md', 'secrets-management.md', 'authentication.md'
-    ],
-    'observability': [
-        'observability-patterns.md', 'distributed-tracing.md', 'log-aggregation.md',
-        'apm-integration.md', 'monitoring-patterns.md', 'alerting-patterns.md'
-    ],
-    'reliability': [
-        'circuit-breaker.md', 'retry-policies.md', 'disaster-recovery.md',
-        'resilience-patterns.md', 'fallback-patterns.md', 'bulkhead-patterns.md'
-    ],
-    'governance': [
-        'compliance-patterns.md', 'governance.md', 'audit-logging.md',
-        'data-residency.md', 'policy-enforcement.md'
-    ],
-    'integration': [
-        'event-driven.md', 'saga-orchestration.md', 'facade-contracts.md',
-        'webhook-delivery.md', 'api-versioning.md', 'a2a-protocol.md'
-    ],
-    'cost': [
-        'cost-tracking.md', 'usage-metering.md', 'llm-cost-tracking.md',
-        'billing-integration.md', 'quota-management.md'
-    ],
-    'state': [
-        'caching-strategy.md', 'session-management.md', 'event-sourcing.md',
-        'cqrs-patterns.md', 'checkpoint-patterns.md'
-    ],
-    'discovery': [
-        'discovery-patterns.md', 'requirements-patterns.md', 'planning-patterns.md',
-        'triage-patterns.md'
-    ],
-    'testing': [
-        'testing-isolation.md', 'testing-agent-safety.md', 'ai-testing.md',
-        'integration-testing.md', 'contract-testing.md'
-    ],
-    'operations': [
-        'deployment-patterns.md', 'devops-patterns.md', 'sre-patterns.md',
-        'sla-patterns.md', 'incident-response.md', 'runbook-patterns.md'
-    ],
-    'scaling': [
-        'auto-scaling.md', 'capacity-patterns.md', 'performance-patterns.md',
-        'rate-limiting.md', 'load-balancing.md'
-    ],
-    'ai-lifecycle': [
-        'model-fine-tuning.md', 'model-deployment.md', 'model-versioning.md',
-        'prompt-catalog.md', 'model-registry.md'
-    ],
-    'ai-safety': [
-        'ai-safety-patterns.md', 'guardrails.md', 'kill-switch.md',
-        'grounding-patterns.md', 'prg-gate.md'
-    ],
-    'ai-observability': [
-        'llm-observability.md', 'rag-observability.md', 'embedding-observability.md',
-        'token-tracking.md', 'inference-metrics.md'
-    ],
-    'runtime-loops': [
-        'request-loop.md', 'control-loop.md', 'learning-loop.md',
-        'economic-loop.md', 'feedback-loop.md'
-    ],
-    'mcp': [
-        'mcp-server-isolation.md', 'mcp-client-patterns.md', 'tool-schema-validation.md',
-        'mcp-federation.md', 'tool-permission.md'
-    ],
-    'data': [
-        'connection-pooling.md', 'query-routing.md', 'migration-per-tenant.md',
-        'database-patterns.md', 'data-lifecycle.md'
-    ],
-    'rag': [
-        'rag-retrieval.md', 'rag-generation.md', 'embedding-management.md',
-        'vector-store.md', 'chunking-patterns.md', 'reranking.md'
-    ],
-    'architecture': [
-        'module-boundaries.md', 'idempotency.md', 'cache-aside.md',
-        'architecture-decision.md', 'domain-modeling.md'
-    ],
-    'analytics': [
-        'analytics-patterns.md', 'dashboard-patterns.md', 'reporting-patterns.md',
-        'health-scoring.md', 'metrics-aggregation.md'
-    ],
-    'gate-verification': [
-        'qg-foundation.md', 'qg-module.md', 'qg-integration.md',
-        'qg-production.md', 'qg-security.md', 'qg-ai.md'
-    ],
-    'federation': [
-        'federation-a2a.md', 'partner-ecosystem.md', 'cross-tenant.md',
-        'federated-identity.md'
-    ],
-    'documentation': [
-        'documentation-patterns.md', 'api-design.md', 'api-documentation.md',
-        'changelog-patterns.md'
-    ],
-    'ai-runtime': [
-        'agent-runtime.md', 'agent-runtime-patterns.md', 'agent-coordination.md',
-        'memory-tiers.md', 'run-contracts.md', 'tool-execution.md',
-        'agent-negotiation.md', 'agent-delegation.md'
-    ]
-}
+---
 
-def extract_sections(content):
-    """Extract meaningful sections from a guide."""
-    sections = {}
-    current_section = None
-    current_content = []
-    
-    for line in content.split('\n'):
-        if line.startswith('## '):
-            if current_section:
-                sections[current_section] = '\n'.join(current_content)
-            current_section = line[3:].strip()
-            current_content = []
-        elif current_section:
-            current_content.append(line)
-    
-    if current_section:
-        sections[current_section] = '\n'.join(current_content)
-    
-    return sections
+### Task 2.5.2: File Analysis Template
 
-def extract_bam_conventions(content):
-    """Extract BAM-specific conventions from content."""
-    conventions = []
-    patterns = [
-        r'app\.current_tenant',
-        r'tenant:\{[^}]+\}',
-        r'tenants/\{[^}]+\}',
-        r'X-Tenant-ID',
-        r'X-Correlation-ID',
-    ]
-    for pattern in patterns:
-        matches = re.findall(f'.*{pattern}.*', content)
-        conventions.extend(matches)
-    return list(set(conventions))
+**For each source file, complete this 5-question analysis:**
 
-def extract_code_blocks(content):
-    """Extract code blocks with language tags."""
-    blocks = re.findall(r'```(\w+)?\n(.*?)```', content, re.DOTALL)
-    return [(lang or 'text', code.strip()) for lang, code in blocks]
+```markdown
+## File Analysis: {filename}
 
-def process_domain(domain, source_files, base_path):
-    """Process all source files for a domain."""
-    result = {
-        'sections': defaultdict(list),
-        'conventions': [],
-        'code_blocks': [],
-        'web_queries': [],
-    }
-    
-    for filename in source_files:
-        filepath = base_path / filename
-        if filepath.exists():
-            content = filepath.read_text(encoding='utf-8')
-            
-            # Extract sections
-            for section, text in extract_sections(content).items():
-                result['sections'][section].append(text)
-            
-            # Extract conventions
-            result['conventions'].extend(extract_bam_conventions(content))
-            
-            # Extract code blocks
-            result['code_blocks'].extend(extract_code_blocks(content))
-            
-            # Extract web queries
-            queries = re.findall(r'"([^"]+\{date\}[^"]*)"', content)
-            result['web_queries'].extend(queries)
-    
-    result['conventions'] = list(set(result['conventions']))
-    result['web_queries'] = list(set(result['web_queries']))
-    
-    return result
+### 1. Line Count & Structure
+- Total lines: ___
+- Code blocks: ___ lines
+- Tables: ___ 
+- Section headers (##): ___
 
-def main():
-    base_path = Path(sys.argv[1]) if len(sys.argv) > 1 else Path('src/data/agent-guides/bam')
-    output_path = Path(sys.argv[2]) if len(sys.argv) > 2 else Path('_consolidation')
-    
-    output_path.mkdir(exist_ok=True)
-    
-    for domain, sources in DOMAIN_SOURCES.items():
-        print(f"Processing domain: {domain}")
-        result = process_domain(domain, sources, base_path)
-        
-        # Write extracted content
-        output_file = output_path / f"{domain}-extracted.md"
-        with open(output_file, 'w') as f:
-            f.write(f"# Extracted Content: {domain}\n\n")
-            
-            f.write("## Sections Found\n\n")
-            for section, contents in result['sections'].items():
-                f.write(f"### {section}\n")
-                for content in contents:
-                    f.write(content[:500] + "...\n\n")
-            
-            f.write("## BAM Conventions\n\n")
-            for conv in result['conventions'][:20]:
-                f.write(f"- `{conv}`\n")
-            
-            f.write("\n## Web Queries\n\n")
-            for query in result['web_queries']:
-                f.write(f"- \"{query}\"\n")
-        
-        print(f"  -> Wrote {output_file}")
-    
-    print(f"\nExtraction complete. Review files in {output_path}/")
+### 2. Unique Content Assessment
+- [ ] Contains unique patterns not in other files?
+- [ ] Has deeper implementation detail than similar files?
+- [ ] Includes unique BAM conventions (app.current_tenant, cache keys, paths)?
+- Unique sections: ___
 
-if __name__ == '__main__':
-    main()
+### 3. Overlap Detection
+- Overlaps with: {list other files with similar content}
+- Overlap %: ___
+- Which version is richer? {this file / other file}
+
+### 4. Quality Assessment
+- [ ] Has complete decision framework (table/flowchart)?
+- [ ] Has code examples with BAM conventions?
+- [ ] Has web research queries with {date}?
+- [ ] Has quality gate references?
+- Quality score: {1-5}
+
+### 5. Consolidation Decision
+- Action: {KEEP_FULL | KEEP_PARTIAL | MERGE_WITH | DISCARD_DUPLICATE}
+- If MERGE_WITH, take what from this file: ___
+- If KEEP_PARTIAL, which sections: ___
 ```
 
-- [ ] **Step 2: Run extraction for analysis**
+---
 
-```bash
-python3 scripts/extract-guide-content.py src/data/agent-guides/bam _consolidation
+### Task 2.5.3: Consolidation Rules
+
+**When content overlaps between files, apply these rules:**
+
+| Situation | Rule | Example |
+|-----------|------|---------|
+| **Same topic, different detail** | Keep the richer version | `tenant-onboarding-patterns.md` has 6-step checklist vs `tenant-lifecycle.md` has 3-step → Keep 6-step |
+| **Complementary content** | Merge under section anchors | `tenant-isolation.md` §dimensions + `tenant-lifecycle.md` §states → Both kept |
+| **Exact duplicate sections** | Keep from primary file only | If same table appears in 2 files → Keep in designated primary |
+| **Conflicting patterns** | Prefer pattern with decision criteria | Pattern with when-to-use table beats bare description |
+| **Code examples** | Keep all unique, consolidate duplicates | Same RLS code in 3 files → Keep once with §section-anchor |
+| **BAM conventions** | Must appear in consolidated guide | Never lose `app.current_tenant`, cache key, file path patterns |
+
+---
+
+### Task 2.5.4: Per-Domain Manual Consolidation Steps
+
+**For each domain, follow this exact sequence:**
+
+- [ ] **Step 1: Read all source files**
+Complete File Analysis Template (Task 2.5.2) for each source file
+
+- [ ] **Step 2: Create Consolidation Map**
+```markdown
+## {Domain} Consolidation Map
+
+### Files Analyzed
+| File | Lines | Quality | Decision |
+|------|-------|---------|----------|
+
+### Content Disposition
+| Section/Pattern | Source File | Action | Target §Section |
+|-----------------|-------------|--------|-----------------|
+
+### Unique Content to Preserve
+- From {file1}: {what}
+- From {file2}: {what}
+
+### Duplicates to Eliminate
+- {content} appears in: {file1, file2} → Keep in: {file1}
 ```
 
-- [ ] **Step 3: Review extracted content**
+- [ ] **Step 3: Write consolidated guide**
+Follow domain guide template, placing content under §section-anchors
 
+- [ ] **Step 4: Verify completeness**
+Run verification checklist (Task 2.5.5)
+
+- [ ] **Step 5: Commit domain guide**
 ```bash
-ls -la _consolidation/
+git add src/data/agent-guides/bam/{domain}-patterns-guide.md
+git commit -m "feat: create {domain}-patterns-guide.md (manual consolidation)"
 ```
 
-- [ ] **Step 4: Commit**
+---
 
+### Task 2.5.5: Domain Guide Verification Checklist
+
+**Run after creating each domain guide:**
+
+- [ ] **Structure verification**
 ```bash
-git add scripts/extract-guide-content.py
-git commit -m "chore: add content extraction script for consolidation"
+# Verify required sections exist
+grep -E "^## (Core Concepts|BAM Conventions|Decision Framework|Quality Gates|Web Research|Related)" {guide}.md | wc -l
+# Expected: 6+
+```
+
+- [ ] **BAM conventions preserved**
+```bash
+# For tenant-related guides
+grep -c "app.current_tenant" {guide}.md  # Should be > 0 for tenant domain
+
+# For cache-related content  
+grep -c "tenant:{tenant_id}:{namespace}:{key}" {guide}.md
+
+# For file storage content
+grep -c "tenants/{tenant_id}/{category}/{filename}" {guide}.md
+```
+
+- [ ] **Section anchors present**
+```bash
+grep -c "^## §" {guide}.md  # Should match expected pattern count
+```
+
+- [ ] **Web research queries have {date}**
+```bash
+grep -c "{date}" {guide}.md  # Should be > 0
+```
+
+- [ ] **Quality gates referenced**
+```bash
+grep -E "QG-(F1|M1|M2|M3|I1|I2|I3|P1)" {guide}.md | head -5
+```
+
+- [ ] **Line count reduction verified**
+```bash
+# Compare input lines vs output lines
+wc -l src/data/agent-guides/bam/{source1}.md {source2}.md ... | tail -1  # Total input
+wc -l src/data/agent-guides/bam/{domain}-patterns-guide.md  # Output
+# Target: Output should be 60-80% of input (20-40% reduction from dedup)
 ```
 
 ---
 
 ### Task 2.6: Create Security Patterns Guide
 
+> **Use Manual Consolidation Approach:** Follow Tasks 2.5.2-2.5.5 for this domain.
+
 **Files:**
 - Create: `src/data/agent-guides/bam/security-patterns-guide.md`
-- Read: `_consolidation/security-extracted.md`
+- Read (source files for manual analysis):
+  - `all-security-patterns.md`
+  - `rbac-patterns.md`
+  - `abac-patterns.md`
+  - `zero-trust-patterns.md`
+  - `secrets-management.md`
+  - `authentication.md`
 
-- [ ] **Step 1: Create the guide**
+- [ ] **Step 1: Complete File Analysis Template for each source file**
+
+- [ ] **Step 2: Create Consolidation Map (see Task 2.5.4)**
+
+- [ ] **Step 3: Create the guide based on manual analysis**
 
 ```markdown
 # BAM Security Patterns Guide
@@ -1752,10 +1700,23 @@ git commit -m "feat: create security-patterns-guide.md"
 
 ### Task 2.7: Create Observability Patterns Guide
 
+> **Use Manual Consolidation Approach:** Follow Tasks 2.5.2-2.5.5 for this domain.
+
 **Files:**
 - Create: `src/data/agent-guides/bam/observability-patterns-guide.md`
+- Read (source files for manual analysis):
+  - `observability-patterns.md`
+  - `distributed-tracing.md`
+  - `log-aggregation.md`
+  - `apm-integration.md`
+  - `monitoring-patterns.md`
+  - `alerting-patterns.md`
 
-- [ ] **Step 1: Create the guide**
+- [ ] **Step 1: Complete File Analysis Template for each source file**
+
+- [ ] **Step 2: Create Consolidation Map (see Task 2.5.4)**
+
+- [ ] **Step 3: Create the guide based on manual analysis**
 
 ```markdown
 # BAM Observability Patterns Guide
@@ -1989,57 +1950,72 @@ git commit -m "feat: create observability-patterns-guide.md"
 
 ### Task 2.8-2.28: Create Remaining Domain Guides
 
-Each remaining guide follows the same structure. Create using the template and extracted content:
+> **MANDATORY:** Use Manual Consolidation Approach (Tasks 2.5.2-2.5.5) for ALL domain guides. NO extraction scripts.
 
-| Task | Guide | Key §Sections |
-|------|-------|--------------|
-| 2.8 | `reliability-patterns-guide.md` | §circuit-breaker, §retry, §fallback, §bulkhead |
-| 2.9 | `governance-patterns-guide.md` | §compliance, §audit-logging, §data-residency, §policy |
-| 2.10 | `integration-patterns-guide.md` | §event-driven, §saga, §facade, §webhook, §a2a |
-| 2.11 | `cost-patterns-guide.md` | §cost-tracking, §metering, §llm-cost, §quota |
-| 2.12 | `state-patterns-guide.md` | §caching, §session, §event-sourcing, §checkpoint |
-| 2.13 | `discovery-patterns-guide.md` | §requirements, §triage, §planning, §complexity |
-| 2.14 | `testing-patterns-guide.md` | §isolation-testing, §agent-safety, §contract, §integration |
-| 2.15 | `operations-patterns-guide.md` | §deployment, §rollback, §incident, §runbook |
-| 2.16 | `scaling-patterns-guide.md` | §auto-scaling, §rate-limiting, §capacity, §performance |
-| 2.17 | `ai-lifecycle-patterns-guide.md` | §model-versioning, §fine-tuning, §prompt-catalog, §registry |
-| 2.18 | `ai-safety-patterns-guide.md` | §guardrails, §kill-switch, §grounding, §prg-gate |
-| 2.19 | `ai-observability-patterns-guide.md` | §llm-telemetry, §token-tracking, §rag-metrics |
-| 2.20 | `runtime-loops-patterns-guide.md` | §request-loop, §control-loop, §learning-loop, §economic-loop |
-| 2.21 | `mcp-patterns-guide.md` | §mcp-server, §tool-permission, §mcp-federation, §schema-validation |
-| 2.22 | `data-patterns-guide.md` | §connection-pooling, §query-routing, §migration |
-| 2.23 | `rag-patterns-guide.md` | §retrieval, §chunking, §embedding, §reranking, §citation |
-| 2.24 | `architecture-patterns-guide.md` | §module-boundaries, §idempotency, §domain-modeling |
-| 2.25 | `analytics-patterns-guide.md` | §dashboards, §health-scoring, §reporting |
-| 2.26 | `gate-verification-patterns-guide.md` | §qg-foundation, §qg-module, §qg-integration, §qg-production |
-| 2.27 | `federation-patterns-guide.md` | §a2a-protocol, §partner-ecosystem, §cross-tenant |
-| 2.28 | `documentation-patterns-guide.md` | §api-design, §changelog, §runbooks |
+Each remaining guide follows the same manual consolidation process:
 
-For each guide, follow this exact process:
+| Task | Guide | Source Files | Key §Sections | Est. Time |
+|------|-------|--------------|--------------|-----------|
+| 2.8 | `reliability-patterns-guide.md` | `circuit-breaker.md`, `retry-policies.md`, `disaster-recovery.md`, `resilience-patterns.md`, `fallback-patterns.md`, `bulkhead-patterns.md` | §circuit-breaker, §retry, §fallback, §bulkhead | 1.5h |
+| 2.9 | `governance-patterns-guide.md` | `compliance-patterns.md`, `governance.md`, `audit-logging.md`, `data-residency.md`, `policy-enforcement.md` | §compliance, §audit-logging, §data-residency, §policy | 1.5h |
+| 2.10 | `integration-patterns-guide.md` | `event-driven.md`, `saga-orchestration.md`, `facade-contracts.md`, `webhook-delivery.md`, `api-versioning.md`, `a2a-protocol.md` | §event-driven, §saga, §facade, §webhook, §a2a | 1.5h |
+| 2.11 | `cost-patterns-guide.md` | `cost-tracking.md`, `usage-metering.md`, `llm-cost-tracking.md`, `billing-integration.md`, `quota-management.md` | §cost-tracking, §metering, §llm-cost, §quota | 1h |
+| 2.12 | `state-patterns-guide.md` | `caching-strategy.md`, `session-management.md`, `event-sourcing.md`, `cqrs-patterns.md`, `checkpoint-patterns.md` | §caching, §session, §event-sourcing, §checkpoint | 1.5h |
+| 2.13 | `discovery-patterns-guide.md` | `discovery-patterns.md`, `requirements-patterns.md`, `planning-patterns.md`, `triage-patterns.md` | §requirements, §triage, §planning, §complexity | 1h |
+| 2.14 | `testing-patterns-guide.md` | `testing-isolation.md`, `testing-agent-safety.md`, `ai-testing.md`, `integration-testing.md`, `contract-testing.md` | §isolation-testing, §agent-safety, §contract, §integration | 1.5h |
+| 2.15 | `operations-patterns-guide.md` | `deployment-patterns.md`, `devops-patterns.md`, `sre-patterns.md`, `sla-patterns.md`, `incident-response.md`, `runbook-patterns.md` | §deployment, §rollback, §incident, §runbook | 1.5h |
+| 2.16 | `scaling-patterns-guide.md` | `auto-scaling.md`, `capacity-patterns.md`, `performance-patterns.md`, `rate-limiting.md`, `load-balancing.md` | §auto-scaling, §rate-limiting, §capacity, §performance | 1h |
+| 2.17 | `ai-lifecycle-patterns-guide.md` | `model-fine-tuning.md`, `model-deployment.md`, `model-versioning.md`, `prompt-catalog.md`, `model-registry.md` | §model-versioning, §fine-tuning, §prompt-catalog, §registry | 1.5h |
+| 2.18 | `ai-safety-patterns-guide.md` | `ai-safety-patterns.md`, `guardrails.md`, `kill-switch.md`, `grounding-patterns.md`, `prg-gate.md` | §guardrails, §kill-switch, §grounding, §prg-gate | 1.5h |
+| 2.19 | `ai-observability-patterns-guide.md` | `llm-observability.md`, `rag-observability.md`, `embedding-observability.md`, `token-tracking.md`, `inference-metrics.md` | §llm-telemetry, §token-tracking, §rag-metrics | 1h |
+| 2.20 | `runtime-loops-patterns-guide.md` | `request-loop.md`, `control-loop.md`, `learning-loop.md`, `economic-loop.md`, `feedback-loop.md` | §request-loop, §control-loop, §learning-loop, §economic-loop | 1h |
+| 2.21 | `mcp-patterns-guide.md` | `mcp-server-isolation.md`, `mcp-client-patterns.md`, `tool-schema-validation.md`, `mcp-federation.md`, `tool-permission.md` | §mcp-server, §tool-permission, §mcp-federation, §schema-validation | 1.5h |
+| 2.22 | `data-patterns-guide.md` | `connection-pooling.md`, `query-routing.md`, `migration-per-tenant.md`, `database-patterns.md`, `data-lifecycle.md` | §connection-pooling, §query-routing, §migration | 1.5h |
+| 2.23 | `rag-patterns-guide.md` | `rag-retrieval.md`, `rag-generation.md`, `embedding-management.md`, `vector-store.md`, `chunking-patterns.md`, `reranking.md` | §retrieval, §chunking, §embedding, §reranking, §citation | 1.5h |
+| 2.24 | `architecture-patterns-guide.md` | `module-boundaries.md`, `idempotency.md`, `cache-aside.md`, `architecture-decision.md`, `domain-modeling.md` | §module-boundaries, §idempotency, §domain-modeling | 1.5h |
+| 2.25 | `analytics-patterns-guide.md` | `analytics-patterns.md`, `dashboard-patterns.md`, `reporting-patterns.md`, `health-scoring.md`, `metrics-aggregation.md` | §dashboards, §health-scoring, §reporting | 1h |
+| 2.26 | `gate-verification-patterns-guide.md` | `qg-foundation.md`, `qg-module.md`, `qg-integration.md`, `qg-production.md`, `qg-security.md`, `qg-ai.md` | §qg-foundation, §qg-module, §qg-integration, §qg-production | 1.5h |
+| 2.27 | `federation-patterns-guide.md` | `federation-a2a.md`, `partner-ecosystem.md`, `cross-tenant.md`, `federated-identity.md` | §a2a-protocol, §partner-ecosystem, §cross-tenant | 1h |
+| 2.28 | `documentation-patterns-guide.md` | `documentation-patterns.md`, `api-design.md`, `api-documentation.md`, `changelog-patterns.md` | §api-design, §changelog, §runbooks | 1h |
 
+**For each guide, follow this EXACT manual consolidation process:**
+
+```
+┌─────────────────────────────────────────────────────────────────┐
+│         Per-Domain Manual Consolidation Process                  │
+├─────────────────────────────────────────────────────────────────┤
+│ Step 1: READ all source files listed in the table above        │
+│         └── Complete File Analysis Template (Task 2.5.2)        │
+│             for EACH source file                                 │
+│                                                                  │
+│ Step 2: CREATE Consolidation Map                                 │
+│         └── Document: Files Analyzed | Content Disposition       │
+│         └── Identify: Unique vs Duplicate content               │
+│         └── Decide: Which version is richer (keep that one)     │
+│                                                                  │
+│ Step 3: WRITE consolidated guide                                 │
+│         └── Use domain-guide-template.md                        │
+│         └── Place content under §section-anchors                │
+│         └── Preserve ALL BAM conventions                        │
+│         └── Include web research queries with {date}            │
+│                                                                  │
+│ Step 4: VERIFY completeness                                      │
+│         └── Run verification checklist (Task 2.5.5)             │
+│         └── Confirm line count reduction (20-40% expected)      │
+│                                                                  │
+│ Step 5: COMMIT domain guide                                      │
+│         └── git add + commit with "manual consolidation" note   │
+└─────────────────────────────────────────────────────────────────┘
+```
+
+**Commit pattern for each domain:**
 ```bash
-# 1. Create guide from template
-cp templates/domain-guide-template.md src/data/agent-guides/bam/{guide-name}
+git add src/data/agent-guides/bam/{domain}-patterns-guide.md
+git commit -m "feat: create {domain}-patterns-guide.md (manual consolidation)
 
-# 2. Review extracted content
-cat _consolidation/{domain}-extracted.md
-
-# 3. Edit guide with domain-specific content
-# Include:
-# - Core Concepts table for the domain
-# - BAM Conventions (extract from existing guides)
-# - Decision Framework for key decisions
-# - §section anchors for each pattern
-# - Web Research queries with {date}
-# - Related Patterns cross-references
-# - Related Workflows
-
-# 4. Verify structure
-grep "## §" src/data/agent-guides/bam/{guide-name} | wc -l
-
-# 5. Commit
-git add src/data/agent-guides/bam/{guide-name}
-git commit -m "feat: create {guide-name}"
+Consolidated from: {list source files}
+Analysis: {unique} unique lines, {duplicate} duplicates eliminated
+"
 ```
 
 ---
@@ -3338,7 +3314,9 @@ git commit -m "feat: complete BAM consolidation with 110 new patterns"
 - [ ] All BAM conventions preserved verbatim
 - [ ] All guides have §section anchors
 - [ ] All guides have web research queries with `{date}`
-- [ ] Content extraction script produces valid output
+- [ ] File Analysis Templates completed for all source files (manual consolidation)
+- [ ] Consolidation Maps documented for each domain
+- [ ] Line count reduction verified (20-40% from duplicate elimination)
 
 ### Phase 3 Complete
 
@@ -3369,14 +3347,16 @@ git commit -m "feat: complete BAM consolidation with 110 new patterns"
 
 ## Summary
 
-| Phase | Tasks | Estimated Time |
-|-------|-------|----------------|
-| Phase 1 | 3 tasks | 2 hours |
-| Phase 2 | 29 tasks (2.1-2.28 + extraction) | 20 hours |
-| Phase 3 | 47 tasks (rollback + 40 workflows + 6 validation) | 24 hours |
-| Phase 4 | 4 tasks (module-help + extensions + archive + test) | 5 hours |
-| Phase 5 | 3 tasks (add patterns + sections + validate) | 4 hours |
-| **Total** | **86 tasks** | **~55 hours** |
+> **METHODOLOGY:** Phase 2 uses MANUAL file-by-file consolidation (no extraction scripts). This ensures quality variance is detected and richer content is preserved.
+
+| Phase | Tasks | Estimated Time | Method |
+|-------|-------|----------------|--------|
+| Phase 1 | 3 tasks | 2 hours | Automated (scripts OK) |
+| Phase 2 | 29 tasks (2.1-2.28 + analysis templates) | **35 hours** | **Manual consolidation** |
+| Phase 3 | 47 tasks (rollback + 40 workflows + 6 validation) | 24 hours | Automated |
+| Phase 4 | 4 tasks (module-help + extensions + archive + test) | 5 hours | Automated |
+| Phase 5 | 3 tasks (add patterns + sections + validate) | 4 hours | Automated |
+| **Total** | **86 tasks** | **~70 hours** | Mixed |
 
 ---
 
@@ -3384,9 +3364,11 @@ git commit -m "feat: complete BAM consolidation with 110 new patterns"
 
 | Risk | Mitigation | Recovery |
 |------|------------|----------|
-| Content loss | Git branches, archive directory | Rollback script |
+| Content loss | Git branches, archive directory, manual analysis | Rollback script |
+| Quality variance missed | **File Analysis Template (5-question checklist)** | Re-analyze source files |
+| Richer content discarded | **Consolidation Rules (keep richer version)** | Restore from source |
 | Broken references | Cross-reference validation tests | Fix before archive |
-| Missing patterns | DOMAIN_MAP comprehensive coverage | Script identifies gaps |
+| Missing patterns | Manual domain-to-files mapping table | Add missing sources |
 | Workflow failures | Workflow-guide dependency tests | Fix references |
 | Regression | Full test suite at each phase | Rollback to previous commit |
 
@@ -3407,9 +3389,18 @@ git commit -m "feat: complete BAM consolidation with 110 new patterns"
 
 ---
 
-**Plan Status:** COMPLETE (Enhanced with gap fixes)
-**Plan Version:** 2.0
-**Gaps Addressed:** 10/10
+**Plan Status:** COMPLETE (Manual Consolidation Enforced)
+**Plan Version:** 3.0
+**Gaps Addressed:** All gaps + Manual Consolidation Methodology
+
+**Key Changes in v3.0:**
+- Replaced Task 2.5.1 extraction script with Manual Domain-to-Files Mapping Table
+- Added Task 2.5.2: File Analysis Template (5-question checklist per file)
+- Added Task 2.5.3: Consolidation Rules (which version to keep)
+- Added Task 2.5.4: Per-Domain Manual Consolidation Steps
+- Added Task 2.5.5: Domain Guide Verification Checklist
+- Updated time estimate: 20h → 35h for Phase 2 (quality over speed)
+- Total time: ~55h → ~70h
 
 **Next Action:** Choose execution method:
 1. **Subagent-Driven (recommended)** - Fresh subagent per task, review between tasks
