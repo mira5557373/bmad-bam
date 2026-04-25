@@ -184,6 +184,8 @@ describe('File Counts', () => {
     // request-loop-patterns, control-loop-patterns, learning-loop-patterns, economic-loop-patterns,
     // recovery-loop-patterns, tier-h-federation-patterns
     // Increased to 233 after adding facade-contract-patterns.md, production-deployment.md
-    expect(guides.length).toBe(233);
+    // Increased to 238 after adding consolidated domain guides: tenant-patterns-guide, ai-runtime-patterns-guide,
+    // security-patterns-guide, observability-patterns-guide, reliability-patterns-guide
+    expect(guides.length).toBe(238);
   });
 });
