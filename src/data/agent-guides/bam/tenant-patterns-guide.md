@@ -590,6 +590,8 @@ Load from pattern registry:
 - `bam-patterns.csv` → filter: `tenant-*`
 - `tenant-models.csv` → all isolation strategies
 
+Use the `web_queries` column from pattern registry for current best practices.
+
 ---
 
 ## Related Workflows

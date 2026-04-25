@@ -452,6 +452,8 @@ Load from pattern registry:
 - `bam-patterns.csv` → filter: `agent-*`, `ai-runtime-*`
 - `ai-runtimes.csv` → all frameworks
 
+Use the `web_queries` column from pattern registry for current best practices.
+
 ---
 
 ## Related Workflows
