@@ -794,7 +794,7 @@ Cross-references to other domain guides:
 - `ai-runtime-patterns-guide.md` §run-contracts - Agent resource limits
 - `ai-runtime-patterns-guide.md` §kill-switch - Agent safety controls
 - `observability-patterns-guide.md` §security-monitoring - Security event monitoring
-- `compliance-patterns-guide.md` §compliance-frameworks - Regulatory requirements
+- `governance-patterns-guide.md` §compliance-frameworks - Regulatory requirements
 
 Load from pattern registry:
 - `bam-patterns.csv` → filter: `security-*`
