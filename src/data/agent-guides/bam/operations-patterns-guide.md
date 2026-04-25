@@ -142,6 +142,58 @@ Multi-tenant deployment strategies ensuring zero-downtime and tenant isolation.
 | Drop column | Multi-phase | None |
 | Schema change | Blue-green DB | Brief |
 
+#### Kubernetes Deployment Example
+
+```yaml
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: api-server
+  labels:
+    app: api-server
+    tenant-aware: "true"
+spec:
+  replicas: 3
+  strategy:
+    type: RollingUpdate
+    rollingUpdate:
+      maxSurge: 1
+      maxUnavailable: 0
+  selector:
+    matchLabels:
+      app: api-server
+  template:
+    metadata:
+      labels:
+        app: api-server
+    spec:
+      containers:
+      - name: api
+        image: registry.example.com/api:v1.2.3-abc123
+        resources:
+          requests:
+            memory: "256Mi"
+            cpu: "100m"
+          limits:
+            memory: "512Mi"
+            cpu: "500m"
+        env:
+        - name: TENANT_ISOLATION_MODE
+          value: "rls"
+        readinessProbe:
+          httpGet:
+            path: /health/ready
+            port: 8080
+          initialDelaySeconds: 5
+          periodSeconds: 5
+        livenessProbe:
+          httpGet:
+            path: /health/live
+            port: 8080
+          initialDelaySeconds: 15
+          periodSeconds: 10
+```
+
 ---
 
 ## §cicd
@@ -191,6 +243,70 @@ Tenant-aware continuous integration and delivery patterns.
 | DAST (runtime scan) | Staging | No (report only) |
 | Secrets detection | Commit | Yes |
 | RLS policy test | Integration | Yes |
+
+#### GitHub Actions Pipeline Example
+
+```yaml
+name: Multi-Tenant Deploy Pipeline
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v4
+    
+    - name: Build container
+      run: |
+        docker build -t ${{ env.REGISTRY }}/api:${{ github.sha }} .
+    
+    - name: Run tenant isolation tests
+      run: |
+        npm run test:tenant-isolation
+        npm run test:rls-policies
+    
+    - name: Security scans
+      run: |
+        trivy image ${{ env.REGISTRY }}/api:${{ github.sha }}
+        npm audit --audit-level=critical
+
+  deploy-canary:
+    needs: build
+    if: github.ref == 'refs/heads/main'
+    runs-on: ubuntu-latest
+    steps:
+    - name: Deploy to 5% traffic
+      run: |
+        kubectl set image deployment/api api=${{ env.REGISTRY }}/api:${{ github.sha }}
+        kubectl patch deployment api -p '{"spec":{"replicas":1}}'
+    
+    - name: Monitor canary metrics
+      run: |
+        sleep 300  # 5 minute observation
+        ERROR_RATE=$(curl -s $PROMETHEUS_URL/api/v1/query \
+          --data-urlencode 'query=rate(http_errors_total{version="${{ github.sha }}"}[5m])' \
+          | jq '.data.result[0].value[1]')
+        if (( $(echo "$ERROR_RATE > 0.01" | bc -l) )); then
+          echo "Canary failed - rolling back"
+          kubectl rollout undo deployment/api
+          exit 1
+        fi
+
+  deploy-production:
+    needs: deploy-canary
+    runs-on: ubuntu-latest
+    steps:
+    - name: Progressive rollout
+      run: |
+        for pct in 25 50 75 100; do
+          kubectl scale deployment/api --replicas=$((pct * MAX_REPLICAS / 100))
+          sleep 120
+        done
+```
 
 ---
 
@@ -245,6 +361,33 @@ Site Reliability Engineering for multi-tenant platforms.
 | Manual incident triage | 30 min/incident | < 5 min | Auto-diagnosis dashboards |
 | Config change deployment | 2 hours | < 5 minutes | GitOps pipeline |
 | Capacity scaling | 4 hours | Automatic | Auto-scaling policies |
+
+#### PromQL Error Budget Queries
+
+```promql
+# Error budget remaining (monthly) for specific tenant
+1 - (
+  sum(rate(http_requests_total{tenant_id="$tenant", status=~"5.."}[30d]))
+  /
+  sum(rate(http_requests_total{tenant_id="$tenant"}[30d]))
+) / (1 - 0.999)  # 99.9% SLO
+
+# Error budget burn rate (last 1 hour)
+sum(rate(http_requests_total{status=~"5.."}[1h])) by (tenant_id)
+/
+sum(rate(http_requests_total[1h])) by (tenant_id)
+/ (1 - 0.999) * 720  # 720 = hours in month
+
+# Per-tenant latency SLO compliance
+histogram_quantile(0.99,
+  sum(rate(http_request_duration_seconds_bucket{tenant_id="$tenant"}[5m])) by (le)
+) < 0.5  # 500ms threshold
+
+# AI agent completion rate by tenant
+sum(rate(agent_runs_total{status="completed", tenant_id="$tenant"}[1h]))
+/
+sum(rate(agent_runs_total{tenant_id="$tenant"}[1h]))
+```
 
 ---
 
@@ -428,6 +571,100 @@ Operational runbooks for multi-tenant platforms.
 | Model Rollback | Revert to previous version | Quality degradation |
 | LLM Provider Failover | Switch providers | Provider outage |
 | Budget Enforcement | Cost limit response | Budget exceeded |
+
+#### Example Runbook: AI Kill Switch
+
+```bash
+#!/bin/bash
+# Runbook: AI-KILL-SWITCH
+# Purpose: Emergency shutdown of AI agent system
+# Severity: P1 - Execute immediately on safety violation
+
+set -e
+
+TENANT_ID="${1:-all}"  # Optional: specific tenant or "all"
+REASON="$2"
+
+echo "[$(date)] AI Kill Switch activated by $(whoami)"
+echo "Target: $TENANT_ID, Reason: $REASON"
+
+# Step 1: Disable feature flag immediately
+if [ "$TENANT_ID" = "all" ]; then
+  curl -X PATCH "$FEATURE_FLAG_URL/ai-agents-enabled" \
+    -H "Authorization: Bearer $ADMIN_TOKEN" \
+    -d '{"enabled": false}'
+else
+  curl -X PATCH "$FEATURE_FLAG_URL/ai-agents-enabled" \
+    -H "Authorization: Bearer $ADMIN_TOKEN" \
+    -d "{\"enabled\": false, \"tenant_id\": \"$TENANT_ID\"}"
+fi
+
+# Step 2: Drain active agent runs
+kubectl scale deployment agent-runtime --replicas=0 -n ai-runtime
+
+# Step 3: Clear pending job queue
+redis-cli -h $REDIS_HOST KEYS "agent:queue:*" | xargs redis-cli DEL
+
+# Step 4: Log incident
+curl -X POST "$INCIDENT_API/incidents" \
+  -H "Content-Type: application/json" \
+  -d "{
+    \"severity\": \"P1\",
+    \"type\": \"AI_KILL_SWITCH\",
+    \"tenant_id\": \"$TENANT_ID\",
+    \"reason\": \"$REASON\",
+    \"timestamp\": \"$(date -u +%Y-%m-%dT%H:%M:%SZ)\"
+  }"
+
+echo "[$(date)] AI agents disabled. Manual restart required."
+echo "To restart: kubectl scale deployment agent-runtime --replicas=3 -n ai-runtime"
+```
+
+#### Example Runbook: Tenant Isolation Breach
+
+```bash
+#!/bin/bash
+# Runbook: IR-P1-TENANT-ISOLATION-BREACH
+# Purpose: Respond to detected cross-tenant data access
+# Severity: P1 - Execute immediately
+
+AFFECTED_TENANT="$1"
+SOURCE_TENANT="$2"
+
+echo "[$(date)] CRITICAL: Tenant isolation breach detected"
+echo "Affected: $AFFECTED_TENANT, Source: $SOURCE_TENANT"
+
+# Step 1: Quarantine affected tenant
+kubectl annotate tenant $AFFECTED_TENANT quarantine=true --overwrite
+kubectl annotate tenant $SOURCE_TENANT quarantine=true --overwrite
+
+# Step 2: Revoke active sessions
+psql $DATABASE_URL -c "
+  UPDATE sessions 
+  SET revoked_at = NOW(), revoke_reason = 'security_incident'
+  WHERE tenant_id IN ('$AFFECTED_TENANT', '$SOURCE_TENANT');
+"
+
+# Step 3: Preserve evidence (audit logs)
+pg_dump $DATABASE_URL -t audit_logs \
+  --data-only \
+  -f "incident_$(date +%Y%m%d_%H%M%S)_audit.sql" \
+  -c "tenant_id IN ('$AFFECTED_TENANT', '$SOURCE_TENANT')"
+
+# Step 4: Page security team
+curl -X POST "$PAGERDUTY_URL/incidents" \
+  -H "Authorization: Token $PAGERDUTY_TOKEN" \
+  -d "{
+    \"incident\": {
+      \"type\": \"incident\",
+      \"title\": \"P1: Tenant Isolation Breach\",
+      \"service\": {\"id\": \"$SECURITY_SERVICE_ID\"},
+      \"urgency\": \"high\"
+    }
+  }"
+
+echo "[$(date)] Containment complete. Await security team."
+```
 
 ---
 

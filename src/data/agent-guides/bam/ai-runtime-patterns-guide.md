@@ -30,6 +30,88 @@ Agent runtime refers to the execution environment and orchestration framework th
 
 ---
 
+## BAM Conventions
+
+> **CRITICAL:** These conventions are BAM-specific and MUST be followed for multi-tenant AI runtime implementations.
+
+### Agent Naming Convention
+
+| Component | Format | Example |
+|-----------|--------|---------|
+| Agent ID | `{tenant_id}:{agent_type}:{instance}` | `t_abc:analyst:01` |
+| Run ID | `run_{timestamp}_{random}` | `run_1714150800_x7f2` |
+| Session ID | `sess_{tenant_id}_{uuid}` | `sess_t_abc_a1b2c3` |
+| Memory Key | `mem:{tenant_id}:{tier}:{key}` | `mem:t_abc:episodic:conv_123` |
+
+### Required Context Headers
+
+| Header | Type | Description |
+|--------|------|-------------|
+| `X-Tenant-ID` | string | Tenant identifier (required) |
+| `X-Tenant-Tier` | enum | free, pro, enterprise |
+| `X-Run-Budget` | object | Time/token/cost limits |
+| `X-Trace-ID` | string | Distributed trace correlation |
+
+### Configuration Defaults
+
+| Setting | Free | Pro | Enterprise |
+|---------|------|-----|------------|
+| `max_concurrent_runs` | 2 | 10 | configurable |
+| `default_timeout_ms` | 60000 | 300000 | 600000 |
+| `checkpoint_interval` | off | 5 steps | real-time |
+| `memory_quota_mb` | 10 | 100 | 1000+ |
+
+---
+
+## Decision Framework
+
+### Quick Decision Matrix
+
+| Situation | Recommendation | Confidence |
+|-----------|----------------|------------|
+| Simple task, few tools | Single agent + LangGraph | High |
+| Role-based collaboration | CrewAI with defined roles | High |
+| Complex branching logic | LangGraph StateGraph | High |
+| Debate/consensus needed | AutoGen multi-agent | Medium |
+| Structured output critical | Instructor + Pydantic | High |
+| Prompt optimization focus | DSPy modules | Medium |
+
+### Decision Tree
+
+```
+START: What is the primary workflow complexity?
+│
+├─► Simple (linear steps)
+│   │
+│   └─► Single agent sufficient?
+│       ├─► YES → Single agent + tools
+│       └─► NO → Sequential pipeline
+│
+├─► Moderate (some branching)
+│   │
+│   └─► Role-based collaboration?
+│       ├─► YES → CrewAI
+│       └─► NO → LangGraph
+│
+└─► Complex (dynamic routing)
+    │
+    └─► Multi-agent debate needed?
+        ├─► YES → AutoGen
+        └─► NO → LangGraph + hierarchical
+```
+
+### Trade-off Analysis
+
+| Factor | LangGraph | CrewAI | AutoGen |
+|--------|-----------|--------|---------|
+| State Management | Excellent | Good | Basic |
+| Multi-Agent | Good | Excellent | Excellent |
+| Learning Curve | Medium | Low | Medium |
+| Debugging | Good | Medium | Medium |
+| Tenant Isolation | Easy | Medium | Medium |
+
+---
+
 ## §agent-topology
 
 ### Pattern: Agent Topology

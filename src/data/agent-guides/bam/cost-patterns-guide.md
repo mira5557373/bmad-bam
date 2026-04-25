@@ -91,9 +91,14 @@ ratelimit:{tenant}:{endpoint}
 
 ---
 
-## Cost Tracking {#cost-tracking}
+## §cost-tracking
 
-### Attribution Flow
+### Pattern: Cost Tracking
+
+**When to use:** Attributing infrastructure, platform, and third-party costs to tenants
+**Phase:** solutioning
+
+#### Attribution Flow
 
 ```
 Resource Usage --> Metering Pipeline --> Cost Engine
@@ -128,9 +133,14 @@ Resource Usage --> Metering Pipeline --> Cost Engine
 
 ---
 
-## Usage Metering {#usage-metering}
+## §usage-metering
 
-### Metering Pipeline
+### Pattern: Usage Metering
+
+**When to use:** Capturing, aggregating, and storing tenant resource consumption
+**Phase:** solutioning
+
+#### Metering Pipeline
 
 | Stage | Responsibility | Latency |
 |-------|----------------|---------|
@@ -161,9 +171,14 @@ Resource Usage --> Metering Pipeline --> Cost Engine
 
 ---
 
-## Quota Management {#quota-management}
+## §quota-management
 
-### Overage Handling Strategies
+### Pattern: Quota Management
+
+**When to use:** Enforcing resource limits and handling overage scenarios
+**Phase:** solutioning
+
+#### Overage Handling Strategies
 
 | Strategy | Behavior | Use Case |
 |----------|----------|----------|
@@ -191,9 +206,14 @@ NORMAL --(80%)--> WARNING --(100%)--> GRACE --(110%)--> BLOCKED
 
 ---
 
-## LLM Cost Optimization {#llm-cost}
+## §llm-cost
 
-### Token Metering
+### Pattern: LLM Cost Optimization
+
+**When to use:** Optimizing AI/LLM token costs through caching, routing, and budget enforcement
+**Phase:** solutioning
+
+#### Token Metering
 
 | Model | Input Cost (per 1K) | Output Cost (per 1K) |
 |-------|---------------------|----------------------|
@@ -230,9 +250,14 @@ NORMAL --(80%)--> WARNING --(100%)--> GRACE --(110%)--> BLOCKED
 
 ---
 
-## Billing Integration {#billing-integration}
+## §billing-integration
 
-### Stripe Integration Points
+### Pattern: Billing Integration
+
+**When to use:** Integrating with payment providers for subscription and usage billing
+**Phase:** integration
+
+#### Stripe Integration Points
 
 | Stripe Object | SaaS Mapping | Tenant Data |
 |---------------|--------------|-------------|
@@ -269,9 +294,14 @@ TRIAL --> ACTIVE --> PAST_DUE --> CANCELED
 
 ---
 
-## Reseller Billing {#reseller}
+## §reseller
 
-### Partner Revenue Models
+### Pattern: Reseller Billing
+
+**When to use:** Implementing partner/reseller billing models and white-label invoicing
+**Phase:** integration
+
+#### Partner Revenue Models
 
 | Model | Description | Best For |
 |-------|-------------|----------|
