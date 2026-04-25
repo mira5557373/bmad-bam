@@ -562,6 +562,8 @@ Monitor retrieval quality, embedding health, and generation fidelity with tenant
 
 ## Related Patterns
 
+> **Note:** Use the `web_queries` column from pattern registry CSVs for current best practices searches.
+
 Load decision criteria and web search queries from pattern registry:
 
 - **RAG patterns:** `{project-root}/_bmad/bam/data/bam-patterns.csv` → filter by category: `rag-*`

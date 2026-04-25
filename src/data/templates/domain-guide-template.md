@@ -1,3 +1,10 @@
+---
+name: domain-guide-template
+description: Template for creating consolidated domain pattern guides in BAM
+category: agent-guide
+version: 1.0.0
+---
+
 # BAM {Domain} Patterns Guide
 
 **When to load:** {When this guide should be loaded - list triggers and keywords}

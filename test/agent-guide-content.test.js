@@ -36,12 +36,13 @@ describe('Agent Guide Inventory', () => {
     expect(guides.length).toBeGreaterThanOrEqual(180);
   });
 
-  test('guide count matches expected (223-250)', () => {
+  test('guide count matches expected (250-270)', () => {
     const guides = getAllGuides();
     // 223 is the new baseline after filling 34 placeholder guides
     // Allow range for future growth up to 250
-    expect(guides.length).toBeGreaterThanOrEqual(223);
-    expect(guides.length).toBeLessThanOrEqual(250);
+    // Increased to 250-270 after BAM consolidation Phase 2 (25 domain pattern guides)
+    expect(guides.length).toBeGreaterThanOrEqual(250);
+    expect(guides.length).toBeLessThanOrEqual(270);
   });
 });
 

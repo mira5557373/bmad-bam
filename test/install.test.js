@@ -165,7 +165,7 @@ describe('File Counts', () => {
     expect(checklists.length).toBe(38);
   });
 
-  test('has 223 agent guides', () => {
+  test('has 258 agent guides', () => {
     const guidesDir = path.join(SRC_DIR, 'data', 'agent-guides', 'bam');
     const guides = fs.readdirSync(guidesDir)
       .filter(f => f.endsWith('.md'));
@@ -186,6 +186,7 @@ describe('File Counts', () => {
     // Increased to 233 after adding facade-contract-patterns.md, production-deployment.md
     // Increased to 238 after adding consolidated domain guides: tenant-patterns-guide, ai-runtime-patterns-guide,
     // security-patterns-guide, observability-patterns-guide, reliability-patterns-guide
-    expect(guides.length).toBe(238);
+    // Increased to 258 after BAM consolidation Phase 2 - added 20 more domain pattern guides
+    expect(guides.length).toBe(258);
   });
 });

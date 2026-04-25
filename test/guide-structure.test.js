@@ -177,13 +177,14 @@ describe('Agent Guide Structure Validation', () => {
   });
 
   describe('Guide Count Validation', () => {
-    test('has expected number of agent guides (200-250)', () => {
+    test('has expected number of agent guides (200-270)', () => {
       // Allow variance during development - module may grow
       // Increased from 158-175 to 158-185 after adding billing, analytics, reseller, tenant-hierarchy guides
       // Increased from 158-185 to 158-190 after adding 6 observability guides
       // Increased from 158-190 to 200-250 after adding 34 domain-specific pattern guides
+      // Increased from 200-250 to 200-270 after BAM consolidation (25 domain pattern guides)
       expect(guideFiles.length).toBeGreaterThanOrEqual(200);
-      expect(guideFiles.length).toBeLessThanOrEqual(250);
+      expect(guideFiles.length).toBeLessThanOrEqual(270);
     });
   });
 });

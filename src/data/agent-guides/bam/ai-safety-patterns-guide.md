@@ -484,6 +484,8 @@ AI transparency ensures users understand when they interact with AI, how decisio
 
 ## Related Patterns
 
+> **Note:** Use the `web_queries` column from pattern registry CSVs for current best practices searches.
+
 Load decision criteria from pattern registry:
 
 - **Security patterns:** `{project-root}/_bmad/bam/data/bam-patterns.csv` -> filter: `security`

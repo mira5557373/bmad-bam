@@ -164,7 +164,9 @@ describe('Template Variable Validation', () => {
           // Gate template placeholders
           'collector', 'coverage', 'rto', 'actual', 'hash', 'actor',
           'bmm_phase', 'evaluator', 'approver', 'role', 'blockers', 'outcome',
-          'requestor', 'factors', 'area'
+          'requestor', 'factors', 'area',
+          // Meta-template placeholders (domain-guide-template.md)
+          'format', 'placeholder', 'Domain', 'pattern', 'language'
         ];
         const filteredSingle = singleMatches ?
           singleMatches.filter(m => !allowedSingleBracePlaceholders.some(p => m.includes(p))) :
@@ -253,8 +255,9 @@ describe('Template Variable Validation', () => {
       // - Phase 8: SOC2 compliance template + data retention templates added
       // - Phase 9: Added 5 observability templates (RAG, tool-execution, agent-trace, vector-store, memory)
       // - Phase 10: Added 3 NEXUS templates (action-contract-spec, prg-gate-spec, runtime-loop-config)
+      // - Phase 11: BAM consolidation added domain-guide-template.md
       expect(templateFiles.length).toBeGreaterThanOrEqual(360);
-      expect(templateFiles.length).toBeLessThanOrEqual(460);
+      expect(templateFiles.length).toBeLessThanOrEqual(465);
     });
   });
 });

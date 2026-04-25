@@ -537,7 +537,9 @@ describe('BMAD Method Compatibility', () => {
         // Template management meta-templates (used for template lifecycle)
         'template-catalog-template.md',
         'template-management-template.md',
-        'template-requirements-template.md'
+        'template-requirements-template.md',
+        // Meta-template for creating domain pattern guides (BAM consolidation)
+        'domain-guide-template.md'
       ];
       const unexpectedOrphans = orphaned.filter(t => !allowedOrphans.includes(t));
       if (unexpectedOrphans.length > 0) {
