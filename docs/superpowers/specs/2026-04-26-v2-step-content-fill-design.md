@@ -1,12 +1,436 @@
 # V2 Step Content Fill Design Spec
 
-**Version:** 5.0.0  
+**Version:** 6.0.0  
 **Date:** 2026-04-26  
 **Status:** Ready for Implementation
 
 ## Summary
 
-Enhance 300 V2 step files from minimal stubs (28 lines) to BMAD-method compliant format, following official BMAD conventions verified from `/external/bmad-method/src/bmm-skills/`.
+Enhance 300 V2 step files from minimal stubs (28 lines) to BMAD-method compliant format, ensuring **seamless integration** with existing BMAD method capabilities including web queries, checkpoints, party mode, advanced elicitation, and module help system.
+
+---
+
+## BMAD Ecosystem Integration Requirements
+
+### 1. Web Search Integration
+
+**Pattern from `bmad-market-research/steps/step-04-customer-decisions.md`:**
+
+```markdown
+## MANDATORY EXECUTION RULES (READ FIRST):
+- 🛑 NEVER generate content without web search verification
+- ✅ Search the web to verify and supplement your knowledge with current facts
+
+## EXECUTION PROTOCOLS:
+- 🎯 Show web search analysis before presenting findings
+
+### 2. Execute Web Research
+
+**Execute multiple web searches simultaneously:**
+Search the web: "{{research_topic}} customer decision process"
+Search the web: "{{research_topic}} buying criteria factors"
+
+**After executing comprehensive parallel web searches:**
+- Always cite URLs for web search results
+- _Source: [URL]_ for key findings
+```
+
+**V2 BAM Integration:** Steps must use V2's CSV `web_queries` column:
+```markdown
+**Load web queries from CSV:**
+Read `{project-root}/_bmad/bam/data/tenant-models.csv` → web_queries column
+Execute: Search the web: "{query} {date}"
+```
+
+### 2. Checkpoint/HALT Pattern
+
+**Pattern from `bmad-quick-dev/step-02-plan.md`:**
+
+```markdown
+### CHECKPOINT 1
+
+Present summary. Display the spec file path.
+
+HALT and ask human: `[A] Approve` | `[E] Edit`
+
+- **A**: Proceed to NEXT.
+- **E**: Apply changes, return to CHECKPOINT 1.
+```
+
+**V2 BAM Integration:** Quality gate checkpoints:
+```markdown
+### CHECKPOINT: QG-F1 Soft Gate
+
+Present foundation decisions summary.
+
+HALT and ask: `[A] Approve` | `[E] Edit` | `[V] Validate against QG-F1`
+
+- **A**: Record in output document, proceed.
+- **E**: Revise decisions, return to checkpoint.
+- **V**: Run `bmad-bam-validate-foundation` workflow.
+```
+
+### 3. Party Mode / Advanced Elicitation Integration
+
+**Pattern from `bmad-create-architecture/steps/step-04-decisions.md`:**
+
+```markdown
+## COLLABORATION MENUS (A/P/C):
+
+- **A (Advanced Elicitation)**: Use discovery protocols
+- **P (Party Mode)**: Bring multiple perspectives
+- **C (Continue)**: Save and proceed
+
+## PROTOCOL INTEGRATION:
+
+- When 'A' selected: Invoke the `bmad-advanced-elicitation` skill
+- When 'P' selected: Invoke the `bmad-party-mode` skill
+- PROTOCOLS always return to this step's A/P/C menu
+- User accepts/rejects changes before proceeding
+
+#### If 'A' (Advanced Elicitation):
+- Invoke the `bmad-advanced-elicitation` skill with {context}
+- Pass context: {what's being explored}
+- Process enhanced insights
+- Return to A/P/C menu
+
+#### If 'P' (Party Mode):
+- Invoke the `bmad-party-mode` skill with {context}
+- Context: "{summary of current state}"
+- Process multi-perspective analysis
+- Return to A/P/C menu
+```
+
+**V2 BAM Integration:** Multi-tenant specific contexts:
+```markdown
+#### If 'P' (Party Mode):
+- Invoke `bmad-party-mode` skill
+- Context: "Review tenant isolation model: {tenant_model} for {tenant_count} tenants"
+- Bring architect, security, compliance perspectives
+- Return to A/P/C menu
+```
+
+### 4. Module Help CSV Integration
+
+**BMAD module-help.csv pattern:**
+```csv
+module,skill,display-name,menu-code,description,action,args,phase,after,before,required,output-location,outputs
+```
+
+**V2 BAM must add entries to `src/module-help.csv`:**
+```csv
+bam,bmad-bam-master-architecture,Master Architecture,ZMA,Create master architecture with tenant model,create,,3-solutioning,,,true,planning_artifacts,master-architecture.md
+bam,bmad-bam-tenant-isolation,Tenant Isolation,ZTI,Design tenant isolation model,create,,3-solutioning,bmad-bam-master-architecture,,true,planning_artifacts,tenant-isolation.md
+```
+
+### 5. Variable Substitution Patterns
+
+**BMAD variable conventions:**
+
+| Variable | Source | Usage |
+|----------|--------|-------|
+| `{project-root}` | Skill root | Path prefix |
+| `{skill-root}` | Skill directory | Relative paths |
+| `{planning_artifacts}` | config.yaml | Output location |
+| `{user_name}` | config.yaml | Greeting |
+| `{communication_language}` | config.yaml | Output language |
+| `{{variable}}` | Runtime | Template substitution |
+| `{if_condition}...{/if_condition}` | Runtime | Conditional blocks |
+
+**V2 BAM additions:**
+| Variable | Source | Usage |
+|----------|--------|-------|
+| `{tenant_model}` | config.yaml | Selected isolation model |
+| `{ai_runtime}` | config.yaml | Selected AI framework |
+| `{output_folder}` | config.yaml | BAM output location |
+
+### 6. SKILL.md Enhancement Requirements
+
+**Current V2 SKILL.md (minimal):**
+```markdown
+---
+name: bmad-bam-master-architecture
+description: 'Create master architecture'
+---
+# Master Architecture
+## Modes
+...
+```
+
+**Required BMAD-compliant SKILL.md:**
+```markdown
+---
+name: bmad-bam-master-architecture
+description: 'Create master architecture with tenant model and AI runtime foundation. Use when starting new multi-tenant SaaS project.'
+module: bam
+---
+
+# Master Architecture Workflow
+
+**Goal:** Create comprehensive master architecture decisions for multi-tenant SaaS with AI agent capabilities.
+
+**Your Role:** You are an architectural facilitator collaborating with the user. Bring structured thinking about tenant isolation and AI runtime patterns while the user brings domain expertise.
+
+## Conventions
+
+- Bare paths resolve from skill root.
+- `{project-root}/_bmad/bam/data/` contains domains, patterns, CSVs.
+- Quality gate QG-F1 governs this workflow.
+
+## On Activation
+
+### Step 1: Load Config
+Load from `{project-root}/_bmad/bam/config.yaml`:
+- `{tenant_model}` - pre-selected isolation model
+- `{ai_runtime}` - pre-selected AI framework
+- `{user_name}`, `{communication_language}`
+
+### Step 2: Load Persistent Facts
+```toml
+persistent_facts = [
+  "file:{project-root}/_bmad/bam/data/domains/tenant.md",
+  "file:{project-root}/_bmad/bam/data/domains/ai-runtime.md",
+  "file:{project-root}/_bmad/bam/data/checklists/qg-f1.md",
+]
+```
+
+### Step 3: Greet User
+"Welcome {user_name}! Let's create your master architecture for multi-tenant SaaS."
+
+## Execution
+
+Read fully and follow: `./steps/step-01-c-discovery.md`
+
+## Quality Gate
+
+**Gate:** QG-F1 (Foundation Gate)
+**Checklist:** `{project-root}/_bmad/bam/data/checklists/qg-f1.md`
+```
+
+### 7. customize.toml Enhancement
+
+**Current V2 customize.toml:**
+```toml
+[workflow]
+persistent_facts = [...]
+on_complete = "..."
+```
+
+**Required BMAD-compliant customize.toml:**
+```toml
+[workflow]
+
+# Pre-activation steps
+activation_steps_prepend = []
+
+# Post-greeting steps  
+activation_steps_append = [
+  "Verify tenant_model and ai_runtime are set in config.yaml",
+]
+
+# Persistent facts loaded for entire workflow
+persistent_facts = [
+  "file:{project-root}/_bmad/bam/data/domains/tenant.md",
+  "file:{project-root}/_bmad/bam/data/domains/ai-runtime.md",
+  "file:{project-root}/_bmad/bam/data/domains/integration.md",
+  "file:{project-root}/_bmad/bam/data/checklists/qg-f1.md",
+  "file:{project-root}/**/project-context.md",
+]
+
+# On workflow completion
+on_complete = """
+Master architecture complete.
+
+**Next workflows:**
+- ZMO (bmad-bam-module-architecture) - Design individual modules
+- ZTI (bmad-bam-tenant-isolation) - Deep dive tenant isolation
+- ZAR (bmad-bam-agent-runtime) - Configure AI agent runtime
+
+**Quality Gate:** Run ZVF (bmad-bam-validate-foundation) to verify QG-F1.
+"""
+
+# Menu items for this workflow
+[[workflow.menu]]
+code = "ZMA"
+name = "Create Master Architecture"
+action = "create"
+
+[[workflow.menu]]
+code = "ZMA-E"
+name = "Edit Master Architecture"
+action = "edit"
+
+[[workflow.menu]]
+code = "ZMA-V"
+name = "Validate Master Architecture"
+action = "validate"
+```
+
+### 8. workflow.md Mode Router Enhancement
+
+**Pattern from `bmad-create-architecture/workflow.md`:**
+
+```markdown
+# {Workflow Name}
+
+## Variables
+- `{{project_name}}` - From config.yaml
+- `{{planning_artifacts}}` - Output location
+
+## Create Mode
+Follow steps in sequence:
+1. Read fully and follow: `./steps/step-01-init.md`
+2. After step completion, read: `./steps/step-02-capture.md`
+...
+
+## Edit Mode
+1. Read: `./steps/step-10-e-load.md`
+2. Read: `./steps/step-11-e-apply.md`
+
+## Validate Mode
+1. Read: `./steps/step-20-v-load.md`
+2. Read: `./steps/step-21-v-check.md`
+```
+
+**V2 BAM workflow.md template:**
+```markdown
+# {Skill Name} Workflow
+
+## Mode Selection
+
+| Mode | Purpose | Steps |
+|------|---------|-------|
+| **Create** | Generate new {artifact} | `step-01-c` → `step-05-c` |
+| **Edit** | Modify existing {artifact} | `step-10-e` → `step-11-e` |
+| **Validate** | Check against QG-{gate} | `step-20-v` → `step-22-v` |
+
+Default: **Create** unless {artifact} exists.
+
+## Variables
+
+- `{tenant_model}` - Selected isolation model (from config.yaml)
+- `{ai_runtime}` - Selected AI framework (from config.yaml)
+- `{output_folder}` - Output location (from config.yaml)
+- `{{current_date}}` - Runtime date
+
+## Create Mode
+
+Execute in sequence. Do NOT skip steps.
+
+### Step 1: {First Step Title}
+Read fully and follow: `./steps/step-01-c-{name}.md`
+Outputs: {What this step produces}
+
+### Step 2: {Second Step Title}
+Read fully and follow: `./steps/step-02-c-{name}.md`
+Prerequisites: Step 1 complete
+Outputs: {What this step produces}
+
+...continue pattern...
+
+### Step 5: {Final Step Title}
+Read fully and follow: `./steps/step-05-c-{name}.md`
+Prerequisites: Steps 1-4 complete
+Final Output: `{output_folder}/planning_artifacts/{artifact}.md`
+
+## Edit Mode
+
+### Step 10: Load Existing
+Read: `./steps/step-10-e-load.md`
+Load: `{output_folder}/planning_artifacts/{artifact}.md`
+
+### Step 11: Apply Changes
+Read: `./steps/step-11-e-apply.md`
+Merge edits with existing document.
+
+## Validate Mode
+
+### Step 20: Load for Validation
+Read: `./steps/step-20-v-load.md`
+Load: Target document + QG-{gate} checklist
+
+### Step 21: Execute Validation
+Read: `./steps/step-21-v-validate.md`
+Run checklist against document.
+
+### Step 22: Generate Report
+Read: `./steps/step-22-v-report.md`
+Output: `{output_folder}/planning_artifacts/{artifact}-validation.md`
+
+## Quality Gate
+
+**Gate:** QG-{gate}
+**Checklist:** `{project-root}/_bmad/bam/data/checklists/qg-{gate}.md`
+**Run via:** ZV{code} menu code
+```
+
+### 9. Step Navigation Pattern
+
+**BMAD step-to-step navigation:**
+
+```markdown
+## NEXT STEP:
+
+After user selects [C] and {artifact} is recorded:
+
+1. Update frontmatter: `stepsCompleted: [1, 2]`
+2. Announce: "Step {N} complete. Loading step {N+1}..."
+3. Read fully and follow: `./step-{NN}-c-{name}.md`
+
+**DO NOT** proceed until user explicitly selects [C]!
+```
+
+**Checkpoint navigation (for approval gates):**
+
+```markdown
+### CHECKPOINT: {Gate Name}
+
+Present: {Summary of decisions}
+Show: File path `{output_folder}/planning_artifacts/{artifact}.md`
+
+HALT and ask:
+```
+[A] Approve - Accept and continue to step {N+1}
+[E] Edit - Revise, return to this checkpoint
+[V] Validate - Run QG-{gate} validation now
+```
+
+- **A**: Record decisions, load `./step-{NN}-c-{next}.md`
+- **E**: User describes changes, agent revises, re-present checkpoint
+- **V**: Invoke `bmad-bam-validate-{domain}`, return with results
+```
+
+### 10. Module Help Integration
+
+Every V2 skill must have corresponding module-help.csv entry:
+
+**Required columns for V2 BAM:**
+
+| Column | Purpose | Example |
+|--------|---------|---------|
+| module | Always `bam` | bam |
+| skill | Full skill name | bmad-bam-master-architecture |
+| display-name | Human name | Master Architecture |
+| menu-code | Z-prefixed code | ZMA |
+| description | Brief purpose | Create master architecture |
+| action | Mode | create, edit, validate |
+| phase | BMAD phase | 3-solutioning |
+| after | Prerequisites | - |
+| before | Enables | bmad-bam-module-architecture |
+| required | Mandatory | true |
+| output-location | Where output goes | planning_artifacts |
+| outputs | Output files | master-architecture.md |
+| keywords | Search terms | architecture,tenant,foundation |
+
+**Phase mapping for V2:**
+
+| BAM Domain | BMAD Phase |
+|------------|------------|
+| Foundation skills | 3-solutioning |
+| Module skills | 3-solutioning |
+| Integration skills | 4-implementation |
+| Validation skills | 5-quality |
+| Operations skills | 6-operations |
 
 ---
 
@@ -502,17 +926,27 @@ describe('V2 Step Content (BMAD-Compliant)', () => {
 
 ---
 
-## What Changed from v4.0
+## What Changed from v5.0
 
-| v4.0 (Wrong) | v5.0 (Correct - BMAD Verified) |
-|--------------|--------------------------------|
-| Target 60-80 lines | Target 80-250 lines (by mode) |
-| Remove emoji MANDATORY RULES | ✅ KEEP - official BMAD standard |
-| Remove COLLABORATION MENUS | ✅ KEEP - official BMAD standard |
-| Remove EXECUTION PROTOCOLS | ✅ KEEP - official BMAD standard |
-| Use simple CHECKPOINT | Use full A/P/C pattern |
-| 18,000-24,000 total lines | ~48,600 total lines |
-| Called V1 "over-engineered" | V1 followed BMAD correctly |
+| v5.0 | v6.0 (BMAD Ecosystem Integration) |
+|------|-----------------------------------|
+| Core step structure defined | Added full BMAD ecosystem integration |
+| Basic line targets | Integration with web queries, checkpoints, party mode |
+| Generic step content | customize.toml, SKILL.md, workflow.md enhancements |
+| Standalone steps | Module help CSV integration for discovery |
+| Manual navigation | Step navigation patterns with frontmatter updates |
+
+**v6.0 Additions:**
+1. Web Search Integration (CSV web_queries pattern)
+2. Checkpoint/HALT Pattern (QG soft gates with A/E/V options)
+3. Party Mode / Advanced Elicitation Integration (A/P/C menus)
+4. Module Help CSV Integration (skill discovery)
+5. Variable Substitution Patterns (config.yaml resolution)
+6. SKILL.md Enhancement Requirements (activation sequence)
+7. customize.toml Enhancement (persistent_facts, on_complete)
+8. workflow.md Mode Router Enhancement (create/edit/validate routing)
+9. Step Navigation Pattern (frontmatter updates, checkpoint gates)
+10. Module Help Integration (Z-prefixed menu codes, phase mapping)
 
 ---
 
@@ -525,3 +959,4 @@ describe('V2 Step Content (BMAD-Compliant)', () => {
 | 3.0.0 | 2026-04-26 | Expanded V1 mappings |
 | 4.0.0 | 2026-04-26 | Wrong: targeted 60-80 lines, removed BMAD sections |
 | 5.0.0 | 2026-04-26 | **Correct:** Verified against official BMAD method (104 files, 203 avg lines). Restored emoji MANDATORY RULES, COLLABORATION MENUS, EXECUTION PROTOCOLS. Target 80-250 lines by mode. |
+| 6.0.0 | 2026-04-26 | **BMAD Ecosystem Integration:** Added 10 integration patterns (web queries, checkpoints, party mode, module help, variable substitution, SKILL.md/customize.toml/workflow.md enhancements, step navigation, module help CSV). Full seamless integration with existing BMAD method capabilities. |
