@@ -175,17 +175,42 @@ credit:
 
 ---
 
-## A/P/C Menu
+## COLLABORATION MENUS (A/P/C)
 
-After reviewing invoicing and payment design:
+After completing invoicing and payment design, present the user with:
 
-| Option | Action |
-|--------|--------|
-| **A** | Discuss/Amend - Modify payment approach |
-| **P** | Proceed - Accept design, compile final artifact |
-| **C** | Continue - Auto-proceed to next step |
+```
+Your options:
+- **A (Advanced Elicitation)**: Deep dive into payment edge cases
+- **P (Party Mode)**: Multi-persona review of payment architecture
+- **C (Continue)**: Accept design and proceed to compile final artifact
+- **[Specific concerns]**: Describe concerns to investigate further
 
-**Select A, P, or C:**
+Select an option:
+```
+
+### PROTOCOL INTEGRATION
+
+#### If 'A' (Advanced Elicitation):
+- Invoke the `bmad-advanced-elicitation` skill
+- Pass context: invoice generation, payment integration, dunning, credits, refunds
+- Explore edge cases: multi-currency, tax jurisdictions, chargeback handling
+- Ask user: "Accept these enhanced findings? (y/n)"
+- If yes, integrate into payment design
+- Return to A/P/C menu
+
+#### If 'P' (Party Mode):
+- Invoke the `bmad-party-mode` skill
+- Context: "Review invoicing and payment design for billing: provider integration, dunning, refunds"
+- Process Finance Lead and Security Architect perspectives on payment compliance
+- Present synthesized recommendations
+- Ask user: "Accept these recommendations? (y/n)"
+- Return to A/P/C menu
+
+#### If 'C' (Continue):
+- Document invoicing and payment design
+- Update frontmatter `stepsCompleted: [1, 2, 3, 4]`
+- Proceed to next step: `step-05-c-complete.md`
 
 ---
 

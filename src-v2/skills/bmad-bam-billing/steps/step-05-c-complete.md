@@ -169,17 +169,43 @@ Compile all designs into the billing design document:
 
 ---
 
-## A/P/C Menu
+## COLLABORATION MENUS (A/P/C)
 
-After reviewing compiled billing design:
+After compiling the billing design, present the user with:
 
-| Option | Action |
-|--------|--------|
-| **A** | Discuss/Amend - Revise compiled design |
-| **P** | Proceed - Finalize and generate artifact |
-| **C** | Continue - Generate artifact and complete |
+```
+Your options:
+- **A (Advanced Elicitation)**: Deep dive into specific billing sections
+- **P (Party Mode)**: Multi-persona review of complete billing architecture
+- **C (Continue)**: Accept design and generate final artifact
+- **[Specific concerns]**: Describe concerns to investigate further
 
-**Select A, P, or C:**
+Select an option:
+```
+
+### PROTOCOL INTEGRATION
+
+#### If 'A' (Advanced Elicitation):
+- Invoke the `bmad-advanced-elicitation` skill
+- Pass context: complete billing design including metering, subscriptions, invoicing, compliance
+- Explore gaps: missing edge cases, compliance requirements, integration points
+- Ask user: "Accept these enhanced findings? (y/n)"
+- If yes, incorporate into final design
+- Return to A/P/C menu
+
+#### If 'P' (Party Mode):
+- Invoke the `bmad-party-mode` skill
+- Context: "Review complete billing design before finalization: metering, subscriptions, payments, compliance"
+- Process CFO, Security Architect, and Platform Architect perspectives
+- Present synthesized recommendations
+- Ask user: "Accept these recommendations? (y/n)"
+- Return to A/P/C menu
+
+#### If 'C' (Continue):
+- Generate final billing design artifact
+- Save to `{output_folder}/planning-artifacts/billing-design.md`
+- Update frontmatter `stepsCompleted: [1, 2, 3, 4, 5]`
+- Workflow complete
 
 ---
 

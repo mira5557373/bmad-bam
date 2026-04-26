@@ -158,17 +158,42 @@ proration_amount = (new_daily_rate - old_daily_rate) * days_remaining_in_period
 
 ---
 
-## A/P/C Menu
+## COLLABORATION MENUS (A/P/C)
 
-After reviewing subscription management design:
+After completing subscription management design, present the user with:
 
-| Option | Action |
-|--------|--------|
-| **A** | Discuss/Amend - Modify subscription approach |
-| **P** | Proceed - Accept design, move to invoicing |
-| **C** | Continue - Auto-proceed to next step |
+```
+Your options:
+- **A (Advanced Elicitation)**: Deep dive into subscription edge cases
+- **P (Party Mode)**: Multi-persona review of subscription architecture
+- **C (Continue)**: Accept design and proceed to invoicing
+- **[Specific concerns]**: Describe concerns to investigate further
 
-**Select A, P, or C:**
+Select an option:
+```
+
+### PROTOCOL INTEGRATION
+
+#### If 'A' (Advanced Elicitation):
+- Invoke the `bmad-advanced-elicitation` skill
+- Pass context: tier definitions, feature flags, upgrade/downgrade workflows, trial periods, proration
+- Explore edge cases: grandfathered plans, enterprise custom tiers, trial extensions
+- Ask user: "Accept these enhanced findings? (y/n)"
+- If yes, integrate into subscription design
+- Return to A/P/C menu
+
+#### If 'P' (Party Mode):
+- Invoke the `bmad-party-mode` skill
+- Context: "Review subscription management design for billing: tiers, features, transitions, trials"
+- Process Product Manager and Business Analyst perspectives on pricing strategy
+- Present synthesized recommendations
+- Ask user: "Accept these recommendations? (y/n)"
+- Return to A/P/C menu
+
+#### If 'C' (Continue):
+- Document subscription management design
+- Update frontmatter `stepsCompleted: [1, 2, 3]`
+- Proceed to next step: `step-04-c-document.md`
 
 ---
 

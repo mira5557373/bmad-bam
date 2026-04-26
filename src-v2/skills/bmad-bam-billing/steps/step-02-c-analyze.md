@@ -109,17 +109,42 @@ Define quota management:
 
 ---
 
-## A/P/C Menu
+## COLLABORATION MENUS (A/P/C)
 
-After reviewing metering design:
+After completing metering infrastructure design, present the user with:
 
-| Option | Action |
-|--------|--------|
-| **A** | Discuss/Amend - Modify metering approach |
-| **P** | Proceed - Accept design, move to subscriptions |
-| **C** | Continue - Auto-proceed to next step |
+```
+Your options:
+- **A (Advanced Elicitation)**: Deep dive into metering edge cases
+- **P (Party Mode)**: Multi-persona review of metering architecture
+- **C (Continue)**: Accept design and proceed to subscription management
+- **[Specific concerns]**: Describe concerns to investigate further
 
-**Select A, P, or C:**
+Select an option:
+```
+
+### PROTOCOL INTEGRATION
+
+#### If 'A' (Advanced Elicitation):
+- Invoke the `bmad-advanced-elicitation` skill
+- Pass context: metering design, event schema, aggregation patterns, rate limiting approach
+- Explore edge cases: high-volume tenants, burst handling, quota grace periods
+- Ask user: "Accept these enhanced findings? (y/n)"
+- If yes, integrate into metering design
+- Return to A/P/C menu
+
+#### If 'P' (Party Mode):
+- Invoke the `bmad-party-mode` skill
+- Context: "Review metering infrastructure design for billing: event collection, aggregation, rate limits, quotas"
+- Process Platform Architect and DevOps perspectives on scalability and operations
+- Present synthesized recommendations
+- Ask user: "Accept these recommendations? (y/n)"
+- Return to A/P/C menu
+
+#### If 'C' (Continue):
+- Document metering infrastructure design
+- Update frontmatter `stepsCompleted: [1, 2]`
+- Proceed to next step: `step-03-c-design.md`
 
 ---
 
