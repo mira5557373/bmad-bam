@@ -2,9 +2,9 @@
 
 ## MANDATORY EXECUTION RULES (READ FIRST)
 
-- :stop_sign: **NEVER generate content without user input** - Wait for explicit direction
-- :open_book: **CRITICAL: ALWAYS read the complete step file** before taking any action
-- :mag: Use web search to verify current best practices when making technology decisions
+- 🛑 **NEVER generate content without user input** - Wait for explicit direction
+- 📖 **CRITICAL: ALWAYS read the complete step file** before taking any action
+- 🔍 Use web search to verify current best practices when making technology decisions
 
 ---
 

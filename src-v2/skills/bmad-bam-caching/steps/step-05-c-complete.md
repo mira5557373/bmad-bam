@@ -2,24 +2,25 @@
 
 ## MANDATORY EXECUTION RULES (READ FIRST)
 
-- 🛑 NEVER compile document without loading Steps 01-04 context first
-- 📖 CRITICAL: ALWAYS read the complete step file before taking any action
-- 🔄 CRITICAL: Compile ALL sections from previous steps into final document
+- 🛑 **NEVER compile document without loading Steps 01-04 context first**
+- 📖 **CRITICAL: ALWAYS read the complete step file before taking any action**
+- 🔄 **CRITICAL: Compile ALL sections from previous steps into final document**
+- ⏸️ **ALWAYS pause after presenting compiled document for user confirmation via A/P/C**
+- 🎯 **Focus ONLY on document compilation - this is the final Create mode step**
 - ✅ CRITICAL: Verify all cache layers, invalidation, and performance are included
 - 📋 Use caching design template for consistent structure
-- 💬 Present compiled document with A/P/C menu for user confirmation
 - 💾 Output to `{output_folder}/planning-artifacts/caching-design.md`
 
 ---
 
 ## EXECUTION PROTOCOLS
 
-- 🎯 Compile final caching design document from Steps 01-04
-- 💾 Save to: `{output_folder}/planning-artifacts/caching-design.md`
-- 📖 Reference: `{project-root}/_bmad/bam/data/templates/caching-design-template.md`
-- 🚫 DO NOT proceed without explicit user confirmation via A/P/C
-- ✅ Complete: Create mode workflow finishes with this step
-- ⚠️ Gate: Document feeds QG-M2 cache dimension validation
+- 🎯 **Focus:** Compile final caching design document from Steps 01-04
+- 💾 **Track:** Save to `{output_folder}/planning-artifacts/caching-design.md`
+- 📖 **Context:** Reference `{project-root}/_bmad/bam/data/templates/caching-design-template.md`
+- 🚫 **Do NOT:** Proceed without explicit user confirmation via A/P/C
+- 🔍 **Use web search:** Not required for compilation step
+- ⚠️ **Gate:** Document feeds QG-M2 cache dimension validation; Create mode completes
 
 ---
 

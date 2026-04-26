@@ -15,6 +15,7 @@
 - 📖 Context: Maintain tenant model and compute requirements throughout
 - 🚫 Do NOT: Jump to implementation details or specific technologies
 - 🔍 Use web search: Verify scaling patterns against cloud-native best practices
+- ⚠️ Gate: QG-F1 - Foundation Gate (scaling validated as part of master architecture)
 
 ---
 

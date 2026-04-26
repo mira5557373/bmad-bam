@@ -2,16 +2,16 @@
 
 ## MANDATORY EXECUTION RULES (READ FIRST)
 
-- :stop_sign: **NEVER generate content without user input** - Wait for explicit direction
-- :open_book: **CRITICAL: ALWAYS read the complete step file** before taking any action
-- :arrows_counterclockwise: **CRITICAL: When loading next step with 'C'**, ensure entire file is read
-- :pause_button: **ALWAYS pause after presenting findings** and await user direction
-- :dart: **Focus ONLY on current step scope** - do not look ahead
+- 🛑 **NEVER generate content without user input** - Wait for explicit direction
+- 📖 **CRITICAL: ALWAYS read the complete step file** before taking any action
+- 🔄 **CRITICAL: When loading next step with 'C'**, ensure entire file is read
+- ⏸️ **ALWAYS pause after presenting findings** and await user direction
+- 🎯 **Focus ONLY on current step scope** - do not look ahead
 
 ## EXECUTION PROTOCOLS
 
-- :dart: Show your analysis before taking any action
-- :floppy_disk: Update document frontmatter after each section completion
+- 🎯 Show your analysis before taking any action
+- 💾 Update document frontmatter after each section completion
 - :pencil: Maintain append-only document building
 - :white_check_mark: Track progress in `stepsCompleted` array
 
@@ -119,45 +119,6 @@ Confirm with the user which sections need modification:
 | Gap Analysis | {date} | Complete | [ ] |
 | Traceability Matrix | {date} | Complete | [ ] |
 | Stakeholder Sign-off | {date} | Pending | [ ] |
-
----
-
-## COLLABORATION MENUS (A/P/C):
-
-After loading the existing artifact above, present the user with:
-
-```
-Your options:
-- **A (Advanced Elicitation)**: Deep dive into modification requirements using discovery protocols
-- **P (Party Mode)**: Bring analyst and architect perspectives for change analysis
-- **C (Continue)**: Proceed to apply changes with identified modifications
-- **[Specific refinements]**: Describe what sections you want to modify
-
-Select an option:
-```
-
-### PROTOCOL INTEGRATION:
-
-#### If 'A' (Advanced Elicitation):
-- Invoke the `bmad-advanced-elicitation` skill
-- Pass current artifact context: sections loaded, potential modification areas
-- Process enhanced insights from deep questioning
-- Ask user: "Accept these modification requirements? (y/n)"
-- If yes, integrate into modification plan
-- Return to A/P/C menu
-
-#### If 'P' (Party Mode):
-- Invoke the `bmad-party-mode` skill
-- Context: "Review existing requirements document for modification: {summary of current state}"
-- Process collaborative analysis from analyst and architect personas
-- Present synthesized recommendations for changes
-- Ask user: "Accept these recommendations? (y/n)"
-- Return to A/P/C menu
-
-#### If 'C' (Continue):
-- Confirm modification scope with user
-- Update frontmatter `stepsCompleted: [10]`
-- Proceed to next step: `step-11-e-apply.md`
 
 ---
 

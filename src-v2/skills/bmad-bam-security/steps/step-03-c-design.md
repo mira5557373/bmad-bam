@@ -146,25 +146,46 @@ _Source: [URL]_
 
 ## COLLABORATION MENUS (A/P/C)
 
+After completing authorization architecture design, present the user with:
+
 ```
 Your options:
 - **A (Advanced Elicitation)**: Deep dive into permission models, ABAC vs RBAC, or specific role requirements
 - **P (Party Mode)**: Bring security architect, product owner, and customer success perspectives
 - **C (Continue)**: Accept authorization design and proceed to data protection
+- **[Specific concerns]**: Describe concerns to investigate further
+
+Select an option:
 ```
 
+### PROTOCOL INTEGRATION
+
 #### If 'A' (Advanced Elicitation):
-- Are there specific compliance requirements affecting role design?
-- Do you need attribute-based access control (ABAC) in addition to RBAC?
-- What are the API key requirements for partner integrations?
+- Invoke the `bmad-advanced-elicitation` skill
+- Pass context: Authorization architecture design including RBAC model, permission inheritance, cross-tenant admin, and API key management
+- Focus areas:
+  - Are there specific compliance requirements affecting role design?
+  - Do you need attribute-based access control (ABAC) in addition to RBAC?
+  - What are the API key requirements for partner integrations?
+  - Cross-tenant administrative access patterns
+- Ask user: "Accept these enhanced findings? (y/n)"
+- If yes, integrate into authorization design
+- Return to A/P/C menu
 
 #### If 'P' (Party Mode):
-- **Security Architect:** Evaluate permission model completeness
-- **Product Owner:** Validate role alignment with product tiers
-- **Customer Success:** Assess impersonation workflow usability
+- Invoke the `bmad-party-mode` skill
+- Context: "Review authorization architecture for multi-tenant SaaS including RBAC model with tenant scoping, permission inheritance, cross-tenant admin capabilities, and API key management"
+- Process relevant personas:
+  - **Security Architect:** Evaluate permission model completeness
+  - **Product Owner:** Validate role alignment with product tiers
+  - **Customer Success:** Assess impersonation workflow usability
+- Present synthesized recommendations
+- Ask user: "Accept these recommendations? (y/n)"
+- Return to A/P/C menu
 
 #### If 'C' (Continue):
-- Save authorization design to output document
+- Document authorization design to output artifact
+- Update frontmatter `stepsCompleted: [1, 2, 3]`
 - Proceed to next step: `step-04-c-document.md`
 
 ---

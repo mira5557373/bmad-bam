@@ -132,45 +132,6 @@ _Source: [URL]_
 
 ---
 
-## COLLABORATION MENUS (A/P/C):
-
-After completing the research scope initialization above, present the user with:
-
-```
-Your options:
-- **A (Advanced Elicitation)**: Deep dive into research scope and evaluation criteria
-- **P (Party Mode)**: Bring architect and analyst perspectives on research approach
-- **C (Continue)**: Accept research scope and proceed to technology evaluation
-- **[Specific refinements]**: Describe what you'd like to adjust in the scope
-
-Select an option:
-```
-
-### PROTOCOL INTEGRATION:
-
-#### If 'A' (Advanced Elicitation):
-- Invoke the `bmad-advanced-elicitation` skill
-- Pass context: research areas identified, evaluation criteria, architecture constraints
-- Process enhanced insights on research scope definition
-- Ask user: "Accept these enhanced scope definitions? (y/n)"
-- If yes, integrate into research plan
-- Return to A/P/C menu
-
-#### If 'P' (Party Mode):
-- Invoke the `bmad-party-mode` skill
-- Context: "Review technology research scope: {summary of research areas and criteria}"
-- Process collaborative analysis from architect and analyst personas
-- Present synthesized recommendations on research approach
-- Ask user: "Accept these recommendations? (y/n)"
-- Return to A/P/C menu
-
-#### If 'C' (Continue):
-- Save research plan to output document
-- Update frontmatter `stepsCompleted: [1]`
-- Proceed to next step: `step-02-c-analyze.md`
-
----
-
 ## Verification
 
 - [ ] Architecture constraints loaded and understood

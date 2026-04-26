@@ -176,25 +176,46 @@ _Source: [URL]_
 
 ## COLLABORATION MENUS (A/P/C)
 
+After completing security design compilation, present the user with:
+
 ```
 Your options:
 - **A (Advanced Elicitation)**: Deep dive into specific threat scenarios or compliance mappings
 - **P (Party Mode)**: Bring security auditor, CISO, and engineering lead perspectives for final review
 - **C (Continue)**: Accept compiled security design and generate artifact
+- **[Specific concerns]**: Describe concerns to investigate further
+
+Select an option:
 ```
 
+### PROTOCOL INTEGRATION
+
 #### If 'A' (Advanced Elicitation):
-- Are there specific compliance certifications required (SOC 2 Type II, ISO 27001)?
-- Do you need to include specific regulatory appendices (GDPR, HIPAA)?
-- What third-party penetration testing firms are approved?
+- Invoke the `bmad-advanced-elicitation` skill
+- Pass context: Complete security design compilation including authentication, authorization, data protection, threat mitigations, and testing requirements
+- Focus areas:
+  - Are there specific compliance certifications required (SOC 2 Type II, ISO 27001)?
+  - Do you need to include specific regulatory appendices (GDPR, HIPAA)?
+  - What third-party penetration testing firms are approved?
+  - Industry-specific security considerations
+- Ask user: "Accept these enhanced findings? (y/n)"
+- If yes, integrate into final security design
+- Return to A/P/C menu
 
 #### If 'P' (Party Mode):
-- **Security Auditor:** Validate control completeness
-- **CISO:** Approve security architecture
-- **Engineering Lead:** Confirm implementation feasibility
+- Invoke the `bmad-party-mode` skill
+- Context: "Final review of complete security architecture for multi-tenant SaaS including authentication, authorization, data protection, threat model, and penetration testing requirements"
+- Process relevant personas:
+  - **Security Auditor:** Validate control completeness
+  - **CISO:** Approve security architecture
+  - **Engineering Lead:** Confirm implementation feasibility
+- Present synthesized recommendations
+- Ask user: "Accept these recommendations? (y/n)"
+- Return to A/P/C menu
 
 #### If 'C' (Continue):
 - Generate security design document to `{output_folder}/planning-artifacts/security-design.md`
+- Update frontmatter `stepsCompleted: [1, 2, 3, 4, 5]`
 - Workflow complete for Create mode
 
 ---

@@ -2,16 +2,16 @@
 
 ## MANDATORY EXECUTION RULES (READ FIRST)
 
-- :stop_sign: **NEVER generate content without user input** - Wait for explicit direction
-- :open_book: **CRITICAL: ALWAYS read the complete step file** before taking any action
-- :arrows_counterclockwise: **CRITICAL: When loading next step with 'C'**, ensure entire file is read
-- :pause_button: **ALWAYS pause after presenting findings** and await user direction
-- :dart: **Focus ONLY on current step scope** - do not look ahead
+- 🛑 **NEVER generate content without user input** - Wait for explicit direction
+- 📖 **CRITICAL: ALWAYS read the complete step file** before taking any action
+- 🔄 **CRITICAL: When loading next step with 'C'**, ensure entire file is read
+- ⏸️ **ALWAYS pause after presenting findings** and await user direction
+- 🎯 **Focus ONLY on current step scope** - do not look ahead
 
 ## EXECUTION PROTOCOLS
 
-- :dart: Show your analysis before taking any action
-- :floppy_disk: Update document frontmatter after each section completion
+- 🎯 Show your analysis before taking any action
+- 💾 Update document frontmatter after each section completion
 - :pencil: Maintain append-only document building
 - :white_check_mark: Track progress in `stepsCompleted` array
 

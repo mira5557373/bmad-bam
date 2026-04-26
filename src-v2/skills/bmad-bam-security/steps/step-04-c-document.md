@@ -173,25 +173,46 @@ _Source: [URL]_
 
 ## COLLABORATION MENUS (A/P/C)
 
+After completing data protection architecture design, present the user with:
+
 ```
 Your options:
 - **A (Advanced Elicitation)**: Deep dive into key hierarchy, specific compliance requirements, or HSM integration
 - **P (Party Mode)**: Bring security architect, compliance officer, and data engineer perspectives
 - **C (Continue)**: Accept data protection design and proceed to final compilation
+- **[Specific concerns]**: Describe concerns to investigate further
+
+Select an option:
 ```
 
+### PROTOCOL INTEGRATION
+
 #### If 'A' (Advanced Elicitation):
-- What cloud provider(s) will host the KMS?
-- Are there specific data residency requirements (EU, US, etc.)?
-- Do you need hardware security modules (HSM) for key storage?
+- Invoke the `bmad-advanced-elicitation` skill
+- Pass context: Data protection architecture design including encryption, key management, secret rotation, and data classification
+- Focus areas:
+  - What cloud provider(s) will host the KMS?
+  - Are there specific data residency requirements (EU, US, etc.)?
+  - Do you need hardware security modules (HSM) for key storage?
+  - Compliance-specific encryption requirements
+- Ask user: "Accept these enhanced findings? (y/n)"
+- If yes, integrate into data protection design
+- Return to A/P/C menu
 
 #### If 'P' (Party Mode):
-- **Security Architect:** Evaluate key hierarchy and rotation policies
-- **Compliance Officer:** Validate against GDPR/HIPAA/PCI requirements
-- **Data Engineer:** Assess performance impact of encryption
+- Invoke the `bmad-party-mode` skill
+- Context: "Review data protection architecture for multi-tenant SaaS including encryption at rest/transit, per-tenant key management, secret rotation policies, and data classification handling"
+- Process relevant personas:
+  - **Security Architect:** Evaluate key hierarchy and rotation policies
+  - **Compliance Officer:** Validate against GDPR/HIPAA/PCI requirements
+  - **Data Engineer:** Assess performance impact of encryption
+- Present synthesized recommendations
+- Ask user: "Accept these recommendations? (y/n)"
+- Return to A/P/C menu
 
 #### If 'C' (Continue):
-- Save data protection design to output document
+- Document data protection design to output artifact
+- Update frontmatter `stepsCompleted: [1, 2, 3, 4]`
 - Proceed to next step: `step-05-c-complete.md`
 
 ---

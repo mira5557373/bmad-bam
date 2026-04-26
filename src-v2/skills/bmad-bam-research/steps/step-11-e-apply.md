@@ -181,44 +181,6 @@ Save the updated report to:
 
 ---
 
-## COLLABORATION MENUS (A/P/C):
-
-After applying changes, present the user with:
-
-```
-Your options:
-- **A (Advanced Elicitation)**: Deep dive into specific changes for further refinement
-- **P (Party Mode)**: Bring architect perspectives on applied changes
-- **C (Continue)**: Accept changes and complete edit workflow
-- **[Specific sections]**: Describe additional modifications needed
-
-Select an option:
-```
-
-### PROTOCOL INTEGRATION:
-
-#### If 'A' (Advanced Elicitation):
-- Invoke the `bmad-advanced-elicitation` skill
-- Pass context: changes applied, consistency verification results
-- Process enhanced insights on change quality
-- Ask user: "Accept this additional analysis? (y/n)"
-- If yes, apply further refinements
-- Return to A/P/C menu
-
-#### If 'P' (Party Mode):
-- Invoke the `bmad-party-mode` skill
-- Context: "Review applied changes to research report: {summary of modifications}"
-- Process architect and analyst perspectives on changes
-- Present synthesized recommendations
-- Ask user: "Accept these recommendations? (y/n)"
-- Return to A/P/C menu
-
-#### If 'C' (Continue):
-- Save updated report
-- Complete Edit workflow
-
----
-
 ## Verification
 
 - [ ] All requested changes applied

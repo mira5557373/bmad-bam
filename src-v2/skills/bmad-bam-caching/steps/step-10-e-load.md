@@ -2,25 +2,25 @@
 
 ## MANDATORY EXECUTION RULES
 
-- 🛑 NEVER proceed without locating the existing caching-design.md file
-- 📖 ALWAYS read the complete document including frontmatter metadata
-- 🔄 ALWAYS parse all cache layer configurations and performance settings
+- 🛑 **NEVER proceed without locating the existing caching-design.md file**
+- 📖 **CRITICAL: ALWAYS read the complete step file before taking any action**
+- 🔄 **CRITICAL: When loading next step with 'C', ensure entire file is read**
+- ⏸️ **ALWAYS pause after summary presentation and await user edit selection**
+- 🎯 **Focus ONLY on loading and parsing - do not apply changes yet**
 - ✅ EXTRACT current TTL policies, invalidation strategy, and eviction rules
 - 📋 PRESENT a structured summary of current design before accepting edits
-- 💬 PAUSE after summary presentation and await user edit selection
-- 🎯 IDENTIFY document version and stepsCompleted to understand completeness
 - ⚠️ FLAG any sections marked as "TODO" or incomplete
 
 ---
 
 ## EXECUTION PROTOCOLS
 
-- 🎯 Focus: Load and parse existing caching design for modification
-- 💾 Track: Document load status and parse results
-- 📖 Context: Extract cache layers, TTL policies, invalidation, performance
-- 🚫 Do NOT: Modify any content during load phase
-- ⚠️ Gate: Changes may require QG-M2 cache dimension re-validation
-- 🔍 Use web search: Only if user requests updated best practices
+- 🎯 **Focus:** Load and parse existing caching design for modification
+- 💾 **Track:** Document load status and parse results
+- 📖 **Context:** Extract cache layers, TTL policies, invalidation, performance
+- 🚫 **Do NOT:** Modify any content during load phase
+- 🔍 **Use web search:** Only if user requests updated best practices
+- ⚠️ **Gate:** Changes may require QG-M2 cache dimension re-validation
 
 ---
 

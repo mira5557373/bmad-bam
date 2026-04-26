@@ -160,44 +160,6 @@ Present validation scope to user:
 
 ---
 
-## COLLABORATION MENUS (A/P/C):
-
-After loading the artifact and checklist, present the user with:
-
-```
-Your options:
-- **A (Advanced Elicitation)**: Deep dive into specific validation areas before checking
-- **P (Party Mode)**: Bring QA and architect perspectives on validation approach
-- **C (Continue)**: Proceed with full validation
-- **[Specific scope]**: Describe which validation areas to focus on
-
-Select an option:
-```
-
-### PROTOCOL INTEGRATION:
-
-#### If 'A' (Advanced Elicitation):
-- Invoke the `bmad-advanced-elicitation` skill
-- Pass context: document summary, validation checklist, potential issues
-- Process enhanced insights on validation priorities
-- Ask user: "Accept this validation focus? (y/n)"
-- If yes, document validation priorities
-- Return to A/P/C menu
-
-#### If 'P' (Party Mode):
-- Invoke the `bmad-party-mode` skill
-- Context: "Prepare validation for research report: {document summary}"
-- Process QA and architect perspectives on validation approach
-- Present synthesized recommendations
-- Ask user: "Accept these recommendations? (y/n)"
-- Return to A/P/C menu
-
-#### If 'C' (Continue):
-- Document validation scope (full or partial)
-- Proceed to next step: `step-21-v-validate.md`
-
----
-
 ## Verification
 
 - [ ] Research report loaded successfully

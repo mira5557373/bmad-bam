@@ -2,25 +2,25 @@
 
 ## MANDATORY EXECUTION RULES (READ FIRST)
 
-- 🛑 NEVER design invalidation without loading Step 02 cache design first
-- 📖 CRITICAL: ALWAYS read the complete step file before taking any action
-- 🔄 CRITICAL: When loading next step with 'C', ensure entire file is read
+- 🛑 **NEVER design invalidation without loading Step 02 cache design first**
+- 📖 **CRITICAL: ALWAYS read the complete step file before taking any action**
+- 🔄 **CRITICAL: When loading next step with 'C', ensure entire file is read**
+- ⏸️ **ALWAYS pause after presenting invalidation design for user confirmation via A/P/C**
+- 🎯 **Focus ONLY on cache invalidation - do not design performance monitoring yet**
 - ✅ CRITICAL: Design invalidation for ALL cache layers - do not skip any
 - 📋 Document event-driven invalidation triggers for each cache type
-- 💬 Present invalidation design with A/P/C menu for user confirmation
 - 🌐 Use web search to verify current cache invalidation best practices
 
 ---
 
 ## EXECUTION PROTOCOLS
 
-- 🎯 Design event-driven cache invalidation with tenant-scope awareness
-- 💾 Record invalidation design in working document for Step 04
-- 📖 Reference `domains/caching.md` for invalidation patterns
-- 📖 Reference `bam-patterns.csv` for cache invalidation decision criteria
-- 🚫 DO NOT proceed without explicit user confirmation via A/P/C
-- ⚠️ Flag invalidation designs that may cause cache inconsistency
-- 🔍 Use web search to verify cache invalidation patterns
+- 🎯 **Focus:** Design event-driven cache invalidation with tenant-scope awareness
+- 💾 **Track:** Record invalidation design in working document for Step 04
+- 📖 **Context:** Reference `domains/caching.md` and `bam-patterns.csv` for patterns
+- 🚫 **Do NOT:** Proceed without explicit user confirmation via A/P/C
+- 🔍 **Use web search:** Verify cache invalidation patterns against current best practices
+- ⚠️ **Gate:** Flag invalidation designs that may cause cache inconsistency
 
 ---
 

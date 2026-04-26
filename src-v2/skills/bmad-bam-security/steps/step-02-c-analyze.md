@@ -122,25 +122,46 @@ _Source: [URL]_
 
 ## COLLABORATION MENUS (A/P/C)
 
+After completing authentication architecture design, present the user with:
+
 ```
 Your options:
 - **A (Advanced Elicitation)**: Deep dive into JWT claims, token rotation, or specific IdP integration
 - **P (Party Mode)**: Bring security analyst, compliance officer, and DevOps perspectives
 - **C (Continue)**: Accept authentication design and proceed to authorization
+- **[Specific concerns]**: Describe concerns to investigate further
+
+Select an option:
 ```
 
+### PROTOCOL INTEGRATION
+
 #### If 'A' (Advanced Elicitation):
-- Which specific IdP integrations are required (Okta, Azure AD, Google)?
-- What are the compliance requirements for session management?
-- Are there specific MFA hardware key requirements (YubiKey, etc.)?
+- Invoke the `bmad-advanced-elicitation` skill
+- Pass context: Authentication architecture design including JWT configuration, MFA policies, session management, and SSO requirements
+- Focus areas:
+  - Which specific IdP integrations are required (Okta, Azure AD, Google)?
+  - What are the compliance requirements for session management?
+  - Are there specific MFA hardware key requirements (YubiKey, etc.)?
+  - Token rotation strategies for high-security environments
+- Ask user: "Accept these enhanced findings? (y/n)"
+- If yes, integrate into authentication design
+- Return to A/P/C menu
 
 #### If 'P' (Party Mode):
-- **Security Analyst:** Evaluate token security and session binding
-- **Compliance Officer:** Validate against SOC 2 / HIPAA requirements
-- **DevOps:** Assess operational complexity and monitoring needs
+- Invoke the `bmad-party-mode` skill
+- Context: "Review authentication architecture for multi-tenant SaaS including JWT configuration, MFA enforcement, session management, and SSO integration"
+- Process relevant personas:
+  - **Security Analyst:** Evaluate token security and session binding
+  - **Compliance Officer:** Validate against SOC 2 / HIPAA requirements
+  - **DevOps:** Assess operational complexity and monitoring needs
+- Present synthesized recommendations
+- Ask user: "Accept these recommendations? (y/n)"
+- Return to A/P/C menu
 
 #### If 'C' (Continue):
-- Save authentication design to output document
+- Document authentication design to output artifact
+- Update frontmatter `stepsCompleted: [1, 2]`
 - Proceed to next step: `step-03-c-design.md`
 
 ---

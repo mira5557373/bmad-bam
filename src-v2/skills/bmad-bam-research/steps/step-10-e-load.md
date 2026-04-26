@@ -127,44 +127,6 @@ For each change requested, identify:
 
 ---
 
-## COLLABORATION MENUS (A/P/C):
-
-After loading and presenting the existing document, present the user with:
-
-```
-Your options:
-- **A (Advanced Elicitation)**: Deep dive into specific sections before editing
-- **P (Party Mode)**: Bring architect perspectives on proposed changes
-- **C (Continue)**: Proceed to apply modifications
-- **[Specific sections]**: Describe which sections to modify
-
-Select an option:
-```
-
-### PROTOCOL INTEGRATION:
-
-#### If 'A' (Advanced Elicitation):
-- Invoke the `bmad-advanced-elicitation` skill
-- Pass context: current report state, proposed modifications
-- Process enhanced insights on change impact
-- Ask user: "Accept this analysis of proposed changes? (y/n)"
-- If yes, document change impact assessment
-- Return to A/P/C menu
-
-#### If 'P' (Party Mode):
-- Invoke the `bmad-party-mode` skill
-- Context: "Review proposed modifications to research report: {summary of changes}"
-- Process architect and analyst perspectives on change impact
-- Present synthesized recommendations
-- Ask user: "Accept these recommendations? (y/n)"
-- Return to A/P/C menu
-
-#### If 'C' (Continue):
-- Document identified modification targets
-- Proceed to next step: `step-11-e-apply.md`
-
----
-
 ## Verification
 
 - [ ] Research report loaded correctly

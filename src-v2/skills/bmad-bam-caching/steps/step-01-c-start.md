@@ -2,24 +2,25 @@
 
 ## MANDATORY EXECUTION RULES
 
-- 🛑 NEVER generate caching design without loading tenant model configuration first
-- 📖 ALWAYS read master architecture to understand selected tenant model
-- 🔄 ALWAYS identify all three cache layers: L1 (in-memory), L2 (Redis), CDN
+- 🛑 **NEVER generate caching design without loading tenant model configuration first**
+- 📖 **CRITICAL: ALWAYS read the complete step file before taking any action**
+- 🔄 **CRITICAL: When loading next step with 'C', ensure entire file is read**
+- ⏸️ **ALWAYS pause after presenting cache layer overview for user confirmation**
+- 🎯 **Focus ONLY on cache initialization scope - do not design invalidation yet**
 - ✅ PRESENT cache layer architecture template before proceeding
 - 📋 CONFIRM tenant isolation strategy for each cache layer
-- 💬 PAUSE after cache layer overview is populated for user confirmation
 - 🌐 USE web search to verify current caching best practices
 
 ---
 
 ## EXECUTION PROTOCOLS
 
-- 🎯 Focus: Initialize tenant-aware caching design with multi-layer strategy
-- 💾 Track: `stepsCompleted: [1]` when complete
-- 📖 Context: Load tenant domain and master architecture first
-- 🚫 Do NOT: Skip any cache layer identification
-- ⚠️ Gate: Caching design feeds into QG-M2 (Tenant Isolation) cache dimension
-- 🔍 Use web search: Verify caching patterns against current best practices
+- 🎯 **Focus:** Initialize tenant-aware caching design with multi-layer strategy
+- 💾 **Track:** `stepsCompleted: [1]` when complete
+- 📖 **Context:** Load tenant domain and master architecture first
+- 🚫 **Do NOT:** Skip any cache layer identification
+- 🔍 **Use web search:** Verify caching patterns against current best practices
+- ⚠️ **Gate:** Caching design feeds into QG-M2 (Tenant Isolation) cache dimension
 
 ---
 

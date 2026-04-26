@@ -145,44 +145,6 @@ Flag any critical issues that require resolution:
 
 ---
 
-## COLLABORATION MENUS (A/P/C):
-
-After completing validation, present the user with:
-
-```
-Your options:
-- **A (Advanced Elicitation)**: Deep dive into specific validation findings
-- **P (Party Mode)**: Bring QA and architect perspectives on validation results
-- **C (Continue)**: Accept validation results and proceed to generate report
-- **[Specific findings]**: Describe findings to investigate further
-
-Select an option:
-```
-
-### PROTOCOL INTEGRATION:
-
-#### If 'A' (Advanced Elicitation):
-- Invoke the `bmad-advanced-elicitation` skill
-- Pass context: validation results, critical issues, score breakdown
-- Process enhanced insights on remediation priorities
-- Ask user: "Accept this validation analysis? (y/n)"
-- If yes, document additional findings
-- Return to A/P/C menu
-
-#### If 'P' (Party Mode):
-- Invoke the `bmad-party-mode` skill
-- Context: "Review validation results for research report: {summary of scores and issues}"
-- Process QA and architect perspectives on findings
-- Present synthesized recommendations
-- Ask user: "Accept these recommendations? (y/n)"
-- Return to A/P/C menu
-
-#### If 'C' (Continue):
-- Document validation results
-- Proceed to next step: `step-22-v-report.md`
-
----
-
 ## Verification
 
 - [ ] Completeness criteria checked

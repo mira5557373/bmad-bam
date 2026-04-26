@@ -2,25 +2,25 @@
 
 ## MANDATORY EXECUTION RULES (READ FIRST)
 
-- 🛑 NEVER design caching without loading Step 01 initialization first
-- 📖 CRITICAL: ALWAYS read the complete step file before taking any action
-- 🔄 CRITICAL: When loading next step with 'C', ensure entire file is read
+- 🛑 **NEVER design caching without loading Step 01 initialization first**
+- 📖 **CRITICAL: ALWAYS read the complete step file before taking any action**
+- 🔄 **CRITICAL: When loading next step with 'C', ensure entire file is read**
+- ⏸️ **ALWAYS pause after presenting cache design for user confirmation via A/P/C**
+- 🎯 **Focus ONLY on tenant-scoped caching design - do not design invalidation yet**
 - ✅ CRITICAL: Design caching for ALL 3 layers - do not skip any layer
 - 📋 Document cache key patterns with tenant prefix for each cache type
-- 💬 Present cache design with A/P/C menu for user confirmation
 - 🌐 Use web search to verify current tenant-scoped caching best practices
 
 ---
 
 ## EXECUTION PROTOCOLS
 
-- 🎯 Design tenant-scoped caching with isolation verification
-- 💾 Record cache design decisions in working document for Step 03
-- 📖 Reference `domains/caching.md` for cache patterns
-- 📖 Reference `bam-patterns.csv` for caching decision criteria
-- 🚫 DO NOT proceed without explicit user confirmation via A/P/C
-- ⚠️ Flag cache designs that may leak tenant data
-- 🔍 Use web search to verify tenant-scoped caching patterns
+- 🎯 **Focus:** Design tenant-scoped caching with isolation verification
+- 💾 **Track:** Record cache design decisions in working document for Step 03
+- 📖 **Context:** Reference `domains/caching.md` and `bam-patterns.csv` for patterns
+- 🚫 **Do NOT:** Proceed without explicit user confirmation via A/P/C
+- 🔍 **Use web search:** Verify tenant-scoped caching patterns against current best practices
+- ⚠️ **Gate:** Flag cache designs that may leak tenant data
 
 ---
 

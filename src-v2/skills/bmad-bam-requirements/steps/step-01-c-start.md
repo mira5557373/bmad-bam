@@ -2,19 +2,19 @@
 
 ## MANDATORY EXECUTION RULES (READ FIRST)
 
-- :stop_sign: **NEVER generate content without user input** - Wait for explicit direction
-- :open_book: **CRITICAL: ALWAYS read the complete step file** before taking any action
-- :arrows_counterclockwise: **CRITICAL: When loading next step with 'C'**, ensure entire file is read
-- :pause_button: **ALWAYS pause after presenting findings** and await user direction
-- :dart: **Focus ONLY on current step scope** - do not look ahead
+- 🛑 **NEVER generate content without user input** - Wait for explicit direction
+- 📖 **CRITICAL: ALWAYS read the complete step file** before taking any action
+- 🔄 **CRITICAL: When loading next step with 'C'**, ensure entire file is read
+- ⏸️ **ALWAYS pause after presenting findings** and await user direction
+- 🎯 **Focus ONLY on current step scope** - do not look ahead
 
 ## EXECUTION PROTOCOLS
 
-- :dart: Show your analysis before taking any action
-- :floppy_disk: Update document frontmatter after each section completion
+- 🎯 Show your analysis before taking any action
+- 💾 Update document frontmatter after each section completion
 - :pencil: Maintain append-only document building
 - :white_check_mark: Track progress in `stepsCompleted` array
-- :mag: Use web search to verify current best practices when making decisions
+- 🔍 Use web search to verify current best practices when making decisions
 - :paperclip: Reference pattern registry `web_queries` for search topics
 
 ---
@@ -137,45 +137,6 @@ Search the web: "requirements engineering best practices {date}"
 Search the web: "multi-tenant SaaS requirements analysis {date}"
 
 _Source: [URL]_
-
----
-
-## COLLABORATION MENUS (A/P/C):
-
-After completing requirements initialization above, present the user with:
-
-```
-Your options:
-- **A (Advanced Elicitation)**: Deep dive into requirements sources using discovery protocols
-- **P (Party Mode)**: Bring analyst and architect perspectives for requirements analysis
-- **C (Continue)**: Accept initialization and proceed to requirements categorization
-- **[Specific refinements]**: Describe what you'd like to explore further
-
-Select an option:
-```
-
-### PROTOCOL INTEGRATION:
-
-#### If 'A' (Advanced Elicitation):
-- Invoke the `bmad-advanced-elicitation` skill
-- Pass context: identified sources, document structure, analysis framework
-- Process enhanced insights from deep questioning
-- Ask user: "Accept these enhanced findings? (y/n)"
-- If yes, integrate into requirements initialization
-- Return to A/P/C menu
-
-#### If 'P' (Party Mode):
-- Invoke the `bmad-party-mode` skill
-- Context: "Review requirements sources and analysis framework: {summary}"
-- Process collaborative analysis from analyst and architect personas
-- Present synthesized recommendations
-- Ask user: "Accept these recommendations? (y/n)"
-- Return to A/P/C menu
-
-#### If 'C' (Continue):
-- Save requirements initialization to output document
-- Update frontmatter `stepsCompleted: [1]`
-- Proceed to next step: `step-02-c-analyze.md`
 
 ---
 

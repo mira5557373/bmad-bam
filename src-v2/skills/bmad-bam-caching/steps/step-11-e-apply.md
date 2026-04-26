@@ -2,25 +2,25 @@
 
 ## MANDATORY EXECUTION RULES
 
-- 🛑 NEVER apply changes that violate cache layer consistency
-- 📖 ALWAYS validate changes against tenant isolation requirements before applying
-- 🔄 ALWAYS preserve document structure and unmodified sections
+- 🛑 **NEVER apply changes that violate cache layer consistency**
+- 📖 **CRITICAL: ALWAYS read the complete step file before taking any action**
+- 🔄 **CRITICAL: When loading next step with 'C', ensure entire file is read**
+- ⏸️ **ALWAYS pause and present diff summary before final save**
+- 🎯 **Focus ONLY on applying validated changes - do not skip validation**
 - ✅ UPDATE frontmatter version after any successful edit
 - 📋 DOCUMENT change rationale in Change Log section
-- 💬 PRESENT diff summary before final save
-- ⚠️ FLAG if changes require QG-M2 cache dimension re-validation
 - 🔒 LOCK critical cache configurations without explicit user override
 
 ---
 
 ## EXECUTION PROTOCOLS
 
-- 🎯 Focus: Apply user-requested changes while maintaining consistency
-- 💾 Track: Changes applied, version increment, validation impact
-- 📖 Context: Preserve all unmodified content exactly
-- 🚫 Do NOT: Auto-modify unrelated sections
-- ⚠️ Gate: Critical cache layer changes require re-validation warning
-- 🔍 Use web search: If user requests updated patterns for specific changes
+- 🎯 **Focus:** Apply user-requested changes while maintaining consistency
+- 💾 **Track:** Changes applied, version increment, validation impact
+- 📖 **Context:** Preserve all unmodified content exactly
+- 🚫 **Do NOT:** Auto-modify unrelated sections
+- 🔍 **Use web search:** If user requests updated patterns for specific changes
+- ⚠️ **Gate:** Critical cache layer changes require re-validation warning
 
 ---
 

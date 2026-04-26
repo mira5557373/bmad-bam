@@ -2,16 +2,16 @@
 
 ## MANDATORY EXECUTION RULES (READ FIRST)
 
-- :stop_sign: **NEVER generate content without user input** - Wait for explicit direction
-- :open_book: **CRITICAL: ALWAYS read the complete step file** before taking any action
-- :arrows_counterclockwise: **CRITICAL: When loading next step with 'C'**, ensure entire file is read
-- :pause_button: **ALWAYS pause after presenting findings** and await user direction
-- :dart: **Focus ONLY on current step scope** - do not look ahead
+- 🛑 **NEVER generate content without user input** - Wait for explicit direction
+- 📖 **CRITICAL: ALWAYS read the complete step file** before taking any action
+- 🔄 **CRITICAL: When loading next step with 'C'**, ensure entire file is read
+- ⏸️ **ALWAYS pause after presenting findings** and await user direction
+- 🎯 **Focus ONLY on current step scope** - do not look ahead
 
 ## EXECUTION PROTOCOLS
 
-- :dart: Show your analysis before taking any action
-- :floppy_disk: Update document frontmatter after each section completion
+- 🎯 Show your analysis before taking any action
+- 💾 Update document frontmatter after each section completion
 - :pencil: Maintain append-only document building
 - :white_check_mark: Track progress in `stepsCompleted` array
 
@@ -171,46 +171,6 @@ change_summary:
     - section: statistics
       change: "Functional requirements: 24 -> 25"
 ```
-
----
-
-## COLLABORATION MENUS (A/P/C):
-
-After applying changes above, present the user with:
-
-```
-Your options:
-- **A (Advanced Elicitation)**: Deep dive into additional changes using discovery protocols
-- **P (Party Mode)**: Bring analyst and architect perspectives for change review
-- **C (Continue)**: Accept changes and save updated document
-- **[Specific refinements]**: Describe additional modifications needed
-
-Select an option:
-```
-
-### PROTOCOL INTEGRATION:
-
-#### If 'A' (Advanced Elicitation):
-- Invoke the `bmad-advanced-elicitation` skill
-- Pass change context: modifications made, potential impact areas
-- Process enhanced insights from deep questioning
-- Ask user: "Accept these additional changes? (y/n)"
-- If yes, apply additional modifications
-- Return to A/P/C menu
-
-#### If 'P' (Party Mode):
-- Invoke the `bmad-party-mode` skill
-- Context: "Review applied changes to requirements document: {summary of changes}"
-- Process collaborative analysis from analyst and architect personas
-- Present synthesized recommendations
-- Ask user: "Accept these recommendations? (y/n)"
-- Return to A/P/C menu
-
-#### If 'C' (Continue):
-- Save updated document
-- Update frontmatter `stepsCompleted: [10, 11]`
-- Update version number
-- Output to `{output_folder}/planning-artifacts/requirements-analysis.md`
 
 ---
 

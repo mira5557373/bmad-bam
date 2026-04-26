@@ -2,25 +2,25 @@
 
 ## MANDATORY EXECUTION RULES (READ FIRST)
 
-- 🛑 NEVER design performance monitoring without loading Steps 02-03 first
-- 📖 CRITICAL: ALWAYS read the complete step file before taking any action
-- 🔄 CRITICAL: When loading next step with 'C', ensure entire file is read
+- 🛑 **NEVER design performance monitoring without loading Steps 02-03 first**
+- 📖 **CRITICAL: ALWAYS read the complete step file before taking any action**
+- 🔄 **CRITICAL: When loading next step with 'C', ensure entire file is read**
+- ⏸️ **ALWAYS pause after presenting performance design for user confirmation via A/P/C**
+- 🎯 **Focus ONLY on cache performance - do not compile final document yet**
 - ✅ CRITICAL: Design monitoring for ALL cache layers - do not skip any
 - 📋 Document cache hit rate targets and memory allocation by tier
-- 💬 Present performance design with A/P/C menu for user confirmation
 - 🌐 Use web search to verify current cache performance monitoring practices
 
 ---
 
 ## EXECUTION PROTOCOLS
 
-- 🎯 Design cache performance monitoring with tenant-level visibility
-- 💾 Record performance design in working document for Step 05
-- 📖 Reference `domains/caching.md` for performance patterns
-- 📖 Reference `bam-patterns.csv` for cache performance decision criteria
-- 🚫 DO NOT proceed without explicit user confirmation via A/P/C
-- ⚠️ Flag performance designs that may impact tenant isolation
-- 🔍 Use web search to verify cache performance monitoring patterns
+- 🎯 **Focus:** Design cache performance monitoring with tenant-level visibility
+- 💾 **Track:** Record performance design in working document for Step 05
+- 📖 **Context:** Reference `domains/caching.md` and `bam-patterns.csv` for patterns
+- 🚫 **Do NOT:** Proceed without explicit user confirmation via A/P/C
+- 🔍 **Use web search:** Verify cache performance monitoring patterns against current best practices
+- ⚠️ **Gate:** Flag performance designs that may impact tenant isolation
 
 ---
 
