@@ -1,19 +1,33 @@
-# Step 11: Apply Changes
+# Step 11: Apply Changes to Requirements Analysis
 
-## MANDATORY EXECUTION RULES (READ FIRST)
+## MANDATORY EXECUTION RULES
 
-- 🛑 **NEVER generate content without user input** - Wait for explicit direction
-- 📖 **CRITICAL: ALWAYS read the complete step file** before taking any action
-- 🔄 **CRITICAL: When loading next step with 'C'**, ensure entire file is read
+- 🛑 NEVER apply changes that break requirement traceability
+- 📖 ALWAYS validate changes against QG-PL1 critical checks before applying
+- 🔄 ALWAYS preserve document structure and unmodified sections
 - ⏸️ **ALWAYS pause after presenting findings** and await user direction
-- 🎯 **Focus ONLY on current step scope** - do not look ahead
+- ✅ UPDATE frontmatter version after any successful edit
+- 📋 DOCUMENT change rationale in Change Log section
+- 💬 PRESENT diff summary before final save
+- ⚠️ FLAG if changes require QG-PL1 re-validation
+- 🔒 PRESERVE requirement ID assignments to maintain traceability
+
+---
 
 ## EXECUTION PROTOCOLS
 
-- 🎯 Show your analysis before taking any action
-- 💾 Update document frontmatter after each section completion
-- 📝 Maintain append-only document building
-- ✅ Track progress in `stepsCompleted` array
+- 🎯 Focus: Apply user-requested changes while maintaining consistency
+- 💾 Track: Changes applied, version increment, QG-PL1 impact
+- 📖 Context: Preserve all unmodified content exactly
+- 🚫 Do NOT: Auto-modify unrelated sections or reassign requirement IDs
+- ⚠️ Gate: Module mapping changes require re-validation
+- 🔍 Use web search: If user requests updated requirements patterns
+
+---
+
+## YOUR TASK
+
+Apply the user's requested changes to the requirements analysis document, validate traceability across all requirement categories, update document metadata, and present a summary of modifications with any re-validation requirements.
 
 ---
 
@@ -174,6 +188,70 @@ change_summary:
 
 ---
 
+### Change Summary
+
+Present changes in diff format for user review:
+
+```
+================================================================================
+REQUIREMENTS ANALYSIS EDIT SUMMARY
+================================================================================
+Document: requirements-analysis.md
+Previous Version: {old_version}
+New Version: {new_version}
+================================================================================
+
+CHANGES APPLIED:
+
+[Requirement Changes]
+{list of requirement additions/modifications/removals}
+
+[Module Mapping Changes]
+{list of module assignment changes}
+
+[Traceability Changes]
+{list of traceability updates}
+
+================================================================================
+VALIDATION STATUS:
+
+QG-PL1 Status: {PASS|CONDITIONAL|PENDING}
+Re-validation Required: {Yes/No}
+{if yes: Run `bmad-bam-requirements` Validate mode (step-20-v-*)}
+
+================================================================================
+[S] Save changes to {output_folder}/planning-artifacts/requirements-analysis.md
+[R] Review changes before saving
+[U] Undo and return to edit selection
+================================================================================
+```
+
+---
+
+## SUCCESS METRICS
+
+- ✅ All requested changes captured and validated
+- ✅ Requirement ID assignments preserved
+- ✅ Traceability matrix updated correctly
+- ✅ Module mappings consistent
+- ✅ Frontmatter version incremented
+- ✅ Change Log updated with modification summary
+- ✅ Document saved to correct location
+- ✅ Re-validation requirements communicated
+- ✅ Stakeholder notification list generated
+
+---
+
+## FAILURE MODES
+
+- ❌ **Traceability break:** Block change, require source/test linkage before saving
+- ❌ **Orphaned requirement:** Require module assignment before saving
+- ❌ **Duplicate requirement ID:** Reassign ID with user confirmation
+- ❌ **Module not found:** Clarify module name or create module reference
+- ❌ **Save failure:** Retry with backup to alternate location
+
+---
+
 ## Verification
 
 - [ ] All requested changes applied
@@ -183,6 +261,8 @@ change_summary:
 - [ ] Dependencies preserved
 - [ ] Change history recorded
 - [ ] Patterns align with pattern registry
+- [ ] Module assignments valid
+- [ ] Requirement IDs unique
 
 ---
 
@@ -194,12 +274,12 @@ change_summary:
 
 ---
 
-## Edit Mode Complete
+## NEXT STEP
 
-The requirements analysis document has been updated and saved.
+Edit mode complete.
 
-### Post-Edit Actions
+**If QG-PL1 status is PENDING:**
+Run validation workflow: `step-20-v-load.md` through `step-22-v-report.md`
 
-1. **Validate:** Run Validate mode to ensure document integrity
-2. **Review:** Share changes with stakeholders
-3. **Downstream:** Update dependent artifacts if architecture work has begun
+**If QG-PL1 status is PASS or CONDITIONAL:**
+Proceed to architecture workflows or downstream planning.

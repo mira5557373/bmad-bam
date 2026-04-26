@@ -8,6 +8,10 @@
 - ⏸️ **ALWAYS pause after presenting findings** and await user direction
 - 🎯 **Focus ONLY on current step scope** - do not look ahead
 - ✅ **Validate consistency** after applying changes
+- 🔢 **RECALCULATE composite scores** when any dimension changes
+- 📊 **CASCADE priority changes** through phase assignments
+- 🔗 **VERIFY dependency constraints** remain satisfied after edits
+- ⚠️ **FLAG QG-PL1 re-validation** when critical sections change
 
 ## EXECUTION PROTOCOLS
 
@@ -41,9 +45,9 @@ Apply the identified changes to the existing triage report. Changes are applied 
 
 ---
 
-## YOUR TASK:
+## YOUR TASK
 
-Apply requested changes to the triage report while maintaining consistency.
+Apply the user's requested changes to the triage report while maintaining full consistency across all sections. For complexity score changes, recalculate composite scores and cascade impacts to priorities and phase assignments. For dependency changes, verify no circular dependencies are introduced. Document all changes in the change log with rationale, and flag if QG-PL1 re-validation is required.
 
 ---
 
@@ -202,6 +206,30 @@ Write the updated triage report:
 ```
 {output_folder}/planning-artifacts/triage-report.md
 ```
+
+---
+
+## SUCCESS METRICS
+
+- ✅ All requested changes captured with rationale
+- ✅ Complexity scores recalculated where affected
+- ✅ Priority rankings updated to reflect score changes
+- ✅ Phase assignments verified against dependencies
+- ✅ Dependency graph validated (no cycles)
+- ✅ Timeline totals recalculated correctly
+- ✅ Resource allocation updated if scope changed
+- ✅ Change log entry added with full audit trail
+- ✅ QG-PL1 re-validation status communicated
+
+---
+
+## FAILURE MODES
+
+- ❌ **Consistency violation:** Block change, present specific conflict and resolution options
+- ❌ **Dependency cycle introduced:** Reject change, show cycle path, suggest alternatives
+- ❌ **Priority conflict:** When manual priority contradicts complexity score, require justification
+- ❌ **Phase capacity exceeded:** Warn when phase becomes overloaded, suggest redistribution
+- ❌ **Save failure:** Retry with backup to alternate location, preserve edit state
 
 ---
 

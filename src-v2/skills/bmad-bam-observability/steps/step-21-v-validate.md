@@ -33,6 +33,12 @@ Validate the tenant-aware observability design against QG-OC (Observability Comp
 
 ---
 
+## YOUR TASK
+
+Execute all QG-OC validation checks against the loaded observability design artifact. Verify tenant isolation across all three pillars (metrics, logs, traces), validate dashboard access controls, SLO definitions, and alerting rules. Document each check result with evidence and calculate the final gate decision.
+
+---
+
 ## Inputs
 
 - Loaded artifact from Step 20
@@ -169,6 +175,27 @@ Select an option:
 - Save validation results
 - Update frontmatter `stepsCompleted: [20, 21]`
 - Proceed to next step: `step-22-v-report.md`
+
+---
+
+## SUCCESS METRICS
+
+- ✅ All 8 QG-OC categories validated with evidence
+- ✅ All three pillars verified for tenant isolation
+- ✅ CRITICAL check results documented with evidence
+- ✅ Non-critical check results documented
+- ✅ Gate decision calculated correctly
+- ✅ Cross-pillar consistency verified
+- ✅ Recovery protocol activated (if FAIL)
+
+---
+
+## FAILURE MODES
+
+- ❌ **CRITICAL category fails:** Enter recovery protocol, document gaps
+- ❌ **Missing pillar evidence:** Cannot validate without pillar config
+- ❌ **Tenant isolation gap:** Block until isolation is restored
+- ❌ **Recovery attempt exhausted:** Escalate to mandatory course correction
 
 ---
 

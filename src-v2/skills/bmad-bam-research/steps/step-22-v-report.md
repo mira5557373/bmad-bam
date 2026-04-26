@@ -2,11 +2,15 @@
 
 ## MANDATORY EXECUTION RULES (READ FIRST):
 
-- 🛑 NEVER generate content without user input
+- 🛑 NEVER finalize report without completing ALL validation checks from step-21
 - 📖 CRITICAL: ALWAYS read the complete step file before taking any action
-- 🔄 CRITICAL: When loading next step with 'C', ensure entire file is read
-- ⏸️ ALWAYS pause after presenting findings and await user direction
-- 🎯 Focus ONLY on current step scope - do not look ahead
+- 🔄 CRITICAL: Compile ALL check results - do not skip any category
+- ⏸️ ALWAYS pause after presenting report and await user direction
+- 🎯 Determine outcome using EXACT criteria (90% = PASS, 75% = CONDITIONAL)
+- ✅ Include specific remediation steps for each critical issue
+- 📋 Generate structured report following template exactly
+- 💾 Save report to designated output location
+- ⚠️ NEEDS REVISION outcomes must include specific Edit mode step references
 
 ## EXECUTION PROTOCOLS:
 
@@ -14,6 +18,12 @@
 - 💾 Update document frontmatter after each section completion
 - 📝 Maintain append-only document building
 - ✅ Track progress in `stepsCompleted` array
+
+---
+
+## YOUR TASK
+
+Compile all validation results from step-21 into a structured research validation report. Calculate final pass rates for all 4 categories (Completeness, Quality, Multi-Tenant, Consistency). Determine the official outcome (PASS/CONDITIONAL/NEEDS REVISION) using exact criteria. Generate the formal validation report with findings, severity assignments, and clear next steps. Save the report to the designated output location.
 
 ---
 
@@ -188,6 +198,34 @@ Save the validation report to:
 - `{output_folder}/planning-artifacts/research-report-validation.md`
 
 Or append validation summary to the research report itself.
+
+---
+
+## SUCCESS METRICS
+
+- ✅ All validation results from step-21 compiled into report structure
+- ✅ Completeness results table complete (X/9 with status for each)
+- ✅ Quality results table complete (Y/8 with source credibility findings)
+- ✅ Multi-Tenant results table complete (Z/8 with BAM-specific findings)
+- ✅ Consistency results table complete (W/7 with cross-reference findings)
+- ✅ Pass rates calculated correctly for each category
+- ✅ Overall pass rate calculated (total pass / 32 checks as percentage)
+- ✅ Outcome determined using exact criteria (>=90% PASS, >=75% CONDITIONAL, <75% NEEDS REVISION)
+- ✅ Critical issues table complete with severity and remediation steps
+- ✅ Warning issues table complete with recommended actions
+- ✅ Next steps clearly mapped to outcome status
+- ✅ Report saved to `{output_folder}/planning-artifacts/research-report-validation.md`
+- ✅ Report presented to user with confirmation prompt
+
+---
+
+## FAILURE MODES
+
+- ❌ **Incomplete results from step-21:** Flag missing category results, require step-21 re-run before report generation
+- ❌ **Incorrect outcome calculation:** Double-check percentage thresholds (90% PASS, 75% CONDITIONAL), recalculate if discrepancy
+- ❌ **CRITICAL issues without remediation:** Block PASS status until remediation steps documented for all critical issues
+- ❌ **Save failure:** Attempt alternate location, report error with path details
+- ❌ **CONDITIONAL without mitigation plan:** CONDITIONAL status requires documented gaps and timeline - block until provided
 
 ---
 

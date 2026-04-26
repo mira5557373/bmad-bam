@@ -2,11 +2,16 @@
 
 ## MANDATORY EXECUTION RULES (READ FIRST):
 
-- 🛑 NEVER generate content without user input
+- 🛑 NEVER apply changes to research report without explicit user confirmation
 - 📖 CRITICAL: ALWAYS read the complete step file before taking any action
-- 🔄 CRITICAL: When loading next step with 'C', ensure entire file is read
+- 🔄 CRITICAL: Preserve ALL unchanged research content exactly as-is
 - ⏸️ ALWAYS pause after presenting findings and await user direction
-- 🎯 Focus ONLY on current step scope - do not look ahead
+- 🎯 Focus ONLY on applying user-selected changes from step-10
+- ✅ VALIDATE that new information has credible sources before incorporating
+- 📋 ENSURE all claims are supported by citations (required for research reports)
+- 🔍 USE web search to verify technology claims when updating evaluations
+- ⚠️ FLAG if recommendation changes contradict evaluation scores
+- 🔗 PROPAGATE cascading updates to affected sections (scores → rankings → recommendations)
 
 ## EXECUTION PROTOCOLS:
 
@@ -15,6 +20,12 @@
 - 📝 Maintain append-only document building
 - ✅ Track progress in `stepsCompleted` array
 - 🔍 Use web search to verify current best practices when making technology decisions
+
+---
+
+## YOUR TASK
+
+Apply the user's selected changes to the research report loaded in step-10. For evaluation changes, verify claims with web search and add citations. For recommendation changes, ensure alignment with updated scores. Cascade updates to affected sections (executive summary, rankings, risk assessment). Update document metadata, add Change Log entry, present diff summary for user approval, and save the updated research report.
 
 ---
 
@@ -178,6 +189,32 @@ Check all cross-references:
 
 Save the updated report to:
 - `{output_folder}/planning-artifacts/research-report.md`
+
+---
+
+## SUCCESS METRICS
+
+- ✅ All user-requested research changes captured and understood
+- ✅ Web search performed to verify technology claims for updated evaluations
+- ✅ All new claims have citations in `_Source: [URL]_` format
+- ✅ Evaluation score changes reflected in rankings and recommendations
+- ✅ Cascading updates applied (executive summary, risk tables, POC scope)
+- ✅ Document consistency validated (scores match rankings match recommendations)
+- ✅ Frontmatter version incremented correctly
+- ✅ Change Log entry added with version, date, changes, rationale
+- ✅ Diff summary presented showing before/after for each change
+- ✅ User confirmed changes before saving
+- ✅ Research report saved to correct location
+
+---
+
+## FAILURE MODES
+
+- ❌ **Unsupported claim added:** Block change, require citation source before incorporating into research report
+- ❌ **Score-recommendation mismatch:** Warn that recommendation doesn't match highest-scored candidate, require explicit justification
+- ❌ **Outdated source cited:** Flag sources older than 2 years, recommend finding current source or noting limitation
+- ❌ **Cascading update missed:** Detect inconsistency (e.g., executive summary doesn't match updated recommendation), require resolution
+- ❌ **Save failure:** Retry with backup to alternate location, report error details
 
 ---
 

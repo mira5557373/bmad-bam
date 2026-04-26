@@ -2,11 +2,15 @@
 
 ## MANDATORY EXECUTION RULES (READ FIRST):
 
-- 🛑 NEVER generate content without user input
+- 🛑 NEVER skip source credibility checks - citations are required for research validity
 - 📖 CRITICAL: ALWAYS read the complete step file before taking any action
-- 🔄 CRITICAL: When loading next step with 'C', ensure entire file is read
+- 🔄 CRITICAL: Validate ALL 4 categories (completeness, quality, multi-tenant, consistency)
 - ⏸️ ALWAYS pause after presenting findings and await user direction
-- 🎯 Focus ONLY on current step scope - do not look ahead
+- 🎯 Focus ONLY on validation - do not modify the research report
+- ✅ MARK each check as PASS/FAIL with specific evidence
+- 📋 VERIFY research methodology follows best practices
+- 🔍 CHECK citation credibility and recency
+- ⚠️ FLAG findings without supporting evidence as FAIL
 
 ## EXECUTION PROTOCOLS:
 
@@ -14,6 +18,12 @@
 - 💾 Update document frontmatter after each section completion
 - 📝 Maintain append-only document building
 - ✅ Track progress in `stepsCompleted` array
+
+---
+
+## YOUR TASK
+
+Systematically validate the research report against all 4 validation categories: Completeness (9 criteria), Quality (8 criteria), Multi-Tenant (8 criteria), and Consistency (7 criteria). For each check, record PASS/FAIL with specific evidence. Calculate category scores and overall pass rate. Identify critical issues requiring resolution. Prepare detailed results for Step 22 report generation.
 
 ---
 
@@ -142,6 +152,31 @@ Flag any critical issues that require resolution:
 - **Critical:** Must be resolved before report can be accepted
 - **Warning:** Should be addressed but not blocking
 - **Info:** Suggestions for improvement
+
+---
+
+## SUCCESS METRICS
+
+- ✅ Completeness criteria checked (9 items) with PASS/FAIL for each
+- ✅ Quality criteria validated (8 items) including source credibility verification
+- ✅ Multi-tenant requirements verified (8 BAM-specific items)
+- ✅ Consistency checks completed (7 items) for cross-section alignment
+- ✅ Cross-references validated (pattern registry, architecture, ADRs)
+- ✅ All findings include specific evidence references from document
+- ✅ Category scores calculated (X/9, Y/8, Z/8, W/7)
+- ✅ Overall pass rate calculated (total pass / total checks as percentage)
+- ✅ Critical issues list compiled with severity assignments
+- ✅ Validation summary ready for Step 22 report generation
+
+---
+
+## FAILURE MODES
+
+- ❌ **Recommendation without evidence:** Mark quality check as FAIL, flag as CRITICAL issue requiring citation
+- ❌ **Score-ranking mismatch:** Mark consistency check as FAIL, document specific discrepancy
+- ❌ **Missing multi-tenant evaluation:** Mark BAM-specific check as FAIL, flag tenant isolation as required topic
+- ❌ **Outdated sources (>2 years):** Mark quality check as FAIL, recommend source refresh
+- ❌ **Contradictory findings:** Flag as CRITICAL issue, block PASS status until resolved
 
 ---
 

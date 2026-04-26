@@ -1,12 +1,16 @@
 # Step 22: Generate Validation Report (Validate Mode)
 
-## MANDATORY EXECUTION RULES (READ FIRST)
+## MANDATORY EXECUTION RULES
 
-- 🛑 **NEVER generate content without user input** - Wait for explicit direction
-- 📖 **CRITICAL: ALWAYS read the complete step file** before taking any action
-- 🔄 **CRITICAL: When loading next step with 'C'**, ensure entire file is read
+- 🛑 NEVER generate report without complete validation results from Step 21
+- 📖 ALWAYS include all category summaries with pass/fail counts
+- 🔄 ALWAYS determine gate outcome using decision matrix criteria
 - ⏸️ **ALWAYS pause after presenting findings** and await user direction
-- 🎯 **Focus ONLY on current step scope** - do not look ahead
+- ✅ DOCUMENT all failed checks with remediation guidance
+- 📋 SPECIFY recovery protocol if outcome is FAIL
+- 🎯 LOCK passed categories to prevent unnecessary re-validation
+
+---
 
 ## EXECUTION PROTOCOLS
 
@@ -144,38 +148,26 @@ Compile the validation results into a comprehensive report, determine the overal
 
 ---
 
-## COLLABORATION MENUS (A/P/C)
+## SUCCESS METRICS
 
-After generating the report, present the user with:
+- ✅ All validation results compiled accurately
+- ✅ Gate outcome determined using decision matrix
+- ✅ Failed checks documented with remediation steps
+- ✅ Recommendations prioritized by impact
+- ✅ Recovery protocol defined (if FAIL outcome)
+- ✅ Locked categories identified for re-validation efficiency
+- ✅ Report saved to correct location
+- ✅ Next steps clearly communicated
 
-```
-Validation Outcome: {PASS | CONDITIONAL | FAIL | WAIVED}
+---
 
-Your options:
-- **A (Advanced Elicitation)**: Explore specific recommendations in detail
-- **P (Party Mode)**: Get architect sign-off on outcome
-- **C (Continue)**: Save report and complete Validate mode
+## FAILURE MODES
 
-Select an option:
-```
-
-### PROTOCOL INTEGRATION
-
-#### If 'A' (Advanced Elicitation):
-- Invoke the `bmad-advanced-elicitation` skill
-- Pass context: validation report, recommendations
-- Process enhanced insights on next steps
-- Return to A/P/C menu
-
-#### If 'P' (Party Mode):
-- Invoke the `bmad-party-mode` skill
-- Context: "Review validation outcome for scaling design"
-- Present synthesized sign-off recommendations
-- Return to A/P/C menu
-
-#### If 'C' (Continue):
-- Save validation report
-- Complete Validate mode
+- ❌ **Incomplete validation data:** Return to Step 21, do not generate partial report
+- ❌ **Outcome criteria unclear:** Default to FAIL, escalate for clarification
+- ❌ **Report save failure:** Retry, present report in console if persistent
+- ❌ **Missing critical remediation:** Block CONDITIONAL outcome without remediation plan
+- ❌ **Recovery protocol undefined:** Block FAIL outcome without recovery steps
 
 ---
 

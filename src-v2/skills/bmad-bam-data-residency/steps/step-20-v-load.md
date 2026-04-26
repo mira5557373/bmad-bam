@@ -1,19 +1,29 @@
-# Step 20: Load Artifact (Validate Mode)
+# Step 20: Load Data Residency Artifact (Validate Mode)
 
-## MANDATORY EXECUTION RULES (READ FIRST):
+## MANDATORY EXECUTION RULES (READ FIRST)
 
 - 🛑 **NEVER generate content without user input** - Wait for explicit direction
 - 📖 **CRITICAL: ALWAYS read the complete step file** before taking any action
 - 🔄 **CRITICAL: When loading next step with 'C'**, ensure entire file is read
 - ⏸️ **ALWAYS pause after presenting findings** and await user direction
 - 🎯 **Focus ONLY on current step scope** - do not look ahead
+- 🔍 **LOAD data residency validation checklist** - This validates data sovereignty
+- 📋 **VERIFY artifact exists** before proceeding to validation checks
 
-## EXECUTION PROTOCOLS:
+## EXECUTION PROTOCOLS
 
-- 🎯 Show your analysis before taking any action
-- 💾 Update document frontmatter after each section completion
-- 📝 Maintain append-only document building
-- ✅ Track progress in `stepsCompleted` array
+- 🎯 Focus: Load data residency artifact and validation checklist
+- 💾 Track: `stepsCompleted: [20]` when complete
+- 📖 Context: Validate mode verifies existing artifact against data sovereignty criteria
+- 🚫 Do NOT: Generate new content; Edit mode handles modifications
+- 🔍 Use web search: Verify current GDPR/CCPA/LGPD requirements
+- ⚠️ Gate: Data Residency Compliance Gate
+
+---
+
+## YOUR TASK
+
+Load the data residency design artifact created in Create mode. If the artifact does not exist, inform the user and suggest switching to Create mode. Prepare all validation criteria from the data residency checklist for systematic verification of data sovereignty compliance.
 
 ---
 
@@ -119,6 +129,26 @@ Select an option:
 
 #### If 'C' (Continue):
 - Proceed to next step: `step-21-v-validate.md`
+
+---
+
+## SUCCESS METRICS
+
+- ✅ Data residency artifact loaded successfully
+- ✅ Document metadata extracted and displayed
+- ✅ Data residency validation checklist loaded
+- ✅ Regional coverage inventory verified
+- ✅ Compliance zone completeness assessed
+- ✅ Validation readiness confirmed by user
+
+---
+
+## FAILURE MODES
+
+- ❌ **Artifact not found:** Redirect to Create mode
+- ❌ **Missing frontmatter:** Cannot extract version/regions
+- ❌ **Incomplete Create mode:** stepsCompleted missing required steps
+- ❌ **Checklist not found:** Verify BAM installation
 
 ---
 

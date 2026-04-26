@@ -2,14 +2,16 @@
 
 ## MANDATORY EXECUTION RULES (READ FIRST)
 
-- 🛑 NEVER modify the document during this step - load only
+- 🛑 NEVER modify the master architecture document during this step - load only
 - 📖 CRITICAL: Read the complete step file before taking any action
-- 🔄 CRITICAL: Parse ALL sections of the existing document
+- 🔄 CRITICAL: Parse ALL sections of the existing master architecture document
 - ⏸️ **ALWAYS pause after presenting findings** and await user direction
-- ✅ Verify document integrity before presenting for editing
-- 📋 Extract frontmatter state and architecture decisions
-- 💬 Present clear summary for user to identify changes
-- ⚠️ If document not found, recommend Create mode
+- ✅ Verify document integrity and QG-F1 compliance state before presenting for editing
+- 📋 Extract frontmatter state, frozen architecture decisions, and module boundaries
+- 💬 Present clear summary for user to identify which master architecture sections to modify
+- ⚠️ If master architecture not found, recommend Create mode
+- 🔒 IDENTIFY which sections are FROZEN (tenant model, AI runtime) vs MUTABLE (patterns, appendices)
+- 🎯 WARN user that editing frozen sections invalidates QG-F1 and requires full re-validation
 
 ---
 
@@ -26,6 +28,12 @@
 ## YOUR TASK
 
 Locate, load, and parse the existing master architecture document. Extract current decisions and present a structured summary for the user to identify what needs modification.
+
+---
+
+## YOUR TASK
+
+Locate and load the existing master architecture document. Parse frontmatter to determine QG-F1 status and frozen decision state. Extract current tenant model, AI runtime, and module boundaries. Present a structured summary showing FROZEN sections (require re-validation to change) vs MUTABLE sections (can edit directly). Display an interactive menu for the user to select which sections to modify.
 
 ---
 
@@ -66,37 +74,75 @@ decisions:
 | Quality Patterns | Mutable | Direct edit allowed |
 | Appendices | Mutable | Direct edit allowed |
 
-### 4. Present Current State
+### 4. Present Current State and Edit Menu
 
-```markdown
-## Edit Mode Summary
+Display the master architecture edit summary:
 
-**Document:** {path}
-**Last Modified:** {date}
+```
+================================================================================
+MASTER ARCHITECTURE - EDIT MODE
+================================================================================
+Document: master-architecture.md
+Version: {version}
+Last Modified: {date}
+QG-F1 Status: {PASS|CONDITIONAL|PENDING}
+================================================================================
 
-### Current Decisions
+CURRENT FROZEN DECISIONS (Changes require QG-F1 re-validation):
 - Tenant Model: {tenant_model}
 - AI Runtime: {ai_runtime}
-- Modules: {module_count}
+- Project Context: {project_name} / {project_type}
 
-### Editable Areas
-- Module Boundaries, Patterns, Appendices
+CURRENT MODULE BOUNDARIES:
+- {module_1}: {responsibility}
+- {module_2}: {responsibility}
+- {module_3}: {responsibility}
+...
 
-### Protected Areas (require re-validation)
-- Tenant Model, AI Runtime, Project Context
+================================================================================
+EDITABLE SECTIONS:
 
-**What do you want to modify?**
+FROZEN SECTIONS (HIGH IMPACT - triggers QG-F1 re-validation):
+[1] Tenant Model - Change isolation strategy (RLS/Schema/Database)
+[2] AI Runtime - Change orchestration framework
+[3] Project Context - Modify project scope or constraints
+
+MUTABLE SECTIONS (MEDIUM/LOW IMPACT - direct edit allowed):
+[4] Module Boundaries - Add/remove/modify modules
+[5] Cross-Cutting Patterns - Update architectural patterns
+[6] Quality Attributes - Adjust latency, throughput targets
+[7] Technology Stack - Update technology decisions
+[8] Deployment Topology - Modify infrastructure approach
+[9] Appendices - Update references, diagrams, notes
+
+================================================================================
+Select section(s) to edit (comma-separated) or 'C' to cancel:
 ```
 
 ---
 
 ## SUCCESS METRICS
 
-- Document located and loaded
-- Frontmatter state extracted
-- Sections categorized (frozen vs mutable)
-- Current decisions presented clearly
-- User understands edit implications
+- ✅ Master architecture document located in expected path
+- ✅ Frontmatter parsed with version, date, QG-F1 status extracted
+- ✅ Tenant model decision identified and categorized as FROZEN
+- ✅ AI runtime decision identified and categorized as FROZEN
+- ✅ Module boundaries extracted with responsibilities listed
+- ✅ Sections categorized correctly (frozen vs mutable)
+- ✅ Current decisions and module registry presented clearly
+- ✅ Edit menu displayed with numbered options
+- ✅ User understands impact implications for each section type
+- ✅ User has selected section(s) to edit
+
+---
+
+## FAILURE MODES
+
+- ❌ **Document not found:** Report error with expected path, recommend Create mode (`step-01-c-context.md`), or request alternate path from user
+- ❌ **Invalid/corrupted frontmatter:** Attempt recovery by parsing document body, flag missing metadata fields, warn user of incomplete state
+- ❌ **QG-F1 already FAILED:** Warn that previous validation failed - edits should address failure reasons before adding new changes
+- ❌ **Missing tenant model or AI runtime:** Flag as incomplete master architecture - recommend completing via Create mode before editing
+- ❌ **Module boundaries undefined:** Warn that architecture is incomplete - cannot safely edit without understanding current module structure
 
 ---
 

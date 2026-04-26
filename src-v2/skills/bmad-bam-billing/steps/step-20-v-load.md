@@ -18,6 +18,12 @@
 
 ---
 
+## YOUR TASK
+
+Load the billing design artifact created in Create mode. If the artifact does not exist, inform the user and suggest switching to Create mode. Prepare all validation criteria from billing-specific checklists for systematic verification of metering, subscription management, invoicing, and compliance requirements.
+
+---
+
 ## Purpose
 
 Load the billing design artifact and validation checklist to prepare for systematic validation against multi-tenant billing best practices and quality gate criteria.
@@ -102,6 +108,29 @@ Document validation setup:
 
 **Ready for validation.**
 ```
+
+---
+
+## SUCCESS METRICS
+
+- ✅ Billing design artifact loaded successfully
+- ✅ Document metadata extracted and displayed
+- ✅ All subscription tiers parsed with pricing
+- ✅ Metering event schema loaded
+- ✅ Payment provider configuration extracted
+- ✅ Validation checklist loaded and understood
+- ✅ Validation readiness confirmed by user
+- ✅ Create mode steps completed in artifact
+
+---
+
+## FAILURE MODES
+
+- ❌ **Artifact not found:** Redirect to Create mode
+- ❌ **Missing frontmatter:** Cannot extract version/pricing model
+- ❌ **Incomplete Create mode:** stepsCompleted missing required steps
+- ❌ **Billing checklist not found:** Verify BAM installation
+- ❌ **Missing tier definitions:** Flag subscription tiers needing completion
 
 ---
 

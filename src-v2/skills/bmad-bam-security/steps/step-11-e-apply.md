@@ -1,13 +1,18 @@
 # Step 11: Apply Security Design Modifications
 
-## MANDATORY EXECUTION RULES (READ FIRST)
+## MANDATORY EXECUTION RULES
 
-- 🛑 **NEVER generate content without user input** - Wait for explicit direction
-- 📖 **CRITICAL: ALWAYS read the complete step file** before taking any action
-- 🔄 **CRITICAL: When loading next step with 'C'**, ensure entire file is read
+- 🛑 NEVER apply changes that weaken security posture or tenant isolation
+- 📖 ALWAYS validate changes against QG-S3 critical checks before applying
+- 🔄 ALWAYS preserve document structure and unmodified security controls
 - ⏸️ **ALWAYS pause after presenting findings** and await user direction
-- 🎯 **Focus ONLY on current step scope** - do not look ahead
-- 🚦 **HALT on CRITICAL failure** - Document and enter recovery protocol
+- ✅ UPDATE frontmatter version after any successful edit
+- 📋 DOCUMENT change rationale in Change Log section
+- 💬 PRESENT diff summary before final save
+- ⚠️ FLAG if changes require QG-S3 re-validation
+- 🔒 LOCK critical security controls (encryption, tenant isolation) without explicit user override
+
+---
 
 ## EXECUTION PROTOCOLS
 
@@ -17,6 +22,12 @@
 - 🚫 Do NOT: Remove existing valid content; only modify as requested
 - 🔍 Use web search: Verify updated patterns against current best practices
 - ⚠️ Gate: QG-S3 (Security Baseline) - re-validate after changes
+
+---
+
+## YOUR TASK
+
+Apply the user's requested changes to the security design, validate that changes do not weaken security posture or create compliance gaps, update document metadata, and present a summary of modifications with any QG-S3 re-validation requirements.
 
 ---
 
@@ -125,6 +136,30 @@ _Source: [URL]_
 | Section | Change Type | Description |
 |---------|-------------|-------------|
 | {section} | {add/modify/remove} | {brief description} |
+
+---
+
+## SUCCESS METRICS
+
+- ✅ All requested changes captured and validated
+- ✅ Security posture maintained or improved (never weakened)
+- ✅ Authentication controls updated correctly with valid configurations
+- ✅ RBAC policies preserve tenant isolation boundaries
+- ✅ Encryption standards meet compliance requirements (AES-256, TLS 1.3)
+- ✅ Threat mitigations remain complete (no orphaned threats)
+- ✅ Frontmatter version incremented appropriately
+- ✅ Change Log updated with modification summary
+- ✅ QG-S3 re-validation requirements communicated
+
+---
+
+## FAILURE MODES
+
+- ❌ **Security weakening detected:** Block change, present security impact analysis
+- ❌ **Tenant isolation breach:** Require explicit security team override with justification
+- ❌ **Encryption downgrade:** Block any reduction in encryption standards
+- ❌ **RBAC conflict:** Warn that permission changes may expose data across tenants
+- ❌ **Save failure:** Retry with backup to alternate location
 
 ---
 

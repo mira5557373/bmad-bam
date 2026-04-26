@@ -127,9 +127,76 @@ Add change log entry:
 | {{prev_version}} | {{prev_date}} | {{prev_author}} | {{prev_changes}} |
 ```
 
-### 7. Save Updated Document
+### 7. Present Change Summary
+
+**Display modifications before save:**
+
+```
+================================================================================
+MEMORY TIERS EDIT SUMMARY
+================================================================================
+Document: memory-tiers-design.md
+Previous Version: {old_version}
+New Version: {new_version}
+================================================================================
+
+CHANGES APPLIED:
+
+[Memory Tier Changes]
+{list of tier modifications}
+
+[Vector Store Changes]
+{list of vector store modifications}
+
+[Context Management Changes]
+{list of context window modifications}
+
+[Compliance Changes]
+{list of compliance modifications}
+
+================================================================================
+VALIDATION STATUS:
+
+QG-M3 Status: {PASS|CONDITIONAL|PENDING}
+Re-validation Required: {Yes/No}
+{if yes: Run `bmad-bam-memory-tiers` Validate mode (step-20-v-*)}
+
+================================================================================
+[S] Save changes to {output_folder}/planning-artifacts/ai/memory-tiers-design.md
+[R] Review changes before saving
+[U] Undo and return to edit selection
+================================================================================
+```
+
+### 8. Save Updated Document
 
 Save to: `{output_folder}/planning-artifacts/ai/memory-tiers-design.md`
+
+---
+
+## SUCCESS METRICS
+
+- ✅ All requested changes captured and validated
+- ✅ Memory tier hierarchy maintained
+- ✅ Tenant isolation preserved across all tiers
+- ✅ Vector store configuration consistent
+- ✅ TTL policies coherent across tiers
+- ✅ Frontmatter version incremented
+- ✅ Change Log updated with modification summary
+- ✅ ADR(s) created for significant changes
+- ✅ Document saved to correct location
+- ✅ Re-validation requirements communicated
+
+---
+
+## FAILURE MODES
+
+- ❌ **Isolation break:** Block change, require isolation verification before saving
+- ❌ **Tier hierarchy violation:** Warn if lower tier exceeds upper tier capacity
+- ❌ **Vector store mismatch:** Require embedding dimension consistency
+- ❌ **TTL conflict:** Warn if eviction policy creates orphaned references
+- ❌ **Compliance break:** Block changes that violate retention requirements
+- ❌ **Save failure:** Retry with backup to alternate location
 
 ---
 

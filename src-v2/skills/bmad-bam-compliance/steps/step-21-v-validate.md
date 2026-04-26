@@ -1,19 +1,29 @@
 # Step 21: Execute Compliance Validation (Validate Mode)
 
-## MANDATORY EXECUTION RULES (READ FIRST):
+## MANDATORY EXECUTION RULES (READ FIRST)
 
-- 🛑 NEVER generate content without user input
-- 📖 CRITICAL: ALWAYS read the complete step file before taking any action
-- 🔄 CRITICAL: When loading next step with 'C', ensure entire file is read
-- ⏸️ ALWAYS pause after presenting findings and await user direction
-- 🎯 Focus ONLY on current step scope - do not look ahead
+- 🛑 **NEVER skip CRITICAL checks** - All CRITICAL categories must be verified
+- 📖 **CRITICAL: ALWAYS read the complete step file** before taking any action
+- 🔄 **CRITICAL: When loading next step with 'C'**, ensure entire file is read
+- ⏸️ **ALWAYS pause after presenting findings** and await user direction
+- 🎯 **Focus ONLY on current step scope** - do not look ahead
+- 🚦 **HALT on CRITICAL failure** - Document and enter recovery protocol
+- 🔍 **Verify current compliance requirements** with web search before finalizing
 
-## EXECUTION PROTOCOLS:
+## EXECUTION PROTOCOLS
 
-- 🎯 Show your analysis before taking any action
-- 💾 Document all validation findings
-- 📖 Maintain objective assessment
-- ✅ No web research in Validate mode - verify against existing criteria
+- 🎯 Focus: Execute QG-CC and QG-P1 validation checks against compliance artifact
+- 💾 Track: `stepsCompleted: [20, 21]` when complete
+- 📖 Context: Each check produces PASS, CONDITIONAL, FAIL, or WAIVED
+- 🚫 Do NOT: Skip any CRITICAL check; CRITICAL failures block progress
+- 🔍 Use web search: Verify compliance patterns against current regulations
+- ⚠️ Gate: QG-CC and QG-P1 - Any CRITICAL failure triggers recovery protocol
+
+---
+
+## YOUR TASK
+
+Execute all QG-CC and QG-P1 validation checks against the loaded compliance design artifact. Document each check result with evidence. Calculate the final gate decision based on CRITICAL and non-critical check outcomes.
 
 ---
 
@@ -192,6 +202,27 @@ Select an option:
 #### If 'C' (Continue):
 - Document validation summary
 - Proceed to next step: `step-22-v-report.md`
+
+---
+
+## SUCCESS METRICS
+
+- ✅ All 7 QG-CC categories validated with evidence
+- ✅ All QG-P1 compliance sections verified
+- ✅ CRITICAL check results documented with evidence
+- ✅ Non-critical check results documented
+- ✅ Gate decision calculated correctly
+- ✅ Framework coverage verified for all applicable frameworks
+- ✅ Recovery protocol activated (if FAIL)
+
+---
+
+## FAILURE MODES
+
+- ❌ **CRITICAL category fails:** Enter recovery protocol, document gaps
+- ❌ **Missing evidence:** Cannot validate without audit evidence
+- ❌ **Framework incomplete:** Required framework controls missing
+- ❌ **Recovery attempt exhausted:** Escalate to mandatory course correction
 
 ---
 

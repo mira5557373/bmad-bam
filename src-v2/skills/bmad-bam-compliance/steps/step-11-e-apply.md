@@ -1,19 +1,33 @@
 # Step 11: Apply Changes to Compliance Design (Edit Mode)
 
-## MANDATORY EXECUTION RULES (READ FIRST):
+## MANDATORY EXECUTION RULES
 
-- 🛑 NEVER generate content without user input
-- 📖 CRITICAL: ALWAYS read the complete step file before taking any action
-- 🔄 CRITICAL: When loading next step with 'C', ensure entire file is read
-- ⏸️ ALWAYS pause after presenting findings and await user direction
-- 🎯 Focus ONLY on current step scope - do not look ahead
+- 🛑 NEVER apply changes that break compliance framework consistency
+- 📖 ALWAYS validate changes against QG-CC and QG-P1 critical checks before applying
+- 🔄 ALWAYS preserve document structure and unmodified sections
+- ⏸️ **ALWAYS pause after presenting findings** and await user direction
+- ✅ UPDATE frontmatter version after any successful edit
+- 📋 DOCUMENT change rationale in ADR and Change Log sections
+- 💬 PRESENT diff summary before final save
+- ⚠️ FLAG if changes require compliance re-certification
+- 🔒 LOCK critical audit controls without explicit compliance officer override
 
-## EXECUTION PROTOCOLS:
+---
 
-- 🎯 Show your analysis before taking any action
-- 💾 Update document frontmatter after each section completion
-- 📖 Maintain append-only document building
-- ✅ Track progress in `stepsCompleted` array
+## EXECUTION PROTOCOLS
+
+- 🎯 Focus: Apply user-requested changes while maintaining compliance consistency
+- 💾 Track: Changes applied, version increment, QG-CC impact
+- 📖 Context: Preserve all unmodified content exactly
+- 🚫 Do NOT: Auto-modify unrelated sections or weaken controls
+- ⚠️ Gate: Critical compliance changes require re-validation warning
+- 🔍 Use web search: If user requests updated regulatory patterns for specific changes
+
+---
+
+## YOUR TASK
+
+Apply the user's requested changes to the compliance design, validate consistency across all frameworks, update document metadata and ADRs, and present a summary of modifications with any re-certification requirements.
 
 ---
 
@@ -122,6 +136,72 @@ Run verification checks:
 - [ ] Version incremented appropriately
 - [ ] Control mappings updated
 - [ ] Roadmap adjusted if needed
+
+### 8. Present Change Summary
+
+**Display modifications before save:**
+
+```
+================================================================================
+COMPLIANCE DESIGN EDIT SUMMARY
+================================================================================
+Document: compliance-design.md
+Previous Version: {old_version}
+New Version: {new_version}
+================================================================================
+
+CHANGES APPLIED:
+
+[Framework Changes]
+{list of framework modifications}
+
+[Data Governance Changes]
+{list of data classification modifications}
+
+[Audit Control Changes]
+{list of audit control modifications}
+
+[Monitoring Changes]
+{list of monitoring modifications}
+
+================================================================================
+VALIDATION STATUS:
+
+QG-CC Status: {PASS|CONDITIONAL|PENDING}
+QG-P1 Impact: {None|Affected|Re-certification Required}
+Re-validation Required: {Yes/No}
+{if yes: Run `bmad-bam-compliance` Validate mode (step-20-v-*)}
+
+================================================================================
+[S] Save changes to {output_folder}/planning-artifacts/compliance-design.md
+[R] Review changes before saving
+[U] Undo and return to edit selection
+================================================================================
+```
+
+---
+
+## SUCCESS METRICS
+
+- ✅ All requested changes captured and validated
+- ✅ Compliance consistency checks passed or exceptions documented
+- ✅ Framework mappings updated correctly
+- ✅ Dependent control mappings propagated
+- ✅ Frontmatter version incremented
+- ✅ ADR created with compliance rationale
+- ✅ Change Log updated with modification summary
+- ✅ Document saved to correct location
+- ✅ Re-certification requirements communicated
+
+---
+
+## FAILURE MODES
+
+- ❌ **Compliance consistency violation:** Block change, present resolution options
+- ❌ **Control gap created:** Require explicit compliance officer override with justification
+- ❌ **Framework conflict:** Warn that control cannot satisfy both framework requirements
+- ❌ **Audit trail break:** Require audit mechanism update before saving
+- ❌ **Save failure:** Retry with backup to alternate location
 
 ---
 

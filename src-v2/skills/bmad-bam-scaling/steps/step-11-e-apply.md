@@ -1,12 +1,18 @@
 # Step 11: Apply Scaling Design Modifications (Edit Mode)
 
-## MANDATORY EXECUTION RULES (READ FIRST)
+## MANDATORY EXECUTION RULES
 
-- 🛑 **NEVER generate content without user input** - Wait for explicit direction
-- 📖 **CRITICAL: ALWAYS read the complete step file** before taking any action
-- 🔄 **CRITICAL: When loading next step with 'C'**, ensure entire file is read
+- 🛑 NEVER apply changes that violate scaling consistency or tier hierarchies
+- 📖 ALWAYS validate changes against noisy neighbor prevention requirements
+- 🔄 ALWAYS preserve document structure and unmodified sections
 - ⏸️ **ALWAYS pause after presenting findings** and await user direction
-- 🎯 **Focus ONLY on current step scope** - do not look ahead
+- ✅ UPDATE frontmatter version after any successful edit
+- 📋 DOCUMENT change rationale in Change Log section
+- 💬 PRESENT diff summary before final save
+- ⚠️ FLAG if changes require scaling policy re-validation
+- 🔒 LOCK critical autoscaling thresholds without explicit user override
+
+---
 
 ## EXECUTION PROTOCOLS
 
@@ -15,6 +21,12 @@
 - 📖 Context: Reference original values when applying changes
 - 🚫 Do NOT: Modify sections not identified in Step 10
 - 🔍 Use web search: Verify significant changes against current best practices
+
+---
+
+## YOUR TASK
+
+Apply the user's requested changes to the scaling design, validate consistency across all scaling dimensions (horizontal, database, tenant-aware), update document metadata, and present a summary of modifications with any re-validation requirements.
 
 ---
 
@@ -135,6 +147,30 @@ Ensure modifications are consistent with unmodified sections:
 | Tier alignment | PASS/FAIL | {details} |
 | Runbook sync | PASS/FAIL | {details} |
 | No orphaned sections | PASS/FAIL | {details} |
+
+---
+
+## SUCCESS METRICS
+
+- ✅ All requested changes captured and validated
+- ✅ Consistency checks passed or exceptions documented
+- ✅ Autoscaling policies updated correctly with valid thresholds
+- ✅ Tier-based resource limits maintain proper hierarchy (Free < Pro < Enterprise)
+- ✅ Noisy neighbor prevention controls preserved
+- ✅ Frontmatter version incremented appropriately
+- ✅ Change Log updated with modification summary
+- ✅ Document saved to correct location
+- ✅ Re-validation requirements communicated
+
+---
+
+## FAILURE MODES
+
+- ❌ **Consistency violation:** Block change, present resolution options
+- ❌ **Tier hierarchy break:** Warn that lower tiers cannot exceed upper tier limits
+- ❌ **Noisy neighbor gap:** Require isolation controls before saving
+- ❌ **Invalid autoscaling thresholds:** Block scale-down threshold >= scale-up threshold
+- ❌ **Save failure:** Retry with backup to alternate location
 
 ---
 

@@ -1,21 +1,33 @@
-# Step 11: Apply Observability Modifications
+# Step 11: Apply Observability Modifications (Edit Mode)
 
-## MANDATORY EXECUTION RULES (READ FIRST)
+## MANDATORY EXECUTION RULES
 
-- 🛑 **NEVER generate content without user input** - Wait for explicit direction
-- 📖 **CRITICAL: ALWAYS read the complete step file** before taking any action
-- 🔄 **CRITICAL: When loading next step with 'C'**, ensure entire file is read
+- 🛑 NEVER apply changes that break cross-pillar consistency
+- 📖 ALWAYS validate changes maintain tenant isolation across metrics, logs, traces
+- 🔄 ALWAYS preserve document structure and unmodified sections
 - ⏸️ **ALWAYS pause after presenting findings** and await user direction
-- 🎯 **Focus ONLY on current step scope** - do not look ahead
+- ✅ UPDATE frontmatter version after any successful edit
+- 📋 DOCUMENT change rationale in Change Log section
+- 💬 PRESENT diff summary before final save
+- ⚠️ FLAG if changes require QG-OC re-validation
+- 🔒 LOCK critical tenant dimensions without explicit SRE override
+
+---
 
 ## EXECUTION PROTOCOLS
 
-- 🎯 Focus: Apply targeted changes while preserving consistency
+- 🎯 Focus: Apply user-requested changes while maintaining cross-pillar consistency
 - 💾 Track: `stepsCompleted: [10, 11]` when complete
-- 📖 Context: Modification scope from Step 10, cross-pillar consistency
-- 🚫 Do NOT: Modify sections not identified for change
-- 🔍 Use web search: Verify updated patterns if adding new observability features
-- ⚠️ Gate: QG-OC (Observability Completeness)
+- 📖 Context: Preserve all unmodified content exactly
+- 🚫 Do NOT: Auto-modify unrelated sections or break tenant isolation
+- ⚠️ Gate: Critical observability changes require re-validation warning
+- 🔍 Use web search: If user requests updated observability patterns for specific changes
+
+---
+
+## YOUR TASK
+
+Apply the user's requested changes to the observability design, validate consistency across all three pillars (metrics, logs, traces), update document metadata, and present a summary of modifications with any re-validation requirements.
 
 ---
 
@@ -130,22 +142,79 @@ metadata_updates:
 Present diff summary:
 
 ```
-Changes Applied:
-================
+================================================================================
+OBSERVABILITY DESIGN EDIT SUMMARY
+================================================================================
+Document: observability-design.md
+Previous Version: {old_version}
+New Version: {new_version}
+================================================================================
 
-Section: [Section Name]
------------------------
-Before: [Previous value/configuration]
-After:  [New value/configuration]
-Impact: [Any cross-pillar impacts]
+CHANGES APPLIED:
 
-[Repeat for each modified section]
+[Pillar Changes]
+- Metrics: {list of metric modifications}
+- Logs: {list of logging modifications}
+- Traces: {list of tracing modifications}
+
+[Tenant Dimension Changes]
+{list of dimension modifications}
+
+[SLO/Alerting Changes]
+{list of SLO and alert rule modifications}
+
+[Dashboard Changes]
+{list of dashboard modifications}
+
+================================================================================
+CROSS-PILLAR CONSISTENCY CHECK:
+
+tenant_id: Metrics ({status}) | Logs ({status}) | Traces ({status})
+tenant_tier: Metrics ({status}) | Logs ({status}) | Traces ({status})
+Cardinality: {within_limits/exceeded}
+
+================================================================================
+VALIDATION STATUS:
+
+QG-OC Status: {PASS|CONDITIONAL|PENDING}
+Re-validation Required: {Yes/No}
+{if yes: Run `bmad-bam-observability` Validate mode (step-20-v-*)}
+
+================================================================================
+[S] Save changes to {output_folder}/planning-artifacts/observability-design.md
+[R] Review changes before saving
+[U] Undo and return to edit selection
+================================================================================
 ```
 
 **If updating observability patterns, verify with web search:**
 Search the web: "observability best practices multi-tenant {date}"
 
 _Source: [URL]_
+
+---
+
+## SUCCESS METRICS
+
+- ✅ All requested changes captured and validated
+- ✅ Cross-pillar consistency checks passed or exceptions documented
+- ✅ Tenant dimensions updated correctly across all pillars
+- ✅ Dependent changes propagated (metrics to dashboards, alerts)
+- ✅ Frontmatter version incremented
+- ✅ Cardinality limits respected
+- ✅ Change Log updated with modification summary
+- ✅ Document saved to correct location
+- ✅ Re-validation requirements communicated
+
+---
+
+## FAILURE MODES
+
+- ❌ **Cross-pillar inconsistency:** Block change, present resolution options
+- ❌ **Tenant isolation gap created:** Require explicit SRE override with justification
+- ❌ **Cardinality exceeded:** Warn that metric cardinality exceeds acceptable limits
+- ❌ **SLO query break:** Require SLO query update before saving
+- ❌ **Save failure:** Retry with backup to alternate location
 
 ---
 

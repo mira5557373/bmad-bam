@@ -40,9 +40,9 @@ Execute the QG-PL1 (Planning Gate) validation checks against the triage report. 
 
 ---
 
-## YOUR TASK:
+## YOUR TASK
 
-Execute all QG-PL1 validation checks and document results.
+Execute all 8 QG-PL1 validation checks against the triage report: verify module coverage, complexity scoring completeness across all 5 dimensions, priority assignments, dependency mapping without cycles, phase definitions, timeline estimates, resource allocation, and risk documentation. Document evidence for each check and determine the preliminary gate decision (PASS/CONDITIONAL/FAIL).
 
 ---
 
@@ -180,6 +180,28 @@ Based on validation results:
 | **FAIL** | Any critical fails | YES/NO |
 
 **Preliminary Decision:** {{outcome}}
+
+---
+
+## SUCCESS METRICS
+
+- ✅ All 4 critical checks (PL1-01 through PL1-04) executed with evidence
+- ✅ All 4 standard checks (PL1-05 through PL1-08) executed with evidence
+- ✅ Module coverage verified against requirements source
+- ✅ All 5 complexity dimensions scored for each module
+- ✅ No circular dependencies detected in dependency graph
+- ✅ Preliminary gate decision determined based on results
+- ✅ Issues identified and documented for report generation
+
+---
+
+## FAILURE MODES
+
+- ❌ **Critical check fails:** HALT validation, document failure, preliminary decision = FAIL
+- ❌ **Missing module coverage:** Cannot pass PL1-01, list missing modules
+- ❌ **Incomplete scoring:** Cannot pass PL1-02, list modules with missing dimensions
+- ❌ **Circular dependency:** Cannot pass PL1-04, show cycle path
+- ❌ **Standard check fails:** Note failure, preliminary decision may be CONDITIONAL
 
 ---
 

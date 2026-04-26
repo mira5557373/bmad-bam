@@ -1,12 +1,16 @@
 # Step 20: Load Scaling Design for Validation (Validate Mode)
 
-## MANDATORY EXECUTION RULES (READ FIRST)
+## MANDATORY EXECUTION RULES
 
-- 🛑 **NEVER generate content without user input** - Wait for explicit direction
-- 📖 **CRITICAL: ALWAYS read the complete step file** before taking any action
-- 🔄 **CRITICAL: When loading next step with 'C'**, ensure entire file is read
+- 🛑 NEVER proceed without locating the existing scaling-design.md file
+- 📖 ALWAYS read the complete document and extract all scaling configurations
+- 🔄 ALWAYS load the validation checklist before proceeding
 - ⏸️ **ALWAYS pause after presenting findings** and await user direction
-- 🎯 **Focus ONLY on current step scope** - do not look ahead
+- ✅ EXTRACT autoscaling policies, tier quotas, and capacity planning settings
+- 📋 PRESENT validation scope summary before executing validation
+- 🎯 IDENTIFY sections requiring validation based on document state
+
+---
 
 ## EXECUTION PROTOCOLS
 
@@ -15,6 +19,12 @@
 - 📖 Context: Prepare for comprehensive validation in Step 21
 - 🚫 Do NOT: Perform validation in this step - only load and prepare
 - 🔍 Use web search: Not required for validation loading
+
+---
+
+## YOUR TASK
+
+Load the scaling design artifact and QG-M4 validation checklist, extract all scaling configurations for validation, map artifact sections to checklist categories, and prepare the validation scope for execution in Step 21.
 
 ---
 
@@ -93,38 +103,25 @@ Gather context for validation:
 
 ---
 
-## COLLABORATION MENUS (A/P/C)
+## SUCCESS METRICS
 
-After loading documents, present the user with:
+- ✅ Scaling design document located and fully loaded
+- ✅ Document metadata extracted (version, date, author)
+- ✅ All scaling configuration sections parsed
+- ✅ Validation checklist loaded successfully
+- ✅ Checklist categories mapped to artifact sections
+- ✅ Validation scope determined and confirmed
+- ✅ Context gathered for validation execution
 
-```
-Your options:
-- **A (Advanced Elicitation)**: Understand specific validation requirements
-- **P (Party Mode)**: Get architect input on validation priorities
-- **C (Continue)**: Proceed to validation
+---
 
-Validation scope: [Full/Partial/Regression]
+## FAILURE MODES
 
-Select an option:
-```
-
-### PROTOCOL INTEGRATION
-
-#### If 'A' (Advanced Elicitation):
-- Invoke the `bmad-advanced-elicitation` skill
-- Pass context: document state, checklist categories
-- Process enhanced insights on validation focus areas
-- Return to A/P/C menu
-
-#### If 'P' (Party Mode):
-- Invoke the `bmad-party-mode` skill
-- Context: "Determine validation priorities for scaling design"
-- Present synthesized recommendations on focus areas
-- Return to A/P/C menu
-
-#### If 'C' (Continue):
-- Document validation scope
-- Proceed to next step: `step-21-v-validate.md`
+- ❌ **Document not found:** Inform user, suggest running Create mode first
+- ❌ **Checklist not found:** Fall back to embedded checklist criteria
+- ❌ **Incomplete document:** Flag missing sections, recommend Edit mode first
+- ❌ **Version mismatch:** Warn if document version predates checklist version
+- ❌ **Context artifacts missing:** Warn about missing master-architecture.md dependencies
 
 ---
 

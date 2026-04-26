@@ -15,6 +15,12 @@
 - 📖 **Context:** Validate mode - final step producing quality gate report
 - 🚫 **Do NOT:** Proceed to implementation without sign-off
 
+## YOUR TASK
+
+Compile all validation results into a formal QG-M3/QG-I2 report for agent tracing. Document the gate decision with rationale, list all findings with evidence, and provide recommendations based on the outcome. Save the report to the validation folder.
+
+---
+
 ## Purpose
 
 Generate the final validation report for agent tracing design.
@@ -115,6 +121,28 @@ Write to: `{output_folder}/planning-artifacts/quality/agent-tracing-validation-r
 | PASS | Proceed to implementation |
 | CONDITIONAL | Address non-critical issues, proceed with caution |
 | FAIL | Return to Edit mode to remediate critical issues |
+
+---
+
+## SUCCESS METRICS
+
+- ✅ Executive summary generated with gate decision
+- ✅ All QG-M3 trace schema results documented with evidence
+- ✅ All QG-I2 tenant isolation results documented
+- ✅ Span hierarchy validation documented
+- ✅ Sampling strategy compliance verified
+- ✅ Recommendations provided based on gate outcome
+- ✅ Report saved to validation folder
+- ✅ Recovery protocol status documented (if applicable)
+
+---
+
+## FAILURE MODES
+
+- ❌ **Report generation failed:** Verify all Step 21 results available
+- ❌ **Save failed:** Check output folder permissions
+- ❌ **Missing evidence:** Cannot generate complete report
+- ❌ **Template not found:** Verify BAM installation
 
 ---
 

@@ -1,13 +1,17 @@
 # Step 21: Validate Security Design Against Criteria
 
-## MANDATORY EXECUTION RULES (READ FIRST)
+## MANDATORY EXECUTION RULES
 
-- 🛑 **NEVER generate content without user input** - Wait for explicit direction
-- 📖 **CRITICAL: ALWAYS read the complete step file** before taking any action
-- 🔄 **CRITICAL: When loading next step with 'C'**, ensure entire file is read
+- 🛑 NEVER skip CRITICAL security checks during validation
+- 📖 ALWAYS document evidence for each check (section reference or finding)
+- 🔄 ALWAYS validate all 7 categories systematically
 - ⏸️ **ALWAYS pause after presenting findings** and await user direction
-- 🎯 **Focus ONLY on current step scope** - do not look ahead
-- 🚦 **HALT on CRITICAL failure** - Document and enter recovery protocol
+- ✅ MARK each check as PASS/FAIL with clear rationale
+- 📋 FLAG all CRITICAL failures immediately (any fails QG-S3)
+- 🎯 VALIDATE tenant isolation and encryption as highest priority items
+- 🚦 HALT on CRITICAL failure - Document and enter recovery protocol
+
+---
 
 ## EXECUTION PROTOCOLS
 
@@ -17,6 +21,12 @@
 - 🚫 Do NOT: Generate report yet; only perform validation
 - 🔍 Use web search: Verify compliance with current security standards
 - ⚠️ Gate: QG-S3 (Security Baseline) - execution
+
+---
+
+## YOUR TASK
+
+Execute comprehensive validation of the security design artifact against QG-S3 security baseline checklist. Evaluate each category (Authentication, Network, Data Protection, Logging, Vulnerability Management, Multi-Tenant Isolation, AI Security) and determine pass/fail status with evidence documentation.
 
 ---
 
@@ -176,6 +186,29 @@ _Source: [URL]_
 | **Total** | | 67 | /67 | |
 
 ⏸️ **PAUSE:** Present validation results and await confirmation before generating report.
+
+---
+
+## SUCCESS METRICS
+
+- ✅ All Authentication & Authorization checks evaluated (10 checks, 5 CRITICAL)
+- ✅ All Network Security checks evaluated (10 checks, 4 CRITICAL)
+- ✅ All Data Protection checks evaluated (10 checks, 5 CRITICAL)
+- ✅ All Logging & Monitoring checks evaluated (10 checks, 2 CRITICAL)
+- ✅ All Vulnerability Management checks evaluated (10 checks, 2 CRITICAL)
+- ✅ All Multi-Tenant Isolation checks evaluated (9 checks, 2 CRITICAL)
+- ✅ All AI-Specific Security checks evaluated if applicable (8 checks, 2 CRITICAL)
+- ✅ Web research verification completed for OWASP/compliance standards
+
+---
+
+## FAILURE MODES
+
+- ❌ **Missing section in artifact:** Mark all related checks as FAIL, document gap
+- ❌ **CRITICAL check failure:** Flag immediately with security impact assessment
+- ❌ **Encryption standard violation:** Block as critical compliance failure
+- ❌ **Tenant isolation breach detected:** Flag as highest severity finding
+- ❌ **RBAC gaps:** Document as potential unauthorized access risk
 
 ---
 

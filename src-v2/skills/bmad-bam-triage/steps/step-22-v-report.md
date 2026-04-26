@@ -40,9 +40,9 @@ Generate the final QG-PL1 validation report with gate decision, findings, and re
 
 ---
 
-## YOUR TASK:
+## YOUR TASK
 
-Generate the validation report with gate decision and recommendations.
+Generate the final QG-PL1 validation report with the gate decision (PASS/CONDITIONAL/FAIL), executive summary, detailed check results with evidence, issue register for failed checks, actionable recommendations, and recovery protocol if applicable. Write the report to the output location and present the final decision to the user.
 
 ---
 
@@ -177,6 +177,28 @@ Standard Checks: {{passed}}/4 passed
 
 Report written to: {output_folder}/planning-artifacts/triage-validation-report.md
 ```
+
+---
+
+## SUCCESS METRICS
+
+- ✅ Executive summary clearly states gate decision
+- ✅ All 8 check results documented with evidence
+- ✅ Issue register populated for any failed checks
+- ✅ Actionable recommendations provided for each outcome
+- ✅ Recovery protocol included if FAIL decision
+- ✅ Sign-off section ready for stakeholder approval
+- ✅ Report written to correct output location
+- ✅ Final decision presented to user with next steps
+
+---
+
+## FAILURE MODES
+
+- ❌ **Missing check results:** Cannot generate complete report, return to Step 21
+- ❌ **Write failure:** Retry write, attempt backup location
+- ❌ **Incomplete recommendations:** Each outcome must have clear next steps
+- ❌ **Missing recovery protocol:** Required when decision is FAIL
 
 ---
 

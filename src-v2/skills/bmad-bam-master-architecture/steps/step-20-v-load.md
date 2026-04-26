@@ -27,7 +27,7 @@
 
 ## YOUR TASK
 
-Locate and load the master architecture document and QG-F1 foundation gate checklist. Parse document sections, map them to validation criteria, and prepare the validation context for step-21-v-validate.md.
+Locate and load the master architecture document and QG-F1 foundation gate checklist. Parse all document sections, identify CRITICAL vs STANDARD checks, map document sections to QG-F1 validation criteria, and prepare the validation context for step-21. Report load status showing which sections are present/missing and confirm readiness to proceed with validation.
 
 ---
 
@@ -144,15 +144,26 @@ Proceed to validation?
 
 ## SUCCESS METRICS
 
-- Master architecture document located and fully loaded
-- QG-F1 checklist loaded with all criteria extracted
-- All document sections parsed and categorized
-- Section-to-checklist mapping complete
-- Critical checks identified (4 items)
-- Standard checks identified (6 items)
-- Missing sections flagged for validation failure
-- Validation context prepared for step-21
-- User presented with clear load summary
+- ✅ Master architecture document located in expected path
+- ✅ Document fully loaded without corruption or parse errors
+- ✅ QG-F1 checklist loaded with all 10 criteria extracted
+- ✅ All document sections parsed and presence verified
+- ✅ Section-to-checklist mapping complete for all criteria
+- ✅ 4 CRITICAL checks identified (tenant model, modules, AI runtime, frozen status)
+- ✅ 6 STANDARD checks identified (quality, cross-cutting, tech, deploy, data, integration)
+- ✅ Missing sections flagged with specific section names
+- ✅ Validation context YAML structure prepared for step-21
+- ✅ User presented with clear load summary showing ready/not-ready status
+
+---
+
+## FAILURE MODES
+
+- ❌ **Document not found:** STOP validation, report expected path, recommend Create mode, do NOT proceed to step-21
+- ❌ **Checklist not found:** Report configuration error, recommend running `npm run verify-install`, do NOT proceed
+- ❌ **Document corrupted:** Report parse errors, suggest Edit mode to fix structure, do NOT proceed
+- ❌ **Critical sections missing:** Flag specific missing sections (e.g., "Tenant Model section not found"), allow proceed with expected FAIL outcome
+- ❌ **Version mismatch:** Warn if document version doesn't match expected format, proceed with caution
 
 ---
 

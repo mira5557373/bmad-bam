@@ -2,11 +2,15 @@
 
 ## MANDATORY EXECUTION RULES (READ FIRST):
 
-- 🛑 NEVER generate content without user input
+- 🛑 NEVER modify the research report during validation - load and verify only
 - 📖 CRITICAL: ALWAYS read the complete step file before taking any action
-- 🔄 CRITICAL: When loading next step with 'C', ensure entire file is read
+- 🔄 CRITICAL: Load BOTH the research report AND validation checklist
 - ⏸️ ALWAYS pause after presenting findings and await user direction
-- 🎯 Focus ONLY on current step scope - do not look ahead
+- 🎯 Focus ONLY on preparing validation context - do not validate in this step
+- ✅ PARSE all sections for completeness inventory
+- 📋 EXTRACT citation list for credibility verification
+- 🔍 IDENTIFY methodology quality indicators
+- ⚠️ FLAG missing mandatory sections before proceeding
 
 ## EXECUTION PROTOCOLS:
 
@@ -14,6 +18,12 @@
 - 💾 Update document frontmatter after each section completion
 - 📝 Maintain append-only document building
 - ✅ Track progress in `stepsCompleted` array
+
+---
+
+## YOUR TASK
+
+Locate and load the research report and research validation checklist. Parse all document sections, extract citation inventory, assess methodology indicators, and prepare the validation context for step-21. Report load status showing section presence/completeness and confirm readiness for comprehensive validation.
 
 ---
 
@@ -157,6 +167,31 @@ Present validation scope to user:
 - [ ] Quality only
 - [ ] Multi-tenant only
 - [ ] Consistency only
+
+---
+
+## SUCCESS METRICS
+
+- ✅ Research report located and fully loaded without errors
+- ✅ Validation checklist loaded with all 4 category criteria extracted
+- ✅ Document metadata parsed (version, date, topic, author)
+- ✅ Section inventory completed (9 sections with presence/completeness status)
+- ✅ Citation inventory extracted (total count, verified count, missing count)
+- ✅ Recommendation summary parsed (primary, alternatives, rejected)
+- ✅ Risk summary extracted (by category and severity)
+- ✅ Validation context YAML structure prepared for step-21
+- ✅ User presented with clear load summary
+- ✅ Validation scope confirmed (full or partial)
+
+---
+
+## FAILURE MODES
+
+- ❌ **Report not found:** STOP validation, report expected path, recommend Create mode, do NOT proceed to step-21
+- ❌ **Checklist not found:** Report configuration error, recommend running `npm run verify-install`, do NOT proceed
+- ❌ **Document corrupted:** Report parse errors, suggest Edit mode to fix structure, do NOT proceed
+- ❌ **No evaluations found:** Flag as incomplete research report, allow proceed with expected FAIL outcome
+- ❌ **Zero citations:** Warn that research lacks credibility verification, flag for quality validation
 
 ---
 

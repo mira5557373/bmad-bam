@@ -219,6 +219,28 @@ Select an option:
 
 ---
 
+## SUCCESS METRICS
+
+- ✅ Executive summary generated with gate decision
+- ✅ All CRITICAL category results documented with evidence
+- ✅ All non-critical category results documented
+- ✅ Three pillars completeness verified
+- ✅ Recommendations provided based on gate outcome
+- ✅ Report saved to validation folder
+- ✅ Recovery protocol status documented (if applicable)
+- ✅ Compliance score calculated correctly
+
+---
+
+## FAILURE MODES
+
+- ❌ **Report generation failed:** Verify all Step 21 results available
+- ❌ **Save failed:** Check output folder permissions
+- ❌ **Missing pillar evidence:** Cannot generate complete report
+- ❌ **Template not found:** Verify BAM installation
+
+---
+
 ## Recovery Protocol
 
 **If QG-OC fails:**

@@ -40,9 +40,9 @@ Load the triage report artifact and QG-PL1 quality gate checklist in preparation
 
 ---
 
-## YOUR TASK:
+## YOUR TASK
 
-Load the triage report and validation checklist.
+Load the triage report artifact and QG-PL1 quality gate checklist, verify the document structure contains all required sections (module coverage, complexity scoring, prioritization, dependencies, phases, timeline, resources, risks), and present the validation scope to the user before executing checks.
 
 ---
 
@@ -116,6 +116,27 @@ Total Checks: 8
 
 Ready to execute validation? (y/n)
 ```
+
+---
+
+## SUCCESS METRICS
+
+- ✅ Triage report artifact located and loaded successfully
+- ✅ All 6 required sections identified in document structure
+- ✅ QG-PL1 checklist loaded with 8 validation criteria
+- ✅ Critical vs standard checks clearly identified
+- ✅ Supporting context documents loaded (requirements, architecture)
+- ✅ Validation scope summary presented to user
+- ✅ User confirmed ready to execute validation
+
+---
+
+## FAILURE MODES
+
+- ❌ **Artifact not found:** Exit validation, direct user to Create mode
+- ❌ **Missing sections:** Document structure check fails, list missing sections
+- ❌ **Checklist not found:** Cannot validate without criteria, abort with error
+- ❌ **Corrupted metadata:** Flag parsing errors, attempt partial load
 
 ---
 

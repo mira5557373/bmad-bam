@@ -25,7 +25,7 @@
 
 ## YOUR TASK
 
-Systematically validate the master architecture document against the QG-F1 Foundation Gate checklist. Evaluate all CRITICAL and standard checks, record status with evidence, and prepare results for Step 22 report generation.
+Systematically validate the master architecture document against the QG-F1 Foundation Gate checklist. Evaluate all 4 CRITICAL checks (ALL must pass) and all 6 STANDARD checks (80% must pass). For each check, record PASS/FAIL status with specific evidence from the document. Determine overall outcome (PASS/CONDITIONAL/FAIL) and identify recovery protocol if applicable. Prepare detailed results for Step 22 report generation.
 
 ---
 
@@ -124,14 +124,29 @@ After 3 failed attempts, escalate:
 
 ## SUCCESS METRICS
 
-- ✅ All 4 CRITICAL checks evaluated with documented evidence
-- ✅ All 6 standard checks evaluated with documented evidence
-- ✅ Each finding includes PASS/FAIL status and evidence
-- ✅ Validation summary compiled with counts and percentages
-- ✅ Outcome determined per QG-F1 criteria
-- ✅ Recovery protocol identified if applicable
-- ✅ Results ready for Step 22 report generation
+- ✅ All 4 CRITICAL checks evaluated with documented evidence from master architecture
+- ✅ C1 (Tenant Model): Model selected, rationale documented, trade-offs acknowledged
+- ✅ C2 (Module Boundaries): Modules identified, responsibilities assigned, interfaces specified
+- ✅ C3 (AI Runtime): Framework selected, integration planned, state management defined
+- ✅ C4 (Document Frozen): Version specified, no TODOs, date recorded
+- ✅ All 6 STANDARD checks evaluated with documented evidence
+- ✅ Each finding includes PASS/FAIL status and specific evidence reference
+- ✅ Validation summary compiled with counts (X/4 critical, Y/6 standard)
+- ✅ Pass percentage calculated correctly (standard checks >= 80% = 5/6)
+- ✅ Outcome determined per QG-F1 criteria (PASS/CONDITIONAL/FAIL)
+- ✅ Recovery protocol identified with specific step references if FAIL
+- ✅ Results structured and ready for Step 22 report generation
 - ✅ No document modifications made (read-only validation)
+
+---
+
+## FAILURE MODES
+
+- ❌ **CRITICAL check fails:** Document specific failure, identify recovery step (e.g., "C1 FAIL: Return to step-02-c-model.md"), trigger recovery protocol
+- ❌ **Standard checks below 80%:** Mark as CONDITIONAL if all CRITICAL pass, otherwise FAIL with mitigation requirements
+- ❌ **Missing evidence:** Mark check as FAIL with note "Evidence not found in document - section may be incomplete"
+- ❌ **Contradictory findings:** Flag inconsistency (e.g., "Tenant model says RLS but module uses schema isolation"), require resolution before PASS
+- ❌ **Third validation failure:** Trigger MANDATORY COURSE CORRECTION escalation per recovery protocol
 
 ---
 

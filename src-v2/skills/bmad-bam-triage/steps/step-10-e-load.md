@@ -8,6 +8,10 @@
 - ⏸️ **ALWAYS pause after presenting findings** and await user direction
 - 🎯 **Focus ONLY on current step scope** - do not look ahead
 - 📋 **VERIFY artifact exists** before proceeding to modifications
+- 🔢 **PARSE all 5 complexity dimensions** for each module in triage
+- 📊 **EXTRACT complexity scoring matrix** with weighted composite scores
+- 🏷️ **IDENTIFY module boundaries** and dependency relationships
+- 💬 **PRESENT edit menu** before accepting any modification selections
 
 ## EXECUTION PROTOCOLS
 
@@ -40,9 +44,9 @@ Load the existing triage report for modification. Edit mode allows updating comp
 
 ---
 
-## YOUR TASK:
+## YOUR TASK
 
-Load the existing triage report and identify modification scope.
+Load the existing triage report artifact, parse all complexity dimensions (Technical, Business, Integration, Multi-Tenant, AI), extract module boundaries with dependency relationships, and present an interactive menu allowing the user to select specific sections for modification. Enable targeted edits to complexity scores, priorities, phase assignments, or timeline estimates without recreating the entire triage analysis.
 
 ---
 
@@ -108,7 +112,70 @@ Available modification types:
 Enter modification type or describe changes:
 ```
 
-### 5. Confirm Edit Scope
+### 5. Present Interactive Edit Menu
+
+Display the editable sections menu:
+
+```
+================================================================================
+TRIAGE REPORT - EDIT MODE
+================================================================================
+Document: triage-report.md
+Version: {version}
+Modules: {count} triaged
+QG-PL1 Status: {status}
+================================================================================
+
+EDITABLE SECTIONS:
+
+[1] COMPLEXITY SCORING
+    - Modify individual dimension scores (Technical, Business, Integration, Multi-Tenant, AI)
+    - Adjust weighting factors for composite calculation
+    - Recalculate composite scores after changes
+
+[2] MODULE PRIORITIES
+    - Change priority rankings
+    - Update priority rationale
+    - Verify dependency constraints
+
+[3] PHASE ASSIGNMENTS
+    - Move modules between implementation phases
+    - Adjust phase entry/exit criteria
+    - Update phase duration estimates
+
+[4] DEPENDENCY MAPPING
+    - Add/remove module dependencies
+    - Modify dependency strength (hard/soft)
+    - Update critical path
+
+[5] TIMELINE ESTIMATES
+    - Adjust module duration estimates
+    - Recalculate phase totals
+    - Update go-live projections
+
+[6] RESOURCE ALLOCATION
+    - Modify team size estimates
+    - Update parallel workstream capacity
+    - Adjust skill requirements
+
+[7] RISK ASSESSMENT
+    - Add/remove identified risks
+    - Update risk severity/probability
+    - Modify mitigation strategies
+
+[8] ADD/REMOVE MODULES
+    - Add new modules to triage
+    - Remove modules from scope
+    - Score new modules across all dimensions
+
+[9] FULL RESTRUCTURE
+    - Major reorganization (requires re-validation)
+
+================================================================================
+Select section(s) to edit (comma-separated) or 'C' to cancel:
+```
+
+### 6. Confirm Edit Scope
 
 Based on user input, confirm:
 
@@ -117,6 +184,30 @@ Based on user input, confirm:
 | {{section}} | {{action}} | {{modules}} |
 
 **Edit scope confirmed. Proceed to apply changes?**
+
+---
+
+## SUCCESS METRICS
+
+- ✅ Triage report artifact located and fully loaded
+- ✅ All 5 complexity dimensions parsed for each module
+- ✅ Composite scores extracted with weighting factors
+- ✅ Module dependency graph parsed completely
+- ✅ Phase assignments and timeline extracted
+- ✅ Resource allocation summary documented
+- ✅ Interactive edit menu presented to user
+- ✅ User has selected specific edit target(s)
+- ✅ Edit scope confirmed before proceeding
+
+---
+
+## FAILURE MODES
+
+- ❌ **Artifact not found:** Inform user and suggest switching to Create mode
+- ❌ **Corrupted frontmatter:** Attempt recovery, flag missing metadata fields
+- ❌ **Incomplete scoring matrix:** Flag modules with missing dimension scores
+- ❌ **QG-PL1 already FAIL:** Warn that critical issues must be addressed first
+- ❌ **Dependency cycle detected:** Flag circular dependencies before allowing edits
 
 ---
 

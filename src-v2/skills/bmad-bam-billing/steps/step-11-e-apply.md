@@ -1,20 +1,33 @@
 # Step 11: Apply Billing Design Changes
 
-## MANDATORY EXECUTION RULES (READ FIRST)
+## MANDATORY EXECUTION RULES
 
-- 🛑 **NEVER generate content without user input** - Wait for explicit direction
-- 📖 **CRITICAL: ALWAYS read the complete step file** before taking any action
-- 🔄 **CRITICAL: When loading next step with 'C'**, ensure entire file is read
+- 🛑 NEVER apply changes that violate billing data consistency or tenant isolation
+- 📖 ALWAYS validate tier pricing changes against all dependent sections
+- 🔄 ALWAYS preserve document structure and unmodified sections
 - ⏸️ **ALWAYS pause after presenting findings** and await user direction
-- 🎯 **Focus ONLY on current step scope** - do not look ahead
+- ✅ UPDATE frontmatter version after any successful edit
+- 📋 DOCUMENT change rationale in Change Log section
+- 💬 PRESENT diff summary before final save
+- ⚠️ FLAG if changes require billing re-validation or ASC 606 review
+- 🔒 LOCK critical billing fields (tenant_id on invoices) without explicit user override
+
+---
 
 ## EXECUTION PROTOCOLS
 
-- 🎯 Focus: Apply specific changes to billing design while maintaining consistency
+- 🎯 Focus: Apply user-requested changes while maintaining billing consistency
 - 💾 Track: `stepsCompleted: [10, 11]` when complete
-- 📖 Context: Maintain overall design coherence when applying changes
-- 🚫 Do NOT: Make changes beyond user request; preserve unaffected sections
-- 🔍 Use web search: Verify changes against current best practices if significant
+- 📖 Context: Preserve all unmodified content exactly
+- 🚫 Do NOT: Auto-modify unrelated sections or break tenant isolation
+- ⚠️ Gate: Pricing or revenue recognition changes require compliance re-validation
+- 🔍 Use web search: If user requests updated payment provider patterns for specific changes
+
+---
+
+## YOUR TASK
+
+Apply the user's requested changes to the billing design, validate consistency across metering events, subscription tiers, and invoicing rules, update document metadata, and present a summary of modifications with any re-validation requirements.
 
 ---
 
@@ -109,6 +122,72 @@ Summarize applied changes:
 ### Artifact Updated:
 Location: {output_folder}/planning-artifacts/billing-design.md
 ```
+
+### 6. Display Modification Summary
+
+**Display modifications before save:**
+
+```
+================================================================================
+BILLING DESIGN EDIT SUMMARY
+================================================================================
+Document: billing-design.md
+Previous Version: {old_version}
+New Version: {new_version}
+================================================================================
+
+CHANGES APPLIED:
+
+[Subscription Tier Changes]
+{list of tier pricing/limit modifications}
+
+[Metering Event Changes]
+{list of billable event modifications}
+
+[Payment Integration Changes]
+{list of provider configuration modifications}
+
+[Revenue Recognition Changes]
+{list of ASC 606/IFRS 15 modifications}
+
+================================================================================
+VALIDATION STATUS:
+
+Billing Validation: {PASS|CONDITIONAL|PENDING}
+ASC 606 Compliance: {PASS|CONDITIONAL|PENDING}
+Re-validation Required: {Yes/No}
+{if yes: Run `bmad-bam-billing` Validate mode (step-20-v-*)}
+
+================================================================================
+[S] Save changes to {output_folder}/planning-artifacts/billing-design.md
+[R] Review changes before saving
+[U] Undo and return to edit selection
+================================================================================
+```
+
+---
+
+## SUCCESS METRICS
+
+- ✅ All requested changes captured and validated
+- ✅ Tier pricing consistency checks passed or exceptions documented
+- ✅ Metering events aligned with invoice line items
+- ✅ Payment provider webhooks updated for changed events
+- ✅ Revenue recognition rules preserved or explicitly updated
+- ✅ Tax jurisdiction changes propagated to invoice templates
+- ✅ Frontmatter version incremented
+- ✅ Change Log updated with modification summary
+- ✅ Document saved to correct location
+
+---
+
+## FAILURE MODES
+
+- ❌ **Tier consistency violation:** Block change, present resolution options
+- ❌ **Metering gap created:** Require explicit override with justification
+- ❌ **ASC 606 compliance break:** Require compliance review before saving
+- ❌ **Payment webhook mismatch:** Require provider integration update
+- ❌ **Save failure:** Retry with backup to alternate location
 
 ---
 

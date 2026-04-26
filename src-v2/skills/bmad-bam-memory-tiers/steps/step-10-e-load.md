@@ -32,6 +32,12 @@ Load and review existing memory tier design documents to identify sections requi
 
 ---
 
+## YOUR TASK
+
+Load the existing memory tier design document, parse its structure, extract the current tier configurations and vector store settings, and present a summary showing what can be edited. Enable the user to select specific sections for modification.
+
+---
+
 ## Actions
 
 ### 1. Load Existing Documents
@@ -92,26 +98,71 @@ Based on current best practices, identify areas that may need updates:
 | TTL Policies | {{current}} | {{potential}} | {{priority}} |
 | Isolation Method | {{current}} | {{potential}} | {{priority}} |
 
-### 6. Collect Modification Targets
+### 6. Present Edit Summary
 
-Ask user which sections need modification:
+**Display current state and available edit targets:**
 
 ```
-Available sections for modification:
-1. Session Memory Configuration
-2. Conversation Memory Configuration
-3. Tenant Memory Configuration
-4. Global Memory Configuration
-5. Vector Store Architecture
-6. Context Window Management
-7. TTL and Eviction Policies
-8. Memory Compression
-9. Isolation Verification
-10. Compliance Features
-11. Implementation Roadmap
+================================================================================
+MEMORY TIERS DESIGN - EDIT MODE
+================================================================================
+Document: memory-tiers-design.md
+Version: {version}
+QG-M3 Status: {status}
+================================================================================
 
-Enter section numbers to modify (comma-separated) or describe changes:
+MEMORY TIER SUMMARY:
+- Session Memory:      {storage} / TTL: {ttl}
+- Conversation Memory: {storage} / TTL: {ttl}
+- Working Memory:      {storage} / TTL: {ttl}
+- Tenant Memory:       {storage} / TTL: {ttl}
+- Global Memory:       {storage} / TTL: {ttl}
+
+VECTOR STORE: {vector_db} with {isolation_method} isolation
+
+CONTEXT WINDOW: {strategy} management, {compression} compression
+
+EDITABLE SECTIONS:
+[1] Session Memory Configuration - Hot storage, short-term context
+[2] Conversation Memory Configuration - Conversation-scoped persistence
+[3] Tenant Memory Configuration - Tenant-scoped long-term storage
+[4] Global Memory Configuration - Cross-tenant shared knowledge
+[5] Vector Store Architecture - Embedding, indexing, retrieval
+[6] Context Window Management - Token limits, summarization, compression
+[7] TTL and Eviction Policies - Lifecycle management for each tier
+[8] Memory Compression - Summarization and archival strategies
+[9] Isolation Verification - Tenant boundary enforcement
+[10] Compliance Features - Audit, retention, export capabilities
+[11] Implementation Roadmap - Phase planning and dependencies
+[A] Full Document - Major restructure (requires QG-M3 re-validation)
+
+================================================================================
+Select section(s) to edit (comma-separated) or 'C' to cancel:
 ```
+
+---
+
+## SUCCESS METRICS
+
+- ✅ Document located and fully loaded
+- ✅ Frontmatter parsed with all metadata extracted
+- ✅ All memory tier configurations parsed completely
+- ✅ Vector store settings extracted and categorized
+- ✅ Context window management documented
+- ✅ TTL and eviction policies captured
+- ✅ Edit summary presented to user
+- ✅ User has selected edit target(s)
+- ✅ QG-M3 impact assessment communicated
+
+---
+
+## FAILURE MODES
+
+- ❌ **Document not found:** Redirect to Create mode or request alternate path
+- ❌ **Invalid frontmatter:** Attempt recovery, flag missing fields
+- ❌ **Incomplete tier config:** Flag tiers needing completion before edit
+- ❌ **QG-M3 already failed:** Warn that edits require full re-validation
+- ❌ **Vector store mismatch:** Warn if vector DB changed from original design
 
 ---
 

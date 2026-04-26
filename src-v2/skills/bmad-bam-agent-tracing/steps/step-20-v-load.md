@@ -15,6 +15,12 @@
 - 📖 **Context:** Validate mode - preparing for quality gate checks
 - 🚫 **Do NOT:** Begin validation checks in this step
 
+## YOUR TASK
+
+Load the agent tracing design artifact created in Create mode. If the artifact does not exist, inform the user and suggest switching to Create mode. Prepare all validation criteria from QG-M3 and QG-I2 checklists for systematic verification of trace schemas, span hierarchies, and tenant context propagation.
+
+---
+
 ## Purpose
 
 Load agent tracing design specification for validation against quality gate criteria.
@@ -65,6 +71,29 @@ Load applicable quality gate checklists:
 | Error handling | Error spans and events | QG-M3 |
 | Context propagation | Cross-agent context | QG-M3 |
 | Dashboard readiness | Tenant-scoped queries | QG-P1 |
+
+---
+
+## SUCCESS METRICS
+
+- ✅ Tracing design artifact loaded successfully
+- ✅ Document metadata extracted and displayed
+- ✅ QG-M3 checklist loaded and understood
+- ✅ QG-I2 checklist loaded for tenant isolation verification
+- ✅ All trace dimensions presence verified
+- ✅ Span hierarchy structure parsed
+- ✅ Validation readiness confirmed by user
+- ✅ Create mode steps completed in artifact
+
+---
+
+## FAILURE MODES
+
+- ❌ **Artifact not found:** Redirect to Create mode
+- ❌ **Missing frontmatter:** Cannot extract version/sampling config
+- ❌ **Incomplete Create mode:** stepsCompleted missing required steps
+- ❌ **QG-M3 checklist not found:** Verify BAM installation
+- ❌ **Missing span definitions:** Flag trace dimensions needing completion
 
 ---
 

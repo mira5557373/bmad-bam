@@ -26,7 +26,7 @@
 
 ## YOUR TASK
 
-Compile validation results from step-21, determine the QG-F1 outcome (PASS/CONDITIONAL/FAIL), generate a structured validation report, and save it to the output location.
+Compile all validation results from step-21 into a structured QG-F1 validation report. Calculate final pass rates for CRITICAL (4 checks) and STANDARD (6 checks) categories. Determine the official QG-F1 outcome (PASS/CONDITIONAL/FAIL) using exact criteria. Generate the formal validation report with evidence references, recommendations, and clear next steps. Save the report to the designated output location.
 
 ---
 
@@ -125,12 +125,27 @@ Save to: `{output_folder}/validation/qg-f1-report.md`
 
 ## SUCCESS METRICS
 
-- All validation results compiled from step-21
-- Outcome determined using exact QG-F1 criteria
-- Pass rates calculated correctly
-- Report saved to designated location
-- Next steps are clear and actionable
-- CONDITIONAL/FAIL outcomes include remediation guidance
+- ✅ All validation results from step-21 compiled into report structure
+- ✅ CRITICAL check results table complete with status and evidence for all 4 checks
+- ✅ STANDARD check results table complete with status for all 6 checks
+- ✅ Pass rates calculated correctly (X/4 CRITICAL, Y/6 STANDARD, Z% overall)
+- ✅ Outcome determined using exact QG-F1 criteria (ALL critical + 80% standard = PASS)
+- ✅ Report includes recommendations section with specific guidance
+- ✅ CONDITIONAL outcomes include mitigation plan with owner and deadline
+- ✅ FAIL outcomes include recovery protocol with specific step references
+- ✅ Next steps clearly mapped to outcome (PASS → module arch, FAIL → create mode)
+- ✅ Report saved to `{output_folder}/validation/qg-f1-report.md`
+- ✅ Report presented to user with confirmation prompt
+
+---
+
+## FAILURE MODES
+
+- ❌ **Incomplete results from step-21:** Flag missing check results, require step-21 re-run before report generation
+- ❌ **Incorrect outcome calculation:** Double-check criteria (4/4 critical AND 5/6 standard = PASS), recalculate if discrepancy found
+- ❌ **Missing evidence references:** Report is not actionable without evidence - require evidence before finalizing
+- ❌ **Save failure:** Attempt alternate location, report error with path details
+- ❌ **CONDITIONAL without mitigation:** CONDITIONAL status requires documented mitigation plan - block finalization until provided
 
 ---
 

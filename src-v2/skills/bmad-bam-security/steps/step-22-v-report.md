@@ -1,13 +1,17 @@
 # Step 22: Generate Validation Report
 
-## MANDATORY EXECUTION RULES (READ FIRST)
+## MANDATORY EXECUTION RULES
 
-- 🛑 **NEVER generate content without user input** - Wait for explicit direction
-- 📖 **CRITICAL: ALWAYS read the complete step file** before taking any action
-- 🔄 **CRITICAL: When loading next step with 'C'**, ensure entire file is read
+- 🛑 NEVER generate report without complete validation results from Step 21
+- 📖 ALWAYS include all 7 category summaries with pass/fail counts
+- 🔄 ALWAYS determine QG-S3 outcome using security gate criteria
 - ⏸️ **ALWAYS pause after presenting findings** and await user direction
-- 🎯 **Focus ONLY on current step scope** - do not look ahead
-- 🚦 **HALT on CRITICAL failure** - Document and enter recovery protocol
+- ✅ DOCUMENT all CRITICAL failures with security impact assessment
+- 📋 SPECIFY 3-step recovery protocol if outcome is FAIL
+- 🎯 LOCK passed categories to prevent unnecessary re-validation
+- 🚦 ESCALATE to CISO if Attempt 3 recovery is required
+
+---
 
 ## EXECUTION PROTOCOLS
 
@@ -196,6 +200,29 @@ Compile validation results into a formal QG-S3 gate report. Determine gate outco
 | Technical Lead | | |
 | Compliance Officer | | |
 ```
+
+---
+
+## SUCCESS METRICS
+
+- ✅ All validation results compiled accurately from Step 21
+- ✅ QG-S3 outcome determined using security gate criteria
+- ✅ CRITICAL failures documented with security impact assessment
+- ✅ Recommendations prioritized by security risk
+- ✅ Recovery protocol defined with escalation path (if FAIL)
+- ✅ Locked categories identified for re-validation efficiency
+- ✅ Report saved to correct location with signatures section
+- ✅ Next steps clearly communicated based on outcome
+
+---
+
+## FAILURE MODES
+
+- ❌ **Incomplete validation data:** Return to Step 21, do not generate partial report
+- ❌ **CRITICAL check status unclear:** Default to FAIL, escalate for clarification
+- ❌ **Report save failure:** Retry, present report in console if persistent
+- ❌ **Missing remediation for CONDITIONAL:** Block outcome without 14-day deadline plan
+- ❌ **Recovery protocol undefined for FAIL:** Block outcome without 3-step escalation path
 
 ---
 

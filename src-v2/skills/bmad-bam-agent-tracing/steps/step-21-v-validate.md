@@ -15,6 +15,12 @@
 - 📖 **Context:** Validate mode - checking against QG-M3, QG-I2, QG-P1 criteria
 - 🚫 **Do NOT:** Skip critical checks or generate report in this step
 
+## YOUR TASK
+
+Execute all QG-M3 and QG-I2 validation checks against the loaded agent tracing design artifact. Document each check result with evidence. Verify span hierarchies, tenant context propagation, sampling strategies, and token metrics. Calculate the final gate decision based on CRITICAL and non-critical check outcomes.
+
+---
+
 ## Purpose
 
 Validate agent tracing design specification against quality gate criteria.
@@ -88,6 +94,29 @@ Validate agent tracing design specification against quality gate criteria.
 | QG-P1 Analysis Capabilities | PASS/FAIL | |
 | Cost Integration | PASS/FAIL | |
 | Implementation Plan | PASS/FAIL | |
+
+---
+
+## SUCCESS METRICS
+
+- ✅ All 6 QG-M3 categories validated with evidence
+- ✅ All QG-I2 tenant isolation checks verified
+- ✅ Span hierarchy consistency validated
+- ✅ Tenant context propagation verified across all span types
+- ✅ Sampling strategy validated against platform capabilities
+- ✅ Token metrics aligned with LLM span definitions
+- ✅ Gate decision calculated correctly
+- ✅ Web research verification completed
+
+---
+
+## FAILURE MODES
+
+- ❌ **CRITICAL category fails:** Enter recovery protocol, document gaps
+- ❌ **Missing tenant_id on spans:** Cannot validate without tenant context
+- ❌ **Span hierarchy broken:** Parent-child relationships inconsistent
+- ❌ **Sampling config invalid:** Rates exceed OpenTelemetry limits
+- ❌ **Recovery attempt exhausted:** Escalate to mandatory course correction
 
 ---
 

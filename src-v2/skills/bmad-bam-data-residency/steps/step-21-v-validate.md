@@ -1,19 +1,29 @@
 # Step 21: Validate Data Residency Design
 
-## MANDATORY EXECUTION RULES (READ FIRST):
+## MANDATORY EXECUTION RULES (READ FIRST)
 
-- 🛑 **NEVER generate content without user input** - Wait for explicit direction
+- 🛑 **NEVER skip CRITICAL checks** - All data sovereignty checks must be verified
 - 📖 **CRITICAL: ALWAYS read the complete step file** before taking any action
 - 🔄 **CRITICAL: When loading next step with 'C'**, ensure entire file is read
 - ⏸️ **ALWAYS pause after presenting findings** and await user direction
 - 🎯 **Focus ONLY on current step scope** - do not look ahead
+- 🚦 **HALT on CRITICAL failure** - Document and enter recovery protocol
+- 🔍 **Verify current data sovereignty requirements** with web search before finalizing
 
-## EXECUTION PROTOCOLS:
+## EXECUTION PROTOCOLS
 
-- 🎯 Show your analysis before taking any action
-- 💾 Update document frontmatter after each section completion
-- 📝 Maintain append-only document building
-- ✅ Track progress in `stepsCompleted` array
+- 🎯 Focus: Execute data residency validation checks against artifact
+- 💾 Track: `stepsCompleted: [20, 21]` when complete
+- 📖 Context: Each check produces PASS, CONDITIONAL, FAIL, or WAIVED
+- 🚫 Do NOT: Skip any CRITICAL check; CRITICAL failures block progress
+- 🔍 Use web search: Verify residency patterns against current regulations
+- ⚠️ Gate: Data Residency - Any CRITICAL failure triggers recovery protocol
+
+---
+
+## YOUR TASK
+
+Execute all data residency validation checks against the loaded artifact. Verify GDPR Article 17 (Right to Erasure), CCPA compliance, cross-border transfer restrictions, and regional consistency. Document each check result with evidence and calculate the final gate decision.
 
 ---
 
@@ -158,6 +168,27 @@ Select an option:
 #### If 'C' (Continue):
 - Document gate decision
 - Proceed to next step: `step-22-v-report.md`
+
+---
+
+## SUCCESS METRICS
+
+- ✅ All compliance coverage categories validated with evidence
+- ✅ All regional architecture checks verified
+- ✅ CRITICAL data sovereignty checks documented
+- ✅ Cross-border transfer restrictions validated
+- ✅ Gate decision calculated correctly
+- ✅ GDPR Article 17 workflow verified
+- ✅ Recovery protocol activated (if FAIL)
+
+---
+
+## FAILURE MODES
+
+- ❌ **CRITICAL compliance fails:** Enter recovery protocol, document gaps
+- ❌ **Missing regional evidence:** Cannot validate without regional config
+- ❌ **Cross-border violation detected:** Block until legal review complete
+- ❌ **Recovery attempt exhausted:** Escalate to mandatory course correction
 
 ---
 

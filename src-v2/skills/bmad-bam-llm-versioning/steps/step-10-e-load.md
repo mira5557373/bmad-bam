@@ -54,9 +54,9 @@ Load the existing LLM versioning design document for editing. Parse the document
 
 ---
 
-## YOUR TASK:
+## YOUR TASK
 
-Load existing document and prepare for editing.
+Load the existing LLM versioning design document, parse its structure, extract the current model inventory and version configurations, and present a summary showing what can be edited. Enable the user to select specific sections for modification.
 
 ---
 
@@ -128,39 +128,65 @@ Confirm the edit scope is valid:
 - [ ] No Create-mode scope creep (full rewrites go to Create)
 - [ ] Dependencies considered (changing model affects rollout)
 
-### 6. Present Edit Plan
+### 6. Present Edit Summary
 
-Summarize the edit plan for user confirmation:
+**Display current state and available edit targets:**
 
 ```
-Edit Plan Summary:
-- Sections to modify: {{count}}
-- New content to add: {{count}} items
-- Content to remove: {{count}} items
-- Estimated impact: Low/Medium/High
+================================================================================
+LLM VERSIONING DESIGN - EDIT MODE
+================================================================================
+Document: llm-versioning-design.md
+Version: {version}
+QG-AI1/QG-AI2 Status: {status}
+================================================================================
 
-Proceed with edit? (y/n)
+MODEL INVENTORY:
+- Active Models:      {count} models
+- Deprecated Models:  {count} models
+- Tenant Tiers:       {count} tiers with model assignments
+
+VERSION MANAGEMENT: {registry_type} registry, {assignment_strategy} assignment
+
+A/B TESTING: {enabled/disabled}, {experiment_count} active experiments
+
+EDITABLE SECTIONS:
+[1] Model Inventory - Add, update, deprecate, or remove models
+[2] Version Management - Modify registry schema or assignment logic
+[3] Rollout Strategy - Update canary phases, feature flags, thresholds
+[4] A/B Testing - Configure experiments, modify allocation
+[5] Version Monitoring - Add metrics, update dashboards
+[6] Rollback Configuration - Update triggers and procedures
+[7] Tenant Model Mapping - Reassign models to tenant tiers
+[8] Full Document - Major restructure (requires QG-AI1/QG-AI2 re-validation)
+
+================================================================================
+Select section(s) to edit (comma-separated) or 'C' to cancel:
 ```
 
 ---
 
-## SUCCESS METRICS:
+## SUCCESS METRICS
 
-- [ ] Document loaded successfully
-- [ ] Structure parsed and validated
-- [ ] User's requested changes understood
-- [ ] Edit plan confirmed by user
+- ✅ Document located and fully loaded
+- ✅ Frontmatter parsed with all metadata extracted
+- ✅ Model inventory parsed completely
+- ✅ Version management configuration extracted
+- ✅ A/B testing state documented
+- ✅ Rollout strategy captured
+- ✅ Edit summary presented to user
+- ✅ User has selected edit target(s)
+- ✅ QG-AI1/QG-AI2 impact assessment communicated
 
 ---
 
-## FAILURE MODES:
+## FAILURE MODES
 
-| Failure | Recovery |
-|---------|----------|
-| Document not found | Offer Create mode |
-| Document corrupted | Attempt partial recovery or Create |
-| Change scope too large | Recommend Create mode |
-| Section not found | Clarify section name with user |
+- ❌ **Document not found:** Redirect to Create mode or request alternate path
+- ❌ **Invalid frontmatter:** Attempt recovery, flag missing fields
+- ❌ **Corrupted model inventory:** Flag models needing completion before edit
+- ❌ **QG-AI1/QG-AI2 already failed:** Warn that edits require full re-validation
+- ❌ **Change scope too large:** Recommend Create mode for full restructure
 
 ---
 

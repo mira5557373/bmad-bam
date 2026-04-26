@@ -1,12 +1,16 @@
 # Step 21: Validate Scaling Design (Validate Mode)
 
-## MANDATORY EXECUTION RULES (READ FIRST)
+## MANDATORY EXECUTION RULES
 
-- 🛑 **NEVER generate content without user input** - Wait for explicit direction
-- 📖 **CRITICAL: ALWAYS read the complete step file** before taking any action
-- 🔄 **CRITICAL: When loading next step with 'C'**, ensure entire file is read
+- 🛑 NEVER skip CRITICAL checks during validation
+- 📖 ALWAYS document evidence for each check (section reference or finding)
+- 🔄 ALWAYS validate all categories systematically
 - ⏸️ **ALWAYS pause after presenting findings** and await user direction
-- 🎯 **Focus ONLY on current step scope** - do not look ahead
+- ✅ MARK each check as PASS/FAIL with clear rationale
+- 📋 FLAG all critical failures immediately
+- 🎯 VALIDATE noisy neighbor prevention and tier consistency as priority items
+
+---
 
 ## EXECUTION PROTOCOLS
 
@@ -15,6 +19,12 @@
 - 📖 Context: Reference loaded document and checklist from Step 20
 - 🚫 Do NOT: Fix issues in this step - only identify and document
 - 🔍 Use web search: Verify current best practices for critical checks
+
+---
+
+## YOUR TASK
+
+Execute comprehensive validation of the scaling design artifact against the quality gate checklist. Evaluate each check category (horizontal scaling, database scaling, tenant-aware scaling, capacity planning, cost optimization, runbooks) and determine pass/fail status with evidence documentation.
 
 ---
 
@@ -123,36 +133,26 @@ Document findings with citations: _Source: [URL]_
 
 ---
 
-## COLLABORATION MENUS (A/P/C)
+## SUCCESS METRICS
 
-After completing validation, present the user with:
+- ✅ All horizontal scaling checks evaluated with evidence
+- ✅ All database scaling checks evaluated with evidence
+- ✅ All tenant-aware scaling checks evaluated (noisy neighbor, quotas)
+- ✅ All capacity planning checks evaluated
+- ✅ All cost optimization checks evaluated
+- ✅ All runbook checks evaluated
+- ✅ Critical checks explicitly flagged with PASS/FAIL status
+- ✅ Web research verification completed for critical patterns
 
-```
-Your options:
-- **A (Advanced Elicitation)**: Deep dive into specific validation failures
-- **P (Party Mode)**: Get architect perspectives on critical issues
-- **C (Continue)**: Proceed to generate validation report
+---
 
-Select an option:
-```
+## FAILURE MODES
 
-### PROTOCOL INTEGRATION
-
-#### If 'A' (Advanced Elicitation):
-- Invoke the `bmad-advanced-elicitation` skill
-- Pass context: validation results, failed checks
-- Process enhanced insights on remediation
-- Return to A/P/C menu
-
-#### If 'P' (Party Mode):
-- Invoke the `bmad-party-mode` skill
-- Context: "Review validation failures for scaling design"
-- Present synthesized recommendations on priorities
-- Return to A/P/C menu
-
-#### If 'C' (Continue):
-- Compile validation results
-- Proceed to next step: `step-22-v-report.md`
+- ❌ **Missing section in artifact:** Mark all related checks as FAIL, document gap
+- ❌ **Incomplete evidence:** Mark check as FAIL with "Insufficient documentation"
+- ❌ **Critical check failure:** Flag immediately, do not continue without acknowledgment
+- ❌ **Tier inconsistency detected:** Document as critical finding
+- ❌ **Noisy neighbor gap:** Flag as critical security/isolation concern
 
 ---
 

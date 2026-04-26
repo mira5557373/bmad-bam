@@ -18,6 +18,12 @@
 
 ---
 
+## YOUR TASK
+
+Execute all billing validation checks against the loaded billing design artifact. Document each check result with evidence. Verify tenant isolation in billing data, metering completeness, subscription management, invoicing, payment integration, and revenue recognition compliance. Calculate the final validation decision based on CRITICAL and non-critical check outcomes.
+
+---
+
 ## Purpose
 
 Perform systematic validation of the billing design against multi-tenant billing best practices, quality gate criteria, and compliance requirements.
@@ -135,6 +141,29 @@ List any CRITICAL check failures:
 List required fixes for FAIL status:
 1. [Required fix 1]
 2. [Required fix 2]
+
+---
+
+## SUCCESS METRICS
+
+- ✅ All 6 billing categories validated with evidence
+- ✅ Tenant isolation verified for all billing data
+- ✅ Metering events aligned with invoice line items
+- ✅ All subscription tiers have complete pricing
+- ✅ Payment provider integration documented
+- ✅ ASC 606/IFRS 15 compliance verified
+- ✅ Gate decision calculated correctly
+- ✅ Web research verification completed for compliance
+
+---
+
+## FAILURE MODES
+
+- ❌ **CRITICAL category fails:** Enter recovery protocol, document gaps
+- ❌ **Missing tenant_id on invoices:** Cannot validate without tenant isolation
+- ❌ **Tier pricing incomplete:** Missing monthly/annual rates
+- ❌ **Payment provider undocumented:** Integration details required
+- ❌ **Revenue recognition non-compliant:** ASC 606 violations detected
 
 ---
 

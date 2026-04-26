@@ -168,6 +168,27 @@ Select an option:
 
 ---
 
+## SUCCESS METRICS
+
+- ✅ Executive summary generated with gate decision
+- ✅ All compliance validation results documented with evidence
+- ✅ All regional architecture results documented
+- ✅ Cross-border transfer compliance verified
+- ✅ Recommendations provided based on gate outcome
+- ✅ Report saved to validation folder
+- ✅ Data sovereignty status clearly stated
+
+---
+
+## FAILURE MODES
+
+- ❌ **Report generation failed:** Verify all Step 21 results available
+- ❌ **Save failed:** Check output folder permissions
+- ❌ **Missing regional evidence:** Cannot generate complete report
+- ❌ **Template not found:** Verify BAM installation
+
+---
+
 ## Verification
 
 - [ ] Executive summary generated

@@ -8,6 +8,10 @@
 - ⏸️ **ALWAYS pause after presenting findings** and await user direction
 - 🎯 **Focus ONLY on current step scope** - do not look ahead
 - ✏️ **Apply modifications with ADR documentation**
+- 🔄 **UPDATE rollback procedures** when provisioning saga changes
+- 🗃️ **VERIFY tier hierarchy** when modifying resource quotas
+- 📊 **CASCADE changes** to monitoring when adding new saga steps
+- ⚠️ **FLAG re-validation** when isolation or saga structure changes
 
 ## EXECUTION PROTOCOLS
 
@@ -17,6 +21,12 @@
 - 🚫 Do NOT: Make changes beyond identified scope
 - 🔍 Use web search: Verify current patterns if changing technology decisions
 - ⚠️ Gate: Tenant lifecycle patterns
+
+---
+
+## YOUR TASK
+
+Apply the user's requested changes to the tenant onboarding design while maintaining consistency across the provisioning saga, rollback procedures, resource initialization, and tier configuration. When saga steps change, ensure corresponding rollback/compensation actions are updated. When tier quotas change, verify the hierarchy (Enterprise > Pro > Free). Document all changes with ADR rationale and flag if quality gate re-validation is required.
 
 ---
 
@@ -148,6 +158,30 @@ Verify document consistency after changes:
 | Tier configuration consistent | [ ] |
 | Metrics align with new components | [ ] |
 | No orphaned sections | [ ] |
+
+---
+
+## SUCCESS METRICS
+
+- ✅ All requested changes captured with impact assessment
+- ✅ ADR created for architectural changes
+- ✅ Provisioning saga steps remain sequential and complete
+- ✅ Each saga step has corresponding rollback procedure
+- ✅ Tier hierarchy maintained (Enterprise > Pro > Free quotas)
+- ✅ Resource initialization consistent with isolation model
+- ✅ Monitoring metrics updated for new/changed components
+- ✅ Document version incremented correctly
+- ✅ Change log entry added with full audit trail
+
+---
+
+## FAILURE MODES
+
+- ❌ **Saga step without rollback:** Block change until compensation action defined
+- ❌ **Tier hierarchy violation:** Reject quota changes where Free > Pro or Pro > Enterprise
+- ❌ **Orphaned resource:** Block removal of resources still referenced in saga steps
+- ❌ **Missing monitoring:** Warn when new saga steps lack corresponding metrics
+- ❌ **Save failure:** Retry with backup, preserve edit state for recovery
 
 ---
 

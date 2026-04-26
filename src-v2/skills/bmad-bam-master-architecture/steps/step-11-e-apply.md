@@ -2,14 +2,17 @@
 
 ## MANDATORY EXECUTION RULES (READ FIRST)
 
-- 🛑 NEVER modify document without explicit user change requests
+- 🛑 NEVER modify master architecture without explicit user change requests
 - 📖 CRITICAL: ALWAYS read the complete step file before taking any action
-- 🔄 CRITICAL: Preserve ALL unchanged content exactly as-is
+- 🔄 CRITICAL: Preserve ALL unchanged master architecture content exactly as-is
 - ⏸️ **ALWAYS pause after presenting findings** and await user direction
-- ✅ CRITICAL: Validate consistency before applying ANY changes
-- 📋 Document change rationale in the document's revision history
-- 💬 Confirm changes with user before saving
-- 🔒 Update frontmatter version and timestamp after changes
+- ✅ CRITICAL: Validate consistency before applying ANY changes to master architecture
+- 📋 Document change rationale in the master architecture's revision history
+- 💬 Confirm changes with user before saving master architecture
+- 🔒 Update frontmatter version and timestamp after master architecture changes
+- ⚠️ FROZEN section changes (tenant model, AI runtime) MUST trigger QG-F1 PENDING status
+- 🔗 Module boundary changes MUST cascade to affected facade contracts
+- 🎯 VALIDATE that changes maintain tenant-model-module alignment
 
 ---
 
@@ -26,7 +29,7 @@
 
 ## YOUR TASK
 
-Apply user-requested changes to the existing master architecture document loaded in step-10. Validate changes maintain architectural consistency, update frontmatter metadata, and save the updated document.
+Apply the user's selected changes to the master architecture document loaded in step-10. For FROZEN section changes (tenant model, AI runtime), validate cascading impacts and set QG-F1 to PENDING. For MUTABLE section changes (patterns, modules, appendices), validate consistency and apply directly. Update frontmatter version, add Change Log entry, present diff summary for user approval, and save the updated master architecture document.
 
 ---
 
@@ -198,23 +201,28 @@ Preserve original backup if requested:
 
 ## SUCCESS METRICS
 
-- ✅ All user-requested changes captured and understood
-- ✅ Consistency validation passed (no conflicts introduced)
-- ✅ Changes applied preserving document structure
-- ✅ Frontmatter version and timestamp updated
-- ✅ Change Log entry added documenting modifications
+- ✅ All user-requested master architecture changes captured and understood
+- ✅ Impact level (HIGH/MEDIUM/LOW) determined for each change
+- ✅ Consistency validation passed (no tenant-model-module conflicts)
+- ✅ FROZEN section changes flagged with QG-F1 re-validation warning
+- ✅ Cascading updates identified and applied (module boundaries, contracts)
+- ✅ Changes applied preserving document structure and formatting
+- ✅ Frontmatter version incremented correctly (major/minor/patch)
+- ✅ QG-F1 status updated appropriately (PENDING for HIGH impact)
+- ✅ Change Log entry added with version, date, changes, rationale
+- ✅ Diff summary presented showing before/after for each change
 - ✅ User confirmed changes before saving
-- ✅ Document saved successfully
+- ✅ Master architecture saved to correct location
 
 ---
 
 ## FAILURE MODES
 
-- ❌ Applying changes without consistency validation - breaks architecture integrity
-- ❌ Modifying unchanged sections - introduces unintended drift
-- ❌ Not updating frontmatter - loses version history
-- ❌ Skipping Change Log - loses audit trail
-- ❌ Saving without user confirmation - may apply incorrect changes
+- ❌ **Consistency violation detected:** Block change, present conflict description, offer resolution options (Revise/Override with justification/Cancel)
+- ❌ **Tenant-model-module misalignment:** Schema-per-tenant modules cannot use RLS patterns - require explicit acknowledgment before proceeding
+- ❌ **Module boundary overlap:** New module responsibility conflicts with existing module - require responsibility reassignment
+- ❌ **AI runtime incompatibility:** Changed runtime incompatible with existing tool contracts - require contract updates
+- ❌ **Save failure:** Retry with backup to alternate location, report error details
 
 ---
 

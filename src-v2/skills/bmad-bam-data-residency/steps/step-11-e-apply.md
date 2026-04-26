@@ -1,19 +1,33 @@
-# Step 11: Apply Changes (Edit Mode)
+# Step 11: Apply Changes to Data Residency Design (Edit Mode)
 
-## MANDATORY EXECUTION RULES (READ FIRST):
+## MANDATORY EXECUTION RULES
 
-- 🛑 **NEVER generate content without user input** - Wait for explicit direction
-- 📖 **CRITICAL: ALWAYS read the complete step file** before taking any action
-- 🔄 **CRITICAL: When loading next step with 'C'**, ensure entire file is read
+- 🛑 NEVER apply changes that violate data sovereignty requirements
+- 📖 ALWAYS validate changes against GDPR, CCPA, LGPD before applying
+- 🔄 ALWAYS preserve document structure and unmodified sections
 - ⏸️ **ALWAYS pause after presenting findings** and await user direction
-- 🎯 **Focus ONLY on current step scope** - do not look ahead
+- ✅ UPDATE frontmatter version after any successful edit
+- 📋 DOCUMENT change rationale in ADR and Change Log sections
+- 💬 PRESENT diff summary before final save
+- ⚠️ FLAG if changes require data sovereignty re-assessment
+- 🔒 LOCK critical cross-border transfer rules without explicit DPO override
 
-## EXECUTION PROTOCOLS:
+---
 
-- 🎯 Show your analysis before taking any action
-- 💾 Update document frontmatter after each section completion
-- 📝 Maintain append-only document building
-- ✅ Track progress in `stepsCompleted` array
+## EXECUTION PROTOCOLS
+
+- 🎯 Focus: Apply user-requested changes while maintaining data sovereignty
+- 💾 Track: Changes applied, version increment, compliance impact
+- 📖 Context: Preserve all unmodified content exactly
+- 🚫 Do NOT: Auto-modify unrelated sections or weaken residency controls
+- ⚠️ Gate: Critical residency changes require GDPR/CCPA re-validation
+- 🔍 Use web search: If user requests updated regional compliance patterns
+
+---
+
+## YOUR TASK
+
+Apply the user's requested changes to the data residency design, validate consistency across all regions and compliance zones, update document metadata and ADRs, and present a summary of modifications with any data sovereignty implications.
 
 ---
 
@@ -103,6 +117,73 @@ changeLog:
     adr: ADR-DR-{number}
 ---
 ```
+
+### 7. Present Change Summary
+
+**Display modifications before save:**
+
+```
+================================================================================
+DATA RESIDENCY EDIT SUMMARY
+================================================================================
+Document: data-residency-design.md
+Previous Version: {old_version}
+New Version: {new_version}
+================================================================================
+
+CHANGES APPLIED:
+
+[Regional Changes]
+{list of region modifications}
+
+[Compliance Zone Changes]
+{list of compliance zone modifications}
+
+[Replication Policy Changes]
+{list of cross-border transfer rule modifications}
+
+[DR Strategy Changes]
+{list of disaster recovery modifications}
+
+================================================================================
+DATA SOVEREIGNTY IMPACT:
+
+GDPR Impact: {None|Minor|Major|Requires DPO Review}
+CCPA Impact: {None|Minor|Major|Requires Legal Review}
+Cross-Border: {transfers_affected} cross-border policies affected
+Re-validation Required: {Yes/No}
+{if yes: Run `bmad-bam-data-residency` Validate mode (step-20-v-*)}
+
+================================================================================
+[S] Save changes to {output_folder}/planning-artifacts/data-residency-design.md
+[R] Review changes before saving
+[U] Undo and return to edit selection
+================================================================================
+```
+
+---
+
+## SUCCESS METRICS
+
+- ✅ All requested changes captured and validated
+- ✅ Data sovereignty consistency checks passed or exceptions documented
+- ✅ Regional configurations updated correctly
+- ✅ Dependent replication policies propagated
+- ✅ Frontmatter version incremented
+- ✅ ADR created with compliance rationale
+- ✅ Change Log updated with modification summary
+- ✅ Document saved to correct location
+- ✅ Data sovereignty implications communicated
+
+---
+
+## FAILURE MODES
+
+- ❌ **Data sovereignty violation:** Block change, present resolution options
+- ❌ **Cross-border gap created:** Require explicit DPO override with justification
+- ❌ **Region conflict:** Warn that change creates compliance zone overlap
+- ❌ **DR compliance break:** Require DR policy update before saving
+- ❌ **Save failure:** Retry with backup to alternate location
 
 ---
 

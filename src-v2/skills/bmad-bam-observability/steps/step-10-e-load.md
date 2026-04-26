@@ -1,21 +1,33 @@
-# Step 10: Load Existing Observability Design
+# Step 10: Load Existing Observability Design (Edit Mode)
 
-## MANDATORY EXECUTION RULES (READ FIRST)
+## MANDATORY EXECUTION RULES
 
-- 🛑 **NEVER generate content without user input** - Wait for explicit direction
-- 📖 **CRITICAL: ALWAYS read the complete step file** before taking any action
-- 🔄 **CRITICAL: When loading next step with 'C'**, ensure entire file is read
+- 🛑 NEVER proceed without locating the existing observability-design.md file
+- 📖 ALWAYS read the complete document including frontmatter metadata
+- 🔄 ALWAYS parse the three pillars (metrics, logs, traces) configuration
 - ⏸️ **ALWAYS pause after presenting findings** and await user direction
-- 🎯 **Focus ONLY on current step scope** - do not look ahead
+- ✅ EXTRACT all tenant dimensions, SLO definitions, and alerting rules
+- 📋 PRESENT a structured summary of current observability posture before accepting edits
+- 💬 PAUSE after summary presentation and await user edit selection
+- 🎯 IDENTIFY QG-OC status from frontmatter to understand completeness state
+- ⚠️ FLAG any pillars marked as "TODO" or incomplete
+
+---
 
 ## EXECUTION PROTOCOLS
 
-- 🎯 Focus: Load existing observability design, identify modification scope
+- 🎯 Focus: Load and parse existing observability design for modification
 - 💾 Track: `stepsCompleted: [10]` when complete
-- 📖 Context: Existing artifact structure, sections to modify
-- 🚫 Do NOT: Apply changes yet - that comes in Step 11
-- 🔍 Use web search: Not required for loading (verification only if updating patterns)
-- ⚠️ Gate: QG-OC (Observability Completeness)
+- 📖 Context: Extract tenant dimensions, three pillars config, SLOs, dashboards
+- 🚫 Do NOT: Modify any content during load phase
+- ⚠️ Gate: Changes may invalidate QG-OC status
+- 🔍 Use web search: Only if user requests updated observability patterns
+
+---
+
+## YOUR TASK
+
+Load the existing observability design document, parse its structure, extract the current observability configuration including the three pillars (metrics, logs, traces), tenant dimensions, SLO definitions, and alerting rules. Present a summary showing what can be edited and enable the user to select specific sections for modification.
 
 ---
 
@@ -102,6 +114,68 @@ Before modification, verify:
 - [ ] SLO definitions have burn rate alerts
 
 Document any inconsistencies found during loading.
+
+### 5. Present Edit Summary
+
+**Display current state and available edit targets:**
+
+```
+================================================================================
+OBSERVABILITY DESIGN - EDIT MODE
+================================================================================
+Document: observability-design.md
+Version: {version}
+Pillars: Metrics ({status}), Logs ({status}), Traces ({status})
+QG-OC Status: {status}
+================================================================================
+
+CURRENT THREE PILLARS CONFIGURATION:
+1. Tenant Dimensions: {dimension_count} dimensions - {status}
+2. Metrics Collection: {metric_count} tenant-scoped metrics - {status}
+3. Logging Strategy:  {log_format}, {retention_policy} - {status}
+4. Distributed Tracing: {sampling_strategy} - {status}
+5. Dashboards:        {dashboard_count} defined - {status}
+6. Alerting:          {alert_count} rules configured - {status}
+7. SLO Definitions:   {slo_count} SLOs by tier - {status}
+
+CROSS-PILLAR CONSISTENCY: tenant_id in {pillar_count}/3 pillars
+
+EDITABLE SECTIONS:
+[1] Tenant Dimensions - Modify core dimensions and propagation
+[2] Metrics Collection - Update tenant, quota, business metrics
+[3] Logging Strategy - Change format, retention, PII handling
+[4] Distributed Tracing - Modify sampling, context propagation
+[5] Dashboards - Update platform and tenant views
+[6] Alerting - Modify alert rules and routing
+[7] SLO Definitions - Update availability, latency targets
+[8] Full Document - Major restructure (requires re-validation)
+
+================================================================================
+Select section(s) to edit (comma-separated) or 'C' to cancel:
+```
+
+---
+
+## SUCCESS METRICS
+
+- ✅ Document located and fully loaded
+- ✅ Frontmatter parsed with all metadata extracted
+- ✅ Three pillars configuration parsed completely
+- ✅ Tenant dimensions extracted and categorized
+- ✅ SLO definitions documented
+- ✅ Cross-pillar consistency verified
+- ✅ Edit summary presented to user
+- ✅ User has selected edit target(s)
+
+---
+
+## FAILURE MODES
+
+- ❌ **Document not found:** Redirect to Create mode or request alternate path
+- ❌ **Invalid frontmatter:** Attempt recovery, flag missing fields
+- ❌ **Incomplete pillar config:** Flag pillars needing completion before edit
+- ❌ **QG-OC already failed:** Warn that edits require full re-validation
+- ❌ **Cross-pillar inconsistency:** Flag dimensions not applied across all pillars
 
 ---
 

@@ -1,19 +1,29 @@
 # Step 20: Load Compliance Design for Validation (Validate Mode)
 
-## MANDATORY EXECUTION RULES (READ FIRST):
+## MANDATORY EXECUTION RULES (READ FIRST)
 
-- 🛑 NEVER generate content without user input
-- 📖 CRITICAL: ALWAYS read the complete step file before taking any action
-- 🔄 CRITICAL: When loading next step with 'C', ensure entire file is read
-- ⏸️ ALWAYS pause after presenting findings and await user direction
-- 🎯 Focus ONLY on current step scope - do not look ahead
+- 🛑 **NEVER generate content without user input** - Wait for explicit direction
+- 📖 **CRITICAL: ALWAYS read the complete step file** before taking any action
+- 🔄 **CRITICAL: When loading next step with 'C'**, ensure entire file is read
+- ⏸️ **ALWAYS pause after presenting findings** and await user direction
+- 🎯 **Focus ONLY on current step scope** - do not look ahead
+- 🔍 **LOAD QG-CC and QG-P1 checklists** - These are the validation gates for compliance
+- 📋 **VERIFY artifact exists** before proceeding to validation checks
 
-## EXECUTION PROTOCOLS:
+## EXECUTION PROTOCOLS
 
-- 🎯 Show your analysis before taking any action
-- 💾 Track validation progress
-- 📖 Document findings objectively
-- ✅ No web research in Validate mode - use existing patterns
+- 🎯 Focus: Load compliance artifact and validation checklists
+- 💾 Track: `stepsCompleted: [20]` when complete
+- 📖 Context: Validate mode verifies existing artifact against compliance criteria
+- 🚫 Do NOT: Generate new content; Edit mode handles modifications
+- 🔍 Use web search: Verify current regulatory requirements
+- ⚠️ Gate: QG-CC (Continuous Compliance) and QG-P1 (Production Readiness)
+
+---
+
+## YOUR TASK
+
+Load the compliance design artifact created in Create mode. If the artifact does not exist, inform the user and suggest switching to Create mode. Prepare all validation criteria from QG-CC and QG-P1 checklists for systematic verification.
 
 ---
 
@@ -133,6 +143,26 @@ Select an option:
 #### If 'C' (Continue):
 - Proceed to validation execution
 - Next step: `step-21-v-validate.md`
+
+---
+
+## SUCCESS METRICS
+
+- ✅ Compliance design artifact loaded successfully
+- ✅ Document metadata extracted and displayed
+- ✅ QG-CC and QG-P1 checklists loaded and understood
+- ✅ Framework coverage inventory verified
+- ✅ Control mapping completeness assessed
+- ✅ Validation readiness confirmed by user
+
+---
+
+## FAILURE MODES
+
+- ❌ **Artifact not found:** Redirect to Create mode
+- ❌ **Missing frontmatter:** Cannot extract version/frameworks
+- ❌ **Incomplete Create mode:** stepsCompleted missing required steps
+- ❌ **QG-CC checklist not found:** Verify BAM installation
 
 ---
 

@@ -123,6 +123,14 @@ Extract key elements for validation:
 | Alert expressions | Alerting | Metrics reference check |
 | SLO targets | SLO Definitions | Tier alignment check |
 
+---
+
+## YOUR TASK
+
+Load the observability design artifact created in Create mode. If the artifact does not exist, inform the user and suggest switching to Create mode. Prepare all validation criteria from QG-OC checklist for systematic verification of tenant-aware observability across all three pillars.
+
+---
+
 ### 5. Error Handling
 
 If artifact is missing or incomplete:
@@ -182,6 +190,26 @@ Select an option:
 - Save validation context
 - Update frontmatter `stepsCompleted: [20]`
 - Proceed to next step: `step-21-v-validate.md`
+
+---
+
+## SUCCESS METRICS
+
+- ✅ Observability artifact loaded successfully
+- ✅ Document metadata extracted and displayed
+- ✅ QG-OC checklist loaded and understood
+- ✅ Three pillars presence verified (metrics, logs, traces)
+- ✅ Tenant dimension consistency assessed
+- ✅ Validation readiness confirmed by user
+
+---
+
+## FAILURE MODES
+
+- ❌ **Artifact not found:** Redirect to Create mode
+- ❌ **Missing frontmatter:** Cannot extract version/pillar status
+- ❌ **Incomplete Create mode:** stepsCompleted missing required steps
+- ❌ **QG-OC checklist not found:** Verify BAM installation
 
 ---
 

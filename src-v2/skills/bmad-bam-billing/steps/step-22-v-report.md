@@ -18,6 +18,12 @@
 
 ---
 
+## YOUR TASK
+
+Compile all billing validation results into a formal report. Document the validation decision with rationale, list all findings with evidence for metering, subscriptions, invoicing, and compliance categories, and provide recommendations based on the outcome. Save the report to the validation folder.
+
+---
+
 ## Purpose
 
 Generate a formal validation report for the billing design, determine the quality gate outcome, and provide actionable next steps based on findings.
@@ -162,6 +168,28 @@ Write validation report to:
 ```
 {output_folder}/validation-reports/billing-design-validation.md
 ```
+
+---
+
+## SUCCESS METRICS
+
+- ✅ Executive summary generated with validation decision
+- ✅ All tenant isolation results documented with evidence
+- ✅ Metering completeness verified
+- ✅ Subscription management compliance documented
+- ✅ Invoicing and payment integration validated
+- ✅ ASC 606/IFRS 15 compliance status documented
+- ✅ Recommendations provided based on outcome
+- ✅ Report saved to validation folder
+
+---
+
+## FAILURE MODES
+
+- ❌ **Report generation failed:** Verify all Step 21 results available
+- ❌ **Save failed:** Check output folder permissions
+- ❌ **Missing evidence:** Cannot generate complete report
+- ❌ **Compliance documentation incomplete:** Revenue recognition gaps
 
 ---
 

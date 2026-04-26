@@ -1,19 +1,33 @@
 # Step 10: Load Existing Compliance Design (Edit Mode)
 
-## MANDATORY EXECUTION RULES (READ FIRST):
+## MANDATORY EXECUTION RULES
 
-- 🛑 NEVER generate content without user input
-- 📖 CRITICAL: ALWAYS read the complete step file before taking any action
-- 🔄 CRITICAL: When loading next step with 'C', ensure entire file is read
-- ⏸️ ALWAYS pause after presenting findings and await user direction
-- 🎯 Focus ONLY on current step scope - do not look ahead
+- 🛑 NEVER proceed without locating the existing compliance-design.md file
+- 📖 ALWAYS read the complete document including frontmatter metadata
+- 🔄 ALWAYS parse compliance framework mappings and control inventories
+- ⏸️ **ALWAYS pause after presenting findings** and await user direction
+- ✅ EXTRACT all data classifications, audit controls, and evidence collection rules
+- 📋 PRESENT a structured summary of current compliance posture before accepting edits
+- 💬 PAUSE after summary presentation and await user edit selection
+- 🎯 IDENTIFY QG-CC (Continuous Compliance) status from frontmatter
+- ⚠️ FLAG any frameworks marked as "TODO" or incomplete
 
-## EXECUTION PROTOCOLS:
+---
 
-- 🎯 Show your analysis before taking any action
-- 💾 Update document frontmatter after each section completion
-- 📖 Maintain append-only document building
-- ✅ Track progress in `stepsCompleted` array
+## EXECUTION PROTOCOLS
+
+- 🎯 Focus: Load and parse existing compliance design for modification
+- 💾 Track: Document load status and parse results
+- 📖 Context: Extract framework mappings, data governance rules, audit controls
+- 🚫 Do NOT: Modify any content during load phase
+- ⚠️ Gate: Changes may invalidate QG-CC or QG-P1 compliance status
+- 🔍 Use web search: Only if user requests updated regulatory requirements
+
+---
+
+## YOUR TASK
+
+Load the existing compliance design document, parse its structure, extract the current compliance configuration including framework mappings, data classifications, audit controls, and evidence collection rules. Present a summary showing what can be edited and enable the user to select specific sections for modification.
 
 ---
 
@@ -85,6 +99,66 @@ Assess modification impact:
 | Modification | Sections Affected | Complexity | Estimated Effort |
 |--------------|-------------------|------------|------------------|
 | {modification} | {sections} | Low/Medium/High | {effort} |
+
+### 6. Present Edit Summary
+
+**Display current state and available edit targets:**
+
+```
+================================================================================
+COMPLIANCE DESIGN - EDIT MODE
+================================================================================
+Document: compliance-design.md
+Version: {version}
+Frameworks: {GDPR, SOC2, HIPAA, PCI-DSS count}
+QG-CC Status: {status}
+================================================================================
+
+CURRENT COMPLIANCE POSTURE:
+1. Frameworks:     {count} mapped - {status}
+2. Data Governance: {classification levels} - {status}
+3. Audit Controls: {event categories} - {status}
+4. Monitoring:     {check types} - {status}
+5. Evidence:       {collection methods} - {status}
+6. Risk Assessment: {risk count} identified - {status}
+
+CONTROL INVENTORY: {total} controls across {framework_count} frameworks
+
+EDITABLE SECTIONS:
+[1] Compliance Frameworks - Add/update framework requirements
+[2] Data Governance - Modify data classification and handling
+[3] Audit Controls - Update event categories and retention
+[4] Compliance Monitoring - Change check frequencies and alerts
+[5] Evidence Collection - Update automation and storage
+[6] Risk Assessment - Modify risk items and mitigations
+[7] Full Document - Major restructure (requires re-validation)
+
+================================================================================
+Select section(s) to edit (comma-separated) or 'C' to cancel:
+```
+
+---
+
+## SUCCESS METRICS
+
+- ✅ Document located and fully loaded
+- ✅ Frontmatter parsed with all metadata extracted
+- ✅ Compliance frameworks inventory extracted
+- ✅ Data classification matrix parsed completely
+- ✅ Audit control categories documented
+- ✅ Evidence collection rules extracted
+- ✅ Edit summary presented to user
+- ✅ User has selected edit target(s)
+
+---
+
+## FAILURE MODES
+
+- ❌ **Document not found:** Redirect to Create mode or request alternate path
+- ❌ **Invalid frontmatter:** Attempt recovery, flag missing fields
+- ❌ **Incomplete framework mappings:** Flag frameworks needing completion before edit
+- ❌ **QG-CC already failed:** Warn that edits require full re-validation
+- ❌ **Missing control inventory:** Cannot edit without baseline controls
 
 ---
 

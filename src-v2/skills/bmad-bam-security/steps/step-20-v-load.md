@@ -1,13 +1,16 @@
 # Step 20: Load Security Artifact and Checklist
 
-## MANDATORY EXECUTION RULES (READ FIRST)
+## MANDATORY EXECUTION RULES
 
-- 🛑 **NEVER generate content without user input** - Wait for explicit direction
-- 📖 **CRITICAL: ALWAYS read the complete step file** before taking any action
-- 🔄 **CRITICAL: When loading next step with 'C'**, ensure entire file is read
+- 🛑 NEVER proceed without locating the existing security-design.md file
+- 📖 ALWAYS read the complete document and QG-S3 checklist
+- 🔄 ALWAYS map artifact sections to checklist categories
 - ⏸️ **ALWAYS pause after presenting findings** and await user direction
-- 🎯 **Focus ONLY on current step scope** - do not look ahead
-- 🚦 **HALT on CRITICAL failure** - Document and enter recovery protocol
+- ✅ EXTRACT all security controls for validation mapping
+- 📋 PRESENT validation scope summary with estimated check counts
+- 🎯 IDENTIFY CRITICAL checks that must pass for QG-S3 compliance
+
+---
 
 ## EXECUTION PROTOCOLS
 
@@ -17,6 +20,12 @@
 - 🚫 Do NOT: Perform validation yet; only load and prepare
 - 🔍 Use web search: Not required for loading step
 - ⚠️ Gate: QG-S3 (Security Baseline) - preparation
+
+---
+
+## YOUR TASK
+
+Load the security design artifact and QG-S3 security baseline checklist, map all artifact sections to validation categories, identify CRITICAL checks, and prepare the validation scope for execution in Step 21.
 
 ---
 
@@ -102,6 +111,28 @@ Load the security design artifact and the QG-S3 security baseline checklist in p
 | Estimated validation time | 15-30 minutes |
 
 ⏸️ **PAUSE:** Present validation scope and confirm readiness to proceed.
+
+---
+
+## SUCCESS METRICS
+
+- ✅ Security design artifact located and fully loaded
+- ✅ All security control sections parsed and inventoried
+- ✅ QG-S3 checklist loaded with all categories
+- ✅ CRITICAL checks identified (22 across categories)
+- ✅ Checklist categories mapped to artifact sections
+- ✅ Validation scope confirmed with user
+- ✅ AI-specific security scope determined (if applicable)
+
+---
+
+## FAILURE MODES
+
+- ❌ **Document not found:** Inform user, suggest running Create mode first
+- ❌ **QG-S3 checklist not found:** Fall back to embedded security criteria
+- ❌ **Incomplete document:** Flag missing sections, recommend Edit mode first
+- ❌ **Missing tenant isolation sections:** Warn about critical multi-tenant security gaps
+- ❌ **AI sections missing when AI runtime configured:** Flag as validation blocker
 
 ---
 
