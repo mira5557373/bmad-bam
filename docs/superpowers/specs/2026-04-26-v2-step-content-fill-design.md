@@ -1,8 +1,8 @@
 # V2 Step Content Fill Design Spec
 
-**Version:** 6.0.0  
+**Version:** 7.0.0  
 **Date:** 2026-04-26  
-**Status:** Ready for Implementation
+**Status:** Ready for Implementation (Gap Analysis Complete)
 
 ## Summary
 
@@ -431,6 +431,500 @@ Every V2 skill must have corresponding module-help.csv entry:
 | Integration skills | 4-implementation |
 | Validation skills | 5-quality |
 | Operations skills | 6-operations |
+
+---
+
+## Gap Analysis & Solutions (v7.0)
+
+### Critical Gaps Identified
+
+| # | Gap | Current State | BMAD Standard | Impact |
+|---|-----|---------------|---------------|--------|
+| 1 | SKILL.md Activation Sequence | 3 steps | 6 steps with script calls | Incomplete workflow initialization |
+| 2 | Output Document Frontmatter | Mentioned only | Full schema required | No state tracking between steps |
+| 3 | Script Integration | None | Python scripts for config | No dynamic customization |
+| 4 | Multi-Layer Merge Rules | Not specified | 4-layer with merge rules | Team/user customization broken |
+| 5 | Agent vs Workflow Menu | workflow.menu only | Both patterns needed | Extension menus missing |
+| 6 | module-help.csv Columns | 14 columns | 13 columns official | Extra column may break |
+| 7 | Phase Values | 6 phases | 5 official + anytime | Unknown phases |
+| 8 | Error Recovery | Not specified | Script fallback patterns | Workflow breaks on error |
+| 9 | Subagent Spawning | Not covered | Agent tool with context | Party mode broken |
+| 10 | Project Context | Basic | Glob pattern discovery | Missing context loading |
+| 11 | Language Variables | output_folder | 3 language variables | Localization broken |
+| 12 | Artifact Location | 1 variable | 3 variables | Output routing broken |
+
+---
+
+### Solution 1: SKILL.md Full Activation Sequence
+
+**BMAD-Compliant 6-Step Activation:**
+
+```markdown
+## On Activation
+
+### Step 1: Resolve the Workflow Block
+
+Run: `python3 {project-root}/_bmad/scripts/resolve_customization.py --skill {skill-root} --key workflow`
+
+**If the script fails**, resolve the `workflow` block yourself by reading these files in base → team → user order:
+
+1. `{skill-root}/customize.toml` — defaults
+2. `{project-root}/_bmad/custom/{skill-name}.toml` — team overrides
+3. `{project-root}/_bmad/custom/{skill-name}.user.toml` — personal overrides
+
+Apply merge rules: scalars override, tables deep-merge, arrays of tables keyed by `code`/`id` replace matching and append new, other arrays append.
+
+### Step 2: Execute Prepend Steps
+
+Execute each entry in `{workflow.activation_steps_prepend}` in order.
+
+### Step 3: Load Persistent Facts
+
+Treat every entry in `{workflow.persistent_facts}` as foundational context.
+- Entries prefixed `file:` are paths/globs — load contents as facts
+- Other entries are literal facts
+
+### Step 4: Load Config
+
+Load from `{project-root}/_bmad/bam/config.yaml`:
+- `{user_name}` - greeting
+- `{communication_language}` - spoken output
+- `{document_output_language}` - written documents
+- `{planning_artifacts}` - output location
+- `{tenant_model}` - BAM isolation model
+- `{ai_runtime}` - BAM AI framework
+
+### Step 5: Greet the User
+
+Greet `{user_name}`, speaking in `{communication_language}`.
+
+### Step 6: Execute Append Steps
+
+Execute each entry in `{workflow.activation_steps_append}` in order.
+
+Activation complete. Begin execution.
+```
+
+---
+
+### Solution 2: Output Document Frontmatter Schema
+
+**Full State Tracking Schema:**
+
+```yaml
+---
+# Document Identity
+title: "{{project_name}} Master Architecture"
+version: "1.0.0"
+created: "{{date}}"
+updated: "{{date}}"
+author: "{{user_name}}"
+
+# Workflow State
+workflow: bmad-bam-master-architecture
+mode: create
+stepsCompleted: [1, 2, 3]
+currentStep: 4
+
+# BAM Configuration
+tenant_model: "{{tenant_model}}"
+ai_runtime: "{{ai_runtime}}"
+
+# Quality Gate
+qualityGate: QG-F1
+gateStatus: pending
+
+# Decisions Captured (populated by steps)
+decisions:
+  tenant_model: "row-level-security"
+  isolation_dimensions: [data, compute, network, identity, billing, limits, audit, config]
+  ai_runtime: "langgraph"
+---
+```
+
+**Frontmatter Update Pattern in Steps:**
+
+```markdown
+### If 'C' (Continue):
+1. Update frontmatter:
+   ```yaml
+   stepsCompleted: [1, 2, 3]  # Add current step
+   currentStep: 4              # Increment
+   decisions:
+     tenant_model: "{selected_model}"
+   ```
+2. Save document
+3. Proceed to NEXT STEP
+```
+
+---
+
+### Solution 3: Script Integration Pattern
+
+**Create BAM Resolution Scripts:**
+
+File: `src-v2/scripts/resolve_customization.py`
+```python
+#!/usr/bin/env python3
+"""
+Resolve customization for BAM workflows.
+Usage: python3 resolve_customization.py --skill <skill-root> --key <key>
+"""
+import argparse
+import tomllib
+from pathlib import Path
+
+def merge_toml(base: dict, override: dict) -> dict:
+    """BMAD merge rules: scalars override, arrays append, tables deep-merge."""
+    result = base.copy()
+    for key, value in override.items():
+        if key not in result:
+            result[key] = value
+        elif isinstance(value, dict):
+            result[key] = merge_toml(result[key], value)
+        elif isinstance(value, list):
+            if value and isinstance(value[0], dict) and 'code' in value[0]:
+                # Arrays of tables keyed by code: replace matching, append new
+                existing_codes = {item['code']: i for i, item in enumerate(result[key])}
+                for item in value:
+                    if item['code'] in existing_codes:
+                        result[key][existing_codes[item['code']]] = item
+                    else:
+                        result[key].append(item)
+            else:
+                # Other arrays: append
+                result[key].extend(value)
+        else:
+            # Scalars: override
+            result[key] = value
+    return result
+
+def resolve(skill_root: Path, project_root: Path, key: str) -> dict:
+    """Resolve 3-layer customization."""
+    files = [
+        skill_root / "customize.toml",
+        project_root / "_bmad/custom" / f"{skill_root.name}.toml",
+        project_root / "_bmad/custom" / f"{skill_root.name}.user.toml",
+    ]
+    result = {}
+    for f in files:
+        if f.exists():
+            with open(f, 'rb') as fp:
+                data = tomllib.load(fp)
+                if key in data:
+                    result = merge_toml(result, data[key])
+    return result
+
+if __name__ == "__main__":
+    parser = argparse.ArgumentParser()
+    parser.add_argument("--skill", required=True)
+    parser.add_argument("--key", required=True)
+    args = parser.parse_args()
+    # Output resolved config
+    import json
+    print(json.dumps(resolve(Path(args.skill), Path.cwd(), args.key)))
+```
+
+---
+
+### Solution 4: Multi-Layer Merge Rules Documentation
+
+**Add to customize.toml header:**
+
+```toml
+# BAM Workflow Customization
+# 
+# Merge Order (base → team → user):
+#   1. {skill-root}/customize.toml (this file)
+#   2. {project-root}/_bmad/custom/bmad-bam-{skill}.toml (team)
+#   3. {project-root}/_bmad/custom/bmad-bam-{skill}.user.toml (personal)
+#
+# Merge Rules:
+#   - Scalars: override wins
+#   - Tables: deep-merge
+#   - Arrays of tables with `code`/`id`: replace matching, append new
+#   - Other arrays: append
+
+[workflow]
+# ... rest of config
+```
+
+---
+
+### Solution 5: Complete customize.toml Template
+
+```toml
+# BAM Workflow Customization for bmad-bam-{skill-name}
+#
+# Merge: {skill-root}/customize.toml → _bmad/custom/*.toml → *.user.toml
+# Rules: scalars override, tables deep-merge, arrays append
+
+[workflow]
+
+# Pre-activation steps (before config load)
+activation_steps_prepend = []
+
+# Post-greeting steps (before workflow begins)
+activation_steps_append = [
+  "Verify {tenant_model} and {ai_runtime} are configured",
+  "Load project-context.md if exists",
+]
+
+# Persistent facts for entire workflow
+persistent_facts = [
+  "file:{project-root}/_bmad/bam/data/domains/tenant.md",
+  "file:{project-root}/_bmad/bam/data/domains/ai-runtime.md",
+  "file:{project-root}/_bmad/bam/data/checklists/qg-f1.md",
+  "file:{project-root}/**/project-context.md",
+]
+
+# On workflow completion
+on_complete = """
+{artifact} complete.
+
+**Quality Gate:** QG-{gate}
+Run: Z{code}-V to validate
+
+**Next Workflows:**
+- Z{next1} - {description1}
+- Z{next2} - {description2}
+"""
+
+# Workflow menu items (merged with agent.menu if extension)
+[[workflow.menu]]
+code = "Z{CODE}"
+name = "{Display Name}"
+action = "create"
+description = "{What it does}"
+
+[[workflow.menu]]
+code = "Z{CODE}-E"
+name = "Edit {Display Name}"
+action = "edit"
+description = "Modify existing {artifact}"
+
+[[workflow.menu]]
+code = "Z{CODE}-V"
+name = "Validate {Display Name}"
+action = "validate"
+description = "Run QG-{gate} validation"
+```
+
+---
+
+### Solution 6: Correct module-help.csv Schema
+
+**Official 13-column schema (remove `keywords`):**
+
+```csv
+module,skill,display-name,menu-code,description,action,args,phase,after,before,required,output-location,outputs
+bam,bmad-bam-master-architecture,Master Architecture,ZMA,Create master architecture with tenant model,create,,3-solutioning,,,true,planning_artifacts,master-architecture.md
+bam,bmad-bam-master-architecture,Edit Master Architecture,ZMA-E,Modify existing master architecture,edit,,3-solutioning,bmad-bam-master-architecture:create,,false,planning_artifacts,master-architecture.md
+bam,bmad-bam-master-architecture,Validate Architecture,ZMA-V,Validate against QG-F1,validate,,3-solutioning,bmad-bam-master-architecture:create,,false,planning_artifacts,master-architecture-validation.md
+```
+
+**Note:** Remove `keywords` column — not in official BMAD schema. Discovery relies on `description` field.
+
+---
+
+### Solution 7: Correct Phase Values
+
+**Official BMAD Phases:**
+
+| Phase | Purpose | BAM Skills |
+|-------|---------|------------|
+| `anytime` | Available regardless of state | help, quick-dev |
+| `1-analysis` | Research and discovery | - |
+| `2-planning` | PRD, UX design | - |
+| `3-solutioning` | Architecture decisions | master-arch, module-arch, tenant-isolation, agent-runtime |
+| `4-implementation` | Sprint execution | convergence, facade-contract |
+
+**BAM does NOT use:**
+- ~~`5-quality`~~ → Use `3-solutioning` with validate action
+- ~~`6-operations`~~ → Use `anytime` or `4-implementation`
+
+**Corrected Phase Mapping:**
+
+| BAM Domain | Correct Phase |
+|------------|---------------|
+| Foundation skills | 3-solutioning |
+| Module skills | 3-solutioning |
+| Integration skills | 4-implementation |
+| Validation skills | 3-solutioning (action: validate) |
+| Operations skills | anytime |
+
+---
+
+### Solution 8: Error Recovery Pattern
+
+**Script Fallback in SKILL.md:**
+
+```markdown
+### Step 1: Resolve the Workflow Block
+
+Run: `python3 {project-root}/_bmad/scripts/resolve_customization.py --skill {skill-root} --key workflow`
+
+**If the script fails**, resolve manually:
+
+1. Read `{skill-root}/customize.toml` as base
+2. If exists, read `{project-root}/_bmad/custom/{skill-name}.toml` and merge
+3. If exists, read `{project-root}/_bmad/custom/{skill-name}.user.toml` and merge
+
+Merge rules:
+- Scalars: later value wins
+- Tables: deep-merge recursively
+- Arrays of tables with `code`: replace matching codes, append new
+- Other arrays: concatenate
+```
+
+**Quality Gate Failure Recovery (existing but needs emphasis):**
+
+```markdown
+## FAILURE RECOVERY PROTOCOL:
+
+If QG-{gate} fails:
+
+**Attempt 1:** Fix identified issues, re-run validation
+**Attempt 2:** If still failing, review approach with user
+**Attempt 3:** If still failing → MANDATORY COURSE CORRECTION
+
+Escalate to user: "QG-{gate} failed 3 times. Options:
+- [R] Revise approach fundamentally
+- [W] Waive with documented justification
+- [E] Escalate to project leadership"
+```
+
+---
+
+### Solution 9: Subagent Spawning Pattern for Party Mode
+
+**Add to step files that use Party Mode:**
+
+```markdown
+### If 'P' (Party Mode):
+
+Invoke `bmad-party-mode` skill with context:
+
+**Context to pass:**
+```
+Topic: Review {current_decision} for {artifact}
+State: {summary of decisions so far}
+Specific question: {what perspectives are needed}
+```
+
+**Model selection:**
+- Complex architectural decisions → default model
+- Quick validation questions → `--model haiku`
+
+**BAM-specific agents to include:**
+- Platform Architect (Atlas persona) - isolation patterns
+- AI Runtime Architect (Nova persona) - agent orchestration
+- Integration Architect (Kai persona) - facade contracts
+- Security Architect - compliance implications
+
+Process multi-perspective analysis, then return to A/P/C menu.
+```
+
+---
+
+### Solution 10: Project Context Loading Pattern
+
+**Add to persistent_facts:**
+
+```toml
+persistent_facts = [
+  # BAM domain context
+  "file:{project-root}/_bmad/bam/data/domains/tenant.md",
+  "file:{project-root}/_bmad/bam/data/domains/ai-runtime.md",
+  
+  # Quality gate checklist
+  "file:{project-root}/_bmad/bam/data/checklists/qg-f1.md",
+  
+  # Project context (glob pattern)
+  "file:{project-root}/**/project-context.md",
+  
+  # User project knowledge
+  "file:{project-root}/_bmad/project-knowledge/**/*.md",
+]
+```
+
+**In step files:**
+
+```markdown
+## CONTEXT BOUNDARIES:
+
+- **Project context:** Loaded from `**/project-context.md` if exists
+- **Domain context:** Loaded from `domains/{domain}.md`
+- **Quality checks:** Loaded from `checklists/qg-{gate}.md`
+- Previous decisions available in output document frontmatter
+```
+
+---
+
+### Solution 11: Complete Language Variables
+
+**config.yaml template:**
+
+```yaml
+# User identification
+user_name: "Architect"
+
+# Language settings
+communication_language: "English"      # Spoken/conversational output
+document_output_language: "English"    # Written document content
+
+# BAM-specific settings
+tenant_model: "row-level-security"
+ai_runtime: "langgraph"
+
+# Output locations
+planning_artifacts: "{project-root}/docs/planning"
+implementation_artifacts: "{project-root}/docs/implementation"
+project_knowledge: "{project-root}/docs/knowledge"
+output_folder: "{project-root}/_bmad-output"  # BAM default
+```
+
+**Usage in steps:**
+
+```markdown
+## EXECUTION PROTOCOLS:
+
+- 🗣️ Speak in `{communication_language}` for all dialogue
+- 📝 Write documents in `{document_output_language}`
+- 💾 Save outputs to `{planning_artifacts}/{artifact}.md`
+```
+
+---
+
+### Solution 12: Artifact Location Variables
+
+**Three output location variables:**
+
+| Variable | Purpose | Default |
+|----------|---------|---------|
+| `{planning_artifacts}` | Architecture, PRD, UX docs | `docs/planning` |
+| `{implementation_artifacts}` | Sprint plans, code specs | `docs/implementation` |
+| `{project_knowledge}` | Research, context docs | `docs/knowledge` |
+
+**BAM addition:**
+
+| Variable | Purpose | Default |
+|----------|---------|---------|
+| `{output_folder}` | BAM-specific output | `_bmad-output` |
+
+**Step file usage:**
+
+```markdown
+## Outputs
+
+Save to: `{planning_artifacts}/master-architecture.md`
+
+Alternative locations by artifact type:
+- Architecture decisions → `{planning_artifacts}/`
+- Sprint execution docs → `{implementation_artifacts}/`
+- Research/context → `{project_knowledge}/`
+- BAM-specific → `{output_folder}/planning-artifacts/`
+```
 
 ---
 
@@ -926,27 +1420,37 @@ describe('V2 Step Content (BMAD-Compliant)', () => {
 
 ---
 
-## What Changed from v5.0
+## What Changed from v6.0
 
-| v5.0 | v6.0 (BMAD Ecosystem Integration) |
-|------|-----------------------------------|
-| Core step structure defined | Added full BMAD ecosystem integration |
-| Basic line targets | Integration with web queries, checkpoints, party mode |
-| Generic step content | customize.toml, SKILL.md, workflow.md enhancements |
-| Standalone steps | Module help CSV integration for discovery |
-| Manual navigation | Step navigation patterns with frontmatter updates |
+| v6.0 | v7.0 (Gap Analysis & Solutions) |
+|------|----------------------------------|
+| 10 integration patterns | +12 gap solutions with BMAD-verified fixes |
+| Simple 3-step activation | Full 6-step activation with script fallback |
+| Basic frontmatter mention | Complete frontmatter schema with state tracking |
+| No script integration | Python resolve_customization.py pattern |
+| Single-layer customize | 4-layer merge with documented rules |
+| workflow.menu only | Both agent.menu and workflow.menu patterns |
+| 14-column CSV | Corrected to official 13-column schema |
+| 6 phases assumed | Verified 5 phases + anytime |
+| No error recovery | Script fallback + QG 3-attempt recovery |
+| Basic Party Mode | Full subagent spawning with context building |
+| Simple context loading | Glob pattern project-context.md discovery |
+| 1 language variable | 3 language variables (communication, document, planning) |
+| 1 artifact location | 4 artifact location variables |
 
-**v6.0 Additions:**
-1. Web Search Integration (CSV web_queries pattern)
-2. Checkpoint/HALT Pattern (QG soft gates with A/E/V options)
-3. Party Mode / Advanced Elicitation Integration (A/P/C menus)
-4. Module Help CSV Integration (skill discovery)
-5. Variable Substitution Patterns (config.yaml resolution)
-6. SKILL.md Enhancement Requirements (activation sequence)
-7. customize.toml Enhancement (persistent_facts, on_complete)
-8. workflow.md Mode Router Enhancement (create/edit/validate routing)
-9. Step Navigation Pattern (frontmatter updates, checkpoint gates)
-10. Module Help Integration (Z-prefixed menu codes, phase mapping)
+**v7.0 Gap Solutions:**
+1. SKILL.md 6-step activation sequence with script resolution
+2. Output document frontmatter schema with state tracking
+3. Python script integration pattern (resolve_customization.py)
+4. 4-layer customization merge rules documented
+5. Complete customize.toml template with menu patterns
+6. Corrected module-help.csv to 13 columns (removed keywords)
+7. Verified 5 official phases + anytime
+8. Error recovery patterns (script fallback, QG 3-attempt)
+9. Subagent spawning pattern for Party Mode
+10. Project context glob pattern loading
+11. Complete language variables (communication, document, planning)
+12. Complete artifact location variables (planning, implementation, knowledge)
 
 ---
 
@@ -960,3 +1464,4 @@ describe('V2 Step Content (BMAD-Compliant)', () => {
 | 4.0.0 | 2026-04-26 | Wrong: targeted 60-80 lines, removed BMAD sections |
 | 5.0.0 | 2026-04-26 | **Correct:** Verified against official BMAD method (104 files, 203 avg lines). Restored emoji MANDATORY RULES, COLLABORATION MENUS, EXECUTION PROTOCOLS. Target 80-250 lines by mode. |
 | 6.0.0 | 2026-04-26 | **BMAD Ecosystem Integration:** Added 10 integration patterns (web queries, checkpoints, party mode, module help, variable substitution, SKILL.md/customize.toml/workflow.md enhancements, step navigation, module help CSV). Full seamless integration with existing BMAD method capabilities. |
+| 7.0.0 | 2026-04-26 | **Gap Analysis & Solutions:** Deep review against official BMAD files (SKILL.md, customize.toml, module-help.csv). Identified 12 critical gaps. Added solutions: 6-step activation sequence, frontmatter schema, script integration, 4-layer merge rules, corrected 13-column CSV, verified 5 phases, error recovery, subagent spawning, context glob patterns, 3 language variables, 4 artifact locations. |
