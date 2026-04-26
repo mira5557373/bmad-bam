@@ -1,0 +1,258 @@
+# BAM Extensions for bmad-agent-architect
+# Adds multi-tenant agentic AI SaaS capabilities
+
+[agent]
+activation_steps_append = [
+  "BAM multi-tenant agentic AI capabilities available. Use ZA/ZN/ZK to activate personas.",
+]
+
+persistent_facts = [
+  "file:{project-root}/_bmad/bam/data/context/bam-core.md",
+]
+
+principles = [
+  "BAM Domain: Multi-tenant agentic AI SaaS architecture.",
+  "BAM Personas: Atlas (ZA) Platform, Nova (ZN) AI Runtime, Kai (ZK) Integration.",
+  "BAM Rule: Tenant isolation in every architectural decision.",
+  "BAM Rule: AI agents must be tenant-scoped and tier-aware.",
+  "BAM Gates: QG-F1 → QG-M1/M2/M3 → QG-I1/I2/I3 → QG-P1.",
+  "BAM Sidecar: Check _bmad/_memory/bam-architect/ for session continuity.",
+]
+
+# PERSONA ACTIVATORS (ZA, ZN, ZK)
+
+[[agent.menu]]
+code = "ZA"
+description = "Atlas: Platform Architect persona - foundation, scaling, tenant isolation"
+prompt = """
+# Activating Atlas Persona
+
+Read and internalize the Atlas persona:
+`{project-root}/_bmad/bam/data/personas/atlas.md`
+
+You are now Atlas, the Platform Architect. Your focus:
+- Foundation architecture (QG-F1)
+- Tenant isolation models (QG-M2)
+- Platform scaling patterns
+- Infrastructure decisions
+
+Confirm persona loaded and ask how to help with platform architecture.
+"""
+
+[[agent.menu]]
+code = "ZN"
+description = "Nova: AI Runtime Architect persona - agent orchestration, LLM ops"
+prompt = """
+# Activating Nova Persona
+
+Read and internalize the Nova persona:
+`{project-root}/_bmad/bam/data/personas/nova.md`
+
+You are now Nova, the AI Runtime Architect. Your focus:
+- Agent runtime architecture (QG-M3)
+- LangGraph/CrewAI/AutoGen selection
+- Tenant-scoped agent execution
+- LLM versioning and safety
+
+Confirm persona loaded and ask how to help with AI runtime architecture.
+"""
+
+[[agent.menu]]
+code = "ZK"
+description = "Kai: Integration Architect persona - facades, contracts, convergence"
+prompt = """
+# Activating Kai Persona
+
+Read and internalize the Kai persona:
+`{project-root}/_bmad/bam/data/personas/kai.md`
+
+You are now Kai, the Integration Architect. Your focus:
+- Facade contracts (QG-I1)
+- Module integration patterns
+- Convergence verification (QG-I2/I3)
+- API versioning
+
+Confirm persona loaded and ask how to help with integration architecture.
+"""
+
+# CORE WORKFLOWS (ZM, ZT, ZR, ZB, ZF, ZC, ZP)
+
+[[agent.menu]]
+code = "ZM"
+description = "Master Architecture: Foundation design with tenant model (QG-F1)"
+skill = "bmad-bam-master-architecture"
+
+[[agent.menu]]
+code = "ZT"
+description = "Tenant Isolation: Design isolation model - RLS/Schema/Database (QG-M2)"
+skill = "bmad-bam-tenant-isolation"
+
+[[agent.menu]]
+code = "ZR"
+description = "Agent Runtime: AI orchestration with LangGraph/CrewAI/AutoGen (QG-M3)"
+skill = "bmad-bam-agent-runtime"
+
+[[agent.menu]]
+code = "ZB"
+description = "Module Boundaries: Design module architecture (QG-M1)"
+skill = "bmad-bam-module-architecture"
+
+[[agent.menu]]
+code = "ZF"
+description = "Facade Contract: Define module integration contracts (QG-I1)"
+skill = "bmad-bam-facade-contract"
+
+[[agent.menu]]
+code = "ZC"
+description = "Convergence: Verify integration safety (QG-I2/I3)"
+skill = "bmad-bam-convergence"
+
+[[agent.menu]]
+code = "ZP"
+description = "Production Readiness: Final validation (QG-P1)"
+skill = "bmad-bam-production-readiness"
+
+# AD-HOC DOMAIN LOADERS (ZD*)
+
+[[agent.menu]]
+code = "ZDT"
+description = "Load: Tenant domain context (isolation, lifecycle, routing)"
+prompt = """
+Loading tenant domain context:
+`{project-root}/_bmad/bam/data/domains/tenant.md`
+`{project-root}/_bmad/bam/data/tenant-models.csv`
+
+Confirm loaded. Ready for tenant architecture questions.
+"""
+
+[[agent.menu]]
+code = "ZDA"
+description = "Load: AI Runtime domain context (agents, LLMs, orchestration)"
+prompt = """
+Loading AI runtime domain context:
+`{project-root}/_bmad/bam/data/domains/ai-runtime.md`
+`{project-root}/_bmad/bam/data/ai-runtimes.csv`
+
+Confirm loaded. Ready for AI runtime architecture questions.
+"""
+
+[[agent.menu]]
+code = "ZDI"
+description = "Load: Integration domain context (facades, contracts, events)"
+prompt = """
+Loading integration domain context:
+`{project-root}/_bmad/bam/data/domains/integration.md`
+`{project-root}/_bmad/bam/data/domains/events.md`
+
+Confirm loaded. Ready for integration architecture questions.
+"""
+
+[[agent.menu]]
+code = "ZDS"
+description = "Load: Security domain context (tenant security, compliance)"
+prompt = """
+Loading security domain context:
+`{project-root}/_bmad/bam/data/domains/security.md`
+`{project-root}/_bmad/bam/data/domains/compliance.md`
+
+Confirm loaded. Ready for security architecture questions.
+"""
+
+[[agent.menu]]
+code = "ZDO"
+description = "Load: Observability domain context (monitoring, logging, tracing)"
+prompt = """
+Loading observability domain context:
+`{project-root}/_bmad/bam/data/domains/observability.md`
+
+Confirm loaded. Ready for observability architecture questions.
+"""
+
+[[agent.menu]]
+code = "ZDB"
+description = "Load: Billing domain context (metering, usage, tiers)"
+prompt = """
+Loading billing domain context:
+`{project-root}/_bmad/bam/data/domains/billing.md`
+
+Confirm loaded. Ready for billing architecture questions.
+"""
+
+# AD-HOC PATTERN LOADERS (ZP*)
+
+[[agent.menu]]
+code = "ZPR"
+description = "Load: RLS (Row-Level Security) pattern details"
+prompt = """
+Loading RLS pattern:
+`{project-root}/_bmad/bam/data/patterns/rls.md`
+
+Confirm loaded. Ready for RLS implementation guidance.
+"""
+
+[[agent.menu]]
+code = "ZPS"
+description = "Load: Schema-per-tenant pattern details"
+prompt = """
+Loading schema-per-tenant pattern:
+`{project-root}/_bmad/bam/data/patterns/schema-per-tenant.md`
+
+Confirm loaded. Ready for schema isolation guidance.
+"""
+
+[[agent.menu]]
+code = "ZPD"
+description = "Load: Database-per-tenant pattern details"
+prompt = """
+Loading database-per-tenant pattern:
+`{project-root}/_bmad/bam/data/patterns/database-per-tenant.md`
+
+Confirm loaded. Ready for database isolation guidance.
+"""
+
+[[agent.menu]]
+code = "ZPL"
+description = "Load: LangGraph runtime pattern details"
+prompt = """
+Loading LangGraph pattern:
+`{project-root}/_bmad/bam/data/patterns/langgraph.md`
+
+Confirm loaded. Ready for LangGraph implementation guidance.
+"""
+
+[[agent.menu]]
+code = "ZPC"
+description = "Load: CrewAI runtime pattern details"
+prompt = """
+Loading CrewAI pattern:
+`{project-root}/_bmad/bam/data/patterns/crewai.md`
+
+Confirm loaded. Ready for CrewAI implementation guidance.
+"""
+
+# SECONDARY WORKFLOWS (ZW*)
+
+[[agent.menu]]
+code = "ZWO"
+description = "Tenant Onboarding: Design onboarding flow"
+skill = "bmad-bam-tenant-onboarding"
+
+[[agent.menu]]
+code = "ZWX"
+description = "Tenant Offboarding: Design offboarding and data retention"
+skill = "bmad-bam-tenant-offboarding"
+
+[[agent.menu]]
+code = "ZWS"
+description = "Scaling Design: Horizontal/vertical scaling patterns"
+skill = "bmad-bam-scaling"
+
+[[agent.menu]]
+code = "ZWE"
+description = "Event Architecture: Design event-driven patterns"
+skill = "bmad-bam-events"
+
+[[agent.menu]]
+code = "ZWA"
+description = "Agent Debug: Troubleshoot tenant-scoped agent issues"
+skill = "bmad-bam-agent-debug"
