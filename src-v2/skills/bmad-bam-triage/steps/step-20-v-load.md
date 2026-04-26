@@ -1,28 +1,142 @@
-# Step 20 V Load
+# Step 20: Load Artifact and Checklist (Validate Mode)
+
+## MANDATORY EXECUTION RULES (READ FIRST)
+
+- 🛑 **NEVER generate content without user input** - Wait for explicit direction
+- 📖 **CRITICAL: ALWAYS read the complete step file** before taking any action
+- 🔄 **CRITICAL: When loading next step with 'C'**, ensure entire file is read
+- ⏸️ **ALWAYS pause after presenting findings** and await user direction
+- 🎯 **Focus ONLY on current step scope** - do not look ahead
+- 📋 **LOAD both artifact and checklist** before validation
+
+## EXECUTION PROTOCOLS
+
+- 🎯 Focus: Load triage report and QG-PL1 checklist
+- 💾 Track: `stepsCompleted: [20]` when complete
+- 📖 Context: Prepare for QG-PL1 validation
+- 🚫 Do NOT: Execute validation (that's Step 21)
+
+---
 
 ## Purpose
 
-Load artifact and checklist for validation.
+Load the triage report artifact and QG-PL1 quality gate checklist in preparation for validation. This step ensures all required materials are available before executing validation checks.
+
+---
 
 ## Prerequisites
 
-- Artifact exists
+- Triage report exists at expected location
+- **Load checklist:** `{project-root}/_bmad/bam/data/checklists/qg-pl1.md`
+- **Load patterns:** `{project-root}/_bmad/bam/data/quality-gates.csv` → filter: QG-PL1
 
-## Actions
+---
 
-### 1. Load Artifact
+## Inputs
 
-Read artifact to validate.
+- Triage report: `{output_folder}/planning-artifacts/triage-report.md`
+- QG-PL1 checklist: `{project-root}/_bmad/bam/data/checklists/qg-pl1.md`
+- Pattern registry: `{project-root}/_bmad/bam/data/bam-patterns.csv`
 
-### 2. Load Checklist
+---
 
-Read validation criteria.
+## YOUR TASK:
+
+Load the triage report and validation checklist.
+
+---
+
+## Load Sequence
+
+### 1. Load Triage Report
+
+Load the triage report from:
+
+```
+{output_folder}/planning-artifacts/triage-report.md
+```
+
+If file does not exist:
+- Inform user: "Triage report not found. Run Create mode first."
+- Exit validation mode
+
+### 2. Parse Report Structure
+
+Verify expected sections exist:
+
+| Section | Present | Notes |
+|---------|---------|-------|
+| Executive Summary | YES/NO | {{note}} |
+| Module Complexity Summary | YES/NO | {{note}} |
+| Dependency Analysis | YES/NO | {{note}} |
+| Implementation Roadmap | YES/NO | {{note}} |
+| Resource Requirements | YES/NO | {{note}} |
+| Risk Assessment | YES/NO | {{note}} |
+
+### 3. Load QG-PL1 Checklist
+
+Load the QG-PL1 planning gate checklist:
+
+```
+{project-root}/_bmad/bam/data/checklists/qg-pl1.md
+```
+
+Extract validation criteria:
+
+| Category | Check ID | Description | Critical |
+|----------|----------|-------------|----------|
+| Module Coverage | PL1-01 | All modules identified | YES |
+| Complexity Scoring | PL1-02 | All dimensions scored | YES |
+| Prioritization | PL1-03 | Priorities assigned | YES |
+| Dependencies | PL1-04 | Dependencies mapped | YES |
+| Phases | PL1-05 | Phases defined | NO |
+| Timeline | PL1-06 | Duration estimated | NO |
+| Resources | PL1-07 | Team size estimated | NO |
+| Risks | PL1-08 | Risks documented | NO |
+
+### 4. Load Supporting Context
+
+Load additional context for validation:
+
+- Requirements: `{output_folder}/planning-artifacts/requirements/*.md`
+- Master architecture (if exists): `{output_folder}/planning-artifacts/architecture/master-architecture.md`
+
+### 5. Present Validation Scope
+
+Present validation scope to user:
+
+```
+VALIDATION SCOPE:
+
+Artifact: triage-report.md
+Quality Gate: QG-PL1 (Planning)
+Critical Checks: 4
+Standard Checks: 4
+Total Checks: 8
+
+Ready to execute validation? (y/n)
+```
+
+---
 
 ## Verification
 
-- [ ] Artifact loaded
-- [ ] Checklist loaded
+- [ ] Triage report loaded
+- [ ] Report structure verified
+- [ ] QG-PL1 checklist loaded
+- [ ] Validation criteria extracted
+- [ ] User confirmed ready
+
+---
+
+## Outputs
+
+- Loaded triage report content
+- QG-PL1 checklist criteria
+- Validation scope summary
+
+---
 
 ## Next Step
 
-Proceed to `step-21-v-validate.md`
+Proceed to `step-21-v-validate.md` to execute validation checks.

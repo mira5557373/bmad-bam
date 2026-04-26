@@ -1,28 +1,118 @@
-# Step 01 C Start
+# Step 1: Initialize Agent Debug Session
+
+## MANDATORY EXECUTION RULES (READ FIRST)
+
+- :stop_sign: **NEVER generate content without user input** - Wait for explicit direction
+- :open_book: **CRITICAL: ALWAYS read the complete step file** before taking any action
+- :mag: Use web search to verify current best practices when making technology decisions
+
+---
 
 ## Purpose
 
-Initialize workflow and gather requirements.
+Initialize the AI agent debug session by loading runtime configuration, execution traces, and identifying debug scope.
+
+---
 
 ## Prerequisites
 
-- Required context loaded
+- **Load patterns:** `{project-root}/_bmad/bam/data/bam-patterns.csv` -> filter: `agent-runtime`
+- **Load patterns:** `{project-root}/_bmad/bam/data/ai-runtimes.csv`
+
+---
 
 ## Actions
 
-### 1. Load Context
+### 1. Identify Debug Scope
 
-Read relevant domain and pattern files.
+Determine the scope of investigation:
 
-### 2. Gather Requirements
+| Scope | Description | Artifacts Needed |
+|-------|-------------|------------------|
+| Single Agent | One agent misbehaving | Agent config, run traces |
+| Multi-Agent | Orchestration failure | Graph state, handoff logs |
+| Tool Chain | Tool execution issues | Tool configs, call logs |
+| Memory | Context or memory issues | Memory snapshots, state |
+| Tenant Context | Isolation or context leak | Tenant configs, RLS logs |
 
-Collect input from user.
+### 2. Load Agent Runtime Configuration
+
+Gather agent configuration details:
+
+| Setting | Value | Notes |
+|---------|-------|-------|
+| Agent ID | {agent_id} | Unique identifier |
+| Agent Type | {type} | LangGraph/CrewAI/AutoGen/Custom |
+| Model | {model_name} | LLM model in use |
+| Temperature | {temperature} | Sampling temperature |
+| Max Tokens | {max_tokens} | Token limit |
+| Tools Enabled | {tools_list} | Available tools |
+
+### 3. Collect Execution Traces
+
+Identify available trace data:
+
+| Trace Type | Source | Status |
+|------------|--------|--------|
+| LangSmith Traces | LangSmith API | Available/Unavailable |
+| Application Logs | Logging system | Available/Unavailable |
+| Tool Execution Logs | Tool registry | Available/Unavailable |
+| Memory State Snapshots | Memory system | Available/Unavailable |
+| Conversation History | Message store | Available/Unavailable |
+
+### 4. Establish Debug Context
+
+Document the issue context:
+
+| Field | Value |
+|-------|-------|
+| Issue Description | {user_provided_description} |
+| First Observed | {timestamp} |
+| Frequency | Sporadic/Consistent/Always |
+| Affected Tenants | {tenant_ids_or_all} |
+| Severity | P1/P2/P3/P4 |
+
+**Verify current best practices with web search:**
+Search the web: "AI agent debugging methodology best practices {date}"
+Search the web: "LangGraph LangSmith tracing troubleshooting {date}"
+
+_Source: [URL]_
+
+---
+
+## COLLABORATION MENUS (A/P/C):
+
+```
+Your options:
+- **C (Continue)**: Proceed to trace analysis
+```
+
+#### If 'C' (Continue):
+- Update frontmatter `stepsCompleted: [1]`
+- Proceed to: `step-02-c-analyze.md`
+
+---
 
 ## Verification
 
-- [ ] Context loaded
-- [ ] Requirements gathered
+- [ ] Debug scope identified (single/multi-agent/tool chain/memory/tenant)
+- [ ] Agent runtime configuration loaded
+- [ ] Available execution traces cataloged
+- [ ] Issue context documented
+- [ ] Patterns align with pattern registry
+
+---
+
+## Outputs
+
+- Debug scope determination with required artifacts
+- Agent runtime configuration summary
+- Trace availability inventory
+- Issue context documentation
+- **Load template:** `{project-root}/_bmad/bam/data/templates/agent-debug-report-template.md`
+
+---
 
 ## Next Step
 
-Proceed to `step-02-c-analyze.md`
+Proceed to `step-02-c-analyze.md` to analyze execution traces.

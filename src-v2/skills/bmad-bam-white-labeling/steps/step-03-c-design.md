@@ -1,28 +1,227 @@
-# Step 03 C Design
+# Step 03: Design Domain Customization
+
+## MANDATORY EXECUTION RULES (READ FIRST):
+
+- 🛑 NEVER generate content without user input
+- 📖 CRITICAL: ALWAYS read the complete step file before taking any action
+- 🔄 CRITICAL: When loading next step with 'C', ensure entire file is read
+- ⏸️ ALWAYS pause after presenting findings and await user direction
+- 🎯 Focus ONLY on current step scope - do not look ahead
+
+## EXECUTION PROTOCOLS:
+
+- 🎯 Show your analysis before taking any action
+- 💾 Update document frontmatter after each section completion
+- 📝 Maintain append-only document building
+- ✅ Track progress in `stepsCompleted` array
+- 🔍 Use web search to verify current best practices
+
+---
 
 ## Purpose
 
-Design the solution based on analysis.
+Design the domain customization layer including custom domain mapping, SSL certificate provisioning, DNS configuration guidance, and subdomain allocation strategies.
+
+---
 
 ## Prerequisites
 
-- Step 02 complete
+- Step 02 completed: Branding design established
+- **Load patterns:** `{project-root}/_bmad/bam/data/bam-patterns.csv` → filter: `customization`
+- **Load guide:** `{project-root}/_bmad/bam/data/agent-guides/bam/white-labeling-guide.md`
+
+**Web Research (Required):**
+
+Search the web: "multi-tenant custom domain implementation {date}"
+Search the web: "SaaS SSL certificate automation Let's Encrypt {date}"
+Search the web: "wildcard DNS multi-tenant architecture {date}"
+
+Document findings with citations: _Source: [URL]_
+
+---
 
 ## Actions
 
-### 1. Apply Patterns
+### 1. Design Custom Domain Mapping
 
-Apply identified patterns.
+Define domain mapping architecture:
 
-### 2. Design Solution
+| Domain Type | Example | Tier | Resolution |
+|-------------|---------|------|------------|
+| Platform subdomain | `tenant.platform.com` | Free | Automatic |
+| Custom subdomain | `app.tenant.com` | Enterprise | CNAME |
+| Apex domain | `tenant.com` | Enterprise+ | A record |
+| Multiple domains | `app.tenant.com`, `portal.tenant.com` | OEM | Multiple mappings |
 
-Create design decisions.
+Domain resolution flow:
+
+| Stage | Action | System |
+|-------|--------|--------|
+| Request | Extract hostname | Load balancer |
+| Lookup | Query tenant by domain | Domain registry |
+| Validation | Verify domain ownership | Verification service |
+| Routing | Route to tenant context | Application router |
+| Caching | Cache domain->tenant mapping | Redis/memory |
+
+Domain verification methods:
+
+| Method | How It Works | Time to Verify |
+|--------|--------------|----------------|
+| CNAME verification | Tenant adds CNAME with verification token | Minutes |
+| TXT record | Tenant adds TXT record with token | Minutes |
+| HTML file | Tenant uploads verification file | Immediate |
+| Meta tag | Tenant adds meta tag to homepage | Immediate |
+
+### 2. Design SSL Certificate Provisioning
+
+Certificate automation strategy:
+
+| Approach | Pros | Cons | Recommendation |
+|----------|------|------|----------------|
+| Let's Encrypt automation | Free, automated | Rate limits, 90-day renewal | Default choice |
+| Managed certificates | Simple, no rate limits | Cost per certificate | Enterprise option |
+| Customer-provided | Full control | Manual process | OEM/compliance needs |
+
+Certificate provisioning flow:
+
+| Stage | Action | Automation |
+|-------|--------|------------|
+| Domain verified | Trigger certificate request | Automatic |
+| ACME challenge | HTTP-01 or DNS-01 challenge | Automatic |
+| Certificate issued | Store in certificate manager | Automatic |
+| Certificate deployed | Update load balancer/ingress | Automatic |
+| Renewal | Re-issue 30 days before expiry | Automatic |
+
+Certificate management architecture:
+
+| Component | Purpose | Implementation |
+|-----------|---------|----------------|
+| Certificate manager | Store certificates | Vault, AWS ACM, Cert-Manager |
+| ACME client | Automate Let's Encrypt | certbot, cert-manager, acme.sh |
+| Certificate monitor | Track expiry dates | Custom + alerting |
+| Load balancer | Serve certificates | SNI-based routing |
+
+### 3. Design DNS Configuration Guidance
+
+Provide tenant-facing DNS guidance:
+
+| Record Type | Purpose | Example |
+|-------------|---------|---------|
+| CNAME | Subdomain pointing | `app CNAME tenant.platform.com` |
+| A record | Apex domain pointing | `@ A <platform-ip>` |
+| AAAA record | IPv6 apex domain | `@ AAAA <platform-ipv6>` |
+| TXT record | Domain verification | `_verification TXT <token>` |
+| CAA record | Certificate authority | `@ CAA 0 issue "letsencrypt.org"` |
+
+DNS verification dashboard:
+
+| Check | Status | Action if Failed |
+|-------|--------|------------------|
+| CNAME/A record | Pending/Verified | Show DNS instructions |
+| TXT verification | Pending/Verified | Show TXT record to add |
+| DNS propagation | Propagating/Complete | Show propagation status |
+| SSL ready | Pending/Ready | Trigger certificate issuance |
+
+Self-service DNS wizard flow:
+
+| Step | User Action | System Action |
+|------|-------------|---------------|
+| 1 | Enter custom domain | Validate format |
+| 2 | Choose verification method | Generate verification token |
+| 3 | Configure DNS records | Display instructions |
+| 4 | Click verify | Check DNS records |
+| 5 | Confirmation | Provision SSL, activate domain |
+
+### 4. Design Subdomain Allocation
+
+Subdomain strategy by tier:
+
+| Tier | Subdomain Format | Customization |
+|------|------------------|---------------|
+| Free | `{tenant-slug}.platform.com` | None |
+| Pro | `{tenant-slug}.platform.com` | Slug editable |
+| Enterprise | `{tenant-slug}.platform.com` + custom domain | Full control |
+| OEM | Multiple custom domains | Full control |
+
+Subdomain management:
+
+| Feature | Description | Implementation |
+|---------|-------------|----------------|
+| Slug validation | Alphanumeric, no reserved words | Validation rules |
+| Slug uniqueness | Globally unique | Database constraint |
+| Slug history | Track previous slugs | Redirect old URLs |
+| Reserved slugs | Block system URLs | Reserved list |
+
+Reserved subdomain list:
+
+| Reserved | Reason |
+|----------|--------|
+| `www`, `api`, `app` | Platform use |
+| `admin`, `dashboard` | System URLs |
+| `mail`, `smtp`, `pop` | Email services |
+| `ftp`, `sftp` | File services |
+| `support`, `help` | Support portal |
+| `status`, `health` | Status pages |
+
+---
+
+## COLLABORATION MENUS (A/P/C):
+
+After presenting the domain customization design, present the user with:
+
+```
+Your options:
+- **A (Advanced Elicitation)**: Deep dive into SSL automation or DNS architecture
+- **P (Party Mode)**: Bring DevOps/Security perspectives on domain handling
+- **C (Continue)**: Accept domain design and proceed to feature customization
+- **[Specific components]**: Describe which components need refinement
+
+Select an option:
+```
+
+### PROTOCOL INTEGRATION:
+
+#### If 'A' (Advanced Elicitation):
+- Invoke the `bmad-advanced-elicitation` skill
+- Pass context: domain mapping design, SSL strategy, DNS guidance
+- Process enhanced insights on certificate automation, DNS propagation
+- Return to A/P/C menu
+
+#### If 'P' (Party Mode):
+- Invoke the `bmad-party-mode` skill
+- Context: "Review domain customization architecture for multi-tenant SaaS"
+- Present synthesized recommendations from DevOps and security perspectives
+- Return to A/P/C menu
+
+#### If 'C' (Continue):
+- Document domain design decisions
+- Update frontmatter: `stepsCompleted: [1, 2, 3]`
+- Proceed to next step: `step-04-c-document.md`
+
+---
 
 ## Verification
 
-- [ ] Design complete
-- [ ] Decisions documented
+- [ ] Custom domain mapping architecture defined
+- [ ] SSL certificate provisioning strategy documented
+- [ ] DNS configuration guidance designed
+- [ ] Subdomain allocation strategy specified
+- [ ] Domain verification flow documented
+- [ ] Reserved subdomains identified
+- [ ] Web research completed with citations
+
+---
+
+## Outputs
+
+- Domain mapping architecture specification
+- SSL certificate automation design
+- DNS configuration guide for tenants
+- Subdomain allocation and management rules
+- Domain verification workflow
+
+---
 
 ## Next Step
 
-Proceed to `step-04-c-document.md`
+Proceed to `step-04-c-document.md` to design feature customization.
