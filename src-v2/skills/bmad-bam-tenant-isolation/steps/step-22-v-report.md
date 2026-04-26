@@ -285,40 +285,6 @@ Document recovery attempt status:
 
 ---
 
-## COLLABORATION MENUS (A/P/C)
-
-After generating report, present options:
-
-```
-Your options:
-- **A (Advanced Elicitation)**: Deep dive into report findings
-- **P (Party Mode)**: Security and architect review of next steps
-- **C (Continue)**: Complete validation workflow
-- **[Specific concerns]**: Describe concerns about report or next steps
-
-Select an option:
-```
-
-### PROTOCOL INTEGRATION
-
-#### If 'A' (Advanced Elicitation):
-- Invoke the `bmad-advanced-elicitation` skill
-- Pass context: report contents, gate decision, recommendations
-- Explore additional context for failed items
-- Return to A/P/C menu
-
-#### If 'P' (Party Mode):
-- Invoke the `bmad-party-mode` skill
-- Context: "Review QG-M2 validation report and recommended next steps"
-- Present security and architect perspectives
-- Return to A/P/C menu
-
-#### If 'C' (Continue):
-- Mark Validate mode complete
-- Workflow finished
-
----
-
 ## SUCCESS METRICS
 
 - ✅ Executive summary generated with gate decision

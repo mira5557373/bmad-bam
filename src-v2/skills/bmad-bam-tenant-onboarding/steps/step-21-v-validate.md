@@ -26,6 +26,12 @@ Validate completeness and quality of the tenant onboarding design against establ
 
 ---
 
+## YOUR TASK
+
+Execute all validation checks across 7 categories: Registration Flow, Provisioning Saga, Resource Initialization, Validation Design, Rollback Procedures, Monitoring & Alerting, and Security Controls. Identify all CRITICAL checks and verify they pass. Calculate the gate decision using the QG-ONBOARD criteria matrix.
+
+---
+
 ## Prerequisites
 
 - Step 20 completed: Artifact and checklist loaded
@@ -140,38 +146,23 @@ Tally results:
 
 ---
 
-## COLLABORATION MENUS (A/P/C):
+## SUCCESS METRICS
 
-After completing validation checks, present the user with:
+- ✅ All 7 validation categories executed
+- ✅ CRITICAL checks identified and verified
+- ✅ Saga idempotency and rollback validated
+- ✅ Security controls verified (secrets, auth, input validation)
+- ✅ Gate decision calculated correctly
+- ✅ Remediation priorities identified for failures
 
-```
-Your options:
-- **A (Advanced Elicitation)**: Deep dive into specific validation findings
-- **P (Party Mode)**: Bring QA and security perspectives on gate decision
-- **C (Continue)**: Accept validation results and proceed to report
-- **[Specific concerns]**: Describe validation concerns to explore
+---
 
-Select an option:
-```
+## FAILURE MODES
 
-### PROTOCOL INTEGRATION:
-
-#### If 'A' (Advanced Elicitation):
-- Invoke the `bmad-advanced-elicitation` skill
-- Pass context: validation results, failed checks, gate decision
-- Process enhanced insights on remediation priority
-- Return to A/P/C menu
-
-#### If 'P' (Party Mode):
-- Invoke the `bmad-party-mode` skill
-- Context: "Review tenant onboarding design validation results"
-- Present synthesized recommendations on gate decision
-- Return to A/P/C menu
-
-#### If 'C' (Continue):
-- Document gate decision
-- Update frontmatter `stepsCompleted: [20, 21]`
-- Proceed to next step: `step-22-v-report.md`
+- ❌ **CRITICAL check fails:** Automatic FAIL, enter recovery protocol
+- ❌ **Saga not idempotent:** FAIL - provisioning cannot retry safely
+- ❌ **Rollback incomplete:** FAIL - cannot recover from partial failures
+- ❌ **Secret management insecure:** CRITICAL FAIL, immediate remediation required
 
 ---
 

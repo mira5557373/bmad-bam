@@ -97,20 +97,36 @@ Extract and present current state:
 | Last Modified | {{date}} |
 | Author | {{author}} |
 
-### 4. Identify Modification Scope
+### 4. Present Edit Options
 
-Ask the user which sections need modification:
+Display edit menu to user:
 
-- [ ] Add new tool definitions
-- [ ] Update existing tool schemas
-- [ ] Modify permission requirements
-- [ ] Adjust rate limits
-- [ ] Update execution configuration
-- [ ] Add new tool category
-- [ ] Update TenantContext specification
-- [ ] Modify error response codes
-- [ ] Update monitoring configuration
-- [ ] Deprecate existing tools
+```
+================================================================================
+TOOL CONTRACT DESIGN - EDIT MODE
+================================================================================
+Document: tool-contracts-design.md
+Version: {{version}}
+AI Runtime: {{ai_runtime}}
+Total Tools: {{count}}
+================================================================================
+
+EDITABLE SECTIONS:
+[1] Tool Definitions - Add new tools, update schemas
+[2] Permission Requirements - Modify access controls, approval gates
+[3] Rate Limits - Adjust quotas by tier (Free/Pro/Enterprise)
+[4] Execution Configuration - Update retry, timeout, circuit breaker
+[5] Tool Categories - Add, rename, or reorganize categories
+[6] TenantContext Specification - Update context propagation
+[7] Error Response Codes - Add or modify error handling
+[8] Monitoring Configuration - Update metrics, alerts, dashboards
+[9] Tool Deprecation - Mark tools for deprecation with migration path
+[10] Full Redesign - Major restructure (rare)
+
+================================================================================
+Select section(s) to edit (comma-separated) or 'C' to cancel:
+================================================================================
+```
 
 Capture the specific changes requested before proceeding.
 

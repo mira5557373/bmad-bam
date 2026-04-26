@@ -23,6 +23,12 @@ Load the agent debug report artifact for validation against quality criteria and
 
 ---
 
+## YOUR TASK
+
+Load the existing agent debug report artifact from the output location. Extract report metadata including agent investigated, severity level, and current status. Prepare the QG-AI1 validation checklist for systematic verification in the next step.
+
+---
+
 ## Prerequisites
 
 - Existing debug report to validate
@@ -83,36 +89,22 @@ Confirm the artifact is ready for validation checks:
 
 ---
 
-## COLLABORATION MENUS (A/P/C):
+## SUCCESS METRICS
 
-After loading the artifact, present the user with:
+- ✅ Debug report artifact loaded from correct path
+- ✅ Report metadata extracted (agent, severity, status)
+- ✅ All required sections verified present
+- ✅ QG-AI1 checklist loaded and understood
+- ✅ Validation readiness confirmed with user
 
-```
-Your options:
-- **A (Advanced Elicitation)**: Deep dive into report sections before validation
-- **P (Party Mode)**: Bring perspectives on validation approach
-- **C (Continue)**: Proceed to validation
-- **[Specific concerns]**: Describe concerns to address
+---
 
-Select an option:
-```
+## FAILURE MODES
 
-### PROTOCOL INTEGRATION:
-
-#### If 'A' (Advanced Elicitation):
-- Invoke the `bmad-advanced-elicitation` skill
-- Pass context: artifact contents, validation scope
-- Process enhanced insights
-- Return to A/P/C menu
-
-#### If 'P' (Party Mode):
-- Invoke the `bmad-party-mode` skill
-- Context: "Review agent debug report before validation"
-- Present synthesized recommendations
-- Return to A/P/C menu
-
-#### If 'C' (Continue):
-- Proceed to next step: `step-21-v-validate.md`
+- ❌ **Artifact not found:** Redirect to Create mode
+- ❌ **Missing frontmatter:** Cannot extract report metadata
+- ❌ **Incomplete report:** Missing required sections blocks validation
+- ❌ **QG-AI1 checklist not found:** Verify BAM installation
 
 ---
 

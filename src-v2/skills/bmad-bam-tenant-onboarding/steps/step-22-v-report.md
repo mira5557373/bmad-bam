@@ -161,38 +161,23 @@ Display gate outcome with clear next steps:
 
 ---
 
-## COLLABORATION MENUS (A/P/C):
+## SUCCESS METRICS
 
-After generating the report, present the user with:
+- ✅ Executive summary generated with gate decision
+- ✅ All validation results documented by category
+- ✅ Failed checks listed with remediation guidance
+- ✅ Recommendations aligned to gate decision
+- ✅ Report saved to validation folder
+- ✅ Next steps clearly communicated
 
-```
-Your options:
-- **A (Advanced Elicitation)**: Deep dive into specific report sections
-- **P (Party Mode)**: Bring perspectives on next steps and priorities
-- **C (Continue)**: Accept report and complete Validate workflow
-- **[Specific concerns]**: Describe report adjustments needed
+---
 
-Select an option:
-```
+## FAILURE MODES
 
-### PROTOCOL INTEGRATION:
-
-#### If 'A' (Advanced Elicitation):
-- Invoke the `bmad-advanced-elicitation` skill
-- Pass context: validation report, gate decision, recommendations
-- Process enhanced insights on remediation approach
-- Return to A/P/C menu
-
-#### If 'P' (Party Mode):
-- Invoke the `bmad-party-mode` skill
-- Context: "Review tenant onboarding validation report and recommendations"
-- Present synthesized recommendations on prioritization
-- Return to A/P/C menu
-
-#### If 'C' (Continue):
-- Save report to output location
-- Update frontmatter `stepsCompleted: [20, 21, 22]`
-- Mark Validate mode complete
+- ❌ **Report generation failed:** Verify Step 21 results available
+- ❌ **Save failed:** Check output folder permissions
+- ❌ **Incomplete results:** Cannot compile report without all categories
+- ❌ **Recommendations misaligned:** Verify gate decision matches remediation plan
 
 ---
 

@@ -24,6 +24,12 @@ Load the white-labeling design artifact and validation checklist for quality gat
 
 ---
 
+## YOUR TASK
+
+Load the existing white-labeling design artifact and prepare validation criteria. Extract document metadata including version, status, and sections present. Load or generate the validation checklist covering branding, domain architecture, feature customization, tier alignment, implementation feasibility, and security considerations. Confirm validation scope with user.
+
+---
+
 ## Prerequisites
 
 - Existing white-labeling design to validate
@@ -81,37 +87,22 @@ Confirm validation scope with user:
 
 ---
 
-## COLLABORATION MENUS (A/P/C):
+## SUCCESS METRICS
 
-After loading the artifact and checklist, present the user with:
+- ✅ White-labeling design artifact loaded successfully
+- ✅ Document metadata extracted (version, status, sections)
+- ✅ Validation checklist loaded with 6 categories
+- ✅ Category weights identified (High/Medium)
+- ✅ Validation scope confirmed with user
 
-```
-Your options:
-- **A (Advanced Elicitation)**: Deep dive into artifact before validation
-- **P (Party Mode)**: Bring perspectives on validation approach
-- **C (Continue)**: Proceed to validation checks
-- **[Specific concerns]**: Describe concerns to address
+---
 
-Select an option:
-```
+## FAILURE MODES
 
-### PROTOCOL INTEGRATION:
-
-#### If 'A' (Advanced Elicitation):
-- Invoke the `bmad-advanced-elicitation` skill
-- Pass context: artifact contents, validation scope
-- Process enhanced insights on validation priorities
-- Return to A/P/C menu
-
-#### If 'P' (Party Mode):
-- Invoke the `bmad-party-mode` skill
-- Context: "Review white-labeling design before validation"
-- Present synthesized recommendations on validation focus
-- Return to A/P/C menu
-
-#### If 'C' (Continue):
-- Confirm validation scope
-- Proceed to next step: `step-21-v-validate.md`
+- ❌ **Artifact not found:** Redirect to Create mode
+- ❌ **Missing checklist:** Generate criteria from standard template
+- ❌ **Incomplete document:** Required sections missing blocks validation
+- ❌ **Scope unclear:** User must confirm validation areas
 
 ---
 

@@ -26,6 +26,12 @@ Load the tenant onboarding design artifact and validation checklist for quality 
 
 ---
 
+## YOUR TASK
+
+Load the existing tenant onboarding design artifact and prepare the validation checklist. Extract document metadata including version, tenant model, and tier coverage. Verify all required sections are present and identify the applicable quality gate (QG-ONBOARD) for validation.
+
+---
+
 ## Prerequisites
 
 - Existing tenant onboarding design to validate
@@ -104,37 +110,22 @@ Confirm readiness for validation:
 
 ---
 
-## COLLABORATION MENUS (A/P/C):
+## SUCCESS METRICS
 
-After loading the artifact and checklist, present the user with:
+- ✅ Onboarding design artifact loaded successfully
+- ✅ Document metadata extracted (version, model, tiers)
+- ✅ Validation checklist loaded with all 7 categories
+- ✅ Quality gate QG-ONBOARD identified
+- ✅ Validation readiness confirmed with user
 
-```
-Your options:
-- **A (Advanced Elicitation)**: Deep dive into artifact before validation
-- **P (Party Mode)**: Bring perspectives on validation approach
-- **C (Continue)**: Proceed to run validation checks
-- **[Specific concerns]**: Describe pre-validation concerns
+---
 
-Select an option:
-```
+## FAILURE MODES
 
-### PROTOCOL INTEGRATION:
-
-#### If 'A' (Advanced Elicitation):
-- Invoke the `bmad-advanced-elicitation` skill
-- Pass context: artifact contents, checklist categories, validation scope
-- Process enhanced insights on what to focus validation on
-- Return to A/P/C menu
-
-#### If 'P' (Party Mode):
-- Invoke the `bmad-party-mode` skill
-- Context: "Review tenant onboarding design before validation"
-- Present synthesized recommendations on validation priorities
-- Return to A/P/C menu
-
-#### If 'C' (Continue):
-- Update frontmatter `stepsCompleted: [20]`
-- Proceed to next step: `step-21-v-validate.md`
+- ❌ **Artifact not found:** Redirect to Create mode
+- ❌ **Missing checklist:** Cannot proceed without validation criteria
+- ❌ **Incomplete document:** Required sections missing blocks validation
+- ❌ **QG-F1 prerequisite not met:** Foundation gate must pass first
 
 ---
 

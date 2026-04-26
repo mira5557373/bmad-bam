@@ -123,38 +123,23 @@ Save to: `{output_folder}/planning-artifacts/validation/white-labeling-validatio
 
 ---
 
-## COLLABORATION MENUS (A/P/C):
+## SUCCESS METRICS
 
-After generating the report, present the user with:
+- ✅ Executive summary generated with gate decision
+- ✅ All validation results documented by category
+- ✅ Critical and non-critical issues classified
+- ✅ Remediation plan created with priorities
+- ✅ Report saved to validation folder
+- ✅ Next steps aligned to gate decision
 
-```
-Your options:
-- **A (Advanced Elicitation)**: Deep dive into report findings or remediation details
-- **P (Party Mode)**: Bring perspectives on next steps and priorities
-- **C (Continue)**: Complete validation workflow
-- **[Specific concerns]**: Describe concerns to address
+---
 
-Select an option:
-```
+## FAILURE MODES
 
-### PROTOCOL INTEGRATION:
-
-#### If 'A' (Advanced Elicitation):
-- Invoke the `bmad-advanced-elicitation` skill
-- Pass context: validation report, gate decision, remediation plan
-- Process enhanced insights on prioritization
-- Return to A/P/C menu
-
-#### If 'P' (Party Mode):
-- Invoke the `bmad-party-mode` skill
-- Context: "Review white-labeling validation report and determine next steps"
-- Present synthesized recommendations from multiple perspectives
-- Return to A/P/C menu
-
-#### If 'C' (Continue):
-- Save validation report
-- Update frontmatter: `stepsCompleted: [20, 21, 22]`
-- Validate mode complete
+- ❌ **Report generation failed:** Verify Step 21 results available
+- ❌ **Save failed:** Check output folder permissions
+- ❌ **Missing results:** Cannot compile incomplete report
+- ❌ **Remediation plan incomplete:** All failures must have remediation guidance
 
 ---
 

@@ -122,36 +122,23 @@ Save to: `{output_folder}/planning-artifacts/validation/agent-debug-validation-r
 
 ---
 
-## COLLABORATION MENUS (A/P/C):
+## SUCCESS METRICS
 
-After generating the report, present the user with:
+- ✅ Executive summary generated with gate decision
+- ✅ All validation results documented with evidence
+- ✅ Remediation guidance provided for gaps
+- ✅ Report saved to validation folder
+- ✅ Recovery protocol status documented (if applicable)
+- ✅ Next steps clearly communicated
 
-```
-Your options:
-- **A (Advanced Elicitation)**: Deep dive into report findings
-- **P (Party Mode)**: Bring perspectives on next steps
-- **C (Continue)**: Complete validation workflow
-- **[Specific concerns]**: Describe concerns to address
+---
 
-Select an option:
-```
+## FAILURE MODES
 
-### PROTOCOL INTEGRATION:
-
-#### If 'A' (Advanced Elicitation):
-- Invoke the `bmad-advanced-elicitation` skill
-- Pass context: report contents, gate decision
-- Process enhanced insights
-- Return to A/P/C menu
-
-#### If 'P' (Party Mode):
-- Invoke the `bmad-party-mode` skill
-- Context: "Review agent debug validation report and next steps"
-- Present synthesized recommendations
-- Return to A/P/C menu
-
-#### If 'C' (Continue):
-- Mark Validate mode complete
+- ❌ **Report generation failed:** Verify Step 21 results available
+- ❌ **Save failed:** Check output folder permissions
+- ❌ **Missing validation results:** Cannot compile incomplete report
+- ❌ **Gate decision unclear:** Re-calculate from Step 21 results
 
 ---
 

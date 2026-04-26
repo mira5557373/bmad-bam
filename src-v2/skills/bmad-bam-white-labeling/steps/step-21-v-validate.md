@@ -24,6 +24,12 @@ Execute validation checks against the white-labeling design to verify completene
 
 ---
 
+## YOUR TASK
+
+Execute all validation checks across 6 categories: Branding Completeness, Domain Architecture, Feature Customization, Tier Alignment, Implementation Feasibility, and Security Considerations. Pay special attention to CRITICAL security checks (tenant isolation, CSS sanitization, domain ownership verification). Calculate the gate decision based on critical and non-critical outcomes.
+
+---
+
 ## Prerequisites
 
 - Step 20 completed: Artifact and checklist loaded
@@ -124,38 +130,23 @@ Gate decision logic:
 
 ---
 
-## COLLABORATION MENUS (A/P/C):
+## SUCCESS METRICS
 
-After completing validation checks, present the user with:
+- ✅ All 6 validation categories executed
+- ✅ CRITICAL security checks verified (isolation, sanitization, ownership)
+- ✅ Tier alignment validated across all customization levels
+- ✅ Implementation feasibility confirmed
+- ✅ Gate decision calculated correctly
+- ✅ Critical failures flagged with severity
 
-```
-Your options:
-- **A (Advanced Elicitation)**: Deep dive into specific validation failures
-- **P (Party Mode)**: Bring perspectives on remediation approaches
-- **C (Continue)**: Proceed to generate validation report
-- **[Specific checks]**: Describe which checks need discussion
+---
 
-Select an option:
-```
+## FAILURE MODES
 
-### PROTOCOL INTEGRATION:
-
-#### If 'A' (Advanced Elicitation):
-- Invoke the `bmad-advanced-elicitation` skill
-- Pass context: validation results, failures, critical items
-- Process enhanced insights on remediation
-- Return to A/P/C menu
-
-#### If 'P' (Party Mode):
-- Invoke the `bmad-party-mode` skill
-- Context: "Review white-labeling validation results and remediation options"
-- Present synthesized recommendations from multiple perspectives
-- Return to A/P/C menu
-
-#### If 'C' (Continue):
-- Document validation results
-- Update frontmatter: `stepsCompleted: [20, 21]`
-- Proceed to next step: `step-22-v-report.md`
+- ❌ **CRITICAL security failure:** Automatic FAIL, immediate escalation
+- ❌ **CSS injection unsanitized:** CRITICAL security vulnerability
+- ❌ **Domain ownership unverified:** CRITICAL - blocks custom domain feature
+- ❌ **Tier capability gaps:** FAIL if customization inconsistent
 
 ---
 

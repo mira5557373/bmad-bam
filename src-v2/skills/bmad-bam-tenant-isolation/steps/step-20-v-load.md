@@ -149,39 +149,6 @@ This validation workflow verifies the tenant isolation design meets QG-M2 (Tenan
 
 ---
 
-## COLLABORATION MENUS (A/P/C)
-
-After loading artifact, present options:
-
-```
-Your options:
-- **A (Advanced Elicitation)**: Deep dive into artifact structure before validation
-- **P (Party Mode)**: Security architect review of validation approach
-- **C (Continue)**: Proceed to validation checks
-- **[Specific concerns]**: Describe concerns about artifact completeness
-
-Select an option:
-```
-
-### PROTOCOL INTEGRATION
-
-#### If 'A' (Advanced Elicitation):
-- Invoke the `bmad-advanced-elicitation` skill
-- Pass context: artifact contents, 8-dimension matrix status
-- Explore edge cases: missing dimensions, incomplete propagation
-- Return to A/P/C menu
-
-#### If 'P' (Party Mode):
-- Invoke the `bmad-party-mode` skill
-- Context: "Review tenant isolation artifact before QG-M2 validation"
-- Present security and architect perspectives on validation approach
-- Return to A/P/C menu
-
-#### If 'C' (Continue):
-- Proceed to `step-21-v-validate.md`
-
----
-
 ## SUCCESS METRICS
 
 - ✅ Tenant isolation artifact loaded successfully

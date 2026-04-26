@@ -23,6 +23,12 @@ Validate completeness and quality of the agent debug report against QG-AI1 (Agen
 
 ---
 
+## YOUR TASK
+
+Execute all QG-AI1 validation checks against the loaded debug report. Verify issue documentation, debug analysis, root cause identification, remediation plan, prevention measures, and tenant isolation compliance. Calculate the gate decision based on CRITICAL and non-critical check outcomes.
+
+---
+
 ## Prerequisites
 
 - Step 20 completed: Artifact loaded
@@ -110,37 +116,22 @@ Based on validation results:
 
 ---
 
-## COLLABORATION MENUS (A/P/C):
+## SUCCESS METRICS
 
-After completing validation, present the user with:
+- ✅ All 6 validation categories executed
+- ✅ CRITICAL checks identified and verified
+- ✅ Tenant isolation validated (no cross-tenant exposure)
+- ✅ Gate decision calculated correctly
+- ✅ Issues documented with severity classification
 
-```
-Your options:
-- **A (Advanced Elicitation)**: Deep dive into validation findings
-- **P (Party Mode)**: Bring perspectives on gate decision
-- **C (Continue)**: Proceed to generate validation report
-- **[Specific concerns]**: Describe concerns to address
+---
 
-Select an option:
-```
+## FAILURE MODES
 
-### PROTOCOL INTEGRATION:
-
-#### If 'A' (Advanced Elicitation):
-- Invoke the `bmad-advanced-elicitation` skill
-- Pass context: validation results, gate decision
-- Process enhanced insights
-- Return to A/P/C menu
-
-#### If 'P' (Party Mode):
-- Invoke the `bmad-party-mode` skill
-- Context: "Review agent debug report validation results"
-- Present synthesized recommendations
-- Return to A/P/C menu
-
-#### If 'C' (Continue):
-- Document gate decision
-- Proceed to next step: `step-22-v-report.md`
+- ❌ **CRITICAL check fails:** Enter recovery protocol, document gaps
+- ❌ **Missing evidence:** Cannot validate without supporting data
+- ❌ **Tenant isolation breach detected:** Automatic FAIL, immediate escalation
+- ❌ **Incomplete debug analysis:** Cannot validate root cause
 
 ---
 

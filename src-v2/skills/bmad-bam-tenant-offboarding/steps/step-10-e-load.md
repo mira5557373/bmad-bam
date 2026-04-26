@@ -99,21 +99,37 @@ Extract and present current state:
 | Last Modified | {{date}} |
 | Author | {{author}} |
 
-### 4. Identify Modification Scope
+### 4. Present Edit Options
 
-Ask the user which sections need modification:
+Display edit menu to user:
 
-- [ ] Update offboarding triggers
-- [ ] Modify data export formats or delivery
-- [ ] Adjust grace period configuration
-- [ ] Update soft delete mechanism
-- [ ] Modify hard deletion sequence
-- [ ] Update storage cleanup procedures
-- [ ] Modify audit log preservation
-- [ ] Update compliance requirements
-- [ ] Adjust rollback procedures
-- [ ] Update state machine transitions
-- [ ] Modify notification schedule
+```
+================================================================================
+TENANT OFFBOARDING DESIGN - EDIT MODE
+================================================================================
+Document: tenant-offboarding-design.md
+Version: {{version}}
+Tenant Model: {{tenant_model}}
+Compliance: {{frameworks}}
+================================================================================
+
+EDITABLE SECTIONS:
+[1] Offboarding Triggers - Update cancellation, violation, inactivity rules
+[2] Data Export Process - Modify formats, delivery, verification
+[3] Grace Period Configuration - Adjust periods by tier, notification schedule
+[4] Soft Delete Mechanism - Update fields, access restrictions
+[5] Hard Deletion Sequence - Modify purge order, timing, verification
+[6] Storage Cleanup - Update blob, file, cache cleanup procedures
+[7] Audit Log Preservation - Adjust retention, anonymization rules
+[8] Compliance Requirements - Update GDPR, CCPA, SOC2 verification
+[9] Rollback Procedures - Modify recovery steps, time windows
+[10] State Machine - Update transitions, timeouts, notifications
+[11] Full Redesign - Major restructure (rare)
+
+================================================================================
+Select section(s) to edit (comma-separated) or 'C' to cancel:
+================================================================================
+```
 
 Capture the specific changes requested before proceeding.
 

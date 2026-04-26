@@ -227,40 +227,6 @@ Aggregate all check results:
 
 ---
 
-## COLLABORATION MENUS (A/P/C)
-
-After completing validation, present options:
-
-```
-Your options:
-- **A (Advanced Elicitation)**: Deep dive into specific failed checks
-- **P (Party Mode)**: Security and architect review of validation findings
-- **C (Continue)**: Proceed to generate validation report
-- **[Specific concerns]**: Describe concerns about validation results
-
-Select an option:
-```
-
-### PROTOCOL INTEGRATION
-
-#### If 'A' (Advanced Elicitation):
-- Invoke the `bmad-advanced-elicitation` skill
-- Pass context: failed checks, CRITICAL categories, evidence gaps
-- Explore root causes and remediation approaches
-- Return to A/P/C menu
-
-#### If 'P' (Party Mode):
-- Invoke the `bmad-party-mode` skill
-- Context: "Review QG-M2 validation results for tenant isolation"
-- Present security perspectives on CRITICAL failures
-- Return to A/P/C menu
-
-#### If 'C' (Continue):
-- Document gate decision
-- Proceed to `step-22-v-report.md`
-
----
-
 ## SUCCESS METRICS
 
 - ✅ All 7 QG-M2 categories validated with evidence
