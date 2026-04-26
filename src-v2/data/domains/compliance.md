@@ -11,11 +11,36 @@ Compliance ensures multi-tenant systems meet regulatory requirements while maint
 
 ## Core Concepts
 
-[To be filled]
+### Compliance Matrix
+
+| Framework | Data Residency | Encryption | Audit | Isolation |
+|-----------|----------------|------------|-------|-----------|
+| SOC 2 | Recommended | Required | Required | Logical OK |
+| HIPAA | Required | Required | Required | Schema+ |
+| GDPR | Required | Required | Required | Logical OK |
+| PCI-DSS | Required | Required | Required | Database |
+| FedRAMP | Required | Required | Required | Database |
+
+### Tenant Compliance Mapping
+
+```
+Tenant → Tier → Compliance Requirements
+  │       │
+  │       ├── Free: SOC 2 only
+  │       ├── Pro: SOC 2 + GDPR
+  │       └── Enterprise: All frameworks
+  │
+  └── compliance_level stored on tenant record
+```
 
 ## Decision Matrix
 
-[To be filled]
+| Compliance Need | Tenant Model | Additional Controls |
+|-----------------|--------------|---------------------|
+| Basic (SOC 2) | RLS | Audit logging |
+| Healthcare (HIPAA) | Schema | BAA, encryption |
+| Financial (PCI) | Database | Network isolation |
+| Government (FedRAMP) | Database | Dedicated infra |
 
 ## Quality Checks
 

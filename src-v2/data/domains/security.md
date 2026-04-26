@@ -11,11 +11,45 @@ Security in multi-tenant SaaS requires defense in depth with tenant isolation as
 
 ## Core Concepts
 
-[To be filled]
+### Defense in Depth
+
+```
+┌─────────────────────────────────────┐
+│ Edge (WAF, DDoS)                    │
+├─────────────────────────────────────┤
+│ Gateway (AuthN, Rate Limit)         │
+├─────────────────────────────────────┤
+│ Service (AuthZ, Tenant Check)       │
+├─────────────────────────────────────┤
+│ Data (RLS, Encryption)              │
+└─────────────────────────────────────┘
+```
+
+### Tenant Security Boundaries
+
+| Layer | Control | Enforcement |
+|-------|---------|-------------|
+| Network | VPC/Subnet | Per-tier |
+| Application | JWT claims | Every request |
+| Database | RLS policies | Every query |
+| Storage | Path prefixes | Every access |
+
+### Secret Management
+
+| Secret Type | Storage | Rotation |
+|-------------|---------|----------|
+| Platform | Vault | 90 days |
+| Tenant API keys | Encrypted DB | On-demand |
+| Customer-managed | External KMS | Customer-controlled |
 
 ## Decision Matrix
 
-[To be filled]
+| Security Requirement | Implementation | Tenant Impact |
+|----------------------|----------------|---------------|
+| Authentication | OAuth 2.0 / OIDC | Per-tenant IdP |
+| Authorization | RBAC + tenant check | Scoped permissions |
+| Encryption at rest | AES-256 | Tenant key option |
+| Encryption in transit | TLS 1.3 | All traffic |
 
 ## Quality Checks
 

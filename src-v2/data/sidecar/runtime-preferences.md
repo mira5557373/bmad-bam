@@ -14,7 +14,7 @@ Project: {project_name}
 
 ### Selected Framework
 - **Framework:** {ai_runtime}
-- **Version:** [To be filled]
+- **Version:** {version}
 
 ### Runtime Settings
 

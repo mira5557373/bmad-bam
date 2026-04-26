@@ -14,11 +14,11 @@ Project: {project_name}
 
 ### Tenant Model
 - **Decision:** {tenant_model}
-- **Rationale:** [To be filled during session]
+- **Rationale:** {rationale}
 
 ### AI Runtime
 - **Decision:** {ai_runtime}
-- **Rationale:** [To be filled during session]
+- **Rationale:** {rationale}
 
 ## Pending Decisions
 

@@ -11,11 +11,43 @@ Integration patterns define how modules communicate across boundaries while main
 
 ## Core Concepts
 
-[To be filled]
+### Facade Contract Pattern
+
+```
+Module A                    Module B
+    │                           │
+    └──► Facade Interface ◄─────┘
+              │
+         Contract defines:
+         - Input/Output types
+         - Tenant context requirements
+         - Error contracts
+```
+
+### Integration Boundaries
+
+| Boundary | Contract Type | Tenant Context |
+|----------|---------------|----------------|
+| Module-to-Module | Facade | Propagated |
+| Service-to-Service | API | Header |
+| External | Gateway | Mapped |
+
+### Convergence Verification
+
+| Check | Description |
+|-------|-------------|
+| Type Match | Input/output types align |
+| Tenant Safety | No cross-tenant leaks |
+| Error Handling | Failures don't expose data |
 
 ## Decision Matrix
 
-[To be filled]
+| Integration Type | Pattern | Tenant Handling |
+|------------------|---------|-----------------|
+| Synchronous | Facade call | Context propagation |
+| Asynchronous | Event | Envelope tenant_id |
+| External API | Gateway | Tenant mapping |
+| Legacy system | Adapter | Context injection |
 
 ## Quality Checks
 

@@ -11,11 +11,43 @@ AI runtime encompasses the orchestration frameworks and execution patterns for m
 
 ## Core Concepts
 
-[To be filled]
+### Runtime Selection Criteria
+
+| Criterion | LangGraph | CrewAI | AutoGen | Custom |
+|-----------|-----------|--------|---------|--------|
+| State Management | Built-in | External | Conversation | Custom |
+| Multi-agent | Hierarchical | Role-based | Conversational | Custom |
+| Tenant Isolation | Scoped state | Custom | Conversation isolation | Custom |
+| Complexity | Medium-High | Medium | Medium-High | High |
+
+### Tenant-Scoped Execution
+
+```
+Request (X-Tenant-ID)
+    │
+    ▼
+┌─────────────────┐
+│ Agent Router    │ ← Tenant tier determines resources
+└────────┬────────┘
+         │
+    ┌────┴────┐
+    ▼         ▼
+┌───────┐ ┌───────┐
+│Free   │ │Pro+   │
+│Shared │ │Dedicated│
+│Pool   │ │Workers │
+└───────┘ └───────┘
+```
 
 ## Decision Matrix
 
-[To be filled]
+| Requirement | Recommended Runtime | Rationale |
+|-------------|--------------------| ----------|
+| Complex state machines | LangGraph | Native checkpointing |
+| Role-based teams | CrewAI | Built-in delegation |
+| Multi-agent debate | AutoGen | Conversation patterns |
+| Existing infrastructure | Custom | Leverage investments |
+| Rapid prototyping | LangGraph | Best tooling |
 
 ## Quality Checks
 

@@ -11,11 +11,40 @@ Billing and metering systems track per-tenant resource consumption and translate
 
 ## Core Concepts
 
-[To be filled]
+### Metering Pipeline
+
+```
+Usage Event → Aggregator → Ledger → Invoice
+     │            │          │         │
+     └── tenant_id included at every stage
+```
+
+### Billing Models
+
+| Model | Description | Tenant Isolation |
+|-------|-------------|------------------|
+| Seat-based | Per-user pricing | User count per tenant |
+| Usage-based | Pay-per-use | Metered by tenant_id |
+| Tiered | Feature tiers | Tier stored on tenant |
+| Hybrid | Seats + usage | Combined tracking |
+
+### Credit System
+
+| Component | Purpose |
+|-----------|---------|
+| Credit Pool | Pre-paid balance per tenant |
+| Usage Debit | Real-time deduction |
+| Overage | Post-paid overflow |
+| Alerts | Threshold notifications |
 
 ## Decision Matrix
 
-[To be filled]
+| Scenario | Billing Model | Implementation |
+|----------|---------------|----------------|
+| Predictable workloads | Seat-based | Simple user counts |
+| Variable AI usage | Usage-based | Event streaming |
+| Enterprise customers | Tiered | Feature flags |
+| Mixed workloads | Hybrid | Combined metering |
 
 ## Quality Checks
 
