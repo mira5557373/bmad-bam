@@ -2,24 +2,38 @@
 
 ## MANDATORY EXECUTION RULES (READ FIRST)
 
-- 🛑 **NEVER generate content without user input** - Wait for explicit direction
-- 📖 **CRITICAL: ALWAYS read the complete step file** before taking any action
-- 🔄 **CRITICAL: When loading next step with 'C'**, ensure entire file is read
+- 🛑 NEVER apply changes that create circular dependencies between modules
+- 📖 ALWAYS validate changes against dependency graph integrity before applying
+- 🔄 ALWAYS preserve existing story IDs and module relationships not being modified
 - ⏸️ **ALWAYS pause after presenting findings** and await user direction
-- 🎯 **Focus ONLY on current step scope** - do not look ahead
+- ✅ UPDATE frontmatter version after any successful edit
+- 📋 DOCUMENT change rationale with cross-module impact analysis
+- 💬 PRESENT diff summary before final save
+- ⚠️ FLAG if changes affect other module teams' sprint planning
+- 🔒 LOCK critical path dependencies without explicit user override
+
+---
 
 ## EXECUTION PROTOCOLS
 
-- 🎯 Show your analysis before taking any action
-- 💾 Update document frontmatter after each section completion
-- 📝 Maintain append-only document building
-- ✅ Track progress in `stepsCompleted` array
+- 🎯 Focus: Apply user-requested changes while maintaining dependency integrity
+- 💾 Track: Changes applied, version increment, affected modules
+- 📖 Context: Preserve all unmodified stories and dependencies exactly
+- 🚫 Do NOT: Auto-modify dependencies without user approval
+- ⚠️ Gate: Module additions may require team onboarding
+- 🔍 Use web search: If user requests updated coordination patterns
 
 ---
 
 ## Purpose
 
-Apply targeted modifications to the cross-module epic documents, documenting changes with ADR rationale while maintaining dependency integrity across modules.
+Apply targeted modifications to the cross-module epic documents, documenting changes with ADR rationale while maintaining dependency integrity across modules and ensuring sprint planning alignment.
+
+---
+
+## YOUR TASK
+
+Apply the user's requested changes to the cross-module epic, validate dependency graph integrity, update coordination state, and present a summary of modifications with impact analysis for affected module teams.
 
 ---
 
@@ -32,86 +46,269 @@ Apply targeted modifications to the cross-module epic documents, documenting cha
 
 ---
 
-## Inputs
-
-- Loaded artifact from Step 10
-- Identified modification targets
-- User-confirmed changes to apply
-- Pattern registry: `{project-root}/_bmad/bam/data/bam-patterns.csv`
-
----
-
 ## Actions
 
-### 1. Review Proposed Changes
+### 1. Capture Change Requests
 
-Present each proposed change for confirmation:
+**Document requested modifications:**
 
-| Section | Current State | Proposed Change | Impact |
-|---------|---------------|-----------------|--------|
-| {section} | {current} | {proposed} | {impact} |
+| Section | Current Value | Requested Change | Impact Level |
+|---------|---------------|------------------|--------------|
+| | | | Low/Medium/High |
 
-### 2. Create ADR for Changes
+**Impact Level Definitions:**
 
-Document architectural decision for significant changes:
+| Level | Description | Team Notification Required |
+|-------|-------------|----------------------------|
+| **Low** | Documentation updates, contact changes | No |
+| **Medium** | Story additions, dependency additions | Affected modules only |
+| **High** | Module changes, critical path modification | All module owners |
+
+### 2. Validate Dependency Integrity
+
+**Pre-flight dependency checks:**
+
+| Check | Result | Notes |
+|-------|--------|-------|
+| No circular dependencies | | New edges must not create cycles |
+| Valid story references | | Dependencies point to existing stories |
+| Module ownership clear | | Each story has one owning module |
+| Critical path intact | | Changes don't break blocking chain |
+| Tenant isolation preserved | | Cross-module calls respect tenant context |
+
+**If circular dependency detected:**
+
+```
+================================================================================
+DEPENDENCY INTEGRITY ERROR
+================================================================================
+Change: {description}
+Cycle detected: {module_a} → {module_b} → {module_c} → {module_a}
+
+This change would create a circular dependency:
+- {specific cycle path}
+
+Circular dependencies block coordinated implementation.
+
+Options:
+[B] Break cycle by removing one dependency
+[R] Revise change to avoid cycle
+[C] Cancel this change
+================================================================================
+```
+
+### 3. Apply Module Involvement Changes
+
+**For module addition/removal:**
+
+| Module | Action | Stories Affected | Dependencies Affected |
+|--------|--------|------------------|----------------------|
+| {module} | Add/Remove/Change Role | {count} | {count} |
+
+**Module addition checklist:**
+- [ ] Module owner identified and contacted
+- [ ] Initial story assignments created
+- [ ] Dependencies to existing modules mapped
+- [ ] Communication plan updated
+
+**Module removal checklist:**
+- [ ] Stories reassigned or archived
+- [ ] Dependencies redirected or removed
+- [ ] Milestone impact assessed
+- [ ] Team notified
+
+### 4. Apply Story Changes
+
+**For story modifications:**
+
+| Story ID | Module | Action | Dependencies Changed |
+|----------|--------|--------|---------------------|
+| {story_id} | {module} | Add/Update/Remove | {yes/no} |
+
+**Story addition requirements:**
+- Unique story ID assigned
+- Module ownership assigned
+- Dependencies mapped (blocks/blocked-by)
+- Acceptance criteria include integration points
+- Sprint assignment confirmed
+
+**Story dependency updates:**
+
+| Story | Before | After | Cascade Impact |
+|-------|--------|-------|----------------|
+| {story} | blocks: {list} | blocks: {new_list} | {affected_stories} |
+| {story} | blocked_by: {list} | blocked_by: {new_list} | {affected_stories} |
+
+### 5. Apply Dependency Changes
+
+**For dependency graph modifications:**
+
+| From | To | Type | Action | Impact |
+|------|----|----- |--------|--------|
+| {module_a} | {module_b} | Contract/Data/Event | Add/Update/Remove | {impact} |
+
+**Critical path recalculation:**
+
+| Path Type | Before | After | Duration Change |
+|-----------|--------|-------|-----------------|
+| Critical path | {module_list} | {new_module_list} | {+/- days} |
+| Secondary paths | {count} | {count} | {impact} |
+
+### 6. Apply Milestone Changes
+
+**For milestone modifications:**
+
+| Milestone | Before | After | Stories Affected |
+|-----------|--------|-------|------------------|
+| {milestone} | {old_date} | {new_date} | {count} |
+
+**Cascade effects:**
+
+| Dependent Milestone | Current Date | Required Adjustment |
+|--------------------|--------------|---------------------|
+| {milestone} | {date} | {shift} |
+
+### 7. Create ADR for Significant Changes
+
+**For significant changes, document architectural decision:**
 
 | Field | Value |
 |-------|-------|
 | ADR ID | ADR-XMS-{number} |
 | Title | {Change description} |
 | Status | PROPOSED |
-| Context | {Why change is needed} |
-| Decision | {What we're changing} |
-| Consequences | {Impact of change} |
+| Context | {Why change is needed - scope change, team change, etc.} |
+| Decision | {What we're changing in the epic} |
+| Consequences | {Impact on module teams, sprint planning, milestones} |
+| Affected Modules | {module_list} |
 
-### 3. Apply Modifications
+### 8. Update Frontmatter
 
-For each approved change, apply while maintaining integrity:
+**Increment version and update metadata:**
 
-**If modifying module involvement:**
-- Update module inventory
-- Re-map dependencies for new modules
-- Adjust story assignments
-- Update contact information
+```yaml
+# Before
+version: 1.0.0
+date: 2026-04-01
 
-**If modifying stories:**
-- Preserve existing story IDs
-- Update story content
-- Recalculate dependencies
-- Adjust point estimates
+# After
+version: 1.1.0
+date: 2026-04-26
+```
 
-**If modifying dependencies:**
-- Verify no circular dependencies created
-- Update critical path analysis
-- Adjust milestone dates
-- Notify affected teams
+### 9. Update Change Log
 
-**If modifying milestones:**
-- Update milestone dates
-- Adjust dependent milestones
-- Update communication plan
-- Document schedule impact
+**Add entry to Change Log section:**
 
-### 4. Verify Consistency
+```markdown
+## Change Log
 
-Run post-modification verification:
+| Version | Date | Author | Changes | Affected Modules |
+|---------|------|--------|---------|------------------|
+| 1.1.0 | 2026-04-26 | Edit Mode | {summary} | {modules} |
+| 1.0.0 | 2026-04-01 | Create Mode | Initial epic | All |
+```
 
-| Check | Status | Notes |
-|-------|--------|-------|
-| No circular dependencies | PASS/FAIL | {details} |
-| All stories assigned to modules | PASS/FAIL | {details} |
-| Dependencies point to valid stories | PASS/FAIL | {details} |
-| Milestones in chronological order | PASS/FAIL | {details} |
-| Integration tests cover all journeys | PASS/FAIL | {details} |
+### 10. Present Change Summary
 
-### 5. Save Updated Documents
+**Display modifications before save:**
 
-Write updated documents:
-- `{output_folder}/planning-artifacts/cross-module-stories.md`
-- `{output_folder}/planning-artifacts/stories/dependency-graph.md`
-- `{output_folder}/planning-artifacts/stories/module-stories/*.md`
+```
+================================================================================
+CROSS-MODULE EPIC EDIT SUMMARY
+================================================================================
+Document: cross-module-stories.md
+Previous Version: {old_version}
+New Version: {new_version}
+================================================================================
 
-Present a diff summary of changes made.
+CHANGES APPLIED:
+
+[Module Changes]
+{list of module modifications}
+
+[Story Changes]
+{list of story modifications}
+
+[Dependency Changes]
+{list of dependency modifications}
+
+[Milestone Changes]
+{list of milestone modifications}
+
+================================================================================
+IMPACT ANALYSIS:
+
+Affected Modules: {module_list}
+Critical Path Changed: {yes/no}
+Sprint Planning Impact: {none/minor/major}
+Team Notifications Required: {team_list}
+
+================================================================================
+[S] Save all documents
+[R] Review changes before saving
+[U] Undo and return to edit selection
+================================================================================
+```
+
+### 11. Save Updated Documents
+
+**Upon save confirmation:**
+
+1. Write updated documents:
+   - `{output_folder}/planning-artifacts/cross-module-stories.md`
+   - `{output_folder}/planning-artifacts/stories/dependency-graph.md`
+   - `{output_folder}/planning-artifacts/stories/module-stories/*.md`
+2. Preserve all unmodified content exactly
+3. Apply formatting consistently with original
+
+**Post-save notification:**
+
+```
+================================================================================
+EDIT COMPLETE
+================================================================================
+Documents saved: cross-module-stories.md, dependency-graph.md, module-stories/*
+Version: {new_version}
+
+{if team notifications required}
+IMPORTANT: The following teams should be notified:
+{team_list_with_changes}
+{endif}
+
+Next steps:
+- [V] Run validation workflow
+- [N] Send team notifications
+- [E] Continue editing
+- [X] Exit edit mode
+================================================================================
+```
+
+---
+
+## SUCCESS METRICS
+
+- ✅ All requested changes captured and validated
+- ✅ Dependency integrity checks passed
+- ✅ No circular dependencies introduced
+- ✅ Critical path analysis updated
+- ✅ Story assignments consistent
+- ✅ ADRs created for significant changes
+- ✅ Frontmatter version incremented
+- ✅ Change Log updated with module impact
+- ✅ All documents saved correctly
+- ✅ Team notification requirements identified
+
+---
+
+## FAILURE MODES
+
+- ❌ **Circular dependency created:** Block change, offer resolution options
+- ❌ **Orphan story reference:** Story references non-existent dependency
+- ❌ **Module ownership conflict:** Multiple modules claim same story
+- ❌ **Critical path broken:** Missing link in dependency chain
+- ❌ **Sprint misalignment:** Story dependencies cross sprint boundaries incorrectly
+- ❌ **Save failure:** Retry with backup to alternate location
 
 ---
 
@@ -120,8 +317,10 @@ Present a diff summary of changes made.
 - [ ] All changes applied correctly
 - [ ] ADR created for significant changes
 - [ ] No circular dependencies introduced
+- [ ] Critical path analysis valid
 - [ ] Version history updated
 - [ ] Document consistency verified
+- [ ] Team notification requirements documented
 - [ ] Patterns align with pattern registry
 
 ---
@@ -129,18 +328,20 @@ Present a diff summary of changes made.
 ## Outputs
 
 - Updated cross-module epic document
-- ADR for changes (if applicable)
-- Change log entry
 - Updated dependency graph
+- Updated module story files
+- ADR for significant changes (ADR-XMS-{number})
+- Change log entry with module impact
+- Team notification list (if applicable)
 
 ---
 
 ## Next Step
 
-Edit workflow complete. Run Validate mode (`step-20-v-load.md`) to verify changes meet quality criteria.
+Edit mode complete.
 
----
+**If team notifications required:**
+Communicate changes to affected module teams before next sprint planning.
 
-## Workflow Complete
-
-Edit mode is complete. The cross-module epic has been updated with the requested changes. Run Validate mode to verify the epic still meets coordination criteria.
+**Standard next step:**
+Run Validate mode (`step-20-v-load.md`) to verify epic still meets coordination criteria.

@@ -2,24 +2,37 @@
 
 ## MANDATORY EXECUTION RULES (READ FIRST)
 
-- 🛑 **NEVER generate content without user input** - Wait for explicit direction
-- 📖 **CRITICAL: ALWAYS read the complete step file** before taking any action
-- 🔄 **CRITICAL: When loading next step with 'C'**, ensure entire file is read
+- 🛑 NEVER proceed without locating all cross-module story artifacts
+- 📖 ALWAYS read the complete artifact including dependency graph
+- 🔄 ALWAYS load the full coordination quality gate checklist
 - ⏸️ **ALWAYS pause after presenting findings** and await user direction
-- 🎯 **Focus ONLY on current step scope** - do not look ahead
+- ✅ EXTRACT epic metadata for validation context
+- 📋 PRESENT artifact summary before proceeding to validation
+- 💬 CONFIRM artifact readiness with user
+- 🎯 IDENTIFY any obvious gaps before formal validation
+
+---
 
 ## EXECUTION PROTOCOLS
 
-- 🎯 Show your analysis before taking any action
-- 💾 Update document frontmatter after each section completion
-- 📝 Maintain append-only document building
-- ✅ Track progress in `stepsCompleted` array
+- 🎯 Focus: Load artifact and prepare validation context
+- 💾 Track: Document load status and checklist preparation
+- 📖 Context: Extract coordination state for validation
+- 🚫 Do NOT: Run validation checks in this step - only load and prepare
+- ⚠️ Gate: Missing artifacts may indicate incomplete epic
+- 🔍 Use web search: Not applicable for Validate mode
 
 ---
 
 ## Purpose
 
-Load the cross-module story artifact and quality gate checklist for validation against coordination criteria.
+Load the cross-module story artifact and quality gate checklist for validation against coordination criteria, preparing the context for systematic validation.
+
+---
+
+## YOUR TASK
+
+Load all cross-module story artifacts, extract coordination metadata, load the appropriate quality gate checklists, and prepare the validation context. Present a summary showing what will be validated and confirm readiness to proceed.
 
 ---
 
@@ -28,81 +41,181 @@ Load the cross-module story artifact and quality gate checklist for validation a
 - Cross-module story artifact exists to validate
 - **Load patterns:** `{project-root}/_bmad/bam/data/bam-patterns.csv` → filter: module-boundaries
 - **Load patterns:** `{project-root}/_bmad/bam/data/bam-patterns.csv` → filter: facade-contracts
-
----
-
-## Inputs
-
-- Artifact file path for validation
-- Quality gate checklist: `{project-root}/_bmad/bam/data/checklists/`
-- Pattern registry: `{project-root}/_bmad/bam/data/bam-patterns.csv`
+- **Load checklist:** `{project-root}/_bmad/bam/data/checklists/cross-module-coordination.md`
 
 ---
 
 ## Actions
 
-### 1. Load Artifact
+### 1. Locate and Load Artifacts
 
-Load the cross-module story documents:
-- `{output_folder}/planning-artifacts/cross-module-stories.md`
-- `{output_folder}/planning-artifacts/stories/dependency-graph.md`
-- `{output_folder}/planning-artifacts/stories/module-stories/*.md`
-- `{output_folder}/planning-artifacts/stories/integration-tests.md`
+**Search for artifacts:**
 
-If the files do not exist, inform the user and suggest switching to Create mode.
+```
+{output_folder}/planning-artifacts/cross-module-stories.md
+{output_folder}/planning-artifacts/stories/dependency-graph.md
+{output_folder}/planning-artifacts/stories/module-stories/*.md
+{output_folder}/planning-artifacts/stories/integration-tests.md
+```
 
-### 2. Display Artifact Summary
+**If documents not found:**
+```
+================================================================================
+VALIDATE MODE ERROR: No cross-module story artifacts found
+================================================================================
+Expected location: {output_folder}/planning-artifacts/cross-module-stories.md
 
-Present artifact overview:
+Options:
+[C] Switch to Create mode to generate epic
+[E] Switch to Edit mode if partial artifact exists
+[P] Specify alternate path to existing documents
+================================================================================
+```
+
+### 2. Parse Artifact Metadata
+
+**Extract document metadata:**
 
 | Attribute | Value |
 |-----------|-------|
-| Document Path | {path} |
-| Version | {version} |
+| Epic ID | {epic_id} |
+| Document Version | {version} |
 | Last Modified | {date} |
-| Status | {status} |
+| Modules Involved | {count} |
+| Story Count | {count} |
+| Dependency Count | {count} |
+| Current Milestone | {milestone} |
+| Overall Status | {status} |
 
-### 3. Load Validation Checklist
+### 3. Extract Validation Context
 
-Load the cross-module story validation criteria:
+**Coordination scope summary:**
+
+| Scope Item | Value |
+|------------|-------|
+| User journeys covered | {count} |
+| Primary modules | {count} |
+| Supporting modules | {count} |
+| Facade contracts | {count} |
+| Event schemas | {count} |
+| Integration tests planned | {count} |
+
+**Dependency health preview:**
+
+| Metric | Value | Concern Level |
+|--------|-------|---------------|
+| Total dependencies | {count} | |
+| Resolved dependencies | {count} | |
+| Pending dependencies | {count} | {low/medium/high} |
+| Blocking dependencies | {count} | {low/medium/high} |
+
+### 4. Load Validation Checklists
+
+**Cross-Module Coordination Checklist (QG-XMS):**
 
 **Module Identification:**
 - [ ] All necessary modules identified
 - [ ] Module roles classified (primary/supporting/observing)
 - [ ] Module owners identified and available
 - [ ] No module boundary violations
+- [ ] Each module has clear responsibility
 
 **Dependencies:**
 - [ ] All dependencies mapped (data/functional/temporal)
 - [ ] Critical path identified
 - [ ] No circular dependencies
 - [ ] New contracts required are documented
+- [ ] Dependency resolution sequence defined
 
 **Integration Points:**
 - [ ] All cross-module interactions specified
-- [ ] Facade calls fully documented
-- [ ] Event schemas defined
-- [ ] Contract tests planned
+- [ ] Facade calls fully documented with signatures
+- [ ] Event schemas defined with versioning
+- [ ] Contract tests planned for each facade
 - [ ] Tenant context propagation verified
+- [ ] Error handling defined for cross-module calls
 
 **Coordinated Stories:**
 - [ ] Story for each primary module created
 - [ ] Dependencies between stories linked
 - [ ] Acceptance criteria include integration requirements
 - [ ] Coordination schedule realistic
-- [ ] Sync points defined
+- [ ] Sync points defined with frequency
+- [ ] Rollback scenarios documented
 
-### 4. Prepare for Validation
+**Cross-Cutting Concerns:**
+- [ ] Feature aligns with master architecture
+- [ ] Tenant isolation maintained across modules
+- [ ] No single module creates bottleneck
+- [ ] Risk mitigation strategies documented
 
-Confirm the artifact is ready for validation checks.
+### 5. Present Validation Readiness
+
+**Display validation preparation summary:**
+
+```
+================================================================================
+CROSS-MODULE STORY VALIDATION - READY TO VALIDATE
+================================================================================
+Epic: {epic_name}
+Version: {version}
+Modules: {module_count}
+Stories: {story_count}
+Dependencies: {resolved}/{total} resolved
+================================================================================
+
+ARTIFACTS LOADED:
+[✓] cross-module-stories.md
+[✓] dependency-graph.md
+[✓] module-stories/ ({count} files)
+[✓] integration-tests.md
+
+CHECKLISTS PREPARED:
+[✓] Module Identification (5 criteria)
+[✓] Dependencies (5 criteria)
+[✓] Integration Points (6 criteria)
+[✓] Coordinated Stories (6 criteria)
+[✓] Cross-Cutting Concerns (4 criteria)
+
+TOTAL VALIDATION CRITERIA: 26
+
+================================================================================
+[C] Continue to validation
+[R] Review artifact details first
+[X] Cancel validation
+================================================================================
+```
+
+---
+
+## SUCCESS METRICS
+
+- ✅ All artifact files located and loaded
+- ✅ Frontmatter parsed with full metadata
+- ✅ Coordination scope extracted
+- ✅ Dependency health assessed
+- ✅ Validation checklists loaded
+- ✅ Validation readiness confirmed with user
+
+---
+
+## FAILURE MODES
+
+- ❌ **Artifacts not found:** Redirect to Create/Edit mode
+- ❌ **Partial artifact set:** Warn about validation limitations
+- ❌ **Invalid frontmatter:** Attempt recovery, flag issues
+- ❌ **Dependency graph missing:** Validation will be incomplete for dependency checks
+- ❌ **No module stories:** Critical gap - may fail dependency validation
 
 ---
 
 ## Verification
 
-- [ ] Artifact loaded successfully
+- [ ] All epic documents loaded successfully
 - [ ] Document metadata captured
-- [ ] Validation checklist loaded
+- [ ] Coordination scope documented
+- [ ] Dependency health assessed
+- [ ] Validation checklists loaded
 - [ ] Ready for validation checks
 - [ ] Patterns align with pattern registry
 
@@ -111,7 +224,9 @@ Confirm the artifact is ready for validation checks.
 ## Outputs
 
 - Loaded artifact content
-- Validation checklist
+- Validation context summary
+- Coordination scope assessment
+- Loaded validation checklists
 - Validation readiness confirmation
 
 ---

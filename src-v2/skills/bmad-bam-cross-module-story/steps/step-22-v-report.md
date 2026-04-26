@@ -134,9 +134,61 @@ Save validation report to:
 
 Display gate outcome:
 
-| Gate | Decision | Notes |
-|------|----------|-------|
-| Cross-Module Story | {PASS/CONDITIONAL/FAIL} | {summary} |
+```
+================================================================================
+CROSS-MODULE STORY VALIDATION COMPLETE
+================================================================================
+Epic: {epic_name}
+Validation Date: {date}
+Gate Decision: {PASS/CONDITIONAL/FAIL}
+================================================================================
+
+SUMMARY:
+- Total Criteria: 26
+- Passed: {count}
+- Failed: {count}
+- Critical Issues: {count}
+- Warnings: {count}
+
+{if PASS}
+✅ Epic is ready for sprint planning.
+All coordination criteria met.
+{endif}
+
+{if CONDITIONAL}
+⚠️ Epic can proceed with documented risks.
+Address warnings before development starts.
+{endif}
+
+{if FAIL}
+❌ Epic requires revision before sprint planning.
+Critical issues must be resolved.
+{endif}
+
+================================================================================
+Report saved to: {output_folder}/planning-artifacts/validation/
+================================================================================
+```
+
+---
+
+## SUCCESS METRICS
+
+- ✅ All findings from Step 21 compiled
+- ✅ Severity correctly assigned to each finding
+- ✅ Completion status determined accurately
+- ✅ Report generated with complete coordination assessment
+- ✅ Report saved to correct location
+- ✅ Next steps clearly communicated
+
+---
+
+## FAILURE MODES
+
+- ❌ **Incomplete findings:** Step 21 results missing - return to validation
+- ❌ **Report generation failure:** Retry with simplified format
+- ❌ **Save failure:** Offer alternate location or clipboard export
+- ❌ **Inconsistent gate decision:** Re-calculate based on criteria weights
 
 ---
 

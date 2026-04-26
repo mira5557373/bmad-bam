@@ -1,25 +1,38 @@
 # Step 10: Load Existing Debug Report (Edit Mode)
 
-## MANDATORY EXECUTION RULES (READ FIRST):
+## MANDATORY EXECUTION RULES (READ FIRST)
 
-- 🛑 NEVER generate content without user input
-- 📖 CRITICAL: ALWAYS read the complete step file before taking any action
-- 🔄 CRITICAL: When loading next step with 'C', ensure entire file is read
-- ⏸️ ALWAYS pause after presenting findings and await user direction
-- 🎯 Focus ONLY on current step scope - do not look ahead
+- 🛑 NEVER proceed without locating the existing agent-debug-report.md file
+- 📖 ALWAYS read the complete document including trace data and root cause analysis
+- 🔄 ALWAYS parse the failure classification matrix for current state
+- ⏸️ **ALWAYS pause after presenting findings** and await user direction
+- ✅ EXTRACT all agent runtime context and LLM interaction traces
+- 📋 PRESENT a structured summary of current findings before accepting edits
+- 💬 PAUSE after summary presentation and await user edit selection
+- 🎯 IDENTIFY resolution status to understand which issues are still open
 
-## EXECUTION PROTOCOLS:
+---
 
-- 🎯 Show your analysis before taking any action
-- 💾 Update document frontmatter after each section completion
-- 📝 Maintain append-only document building
-- ✅ Track progress in `stepsCompleted` array
+## EXECUTION PROTOCOLS
+
+- 🎯 Focus: Load and parse existing agent debug report for modification
+- 💾 Track: Document load status and parse results
+- 📖 Context: Extract agent runtime, failure modes, root causes, remediation status
+- 🚫 Do NOT: Modify any content during load phase
+- ⚠️ Gate: Changes may require re-testing of remediation effectiveness
+- 🔍 Use web search: Only if user requests updated debugging patterns
 
 ---
 
 ## Purpose
 
-Load and review existing agent debug report documents to identify sections requiring modification based on new findings or updated remediation strategies.
+Load and review existing agent debug report documents to identify sections requiring modification based on new findings, updated remediation strategies, or additional failure analysis.
+
+---
+
+## YOUR TASK
+
+Load the existing agent debug report, parse its structure, extract the current failure analysis and remediation state, and present a summary showing what can be edited. Enable the user to select specific sections for modification based on new debugging data or effectiveness feedback.
 
 ---
 
@@ -27,53 +40,146 @@ Load and review existing agent debug report documents to identify sections requi
 
 - Existing debug report to modify
 - **Load patterns:** `{project-root}/_bmad/bam/data/bam-patterns.csv` -> filter: `agent-runtime`
+- **Load patterns:** `{project-root}/_bmad/bam/data/ai-runtimes.csv`
 
 ---
 
 ## Actions
 
-### 1. Load Existing Documents
+### 1. Locate Document
 
-Load the existing debug report:
-- `{output_folder}/planning-artifacts/agent-debug-report.md`
+**Search for existing artifact:**
 
-If the file does not exist, inform the user and suggest switching to Create mode.
+```
+{output_folder}/planning-artifacts/agent-debug-report.md
+```
 
-### 2. Parse Document Structure
+If not found, check alternate locations:
+- `{output_folder}/agent-debug-report.md`
+- `{project-root}/docs/debugging/agent-debug-report.md`
 
-Parse and display a summary of the current document:
+**If document not found:**
+```
+================================================================================
+EDIT MODE ERROR: No existing agent debug report found
+================================================================================
+Expected location: {output_folder}/planning-artifacts/agent-debug-report.md
 
-| Section | Status | Last Updated | Key Content |
-|---------|--------|--------------|-------------|
-| Report Information | Complete/Partial | {date} | {summary} |
-| Issue Summary | Complete/Partial | {date} | {summary} |
-| Agent Context | Complete/Partial | {date} | {summary} |
-| Debug Analysis | Complete/Partial | {date} | {summary} |
-| Root Cause Analysis | Complete/Partial | {date} | {summary} |
-| Resolution | Complete/Partial | {date} | {summary} |
-| Prevention | Complete/Partial | {date} | {summary} |
+Options:
+[C] Switch to Create mode to generate new debug report
+[P] Specify alternate path to existing document
+================================================================================
+```
 
-### 3. Assess Update Reasons
+### 2. Parse Frontmatter and Metadata
 
-Identify why updates are needed:
+**Extract document metadata:**
 
-| Update Reason | Sections Affected | Priority |
-|---------------|-------------------|----------|
-| New trace data available | Debug Analysis | High |
-| Additional failure modes found | Root Cause Analysis | High |
-| Remediation effectiveness data | Resolution | Medium |
-| Updated monitoring metrics | Prevention | Medium |
-| Stakeholder feedback | Various | Low |
+| Metadata | Value |
+|----------|-------|
+| Report ID | |
+| Agent Type | |
+| Runtime | {langgraph/crewai/autogen} |
+| Issue Severity | {critical/high/medium/low} |
+| Resolution Status | {open/investigating/resolved} |
+| Document Version | |
+| Last Updated | |
 
-### 4. Identify Modification Targets
+### 3. Parse Failure Classification Matrix
 
-Confirm with the user which sections need modification:
+**Extract current failure analysis:**
 
-| Section | Current State | Modification Needed | Rationale |
-|---------|---------------|---------------------|-----------|
-| {section_1} | {state} | YES/NO | {reason} |
-| {section_2} | {state} | YES/NO | {reason} |
-| {section_3} | {state} | YES/NO | {reason} |
+| Failure Category | Occurrences | Status | Root Cause Identified |
+|------------------|-------------|--------|----------------------|
+| LLM Response Errors | {count} | {status} | {yes/no} |
+| Tool Execution Failures | {count} | {status} | {yes/no} |
+| State Corruption | {count} | {status} | {yes/no} |
+| Context Overflow | {count} | {status} | {yes/no} |
+| Tenant Isolation Breach | {count} | {status} | {yes/no} |
+| Timeout/Resource Exhaustion | {count} | {status} | {yes/no} |
+
+**Flag unresolved categories:** Mark any with "investigating" or missing root cause.
+
+### 4. Extract Trace Analysis Summary
+
+**Parse execution trace data:**
+
+| Trace Component | Current State | Notes |
+|-----------------|---------------|-------|
+| Request entry point | | |
+| LLM invocations | {count} calls | |
+| Tool executions | {count} calls | |
+| State transitions | {count} | |
+| Error point | {node/step} | |
+| Tenant context | {preserved/lost} | |
+
+### 5. Extract Remediation Status
+
+**Parse remediation progress:**
+
+| Remediation Action | Status | Effectiveness |
+|--------------------|--------|---------------|
+| {action_1} | {implemented/pending/blocked} | {tested/untested} |
+| {action_2} | {implemented/pending/blocked} | {tested/untested} |
+| {action_3} | {implemented/pending/blocked} | {tested/untested} |
+
+### 6. Present Edit Summary
+
+**Display current state and available edit targets:**
+
+```
+================================================================================
+AGENT DEBUG REPORT - EDIT MODE
+================================================================================
+Document: agent-debug-report.md
+Version: {version}
+Agent Type: {agent_type}
+Runtime: {runtime}
+Resolution Status: {status}
+================================================================================
+
+FAILURE CATEGORIES:
+1. LLM Response Errors:    {count} - {status}
+2. Tool Execution:         {count} - {status}
+3. State Corruption:       {count} - {status}
+4. Context Overflow:       {count} - {status}
+5. Tenant Breach:          {count} - {status}
+6. Timeout/Resources:      {count} - {status}
+
+REMEDIATION PROGRESS: {implemented}/{total} actions complete
+
+EDITABLE SECTIONS:
+[1] Failure Analysis - Add new failure modes or update counts
+[2] Root Cause Analysis - Refine or add root cause findings
+[3] Trace Data - Add new execution traces
+[4] Remediation Actions - Update action status or add new actions
+[5] Prevention Measures - Update monitoring/alerting
+[6] Full Document - Major revision (if issue scope changed)
+
+================================================================================
+Select section(s) to edit (comma-separated) or 'C' to cancel:
+```
+
+---
+
+## SUCCESS METRICS
+
+- ✅ Document located and fully loaded
+- ✅ Frontmatter parsed with all metadata extracted
+- ✅ Failure classification matrix parsed completely
+- ✅ Trace analysis summarized
+- ✅ Remediation status documented
+- ✅ Edit summary presented to user
+- ✅ User has selected edit target(s)
+
+---
+
+## FAILURE MODES
+
+- ❌ **Document not found:** Redirect to Create mode or request alternate path
+- ❌ **Invalid frontmatter:** Attempt recovery, flag missing fields
+- ❌ **Missing trace data:** Warn that edits may be limited without traces
+- ❌ **Conflicting remediation status:** Flag inconsistencies for user resolution
 
 ---
 
@@ -81,8 +187,11 @@ Confirm with the user which sections need modification:
 
 - [ ] Existing debug report loaded successfully
 - [ ] Document structure understood
+- [ ] Failure categories extracted and categorized
+- [ ] Trace analysis summary captured
+- [ ] Remediation status documented
 - [ ] Sections for modification identified
-- [ ] Update rationale documented
+- [ ] User confirmed modification targets
 - [ ] Patterns align with pattern registry
 
 ---
@@ -90,6 +199,8 @@ Confirm with the user which sections need modification:
 ## Outputs
 
 - Summary of current debug report state
+- Failure classification matrix
+- Remediation progress summary
 - List of sections to modify with rationale
 - Modification priority assessment
 
@@ -97,4 +208,8 @@ Confirm with the user which sections need modification:
 
 ## Next Step
 
-Proceed to `step-11-e-apply.md` with identified modifications.
+Proceed to `step-11-e-apply.md` with:
+- Selected edit target(s)
+- Current document state
+- Parsed failure matrix
+- Remediation status for tracking
