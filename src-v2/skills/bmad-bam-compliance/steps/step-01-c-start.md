@@ -92,40 +92,6 @@ Evaluate selected tenant model (`{tenant_model}`) against framework requirements
 
 ---
 
-## COLLABORATION MENUS (A/P/C):
-
-After identifying applicable frameworks, present the user with:
-
-```
-Your options:
-- **A (Advanced Elicitation)**: Deep dive into specific framework requirements
-- **P (Party Mode)**: Bring compliance and security architect perspectives
-- **C (Continue)**: Proceed to data governance design
-- **[Specific framework]**: Focus on specific framework requirements
-
-Select an option:
-```
-
-### PROTOCOL INTEGRATION:
-
-#### If 'A' (Advanced Elicitation):
-- Invoke the `bmad-advanced-elicitation` skill
-- Pass context: identified frameworks, tenant model, data types
-- Process enhanced insights on compliance gaps
-- Return to A/P/C menu
-
-#### If 'P' (Party Mode):
-- Invoke the `bmad-party-mode` skill
-- Context: "Review compliance requirements for multi-tenant SaaS"
-- Present synthesized recommendations from compliance officer, security architect
-- Return to A/P/C menu
-
-#### If 'C' (Continue):
-- Document framework selection with rationale
-- Proceed to next step: `step-02-c-analyze.md`
-
----
-
 ## Verification
 
 - [ ] Compliance frameworks loaded from CSV

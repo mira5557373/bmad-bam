@@ -149,45 +149,6 @@ _Source: [URL]_
 
 ---
 
-## COLLABORATION MENUS (A/P/C):
-
-After applying changes, present the user with:
-
-```
-Your options:
-- **A (Advanced Elicitation)**: Deep dive into specific changes or their implications
-- **P (Party Mode)**: Bring SRE and platform architect perspectives on applied modifications
-- **C (Continue)**: Accept applied changes and finalize updated observability design
-- **[Specific refinements]**: Describe additional changes needed
-
-Select an option:
-```
-
-### PROTOCOL INTEGRATION:
-
-#### If 'A' (Advanced Elicitation):
-- Invoke the `bmad-advanced-elicitation` skill
-- Pass context: changes applied, consistency checks, isolation verification
-- Process enhanced insights on change implications
-- Ask user: "Accept this detailed change analysis? (y/n)"
-- If yes, integrate into final configuration
-- Return to A/P/C menu
-
-#### If 'P' (Party Mode):
-- Invoke the `bmad-party-mode` skill
-- Context: "Review applied modifications to observability configuration"
-- Process SRE and platform architect perspectives
-- Present synthesized recommendations
-- Ask user: "Accept these recommendations? (y/n)"
-- Return to A/P/C menu
-
-#### If 'C' (Continue):
-- Save updated observability documents
-- Update frontmatter `stepsCompleted: [10, 11]`
-- Edit mode complete
-
----
-
 ## Verification
 
 - [ ] All requested changes applied correctly

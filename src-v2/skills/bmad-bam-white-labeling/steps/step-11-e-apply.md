@@ -112,41 +112,6 @@ Save to: `{output_folder}/planning-artifacts/white-labeling-design.md`
 
 ---
 
-## COLLABORATION MENUS (A/P/C):
-
-After applying changes, present the user with:
-
-```
-Your options:
-- **A (Advanced Elicitation)**: Deep dive into change impact analysis
-- **P (Party Mode)**: Bring review perspectives on applied changes
-- **C (Continue)**: Accept changes and complete edit mode
-- **[Specific concerns]**: Describe concerns to address
-
-Select an option:
-```
-
-### PROTOCOL INTEGRATION:
-
-#### If 'A' (Advanced Elicitation):
-- Invoke the `bmad-advanced-elicitation` skill
-- Pass context: applied changes, ADR records, impact assessment
-- Process enhanced insights on change implications
-- Return to A/P/C menu
-
-#### If 'P' (Party Mode):
-- Invoke the `bmad-party-mode` skill
-- Context: "Review applied changes to white-labeling design"
-- Present synthesized recommendations from platform, UX, DevOps perspectives
-- Return to A/P/C menu
-
-#### If 'C' (Continue):
-- Save all changes to document
-- Update frontmatter: `stepsCompleted: [10, 11]`
-- Edit mode complete
-
----
-
 ## Verification
 
 - [ ] All proposed changes reviewed with user

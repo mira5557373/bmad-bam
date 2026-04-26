@@ -105,45 +105,6 @@ Document any inconsistencies found during loading.
 
 ---
 
-## COLLABORATION MENUS (A/P/C):
-
-After loading existing artifacts, present the user with:
-
-```
-Your options:
-- **A (Advanced Elicitation)**: Deep dive into current configuration details
-- **P (Party Mode)**: Bring SRE and platform architect perspectives on modification scope
-- **C (Continue)**: Accept loaded artifacts and proceed to apply changes
-- **[Specific refinements]**: Describe specific sections to focus on
-
-Select an option:
-```
-
-### PROTOCOL INTEGRATION:
-
-#### If 'A' (Advanced Elicitation):
-- Invoke the `bmad-advanced-elicitation` skill
-- Pass context: current observability design, section summaries, inconsistencies
-- Process enhanced insights on what needs modification
-- Ask user: "Accept this detailed analysis? (y/n)"
-- If yes, integrate into modification scope
-- Return to A/P/C menu
-
-#### If 'P' (Party Mode):
-- Invoke the `bmad-party-mode` skill
-- Context: "Review existing observability configuration for modification"
-- Process SRE and platform architect perspectives
-- Present synthesized recommendations
-- Ask user: "Accept these recommendations? (y/n)"
-- Return to A/P/C menu
-
-#### If 'C' (Continue):
-- Save modification scope to context
-- Update frontmatter `stepsCompleted: [10]`
-- Proceed to next step: `step-11-e-apply.md`
-
----
-
 ## Verification
 
 - [ ] Existing artifacts loaded successfully

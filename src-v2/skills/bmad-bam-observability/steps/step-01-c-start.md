@@ -109,45 +109,6 @@ _Source: [URL]_
 
 ---
 
-## COLLABORATION MENUS (A/P/C):
-
-After loading context and identifying pillars, present the user with:
-
-```
-Your options:
-- **A (Advanced Elicitation)**: Deep dive into tenant model implications or tier requirements
-- **P (Party Mode)**: Bring SRE and platform architect perspectives on observability scope
-- **C (Continue)**: Accept observability foundation and proceed to metrics design
-- **[Specific refinements]**: Describe specific context to clarify
-
-Select an option:
-```
-
-### PROTOCOL INTEGRATION:
-
-#### If 'A' (Advanced Elicitation):
-- Invoke the `bmad-advanced-elicitation` skill
-- Pass context: tenant model, tier definitions, dimension catalog
-- Process enhanced insights on observability scope
-- Ask user: "Accept this detailed context analysis? (y/n)"
-- If yes, integrate into foundation document
-- Return to A/P/C menu
-
-#### If 'P' (Party Mode):
-- Invoke the `bmad-party-mode` skill
-- Context: "Review observability initialization for tenant-aware design"
-- Process SRE and platform architect perspectives
-- Present synthesized recommendations
-- Ask user: "Accept these recommendations? (y/n)"
-- Return to A/P/C menu
-
-#### If 'C' (Continue):
-- Save observability foundation to output document
-- Update frontmatter `stepsCompleted: [1]`
-- Proceed to next step: `step-02-c-analyze.md`
-
----
-
 ## Verification
 
 - [ ] Tenant model loaded and implications understood

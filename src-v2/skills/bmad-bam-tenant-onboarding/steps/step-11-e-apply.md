@@ -151,42 +151,6 @@ Verify document consistency after changes:
 
 ---
 
-## COLLABORATION MENUS (A/P/C):
-
-After applying changes, present the user with:
-
-```
-Your options:
-- **A (Advanced Elicitation)**: Deep dive into change impact analysis
-- **P (Party Mode)**: Bring review perspectives on applied changes
-- **C (Continue)**: Accept changes and complete Edit workflow
-- **[Additional changes]**: Describe more modifications needed
-
-Select an option:
-```
-
-### PROTOCOL INTEGRATION:
-
-#### If 'A' (Advanced Elicitation):
-- Invoke the `bmad-advanced-elicitation` skill
-- Pass context: applied changes, ADR, consistency checks
-- Process enhanced insights on change completeness
-- Return to A/P/C menu
-
-#### If 'P' (Party Mode):
-- Invoke the `bmad-party-mode` skill
-- Context: "Review applied changes to tenant onboarding design"
-- Present synthesized recommendations
-- Return to A/P/C menu
-
-#### If 'C' (Continue):
-- Save updated document to original location
-- Archive previous version if significant change
-- Update frontmatter `stepsCompleted: [10, 11]`
-- Mark Edit mode complete
-
----
-
 ## Verification
 
 - [ ] All proposed changes applied correctly

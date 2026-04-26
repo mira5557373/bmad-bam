@@ -106,40 +106,6 @@ changeLog:
 
 ---
 
-## COLLABORATION MENUS (A/P/C):
-
-After applying changes, present the user with:
-
-```
-Your options:
-- **A (Advanced Elicitation)**: Deep dive into change impact or compliance review
-- **P (Party Mode)**: Bring review perspectives from compliance and architecture
-- **C (Continue)**: Accept changes and complete edit
-- **[Specific concerns]**: Describe concerns to address
-
-Select an option:
-```
-
-### PROTOCOL INTEGRATION:
-
-#### If 'A' (Advanced Elicitation):
-- Invoke the `bmad-advanced-elicitation` skill
-- Pass context: applied changes, ADR, compliance impact assessment
-- Process enhanced insights
-- Return to A/P/C menu
-
-#### If 'P' (Party Mode):
-- Invoke the `bmad-party-mode` skill
-- Context: "Review applied changes to data residency design"
-- Present synthesized recommendations
-- Return to A/P/C menu
-
-#### If 'C' (Continue):
-- Save updated document to: `{output_folder}/planning-artifacts/data-residency-design.md`
-- Mark Edit mode complete
-
----
-
 ## Verification
 
 - [ ] All changes applied correctly

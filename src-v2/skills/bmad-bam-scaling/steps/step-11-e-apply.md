@@ -138,39 +138,6 @@ Ensure modifications are consistent with unmodified sections:
 
 ---
 
-## COLLABORATION MENUS (A/P/C)
-
-After applying modifications, present the user with:
-
-```
-Your options:
-- **A (Advanced Elicitation)**: Review specific changes in detail
-- **P (Party Mode)**: Get architect validation of changes
-- **C (Continue)**: Save modified document and complete Edit mode
-
-Select an option:
-```
-
-### PROTOCOL INTEGRATION
-
-#### If 'A' (Advanced Elicitation):
-- Invoke the `bmad-advanced-elicitation` skill
-- Pass context: modifications applied, consistency check results
-- Process enhanced insights on change impact
-- Return to A/P/C menu
-
-#### If 'P' (Party Mode):
-- Invoke the `bmad-party-mode` skill
-- Context: "Review modifications to scaling design for consistency"
-- Present synthesized recommendations
-- Return to A/P/C menu
-
-#### If 'C' (Continue):
-- Save modified document to: `{output_folder}/planning-artifacts/scaling-design.md`
-- Edit mode complete
-
----
-
 ## Verification
 
 - [ ] All identified modifications applied

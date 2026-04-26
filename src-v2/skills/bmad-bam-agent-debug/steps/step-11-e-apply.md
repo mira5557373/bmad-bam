@@ -104,40 +104,6 @@ Run verification checks:
 
 ---
 
-## COLLABORATION MENUS (A/P/C):
-
-After applying changes, present the user with:
-
-```
-Your options:
-- **A (Advanced Elicitation)**: Deep dive into change impact assessment
-- **P (Party Mode)**: Bring review perspectives on changes
-- **C (Continue)**: Accept changes and complete edit
-- **[Specific concerns]**: Describe concerns to address
-
-Select an option:
-```
-
-### PROTOCOL INTEGRATION:
-
-#### If 'A' (Advanced Elicitation):
-- Invoke the `bmad-advanced-elicitation` skill
-- Pass context: applied changes, ADR, impact assessment
-- Process enhanced insights
-- Return to A/P/C menu
-
-#### If 'P' (Party Mode):
-- Invoke the `bmad-party-mode` skill
-- Context: "Review applied changes to agent debug report"
-- Present synthesized recommendations
-- Return to A/P/C menu
-
-#### If 'C' (Continue):
-- Save updated documents
-- Mark Edit mode complete
-
----
-
 ## Verification
 
 - [ ] All changes applied correctly

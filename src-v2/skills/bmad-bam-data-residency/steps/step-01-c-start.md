@@ -100,45 +100,6 @@ _Source: [URL]_
 
 ---
 
-## COLLABORATION MENUS (A/P/C):
-
-After completing the initialization analysis above, present the user with:
-
-```
-Your options:
-- **A (Advanced Elicitation)**: Deep dive into compliance requirements or region selection
-- **P (Party Mode)**: Bring security, compliance, and architect perspectives on data residency strategy
-- **C (Continue)**: Accept initial requirements and proceed to regional data storage design
-- **[Specific refinements]**: Describe data residency concerns to address
-
-Select an option:
-```
-
-### PROTOCOL INTEGRATION:
-
-#### If 'A' (Advanced Elicitation):
-- Invoke the `bmad-advanced-elicitation` skill
-- Pass context: tenant model, compliance requirements, target regions
-- Process enhanced insights on regulatory landscape
-- Ask user: "Accept these refined data residency requirements? (y/n)"
-- If yes, integrate into design document
-- Return to A/P/C menu
-
-#### If 'P' (Party Mode):
-- Invoke the `bmad-party-mode` skill
-- Context: "Review data residency requirements for multi-tenant platform"
-- Process security and compliance perspectives
-- Present synthesized recommendations
-- Ask user: "Accept these recommendations? (y/n)"
-- Return to A/P/C menu
-
-#### If 'C' (Continue):
-- Save data residency requirements to output document
-- Update frontmatter `stepsCompleted: [1]`
-- Proceed to next step: `step-02-c-analyze.md`
-
----
-
 ## Verification
 
 - [ ] Tenant model configuration loaded

@@ -77,40 +77,6 @@ Confirm with the user which sections need modification:
 
 ---
 
-## COLLABORATION MENUS (A/P/C):
-
-After loading and presenting the existing documents, present the user with:
-
-```
-Your options:
-- **A (Advanced Elicitation)**: Deep dive into specific report sections before editing
-- **P (Party Mode)**: Bring review perspectives on proposed changes
-- **C (Continue)**: Proceed to apply modifications
-- **[Specific sections]**: Describe which sections to modify
-
-Select an option:
-```
-
-### PROTOCOL INTEGRATION:
-
-#### If 'A' (Advanced Elicitation):
-- Invoke the `bmad-advanced-elicitation` skill
-- Pass context: current document state, proposed modifications
-- Process enhanced insights on change impact
-- Return to A/P/C menu
-
-#### If 'P' (Party Mode):
-- Invoke the `bmad-party-mode` skill
-- Context: "Review proposed modifications to agent debug report"
-- Present synthesized recommendations
-- Return to A/P/C menu
-
-#### If 'C' (Continue):
-- Document identified modification targets
-- Proceed to next step: `step-11-e-apply.md`
-
----
-
 ## Verification
 
 - [ ] Existing debug report loaded successfully

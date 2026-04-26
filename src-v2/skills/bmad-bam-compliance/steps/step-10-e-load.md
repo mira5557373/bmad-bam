@@ -88,40 +88,6 @@ Assess modification impact:
 
 ---
 
-## COLLABORATION MENUS (A/P/C):
-
-After loading and presenting the existing documents, present the user with:
-
-```
-Your options:
-- **A (Advanced Elicitation)**: Deep dive into specific sections before editing
-- **P (Party Mode)**: Bring compliance and regulatory expert perspectives on changes
-- **C (Continue)**: Proceed to apply modifications
-- **[Specific sections]**: Describe which sections to modify
-
-Select an option:
-```
-
-### PROTOCOL INTEGRATION:
-
-#### If 'A' (Advanced Elicitation):
-- Invoke the `bmad-advanced-elicitation` skill
-- Pass context: current document state, proposed modifications, framework updates
-- Process enhanced insights on change impact
-- Return to A/P/C menu
-
-#### If 'P' (Party Mode):
-- Invoke the `bmad-party-mode` skill
-- Context: "Review proposed modifications to compliance design"
-- Present synthesized recommendations from DPO, compliance officer, legal counsel
-- Return to A/P/C menu
-
-#### If 'C' (Continue):
-- Document identified modification targets
-- Proceed to next step: `step-11-e-apply.md`
-
----
-
 ## Verification
 
 - [ ] Existing compliance design loaded successfully

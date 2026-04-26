@@ -80,19 +80,6 @@ _Source: [URL]_
 
 ---
 
-## COLLABORATION MENUS (A/P/C):
-
-```
-Your options:
-- **C (Continue)**: Proceed to trace analysis
-```
-
-#### If 'C' (Continue):
-- Update frontmatter `stepsCompleted: [1]`
-- Proceed to: `step-02-c-analyze.md`
-
----
-
 ## Verification
 
 - [ ] Debug scope identified (single/multi-agent/tool chain/memory/tenant)
