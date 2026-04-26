@@ -1,0 +1,62 @@
+name: bam
+version: 2.0.0
+displayName: BMAD Agentic Multi-tenant
+description: Multi-tenant agentic AI SaaS architecture capabilities
+author: BAM Team
+license: MIT
+
+requires:
+  bmad: ">=6.4.0"
+
+optional:
+  tea: ">=1.0.0"
+  wds: ">=1.0.0"
+  cis: ">=1.0.0"
+
+install:
+  customize:
+    strategy: merge
+    source: customize/
+    target: "{project-root}/_bmad/custom/"
+
+  skills:
+    source: skills/
+    target: "{skills-path}/"
+
+  data:
+    source: data/
+    target: "{project-root}/_bmad/bam/data/"
+
+  sidecar:
+    directories:
+      - "{project-root}/_bmad/_memory/bam-architect/"
+    files:
+      - source: data/sidecar/architecture-decisions.md
+        target: "{project-root}/_bmad/_memory/bam-architect/architecture-decisions.md"
+      - source: data/sidecar/runtime-preferences.md
+        target: "{project-root}/_bmad/_memory/bam-architect/runtime-preferences.md"
+      - source: data/sidecar/integration-history.md
+        target: "{project-root}/_bmad/_memory/bam-architect/integration-history.md"
+
+verify:
+  files_exist:
+    - "{project-root}/_bmad/custom/bmad-agent-architect.toml"
+    - "{project-root}/_bmad/bam/data/context/bam-core.md"
+
+  skills_registered:
+    - bmad-bam-master-architecture
+    - bmad-bam-tenant-isolation
+    - bmad-bam-agent-runtime
+
+migration:
+  from_v1:
+    description: "Migrate from YAML extensions to TOML customization"
+    steps:
+      - action: backup
+        source: "{project-root}/_bmad/bam/"
+        target: "{project-root}/_bmad/bam.v1.backup/"
+      - action: remove
+        paths:
+          - "{project-root}/_bmad/custom/*.customize.yaml"
+      - action: install
+        run: true
