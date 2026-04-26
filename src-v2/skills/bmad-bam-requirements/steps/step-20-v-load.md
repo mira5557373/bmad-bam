@@ -2,11 +2,12 @@
 
 ## MANDATORY EXECUTION RULES (READ FIRST)
 
-- 🛑 **NEVER generate content without user input** - Wait for explicit direction
-- 📖 **CRITICAL: ALWAYS read the complete step file** before taking any action
-- 🔄 **CRITICAL: When loading next step with 'C'**, ensure entire file is read
+- 🛑 **NEVER proceed without loading QG-PL1 validation checklist**
+- 📖 **CRITICAL: ALWAYS verify source traceability** - requirements must link to sources
+- 🔄 **CRITICAL: Check requirement ID uniqueness** - no duplicate IDs allowed
 - ⏸️ **ALWAYS pause after presenting findings** and await user direction
-- 🎯 **Focus ONLY on current step scope** - do not look ahead
+- 🎯 **FLAG any 'TBD' or placeholder content** - blocks validation
+- 📋 **VERIFY multi-tenant and AI/agent coverage** - BAM-specific requirements
 
 ## EXECUTION PROTOCOLS
 
@@ -20,6 +21,12 @@
 ## Purpose
 
 This step loads the requirements analysis artifact and validation checklist for QG-PL1 (Planning Gate) verification.
+
+---
+
+## YOUR TASK
+
+Load the requirements analysis artifact, verify all 11 required sections are present (Executive Summary through Stakeholder Sign-off), load the QG-PL1 validation checklist with its 5 weighted categories (Document Completeness 25%, Requirements Quality 30%, Multi-Tenant Coverage 20%, AI/Agent Coverage 15%, Stakeholder Alignment 10%), and prepare for systematic validation by identifying any structural gaps or placeholder content.
 
 ---
 
@@ -157,42 +164,25 @@ pre_validation_summary:
 
 ---
 
-## COLLABORATION MENUS (A/P/C):
+## SUCCESS METRICS
 
-After loading the artifacts above, present the user with:
+- ✅ Requirements artifact loaded from correct path
+- ✅ All 11 required sections verified present
+- ✅ QG-PL1 checklist loaded with 5 weighted categories
+- ✅ Requirement ID uniqueness verified
+- ✅ No placeholder/TBD content detected
+- ✅ Multi-tenant requirements section present
+- ✅ AI/agent requirements section present
 
-```
-Your options:
-- **A (Advanced Elicitation)**: Deep dive into artifact structure using discovery protocols
-- **P (Party Mode)**: Bring analyst and architect perspectives for pre-validation analysis
-- **C (Continue)**: Proceed to validation checks
-- **[Specific refinements]**: Describe what you'd like to explore further
+---
 
-Select an option:
-```
+## FAILURE MODES
 
-### PROTOCOL INTEGRATION:
-
-#### If 'A' (Advanced Elicitation):
-- Invoke the `bmad-advanced-elicitation` skill
-- Pass artifact context: documents loaded, structure analysis
-- Process enhanced insights from deep questioning
-- Ask user: "Accept these pre-validation findings? (y/n)"
-- If yes, integrate into validation context
-- Return to A/P/C menu
-
-#### If 'P' (Party Mode):
-- Invoke the `bmad-party-mode` skill
-- Context: "Review loaded requirements artifact for validation: {summary of structure}"
-- Process collaborative analysis from analyst and architect personas
-- Present synthesized recommendations
-- Ask user: "Accept these recommendations? (y/n)"
-- Return to A/P/C menu
-
-#### If 'C' (Continue):
-- Confirm artifact loading complete
-- Update frontmatter `stepsCompleted: [20]`
-- Proceed to next step: `step-21-v-validate.md`
+- ❌ **Artifact not found:** Redirect to Create mode
+- ❌ **Missing required sections:** Cannot validate incomplete document
+- ❌ **Duplicate requirement IDs:** Traceability compromised - fix before validation
+- ❌ **Placeholder content detected:** Block validation until content complete
+- ❌ **Missing multi-tenant section:** BAM-specific requirement coverage incomplete
 
 ---
 

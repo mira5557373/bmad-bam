@@ -2,12 +2,12 @@
 
 ## MANDATORY EXECUTION RULES (READ FIRST)
 
-- 🛑 **NEVER generate content without user input** - Wait for explicit direction
-- 📖 **CRITICAL: ALWAYS read the complete step file** before taking any action
-- 🔄 **CRITICAL: When loading next step with 'C'**, ensure entire file is read
+- 🛑 **NEVER remove TenantContext as first parameter** from any tool schema
+- 📖 **CRITICAL: Verify schema backward compatibility** for non-breaking changes
+- 🔄 **CRITICAL: Increment version appropriately** (MAJOR for breaking, MINOR for features)
 - ⏸️ **ALWAYS pause after presenting findings** and await user direction
-- 🎯 **Focus ONLY on current step scope** - do not look ahead
-- 🔄 **PRESERVE existing content** not targeted for modification
+- 🎯 **PRESERVE sandbox isolation rules** unless explicitly being modified
+- 🔄 **UPDATE permission matrix** when adding or removing tools
 
 ## EXECUTION PROTOCOLS
 
@@ -44,7 +44,7 @@ Apply the modifications identified in Step 10 to the tool contract design docume
 
 ## YOUR TASK:
 
-Apply requested modifications while preserving document integrity.
+Apply the user's requested modifications to the tool contract design: add new tools with TenantContext as first parameter, update existing schemas with proper versioning (MAJOR for breaking changes), modify permission matrices ensuring all tools have defined access controls, adjust rate limits maintaining tier hierarchy (Free < Pro < Enterprise), or update execution configuration (retry, timeout, circuit breaker). Validate consistency across all affected tools and preserve unmodified sections.
 
 ---
 
@@ -214,22 +214,22 @@ Present summary of applied changes:
 
 ## SUCCESS METRICS:
 
-- [ ] All requested modifications applied
-- [ ] Document consistency verified
-- [ ] Version appropriately incremented
-- [ ] Change log updated
-- [ ] Document written successfully
+- ✅ All tools have TenantContext as first parameter
+- ✅ Schema versioning correctly applied (MAJOR/MINOR/PATCH)
+- ✅ Permission matrix updated for all affected tools
+- ✅ Rate limits maintain tier hierarchy (Free < Pro < Enterprise)
+- ✅ Deprecation notices added for replaced tools
+- ✅ Change log updated with modification details
 
 ---
 
 ## FAILURE MODES:
 
-| Failure | Recovery |
-|---------|----------|
-| Inconsistent state | Roll back to loaded version |
-| Missing dependencies | Add required sections |
-| Version conflict | Resolve with user |
-| Write error | Check permissions, retry |
+- ❌ **TenantContext removed from tool:** CRITICAL - restore tenant context parameter
+- ❌ **Breaking change without MAJOR version:** Block until version incremented
+- ❌ **Rate limit tier hierarchy violated:** Free cannot exceed Pro, Pro cannot exceed Enterprise
+- ❌ **Permission matrix inconsistent:** Tool added without permissions defined
+- ❌ **Sandbox isolation compromised:** Require explicit override with justification
 
 ---
 

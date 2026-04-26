@@ -2,12 +2,12 @@
 
 ## MANDATORY EXECUTION RULES (READ FIRST)
 
-- 🛑 **NEVER generate content without user input** - Wait for explicit direction
-- 📖 **CRITICAL: ALWAYS read the complete step file** before taking any action
-- 🔄 **CRITICAL: When loading next step with 'C'**, ensure entire file is read
+- 🛑 **NEVER proceed without loading QG-ONBOARD validation checklist**
+- 📖 **CRITICAL: ALWAYS verify provisioning saga** has defined steps and rollback
+- 🔄 **CRITICAL: Check all 7 validation categories** are present in checklist
 - ⏸️ **ALWAYS pause after presenting findings** and await user direction
-- 🎯 **Focus ONLY on current step scope** - do not look ahead
-- ✅ **Validate mode entry point** - Load document and criteria
+- 🎯 **VERIFY tier coverage** - Free, Pro, Enterprise configurations must exist
+- ✅ **CONFIRM QG-F1 prerequisite** - Foundation gate must pass first
 
 ## EXECUTION PROTOCOLS
 

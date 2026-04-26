@@ -2,12 +2,12 @@
 
 ## MANDATORY EXECUTION RULES (READ FIRST)
 
-- 🛑 **NEVER generate content without user input** - Wait for explicit direction
-- 📖 **CRITICAL: ALWAYS read the complete step file** before taking any action
-- 🔄 **CRITICAL: When loading next step with 'C'**, ensure entire file is read
+- 🛑 **NEVER allow tool schema without TenantContext as first parameter**
+- 📖 **CRITICAL: ALWAYS verify permission matrix** covers all tools
+- 🔄 **CRITICAL: Parse rate limits** for all three tiers (Free/Pro/Enterprise)
 - ⏸️ **ALWAYS pause after presenting findings** and await user direction
-- 🎯 **Focus ONLY on current step scope** - do not look ahead
-- 📋 **VERIFY artifact exists** before proceeding to modifications
+- 🎯 **EXTRACT sandbox isolation configuration** - critical for tool execution safety
+- 📋 **VERIFY input/output schemas** defined for every tool
 
 ## EXECUTION PROTOCOLS
 
@@ -42,7 +42,7 @@ Load the existing tool contract design document for modification. Edit mode allo
 
 ## YOUR TASK:
 
-Load the existing tool contract design and identify modification scope.
+Load the existing tool contract design document, parse the tool catalog by category (Data Access, External API, File System, Computation, Agent-to-Agent), extract TenantContext schema specification, permission matrix with approval gates, rate limit configurations per tier (Free/Pro/Enterprise), execution environment settings (retry, timeout, circuit breaker), and sandbox isolation rules. Present a summary and identify which sections the user wants to modify.
 
 ---
 
@@ -157,22 +157,22 @@ Based on modification scope, list tools that will be affected:
 
 ## SUCCESS METRICS:
 
-- [ ] Tool contract design loaded successfully
-- [ ] Current state summary extracted
-- [ ] Modification scope identified
-- [ ] User confirmed changes to make
-- [ ] Affected tools identified
+- ✅ Tool contract design loaded with all categories parsed
+- ✅ TenantContext schema specification extracted
+- ✅ Permission matrix with approval gates documented
+- ✅ Rate limits verified for all tiers (Free/Pro/Enterprise)
+- ✅ Sandbox isolation configuration documented
+- ✅ Affected tools identified with breaking change assessment
 
 ---
 
 ## FAILURE MODES:
 
-| Failure | Recovery |
-|---------|----------|
-| Design not found | Switch to Create mode |
-| Document format invalid | Regenerate from template |
-| Missing sections | Add missing sections during edit |
-| Version mismatch | Reconcile with current architecture |
+- ❌ **TenantContext missing from tool schema:** CRITICAL - all tools require tenant context
+- ❌ **Permission matrix incomplete:** Block edits until all tools have permissions
+- ❌ **Rate limits undefined for tier:** Quota enforcement will fail
+- ❌ **Sandbox isolation not configured:** Tool execution safety compromised
+- ❌ **Design not found:** Switch to Create mode
 
 ---
 

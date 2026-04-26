@@ -2,12 +2,12 @@
 
 ## MANDATORY EXECUTION RULES (READ FIRST)
 
-- 🛑 **NEVER generate content without user input** - Wait for explicit direction
+- 🛑 **NEVER modify event envelope without verifying tenant_id field preservation**
 - 📖 **CRITICAL: ALWAYS read the complete step file** before taking any action
-- 🔄 **CRITICAL: When loading next step with 'C'**, ensure entire file is read
+- 🔄 **CRITICAL: Parse all event domains** (domain, integration, system, AI runtime)
 - ⏸️ **ALWAYS pause after presenting findings** and await user direction
-- 🎯 **Focus ONLY on current step scope** - do not look ahead
-- 📋 **VERIFY artifact exists** before proceeding to modifications
+- 🎯 **EXTRACT saga patterns and DLQ configurations** - critical for error recovery
+- 📋 **VERIFY schema versioning strategy** before allowing schema changes
 
 ## EXECUTION PROTOCOLS
 
@@ -41,7 +41,7 @@ Load the existing event architecture document for modification. Edit mode allows
 
 ## YOUR TASK:
 
-Load the existing event architecture and identify modification scope.
+Load the existing event architecture document, parse the event envelope structure (including tenant_id, correlation_id, schema version fields), extract schema versioning strategy, topic naming conventions, partition strategies, saga patterns with compensation actions, and DLQ configurations. Present a summary showing event domains (domain, integration, system, AI runtime) and identify which sections the user wants to modify.
 
 ---
 
@@ -132,20 +132,22 @@ Before editing, verify:
 
 ## SUCCESS METRICS:
 
-- [ ] Event architecture loaded successfully
-- [ ] Current configuration extracted
-- [ ] Modification scope identified
-- [ ] User confirmed changes to make
+- ✅ Event architecture loaded with envelope structure parsed
+- ✅ Schema versioning strategy extracted (semantic versioning, compatibility rules)
+- ✅ All event domains catalogued with event counts
+- ✅ Saga patterns and DLQ configurations documented
+- ✅ Tenant_id field presence verified in envelope specification
+- ✅ Modification scope confirmed with user
 
 ---
 
 ## FAILURE MODES:
 
-| Failure | Recovery |
-|---------|----------|
-| Architecture not found | Switch to Create mode |
-| Document format invalid | Regenerate from template |
-| Missing required sections | Add missing sections during edit |
+- ❌ **Event envelope missing tenant_id:** CRITICAL - cannot edit until envelope is compliant
+- ❌ **Schema versioning undefined:** Block edits until versioning strategy established
+- ❌ **Saga without compensation actions:** Flag incomplete saga patterns
+- ❌ **DLQ not configured:** Warn that event processing failures won't be captured
+- ❌ **Architecture not found:** Switch to Create mode
 
 ---
 
