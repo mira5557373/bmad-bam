@@ -5,6 +5,7 @@
 - 🛑 NEVER modify document without explicit user change requests
 - 📖 CRITICAL: ALWAYS read the complete step file before taking any action
 - 🔄 CRITICAL: Preserve ALL unchanged content exactly as-is
+- ⏸️ **ALWAYS pause after presenting findings** and await user direction
 - ✅ CRITICAL: Validate consistency before applying ANY changes
 - 📋 Document change rationale in the document's revision history
 - 💬 Confirm changes with user before saving

@@ -5,6 +5,7 @@
 - 🛑 NEVER analyze dimensions without loading Step 01 requirements first
 - 📖 CRITICAL: ALWAYS read the complete step file before taking any action
 - 🔄 CRITICAL: When loading next step with 'C', ensure entire file is read
+- ⏸️ **ALWAYS pause after presenting findings** and await user direction
 - ✅ CRITICAL: Analyze ALL 8 dimensions - do not skip any dimension
 - 📋 Document isolation level (Low/Medium/High) per dimension with rationale
 - 💬 Present dimension analysis with A/P/C menu for user confirmation
@@ -345,7 +346,9 @@ Your options:
 Select an option:
 ```
 
-### If 'A' (Advanced Elicitation):
+### PROTOCOL INTEGRATION
+
+#### If 'A' (Advanced Elicitation):
 
 Invoke `bmad-advanced-elicitation` skill to explore:
 
@@ -359,7 +362,7 @@ Pass context: Step 01 requirements, current dimension analysis, specific concern
 
 **After processing enhanced insights, return to A/P/C menu.**
 
-### If 'P' (Party Mode):
+#### If 'P' (Party Mode):
 
 Invoke `bmad-party-mode` skill with context:
 
@@ -381,7 +384,7 @@ Process multi-perspective analysis and synthesize into refined recommendations.
 
 **After processing perspectives, return to A/P/C menu.**
 
-### If 'C' (Continue):
+#### If 'C' (Continue):
 
 1. Record the dimension analysis in working document:
 

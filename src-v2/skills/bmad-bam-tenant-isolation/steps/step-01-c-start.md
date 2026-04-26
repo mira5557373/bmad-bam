@@ -5,6 +5,7 @@
 - 🛑 NEVER generate isolation design without loading tenant domain context first
 - 📖 ALWAYS read master architecture to understand selected tenant model
 - 🔄 ALWAYS gather requirements for ALL 8 isolation dimensions
+- ⏸️ **ALWAYS pause after presenting findings** and await user direction
 - ✅ PRESENT isolation matrix template before proceeding
 - 📋 CONFIRM each dimension has explicit requirements or "shared" designation
 - 💬 PAUSE after matrix is populated for user confirmation

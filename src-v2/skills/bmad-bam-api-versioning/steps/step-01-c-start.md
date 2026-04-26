@@ -1,14 +1,12 @@
 # Step 1: Initialize API Versioning Design
 
-## MANDATORY EXECUTION RULES
+## MANDATORY EXECUTION RULES (READ FIRST)
 
-- 🛑 NEVER design API versioning without loading facade contracts first
-- 📖 ALWAYS read master architecture to understand API surface
-- 🔄 ALWAYS verify existing API specifications and OpenAPI schemas
-- ✅ PRESENT versioning strategy options with multi-tenant context
-- 📋 CONFIRM selected versioning approach before proceeding
-- 💬 PAUSE after strategy selection for user confirmation
-- 🌐 USE web search to verify current API versioning best practices
+- 🛑 **NEVER generate content without user input** - Wait for explicit direction
+- 📖 **CRITICAL: ALWAYS read the complete step file** before taking any action
+- 🔄 **CRITICAL: When loading next step with 'C'**, ensure entire file is read
+- ⏸️ **ALWAYS pause after presenting findings** and await user direction
+- 🎯 **Focus ONLY on current step scope** - do not look ahead
 
 ---
 

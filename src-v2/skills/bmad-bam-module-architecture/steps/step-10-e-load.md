@@ -5,6 +5,7 @@
 - 🛑 NEVER proceed without locating the existing module-architecture.md file
 - 📖 ALWAYS read the complete document including frontmatter metadata
 - 🔄 ALWAYS parse the module boundary and public API contracts
+- ⏸️ **ALWAYS pause after presenting findings** and await user direction
 - ✅ EXTRACT all dependencies and internal component structure
 - 📋 PRESENT a structured summary of current design before accepting edits
 - 💬 PAUSE after summary presentation and await user edit selection

@@ -259,7 +259,9 @@ Your options:
 Select an option:
 ```
 
-### If 'A' (Advanced Elicitation):
+### PROTOCOL INTEGRATION
+
+#### If 'A' (Advanced Elicitation):
 
 Invoke `bmad-advanced-elicitation` skill to explore:
 
@@ -273,7 +275,7 @@ Pass context: Steps 02-03 design, current performance design, specific concerns.
 
 **After processing enhanced insights, return to A/P/C menu.**
 
-### If 'P' (Party Mode):
+#### If 'P' (Party Mode):
 
 Invoke `bmad-party-mode` skill with context:
 
@@ -295,7 +297,7 @@ Process multi-perspective analysis and synthesize into refined design.
 
 **After processing perspectives, return to A/P/C menu.**
 
-### If 'C' (Continue):
+#### If 'C' (Continue):
 
 1. Record the performance design in working document:
 

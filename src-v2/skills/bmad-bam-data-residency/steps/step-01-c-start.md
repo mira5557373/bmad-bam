@@ -1,6 +1,6 @@
 # Step 1: Initialize Data Residency Design
 
-## MANDATORY EXECUTION RULES (READ FIRST):
+## MANDATORY EXECUTION RULES (READ FIRST)
 
 - 🛑 **NEVER generate content without user input** - Wait for explicit direction
 - 📖 **CRITICAL: ALWAYS read the complete step file** before taking any action

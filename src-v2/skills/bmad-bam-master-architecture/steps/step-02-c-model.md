@@ -5,6 +5,7 @@
 - 🛑 NEVER select a model without reviewing requirements from Step 01
 - 📖 CRITICAL: ALWAYS read the complete step file before taking any action
 - 🔄 CRITICAL: When loading next step with 'C', ensure entire file is read
+- ⏸️ **ALWAYS pause after presenting findings** and await user direction
 - ✅ CRITICAL: Match requirements to decision criteria before recommending
 - 📋 Document selection rationale with trade-offs explicitly stated
 - 💬 Present recommendation with A/P/C menu for user confirmation
@@ -213,7 +214,9 @@ Your options:
 Select an option:
 ```
 
-### If 'A' (Advanced Elicitation):
+### PROTOCOL INTEGRATION
+
+#### If 'A' (Advanced Elicitation):
 
 Invoke `bmad-advanced-elicitation` skill to explore:
 
@@ -227,7 +230,7 @@ Pass context: gathered requirements, current model considered, specific concerns
 
 **After processing enhanced insights, return to A/P/C menu.**
 
-### If 'P' (Party Mode):
+#### If 'P' (Party Mode):
 
 Invoke `bmad-party-mode` skill with context:
 
@@ -249,7 +252,7 @@ Process multi-perspective analysis and synthesize into refined recommendation.
 
 **After processing perspectives, return to A/P/C menu.**
 
-### If 'C' (Continue):
+#### If 'C' (Continue):
 
 1. Record the decision in output document:
 

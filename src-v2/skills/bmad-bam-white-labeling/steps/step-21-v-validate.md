@@ -8,12 +8,13 @@
 - ⏸️ ALWAYS pause after presenting findings and await user direction
 - 🎯 Focus ONLY on current step scope - do not look ahead
 
-## EXECUTION PROTOCOLS:
+## EXECUTION PROTOCOLS
 
-- 🎯 Show your analysis before taking any action
-- 💾 Update document frontmatter after each section completion
-- 📝 Maintain append-only document building
-- ✅ Track progress in `stepsCompleted` array
+- 🎯 **Focus:** Execute all validation checks and calculate gate decision
+- 💾 **Track:** `stepsCompleted: [20, 21]` when complete
+- 📖 **Context:** Step 20 confirmed scope - execute checks against loaded artifact
+- 🚫 **Do NOT:** Skip critical security checks or modify artifact during validation
+- 🔍 **Use web search:** Not applicable for Validate mode - verify against defined criteria only
 
 ---
 

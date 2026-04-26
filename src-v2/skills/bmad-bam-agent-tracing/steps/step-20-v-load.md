@@ -1,9 +1,19 @@
 # Step 20: Load Tracing Design for Validation
 
-> **MANDATORY EXECUTION RULES:**
-> 1. Read this ENTIRE file before acting
-> 2. Follow steps in EXACT order
-> 3. DO NOT skip verification
+## MANDATORY EXECUTION RULES (READ FIRST)
+
+- 🛑 **NEVER generate content without user input** - Wait for explicit direction
+- 📖 **CRITICAL: ALWAYS read the complete step file** before taking any action
+- 🔄 **CRITICAL: When loading next step with 'C'**, ensure entire file is read
+- ⏸️ **ALWAYS pause after presenting findings** and await user direction
+- 🎯 **Focus ONLY on current step scope** - do not look ahead
+
+## EXECUTION PROTOCOLS
+
+- 🎯 **Focus:** Load specification and identify validation targets
+- 💾 **Track:** `stepsCompleted: 20` when complete
+- 📖 **Context:** Validate mode - preparing for quality gate checks
+- 🚫 **Do NOT:** Begin validation checks in this step
 
 ## Purpose
 

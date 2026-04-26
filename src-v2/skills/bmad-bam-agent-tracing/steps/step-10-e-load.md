@@ -1,9 +1,19 @@
 # Step 10: Load Existing Tracing Design
 
-> **MANDATORY EXECUTION RULES:**
-> 1. Read this ENTIRE file before acting
-> 2. Follow steps in EXACT order
-> 3. DO NOT skip verification
+## MANDATORY EXECUTION RULES (READ FIRST)
+
+- 🛑 **NEVER generate content without user input** - Wait for explicit direction
+- 📖 **CRITICAL: ALWAYS read the complete step file** before taking any action
+- 🔄 **CRITICAL: When loading next step with 'C'**, ensure entire file is read
+- ⏸️ **ALWAYS pause after presenting findings** and await user direction
+- 🎯 **Focus ONLY on current step scope** - do not look ahead
+
+## EXECUTION PROTOCOLS
+
+- 🎯 **Focus:** Load existing specification for modification
+- 💾 **Track:** `stepsCompleted: 10` when complete
+- 📖 **Context:** Edit mode - modifying existing artifact
+- 🚫 **Do NOT:** Make changes without documenting current state first
 
 ## Purpose
 

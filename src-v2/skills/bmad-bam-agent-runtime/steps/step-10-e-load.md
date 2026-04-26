@@ -5,6 +5,7 @@
 - 🛑 NEVER proceed without locating the existing agent-runtime-architecture.md file
 - 📖 ALWAYS read the complete document including frontmatter metadata
 - 🔄 ALWAYS parse the agent topology and tool registry for current state
+- ⏸️ **ALWAYS pause after presenting findings** and await user direction
 - ✅ EXTRACT all memory tier configurations and kill switch settings
 - 📋 PRESENT a structured summary of current design before accepting edits
 - 💬 PAUSE after summary presentation and await user edit selection

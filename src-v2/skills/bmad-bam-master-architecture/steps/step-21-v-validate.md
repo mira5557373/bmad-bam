@@ -5,6 +5,7 @@
 - 🛑 NEVER skip CRITICAL checks - all four must be evaluated
 - 📖 CRITICAL: ALWAYS read the complete step file before taking any action
 - 🔄 CRITICAL: Check loaded document from Step 20 against QG-F1 checklist
+- ⏸️ **ALWAYS pause after presenting findings** and await user direction
 - ✅ CRITICAL: Mark each check as PASS/FAIL/CONDITIONAL with evidence
 - 📋 Document findings for every check, not just failures
 - ⚠️ Any CRITICAL check failure triggers recovery protocol

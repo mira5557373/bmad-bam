@@ -221,7 +221,9 @@ Your options:
 Select an option:
 ```
 
-### If 'A' (Advanced Elicitation):
+### PROTOCOL INTEGRATION
+
+#### If 'A' (Advanced Elicitation):
 
 Invoke `bmad-advanced-elicitation` skill to explore:
 
@@ -235,7 +237,7 @@ Pass context: Step 01 initialization, current cache design, specific concerns.
 
 **After processing enhanced insights, return to A/P/C menu.**
 
-### If 'P' (Party Mode):
+#### If 'P' (Party Mode):
 
 Invoke `bmad-party-mode` skill with context:
 
@@ -257,7 +259,7 @@ Process multi-perspective analysis and synthesize into refined design.
 
 **After processing perspectives, return to A/P/C menu.**
 
-### If 'C' (Continue):
+#### If 'C' (Continue):
 
 1. Record the cache design in working document:
 

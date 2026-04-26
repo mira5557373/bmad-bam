@@ -8,12 +8,13 @@
 - ⏸️ ALWAYS pause after presenting findings and await user direction
 - 🎯 Focus ONLY on current step scope - do not look ahead
 
-## EXECUTION PROTOCOLS:
+## EXECUTION PROTOCOLS
 
-- 🎯 Show your analysis before taking any action
-- 💾 Update document frontmatter after each section completion
-- 📝 Maintain append-only document building
-- ✅ Track progress in `stepsCompleted` array
+- 🎯 **Focus:** Generate comprehensive validation report with gate decision and remediation plan
+- 💾 **Track:** `stepsCompleted: [20, 21, 22]` when complete
+- 📖 **Context:** Step 21 completed checks - compile results into formal report
+- 🚫 **Do NOT:** Change gate decision without documented rationale or skip remediation plan for failures
+- 🔍 **Use web search:** Not applicable for Validate mode - document findings only
 
 ---
 

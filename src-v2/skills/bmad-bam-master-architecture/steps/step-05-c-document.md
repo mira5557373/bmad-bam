@@ -5,6 +5,7 @@
 - 🛑 NEVER generate document without all prior step decisions loaded
 - 📖 CRITICAL: ALWAYS read the complete step file before taking any action
 - 🔄 CRITICAL: When presenting checkpoint, ensure ALL decisions are compiled
+- ⏸️ **ALWAYS pause after presenting findings** and await user direction
 - ✅ CRITICAL: Document MUST reflect decisions from steps 01-04 accurately
 - 📋 Use master architecture template as structural guide
 - 💬 Present QG-F1 soft gate checkpoint before completion
@@ -134,7 +135,9 @@ Your options:
 Select an option:
 ```
 
-### If 'A' (Advanced Elicitation):
+### PROTOCOL INTEGRATION
+
+#### If 'A' (Advanced Elicitation):
 
 Invoke `bmad-advanced-elicitation` skill to explore:
 
@@ -148,7 +151,7 @@ Pass context: compiled decisions from steps 01-04, document sections, specific c
 
 **After processing enhanced insights, return to A/P/C menu.**
 
-### If 'P' (Party Mode):
+#### If 'P' (Party Mode):
 
 Invoke `bmad-party-mode` skill with context:
 
@@ -173,7 +176,7 @@ Process multi-perspective analysis and synthesize into final document refinement
 
 **After processing perspectives, return to A/P/C menu.**
 
-### If 'C' (Continue):
+#### If 'C' (Continue):
 
 Record that user chose to proceed.
 Proceed to QG-F1 soft gate checkpoint (Section 5).

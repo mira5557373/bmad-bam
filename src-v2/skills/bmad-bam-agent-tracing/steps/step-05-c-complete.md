@@ -12,10 +12,10 @@
 
 - 🎯 Show your analysis before taking any action
 - 💾 Update document frontmatter after each section completion
-- :memo: Maintain append-only document building
-- :white_check_mark: Track progress in `stepsCompleted` array
+- 📝 Maintain append-only document building
+- ✅ Track progress in `stepsCompleted` array
 - 🔍 Use web search to verify current best practices when making technology decisions
-- :paperclip: Reference pattern registry `web_queries` for search topics
+- 📎 Reference pattern registry `web_queries` for search topics
 
 ---
 

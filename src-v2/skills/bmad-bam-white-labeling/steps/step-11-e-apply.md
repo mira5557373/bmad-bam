@@ -8,12 +8,13 @@
 - ⏸️ ALWAYS pause after presenting findings and await user direction
 - 🎯 Focus ONLY on current step scope - do not look ahead
 
-## EXECUTION PROTOCOLS:
+## EXECUTION PROTOCOLS
 
-- 🎯 Show your analysis before taking any action
-- 💾 Update document frontmatter after each section completion
-- 📝 Maintain append-only document building
-- ✅ Track progress in `stepsCompleted` array
+- 🎯 **Focus:** Apply user-approved modifications with ADR documentation and version history
+- 💾 **Track:** `stepsCompleted: [10, 11]` when complete
+- 📖 **Context:** Step 10 identified modification targets - apply changes systematically
+- 🚫 **Do NOT:** Apply changes without user approval or skip ADR creation for significant changes
+- 🔍 **Use web search:** Not applicable for Edit mode - apply approved changes only
 
 ---
 

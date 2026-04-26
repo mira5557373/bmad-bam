@@ -5,6 +5,7 @@
 - 🛑 NEVER define boundaries without referencing tenant model from Step 02
 - 📖 CRITICAL: ALWAYS read the complete step file before taking any action
 - 🔄 CRITICAL: When loading next step with 'C', ensure entire file is read
+- ⏸️ **ALWAYS pause after presenting findings** and await user direction
 - ✅ CRITICAL: Ensure all modules have clear ownership and facade contracts
 - 📋 Document module responsibilities, dependencies, and tenant context flow
 - 💬 Present module map for user confirmation before proceeding
@@ -330,7 +331,9 @@ Your options:
 Select an option:
 ```
 
-### If 'A' (Advanced Elicitation):
+### PROTOCOL INTEGRATION
+
+#### If 'A' (Advanced Elicitation):
 
 Invoke `bmad-advanced-elicitation` skill to explore:
 
@@ -344,7 +347,7 @@ Pass context: module definitions, dependency graph, specific concerns.
 
 **After processing enhanced insights, return to A/P/C menu.**
 
-### If 'P' (Party Mode):
+#### If 'P' (Party Mode):
 
 Invoke `bmad-party-mode` skill with context:
 
@@ -365,7 +368,7 @@ Process multi-perspective analysis and synthesize into refined design.
 
 **After processing perspectives, return to A/P/C menu.**
 
-### If 'C' (Continue):
+#### If 'C' (Continue):
 
 1. Record the module boundary design in output document:
 

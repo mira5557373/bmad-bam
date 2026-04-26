@@ -5,6 +5,7 @@
 - 🛑 NEVER select patterns without reviewing module boundaries from Step 03
 - 📖 CRITICAL: ALWAYS read the complete step file before taking any action
 - 🔄 CRITICAL: When loading next step with 'C', ensure entire file is read
+- ⏸️ **ALWAYS pause after presenting findings** and await user direction
 - ✅ CRITICAL: Match patterns to requirements and boundaries before recommending
 - 📋 Document pattern selections with trade-offs and integration points
 - 💬 Present recommendations with A/P/C menu for user confirmation
@@ -382,7 +383,9 @@ Your options:
 Select an option:
 ```
 
-### If 'A' (Advanced Elicitation):
+### PROTOCOL INTEGRATION
+
+#### If 'A' (Advanced Elicitation):
 
 Invoke `bmad-advanced-elicitation` skill to explore:
 
@@ -396,7 +399,7 @@ Pass context: gathered requirements, module boundaries, current recommendations.
 
 **After processing enhanced insights, return to A/P/C menu.**
 
-### If 'P' (Party Mode):
+#### If 'P' (Party Mode):
 
 Invoke `bmad-party-mode` skill with context:
 
@@ -421,7 +424,7 @@ Process multi-perspective analysis and synthesize into refined recommendations.
 
 **After processing perspectives, return to A/P/C menu.**
 
-### If 'C' (Continue):
+#### If 'C' (Continue):
 
 1. Record the decisions in output document:
 

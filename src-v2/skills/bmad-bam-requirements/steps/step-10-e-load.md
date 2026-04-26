@@ -12,8 +12,8 @@
 
 - 🎯 Show your analysis before taking any action
 - 💾 Update document frontmatter after each section completion
-- :pencil: Maintain append-only document building
-- :white_check_mark: Track progress in `stepsCompleted` array
+- 📝 Maintain append-only document building
+- ✅ Track progress in `stepsCompleted` array
 
 ---
 

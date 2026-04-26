@@ -5,6 +5,7 @@
 - 🛑 NEVER modify the document during this step - load only
 - 📖 CRITICAL: Read the complete step file before taking any action
 - 🔄 CRITICAL: Parse ALL sections of the existing document
+- ⏸️ **ALWAYS pause after presenting findings** and await user direction
 - ✅ Verify document integrity before presenting for editing
 - 📋 Extract frontmatter state and architecture decisions
 - 💬 Present clear summary for user to identify changes

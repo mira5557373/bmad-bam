@@ -5,6 +5,7 @@
 - 🛑 NEVER define sharing rules without isolation model from Step 03
 - 📖 CRITICAL: ALWAYS read the complete step file before taking any action
 - 🔄 CRITICAL: When loading next step with 'C', ensure entire file is read
+- ⏸️ **ALWAYS pause after presenting findings** and await user direction
 - ✅ CRITICAL: Default to DENY ALL - sharing must be explicitly granted
 - 📋 Document all sharing rules with audit trail requirements
 - 💬 Present sharing rule design with A/P/C menu for user confirmation
@@ -476,7 +477,9 @@ Your options:
 Select an option:
 ```
 
-### If 'A' (Advanced Elicitation):
+### PROTOCOL INTEGRATION
+
+#### If 'A' (Advanced Elicitation):
 
 Invoke `bmad-advanced-elicitation` skill to explore:
 
@@ -490,7 +493,7 @@ Pass context: isolation model, sharing requirements, compliance needs.
 
 **After processing enhanced insights, return to A/P/C menu.**
 
-### If 'P' (Party Mode):
+#### If 'P' (Party Mode):
 
 Invoke `bmad-party-mode` skill with context:
 
@@ -516,7 +519,7 @@ Process multi-perspective analysis and synthesize into refined design.
 
 **After processing perspectives, return to A/P/C menu.**
 
-### If 'C' (Continue):
+#### If 'C' (Continue):
 
 1. Record the sharing rules in output document
 2. Update workflow state:

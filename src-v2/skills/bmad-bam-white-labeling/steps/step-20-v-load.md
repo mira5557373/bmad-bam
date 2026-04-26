@@ -8,12 +8,13 @@
 - ⏸️ ALWAYS pause after presenting findings and await user direction
 - 🎯 Focus ONLY on current step scope - do not look ahead
 
-## EXECUTION PROTOCOLS:
+## EXECUTION PROTOCOLS
 
-- 🎯 Show your analysis before taking any action
-- 💾 Update document frontmatter after each section completion
-- 📝 Maintain append-only document building
-- ✅ Track progress in `stepsCompleted` array
+- 🎯 **Focus:** Load artifact and validation checklist, confirm validation scope with user
+- 💾 **Track:** `stepsCompleted: [20]` when complete
+- 📖 **Context:** Validate mode entry point - artifact must exist to proceed
+- 🚫 **Do NOT:** Execute validation checks in this step - only prepare for validation
+- 🔍 **Use web search:** Not applicable for Validate mode - verify against defined criteria only
 
 ---
 

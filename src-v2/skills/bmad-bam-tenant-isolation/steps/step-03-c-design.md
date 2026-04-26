@@ -5,6 +5,7 @@
 - 🛑 NEVER generate content without user input - Wait for explicit direction
 - 📖 CRITICAL: ALWAYS read the complete step file before taking any action
 - 🔄 ALWAYS pause after presenting findings and await user direction
+- ⏸️ **ALWAYS pause after presenting findings** and await user direction
 - 💬 Focus ONLY on current step scope - do not look ahead
 - ✅ ALWAYS treat this as collaborative discovery
 - 📋 YOU ARE A FACILITATOR guiding context propagation design
@@ -146,28 +147,43 @@ Your options:
 - **[Specific refinements]**: Describe what to explore further
 ```
 
-**If 'A':** Invoke `bmad-advanced-elicitation`, explore context restoration failures
-**If 'P':** Invoke `bmad-party-mode`, focus on security and failure modes
-**If 'C':** Save design, update `stepsCompleted: [1, 2, 3]`, proceed to step-04
+### PROTOCOL INTEGRATION
+
+#### If 'A' (Advanced Elicitation):
+- Invoke the `bmad-advanced-elicitation` skill
+- Explore context restoration failures and edge cases
+- Pass context: TenantContext structure, propagation mechanisms
+- Return to A/P/C menu after processing insights
+
+#### If 'P' (Party Mode):
+- Invoke the `bmad-party-mode` skill
+- Focus on security and failure modes
+- Gather analyst and architect perspectives
+- Return to A/P/C menu after processing recommendations
+
+#### If 'C' (Continue):
+- Save design to working document
+- Update `stepsCompleted: [1, 2, 3]`
+- Proceed to step-04
 
 ---
 
 ## SUCCESS METRICS
 
-:white_check_mark: TenantContext structure defined with all required fields
-:white_check_mark: Propagation mechanisms cover JWT, subdomain, headers
-:white_check_mark: All isolation dimensions mapped to context
-:white_check_mark: Cross-service propagation covers sync and async
-:white_check_mark: Security requirements specified
+✅ TenantContext structure defined with all required fields
+✅ Propagation mechanisms cover JWT, subdomain, headers
+✅ All isolation dimensions mapped to context
+✅ Cross-service propagation covers sync and async
+✅ Security requirements specified
 
 ---
 
 ## FAILURE MODES
 
-:x: Missing tenant_id - Downstream queries bypass isolation
-:x: Mutable context - Tenant spoofing vulnerability
-:x: Incomplete propagation - Async workers lack context
-:x: No signature verification - Forged headers accepted
+❌ Missing tenant_id - Downstream queries bypass isolation
+❌ Mutable context - Tenant spoofing vulnerability
+❌ Incomplete propagation - Async workers lack context
+❌ No signature verification - Forged headers accepted
 
 ---
 

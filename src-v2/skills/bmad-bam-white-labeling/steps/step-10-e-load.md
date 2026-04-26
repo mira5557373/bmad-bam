@@ -8,12 +8,13 @@
 - ⏸️ ALWAYS pause after presenting findings and await user direction
 - 🎯 Focus ONLY on current step scope - do not look ahead
 
-## EXECUTION PROTOCOLS:
+## EXECUTION PROTOCOLS
 
-- 🎯 Show your analysis before taking any action
-- 💾 Update document frontmatter after each section completion
-- 📝 Maintain append-only document building
-- ✅ Track progress in `stepsCompleted` array
+- 🎯 **Focus:** Load existing white-labeling document and identify sections requiring modification
+- 💾 **Track:** `stepsCompleted: [10]` when complete
+- 📖 **Context:** Edit mode entry point - document must exist to proceed
+- 🚫 **Do NOT:** Modify document content in this step - only analyze structure
+- 🔍 **Use web search:** Not applicable for Edit mode - verify existing content only
 
 ---
 

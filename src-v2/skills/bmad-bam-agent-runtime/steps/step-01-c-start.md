@@ -5,6 +5,7 @@
 - 🛑 **NEVER generate runtime design without gathering agent requirements first**
 - 📖 **CRITICAL: ALWAYS read the complete step file** before taking any action
 - 🔄 **CRITICAL: When loading next step with 'C'**, ensure entire file is read
+- ⏸️ **ALWAYS pause after presenting findings** and await user direction
 - ✅ **CRITICAL: Capture ALL requirement dimensions** before proceeding
 - 📋 **Document all gathered requirements** in structured format for later steps
 - 💬 **Engage user to fill gaps** in agent requirements understanding

@@ -5,6 +5,7 @@
 - 🛑 NEVER design facade contract without completing Step 02 analysis first
 - 📖 CRITICAL: ALWAYS read the complete step file before taking any action
 - 🔄 CRITICAL: When loading next step with 'C', ensure entire file is read
+- ⏸️ **ALWAYS pause after presenting findings** and await user direction
 - ✅ CRITICAL: Define ALL facade operations with complete signatures
 - 📋 Document input/output schemas with tenant context requirements
 - 💬 Present facade design with A/P/C menu for user confirmation
@@ -361,7 +362,9 @@ Your options:
 Select an option:
 ```
 
-### If 'A' (Advanced Elicitation)
+### PROTOCOL INTEGRATION
+
+#### If 'A' (Advanced Elicitation):
 
 Invoke `bmad-advanced-elicitation` skill to explore:
 
@@ -375,7 +378,7 @@ Pass context: Step 02 analysis, current facade design, specific concerns.
 
 **After processing enhanced insights, return to A/P/C menu.**
 
-### If 'P' (Party Mode)
+#### If 'P' (Party Mode):
 
 Invoke `bmad-party-mode` skill with context:
 
@@ -398,7 +401,7 @@ Process multi-perspective analysis and synthesize into refined design.
 
 **After processing perspectives, return to A/P/C menu.**
 
-### If 'C' (Continue)
+#### If 'C' (Continue):
 
 1. Record the facade API design in working document:
 

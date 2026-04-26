@@ -5,6 +5,7 @@
 - 🛑 NEVER proceed without locating the existing facade contract file
 - 📖 ALWAYS read the complete document including frontmatter metadata
 - 🔄 ALWAYS parse the operation and event contracts
+- ⏸️ **ALWAYS pause after presenting findings** and await user direction
 - ✅ EXTRACT all integration details and contract versions
 - 📋 PRESENT a structured summary of current contract before accepting edits
 - 💬 PAUSE after summary presentation and await user edit selection

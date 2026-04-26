@@ -13,7 +13,7 @@
 - 🎯 Show your analysis before taking any action
 - 💾 Document all validation findings
 - 📖 Maintain objective assessment
-- :white_check_mark: No web research in Validate mode - verify against existing criteria
+- ✅ No web research in Validate mode - verify against existing criteria
 
 ---
 

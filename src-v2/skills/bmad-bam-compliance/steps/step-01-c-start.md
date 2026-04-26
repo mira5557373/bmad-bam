@@ -13,7 +13,7 @@
 - 🎯 Show your analysis before taking any action
 - 💾 Update document frontmatter after each section completion
 - 📖 Maintain append-only document building
-- :white_check_mark: Track progress in `stepsCompleted` array
+- ✅ Track progress in `stepsCompleted` array
 - 🔍 Use web search to verify current compliance requirements
 
 ---
@@ -86,9 +86,9 @@ Evaluate selected tenant model (`{tenant_model}`) against framework requirements
 
 | Tenant Model | SOC2 | GDPR | HIPAA | PCI-DSS | Notes |
 |--------------|------|------|-------|---------|-------|
-| row-level-security | :white_check_mark: | :white_check_mark: | ⚠️ | ⚠️ | May need additional controls |
-| schema-per-tenant | :white_check_mark: | :white_check_mark: | :white_check_mark: | :white_check_mark: | Strong isolation |
-| database-per-tenant | :white_check_mark: | :white_check_mark: | :white_check_mark: | :white_check_mark: | Maximum isolation |
+| row-level-security | ✅ | ✅ | ⚠️ | ⚠️ | May need additional controls |
+| schema-per-tenant | ✅ | ✅ | ✅ | ✅ | Strong isolation |
+| database-per-tenant | ✅ | ✅ | ✅ | ✅ | Maximum isolation |
 
 ---
 

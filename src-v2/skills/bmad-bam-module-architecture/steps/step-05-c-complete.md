@@ -5,6 +5,7 @@
 - 🛑 NEVER compile document without completing Steps 01-04 first
 - 📖 CRITICAL: ALWAYS read the complete step file before taking any action
 - 🔄 CRITICAL: Load module architecture template before compiling
+- ⏸️ **ALWAYS pause after presenting findings** and await user direction
 - ✅ CRITICAL: Include ALL sections from previous steps in final document
 - 📋 Run QG-M1 soft gate checkpoint before finalizing
 - 💬 Present compiled document with A/P/C menu for user confirmation
@@ -391,7 +392,9 @@ Your options:
 Select an option:
 ```
 
-### If 'A' (Advanced Elicitation)
+### PROTOCOL INTEGRATION
+
+#### If 'A' (Advanced Elicitation):
 
 Invoke `bmad-advanced-elicitation` skill to explore:
 
@@ -405,7 +408,7 @@ Pass context: Compiled document, QG-M1 results, specific concerns.
 
 **After processing enhanced insights, return to A/P/C menu.**
 
-### If 'P' (Party Mode)
+#### If 'P' (Party Mode):
 
 Invoke `bmad-party-mode` skill with context:
 
@@ -428,7 +431,7 @@ Process multi-perspective review and identify any gaps.
 
 **After processing perspectives, return to A/P/C menu.**
 
-### If 'C' (Continue)
+#### If 'C' (Continue):
 
 1. Verify document saved:
 

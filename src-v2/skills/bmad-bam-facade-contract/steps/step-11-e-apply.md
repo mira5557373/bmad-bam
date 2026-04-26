@@ -5,6 +5,7 @@
 - 🛑 NEVER apply changes that break existing consumer integrations without versioning
 - 📖 ALWAYS validate changes against QG-I1 critical checks before applying
 - 🔄 ALWAYS preserve document structure and unmodified sections
+- ⏸️ **ALWAYS pause after presenting findings** and await user direction
 - ✅ UPDATE frontmatter version after any successful edit
 - 📋 DOCUMENT change rationale in Change Log section
 - 💬 PRESENT diff summary before final save

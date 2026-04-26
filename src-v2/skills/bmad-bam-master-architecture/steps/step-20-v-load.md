@@ -6,6 +6,7 @@
 - 📖 CRITICAL: Read the complete step file before taking any action
 - ✅ CRITICAL: Load BOTH the document AND QG-F1 checklist
 - 🔄 Parse ALL document sections for validation mapping
+- ⏸️ **ALWAYS pause after presenting findings** and await user direction
 - 📋 Extract frontmatter state and prior validation results
 - 💬 Report load status before proceeding to validation
 - ⚠️ If document not found, STOP and recommend Create mode

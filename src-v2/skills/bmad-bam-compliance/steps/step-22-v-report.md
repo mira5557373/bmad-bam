@@ -13,7 +13,7 @@
 - 🎯 Show your analysis before taking any action
 - 💾 Generate complete validation report
 - 📖 Document outcome objectively
-- :white_check_mark: Provide clear next steps based on outcome
+- ✅ Provide clear next steps based on outcome
 
 ---
 

@@ -5,6 +5,7 @@
 - 🛑 NEVER finalize report without completing all validation checks from step-21
 - 📖 CRITICAL: Read the complete step file before generating any report
 - 🔄 CRITICAL: Compile ALL check results - do not skip any category
+- ⏸️ **ALWAYS pause after presenting findings** and await user direction
 - ✅ Determine outcome using EXACT criteria from QG-F1 checklist
 - 📋 Generate structured report following the template exactly
 - 💾 Save report to `{output_folder}/validation/qg-f1-report.md`

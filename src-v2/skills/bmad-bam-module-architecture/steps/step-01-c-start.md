@@ -5,6 +5,7 @@
 - 🛑 NEVER design a module without loading master architecture first
 - 📖 ALWAYS read master architecture to understand available modules
 - 🔄 ALWAYS gather module-specific requirements before proceeding
+- ⏸️ **ALWAYS pause after presenting findings** and await user direction
 - ✅ PRESENT module selection menu with bounded context descriptions
 - 📋 CONFIRM target module selection and requirements before analysis
 - 💬 PAUSE after module is selected for user confirmation

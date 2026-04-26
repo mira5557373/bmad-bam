@@ -5,6 +5,7 @@
 - 🛑 NEVER design contracts without completing Step 03 internal design first
 - 📖 CRITICAL: ALWAYS read the complete step file before taking any action
 - 🔄 CRITICAL: When loading next step with 'C', ensure entire file is read
+- ⏸️ **ALWAYS pause after presenting findings** and await user direction
 - ✅ CRITICAL: Define public facade API with all operations
 - 📋 Document all required dependencies and event contracts
 - 💬 Present contract design with A/P/C menu for user confirmation
@@ -336,7 +337,9 @@ Your options:
 Select an option:
 ```
 
-### If 'A' (Advanced Elicitation)
+### PROTOCOL INTEGRATION
+
+#### If 'A' (Advanced Elicitation):
 
 Invoke `bmad-advanced-elicitation` skill to explore:
 
@@ -350,7 +353,7 @@ Pass context: Step 03 design, current contract specifications, specific concerns
 
 **After processing enhanced insights, return to A/P/C menu.**
 
-### If 'P' (Party Mode)
+#### If 'P' (Party Mode):
 
 Invoke `bmad-party-mode` skill with context:
 
@@ -373,7 +376,7 @@ Process multi-perspective analysis and synthesize into refined contracts.
 
 **After processing perspectives, return to A/P/C menu.**
 
-### If 'C' (Continue)
+#### If 'C' (Continue):
 
 1. Record the contract specifications in working document:
 

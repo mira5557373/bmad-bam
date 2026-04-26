@@ -5,6 +5,7 @@
 - 🛑 NEVER proceed without locating the existing tenant-isolation.md file
 - 📖 ALWAYS read the complete document including frontmatter metadata
 - 🔄 ALWAYS parse the 8-dimension isolation matrix for current state
+- ⏸️ **ALWAYS pause after presenting findings** and await user direction
 - ✅ EXTRACT all sharing rules and context propagation settings
 - 📋 PRESENT a structured summary of current design before accepting edits
 - 💬 PAUSE after summary presentation and await user edit selection

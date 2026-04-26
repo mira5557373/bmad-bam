@@ -5,6 +5,7 @@
 - 🛑 NEVER generate content without user input on project requirements
 - 📖 CRITICAL: ALWAYS read the complete step file before taking any action
 - 🔄 CRITICAL: When loading next step with 'C', ensure entire file is read
+- ⏸️ **ALWAYS pause after presenting findings** and await user direction
 - ✅ CRITICAL: Capture ALL context dimensions before proceeding
 - 📋 Document all gathered context in structured format for later steps
 - 💬 Engage user to fill gaps in project context understanding

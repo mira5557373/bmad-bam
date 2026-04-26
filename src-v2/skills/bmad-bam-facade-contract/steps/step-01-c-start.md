@@ -5,6 +5,7 @@
 - 🛑 NEVER design a facade contract without loading master architecture first
 - 📖 ALWAYS read master architecture to understand available modules and boundaries
 - 🔄 ALWAYS verify module architecture exists for both source and target modules
+- ⏸️ **ALWAYS pause after presenting findings** and await user direction
 - ✅ PRESENT module selection menu with integration context
 - 📋 CONFIRM source/target module selection before proceeding
 - 💬 PAUSE after modules selected for user confirmation

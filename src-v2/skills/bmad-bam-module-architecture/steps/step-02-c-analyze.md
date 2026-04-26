@@ -5,6 +5,7 @@
 - 🛑 NEVER analyze module without loading Step 01 requirements first
 - 📖 CRITICAL: ALWAYS read the complete step file before taking any action
 - 🔄 CRITICAL: When loading next step with 'C', ensure entire file is read
+- ⏸️ **ALWAYS pause after presenting findings** and await user direction
 - ✅ CRITICAL: Define single responsibility principle for the module
 - 📋 Document all entities, aggregates, and value objects within bounded context
 - 💬 Present responsibility analysis with A/P/C menu for user confirmation
@@ -250,7 +251,9 @@ Your options:
 Select an option:
 ```
 
-### If 'A' (Advanced Elicitation)
+### PROTOCOL INTEGRATION
+
+#### If 'A' (Advanced Elicitation):
 
 Invoke `bmad-advanced-elicitation` skill to explore:
 
@@ -264,7 +267,7 @@ Pass context: Module requirements from Step 01, current responsibility analysis.
 
 **After processing enhanced insights, return to A/P/C menu.**
 
-### If 'P' (Party Mode)
+#### If 'P' (Party Mode):
 
 Invoke `bmad-party-mode` skill with context:
 
@@ -286,7 +289,7 @@ Process multi-perspective analysis and synthesize into refined recommendations.
 
 **After processing perspectives, return to A/P/C menu.**
 
-### If 'C' (Continue)
+#### If 'C' (Continue):
 
 1. Record the responsibility analysis in working document:
 
