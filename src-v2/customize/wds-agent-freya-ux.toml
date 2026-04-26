@@ -1,0 +1,31 @@
+# BAM Extensions for wds-agent-freya-ux
+
+[agent]
+activation_steps_append = [
+  "BAM scenario design available. Use YF* codes for tier-aware scenarios.",
+]
+
+persistent_facts = [
+  "file:{project-root}/_bmad/bam/data/context/bam-core.md",
+]
+
+principles = [
+  "BAM Domain: Tier-aware UX scenario design.",
+  "BAM Rule: Scenarios must show tier-specific variations.",
+  "BAM Rule: Include upgrade prompts in scenarios.",
+  "BAM Rule: Enterprise scenarios include white-label considerations.",
+]
+
+[[agent.menu]]
+code = "YFS"
+description = "Scenarios: Create tier-variant scenarios"
+prompt = """
+Each scenario needs Free/Pro/Enterprise tier variations with appropriate feature access.
+"""
+
+[[agent.menu]]
+code = "YFO"
+description = "Onboarding: Create onboarding scenarios by tier"
+prompt = """
+Design onboarding by tier: Free (5 min self-serve), Pro (30 min guided), Enterprise (1 week white-glove).
+"""

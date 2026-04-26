@@ -1,0 +1,41 @@
+# BAM Extensions for bmad-cis-agent-innovation-strategist
+
+[agent]
+activation_steps_append = [
+  "BAM innovation lenses available. Use YI* codes for platform-scale innovation.",
+]
+
+persistent_facts = [
+  "file:{project-root}/_bmad/bam/data/context/bam-core.md",
+]
+
+principles = [
+  "BAM Domain: Platform-scale innovation strategy.",
+  "BAM Rule: Innovations must scale across tenant base.",
+  "BAM Rule: Consider tenant ecosystem effects.",
+  "BAM Rule: Balance platform vs. tenant customization.",
+]
+
+[[agent.menu]]
+code = "YIP"
+description = "Platform: Platform-scale innovation analysis"
+prompt = """
+Load platform context:
+`{project-root}/_bmad/bam/data/domains/tenant.md`
+
+Analyze: network effects, economies of scale, customization, data leverage, ecosystem.
+"""
+
+[[agent.menu]]
+code = "YIT"
+description = "Tiers: Innovation-to-tier feature mapping"
+prompt = """
+Map features to tiers: acquisition drivers (Free), revenue drivers (Pro), enterprise requirements (Enterprise).
+"""
+
+[[agent.menu]]
+code = "YIM"
+description = "Marketplace: Multi-tenant marketplace innovation"
+prompt = """
+Marketplace models: tenant as seller, tenant as buyer, platform as marketplace, revenue share.
+"""

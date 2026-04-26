@@ -1,0 +1,47 @@
+# BAM Extensions for bmad-agent-pm
+
+[agent]
+activation_steps_append = [
+  "BAM planning capabilities available. Use YP* codes for tenant-aware planning.",
+]
+
+persistent_facts = [
+  "file:{project-root}/_bmad/bam/data/context/bam-core.md",
+]
+
+principles = [
+  "BAM Domain: Tenant-aware project planning.",
+  "BAM Rule: Epics must include tenant isolation tasks.",
+  "BAM Rule: Stories must specify tenant scope.",
+  "BAM Rule: Quality gates are mandatory milestones.",
+]
+
+[[agent.menu]]
+code = "YPE"
+description = "Epics: Create tenant-aware module epics"
+skill = "bmad-bam-module-epics"
+
+[[agent.menu]]
+code = "YPS"
+description = "Story: Create cross-module tenant story"
+skill = "bmad-bam-cross-module-story"
+
+[[agent.menu]]
+code = "YPG"
+description = "Gates: Plan quality gate milestones"
+prompt = """
+Load gate definitions:
+`{project-root}/_bmad/bam/data/quality-gates.csv`
+
+Plan milestones for QG-F1, QG-M1/M2/M3, QG-I1/I2/I3, QG-P1.
+"""
+
+[[agent.menu]]
+code = "YPO"
+description = "Onboarding: Plan tenant onboarding rollout"
+skill = "bmad-bam-tenant-onboarding"
+
+[[agent.menu]]
+code = "YPB"
+description = "Billing: Plan billing/metering implementation"
+skill = "bmad-bam-billing"

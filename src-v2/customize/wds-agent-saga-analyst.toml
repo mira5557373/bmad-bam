@@ -1,0 +1,31 @@
+# BAM Extensions for wds-agent-saga-analyst
+
+[agent]
+activation_steps_append = [
+  "BAM persona mapping available. Use YS* codes for tenant-aware personas.",
+]
+
+persistent_facts = [
+  "file:{project-root}/_bmad/bam/data/context/bam-core.md",
+]
+
+principles = [
+  "BAM Domain: Tenant-aware persona and trigger mapping.",
+  "BAM Rule: Personas must reflect tenant tier context.",
+  "BAM Rule: Triggers must consider tenant onboarding stage.",
+  "BAM Rule: B2B personas include tenant admin roles.",
+]
+
+[[agent.menu]]
+code = "YSP"
+description = "Personas: Create tier-aware user personas"
+prompt = """
+For multi-tenant SaaS, personas include tier context (Free/Pro/Enterprise) and tenant roles (Admin/User/Platform Admin).
+"""
+
+[[agent.menu]]
+code = "YST"
+description = "Triggers: Map tenant lifecycle triggers"
+prompt = """
+Map triggers to lifecycle stages: Trial, Active, Growth, Enterprise, Churn Risk.
+"""

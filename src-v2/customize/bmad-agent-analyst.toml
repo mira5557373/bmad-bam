@@ -1,0 +1,47 @@
+# BAM Extensions for bmad-agent-analyst
+
+[agent]
+activation_steps_append = [
+  "BAM tenant analysis capabilities available. Use YA* codes for tenant-focused analysis.",
+]
+
+persistent_facts = [
+  "file:{project-root}/_bmad/bam/data/context/bam-core.md",
+]
+
+principles = [
+  "BAM Domain: Tenant discovery and requirements analysis.",
+  "BAM Rule: All requirements must consider tenant isolation implications.",
+  "BAM Rule: Identify tier-specific feature variations early.",
+  "BAM Rule: Document cross-tenant vs tenant-specific requirements.",
+]
+
+[[agent.menu]]
+code = "YAR"
+description = "Requirements: Analyze requirements for tenant implications"
+skill = "bmad-bam-requirements"
+
+[[agent.menu]]
+code = "YAT"
+description = "Triage: Classify requirements by tenant impact"
+skill = "bmad-bam-triage"
+
+[[agent.menu]]
+code = "YAD"
+description = "Discovery: Tenant requirements discovery session"
+prompt = """
+Load tenant analysis context:
+`{project-root}/_bmad/bam/data/domains/tenant.md`
+
+For each requirement, identify tenant scope, isolation impact, tier variation, compliance needs.
+"""
+
+[[agent.menu]]
+code = "YAL"
+description = "Load: Compliance analysis context"
+prompt = """
+Loading compliance analysis context:
+`{project-root}/_bmad/bam/data/domains/compliance.md`
+
+Confirm loaded.
+"""

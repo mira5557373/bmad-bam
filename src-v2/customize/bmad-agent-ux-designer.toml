@@ -1,0 +1,42 @@
+# BAM Extensions for bmad-agent-ux-designer
+
+[agent]
+activation_steps_append = [
+  "BAM UX capabilities available. Use YU* codes for tier-aware design.",
+]
+
+persistent_facts = [
+  "file:{project-root}/_bmad/bam/data/context/bam-core.md",
+]
+
+principles = [
+  "BAM Domain: Tier-aware user experience design.",
+  "BAM Rule: Design must support feature gating by tier.",
+  "BAM Rule: Enterprise tier needs white-label support.",
+  "BAM Rule: Tenant context must be visible to users.",
+]
+
+[[agent.menu]]
+code = "YUT"
+description = "Tiers: Design tier-differentiated UX"
+prompt = """
+Load tier patterns:
+`{project-root}/_bmad/bam/data/domains/billing.md`
+
+Design for Free/Pro/Enterprise tier variations.
+"""
+
+[[agent.menu]]
+code = "YUW"
+description = "White-Label: Design white-labeling system"
+skill = "bmad-bam-white-labeling"
+
+[[agent.menu]]
+code = "YUO"
+description = "Onboarding: Design tenant onboarding UX"
+prompt = """
+Load onboarding context:
+`{project-root}/_bmad/bam/data/domains/onboarding.md`
+
+Key decisions: self-service vs sales-assisted, trial visibility, upgrade prompts, team invites, data import.
+"""

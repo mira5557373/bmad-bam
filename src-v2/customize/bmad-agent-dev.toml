@@ -1,0 +1,64 @@
+# BAM Extensions for bmad-agent-dev
+
+[agent]
+activation_steps_append = [
+  "BAM implementation patterns available. Use YD* codes for tenant-aware development.",
+]
+
+persistent_facts = [
+  "file:{project-root}/_bmad/bam/data/context/bam-core.md",
+]
+
+principles = [
+  "BAM Domain: Tenant-aware implementation patterns.",
+  "BAM Rule: Every database query must include tenant context.",
+  "BAM Rule: Cache keys must include tenant ID prefix.",
+  "BAM Rule: Agent execution must be tenant-scoped.",
+  "BAM Rule: Never access data outside current tenant context.",
+]
+
+[[agent.menu]]
+code = "YDI"
+description = "Implement: Tenant isolation in code"
+prompt = """
+Load implementation patterns:
+`{project-root}/_bmad/bam/data/patterns/rls.md`
+`{project-root}/_bmad/bam/data/domains/tenant.md`
+
+Implementation checklist: TenantContext middleware, RLS policies, cache prefixes, storage paths, agent scope.
+"""
+
+[[agent.menu]]
+code = "YDA"
+description = "Implement: Agent runtime integration"
+skill = "bmad-bam-agent-tracing"
+
+[[agent.menu]]
+code = "YDT"
+description = "Implement: TEA tenant testing"
+skill = "bmad-bam-testing"
+
+[[agent.menu]]
+code = "YDD"
+description = "Debug: Tenant isolation issues"
+skill = "bmad-bam-agent-debug"
+
+[[agent.menu]]
+code = "YDP"
+description = "Load: RLS implementation patterns"
+prompt = """
+Loading RLS implementation details:
+`{project-root}/_bmad/bam/data/patterns/rls.md`
+
+Confirm loaded.
+"""
+
+[[agent.menu]]
+code = "YDL"
+description = "Load: LangGraph implementation patterns"
+prompt = """
+Loading LangGraph implementation details:
+`{project-root}/_bmad/bam/data/patterns/langgraph.md`
+
+Confirm loaded.
+"""
