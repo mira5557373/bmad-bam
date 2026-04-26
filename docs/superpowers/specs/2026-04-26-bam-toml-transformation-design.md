@@ -951,6 +951,270 @@ describe('BMAD v6.4.0 Compatibility', () => {
 | events.md | event-driven-patterns.md, event-sourcing.md, saga-patterns.md |
 | testing.md | tenant-testing.md, isolation-tests.md, tea-integration.md |
 
+## Appendix C: Data Processing Methodology
+
+This appendix details HOW existing BAM content is processed, consolidated, and transformed.
+
+### Source Data Inventory
+
+| Source Type | Count | Avg Lines | Structure |
+|-------------|-------|-----------|-----------|
+| Agent Guides | 233 | ~150 | Markdown: "When to load", "Core Concepts", "Patterns", "Decision Framework" |
+| Extensions | 31 | ~200 | YAML: menu triggers + prompts referencing guides |
+| Templates | 461 | ~80 | Markdown with `{{placeholders}}` |
+| Checklists | 39 | ~100 | Markdown with `- [ ]` items |
+| Workflows | 187 | ~5 files each | step-NN-mode-*.md files |
+| Pattern CSVs | 6 | ~50 rows | Decision criteria + web_queries |
+
+### Phase 1: Agent Guide → Domain Consolidation
+
+**Clustering Algorithm:**
+
+```
+FOR each target domain (tenant, ai-runtime, integration, etc.):
+    source_guides = MATCH guides by prefix pattern
+    
+    FOR each guide in source_guides:
+        sections = EXTRACT ["Core Concepts", "Application Guidelines", 
+                           "Decision Framework", "Related Patterns"]
+        
+        FOR each section:
+            content_hash = HASH(normalize_whitespace(section))
+            IF content_hash NOT IN seen_hashes:
+                APPEND section to domain file
+                ADD content_hash to seen_hashes
+            ELSE:
+                SKIP (duplicate)
+        
+        PRESERVE "When to load" triggers for routing metadata
+```
+
+**Explicit Mapping Table:**
+
+| Domain File | Source Guide Patterns | Primary Extraction |
+|-------------|----------------------|-------------------|
+| `tenant.md` | `tenant-*.md`, `rls-*.md`, `isolation-*.md` | Isolation Matrix (8 dimensions), RLS Policy Pattern, Context Propagation |
+| `ai-runtime.md` | `ai-runtime.md`, `agent-*.md`, `llm-*.md`, `memory-tiers.md`, `run-contracts.md` | Agent Topology, Memory Tiers, Run Contract Schema, Tool Governance |
+| `integration.md` | `facade-*.md`, `contract-*.md`, `api-*.md`, `module-*.md`, `kai-guide.md` | Contract Evolution, Facade Versioning, Cross-Module Patterns |
+| `security.md` | `security-*.md`, `auth-*.md`, `encryption-*.md`, `rbac-*.md` | Tenant Security, Key Management, Access Control |
+| `observability.md` | `observability-*.md`, `logging-*.md`, `tracing-*.md`, `monitoring-*.md` | Tenant-Aware Metrics, Structured Logging, Distributed Tracing |
+| `billing.md` | `billing-*.md`, `metering-*.md`, `usage-*.md`, `quota-*.md` | Usage Metering, Cost Attribution, Tier Limits |
+| `onboarding.md` | `tenant-onboarding-*.md`, `provisioning-*.md`, `lifecycle-*.md` | Self-Service Flow, Enterprise Flow, Lifecycle States |
+| `compliance.md` | `compliance-*.md`, `gdpr-*.md`, `audit-*.md`, `data-residency-*.md` | Compliance Matrix, Data Residency, Audit Logging |
+| `caching.md` | `caching-*.md`, `cache-*.md` | Tenant Cache Isolation, Eviction Strategies |
+| `storage.md` | `storage-*.md`, `blob-*.md`, `file-*.md` | Tenant Storage Paths, Blob Isolation |
+| `events.md` | `event-*.md`, `saga-*.md`, `cqrs-*.md` | Event-Driven Patterns, Saga Orchestration, CQRS |
+| `testing.md` | `testing-*.md`, `tea-*.md` | Isolation Tests, TEA Integration |
+
+### Phase 2: Persona File Extraction
+
+**Source:** `atlas-guide.md`, `nova-guide.md`, `kai-guide.md`
+
+**Transformation:**
+
+```markdown
+# {Persona} - BAM Architect Persona
+
+## Identity
+{Extracted from "Role Context" section}
+
+## Focus Areas
+{Extracted from bullet list in intro}
+
+## Decision Framework
+{Preserved table from source}
+
+## Related Workflows
+{Mapped to new Z-prefix codes}
+
+## Related Domains
+{List of domain files this persona typically loads}
+
+## Web Research Queries
+{Extracted from "Web Research" section}
+```
+
+### Phase 3: Extension → TOML Transformation
+
+**YAML to TOML Mapping:**
+
+| YAML Structure | TOML Structure | Transformation Rule |
+|----------------|----------------|---------------------|
+| `menu[].trigger` | `[[agent.menu]].code` | Extract last segment, map to Z-prefix |
+| `menu[].action` | `[[agent.menu]].skill` or `.prompt` | If `#prompt-id` → inline prompt; if workflow → skill reference |
+| `menu[].description` | `[[agent.menu]].description` | Direct copy |
+| `prompts[].id` | N/A | Embedded in menu item or removed |
+| `prompts[].content` | `[[agent.menu]].prompt` | Inline if <20 lines; else file reference |
+
+**Menu Code Migration Table:**
+
+| Old Trigger | New Code | Category |
+|-------------|----------|----------|
+| `bam-platform-context` | ZA | Persona |
+| `bam-ai-runtime-context` | ZN | Persona |
+| `bam-integration-context` | ZK | Persona |
+| `bam-arch-design-modules` | ZB | Workflow |
+| `bam-arch-isolation-matrix` | ZT | Workflow |
+| `bam-arch-agent-orchestration` | ZR | Workflow |
+| `bam-arch-define-facades` | ZF | Workflow |
+| `bam-arch-convergence-design` | ZC | Workflow |
+| `bam-validate-gate` + QG-P1 | ZP | Workflow |
+| `bam-{domain}-context` | ZD{X} | Domain Loader |
+| `bam-{pattern}-context` | ZP{X} | Pattern Loader |
+
+**Path Rewriting:**
+
+```
+OLD: {project-root}/_bmad/bam/data/agent-guides/bam/{guide}.md
+NEW: {project-root}/_bmad/bam/data/domains/{domain}.md
+     OR
+NEW: {project-root}/_bmad/bam/data/personas/{persona}.md
+```
+
+### Phase 4: Workflow CEV Consolidation
+
+**Step File Renumbering:**
+
+| Original Workflow | Original Steps | Target Steps |
+|-------------------|----------------|--------------|
+| `create-tenant-isolation/` | `step-01-*.md` to `step-05-*.md` | `step-01-c-*.md` to `step-05-c-*.md` |
+| `edit-tenant-isolation/` | `step-01-*.md` to `step-02-*.md` | `step-10-e-*.md` to `step-11-e-*.md` |
+| `validate-tenant-isolation/` | `step-01-*.md` to `step-03-*.md` | `step-20-v-*.md` to `step-22-v-*.md` |
+
+**Merged Workflow Structure:**
+
+```
+bmad-bam-tenant-isolation/
+├── bmad-skill-manifest.yaml   # Combined metadata
+├── SKILL.md                   # Combined description
+├── workflow.md                # Mode router
+├── customize.toml             # Context loading
+└── steps/
+    ├── step-01-c-define-model.md
+    ├── step-02-c-isolation-matrix.md
+    ├── step-03-c-context-propagation.md
+    ├── step-04-c-sharing-rules.md
+    ├── step-05-c-compliance-mapping.md
+    ├── step-10-e-load-existing.md
+    ├── step-11-e-apply-changes.md
+    ├── step-20-v-load-artifact.md
+    ├── step-21-v-run-checklist.md
+    └── step-22-v-generate-report.md
+```
+
+### Phase 5: Template Consolidation
+
+**Consolidation Rules:**
+
+| Rule | Criteria | Action |
+|------|----------|--------|
+| **Merge related** | Same output artifact, different sections | Combine into single template |
+| **Keep unique** | Distinct output type | Preserve as separate file |
+| **Embed small** | <50 lines, single workflow | Move to workflow's `resources/` |
+| **Deduplicate** | >80% content similarity | Keep primary, delete duplicate |
+
+**Template Consolidation Map:**
+
+| Target Template | Source Templates |
+|-----------------|------------------|
+| `master-architecture.md` | `master-architecture-template.md` |
+| `tenant-isolation.md` | `tenant-model-template.md`, `rls-policy-template.md`, `tenant-context-template.md`, `cache-isolation-template.md`, `memory-isolation-template.md` |
+| `agent-runtime.md` | `agent-runtime-template.md`, `run-contract-template.md`, `memory-tier-template.md`, `action-gateway-template.md` |
+| `facade-contract.md` | `facade-contract-template.md`, `contract-evolution-template.md` |
+| `module-architecture.md` | `module-architecture-template.md`, `module-catalog-template.md` |
+
+### Phase 6: Checklist Consolidation
+
+**Gate ID → Checklist Mapping:**
+
+| Gate | Source Checklists | Target |
+|------|-------------------|--------|
+| QG-F1 | `qg-f1-foundation.md`, `foundation-gate.md` | `qg-f1.md` |
+| QG-M1 | `qg-m1-module-architecture.md`, `module-architecture.md` | `qg-m1.md` |
+| QG-M2 | `qg-m2-tenant-isolation.md`, `tenant-isolation.md` | `qg-m2.md` |
+| QG-M3 | `qg-m3-agent-runtime.md` | `qg-m3.md` |
+| QG-I1 | `qg-i1-convergence.md` | `qg-i1.md` |
+| QG-I2 | `qg-i2-tenant-safety.md` | `qg-i2.md` |
+| QG-I3 | `qg-i3-agent-safety.md` | `qg-i3.md` |
+| QG-P1 | `qg-p1-production-readiness.md`, `production-readiness.md` | `qg-p1.md` |
+
+**Checklist Section Merge:**
+
+```
+FOR each target gate checklist:
+    critical_checks = UNION(source.critical_checks)
+    standard_checks = UNION(source.standard_checks)
+    recovery_protocol = KEEP(most_detailed_source)
+    web_research = UNION(source.web_queries)
+    
+    DEDUPLICATE by check text similarity
+    PRESERVE category classification (CRITICAL vs standard)
+```
+
+### Phase 7: CSV Pattern Registry
+
+**Retained CSVs:**
+
+| CSV | Columns Preserved | Transformation |
+|-----|-------------------|----------------|
+| `tenant-models.csv` | model, signals, when_to_use, web_queries | Keep as-is |
+| `ai-runtimes.csv` | runtime, use_case, strengths, web_queries | Keep as-is |
+| `quality-gates.csv` | gate_id, checks, critical_checks | Keep as-is |
+
+**Removed CSVs (content moved to domain files):**
+
+| CSV | Content Destination |
+|-----|---------------------|
+| `bam-patterns.csv` | Embedded in relevant domain files |
+| `section-pattern-map.csv` | Embedded in workflow customize.toml |
+| `compliance-frameworks.csv` | Merged into `domains/compliance.md` |
+
+### Content Preservation Checklist
+
+| Content Type | Preservation Rule | Validation |
+|--------------|-------------------|------------|
+| Decision tables | MUST preserve all rows | Row count match |
+| Code examples (SQL, TypeScript) | Extract to pattern files | Syntax check |
+| Web queries with `{date}` | Keep in domain files | Placeholder present |
+| Checklist items `- [ ]` | Union all items | No critical item lost |
+| Template `{{placeholders}}` | Preserve exactly | Placeholder count match |
+| Cross-references | Rewrite paths | Link validation |
+| Diagrams (ASCII art) | Preserve exactly | Visual inspection |
+
+### Validation Script
+
+```bash
+#!/bin/bash
+# validate-consolidation.sh
+
+# Check file counts
+echo "=== File Count Validation ==="
+DOMAIN_COUNT=$(ls src-v2/data/domains/*.md | wc -l)
+PATTERN_COUNT=$(ls src-v2/data/patterns/*.md | wc -l)
+CHECKLIST_COUNT=$(ls src-v2/data/checklists/*.md | wc -l)
+
+[ "$DOMAIN_COUNT" -eq 12 ] && echo "✓ Domains: 12" || echo "✗ Domains: $DOMAIN_COUNT (expected 12)"
+[ "$PATTERN_COUNT" -eq 10 ] && echo "✓ Patterns: 10" || echo "✗ Patterns: $PATTERN_COUNT (expected 10)"
+[ "$CHECKLIST_COUNT" -eq 8 ] && echo "✓ Checklists: 8" || echo "✗ Checklists: $CHECKLIST_COUNT (expected 8)"
+
+# Check critical content preserved
+echo "=== Critical Content Validation ==="
+grep -l "Isolation Matrix" src-v2/data/domains/tenant.md && echo "✓ Isolation Matrix preserved"
+grep -l "Memory Tier" src-v2/data/domains/ai-runtime.md && echo "✓ Memory Tiers preserved"
+grep -l "Run Contract" src-v2/data/domains/ai-runtime.md && echo "✓ Run Contracts preserved"
+grep -l "CRITICAL" src-v2/data/checklists/*.md | wc -l | xargs -I{} echo "✓ {} checklists have CRITICAL items"
+
+# Check TOML syntax
+echo "=== TOML Syntax Validation ==="
+for f in src-v2/customize/*.toml; do
+    toml-cli check "$f" && echo "✓ $f" || echo "✗ $f"
+done
+
+# Check path references
+echo "=== Path Reference Validation ==="
+grep -r "agent-guides/bam" src-v2/ && echo "✗ Old path references found" || echo "✓ No old path references"
+```
+
 ---
 
 **End of Specification**
