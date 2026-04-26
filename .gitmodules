@@ -1,0 +1,15 @@
+[submodule "external/bmad-method"]
+	path = external/bmad-method
+	url = https://github.com/bmad-code-org/BMAD-METHOD.git
+[submodule "external/bmad-tea"]
+	path = external/bmad-tea
+	url = https://github.com/bmad-code-org/bmad-method-test-architecture-enterprise.git
+[submodule "external/bmad-builder"]
+	path = external/bmad-builder
+	url = https://github.com/bmad-code-org/bmad-builder.git
+[submodule "external/bmad-wds"]
+	path = external/bmad-wds
+	url = https://github.com/bmad-code-org/bmad-method-wds-expansion.git
+[submodule "external/bmad-cis"]
+	path = external/bmad-cis
+	url = https://github.com/bmad-code-org/bmad-module-creative-intelligence-suite.git
