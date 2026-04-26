@@ -5,6 +5,7 @@
 - 🛑 NEVER design lifecycle without loading Step 01 versioning strategy first
 - 📖 CRITICAL: ALWAYS read the complete step file before taking any action
 - 🔄 CRITICAL: When loading next step with 'C', ensure entire file is read
+- ⏸️ **ALWAYS pause after presenting findings** and await user direction
 - ✅ CRITICAL: Define deprecation policy with tenant-aware timelines
 - 📋 Document Sunset header implementation requirements
 - 💬 Present lifecycle analysis with A/P/C menu for user confirmation

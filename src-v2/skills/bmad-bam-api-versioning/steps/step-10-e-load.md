@@ -5,6 +5,7 @@
 - 🛑 NEVER proceed without locating the existing API versioning design file
 - 📖 ALWAYS read the complete document including frontmatter metadata
 - 🔄 ALWAYS parse all sections: strategy, lifecycle, compatibility, migration
+- ⏸️ **ALWAYS pause after presenting findings** and await user direction
 - ✅ EXTRACT all design decisions and current configuration
 - 📋 PRESENT a structured summary of current design before accepting edits
 - 💬 PAUSE after summary presentation and await user edit selection

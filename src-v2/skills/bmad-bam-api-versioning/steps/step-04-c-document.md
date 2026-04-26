@@ -5,6 +5,7 @@
 - 🛑 NEVER design migration without Step 03 compatibility context
 - 📖 CRITICAL: ALWAYS read the complete step file before taking any action
 - 🔄 CRITICAL: When loading next step with 'C', ensure entire file is read
+- ⏸️ **ALWAYS pause after presenting findings** and await user direction
 - ✅ CRITICAL: Define tenant migration notification with tier-based timelines
 - 📋 Document gradual rollout strategy and version analytics
 - 💬 Present migration design with A/P/C menu for user confirmation

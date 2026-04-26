@@ -5,6 +5,7 @@
 - 🛑 NEVER finalize document without all previous steps completed
 - 📖 CRITICAL: ALWAYS read the complete step file before taking any action
 - 🔄 CRITICAL: Compile all designs from Steps 01-04 into final document
+- ⏸️ **ALWAYS pause after presenting findings** and await user direction
 - ✅ CRITICAL: Save to `{output_folder}/planning-artifacts/api-versioning-design.md`
 - 📋 Include all sections: strategy, lifecycle, compatibility, migration
 - 💬 Present final design with A/P/C menu for user confirmation

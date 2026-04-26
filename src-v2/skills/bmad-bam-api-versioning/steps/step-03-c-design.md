@@ -5,6 +5,7 @@
 - 🛑 NEVER design compatibility rules without Step 02 lifecycle context
 - 📖 CRITICAL: ALWAYS read the complete step file before taking any action
 - 🔄 CRITICAL: When loading next step with 'C', ensure entire file is read
+- ⏸️ **ALWAYS pause after presenting findings** and await user direction
 - ✅ CRITICAL: Define breaking vs non-breaking change classifications
 - 📋 Document response schema evolution with tenant impact assessment
 - 💬 Present compatibility design with A/P/C menu for user confirmation

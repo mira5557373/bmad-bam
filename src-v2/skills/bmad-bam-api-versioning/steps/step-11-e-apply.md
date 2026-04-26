@@ -5,6 +5,7 @@
 - 🛑 NEVER apply changes that invalidate existing tenant configurations
 - 📖 ALWAYS validate changes against API versioning best practices
 - 🔄 ALWAYS preserve document structure and unmodified sections
+- ⏸️ **ALWAYS pause after presenting findings** and await user direction
 - ✅ UPDATE frontmatter version after any successful edit
 - 📋 DOCUMENT change rationale in Change Log section
 - 💬 PRESENT diff summary before final save

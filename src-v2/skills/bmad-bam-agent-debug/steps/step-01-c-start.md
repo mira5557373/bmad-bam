@@ -4,6 +4,9 @@
 
 - 🛑 **NEVER generate content without user input** - Wait for explicit direction
 - 📖 **CRITICAL: ALWAYS read the complete step file** before taking any action
+- 🔄 **CRITICAL: When loading next step with 'C'**, ensure entire file is read
+- ⏸️ **ALWAYS pause after presenting findings** and await user direction
+- 🎯 **Focus ONLY on current step scope** - do not look ahead
 - 🔍 Use web search to verify current best practices when making technology decisions
 
 ---
