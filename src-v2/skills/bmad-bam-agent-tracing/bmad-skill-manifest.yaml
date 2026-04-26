@@ -1,0 +1,6 @@
+type: workflow
+name: bmad-bam-agent-tracing
+displayName: Agent Tracing
+description: 'Implement agent execution tracing'
+module: bam
+step_naming_convention: "step-NN-mode-description"

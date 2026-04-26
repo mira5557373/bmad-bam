@@ -1,0 +1,6 @@
+type: workflow
+name: bmad-bam-observability
+displayName: Observability
+description: 'Design tenant-aware observability'
+module: bam
+step_naming_convention: "step-NN-mode-description"

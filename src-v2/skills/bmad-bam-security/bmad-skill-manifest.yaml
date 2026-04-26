@@ -1,0 +1,6 @@
+type: workflow
+name: bmad-bam-security
+displayName: Security
+description: 'Design security architecture'
+module: bam
+step_naming_convention: "step-NN-mode-description"

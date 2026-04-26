@@ -1,0 +1,6 @@
+type: workflow
+name: bmad-bam-data-residency
+displayName: Data Residency
+description: 'Design data residency patterns'
+module: bam
+step_naming_convention: "step-NN-mode-description"

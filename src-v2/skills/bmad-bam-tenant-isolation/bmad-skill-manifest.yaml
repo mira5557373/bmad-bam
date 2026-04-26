@@ -1,0 +1,6 @@
+type: workflow
+name: bmad-bam-tenant-isolation
+displayName: Tenant Isolation
+description: 'Design tenant isolation implementation'
+module: bam
+step_naming_convention: "step-NN-mode-description"

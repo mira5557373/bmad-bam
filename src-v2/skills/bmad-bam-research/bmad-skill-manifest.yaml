@@ -1,0 +1,6 @@
+type: workflow
+name: bmad-bam-research
+displayName: Research
+description: 'Research best practices and patterns'
+module: bam
+step_naming_convention: "step-NN-mode-description"

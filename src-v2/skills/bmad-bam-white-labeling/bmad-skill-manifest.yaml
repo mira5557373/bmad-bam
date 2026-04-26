@@ -1,0 +1,6 @@
+type: workflow
+name: bmad-bam-white-labeling
+displayName: White Labeling
+description: 'Design white-label architecture'
+module: bam
+step_naming_convention: "step-NN-mode-description"

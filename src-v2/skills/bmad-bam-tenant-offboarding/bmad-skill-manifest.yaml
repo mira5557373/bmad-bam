@@ -1,0 +1,6 @@
+type: workflow
+name: bmad-bam-tenant-offboarding
+displayName: Tenant Offboarding
+description: 'Design tenant offboarding workflow'
+module: bam
+step_naming_convention: "step-NN-mode-description"

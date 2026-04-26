@@ -1,0 +1,6 @@
+type: workflow
+name: bmad-bam-scaling
+displayName: Scaling
+description: 'Design multi-tenant scaling patterns'
+module: bam
+step_naming_convention: "step-NN-mode-description"

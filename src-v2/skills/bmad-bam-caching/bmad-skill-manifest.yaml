@@ -1,0 +1,6 @@
+type: workflow
+name: bmad-bam-caching
+displayName: Caching
+description: 'Design multi-tenant caching strategy'
+module: bam
+step_naming_convention: "step-NN-mode-description"

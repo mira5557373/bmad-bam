@@ -1,0 +1,6 @@
+type: workflow
+name: bmad-bam-module-epics
+displayName: Module Epics
+description: 'Create module epics and stories'
+module: bam
+step_naming_convention: "step-NN-mode-description"

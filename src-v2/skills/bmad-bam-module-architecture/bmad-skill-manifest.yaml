@@ -1,0 +1,6 @@
+type: workflow
+name: bmad-bam-module-architecture
+displayName: Module Architecture
+description: 'Design individual module architecture'
+module: bam
+step_naming_convention: "step-NN-mode-description"

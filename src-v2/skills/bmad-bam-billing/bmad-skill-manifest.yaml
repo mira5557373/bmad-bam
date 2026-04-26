@@ -1,0 +1,6 @@
+type: workflow
+name: bmad-bam-billing
+displayName: Billing
+description: 'Design billing and metering system'
+module: bam
+step_naming_convention: "step-NN-mode-description"

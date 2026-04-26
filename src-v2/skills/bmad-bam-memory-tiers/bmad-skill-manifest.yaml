@@ -1,0 +1,6 @@
+type: workflow
+name: bmad-bam-memory-tiers
+displayName: Memory Tiers
+description: 'Design agent memory tier system'
+module: bam
+step_naming_convention: "step-NN-mode-description"

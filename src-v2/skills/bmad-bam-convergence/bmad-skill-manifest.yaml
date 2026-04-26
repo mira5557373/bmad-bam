@@ -1,0 +1,6 @@
+type: workflow
+name: bmad-bam-convergence
+displayName: Convergence
+description: 'Verify module convergence and integration'
+module: bam
+step_naming_convention: "step-NN-mode-description"

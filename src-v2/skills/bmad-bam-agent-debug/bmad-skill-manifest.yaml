@@ -1,0 +1,6 @@
+type: workflow
+name: bmad-bam-agent-debug
+displayName: Agent Debug
+description: 'Debug AI agent issues'
+module: bam
+step_naming_convention: "step-NN-mode-description"

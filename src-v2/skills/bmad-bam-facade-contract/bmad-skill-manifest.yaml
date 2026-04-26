@@ -1,0 +1,6 @@
+type: workflow
+name: bmad-bam-facade-contract
+displayName: Facade Contract
+description: 'Define module facade contracts'
+module: bam
+step_naming_convention: "step-NN-mode-description"

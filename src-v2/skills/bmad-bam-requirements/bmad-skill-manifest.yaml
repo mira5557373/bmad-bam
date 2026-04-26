@@ -1,0 +1,6 @@
+type: workflow
+name: bmad-bam-requirements
+displayName: Requirements
+description: 'Ingest and analyze project requirements'
+module: bam
+step_naming_convention: "step-NN-mode-description"

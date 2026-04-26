@@ -1,0 +1,6 @@
+type: workflow
+name: bmad-bam-tool-contracts
+displayName: Tool Contracts
+description: 'Define agent tool contracts'
+module: bam
+step_naming_convention: "step-NN-mode-description"

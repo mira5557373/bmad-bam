@@ -1,0 +1,6 @@
+type: workflow
+name: bmad-bam-llm-versioning
+displayName: LLM Versioning
+description: 'Design LLM versioning strategy'
+module: bam
+step_naming_convention: "step-NN-mode-description"

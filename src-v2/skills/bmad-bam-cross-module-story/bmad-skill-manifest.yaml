@@ -1,0 +1,6 @@
+type: workflow
+name: bmad-bam-cross-module-story
+displayName: Cross-Module Story
+description: 'Create cross-module user stories'
+module: bam
+step_naming_convention: "step-NN-mode-description"

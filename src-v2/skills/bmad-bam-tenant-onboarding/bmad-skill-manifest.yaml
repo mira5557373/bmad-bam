@@ -1,0 +1,6 @@
+type: workflow
+name: bmad-bam-tenant-onboarding
+displayName: Tenant Onboarding
+description: 'Design tenant onboarding workflow'
+module: bam
+step_naming_convention: "step-NN-mode-description"

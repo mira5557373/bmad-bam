@@ -1,0 +1,6 @@
+type: workflow
+name: bmad-bam-agent-runtime
+displayName: Agent Runtime
+description: 'Design AI agent runtime architecture'
+module: bam
+step_naming_convention: "step-NN-mode-description"

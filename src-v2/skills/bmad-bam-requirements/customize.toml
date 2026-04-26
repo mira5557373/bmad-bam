@@ -1,0 +1,8 @@
+[workflow]
+persistent_facts = [
+  "file:{project-root}/_bmad/bam/data/context/bam-core.md",
+]
+
+on_complete = """
+Requirements workflow complete.
+"""

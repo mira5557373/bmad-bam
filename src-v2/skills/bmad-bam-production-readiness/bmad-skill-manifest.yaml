@@ -1,0 +1,6 @@
+type: workflow
+name: bmad-bam-production-readiness
+displayName: Production Readiness
+description: 'Validate production readiness'
+module: bam
+step_naming_convention: "step-NN-mode-description"

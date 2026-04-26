@@ -1,0 +1,6 @@
+type: workflow
+name: bmad-bam-events
+displayName: Events
+description: 'Design event-driven architecture'
+module: bam
+step_naming_convention: "step-NN-mode-description"

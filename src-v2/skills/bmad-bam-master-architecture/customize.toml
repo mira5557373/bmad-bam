@@ -1,0 +1,9 @@
+[workflow]
+persistent_facts = [
+  "file:{project-root}/_bmad/bam/data/domains/tenant.md",
+  "file:{project-root}/_bmad/bam/data/checklists/qg-f1.md",
+]
+
+on_complete = """
+Master architecture complete. Next: ZB (Module) or ZT (Tenant).
+"""

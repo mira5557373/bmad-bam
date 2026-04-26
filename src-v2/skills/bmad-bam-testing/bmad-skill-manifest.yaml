@@ -1,0 +1,6 @@
+type: workflow
+name: bmad-bam-testing
+displayName: Testing
+description: 'Design testing strategy'
+module: bam
+step_naming_convention: "step-NN-mode-description"
