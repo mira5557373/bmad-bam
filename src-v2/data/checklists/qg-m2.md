@@ -1,7 +1,20 @@
+---
+name: qg-m2-tenant-isolation
+description: Tenant isolation validation - RLS policies, context propagation, cross-tenant prevention
+module: bam
+tags: [tenant, quality-gate, multi-tenant, isolation, rls]
+---
+
 # QG-M2: Tenant Isolation Gate
 
 **Workflow:** bmad-bam-tenant-model-isolation  
 **Prerequisites:** QG-M1 (Module Architecture)
+
+## Purpose
+
+Validates that tenant isolation is properly implemented at all layers of the application stack. This gate verifies RLS policies are in place, tenant context propagates correctly through all service calls, and cross-tenant data access is impossible. Critical for multi-tenant security and compliance.
+
+---
 
 ## Critical Checks (All Must Pass)
 
