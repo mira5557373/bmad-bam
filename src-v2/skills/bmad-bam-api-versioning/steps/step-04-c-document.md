@@ -572,3 +572,12 @@ After user confirms migration design with 'C':
 - Analytics requirements: `{analytics_spec}`
 - Rollback procedures: `{rollback_runbook}`
 - Support resources: `{support_plan}`
+
+---
+
+## Outputs
+
+- Documentation draft created
+- Design specifications completed
+- Decision records updated
+

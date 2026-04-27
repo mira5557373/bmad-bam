@@ -224,3 +224,12 @@ NEXT WORKFLOWS:
 - `bmad-bam-validate-foundation` - Run formal QG-F1 validation
 ================================================================================
 ```
+
+---
+
+## Outputs
+
+- Complete design document generated
+- Final artifact output to planning-artifacts
+- Workflow step completed
+

@@ -269,3 +269,12 @@ After user confirms the context summary:
    - Step 05: Document generation
 
 **Note:** Step 01 does not have A/P/C menu - this is a context gathering step only. Proceed directly to step-02 once context is confirmed.
+
+---
+
+## Outputs
+
+- Domain context loaded and internalized
+- Initial requirements captured
+- Pattern registry referenced
+

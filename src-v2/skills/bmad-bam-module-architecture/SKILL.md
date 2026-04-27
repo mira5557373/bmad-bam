@@ -18,3 +18,30 @@ tags: [quality-gate, workflow]
 ## Quality Gate
 
 **Gate:** QG-M1
+
+## Overview
+
+
+
+## Prerequisites
+
+
+- [ ] Master architecture document exists with module inventory
+- [ ] Bounded contexts defined for each module
+- [ ] Tenant model selected (RLS, schema, database, hybrid)
+- [ ] Integration patterns identified at master architecture level
+
+## Outputs
+
+
+
+## Related Workflows
+
+- `bmad-bam-convergence-verification`
+- `bmad-bam-define-facade-contract`
+- `bmad-bam-module-epics`
+
+## Domain References
+
+- `{project-root}/_bmad/bam/data/agent-guides/bam/`
+- `{project-root}/_bmad/bam/data/bam-patterns.csv`

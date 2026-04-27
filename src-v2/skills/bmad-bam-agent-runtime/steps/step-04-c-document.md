@@ -561,3 +561,12 @@ After user confirms observability design with 'C':
 - Observability summary: `{components_designed}`
 - Key integrations: `{tools_selected}`
 - Recovery patterns: `{error_handling_strategies}`
+
+---
+
+## Outputs
+
+- Documentation draft created
+- Design specifications completed
+- Decision records updated
+

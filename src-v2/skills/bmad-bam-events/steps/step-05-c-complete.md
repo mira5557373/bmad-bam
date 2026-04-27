@@ -45,7 +45,7 @@ Compile the final event-driven architecture document for multi-tenant systems, s
 
 - Step 04 completed: Event processing designed
 - All design components documented
-- **Load template:** `{project-root}/_bmad/bam/data/templates/event-architecture-template.md`
+- **Load template:** `{project-root}/_bmad/bam/data/templates/event-driven-design-template.md`
 
 ---
 
@@ -380,7 +380,7 @@ Ask for confirmation before finalizing document.
 - Implementation roadmap
 - Risk assessment matrix
 - Quality gate alignment matrix
-- **Load template:** `{project-root}/_bmad/bam/data/templates/event-architecture-template.md`
+- **Load template:** `{project-root}/_bmad/bam/data/templates/event-driven-design-template.md`
 
 ---
 

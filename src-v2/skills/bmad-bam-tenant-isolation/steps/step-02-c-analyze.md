@@ -455,3 +455,12 @@ After user confirms dimension analysis with 'C':
 - Dimension levels: `{data: X, compute: Y, network: Z, ...}`
 - Critical dimensions: `{dimensions_requiring_high_isolation}`
 - Trade-off summary: `{key_trade_offs_accepted}`
+
+---
+
+## Outputs
+
+- Analysis findings documented
+- Options comparison completed
+- Recommendation prepared
+

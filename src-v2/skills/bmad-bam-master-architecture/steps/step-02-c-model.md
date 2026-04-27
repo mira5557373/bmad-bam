@@ -319,3 +319,12 @@ After user confirms tenant model selection with 'C':
 - Selected tenant model: `{model_name}`
 - Isolation requirements: `{isolation_strength}`
 - Compliance constraints: `{compliance_fit}`
+
+---
+
+## Outputs
+
+- Analysis findings documented
+- Options comparison completed
+- Recommendation prepared
+

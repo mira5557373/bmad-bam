@@ -422,3 +422,12 @@ After user confirms internal design with 'C':
 - Domain model: `{entities, value_objects, aggregates}`
 - Tenant integration: `{extraction, propagation, filtering}`
 - Events: `{publishes: [...], consumes: [...]}`
+
+---
+
+## Outputs
+
+- Design decisions recorded
+- Architecture patterns selected
+- Implementation approach defined
+

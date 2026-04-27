@@ -14,3 +14,33 @@ tags: [workflow]
 | Create | Generate new | step-01-c to step-05-c |
 | Edit | Modify existing | step-10-e to step-11-e |
 | Validate | Check criteria | step-20-v to step-22-v |
+
+## Overview
+
+
+
+## Prerequisites
+
+
+- [ ] Master architecture document exists with tenant model selected
+- [ ] User has access to performance requirements
+- [ ] Tenant tier definitions available (Free, Pro, Enterprise)
+
+## Outputs
+
+
+- **Caching Design Document:** `{output_folder}/planning-artifacts/caching-design.md`
+- Workflow completion status
+- Next step recommendations
+
+## Related Workflows
+
+- `bmad-bam-convergence-verification`
+- `bmad-bam-observability`
+- `bmad-bam-rate-limiting`
+- `bmad-bam-tenant-isolation`
+
+## Domain References
+
+- `{project-root}/_bmad/bam/data/agent-guides/bam/`
+- `{project-root}/_bmad/bam/data/bam-patterns.csv`

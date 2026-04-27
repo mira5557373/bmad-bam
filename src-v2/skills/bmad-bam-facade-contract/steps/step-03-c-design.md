@@ -485,3 +485,12 @@ After user confirms facade API design with 'C':
 - Schemas: `{inputs, outputs}`
 - Errors: `{error_contracts}`
 - Tenant: `{enforcement_design}`
+
+---
+
+## Outputs
+
+- Design decisions recorded
+- Architecture patterns selected
+- Implementation approach defined
+

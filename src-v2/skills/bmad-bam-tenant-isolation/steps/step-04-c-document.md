@@ -581,3 +581,12 @@ After user confirms sharing rule design with 'C':
 - Organization sharing: `{hierarchy_type}` with `{direction_rules}`
 - Explicit grants: `{grant_types}` with `{consent_model}`
 - Time-bounded access: `{access_types}` with `{expiration_rules}`
+
+---
+
+## Outputs
+
+- Documentation draft created
+- Design specifications completed
+- Decision records updated
+

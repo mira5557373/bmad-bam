@@ -449,3 +449,12 @@ After user confirms module boundary design with 'C':
 - Facade contracts: `{facade_summary}`
 - Tenant context flow: `{propagation_strategy}`
 - Dependency graph: `{dependency_summary}`
+
+---
+
+## Outputs
+
+- Design decisions recorded
+- Architecture patterns selected
+- Implementation approach defined
+

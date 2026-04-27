@@ -461,3 +461,12 @@ After user confirms runtime selection with 'C':
 - Key capabilities: `{runtime_strengths}`
 - Tenant approach: `{tenant_isolation_pattern}`
 - Trade-offs accepted: `{acknowledged_limitations}`
+
+---
+
+## Outputs
+
+- Analysis findings documented
+- Options comparison completed
+- Recommendation prepared
+

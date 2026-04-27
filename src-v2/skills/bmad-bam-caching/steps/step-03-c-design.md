@@ -352,3 +352,12 @@ After user confirms invalidation design with 'C':
 - Invalidation triggers: `{events}`
 - Coordination pattern: `{event_bus/facade}`
 - Circuit breaker: `{thresholds}`
+
+---
+
+## Outputs
+
+- Design decisions recorded
+- Architecture patterns selected
+- Implementation approach defined
+

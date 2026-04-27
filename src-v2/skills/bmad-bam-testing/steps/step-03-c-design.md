@@ -306,3 +306,12 @@ After user confirms integration test strategy with 'C':
 - Integration scope: `{cross_module_paths}`
 - Database fixtures: `{tenant_fixtures}`
 - Contract approach: `{facade_contracts}`
+
+---
+
+## Outputs
+
+- Design decisions recorded
+- Architecture patterns selected
+- Implementation approach defined
+

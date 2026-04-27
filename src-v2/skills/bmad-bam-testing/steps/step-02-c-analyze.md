@@ -258,3 +258,12 @@ After user confirms unit test strategy with 'C':
 - Unit test scope: `{module_types_covered}`
 - Mocking strategy: `{factory/fixture/builder}`
 - Coverage targets: `{line/branch/mutation}`
+
+---
+
+## Outputs
+
+- Analysis findings documented
+- Options comparison completed
+- Recommendation prepared
+

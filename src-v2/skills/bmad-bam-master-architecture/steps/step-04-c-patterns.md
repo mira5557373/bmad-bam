@@ -505,3 +505,12 @@ After user confirms pattern selections with 'C':
 - Data access patterns: `{data_patterns_by_module}`
 - Event patterns: `{event_patterns_by_type}`
 - AI runtime: `{ai_runtime}` with `{tenant_isolation_approach}`
+
+---
+
+## Outputs
+
+- Documentation draft created
+- Design specifications completed
+- Decision records updated
+

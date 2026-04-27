@@ -45,7 +45,7 @@ Compile the complete tenant offboarding design document by synthesizing all desi
 
 - Step 04 completed: Hard deletion designed
 - All design elements from Steps 01-04 available
-- **Load template:** `{project-root}/_bmad/bam/data/templates/tenant-offboarding-design-template.md`
+- **Load template:** `{project-root}/_bmad/bam/data/templates/offboarding-runbook-template.md`
 - **Load patterns:** `{project-root}/_bmad/bam/data/compliance-frameworks.csv`
 
 ---
@@ -401,7 +401,7 @@ Ask for confirmation before finalizing document.
 - Complete state machine diagram
 - Compliance verification checklist
 - Rollback procedures
-- **Load template:** `{project-root}/_bmad/bam/data/templates/tenant-offboarding-design-template.md`
+- **Load template:** `{project-root}/_bmad/bam/data/templates/offboarding-runbook-template.md`
 
 ---
 

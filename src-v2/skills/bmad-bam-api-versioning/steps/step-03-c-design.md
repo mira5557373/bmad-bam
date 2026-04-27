@@ -506,3 +506,12 @@ After user confirms compatibility design with 'C':
 - Validation versioning: `{validation_rules}`
 - Version negotiation: `{negotiation_spec}`
 - Testing strategy: `{testing_plan}`
+
+---
+
+## Outputs
+
+- Design decisions recorded
+- Architecture patterns selected
+- Implementation approach defined
+

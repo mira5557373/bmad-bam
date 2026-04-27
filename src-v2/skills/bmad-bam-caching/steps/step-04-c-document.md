@@ -378,3 +378,12 @@ After user confirms performance design with 'C':
 - Hit rate targets: `{by_tier}`
 - Memory allocation: `{by_tier}`
 - Eviction policies: `{by_tier_type}`
+
+---
+
+## Outputs
+
+- Documentation draft created
+- Design specifications completed
+- Decision records updated
+

@@ -512,3 +512,12 @@ After user confirms event contract design with 'C':
 - Envelope: `{standard structure}`
 - DLQ: `{strategy}`
 - Versioning: `{policy}`
+
+---
+
+## Outputs
+
+- Documentation draft created
+- Design specifications completed
+- Decision records updated
+

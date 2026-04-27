@@ -46,7 +46,7 @@ Design the LLM rollout strategy including tier-aware canary deployments, feature
 - Version registry schema defined
 - A/B testing configuration established
 - **Load patterns:** `{project-root}/_bmad/bam/data/bam-patterns.csv` → filter: deployment
-- **Load guide:** `{project-root}/_bmad/bam/data/agent-guides/bam/canary-deployment.md`
+- **Load guide:** `{project-root}/_bmad/bam/data/agent-guides/bam/deployment-patterns.md`
 
 ---
 

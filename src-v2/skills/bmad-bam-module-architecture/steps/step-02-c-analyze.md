@@ -367,3 +367,12 @@ After user confirms responsibility analysis with 'C':
 - Entities: `{entity_list}`
 - Aggregates: `{aggregate_list}`
 - Facades: `{provides: [...], consumes: [...]}`
+
+---
+
+## Outputs
+
+- Analysis findings documented
+- Options comparison completed
+- Recommendation prepared
+

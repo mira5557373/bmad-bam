@@ -403,3 +403,12 @@ After user confirms integration analysis with 'C':
 - DTOs: `{shared_types}`
 - Tenant: `{context_requirements}`
 - Risks: `{risk_assessment}`
+
+---
+
+## Outputs
+
+- Analysis findings documented
+- Options comparison completed
+- Recommendation prepared
+

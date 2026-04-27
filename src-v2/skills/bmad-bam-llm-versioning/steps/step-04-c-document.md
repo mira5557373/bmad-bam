@@ -45,7 +45,7 @@ Design the version monitoring strategy including quality metrics per model versi
 - Step 03 completed: Rollout strategy and comparison metrics defined
 - Performance comparison metrics established
 - **Load patterns:** `{project-root}/_bmad/bam/data/bam-patterns.csv` → filter: observability
-- **Load guide:** `{project-root}/_bmad/bam/data/agent-guides/bam/ai-observability.md`
+- **Load guide:** `{project-root}/_bmad/bam/data/agent-guides/bam/ai-observability-patterns.md`
 
 ---
 

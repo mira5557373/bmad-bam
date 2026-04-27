@@ -405,3 +405,12 @@ After user confirms lifecycle analysis with 'C':
 - Sunset headers: `{header_spec}`
 - Tenant pinning: `{pinning_config}`
 - Lifecycle states: `{state_definitions}`
+
+---
+
+## Outputs
+
+- Analysis findings documented
+- Options comparison completed
+- Recommendation prepared
+

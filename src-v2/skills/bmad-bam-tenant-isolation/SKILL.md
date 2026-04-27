@@ -18,3 +18,32 @@ tags: [quality-gate, workflow]
 ## Quality Gate
 
 **Gate:** QG-M2
+
+## Overview
+
+
+
+## Prerequisites
+
+
+- [ ] Master architecture document exists with tenant model selected
+- [ ] User has access to compliance requirements
+- [ ] Tenant tier definitions available (Free, Pro, Enterprise)
+
+## Outputs
+
+
+- Complete tenant isolation design document
+- **Output to:** `{output_folder}/planning-artifacts/tenant-isolation.md`
+
+## Related Workflows
+
+- `bmad-bam-agent-runtime-architecture`
+- `bmad-bam-convergence-verification`
+- `bmad-bam-create-module-architecture`
+- `bmad-bam-validate-foundation`
+
+## Domain References
+
+- `{project-root}/_bmad/bam/data/agent-guides/bam/`
+- `{project-root}/_bmad/bam/data/bam-patterns.csv`

@@ -201,3 +201,12 @@ Your options:
 ## Next Step
 
 Proceed to `step-04-c-document.md` to generate the formal tenant isolation design document.
+
+---
+
+## Outputs
+
+- Design decisions recorded
+- Architecture patterns selected
+- Implementation approach defined
+

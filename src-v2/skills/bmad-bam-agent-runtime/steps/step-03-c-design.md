@@ -529,3 +529,12 @@ After user confirms architecture design with 'C':
 - Architecture summary: `{components_designed}`
 - Observability hooks: `{injection_points_for_tracing}`
 - Error boundaries: `{failure_modes_identified}`
+
+---
+
+## Outputs
+
+- Design decisions recorded
+- Architecture patterns selected
+- Implementation approach defined
+

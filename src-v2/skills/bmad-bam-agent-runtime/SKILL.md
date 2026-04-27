@@ -18,3 +18,33 @@ tags: [quality-gate, workflow]
 ## Quality Gate
 
 **Gate:** QG-M3
+
+## Overview
+
+
+
+## Prerequisites
+
+
+- [ ] Master architecture document exists with tenant model selected
+- [ ] User has clarity on AI capabilities needed in the platform
+- [ ] Understanding of agent-to-user interaction patterns
+
+## Outputs
+
+
+- Complete agent runtime architecture document
+- **Output to:** `{output_folder}/planning-artifacts/agent-runtime.md`
+
+## Related Workflows
+
+- `bmad-bam-ai-agent-debug`
+- `bmad-bam-convergence-verification`
+- `bmad-bam-create-module-architecture`
+- `bmad-bam-validate-foundation`
+- `bmad-bam-validate-module`
+
+## Domain References
+
+- `{project-root}/_bmad/bam/data/agent-guides/bam/`
+- `{project-root}/_bmad/bam/data/bam-patterns.csv`

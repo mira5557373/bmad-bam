@@ -610,3 +610,12 @@ Workflow complete. Based on gate decision:
 | **PASS** | Proceed to implementation, share with consumer |
 | **CONDITIONAL** | Address documented gaps before implementation |
 | **FAIL** | Return to failed step, fix critical issues |
+
+---
+
+## Outputs
+
+- Complete design document generated
+- Final artifact output to planning-artifacts
+- Workflow step completed
+

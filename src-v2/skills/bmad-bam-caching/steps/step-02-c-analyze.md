@@ -339,3 +339,12 @@ After user confirms cache design with 'C':
 - Cache layers: `{l1: X, l2: Y, cdn: Z}`
 - Key patterns: `tenant:{id}:{type}:{key}`
 - TTL policies: `{by_tier_by_type}`
+
+---
+
+## Outputs
+
+- Analysis findings documented
+- Options comparison completed
+- Recommendation prepared
+

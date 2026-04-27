@@ -465,3 +465,12 @@ After user confirms contract design with 'C':
 - Dependencies: `{[facade_list]}`
 - Events: `{publishes: [...], consumes: [...]}`
 - Testing: `{strategy_summary}`
+
+---
+
+## Outputs
+
+- Documentation draft created
+- Design specifications completed
+- Decision records updated
+

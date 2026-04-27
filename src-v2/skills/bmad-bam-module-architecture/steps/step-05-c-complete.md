@@ -524,3 +524,12 @@ bmad-bam-module-architecture (Validate mode)
 ```
 
 This will verify the document against QG-M1 criteria.
+
+---
+
+## Outputs
+
+- Complete design document generated
+- Final artifact output to planning-artifacts
+- Workflow step completed
+

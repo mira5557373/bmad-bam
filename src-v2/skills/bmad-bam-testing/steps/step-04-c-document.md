@@ -324,3 +324,12 @@ After user confirms e2e and isolation test strategy with 'C':
 - E2E journeys: `{critical_journey_list}`
 - Isolation scenarios: `{cross_tenant_test_count}`
 - Security scope: `{owasp_categories_covered}`
+
+---
+
+## Outputs
+
+- Documentation draft created
+- Design specifications completed
+- Decision records updated
+
