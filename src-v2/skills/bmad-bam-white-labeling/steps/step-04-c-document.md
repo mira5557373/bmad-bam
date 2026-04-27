@@ -2,19 +2,25 @@
 
 ## MANDATORY EXECUTION RULES (READ FIRST):
 
-- 🛑 NEVER generate content without user input
-- 📖 CRITICAL: ALWAYS read the complete step file before taking any action
-- 🔄 CRITICAL: When loading next step with 'C', ensure entire file is read
-- ⏸️ ALWAYS pause after presenting findings and await user direction
-- 🎯 Focus ONLY on current step scope - do not look ahead
+- 🛑 **NEVER skip feature flag override hierarchy** - Global < Tier < Tenant < User
+- 📖 **CRITICAL: ALWAYS define UI component visibility schema** with tier requirements
+- 🔄 **CRITICAL: Include menu customization by tier** - reorder, hide, rename, custom items
+- ⏸️ **ALWAYS pause after presenting findings** and await user direction
+- 🎯 **DOCUMENT role naming customization** - display names, descriptions, icons
 
 ## EXECUTION PROTOCOLS:
 
-- 🎯 Show your analysis before taking any action
-- 💾 Update document frontmatter after each section completion
-- 📝 Maintain append-only document building
-- ✅ Track progress in `stepsCompleted` array
-- 🔍 Use web search to verify current best practices
+- 🎯 Focus: Design feature toggle and UI customization architecture
+- 💾 Track: `stepsCompleted: [1, 2, 3, 4]` when complete
+- 📖 Context: Feature customization enables tenant control over UI/UX
+- 🔍 Use web search: Verify feature flag and tenant UI patterns
+- ⚠️ Gate: Feature flag performance and cache invalidation
+
+---
+
+## YOUR TASK
+
+Design the feature customization layer including: feature toggle system with multi-level override hierarchy (Global/Tier/Tenant/User), feature flag storage and evaluation flow, UI component visibility architecture (component schema with tierRequirement, featureFlag, roleRequirement, tenantOverride), menu customization levels by tier (reordering, hiding, renaming, custom items, full restructure), menu configuration schemas, and role naming customization (platform roles with customizable display names, descriptions, icons per tier).
 
 ---
 

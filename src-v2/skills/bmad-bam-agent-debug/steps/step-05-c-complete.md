@@ -27,7 +27,7 @@ Compile the comprehensive agent debug report including root cause summary, remed
 
 - Step 4 completed: Remediation designed
 - All trace analysis and failure mode data collected
-- **Load template:** `{project-root}/_bmad/bam/data/templates/agent-debug-report-template.md`
+- **Load template:** `{project-root}/_bmad/bam/data/templates/agent-debug-report.md`
 
 ---
 

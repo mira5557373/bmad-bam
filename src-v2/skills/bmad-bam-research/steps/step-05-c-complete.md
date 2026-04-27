@@ -29,7 +29,7 @@ Compile all research findings, evaluations, and recommendations into a comprehen
 
 - Recommendations documented (Step 4)
 - All evaluation phases completed
-- **Load template:** `{project-root}/_bmad/bam/data/templates/research-report-template.md`
+- **Load template:** `{project-root}/_bmad/bam/data/templates/research-findings.md`
 
 ---
 

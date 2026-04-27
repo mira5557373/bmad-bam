@@ -2,19 +2,25 @@
 
 ## MANDATORY EXECUTION RULES (READ FIRST):
 
-- 🛑 NEVER generate content without user input
-- 📖 CRITICAL: ALWAYS read the complete step file before taking any action
-- 🔄 CRITICAL: When loading next step with 'C', ensure entire file is read
-- ⏸️ ALWAYS pause after presenting findings and await user direction
-- 🎯 Focus ONLY on current step scope - do not look ahead
+- 🛑 **NEVER skip tier availability matrix** - branding features vary by tier
+- 📖 **CRITICAL: ALWAYS define CSS variable naming convention** for tenant theming
+- 🔄 **CRITICAL: Include fallback assets** for all visual elements
+- ⏸️ **ALWAYS pause after presenting findings** and await user direction
+- 🎯 **VERIFY email template branding** covers transactional and marketing templates
 
 ## EXECUTION PROTOCOLS:
 
-- 🎯 Show your analysis before taking any action
-- 💾 Update document frontmatter after each section completion
-- 📝 Maintain append-only document building
-- ✅ Track progress in `stepsCompleted` array
-- 🔍 Use web search to verify current best practices
+- 🎯 Focus: Design branding customization layer with tier differentiation
+- 💾 Track: `stepsCompleted: [1, 2]` when complete
+- 📖 Context: Branding enables tenant visual identity
+- 🔍 Use web search: Verify CSS theming and email branding patterns
+- ⚠️ Gate: CSS injection security considerations
+
+---
+
+## YOUR TASK
+
+Design the branding customization layer by defining: logo and visual asset storage (CDN tenant folders with resolution/format specs), CSS variable structure for tenant theming (primary/secondary/semantic/surface/text colors), custom CSS injection architecture (theme variables, component overrides, full stylesheet by tier), email template branding (header logo, color scheme, footer, sender name per tier), and document watermark configuration (PDF exports, reports, invoices). Each component must specify tier availability (Free/Pro/Enterprise/OEM) and fallback behavior.
 
 ---
 

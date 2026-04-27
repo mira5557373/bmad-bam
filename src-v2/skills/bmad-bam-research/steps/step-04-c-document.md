@@ -29,7 +29,7 @@ Document comprehensive technology recommendations including recommended stack, r
 
 - Integration fit evaluation completed (Step 3)
 - **Load patterns:** `{project-root}/_bmad/bam/data/bam-patterns.csv` → filter: technology-selection
-- **Load template:** `{project-root}/_bmad/bam/data/templates/research-report-template.md`
+- **Load template:** `{project-root}/_bmad/bam/data/templates/research-findings.md`
 
 ---
 

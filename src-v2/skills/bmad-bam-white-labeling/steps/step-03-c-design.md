@@ -2,19 +2,25 @@
 
 ## MANDATORY EXECUTION RULES (READ FIRST):
 
-- 🛑 NEVER generate content without user input
-- 📖 CRITICAL: ALWAYS read the complete step file before taking any action
-- 🔄 CRITICAL: When loading next step with 'C', ensure entire file is read
-- ⏸️ ALWAYS pause after presenting findings and await user direction
-- 🎯 Focus ONLY on current step scope - do not look ahead
+- 🛑 **NEVER skip SSL certificate automation design** - manual certs don't scale
+- 📖 **CRITICAL: ALWAYS include domain verification flow** (CNAME, TXT, HTML, meta tag)
+- 🔄 **CRITICAL: Document reserved subdomains** - prevent conflicts with system URLs
+- ⏸️ **ALWAYS pause after presenting findings** and await user direction
+- 🎯 **INCLUDE DNS configuration guidance** for self-service tenant setup
 
 ## EXECUTION PROTOCOLS:
 
-- 🎯 Show your analysis before taking any action
-- 💾 Update document frontmatter after each section completion
-- 📝 Maintain append-only document building
-- ✅ Track progress in `stepsCompleted` array
-- 🔍 Use web search to verify current best practices
+- 🎯 Focus: Design custom domain mapping and SSL provisioning
+- 💾 Track: `stepsCompleted: [1, 2, 3]` when complete
+- 📖 Context: Custom domains enable Enterprise+ tenant branding
+- 🔍 Use web search: Verify Let's Encrypt and DNS automation patterns
+- ⚠️ Gate: SSL security and certificate management
+
+---
+
+## YOUR TASK
+
+Design the domain customization layer including: custom domain mapping architecture (platform subdomain, custom subdomain, apex domain, multiple domains by tier), SSL certificate provisioning automation (Let's Encrypt with ACME HTTP-01/DNS-01 challenges, certificate manager integration, auto-renewal), DNS configuration guidance for tenants (CNAME, A/AAAA records, TXT verification, CAA records), subdomain allocation strategy (slug validation, uniqueness, history, reserved list), and domain verification flow (verification methods, DNS propagation checking, self-service wizard).
 
 ---
 

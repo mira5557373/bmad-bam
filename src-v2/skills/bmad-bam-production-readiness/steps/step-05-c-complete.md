@@ -46,7 +46,7 @@ Compile the comprehensive production readiness report aggregating all findings f
 ## Prerequisites
 
 - Step 01-04 completed: All assessments done
-- **Load template:** `{project-root}/_bmad/bam/data/templates/production-readiness-template.md`
+- **Load template:** `{project-root}/_bmad/bam/data/templates/production-readiness.md`
 - **Load patterns:** `{project-root}/_bmad/bam/data/bam-patterns.csv` → filter: production
 
 ---

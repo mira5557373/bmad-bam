@@ -315,7 +315,7 @@ Ready to proceed to runtime analysis? (y/n)
 - Requirements confirmation
 
 **Note:** Full runtime design document created in later steps using:
-`{project-root}/_bmad/bam/data/templates/agent-runtime-template.md`
+`{project-root}/_bmad/bam/data/templates/agent-runtime.md`
 
 ---
 

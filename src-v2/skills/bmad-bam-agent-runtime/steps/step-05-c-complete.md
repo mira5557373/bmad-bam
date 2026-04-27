@@ -48,8 +48,8 @@ Compile all agent runtime decisions into the final agent-runtime.md artifact and
 ## Prerequisites
 
 - Steps 01-04 completed successfully
-- **Load template:** `{project-root}/_bmad/bam/data/templates/agent-runtime-template.md`
-- **Load checklist:** `{project-root}/_bmad/bam/data/checklists/qg-m3-agent-runtime.md`
+- **Load template:** `{project-root}/_bmad/bam/data/templates/agent-runtime.md`
+- **Load checklist:** `{project-root}/_bmad/bam/data/checklists/qg-m3.md`
 
 ---
 
@@ -70,7 +70,7 @@ Compile the complete agent runtime architecture document by:
 ### Action 1: Load Agent Runtime Template
 
 Load the design template:
-- `{project-root}/_bmad/bam/data/templates/agent-runtime-template.md`
+- `{project-root}/_bmad/bam/data/templates/agent-runtime.md`
 
 Prepare frontmatter with:
 

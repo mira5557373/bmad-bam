@@ -44,7 +44,7 @@ Compile all isolation decisions into the final tenant-isolation.md artifact and 
 ## Prerequisites
 
 - Steps 01-04 completed successfully
-- **Load template:** `{project-root}/_bmad/bam/data/templates/tenant-isolation-design-template.md`
+- **Load template:** `{project-root}/_bmad/bam/data/templates/tenant-isolation.md`
 - **Load checklist:** `{project-root}/_bmad/bam/data/checklists/qg-m2.md`
 
 ---
@@ -67,7 +67,7 @@ Document the complete tenant isolation design by:
 ### 1. Load Tenant Isolation Template
 
 Load the design template:
-- `{project-root}/_bmad/bam/data/templates/tenant-isolation-design-template.md`
+- `{project-root}/_bmad/bam/data/templates/tenant-isolation.md`
 
 Prepare frontmatter with:
 

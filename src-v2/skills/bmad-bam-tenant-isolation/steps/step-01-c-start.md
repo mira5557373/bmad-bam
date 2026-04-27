@@ -205,7 +205,7 @@ Ready to proceed to analysis? (y/n)
 - Requirements confirmation
 
 **Note:** Full design document created in later steps using:
-`{project-root}/_bmad/bam/data/templates/tenant-isolation-template.md`
+`{project-root}/_bmad/bam/data/templates/tenant-isolation.md`
 
 ---
 

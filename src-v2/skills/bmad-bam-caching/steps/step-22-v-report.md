@@ -31,7 +31,7 @@ Generate a formal QG-M2 cache dimension validation report documenting all cachin
 
 - Step 21 completed: All validation checks run
 - Gate decision calculated (PASS/CONDITIONAL/FAIL)
-- **Load template:** `{project-root}/_bmad/bam/data/templates/validation-report-template.md`
+- **Load template:** `{project-root}/_bmad/bam/data/templates/validation-report.md`
 
 ---
 

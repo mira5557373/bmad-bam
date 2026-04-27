@@ -17,7 +17,7 @@
 
 - 🎯 Compile all decisions into a single cohesive document
 - 💾 Save artifact to configured output location
-- 📖 Reference template: `{project-root}/_bmad/bam/data/templates/master-architecture-template.md`
+- 📖 Reference template: `{project-root}/_bmad/bam/data/templates/master-architecture.md`
 - 🚫 DO NOT modify decisions made in prior steps - document as decided
 - ⚠️ Flag any inconsistencies between step decisions
 - 🔍 Verify web research citations are preserved in final document
@@ -30,7 +30,7 @@
 - **Step 02:** Tenant isolation model selection with rationale
 - **Step 03:** Module boundaries, dependencies, bounded contexts
 - **Step 04:** Architecture patterns, cross-cutting concerns
-- **Template:** `{project-root}/_bmad/bam/data/templates/master-architecture-template.md`
+- **Template:** `{project-root}/_bmad/bam/data/templates/master-architecture.md`
 - **Output:** `{output_folder}/planning-artifacts/master-architecture.md`
 
 ---
@@ -47,8 +47,8 @@ Compile all architecture decisions from steps 01-04 into the master architecture
 
 | Resource | Location |
 |----------|----------|
-| Template | `{project-root}/_bmad/bam/data/templates/master-architecture-template.md` |
-| QG-F1 | `{project-root}/_bmad/bam/data/checklists/foundation-gate.md` |
+| Template | `{project-root}/_bmad/bam/data/templates/master-architecture.md` |
+| QG-F1 | `{project-root}/_bmad/bam/data/checklists/qg-f1.md` |
 
 ### 2. Compile Decisions
 

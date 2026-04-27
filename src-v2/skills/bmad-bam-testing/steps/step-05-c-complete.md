@@ -29,7 +29,7 @@
 This step operates within these boundaries:
 
 - **Input context:** All testing strategies from Steps 01-04
-- **Template:** `{project-root}/_bmad/bam/data/templates/testing-strategy-template.md`
+- **Template:** `{project-root}/_bmad/bam/data/templates/testing-strategy.md`
 - **Output:** `{output_folder}/planning-artifacts/testing-strategy.md`
 - **Quality gates:** QG-TC1, QG-TC2, QG-TC3, QG-I2 - all documented
 
@@ -48,7 +48,7 @@ Compile the complete testing strategy document from all previous steps, includin
 **Read template:**
 
 ```
-{project-root}/_bmad/bam/data/templates/testing-strategy-template.md
+{project-root}/_bmad/bam/data/templates/testing-strategy.md
 ```
 
 Prepare document structure based on template.

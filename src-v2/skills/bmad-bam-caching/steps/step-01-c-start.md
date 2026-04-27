@@ -210,7 +210,7 @@ Ready to proceed to tenant-scoped caching design? (y/n)
 - Initialization confirmation
 
 **Note:** Full caching design document created in later steps using:
-`{project-root}/_bmad/bam/data/templates/caching-design-template.md`
+`{project-root}/_bmad/bam/data/templates/caching-strategy.md`
 
 ---
 

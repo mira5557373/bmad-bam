@@ -43,8 +43,8 @@ Compile the complete LLM versioning design document by integrating all component
 ## Prerequisites
 
 - Steps 01-04 completed: All design components available
-- **Load template:** `{project-root}/_bmad/bam/data/templates/llm-versioning-design-template.md`
-- **Load checklist:** `{project-root}/_bmad/bam/data/checklists/ai-versioning.md`
+- **Load template:** `{project-root}/_bmad/bam/data/templates/llm-version.md`
+- **Load checklist:** `{project-root}/_bmad/bam/data/checklists/qg-m3.md`
 
 ---
 
@@ -54,7 +54,7 @@ Compile the complete LLM versioning design document by integrating all component
 - Version management design from Step 02
 - Rollout strategy from Step 03
 - Monitoring design from Step 04
-- Template: `{project-root}/_bmad/bam/data/templates/llm-versioning-design-template.md`
+- Template: `{project-root}/_bmad/bam/data/templates/llm-version.md`
 
 ---
 
@@ -71,7 +71,7 @@ Compile the complete LLM versioning design document.
 Load the LLM versioning design template:
 
 ```
-{project-root}/_bmad/bam/data/templates/llm-versioning-design-template.md
+{project-root}/_bmad/bam/data/templates/llm-version.md
 ```
 
 If template does not exist, use the standard structure below.

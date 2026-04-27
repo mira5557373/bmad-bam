@@ -27,7 +27,7 @@ Design the subscription management system including tier definitions, feature fl
 - Step 02 complete (metering infrastructure designed)
 - Tier structure outline from Step 01
 - **Load patterns:** `{project-root}/_bmad/bam/data/bam-patterns.csv` - filter: `subscription-*`
-- **Load template:** `{project-root}/_bmad/bam/data/templates/usage-billing-template.md`
+- **Load template:** `{project-root}/_bmad/bam/data/templates/billing-design.md`
 
 ## Actions
 

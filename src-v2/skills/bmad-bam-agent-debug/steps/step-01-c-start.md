@@ -99,7 +99,7 @@ _Source: [URL]_
 - Agent runtime configuration summary
 - Trace availability inventory
 - Issue context documentation
-- **Load template:** `{project-root}/_bmad/bam/data/templates/agent-debug-report-template.md`
+- **Load template:** `{project-root}/_bmad/bam/data/templates/agent-debug-report.md`
 
 ---
 

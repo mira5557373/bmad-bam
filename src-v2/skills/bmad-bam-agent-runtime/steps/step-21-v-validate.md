@@ -31,7 +31,7 @@ Execute systematic validation of the agent runtime architecture against QG-M3 qu
 
 - Step 20 completed: Artifact and checklist loaded
 - **Load patterns:** `{project-root}/_bmad/bam/data/ai-runtimes.csv` → filter: {ai_runtime}
-- **Load checklist:** `{project-root}/_bmad/bam/data/checklists/qg-m3-agent-runtime.md`
+- **Load checklist:** `{project-root}/_bmad/bam/data/checklists/qg-m3.md`
 
 ---
 

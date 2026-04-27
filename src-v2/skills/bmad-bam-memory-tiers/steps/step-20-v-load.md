@@ -28,7 +28,7 @@ Load the memory tier design document and QG-M3 validation checklist in preparati
 ## Prerequisites
 
 - Memory tier design document exists
-- **Load checklist:** `{project-root}/_bmad/bam/data/checklists/qg-m3-agent-runtime.md`
+- **Load checklist:** `{project-root}/_bmad/bam/data/checklists/qg-m3.md`
 - **Load patterns:** `{project-root}/_bmad/bam/data/quality-gates.csv` → filter: QG-M3
 
 ---
@@ -50,7 +50,7 @@ If document does not exist, inform user and exit validation mode.
 Load the Agent Runtime quality gate checklist:
 
 ```
-{project-root}/_bmad/bam/data/checklists/qg-m3-agent-runtime.md
+{project-root}/_bmad/bam/data/checklists/qg-m3.md
 ```
 
 ### 3. Parse Document for Validation

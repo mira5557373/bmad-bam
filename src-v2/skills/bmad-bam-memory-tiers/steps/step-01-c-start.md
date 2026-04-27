@@ -48,7 +48,7 @@ Initialize the memory tier design by loading the AI runtime configuration, ident
 - **Load patterns:** `{project-root}/_bmad/bam/data/bam-patterns.csv` → filter: memory-tiers
 - **Load patterns:** `{project-root}/_bmad/bam/data/ai-runtimes.csv`
 - **Load patterns:** `{project-root}/_bmad/bam/data/tenant-models.csv`
-- **Load template:** `{project-root}/_bmad/bam/data/templates/memory-tiers-template.md`
+- **Load template:** `{project-root}/_bmad/bam/data/templates/memory-tier.md`
 
 ---
 
@@ -145,7 +145,7 @@ Map memory tiers to storage technologies:
 Load the memory tier design template:
 
 ```
-{project-root}/_bmad/bam/data/templates/memory-tiers-template.md
+{project-root}/_bmad/bam/data/templates/memory-tier.md
 ```
 
 Initialize with:

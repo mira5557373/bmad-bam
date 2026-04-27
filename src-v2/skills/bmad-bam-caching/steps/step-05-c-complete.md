@@ -17,7 +17,7 @@
 
 - 🎯 **Focus:** Compile final caching design document from Steps 01-04
 - 💾 **Track:** Save to `{output_folder}/planning-artifacts/caching-design.md`
-- 📖 **Context:** Reference `{project-root}/_bmad/bam/data/templates/caching-design-template.md`
+- 📖 **Context:** Reference `{project-root}/_bmad/bam/data/templates/caching-strategy.md`
 - 🚫 **Do NOT:** Proceed without explicit user confirmation via A/P/C
 - 🔍 **Use web search:** Not required for compilation step
 - ⚠️ **Gate:** Document feeds QG-M2 cache dimension validation; Create mode completes
@@ -29,7 +29,7 @@
 This step operates within these boundaries:
 
 - **Input context:** All design decisions from Steps 01-04
-- **Template:** `{project-root}/_bmad/bam/data/templates/caching-design-template.md`
+- **Template:** `{project-root}/_bmad/bam/data/templates/caching-strategy.md`
 - **Output:** `{output_folder}/planning-artifacts/caching-design.md`
 - **Quality gate:** Document enables QG-M2 cache validation
 
@@ -59,7 +59,7 @@ Compile the complete caching design document using all design decisions from Ste
 **Read template:**
 
 ```
-{project-root}/_bmad/bam/data/templates/caching-design-template.md
+{project-root}/_bmad/bam/data/templates/caching-strategy.md
 ```
 
 If template not found, use default structure below.

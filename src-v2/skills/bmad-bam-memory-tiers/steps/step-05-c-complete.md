@@ -43,8 +43,8 @@ Compile all memory tier design work from Steps 01-04 into a comprehensive, actio
 
 - Steps 01-04 completed
 - All memory tier designs documented
-- **Load template:** `{project-root}/_bmad/bam/data/templates/memory-tiers-template.md`
-- **Load checklist:** `{project-root}/_bmad/bam/data/checklists/qg-m3-agent-runtime.md`
+- **Load template:** `{project-root}/_bmad/bam/data/templates/memory-tier.md`
+- **Load checklist:** `{project-root}/_bmad/bam/data/checklists/qg-m3.md`
 
 ---
 

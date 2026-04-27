@@ -29,7 +29,7 @@ Generate a comprehensive validation report summarizing findings from the tool co
 
 - Step 20 completed: Artifacts loaded
 - Step 21 completed: Validation executed
-- **Load template:** `{project-root}/_bmad/bam/data/templates/validation-report-template.md`
+- **Load template:** `{project-root}/_bmad/bam/data/templates/validation-report.md`
 
 ---
 

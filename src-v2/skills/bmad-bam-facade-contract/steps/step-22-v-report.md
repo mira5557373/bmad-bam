@@ -31,7 +31,7 @@ Generate a formal QG-I1 validation report documenting all facade contract valida
 
 - Step 21 completed: All validation checks run
 - Gate decision calculated (PASS/CONDITIONAL/FAIL)
-- **Load template:** `{project-root}/_bmad/bam/data/templates/validation-report-template.md`
+- **Load template:** `{project-root}/_bmad/bam/data/templates/validation-report.md`
 
 ---
 

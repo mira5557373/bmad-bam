@@ -30,7 +30,7 @@ Load the existing agent runtime architecture artifact and QG-M3 validation check
 ## Prerequisites
 
 - Agent runtime artifact exists at `{output_folder}/planning-artifacts/agent-runtime-architecture.md`
-- **Load checklist:** `{project-root}/_bmad/bam/data/checklists/qg-m3-agent-runtime.md`
+- **Load checklist:** `{project-root}/_bmad/bam/data/checklists/qg-m3.md`
 - **Load patterns:** `{project-root}/_bmad/bam/data/ai-runtimes.csv` → filter: selected ai_runtime
 
 ---
@@ -71,7 +71,7 @@ Load the agent runtime architecture artifact created in Create mode. If the arti
 **Read and internalize:**
 
 ```
-{project-root}/_bmad/bam/data/checklists/qg-m3-agent-runtime.md
+{project-root}/_bmad/bam/data/checklists/qg-m3.md
 ```
 
 Extract the validation categories:

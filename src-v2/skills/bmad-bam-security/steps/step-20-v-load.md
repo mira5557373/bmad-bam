@@ -62,7 +62,7 @@ Load the security design artifact and the QG-S3 security baseline checklist in p
 
 ### 2. Load QG-S3 Security Baseline Checklist
 
-**Load checklist:** `{project-root}/_bmad/bam/data/checklists/qg-s3-security-baseline.md`
+**Load checklist:** `{project-root}/_bmad/bam/data/checklists/qg-m2.md`
 
 **Checklist Categories:**
 

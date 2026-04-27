@@ -45,7 +45,7 @@ Compile the final module complexity triage report that synthesizes complexity sc
 
 - Step 04 completed: Implementation phases defined
 - All triage data from Steps 01-04 available
-- **Load template:** `{project-root}/_bmad/bam/data/templates/triage-report-template.md`
+- **Load template:** `{project-root}/_bmad/bam/data/templates/convergence-report.md`
 - **Load checklist:** `{project-root}/_bmad/bam/data/checklists/qg-pl1.md`
 
 ---

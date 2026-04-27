@@ -2,19 +2,25 @@
 
 ## MANDATORY EXECUTION RULES (READ FIRST):
 
-- 🛑 NEVER generate content without user input
-- 📖 CRITICAL: ALWAYS read the complete step file before taking any action
-- 🔄 CRITICAL: When loading next step with 'C', ensure entire file is read
-- ⏸️ ALWAYS pause after presenting findings and await user direction
-- 🎯 Focus ONLY on current step scope - do not look ahead
+- 🛑 **NEVER skip tier applicability analysis** - customization varies by tier
+- 📖 **CRITICAL: ALWAYS verify OEM/reseller requirements** if applicable
+- 🔄 **CRITICAL: Include all three customization dimensions** - Branding, Domain, Email
+- ⏸️ **ALWAYS pause after presenting findings** and await user direction
+- 🎯 **IDENTIFY feature customization scope** - UI components, menu structure, role naming
 
 ## EXECUTION PROTOCOLS:
 
-- 🎯 Show your analysis before taking any action
-- 💾 Update document frontmatter after each section completion
-- 📝 Maintain append-only document building
-- ✅ Track progress in `stepsCompleted` array
-- 🔍 Use web search to verify current best practices
+- 🎯 Focus: Initialize white-labeling design scope across tiers
+- 💾 Track: `stepsCompleted: [1]` when complete
+- 📖 Context: White-labeling enables tenant branding and customization
+- 🔍 Use web search: Verify current white-label patterns
+- ⚠️ Gate: ADR documentation required for customization decisions
+
+---
+
+## YOUR TASK
+
+Initialize the white-labeling design by loading tier configurations (Free/Pro/Enterprise/OEM), identifying the three customization dimensions (Branding, Domain, Email), loading pattern references from `bam-patterns.csv` filtered by `customization`, and capturing initial project requirements including target tiers, branding scope, custom domain needs, email branding, feature customization, and OEM/reseller support requirements. Verify current best practices via web research.
 
 ---
 

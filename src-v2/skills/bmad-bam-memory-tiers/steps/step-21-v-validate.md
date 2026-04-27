@@ -29,7 +29,7 @@ Execute comprehensive validation checks against QG-M3 (Agent Runtime) quality ga
 
 - Step 20 completed: Documents and criteria loaded
 - Validation scope confirmed
-- **Load checklist:** `{project-root}/_bmad/bam/data/checklists/qg-m3-agent-runtime.md`
+- **Load checklist:** `{project-root}/_bmad/bam/data/checklists/qg-m3.md`
 
 ---
 

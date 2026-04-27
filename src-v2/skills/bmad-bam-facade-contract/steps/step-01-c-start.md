@@ -254,7 +254,7 @@ Ready to proceed to analysis? (y/n)
 - QG-I1 applicability confirmation
 
 **Note:** Full facade contract document created in later steps using:
-`{project-root}/_bmad/bam/data/templates/facade-contract-template.md`
+`{project-root}/_bmad/bam/data/templates/facade-contract.md`
 
 ---
 

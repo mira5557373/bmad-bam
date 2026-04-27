@@ -29,7 +29,7 @@ Load the tool contract design document and QG-M3 (Agent Runtime) checklist for f
 
 - Existing tool contract design to validate
 - **Load patterns:** `{project-root}/_bmad/bam/data/bam-patterns.csv` → filter: tool-contract
-- **Load checklist:** `{project-root}/_bmad/bam/data/checklists/qg-m3-agent-runtime.md`
+- **Load checklist:** `{project-root}/_bmad/bam/data/checklists/qg-m3.md`
 
 ---
 
@@ -65,7 +65,7 @@ Load the QG-M3 (Agent Runtime) checklist:
 
 | Checklist | Path | Status |
 |-----------|------|--------|
-| QG-M3 | `checklists/qg-m3-agent-runtime.md` | Loaded/Missing |
+| QG-M3 | `checklists/qg-m3.md` | Loaded/Missing |
 
 Extract tool contract validation criteria from QG-M3.
 

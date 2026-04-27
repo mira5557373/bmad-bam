@@ -39,7 +39,7 @@ Execute comprehensive validation of the security design artifact against the QG-
 ## Prerequisites
 
 - Step 20 complete with artifact and checklist loaded
-- **Load checklist:** `{project-root}/_bmad/bam/data/checklists/qg-s3-security-baseline.md`
+- **Load checklist:** `{project-root}/_bmad/bam/data/checklists/qg-m2.md`
 
 ---
 

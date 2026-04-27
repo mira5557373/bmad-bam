@@ -17,7 +17,7 @@
 
 - 🎯 Compile complete API versioning design document
 - 💾 Track: `stepsCompleted: [1, 2, 3, 4, 5]` when complete
-- 📖 Reference template: `{project-root}/_bmad/bam/data/templates/api-versioning-template.md`
+- 📖 Reference template: `{project-root}/_bmad/bam/data/templates/api-version.md`
 - 🚫 DO NOT proceed without explicit user confirmation via A/P/C
 - 📎 Include all working document content from previous steps
 - ✅ Complete: Create mode workflow finishes with this step
@@ -29,7 +29,7 @@
 This step operates within these boundaries:
 
 - **Input context:** All designs from Steps 01-04
-- **Template:** `{project-root}/_bmad/bam/data/templates/api-versioning-template.md`
+- **Template:** `{project-root}/_bmad/bam/data/templates/api-version.md`
 - **Output:** Complete API versioning design document
 - **Output location:** `{output_folder}/planning-artifacts/api-versioning-design.md`
 - **Quality gate:** Document ready for QG-I1 validation
@@ -49,7 +49,7 @@ Compile all API versioning designs from Steps 01-04 into a comprehensive design 
 **Read template from:**
 
 ```
-{project-root}/_bmad/bam/data/templates/api-versioning-template.md
+{project-root}/_bmad/bam/data/templates/api-version.md
 ```
 
 If template not found, use the structure defined below.

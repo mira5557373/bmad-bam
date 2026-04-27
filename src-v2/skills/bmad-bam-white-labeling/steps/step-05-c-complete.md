@@ -2,19 +2,25 @@
 
 ## MANDATORY EXECUTION RULES (READ FIRST):
 
-- 🛑 NEVER generate content without user input
-- 📖 CRITICAL: ALWAYS read the complete step file before taking any action
-- 🔄 CRITICAL: When loading next step with 'C', ensure entire file is read
-- ⏸️ ALWAYS pause after presenting findings and await user direction
-- 🎯 Focus ONLY on current step scope - do not look ahead
+- 🛑 **NEVER skip tier feature matrix validation** - all tiers must be covered
+- 📖 **CRITICAL: ALWAYS compile ADR summary** with decision rationale
+- 🔄 **CRITICAL: Generate implementation roadmap** with dependencies
+- ⏸️ **ALWAYS pause after presenting findings** and await user direction
+- 🎯 **VERIFY all four dimensions documented** - Branding, Domain, Email, Features
 
 ## EXECUTION PROTOCOLS:
 
-- 🎯 Show your analysis before taking any action
-- 💾 Update document frontmatter after each section completion
-- 📝 Maintain append-only document building
-- ✅ Track progress in `stepsCompleted` array
-- 🔍 Use web search to verify current best practices
+- 🎯 Focus: Compile complete white-labeling design document
+- 💾 Track: `stepsCompleted: [1, 2, 3, 4, 5]` when complete
+- 📖 Context: Final compilation of all customization designs
+- 🔍 Use web search: Verify current white-label implementation patterns
+- ⚠️ Gate: ADR completeness and tier matrix validation
+
+---
+
+## YOUR TASK
+
+Compile all white-labeling design decisions from steps 01-04 into a comprehensive design document: generate executive summary with scope per dimension and tiers affected, compile complete tier feature matrix (Free/Pro/Enterprise/OEM) covering Branding, Domain, and Features categories, document implementation architecture decisions (asset storage, theme delivery, domain handling, feature flags, configuration), generate phased implementation roadmap with dependencies and effort estimates, compile ADR summary with decision status, and output complete document to `{output_folder}/planning-artifacts/white-labeling-design.md`.
 
 ---
 
@@ -27,7 +33,7 @@ Compile all white-labeling design decisions into a comprehensive design document
 ## Prerequisites
 
 - Steps 01-04 completed: All customization dimensions designed
-- **Load template:** `{project-root}/_bmad/bam/data/templates/white-label-template.md`
+- **Load template:** `{project-root}/_bmad/bam/data/templates/white-label-config.md`
 - **Load patterns:** `{project-root}/_bmad/bam/data/bam-patterns.csv` → filter: `customization`
 
 ---

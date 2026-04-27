@@ -29,7 +29,7 @@ Compile all requirements analysis into a comprehensive, deliverable requirements
 
 - Step 4 completed (Validate Completeness)
 - All validations complete
-- **Load template:** `{project-root}/_bmad/bam/data/templates/requirements-template.md`
+- **Load template:** `{project-root}/_bmad/bam/data/templates/requirements-analysis.md`
 
 ---
 

@@ -210,7 +210,7 @@ Ready to proceed to unit test strategy design? (y/n)
 - Pattern registry extracts for testing
 
 **Note:** Full testing strategy document created in later steps using:
-`{project-root}/_bmad/bam/data/templates/testing-strategy-template.md`
+`{project-root}/_bmad/bam/data/templates/testing-strategy.md`
 
 ---
 

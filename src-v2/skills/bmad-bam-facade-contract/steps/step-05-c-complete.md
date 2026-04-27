@@ -17,7 +17,7 @@
 
 - 🎯 Compile all facade contract decisions into final document
 - 💾 Save document to: `{output_folder}/planning-artifacts/facade-{source}-{target}-contract.md`
-- 📖 Load template: `{project-root}/_bmad/bam/data/templates/facade-contract-template.md`
+- 📖 Load template: `{project-root}/_bmad/bam/data/templates/facade-contract.md`
 - 📖 Reference all previous steps for content
 - 🚫 DO NOT proceed without QG-I1 checkpoint verification
 - ⚠️ Flag any missing sections or incomplete decisions
@@ -30,7 +30,7 @@
 This step operates within these boundaries:
 
 - **Input context:** All outputs from Steps 01-04
-- **Template:** `{project-root}/_bmad/bam/data/templates/facade-contract-template.md`
+- **Template:** `{project-root}/_bmad/bam/data/templates/facade-contract.md`
 - **Output:** `{output_folder}/planning-artifacts/facade-{source}-{target}-contract.md`
 - **Quality gate:** QG-I1 (Convergence) checkpoint required
 
@@ -49,7 +49,7 @@ Compile all facade contract decisions from Steps 01-04 into the final facade con
 **Read template:**
 
 ```
-{project-root}/_bmad/bam/data/templates/facade-contract-template.md
+{project-root}/_bmad/bam/data/templates/facade-contract.md
 ```
 
 **Template sections to populate:**

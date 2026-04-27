@@ -43,9 +43,9 @@ Load the LLM versioning design document and all relevant quality gate checklists
 ## Prerequisites
 
 - LLM versioning design document exists
-- **Load checklist:** `{project-root}/_bmad/bam/data/checklists/qg-ai1-runtime.md`
-- **Load checklist:** `{project-root}/_bmad/bam/data/checklists/qg-ai2-monitoring.md`
-- **Load checklist:** `{project-root}/_bmad/bam/data/checklists/ai-versioning.md`
+- **Load checklist:** `{project-root}/_bmad/bam/data/checklists/qg-m3.md`
+- **Load checklist:** `{project-root}/_bmad/bam/data/checklists/qg-m3.md`
+- **Load checklist:** `{project-root}/_bmad/bam/data/checklists/qg-m3.md`
 
 ---
 
@@ -94,15 +94,15 @@ Load all applicable quality gate checklists:
 
 | Check Category | Checklist Path | Loaded |
 |----------------|----------------|--------|
-| Model registry | `checklists/qg-ai1-runtime.md` | YES/NO |
-| Version management | `checklists/ai-versioning.md` | YES/NO |
+| Model registry | `checklists/qg-m3.md` | YES/NO |
+| Version management | `checklists/qg-m3.md` | YES/NO |
 | Fallback configuration | `checklists/ai-fallback.md` | YES/NO |
 
 **QG-AI2: AI Operational Monitoring**
 
 | Check Category | Checklist Path | Loaded |
 |----------------|----------------|--------|
-| Quality metrics | `checklists/qg-ai2-monitoring.md` | YES/NO |
+| Quality metrics | `checklists/qg-m3.md` | YES/NO |
 | Cost tracking | `checklists/ai-cost.md` | YES/NO |
 | Observability | `checklists/ai-observability.md` | YES/NO |
 

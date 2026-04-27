@@ -262,7 +262,7 @@ Ready to proceed to version lifecycle design? (y/n)
 - Multi-tenant version considerations
 
 **Note:** Full API versioning design document created in later steps using:
-`{project-root}/_bmad/bam/data/templates/api-versioning-template.md`
+`{project-root}/_bmad/bam/data/templates/api-version.md`
 
 ---
 

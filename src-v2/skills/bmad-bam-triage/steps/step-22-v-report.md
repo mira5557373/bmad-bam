@@ -28,7 +28,7 @@ Generate the final QG-PL1 validation report with gate decision, findings, and re
 
 - Step 21 completed: Validation checks executed
 - All validation results available
-- **Load template:** `{project-root}/_bmad/bam/data/templates/validation-report-template.md`
+- **Load template:** `{project-root}/_bmad/bam/data/templates/validation-report.md`
 
 ---
 

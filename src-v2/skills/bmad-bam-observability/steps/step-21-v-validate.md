@@ -29,7 +29,7 @@ Validate the tenant-aware observability design against QG-OC (Observability Comp
 
 - Step 20 complete: Artifact loaded successfully
 - **Load patterns:** `{project-root}/_bmad/bam/data/bam-patterns.csv` → filter: `observability`
-- **Load checklist:** `{project-root}/_bmad/bam/data/checklists/qg-ai-observability.md`
+- **Load checklist:** `{project-root}/_bmad/bam/data/checklists/qg-m3.md`
 
 ---
 

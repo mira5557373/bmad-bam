@@ -44,7 +44,7 @@ Compile all tool contract design decisions from Steps 01-04 into a comprehensive
 ## Prerequisites
 
 - Steps 01-04 completed: All design decisions made
-- **Load template:** `{project-root}/_bmad/bam/data/templates/tool-contracts-template.md`
+- **Load template:** `{project-root}/_bmad/bam/data/templates/tool-contract.md`
 - **Load patterns:** `{project-root}/_bmad/bam/data/bam-patterns.csv` → filter: tool-contract
 
 ---
