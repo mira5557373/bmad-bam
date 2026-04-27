@@ -225,5 +225,5 @@ Select an option:
 
 Workflow complete. Recommended next actions:
 - Run Validate mode to verify against QG-M3
-- Proceed to `bmad-bam-tenant-aware-observability` for full observability stack
+- Proceed to `bmad-bam-observability` for full observability stack
 - Implement tracing according to phases defined

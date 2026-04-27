@@ -155,8 +155,8 @@ Save to: `{output_folder}/validation/qg-f1-report.md`
 
 | Outcome | Next Workflow | Prerequisite |
 |---------|---------------|--------------|
-| PASS | `bmad-bam-create-module-architecture` | None |
-| CONDITIONAL | `bmad-bam-create-module-architecture` | Mitigation documented |
+| PASS | `bmad-bam-module-architecture` | None |
+| CONDITIONAL | `bmad-bam-module-architecture` | Mitigation documented |
 | FAIL | `bmad-bam-master-architecture` Create | Failures addressed |
 
 Present the report and confirm next steps.

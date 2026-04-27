@@ -498,7 +498,7 @@ Based on epic document completion, consider:
 
 - `bmad-bam-module-epics` Validate mode - Validate epic document
 - `bmad-bam-cross-module-story` - Create cross-module stories
-- `bmad-bam-convergence-verification` - Verify module readiness
+- `bmad-bam-convergence` - Verify module readiness
 
 ---
 

@@ -179,7 +179,7 @@ QG-M2 cache dimension validation passed. Proceed to:
 1. **Next Workflows:**
    - `bmad-bam-tenant-isolation` - Complete full QG-M2 validation
    - `bmad-bam-observability` - Integrate cache metrics
-   - `bmad-bam-convergence-verification` - QG-I2 (Tenant Safety)
+   - `bmad-bam-convergence` - QG-I2 (Tenant Safety)
 
 2. **Maintenance:**
    - Schedule periodic cache isolation audits
@@ -389,7 +389,7 @@ Based on validation outcome, consider:
 - `bmad-bam-caching` Edit mode - Modify existing design
 - `bmad-bam-tenant-isolation` - Full QG-M2 validation
 - `bmad-bam-observability` - Cache metrics integration
-- `bmad-bam-convergence-verification` - QG-I2 (Tenant Safety)
+- `bmad-bam-convergence` - QG-I2 (Tenant Safety)
 
 ---
 

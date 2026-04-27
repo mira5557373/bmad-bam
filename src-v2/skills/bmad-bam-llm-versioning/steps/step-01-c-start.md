@@ -81,7 +81,7 @@ Extract:
 - Agent definitions and their LLM dependencies
 - Current model endpoints
 
-If AI runtime configuration does not exist, inform user and offer to run `bmad-bam-agent-runtime-architecture` workflow first.
+If AI runtime configuration does not exist, inform user and offer to run `bmad-bam-agent-runtime` workflow first.
 
 ### 2. Identify LLM Models in Use
 

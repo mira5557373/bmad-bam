@@ -277,6 +277,6 @@ Create mode is complete.
 - Or proceed to implementation with the design document
 
 **Related workflows:**
-- `bmad-bam-tenant-offboarding-design` - Design tenant deprovisioning
-- `bmad-bam-tenant-model-isolation` - Configure isolation in detail
-- `bmad-bam-tenant-billing-integration` - Detailed billing setup
+- `bmad-bam-tenant-offboarding` - Design tenant deprovisioning
+- `bmad-bam-tenant-isolation` - Configure isolation in detail
+- `bmad-bam-billing` - Detailed billing setup

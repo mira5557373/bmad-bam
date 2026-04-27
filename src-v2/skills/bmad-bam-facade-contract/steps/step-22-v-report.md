@@ -165,7 +165,7 @@ QG-I1 validation passed. Proceed to:
    - Set up contract tests
 
 2. **Next Workflows:**
-   - `bmad-bam-convergence-verification` - Full integration verification
+   - `bmad-bam-convergence` - Full integration verification
    - `bmad-bam-module-epics` - Create implementation epics
 
 3. **Maintenance:**
@@ -371,9 +371,9 @@ Validate mode is complete. Based on gate decision:
 Based on validation outcome, consider:
 
 - `bmad-bam-facade-contract` Edit mode - Modify existing contract
-- `bmad-bam-convergence-verification` - Full integration verification
-- `bmad-bam-evolve-facade-contract` - Plan contract evolution
-- `bmad-bam-facade-mismatch-recovery` - Resolve contract issues
+- `bmad-bam-convergence` - Full integration verification
+- `bmad-bam-facade-contract` - Plan contract evolution
+- `bmad-bam-facade-contract` - Resolve contract issues
 
 ---
 

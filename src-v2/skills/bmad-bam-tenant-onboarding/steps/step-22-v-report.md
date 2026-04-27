@@ -213,6 +213,6 @@ Validate mode is complete.
 | **FAIL** | Return to Create/Edit mode to address critical issues |
 
 **Related workflows:**
-- `bmad-bam-tenant-offboarding-design` - Design tenant deprovisioning
-- `bmad-bam-convergence-verification` - Integration gate (QG-I1)
+- `bmad-bam-tenant-offboarding` - Design tenant deprovisioning
+- `bmad-bam-convergence` - Integration gate (QG-I1)
 - `bmad-bam-production-readiness` - Production gate (QG-P1)

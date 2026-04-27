@@ -60,7 +60,7 @@ Verify and load the module architecture document:
 ```
 
 **If artifact does not exist:**
-- Inform user: "Module architecture not found. Please run `bmad-bam-create-module-architecture` first."
+- Inform user: "Module architecture not found. Please run `bmad-bam-module-architecture` first."
 - HALT workflow
 
 **If artifact exists, extract metadata:**
@@ -166,7 +166,7 @@ _Source: [URL]_
 
 | Failure | Recovery |
 |---------|----------|
-| Module architecture not found | Run `bmad-bam-create-module-architecture` first |
+| Module architecture not found | Run `bmad-bam-module-architecture` first |
 | Missing module boundaries | Extract from master architecture |
 | Pattern registry unavailable | Verify BAM installation |
 

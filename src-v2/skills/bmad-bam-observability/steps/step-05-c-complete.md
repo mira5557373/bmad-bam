@@ -385,6 +385,6 @@ Create mode complete.
 For quality gate validation, run: `bmad-bam-observability` in Validate mode.
 
 Related workflows:
-- `bmad-bam-agent-execution-tracing` - Detailed agent tracing design
-- `bmad-bam-tenant-cost-attribution` - Cost attribution from observability data
-- `bmad-bam-slo-definition` - Advanced SLO management
+- `bmad-bam-agent-tracing` - Detailed agent tracing design
+- `bmad-bam-billing` - Cost attribution from observability data
+- `bmad-bam-observability` - Advanced SLO management

@@ -384,7 +384,7 @@ Based on validation outcome, consider:
 - `bmad-bam-module-epics` Edit mode - Modify epic document to fix issues
 - `bmad-bam-cross-module-story` - Create cross-module epics
 - Sprint execution - Begin implementation (if PASS)
-- `bmad-bam-convergence-verification` - Module readiness verification
+- `bmad-bam-convergence` - Module readiness verification
 
 ---
 

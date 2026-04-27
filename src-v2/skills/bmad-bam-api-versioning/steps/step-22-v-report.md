@@ -168,8 +168,8 @@ API versioning validation passed. Proceed to:
 
 2. **Next Workflows:**
    - `bmad-bam-facade-contract` - Define versioned contracts
-   - `bmad-bam-convergence-verification` - Integration verification
-   - `bmad-bam-api-release` - Version release workflow
+   - `bmad-bam-convergence` - Integration verification
+   - `bmad-bam-api-versioning` - Version release workflow
 
 3. **Maintenance:**
    - Schedule periodic design reviews
@@ -375,8 +375,8 @@ Based on validation outcome, consider:
 
 - `bmad-bam-api-versioning` Edit mode - Modify existing design
 - `bmad-bam-facade-contract` - Define versioned API contracts
-- `bmad-bam-convergence-verification` - Full integration verification
-- `bmad-bam-api-release` - Plan version release
+- `bmad-bam-convergence` - Full integration verification
+- `bmad-bam-api-versioning` - Plan version release
 
 ---
 

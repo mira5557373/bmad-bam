@@ -527,8 +527,8 @@ Based on completion, consider:
 
 - `bmad-bam-api-versioning` Validate mode - Verify design against criteria
 - `bmad-bam-facade-contract` - Define versioned API contracts
-- `bmad-bam-convergence-verification` - Integration verification
-- `bmad-bam-api-release` - Version release workflow
+- `bmad-bam-convergence` - Integration verification
+- `bmad-bam-api-versioning` - Version release workflow
 
 ---
 

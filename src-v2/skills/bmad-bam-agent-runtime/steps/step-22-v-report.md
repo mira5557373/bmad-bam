@@ -163,8 +163,8 @@ QG-M3 validation passed. Proceed to:
 
 1. **Next Workflows:**
    - `bmad-bam-convergence` (QG-F1 validation) - Run QG-F1 validation
-   - `bmad-bam-create-module-architecture` - Design individual modules
-   - `bmad-bam-convergence-verification` - QG-I3 (Agent Safety) verification
+   - `bmad-bam-module-architecture` - Design individual modules
+   - `bmad-bam-convergence` - QG-I3 (Agent Safety) verification
 
 2. **Maintenance:**
    - Schedule periodic agent runtime audits
@@ -370,8 +370,8 @@ Based on validation outcome, consider:
 
 - `bmad-bam-agent-runtime` Edit mode - Modify existing design
 - `bmad-bam-convergence` (QG-F1 validation) - QG-F1 validation
-- `bmad-bam-create-module-architecture` - Module design
-- `bmad-bam-convergence-verification` - QG-I3 (Agent Safety)
+- `bmad-bam-module-architecture` - Module design
+- `bmad-bam-convergence` - QG-I3 (Agent Safety)
 
 ---
 

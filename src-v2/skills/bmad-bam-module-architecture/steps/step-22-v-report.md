@@ -156,8 +156,8 @@ QG-M1 validation passed. Proceed to:
 
 1. **Next Workflows:**
    - `bmad-bam-module-epics` - Create implementation epics
-   - `bmad-bam-define-facade-contract` - Detail API contracts
-   - `bmad-bam-convergence-verification` - QG-I1 verification
+   - `bmad-bam-facade-contract` - Detail API contracts
+   - `bmad-bam-convergence` - QG-I1 verification
 
 2. **Maintenance:**
    - Schedule periodic architecture reviews
@@ -362,8 +362,8 @@ Based on validation outcome, consider:
 
 - `bmad-bam-module-architecture` Edit mode - Modify existing design
 - `bmad-bam-module-epics` - Create implementation epics
-- `bmad-bam-define-facade-contract` - Detail API contracts
-- `bmad-bam-convergence-verification` - QG-I1 verification
+- `bmad-bam-facade-contract` - Detail API contracts
+- `bmad-bam-convergence` - QG-I1 verification
 
 ---
 

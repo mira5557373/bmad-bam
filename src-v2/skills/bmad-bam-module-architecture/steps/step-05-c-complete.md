@@ -504,7 +504,7 @@ qg_m1_status: {PASS/CONDITIONAL/FAIL}
 
 1. **If QG-M1 PASS:**
    - Proceed to implementation
-   - Run `bmad-bam-define-facade-contract` for detailed facade specification
+   - Run `bmad-bam-facade-contract` for detailed facade specification
    - Begin module development following implementation guidance
 
 2. **If QG-M1 CONDITIONAL:**
@@ -512,9 +512,9 @@ qg_m1_status: {PASS/CONDITIONAL/FAIL}
    - Schedule re-validation before implementation
 
 3. **Related Workflows:**
-   - `bmad-bam-define-facade-contract` - Detailed facade contract design
+   - `bmad-bam-facade-contract` - Detailed facade contract design
    - `bmad-bam-module-epics` - Create implementation epics
-   - `bmad-bam-convergence-verification` - Verify module integration
+   - `bmad-bam-convergence` - Verify module integration
 
 ### Validation Workflow
 

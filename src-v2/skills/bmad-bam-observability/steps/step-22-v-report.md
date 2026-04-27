@@ -292,9 +292,9 @@ Select an option:
 Based on completion status:
 
 - **PASS:** Observability design validated. Proceed to implementation or downstream workflows:
-  - `bmad-bam-agent-execution-tracing` - Implement agent tracing
-  - `bmad-bam-tenant-cost-attribution` - Implement cost attribution
-  - `bmad-bam-slo-definition` - Advanced SLO management
+  - `bmad-bam-agent-tracing` - Implement agent tracing
+  - `bmad-bam-billing` - Implement cost attribution
+  - `bmad-bam-observability` - Advanced SLO management
 
 - **CONDITIONAL:** Document gaps and proceed with noted limitations. Schedule remediation.
 

@@ -586,9 +586,9 @@ qg_i1_status: {PASS/CONDITIONAL/FAIL}
    - Schedule re-validation before implementation
 
 3. **Related Workflows:**
-   - `bmad-bam-convergence-verification` - Full QG-I1 verification
-   - `bmad-bam-evolve-facade-contract` - Contract evolution
-   - `bmad-bam-facade-mismatch-recovery` - Resolve contract issues
+   - `bmad-bam-convergence` - Full QG-I1 verification
+   - `bmad-bam-facade-contract` - Contract evolution
+   - `bmad-bam-facade-contract` - Resolve contract issues
 
 ### Validation Workflow
 
