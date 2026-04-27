@@ -212,18 +212,18 @@ Load decision criteria and web search queries from pattern registry:
 
 ### Web Research
 
-- Search: "SaaS discovery phase best practices {date}"
-- Search: "multi-tenant requirements gathering {date}"
-- Search: "AI product discovery patterns {date}"
+- Search: "SaaS discovery phase best practices 2026-04-27"
+- Search: "multi-tenant requirements gathering 2026-04-27"
+- Search: "AI product discovery patterns 2026-04-27"
 
 ---
 
 ## Web Research Verification
 
-- [ ] Search the web: "quality gate best practices enterprise SaaS {date}" - Verify gate criteria
-- [ ] Search the web: "multi-tenant platform validation patterns {date}" - Confirm validation approach
-- [ ] Search the web: "SaaS discovery phase checklist {date}" - Validate discovery completeness
-- [ ] Search the web: "stakeholder requirements gathering AI products {date}" - Verify requirements approach
+- [ ] Search the web: "quality gate best practices enterprise SaaS 2026-04-27" - Verify gate criteria
+- [ ] Search the web: "multi-tenant platform validation patterns 2026-04-27" - Confirm validation approach
+- [ ] Search the web: "SaaS discovery phase checklist 2026-04-27" - Validate discovery completeness
+- [ ] Search the web: "stakeholder requirements gathering AI products 2026-04-27" - Verify requirements approach
 - [ ] _Source: [URL]_ citations documented for key decisions
 
 ---
@@ -238,5 +238,5 @@ Load decision criteria and web search queries from pattern registry:
 
 | Version | Date | Author | Changes |
 |---------|------|--------|---------|
-| 2.0.0 | {date} | BAM V2 Migration | Migrated from V1 qg-d1-discovery.md with BMAD format enhancements |
-| 1.0.0 | {date} | Business Analyst | Initial V1 discovery gate |
+| 2.0.0 | 2026-04-27 | BAM V2 Migration | Migrated from V1 qg-d1-discovery.md with BMAD format enhancements |
+| 1.0.0 | 2026-04-27 | Business Analyst | Initial V1 discovery gate |

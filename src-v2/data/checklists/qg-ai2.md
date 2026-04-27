@@ -1,7 +1,7 @@
 ---
 name: qg-ai2-observability
 description: AI observability gate - quality metrics, cost tracking, latency monitoring, feedback collection
-category: quality-gate
+module: bam
 tags: [ai, quality-gate, multi-tenant, observability, monitoring]
 version: 2.0.0
 ---

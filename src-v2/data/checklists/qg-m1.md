@@ -1,7 +1,7 @@
 ---
 name: qg-m1-module-architecture
 description: Module architecture validation gate ensuring bounded context, facade contracts, and sprint readiness
-category: quality-gate
+module: bam
 version: "2.0"
 tags: [module, quality-gate, multi-tenant, architecture, ddd, sprint-readiness]
 secondary_gates: [QG-S1]

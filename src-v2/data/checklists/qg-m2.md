@@ -43,3 +43,12 @@ On FAIL: Fix issues, re-run validation. Max 3 attempts before mandatory escalati
 | PASS | All critical + 80% standard |
 | CONDITIONAL | All critical, <80% standard + mitigation plan |
 | FAIL | Any critical fails |
+
+---
+
+## Change Log
+
+| Version | Date | Author | Changes |
+|---------|------|--------|---------|
+| 2.0.0 | 2026-04-27 | BAM V2 Migration | Enhanced with YAML frontmatter and Purpose section |
+| 1.0.0 | - | Platform Architect | Initial V1 tenant isolation gate |

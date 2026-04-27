@@ -1,7 +1,7 @@
 ---
 name: qg-ai3-governance
 description: AI governance gate - compliance, audit trails, model approvals, bias monitoring
-category: quality-gate
+module: bam
 tags: [ai, quality-gate, multi-tenant, governance, compliance]
 version: 2.0.0
 ---

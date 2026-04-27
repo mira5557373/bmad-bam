@@ -1,7 +1,7 @@
 ---
 name: qg-ai1-runtime-config
 description: AI runtime configuration gate - model registry, version management, fallback configuration
-category: quality-gate
+module: bam
 tags: [ai, quality-gate, multi-tenant, runtime, llm]
 version: 2.0.0
 ---
