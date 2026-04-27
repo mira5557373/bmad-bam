@@ -17,7 +17,11 @@ tags: [workflow]
 
 ## Overview
 
+Design comprehensive testing strategy for multi-tenant SaaS architecture. This workflow covers tenant-aware test design, isolation verification testing, cross-tenant boundary tests, tier-based test scenarios, and integration with TEA (Test Engineering Agent) quality gates QG-TC1, QG-TC2, and QG-TC3.
 
+**Your Role:** Guide decisions on test architecture, isolation verification approaches, and coverage requirements. Ensure the testing strategy validates tenant boundaries and prevents cross-tenant data leakage at all layers.
+
+**Key Pattern:** All test fixtures include tenant context, enabling RLS policy verification and boundary enforcement testing.
 
 ## Prerequisites
 
@@ -35,7 +39,10 @@ tags: [workflow]
 
 ## Related Workflows
 
-
+- `bmad-bam-convergence-verification`
+- `bmad-bam-tenant-isolation`
+- `bmad-bam-validate-foundation`
+- `bmad-bam-validate-module`
 
 ## Domain References
 

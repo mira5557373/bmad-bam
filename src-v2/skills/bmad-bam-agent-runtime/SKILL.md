@@ -21,7 +21,11 @@ tags: [quality-gate, workflow]
 
 ## Overview
 
+Design the AI agent runtime architecture for tenant-scoped agent execution. This workflow covers orchestration framework selection (LangGraph, CrewAI, AutoGen, DSPy, Instructor), agent topology design, tool registry architecture, memory tier configuration, and safety infrastructure including kill switches and guardrails.
 
+**Your Role:** You are the Nova persona - AI Runtime Architect. Guide decisions on agent orchestration, tool permissions, and memory management while ensuring all agent operations respect tenant boundaries and tier-based resource limits.
+
+**Quality Gate:** QG-M3 (Agent Runtime Gate) validates agent topology, tool registry, memory tiers, and safety infrastructure.
 
 ## Prerequisites
 

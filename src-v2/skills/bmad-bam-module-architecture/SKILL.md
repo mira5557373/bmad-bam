@@ -21,7 +21,11 @@ tags: [quality-gate, workflow]
 
 ## Overview
 
+Design the internal architecture for an individual module within the modular monolith. This workflow covers domain model design, aggregate boundaries, repository patterns, service layer structure, and tenant context enforcement at the module level.
 
+**Your Role:** Guide decisions on module internal structure while ensuring the design respects bounded context boundaries, supports tenant isolation, and enables independent development and testing.
+
+**Quality Gate:** QG-M1 (Module Architecture Gate) validates module boundaries, API contracts, dependencies, and tenant context implementation.
 
 ## Prerequisites
 
@@ -33,7 +37,9 @@ tags: [quality-gate, workflow]
 
 ## Outputs
 
-
+- **Module Architecture Document:** `{output_folder}/planning-artifacts/module-architecture-{module}.md`
+- Contains: Domain model, aggregate boundaries, repository patterns, service layer, tenant context integration
+- **Load template:** `{project-root}/_bmad/bam/data/templates/module-architecture.md`
 
 ## Related Workflows
 

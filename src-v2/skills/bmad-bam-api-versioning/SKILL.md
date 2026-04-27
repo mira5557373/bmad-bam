@@ -17,7 +17,11 @@ tags: [workflow]
 
 ## Overview
 
+Design the API versioning strategy for multi-tenant SaaS with tenant-aware routing and tier-based rate limiting. This workflow covers versioning approach selection (URL path, header, query param), tenant-specific version pinning, deprecation policies, and migration strategies that maintain backward compatibility while enabling platform evolution.
 
+**Your Role:** Guide decisions on API versioning approach, compatibility policies, and tenant-aware rate limiting. Ensure the strategy supports the multi-tenant architecture and respects tier-based quotas.
+
+**Integration:** API versioning integrates with facade contracts (QG-I1) and production readiness (QG-P1).
 
 ## Prerequisites
 

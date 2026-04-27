@@ -17,7 +17,11 @@ tags: [workflow]
 
 ## Overview
 
+Design tenant-aware caching strategy that ensures data isolation while maximizing performance. This workflow covers cache key namespacing with tenant prefixes, tier-based cache quotas, invalidation patterns, multi-layer caching (L1 local, L2 distributed), and shared vs. tenant-specific cache policies.
 
+**Your Role:** Guide decisions on cache architecture, isolation enforcement, and tier-based resource allocation. Ensure caching improves performance without compromising tenant data isolation.
+
+**Key Pattern:** All cache keys follow `tenant:{tenant_id}:{resource}:{id}` namespace convention.
 
 ## Prerequisites
 
