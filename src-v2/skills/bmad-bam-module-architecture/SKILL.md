@@ -43,8 +43,8 @@ Design the internal architecture for an individual module within the modular mon
 
 ## Related Workflows
 
-- `bmad-bam-convergence-verification`
-- `bmad-bam-define-facade-contract`
+- `bmad-bam-convergence`
+- `bmad-bam-facade-contract`
 - `bmad-bam-module-epics`
 
 ## Domain References

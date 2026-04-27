@@ -40,9 +40,9 @@ tags: [workflow]
 
 ## Related Workflows
 
-- `bmad-bam-agent-execution-tracing`
-- `bmad-bam-slo-definition`
-- `bmad-bam-tenant-cost-attribution`
+- `bmad-bam-agent-tracing`
+- `bmad-bam-billing`
+- `bmad-bam-production-readiness`
 
 ## Domain References
 

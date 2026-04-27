@@ -35,11 +35,11 @@ tags: [workflow]
 
 ## Related Workflows
 
-- `bmad-bam-convergence-verification`
+- `bmad-bam-convergence`
 - `bmad-bam-production-readiness`
-- `bmad-bam-tenant-billing-integration`
-- `bmad-bam-tenant-model-isolation`
-- `bmad-bam-tenant-offboarding-design`
+- `bmad-bam-billing`
+- `bmad-bam-tenant-isolation`
+- `bmad-bam-tenant-offboarding`
 
 ## Domain References
 

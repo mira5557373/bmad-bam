@@ -37,7 +37,9 @@ tags: [workflow]
 
 ## Related Workflows
 
-- `bmad-bam-agent-runtime-architecture`
+- `bmad-bam-agent-runtime`
+- `bmad-bam-convergence`
+- `bmad-bam-tool-contracts`
 
 ## Domain References
 

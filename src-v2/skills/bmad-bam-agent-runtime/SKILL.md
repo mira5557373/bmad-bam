@@ -42,11 +42,11 @@ Design the AI agent runtime architecture for tenant-scoped agent execution. This
 
 ## Related Workflows
 
-- `bmad-bam-ai-agent-debug`
-- `bmad-bam-convergence-verification`
-- `bmad-bam-create-module-architecture`
-- `bmad-bam-validate-foundation`
-- `bmad-bam-validate-module`
+- `bmad-bam-agent-debug`
+- `bmad-bam-convergence`
+- `bmad-bam-memory-tiers`
+- `bmad-bam-module-architecture`
+- `bmad-bam-tool-contracts`
 
 ## Domain References
 

@@ -40,9 +40,9 @@ Design the API versioning strategy for multi-tenant SaaS with tenant-aware routi
 
 ## Related Workflows
 
-- `bmad-bam-api-release`
-- `bmad-bam-convergence-verification`
+- `bmad-bam-convergence`
 - `bmad-bam-facade-contract`
+- `bmad-bam-production-readiness`
 
 ## Domain References
 

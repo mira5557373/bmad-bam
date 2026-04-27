@@ -44,9 +44,8 @@ Define the integration contracts between modules in a modular monolith architect
 
 ## Related Workflows
 
-- `bmad-bam-convergence-verification`
-- `bmad-bam-evolve-facade-contract`
-- `bmad-bam-facade-mismatch-recovery`
+- `bmad-bam-api-versioning`
+- `bmad-bam-convergence`
 - `bmad-bam-module-architecture`
 - `bmad-bam-module-epics`
 

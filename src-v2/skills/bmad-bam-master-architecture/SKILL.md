@@ -46,10 +46,10 @@ Design the foundational architecture for a multi-tenant SaaS platform with AI ag
 
 ## Related Workflows
 
-- `bmad-bam-create-module-architecture`
+- `bmad-bam-convergence`
 - `bmad-bam-module-architecture`
+- `bmad-bam-requirements`
 - `bmad-bam-tenant-isolation`
-- `bmad-bam-validate-foundation`
 
 ## Domain References
 

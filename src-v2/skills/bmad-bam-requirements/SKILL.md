@@ -36,7 +36,9 @@ tags: [workflow]
 
 ## Related Workflows
 
-- `bmad-bam-create-master-architecture`
+- `bmad-bam-master-architecture`
+- `bmad-bam-module-epics`
+- `bmad-bam-triage`
 
 ## Domain References
 

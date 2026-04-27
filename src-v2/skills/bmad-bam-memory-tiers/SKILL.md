@@ -38,7 +38,7 @@ tags: [workflow]
 ## Related Workflows
 
 - `bmad-bam-agent-runtime`
-- `bmad-bam-convergence-verification`
+- `bmad-bam-convergence`
 - `bmad-bam-tenant-isolation`
 
 ## Domain References

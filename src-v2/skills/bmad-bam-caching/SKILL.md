@@ -39,9 +39,9 @@ Design tenant-aware caching strategy that ensures data isolation while maximizin
 
 ## Related Workflows
 
-- `bmad-bam-convergence-verification`
+- `bmad-bam-convergence`
 - `bmad-bam-observability`
-- `bmad-bam-rate-limiting`
+- `bmad-bam-scaling`
 - `bmad-bam-tenant-isolation`
 
 ## Domain References

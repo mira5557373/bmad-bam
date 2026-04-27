@@ -43,7 +43,7 @@ Search the web: "multi-tenant customization best practices {date}"
 
 ## Related Workflows
 
-- `bmad-bam-convergence-verification`
+- `bmad-bam-convergence`
 - `bmad-bam-master-architecture`
 - `bmad-bam-tenant-isolation`
 

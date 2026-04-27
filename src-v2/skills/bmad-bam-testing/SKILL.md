@@ -39,10 +39,10 @@ Design comprehensive testing strategy for multi-tenant SaaS architecture. This w
 
 ## Related Workflows
 
-- `bmad-bam-convergence-verification`
+- `bmad-bam-convergence`
+- `bmad-bam-master-architecture`
+- `bmad-bam-module-architecture`
 - `bmad-bam-tenant-isolation`
-- `bmad-bam-validate-foundation`
-- `bmad-bam-validate-module`
 
 ## Domain References
 

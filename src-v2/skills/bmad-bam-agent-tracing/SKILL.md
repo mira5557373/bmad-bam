@@ -29,13 +29,14 @@ tags: [workflow]
 
 ## Outputs
 
-
-- `agent-tracing-design.md` - Complete specification
+- **Agent Tracing Design:** `{output_folder}/planning-artifacts/ai/agent-tracing-design.md`
 - Ready for QG-M3 validation (agent runtime component)
 
 ## Related Workflows
 
-- `bmad-bam-tenant-aware-observability`
+- `bmad-bam-agent-runtime`
+- `bmad-bam-memory-tiers`
+- `bmad-bam-observability`
 
 ## Domain References
 

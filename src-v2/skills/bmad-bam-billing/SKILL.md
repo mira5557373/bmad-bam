@@ -17,37 +17,28 @@ tags: [workflow]
 
 ## Overview
 
- Initialize the billing design workflow by loading tier configurations, referencing billing patterns, and identifying the appropriate pricing models for the multi-tenant SaaS platform. - Master architecture document exists at `{output_folder}/planning-artifacts/master-architecture.md` 
+Design the billing and metering system for multi-tenant SaaS with tier-based pricing models. This workflow covers usage metering, subscription management, revenue recognition, and billing compliance requirements.
+
+**Your Role:** Guide decisions on pricing models, metering granularity, and billing integration patterns while ensuring compliance with revenue recognition standards.
 
 ## Prerequisites
 
-
-- Master architecture document exists at `{output_folder}/planning-artifacts/master-architecture.md`
-- Tenant model selection complete (`{tenant_model}` configured)
-- **Load patterns:** `{project-root}/_bmad/bam/data/bam-patterns.csv` - filter: `billing-*`
-- **Load patterns:** `{project-root}/_bmad/bam/data/tenant-models.csv`
-
-
-
-Load the standard tier definitions for multi-tenant SaaS:
+- [ ] Master architecture document exists with tenant model selected
+- [ ] Tenant tier definitions available (Free, Pro, Enterprise)
+- [ ] **Load patterns:** `{project-root}/_bmad/bam/data/bam-patterns.csv` - filter: `billing-*`
+- [ ] **Load patterns:** `{project-root}/_bmad/bam/data/tenant-models.csv`
 
 ## Outputs
-
 
 - **Primary:** `{output_folder}/planning-artifacts/billing-design.md`
 - Revenue recognition design
 - Compliance requirements documentation
 - Analytics and reporting specifications
 
-
-**Create mode complete.**
-
-To validate the billing design, run validation mode:
-
 ## Related Workflows
 
-- `bmad-bam-convergence-verification`
-- `bmad-bam-rate-limiting`
+- `bmad-bam-convergence`
+- `bmad-bam-scaling`
 - `bmad-bam-tenant-onboarding`
 
 ## Domain References

@@ -37,8 +37,8 @@ tags: [workflow]
 
 ## Related Workflows
 
-- `bmad-bam-create-master-architecture`
-- `bmad-bam-requirement-ingestion`
+- `bmad-bam-master-architecture`
+- `bmad-bam-requirements`
 
 ## Domain References
 

@@ -39,9 +39,9 @@ tags: [workflow]
 ## Related Workflows
 
 - `bmad-bam-agent-runtime`
-- `bmad-bam-convergence-verification`
+- `bmad-bam-convergence`
 - `bmad-bam-facade-contract`
-- `bmad-bam-validate-module`
+- `bmad-bam-module-architecture`
 
 ## Domain References
 

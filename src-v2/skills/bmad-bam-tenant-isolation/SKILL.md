@@ -42,10 +42,10 @@ Design the tenant isolation implementation strategy for multi-tenant SaaS archit
 
 ## Related Workflows
 
-- `bmad-bam-agent-runtime-architecture`
-- `bmad-bam-convergence-verification`
-- `bmad-bam-create-module-architecture`
-- `bmad-bam-validate-foundation`
+- `bmad-bam-agent-runtime`
+- `bmad-bam-convergence`
+- `bmad-bam-master-architecture`
+- `bmad-bam-module-architecture`
 
 ## Domain References
 

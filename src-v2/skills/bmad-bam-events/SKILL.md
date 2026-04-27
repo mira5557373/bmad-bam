@@ -39,7 +39,7 @@ tags: [workflow]
 
 ## Related Workflows
 
-- `bmad-bam-convergence-verification`
+- `bmad-bam-convergence`
 - `bmad-bam-facade-contract`
 - `bmad-bam-observability`
 

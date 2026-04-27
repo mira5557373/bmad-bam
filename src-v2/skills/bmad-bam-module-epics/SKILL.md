@@ -34,8 +34,8 @@ tags: [workflow]
 
 ## Related Workflows
 
-- `bmad-bam-convergence-verification`
-- `bmad-bam-create-module-architecture`
+- `bmad-bam-convergence`
+- `bmad-bam-module-architecture`
 - `bmad-bam-cross-module-story`
 
 ## Domain References
