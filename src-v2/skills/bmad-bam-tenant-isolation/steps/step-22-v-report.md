@@ -169,7 +169,7 @@ Based on gate decision, provide recommendations:
 QG-M2 validation passed. Proceed to:
 
 1. **Next Workflows:**
-   - `bmad-bam-validate-foundation` - Run QG-F1 validation
+   - `bmad-bam-convergence` (QG-F1 validation) - Run QG-F1 validation
    - `bmad-bam-create-module-architecture` - Design individual modules
    - `bmad-bam-convergence-verification` - QG-I2 (Tenant Safety) verification
 
@@ -343,7 +343,7 @@ Validate mode is complete. Based on gate decision:
 Based on validation outcome, consider:
 
 - `bmad-bam-tenant-isolation` Edit mode - Modify existing design
-- `bmad-bam-validate-foundation` - QG-F1 validation
+- `bmad-bam-convergence` (QG-F1 validation) - QG-F1 validation
 - `bmad-bam-create-module-architecture` - Module design
 - `bmad-bam-convergence-verification` - QG-I2 (Tenant Safety)
 

@@ -202,7 +202,7 @@ Generate validation report with the following sections:
 ## Next Steps
 
 ### If PASS:
-- Proceed to `bmad-bam-create-master-architecture` workflow
+- Proceed to `bmad-bam-master-architecture` workflow
 - Share requirements with architecture team
 
 ### If CONDITIONAL:

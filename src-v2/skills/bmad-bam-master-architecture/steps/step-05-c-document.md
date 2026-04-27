@@ -101,7 +101,7 @@ DOCUMENT: {output_folder}/planning-artifacts/master-architecture.md
 ================================================================================
 [A] Approve - Accept architecture and complete workflow
 [E] Edit - Revise decisions, return to this checkpoint
-[V] Validate - Run `bmad-bam-validate-foundation` workflow
+[V] Validate - Run `bmad-bam-convergence` (QG-F1 validation) workflow
 ================================================================================
 ```
 
@@ -221,7 +221,7 @@ ARTIFACT: {output_folder}/planning-artifacts/master-architecture.md
 NEXT WORKFLOWS:
 - `bmad-bam-module-architecture` - Design individual modules
 - `bmad-bam-tenant-isolation` - Detail tenant isolation
-- `bmad-bam-validate-foundation` - Run formal QG-F1 validation
+- `bmad-bam-convergence` (QG-F1 validation) - Run formal QG-F1 validation
 ================================================================================
 ```
 

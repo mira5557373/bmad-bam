@@ -288,7 +288,7 @@ Create workflow complete. Tenant isolation design is ready for:
 
 - **Validation:** Run `bmad-bam-tenant-isolation` Validate mode (step-20-v-*)
 - **Next workflows:**
-  - `bmad-bam-validate-foundation` - Run QG-F1 validation
+  - `bmad-bam-convergence` (QG-F1 validation) - Run QG-F1 validation
   - `bmad-bam-create-module-architecture` - Design individual modules
   - `bmad-bam-agent-runtime-architecture` - Design AI runtime (if applicable)
 

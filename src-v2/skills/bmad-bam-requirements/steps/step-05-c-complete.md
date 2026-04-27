@@ -313,4 +313,4 @@ The requirements analysis document has been compiled and saved.
 1. **Review:** Share with stakeholders for sign-off
 2. **Iterate:** Use Edit mode to incorporate feedback
 3. **Validate:** Run Validate mode (QG-PL1) before proceeding to architecture
-4. **Architecture:** Proceed to `bmad-bam-create-master-architecture` workflow (requires QG-PL1 pass)
+4. **Architecture:** Proceed to `bmad-bam-master-architecture` workflow (requires QG-PL1 pass)

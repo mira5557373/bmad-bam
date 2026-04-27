@@ -520,7 +520,7 @@ Create workflow complete. Agent runtime architecture is ready for:
 
 - **Validation:** Run `bmad-bam-agent-runtime` Validate mode (step-20-v-*)
 - **Next workflows:**
-  - `bmad-bam-validate-module` - Run QG-M3 validation
+  - `bmad-bam-convergence` (QG-M validation) - Run QG-M3 validation
   - `bmad-bam-convergence-verification` - Verify module integration
   - `bmad-bam-ai-agent-debug` - Debug agent issues (if needed)
 
