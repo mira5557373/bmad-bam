@@ -36,7 +36,9 @@ tags: [workflow]
 
 ## Related Workflows
 
-
+- `bmad-bam-agent-runtime`
+- `bmad-bam-convergence-verification`
+- `bmad-bam-observability`
 
 ## Domain References
 

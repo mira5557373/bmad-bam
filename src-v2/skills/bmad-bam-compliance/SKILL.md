@@ -42,7 +42,10 @@ Search the web: "GDPR SOC2 HIPAA PCI-DSS SaaS architecture {date}"
 
 ## Related Workflows
 
-
+- `bmad-bam-convergence-verification`
+- `bmad-bam-data-residency`
+- `bmad-bam-security`
+- `bmad-bam-tenant-isolation`
 
 ## Domain References
 

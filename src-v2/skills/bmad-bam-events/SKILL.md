@@ -39,7 +39,9 @@ tags: [workflow]
 
 ## Related Workflows
 
-
+- `bmad-bam-convergence-verification`
+- `bmad-bam-facade-contract`
+- `bmad-bam-observability`
 
 ## Domain References
 

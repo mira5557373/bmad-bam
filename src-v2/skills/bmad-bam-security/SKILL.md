@@ -37,7 +37,9 @@ tags: [workflow]
 
 ## Related Workflows
 
-
+- `bmad-bam-compliance`
+- `bmad-bam-convergence-verification`
+- `bmad-bam-tenant-isolation`
 
 ## Domain References
 

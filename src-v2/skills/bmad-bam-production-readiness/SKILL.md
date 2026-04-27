@@ -43,7 +43,10 @@ tags: [quality-gate, workflow]
 
 ## Related Workflows
 
-
+- `bmad-bam-convergence-verification`
+- `bmad-bam-observability`
+- `bmad-bam-validate-foundation`
+- `bmad-bam-validate-module`
 
 ## Domain References
 

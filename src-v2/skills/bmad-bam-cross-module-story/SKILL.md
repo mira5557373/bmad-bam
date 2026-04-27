@@ -37,7 +37,9 @@ tags: [workflow]
 
 ## Related Workflows
 
-
+- `bmad-bam-facade-contract`
+- `bmad-bam-module-architecture`
+- `bmad-bam-module-epics`
 
 ## Domain References
 

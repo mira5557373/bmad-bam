@@ -35,7 +35,8 @@ tags: [workflow]
 
 ## Related Workflows
 
-
+- `bmad-bam-master-architecture`
+- `bmad-bam-module-architecture`
 
 ## Domain References
 

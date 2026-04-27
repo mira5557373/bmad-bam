@@ -43,7 +43,9 @@ Search the web: "horizontal vs vertical scaling decision criteria {date}"
 
 ## Related Workflows
 
-
+- `bmad-bam-caching`
+- `bmad-bam-convergence-verification`
+- `bmad-bam-rate-limiting`
 
 ## Domain References
 

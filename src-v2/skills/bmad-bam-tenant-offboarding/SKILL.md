@@ -41,7 +41,9 @@ tags: [workflow]
 
 ## Related Workflows
 
-
+- `bmad-bam-convergence-verification`
+- `bmad-bam-tenant-isolation`
+- `bmad-bam-tenant-onboarding`
 
 ## Domain References
 

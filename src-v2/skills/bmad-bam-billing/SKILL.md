@@ -46,7 +46,9 @@ To validate the billing design, run validation mode:
 
 ## Related Workflows
 
-
+- `bmad-bam-convergence-verification`
+- `bmad-bam-rate-limiting`
+- `bmad-bam-tenant-onboarding`
 
 ## Domain References
 
