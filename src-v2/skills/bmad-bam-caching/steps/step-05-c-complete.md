@@ -418,4 +418,4 @@ Based on completion, consider:
 
 - `bmad-bam-tenant-isolation` - Overall tenant isolation (QG-M2)
 - `bmad-bam-observability` - Integrate cache metrics into observability
-- `bmad-bam-rate-limiting` - Coordinate with rate limiting strategy
+- `bmad-bam-scaling` - Coordinate with scaling strategy

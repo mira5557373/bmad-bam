@@ -234,6 +234,6 @@ Validation complete.
 | **FAIL** | Enter recovery protocol, re-run triage |
 
 **Related Workflows:**
-- `bmad-bam-create-master-architecture` - Design system architecture
-- `bmad-bam-requirement-ingestion` - If requirements need refinement
+- `bmad-bam-master-architecture` - Design system architecture
+- `bmad-bam-requirements` - If requirements need refinement
 - `bmad-bam-triage` (Create mode) - If major rework needed
