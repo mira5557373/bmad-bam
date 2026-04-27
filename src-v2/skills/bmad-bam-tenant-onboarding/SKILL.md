@@ -25,7 +25,7 @@ tags: [workflow]
 - Master Architecture document exists with tenant model decision
 - **Load patterns:** `{project-root}/_bmad/bam/data/bam-patterns.csv` → filter: tenant-lifecycle
 - **Load patterns:** `{project-root}/_bmad/bam/data/tenant-models.csv`
-- **Load guide:** `{project-root}/_bmad/bam/data/agent-guides/bam/tenant-onboarding-patterns.md`
+- **Load guide:** `{project-root}/_bmad/bam/data/domains/onboarding.md`
 
 ## Outputs
 
@@ -43,5 +43,5 @@ tags: [workflow]
 
 ## Domain References
 
-- `{project-root}/_bmad/bam/data/agent-guides/bam/`
+- `{project-root}/_bmad/bam/data/domains/`
 - `{project-root}/_bmad/bam/data/bam-patterns.csv`

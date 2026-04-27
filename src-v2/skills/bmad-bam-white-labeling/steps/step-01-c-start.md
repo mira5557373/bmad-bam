@@ -34,7 +34,7 @@ Initialize the white-labeling design workflow by loading tier configurations, pa
 
 - Project context established
 - **Load patterns:** `{project-root}/_bmad/bam/data/bam-patterns.csv` → filter: `customization`
-- **Load guide:** `{project-root}/_bmad/bam/data/agent-guides/bam/white-labeling-guide.md`
+- **Load guide:** `{project-root}/_bmad/bam/data/domains/customization.md`
 
 **Web Research (Required):**
 

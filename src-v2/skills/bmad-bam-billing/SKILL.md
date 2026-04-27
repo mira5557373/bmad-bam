@@ -50,5 +50,5 @@ To validate the billing design, run validation mode:
 
 ## Domain References
 
-- `{project-root}/_bmad/bam/data/agent-guides/bam/`
+- `{project-root}/_bmad/bam/data/domains/`
 - `{project-root}/_bmad/bam/data/bam-patterns.csv`

@@ -30,7 +30,7 @@ Design comprehensive data protection architecture including encryption at rest a
 
 - Step 3 complete with authorization design
 - **Load patterns:** `{project-root}/_bmad/bam/data/bam-patterns.csv` → filter: security-encrypt
-- **Load guide:** `{project-root}/_bmad/bam/data/agent-guides/bam/security-guide.md`
+- **Load guide:** `{project-root}/_bmad/bam/data/domains/security.md`
 
 ---
 

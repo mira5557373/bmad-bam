@@ -34,7 +34,7 @@ Design the feature customization layer including per-tenant feature toggles, UI 
 
 - Step 03 completed: Domain customization designed
 - **Load patterns:** `{project-root}/_bmad/bam/data/bam-patterns.csv` → filter: `customization`, `feature-flags`
-- **Load guide:** `{project-root}/_bmad/bam/data/agent-guides/bam/white-labeling-guide.md`
+- **Load guide:** `{project-root}/_bmad/bam/data/domains/customization.md`
 
 **Web Research (Required):**
 

@@ -24,7 +24,7 @@ tags: [workflow]
 
 - Master architecture document exists
 - Agent runtime architecture defined
-- **Load guide:** `{project-root}/_bmad/bam/data/agent-guides/bam/agent-tracing.md`
+- **Load guide:** `{project-root}/_bmad/bam/data/domains/observability.md`
 - **Load patterns:** `{project-root}/_bmad/bam/data/bam-patterns.csv` -> filter: `distributed-tracing`, `llm-observability`, `observability`
 
 ## Outputs
@@ -39,5 +39,5 @@ tags: [workflow]
 
 ## Domain References
 
-- `{project-root}/_bmad/bam/data/agent-guides/bam/`
+- `{project-root}/_bmad/bam/data/domains/`
 - `{project-root}/_bmad/bam/data/bam-patterns.csv`

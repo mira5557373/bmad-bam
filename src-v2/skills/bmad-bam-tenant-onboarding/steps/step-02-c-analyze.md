@@ -37,7 +37,7 @@ Design the tenant provisioning flow including registration workflow, tenant meta
 
 - Output from Step 1: Tenant model context and scope
 - Pattern registry: `{project-root}/_bmad/bam/data/bam-patterns.csv`
-- Onboarding guide: `{project-root}/_bmad/bam/data/agent-guides/bam/tenant-onboarding-patterns.md`
+- Onboarding guide: `{project-root}/_bmad/bam/data/domains/onboarding.md`
 
 ---
 

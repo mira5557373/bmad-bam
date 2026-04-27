@@ -29,7 +29,7 @@ Initialize the agent tracing design workflow by loading AI runtime configuration
 
 - Master architecture document exists
 - Agent runtime architecture defined
-- **Load guide:** `{project-root}/_bmad/bam/data/agent-guides/bam/agent-tracing.md`
+- **Load guide:** `{project-root}/_bmad/bam/data/domains/observability.md`
 - **Load patterns:** `{project-root}/_bmad/bam/data/bam-patterns.csv` -> filter: `distributed-tracing`, `llm-observability`, `observability`
 
 ---

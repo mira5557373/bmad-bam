@@ -40,7 +40,7 @@ Load the existing white-labeling design document, parse its structure, extract t
 
 - Existing white-labeling design document to modify
 - **Load patterns:** `{project-root}/_bmad/bam/data/bam-patterns.csv` → filter: `customization`
-- **Load guide:** `{project-root}/_bmad/bam/data/agent-guides/bam/white-labeling-guide.md`
+- **Load guide:** `{project-root}/_bmad/bam/data/domains/customization.md`
 
 ---
 

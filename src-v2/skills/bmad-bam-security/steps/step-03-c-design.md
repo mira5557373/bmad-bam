@@ -30,7 +30,7 @@ Design a comprehensive authorization architecture for multi-tenant SaaS, includi
 
 - Step 2 complete with authentication design
 - **Load patterns:** `{project-root}/_bmad/bam/data/bam-patterns.csv` → filter: security-authz
-- **Load guide:** `{project-root}/_bmad/bam/data/agent-guides/bam/security-guide.md`
+- **Load guide:** `{project-root}/_bmad/bam/data/domains/security.md`
 
 ---
 

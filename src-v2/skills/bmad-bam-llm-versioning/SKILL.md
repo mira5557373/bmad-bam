@@ -26,7 +26,7 @@ tags: [workflow]
 - AI runtime configuration established
 - **Load patterns:** `{project-root}/_bmad/bam/data/ai-runtimes.csv` → filter: `{ai_runtime}`
 - **Load patterns:** `{project-root}/_bmad/bam/data/bam-patterns.csv` → filter: ai-versioning
-- **Load guide:** `{project-root}/_bmad/bam/data/agent-guides/bam/llm-versioning.md`
+- **Load guide:** `{project-root}/_bmad/bam/data/domains/llm-versioning.md`
 
 ## Outputs
 
@@ -41,5 +41,5 @@ tags: [workflow]
 
 ## Domain References
 
-- `{project-root}/_bmad/bam/data/agent-guides/bam/`
+- `{project-root}/_bmad/bam/data/domains/`
 - `{project-root}/_bmad/bam/data/bam-patterns.csv`

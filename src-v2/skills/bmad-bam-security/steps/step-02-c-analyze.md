@@ -30,7 +30,7 @@ Design a comprehensive authentication architecture for multi-tenant SaaS, includ
 
 - Step 1 complete with security domains identified
 - **Load patterns:** `{project-root}/_bmad/bam/data/bam-patterns.csv` → filter: security-authn
-- **Load guide:** `{project-root}/_bmad/bam/data/agent-guides/bam/security-guide.md`
+- **Load guide:** `{project-root}/_bmad/bam/data/domains/security.md`
 
 ---
 

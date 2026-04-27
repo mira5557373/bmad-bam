@@ -47,5 +47,5 @@ Search the web: "horizontal vs vertical scaling decision criteria {date}"
 
 ## Domain References
 
-- `{project-root}/_bmad/bam/data/agent-guides/bam/`
+- `{project-root}/_bmad/bam/data/domains/`
 - `{project-root}/_bmad/bam/data/bam-patterns.csv`

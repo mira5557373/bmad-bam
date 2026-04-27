@@ -49,11 +49,16 @@
   },
   "devDependencies": {
     "jest": "^29.7.0",
-    "js-yaml": "^4.1.0"
+    "js-yaml": "4.1.1"
   },
   "bmad": {
     "module": "bam",
-    "extends": ["bmm", "tea", "wds", "cis"],
+    "extends": [
+      "bmm",
+      "tea",
+      "wds",
+      "cis"
+    ],
     "version": "1.0.0",
     "type": "extension"
   }

@@ -31,7 +31,7 @@ Initialize the tenant onboarding design workflow by loading tenant model configu
 - Master Architecture document exists with tenant model decision
 - **Load patterns:** `{project-root}/_bmad/bam/data/bam-patterns.csv` → filter: tenant-lifecycle
 - **Load patterns:** `{project-root}/_bmad/bam/data/tenant-models.csv`
-- **Load guide:** `{project-root}/_bmad/bam/data/agent-guides/bam/tenant-onboarding-patterns.md`
+- **Load guide:** `{project-root}/_bmad/bam/data/domains/onboarding.md`
 
 ---
 

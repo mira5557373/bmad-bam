@@ -41,7 +41,7 @@ Apply the user's requested changes to the white-labeling design, validate consis
 
 - Step 10 completed: Existing document loaded, modifications identified
 - **Load patterns:** `{project-root}/_bmad/bam/data/bam-patterns.csv` → filter: `customization`
-- **Load guide:** `{project-root}/_bmad/bam/data/agent-guides/bam/white-labeling-guide.md`
+- **Load guide:** `{project-root}/_bmad/bam/data/domains/customization.md`
 
 ---
 

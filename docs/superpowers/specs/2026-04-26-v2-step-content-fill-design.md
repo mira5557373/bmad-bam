@@ -1,8 +1,8 @@
 # V2 Step Content Fill Design Spec
 
-**Version:** 7.1.0  
+**Version:** 7.3.0  
 **Date:** 2026-04-26  
-**Status:** VALIDATED - All patterns verified against official BMAD files
+**Status:** VALIDATED - All patterns verified against official BMAD files + V2 implementation alignment
 
 ## Summary
 
@@ -117,10 +117,10 @@ HALT and ask: `[A] Approve` | `[E] Edit` | `[V] Validate against QG-F1`
 module,skill,display-name,menu-code,description,action,args,phase,after,before,required,output-location,outputs
 ```
 
-**V2 BAM must add entries to `src/module-help.csv`:**
+**V2 BAM must add entries to `src-v2/module-help.csv`:**
 ```csv
-bam,bmad-bam-master-architecture,Master Architecture,ZMA,Create master architecture with tenant model,create,,3-solutioning,,,true,planning_artifacts,master-architecture.md
-bam,bmad-bam-tenant-isolation,Tenant Isolation,ZTI,Design tenant isolation model,create,,3-solutioning,bmad-bam-master-architecture,,true,planning_artifacts,tenant-isolation.md
+bam,bmad-bam-master-architecture,Master Architecture,ZM,Create master architecture with tenant model,create,,3-solutioning,,,true,planning_artifacts,master-architecture.md
+bam,bmad-bam-tenant-isolation,Tenant Isolation,ZT,Design tenant isolation model,create,,3-solutioning,bmad-bam-master-architecture,,true,planning_artifacts,tenant-isolation.md
 ```
 
 ### 5. Variable Substitution Patterns
@@ -179,13 +179,15 @@ module: bam
 
 ## On Activation
 
-### Step 1: Load Config
-Load from `{project-root}/_bmad/bam/config.yaml`:
-- `{tenant_model}` - pre-selected isolation model
-- `{ai_runtime}` - pre-selected AI framework
-- `{user_name}`, `{communication_language}`
+**Use the full 6-step activation sequence from Solution 1.**
 
-### Step 2: Load Persistent Facts
+### Step 1: Resolve the Workflow Block
+Run customization resolution script or manual merge.
+
+### Step 2: Execute Prepend Steps
+Execute `{workflow.activation_steps_prepend}` entries.
+
+### Step 3: Load Persistent Facts
 ```toml
 persistent_facts = [
   "file:{project-root}/_bmad/bam/data/domains/tenant.md",
@@ -194,8 +196,17 @@ persistent_facts = [
 ]
 ```
 
-### Step 3: Greet User
+### Step 4: Load Config
+Load from `{project-root}/_bmad/bam/config.yaml`:
+- `{tenant_model}` - pre-selected isolation model
+- `{ai_runtime}` - pre-selected AI framework
+- `{user_name}`, `{communication_language}`
+
+### Step 5: Greet User
 "Welcome {user_name}! Let's create your master architecture for multi-tenant SaaS."
+
+### Step 6: Execute Append Steps
+Execute `{workflow.activation_steps_append}` entries.
 
 ## Execution
 
@@ -242,29 +253,97 @@ on_complete = """
 Master architecture complete.
 
 **Next workflows:**
-- ZMO (bmad-bam-module-architecture) - Design individual modules
-- ZTI (bmad-bam-tenant-isolation) - Deep dive tenant isolation
-- ZAR (bmad-bam-agent-runtime) - Configure AI agent runtime
+- ZB (bmad-bam-module-architecture) - Design individual modules
+- ZT (bmad-bam-tenant-isolation) - Deep dive tenant isolation
+- ZR (bmad-bam-agent-runtime) - Configure AI agent runtime
 
-**Quality Gate:** Run ZVF (bmad-bam-validate-foundation) to verify QG-F1.
+**Quality Gate:** Run ZM with validate action to verify QG-F1.
 """
 
-# Menu items for this workflow
-[[workflow.menu]]
-code = "ZMA"
-name = "Create Master Architecture"
-action = "create"
-
-[[workflow.menu]]
-code = "ZMA-E"
-name = "Edit Master Architecture"
-action = "edit"
-
-[[workflow.menu]]
-code = "ZMA-V"
-name = "Validate Master Architecture"
-action = "validate"
+# NOTE: Menu items belong in AGENT customize.toml, NOT workflow customize.toml
+# See section 7a for agent menu pattern
 ```
+
+### 7a. Agent customize.toml Enhancement (Menu Items)
+
+**CRITICAL:** Official BMAD uses `[[agent.menu]]` in agent customize.toml files ONLY. Workflow customize.toml files do NOT have menu items.
+
+**BAM Agent customize.toml (extends bmad-agent-architect):**
+
+```toml
+# BAM Extension for bmad-agent-architect
+# File: {project-root}/_bmad/bam/config/agents/bmad-agent-architect.customize.toml
+
+[agent]
+
+# Activation context injection
+activation_steps_append = [
+  "BAM multi-tenant SaaS architecture capabilities are now available.",
+  "Use Z-prefixed menu codes (ZM, ZT, ZR, ZB, ZF, ZC, ZP) for BAM workflows.",
+]
+
+# Persistent facts for BAM context
+persistent_facts = [
+  "file:{project-root}/_bmad/bam/data/domains/tenant.md",
+  "file:{project-root}/_bmad/bam/data/domains/ai-runtime.md",
+  "file:{project-root}/_bmad/bam/data/domains/integration.md",
+]
+
+# BAM architectural principles
+principles = [
+  "BAM Rule: Every design decision must consider tenant isolation implications",
+  "BAM Rule: AI agent operations must be tenant-scoped by default",
+  "BAM Rule: Quality gates QG-F1, QG-M1-M3, QG-I1-I3, QG-P1 must pass before production",
+]
+
+# Core workflows (single-letter codes matching V2 implementation)
+[[agent.menu]]
+code = "ZM"
+description = "Master Architecture: Foundation design with tenant model (QG-F1)"
+skill = "bmad-bam-master-architecture"
+
+[[agent.menu]]
+code = "ZB"
+description = "Module Boundaries: Design module architecture (QG-M1)"
+skill = "bmad-bam-module-architecture"
+
+[[agent.menu]]
+code = "ZT"
+description = "Tenant Isolation: Design isolation model - RLS/Schema/Database (QG-M2)"
+skill = "bmad-bam-tenant-isolation"
+
+[[agent.menu]]
+code = "ZR"
+description = "Agent Runtime: AI orchestration with LangGraph/CrewAI/AutoGen (QG-M3)"
+skill = "bmad-bam-agent-runtime"
+
+[[agent.menu]]
+code = "ZF"
+description = "Facade Contract: Define module integration contracts (QG-I1)"
+skill = "bmad-bam-facade-contract"
+
+[[agent.menu]]
+code = "ZC"
+description = "Convergence: Verify integration safety (QG-I2/I3)"
+skill = "bmad-bam-convergence"
+
+[[agent.menu]]
+code = "ZP"
+description = "Production Readiness: Final validation (QG-P1)"
+skill = "bmad-bam-production-readiness"
+```
+
+**Official BMAD [[agent.menu]] Fields:**
+
+| Field | Required | Purpose | Example |
+|-------|----------|---------|---------|
+| `code` | Yes | Menu trigger code | `ZM` |
+| `description` | Yes | Human-readable description | `Create Master Architecture (QG-F1)` |
+| `skill` | Yes* | Skill to invoke | `bmad-bam-master-architecture` |
+| `prompt` | Yes* | Inline prompt (alternative to skill) | `"Create tenant model..."` |
+| `args` | No | Arguments to pass | `--mode edit` |
+
+*Either `skill` OR `prompt` is required, not both.
 
 ### 8. workflow.md Mode Router Enhancement
 
@@ -411,7 +490,7 @@ Every V2 skill must have corresponding module-help.csv entry:
 | module | Always `bam` | bam |
 | skill | Full skill name | bmad-bam-master-architecture |
 | display-name | Human name | Master Architecture |
-| menu-code | Z-prefixed code | ZMA |
+| menu-code | Z-prefixed code | ZM |
 | description | Brief purpose | Create master architecture |
 | action | Mode | create, edit, validate |
 | phase | BMAD phase | 3-solutioning |
@@ -420,17 +499,20 @@ Every V2 skill must have corresponding module-help.csv entry:
 | required | Mandatory | true |
 | output-location | Where output goes | planning_artifacts |
 | outputs | Output files | master-architecture.md |
-| keywords | Search terms | architecture,tenant,foundation |
 
-**Phase mapping for V2:**
+**Note:** Official BMAD uses 13 columns (no `keywords`). BAM V2 extends with `keywords` column for enhanced semantic search. This is a BAM-specific extension, not official BMAD.
 
-| BAM Domain | BMAD Phase |
-|------------|------------|
-| Foundation skills | 3-solutioning |
-| Module skills | 3-solutioning |
-| Integration skills | 4-implementation |
-| Validation skills | 5-quality |
-| Operations skills | 6-operations |
+**Phase mapping for V2 (corrected per Solution 7):**
+
+| BAM Domain | BMAD Phase | Notes |
+|------------|------------|-------|
+| Foundation skills | 3-solutioning | Create mode |
+| Module skills | 3-solutioning | Create mode |
+| Integration skills | 4-implementation | - |
+| Validation skills | 3-solutioning | action: validate (NOT 5-quality) |
+| Operations skills | anytime | (NOT 6-operations) |
+
+**Note:** BMAD has only 5 phases: `anytime`, `1-analysis`, `2-planning`, `3-solutioning`, `4-implementation`. Phases `5-quality` and `6-operations` do NOT exist.
 
 ---
 
@@ -444,7 +526,7 @@ Every V2 skill must have corresponding module-help.csv entry:
 | 2 | Output Document Frontmatter | Mentioned only | Full schema required | No state tracking between steps |
 | 3 | Script Integration | None | Python scripts for config | No dynamic customization |
 | 4 | Multi-Layer Merge Rules | Not specified | 4-layer with merge rules | Team/user customization broken |
-| 5 | Agent vs Workflow Menu | workflow.menu only | Both patterns needed | Extension menus missing |
+| 5 | Menu Location | workflow.menu (wrong) | agent.menu ONLY | Extension menus in wrong file |
 | 6 | module-help.csv Columns | 14 columns | 13 columns official | Extra column may break |
 | 7 | Phase Values | 6 phases | 5 official + anytime | Unknown phases |
 | 8 | Error Recovery | Not specified | Script fallback patterns | Workflow breaks on error |
@@ -651,13 +733,18 @@ if __name__ == "__main__":
 
 ---
 
-### Solution 5: Complete customize.toml Template
+### Solution 5: Complete Workflow customize.toml Template
+
+**IMPORTANT:** Workflow customize.toml does NOT contain menu items. Menu items belong in agent customize.toml (see section 7a).
 
 ```toml
 # BAM Workflow Customization for bmad-bam-{skill-name}
 #
 # Merge: {skill-root}/customize.toml → _bmad/custom/*.toml → *.user.toml
 # Rules: scalars override, tables deep-merge, arrays append
+#
+# NOTE: Menu items (Z-codes) are defined in AGENT customize.toml, NOT here.
+# See: _bmad/bam/config/agents/bmad-agent-architect.customize.toml
 
 [workflow]
 
@@ -690,25 +777,23 @@ Run: Z{code}-V to validate
 - Z{next2} - {description2}
 """
 
-# Workflow menu items (merged with agent.menu if extension)
-[[workflow.menu]]
-code = "Z{CODE}"
-name = "{Display Name}"
-action = "create"
-description = "{What it does}"
-
-[[workflow.menu]]
-code = "Z{CODE}-E"
-name = "Edit {Display Name}"
-action = "edit"
-description = "Modify existing {artifact}"
-
-[[workflow.menu]]
-code = "Z{CODE}-V"
-name = "Validate {Display Name}"
-action = "validate"
-description = "Run QG-{gate} validation"
+# Custom workflow-specific scalars (optional)
+# quality_gate = "QG-F1"
+# output_artifact = "master-architecture.md"
 ```
+
+**Valid Workflow customize.toml Fields:**
+
+| Field | Type | Purpose |
+|-------|------|---------|
+| `activation_steps_prepend` | Array | Steps before config load |
+| `activation_steps_append` | Array | Steps after greeting |
+| `persistent_facts` | Array | Context files to load |
+| `on_complete` | String | Completion message |
+| Custom scalars | String | Workflow-specific values |
+
+**NOT valid in workflow customize.toml:**
+- ~~`[[workflow.menu]]`~~ → Use `[[agent.menu]]` in agent customize.toml instead
 
 ---
 
@@ -718,10 +803,12 @@ description = "Run QG-{gate} validation"
 
 ```csv
 module,skill,display-name,menu-code,description,action,args,phase,after,before,required,output-location,outputs
-bam,bmad-bam-master-architecture,Master Architecture,ZMA,Create master architecture with tenant model,create,,3-solutioning,,,true,planning_artifacts,master-architecture.md
-bam,bmad-bam-master-architecture,Edit Master Architecture,ZMA-E,Modify existing master architecture,edit,,3-solutioning,bmad-bam-master-architecture:create,,false,planning_artifacts,master-architecture.md
-bam,bmad-bam-master-architecture,Validate Architecture,ZMA-V,Validate against QG-F1,validate,,3-solutioning,bmad-bam-master-architecture:create,,false,planning_artifacts,master-architecture-validation.md
+bam,bmad-bam-master-architecture,Master Architecture,ZM,Create master architecture with tenant model,create,,3-solutioning,,,true,planning_artifacts,master-architecture.md
+bam,bmad-bam-master-architecture,Edit Master Architecture,ZM,Modify existing master architecture,edit,,3-solutioning,bmad-bam-master-architecture:create,,false,planning_artifacts,master-architecture.md
+bam,bmad-bam-master-architecture,Validate Architecture,ZM,Validate against QG-F1,validate,,3-solutioning,bmad-bam-master-architecture:create,,false,planning_artifacts,master-architecture-validation.md
 ```
+
+**Note:** CEV modes (Create/Edit/Validate) use the same menu code (ZM). Mode is determined by `action` column or runtime selection.
 
 **Note:** Remove `keywords` column — not in official BMAD schema. Discovery relies on `description` field.
 
@@ -1384,6 +1471,38 @@ describe('V2 Step Content (BMAD-Compliant)', () => {
   // Validate A/P/C menus in create steps
   // Validate emoji usage in MANDATORY EXECUTION RULES
 });
+
+describe('V2 TOML Structure (BMAD-Compliant)', () => {
+  test('no [[workflow.menu]] in workflow customize.toml files', () => {
+    const workflowToml = glob.sync('src-v2/skills/*/customize.toml');
+    workflowToml.forEach(file => {
+      const content = fs.readFileSync(file, 'utf8');
+      expect(content).not.toContain('[[workflow.menu]]');
+      expect(content).not.toContain('[workflow.menu]');
+    });
+  });
+
+  test('[[agent.menu]] only in agent customize.toml files', () => {
+    const agentToml = glob.sync('src-v2/config/agents/*.customize.toml');
+    agentToml.forEach(file => {
+      const content = fs.readFileSync(file, 'utf8');
+      if (content.includes('[[agent.menu]]')) {
+        // Valid - agent files can have menu
+        expect(content).toContain('[agent]');
+      }
+    });
+  });
+
+  test('agent.menu uses correct fields (code, description, skill/prompt)', () => {
+    const agentToml = glob.sync('src-v2/config/agents/*.customize.toml');
+    agentToml.forEach(file => {
+      const content = fs.readFileSync(file, 'utf8');
+      // Should NOT use deprecated fields
+      expect(content).not.toMatch(/\[\[agent\.menu\]\][\s\S]*?name\s*=/);
+      expect(content).not.toMatch(/\[\[agent\.menu\]\][\s\S]*?action\s*=/);
+    });
+  });
+});
 ```
 
 ---
@@ -1422,28 +1541,31 @@ describe('V2 Step Content (BMAD-Compliant)', () => {
 
 ## What Changed from v6.0
 
-| v6.0 | v7.0 (Gap Analysis & Solutions) |
-|------|----------------------------------|
-| 10 integration patterns | +12 gap solutions with BMAD-verified fixes |
-| Simple 3-step activation | Full 6-step activation with script fallback |
-| Basic frontmatter mention | Complete frontmatter schema with state tracking |
-| No script integration | Python resolve_customization.py pattern |
-| Single-layer customize | 4-layer merge with documented rules |
-| workflow.menu only | Both agent.menu and workflow.menu patterns |
-| 14-column CSV | Corrected to official 13-column schema |
-| 6 phases assumed | Verified 5 phases + anytime |
-| No error recovery | Script fallback + QG 3-attempt recovery |
-| Basic Party Mode | Full subagent spawning with context building |
-| Simple context loading | Glob pattern project-context.md discovery |
-| 1 language variable | 3 language variables (communication, document, planning) |
-| 1 artifact location | 4 artifact location variables |
+| v6.0 | v7.0 (Gap Analysis & Solutions) | v7.2 (TOML Corrections) |
+|------|----------------------------------|-------------------------|
+| 10 integration patterns | +12 gap solutions with BMAD-verified fixes | TOML patterns verified against 30 official files |
+| Simple 3-step activation | Full 6-step activation with script fallback | - |
+| Basic frontmatter mention | Complete frontmatter schema with state tracking | - |
+| No script integration | Python resolve_customization.py pattern | - |
+| Single-layer customize | 4-layer merge with documented rules | - |
+| workflow.menu only | Both agent.menu and workflow.menu patterns | **FIXED:** agent.menu ONLY (workflow.menu doesn't exist) |
+| 14-column CSV | Corrected to official 13-column schema | - |
+| 6 phases assumed | Verified 5 phases + anytime | - |
+| No error recovery | Script fallback + QG 3-attempt recovery | - |
+| Basic Party Mode | Full subagent spawning with context building | - |
+| Simple context loading | Glob pattern project-context.md discovery | - |
+| 1 language variable | 3 language variables | - |
+| 1 artifact location | 4 artifact location variables | - |
+| - | - | Added section 7a: Agent customize.toml |
+| - | - | Fixed menu fields: code/description/skill (not name/action) |
+| - | - | Added TOML validation tests |
 
 **v7.0 Gap Solutions:**
 1. SKILL.md 6-step activation sequence with script resolution
 2. Output document frontmatter schema with state tracking
 3. Python script integration pattern (resolve_customization.py)
 4. 4-layer customization merge rules documented
-5. Complete customize.toml template with menu patterns
+5. Complete workflow customize.toml template (NO menu items - menus in agent TOML only)
 6. Corrected module-help.csv to 13 columns (removed keywords)
 7. Verified 5 official phases + anytime
 8. Error recovery patterns (script fallback, QG 3-attempt)
@@ -1451,6 +1573,20 @@ describe('V2 Step Content (BMAD-Compliant)', () => {
 10. Project context glob pattern loading
 11. Complete language variables (communication, document, planning)
 12. Complete artifact location variables (planning, implementation, knowledge)
+
+**v7.2 TOML Corrections:**
+1. Removed `[[workflow.menu]]` from all workflow customize.toml templates (doesn't exist in BMAD)
+2. Added section 7a: Agent customize.toml Enhancement with `[[agent.menu]]` pattern
+3. Fixed menu fields: code/description/skill (not name/action)
+4. Added TOML structure validation tests
+5. Clarified menu location: agent customize.toml ONLY
+
+**v7.3 V2 Implementation Alignment:**
+1. Fixed menu codes: ZMA→ZM, ZMO→ZB, ZTI→ZT, ZAR→ZR, ZFC→ZF, ZVC→ZC (match V2 impl)
+2. Fixed phase contradiction: Removed `5-quality`/`6-operations` from Section 10
+3. Clarified `keywords` as BAM extension (14 cols) vs BMAD standard (13 cols)
+4. Fixed Section 6 SKILL.md to show full 6-step activation
+5. Added V2 implementation validation evidence (40 total checks)
 
 ---
 
@@ -1466,6 +1602,8 @@ describe('V2 Step Content (BMAD-Compliant)', () => {
 | 6.0.0 | 2026-04-26 | **BMAD Ecosystem Integration:** Added 10 integration patterns (web queries, checkpoints, party mode, module help, variable substitution, SKILL.md/customize.toml/workflow.md enhancements, step navigation, module help CSV). Full seamless integration with existing BMAD method capabilities. |
 | 7.0.0 | 2026-04-26 | **Gap Analysis & Solutions:** Deep review against official BMAD files (SKILL.md, customize.toml, module-help.csv). Identified 12 critical gaps. Added solutions: 6-step activation sequence, frontmatter schema, script integration, 4-layer merge rules, corrected 13-column CSV, verified 5 phases, error recovery, subagent spawning, context glob patterns, 3 language variables, 4 artifact locations. |
 | 7.1.0 | 2026-04-26 | **Full Validation:** 30-point validation against official BMAD files. Corrected step file count (104→112), total lines (21,150→23,139), average (203→207). All patterns verified with grep/find commands against actual files. |
+| 7.2.0 | 2026-04-26 | **TOML Pattern Corrections:** (1) Removed incorrect `[[workflow.menu]]` from workflow customize.toml templates - this pattern doesn't exist in BMAD. (2) Added section 7a: Agent customize.toml Enhancement with official `[[agent.menu]]` pattern. (3) Fixed menu fields from name/action to code/description/skill per official BMAD. (4) Added TOML validation tests to prevent `[[workflow.menu]]` in workflow files. (5) Updated gap analysis table to reflect menu location fix. All patterns now verified against 30 official BMAD customize.toml files. |
+| 7.3.0 | 2026-04-26 | **V2 Implementation Alignment:** (1) Fixed menu codes from ZMA/ZMO/ZTI/etc. to ZM/ZT/ZR/ZB/ZF/ZC/ZP matching actual V2 impl and toml-transformation spec. (2) Fixed phase values contradiction - removed `5-quality`/`6-operations` from Section 10, added clarification these phases don't exist in BMAD. (3) Clarified `keywords` column as BAM extension (14 columns) vs official BMAD (13 columns). (4) Fixed Section 6 SKILL.md to reference full 6-step activation sequence. (5) Added V2 implementation validation evidence. |
 
 ---
 
@@ -1522,3 +1660,43 @@ All patterns in this spec were validated against actual BMAD method files on 202
 ```
 
 **All 20 validation checks PASSED. No fake patterns. All references point to real files.**
+
+### TOML Pattern Validation (v7.2)
+
+| # | Check | Command | Result |
+|---|-------|---------|--------|
+| 21 | No `[[workflow.menu]]` in official files | `grep -r "\[\[workflow.menu\]\]" external/bmad-method/src/` | 0 matches - pattern doesn't exist |
+| 22 | `[[agent.menu]]` in agent customize.toml | `grep -l "\[\[agent.menu\]\]" .../agents/*.customize.toml` | Found in 6 agent files |
+| 23 | Agent menu uses `code` field | `grep -A3 "\[\[agent.menu\]\]" .../customize.toml \| grep "code"` | All menus have code field |
+| 24 | Agent menu uses `description` field | `grep -A3 "\[\[agent.menu\]\]" .../customize.toml \| grep "description"` | All menus have description |
+| 25 | Agent menu uses `skill` or `prompt` | `grep -A5 "\[\[agent.menu\]\]" ... \| grep -E "skill\|prompt"` | All menus have skill or prompt |
+| 26 | No `name` field in agent.menu | `grep -A5 "\[\[agent.menu\]\]" ... \| grep "^name"` | 0 matches - not used |
+| 27 | No `action` field in agent.menu | `grep -A5 "\[\[agent.menu\]\]" ... \| grep "^action"` | 0 matches - not used |
+| 28 | Workflow TOML has `[workflow]` section | `grep "\[workflow\]" .../skills/*/customize.toml` | All workflow files have [workflow] |
+| 29 | Workflow TOML has `persistent_facts` | `grep "persistent_facts" .../skills/*/customize.toml` | Found in workflow files |
+| 30 | Workflow TOML has `on_complete` | `grep "on_complete" .../skills/*/customize.toml` | Found in workflow files |
+
+**All 30 validation checks PASSED. TOML patterns now match official BMAD structure.**
+
+### V2 Implementation Alignment Validation (v7.3)
+
+| # | Check | Command | Result |
+|---|-------|---------|--------|
+| 31 | V2 step file count | `find src-v2/skills -name "step-*.md" \| wc -l` | 300 files ✅ |
+| 32 | V2 current avg lines | `wc -l */steps/*.md \| tail -1` | 8,534 / 300 = 28.4 avg (stubs) |
+| 33 | Menu codes match V2 impl | `grep "^code = " src-v2/customize/bmad-agent-architect.toml` | ZM, ZT, ZR, ZB, ZF, ZC, ZP ✅ |
+| 34 | MANDATORY EXECUTION RULES | `grep -l "MANDATORY" src-v2/skills/*/steps/*.md \| wc -l` | 0 (needs fill) |
+| 35 | COLLABORATION MENUS (A/P/C) | `grep -l "COLLABORATION MENUS" src-v2/skills/*/steps/*.md \| wc -l` | 0 (needs fill) |
+| 36 | V2 customize TOML count | `ls src-v2/customize/*.toml \| wc -l` | 8 files ✅ |
+| 37 | V2 module.yaml valid | `cat src-v2/module.yaml` | Valid YAML, requires bmad>=6.4.0 ✅ |
+| 38 | toml-transformation alignment | Menu codes ZM/ZT/ZR vs spec | Now aligned ✅ |
+| 39 | Phase values corrected | Section 10 vs Solution 7 | No longer shows 5-quality/6-operations ✅ |
+| 40 | Activation steps complete | Section 6 SKILL.md | Now shows 6 steps ✅ |
+
+**V2 Implementation Status:**
+- **Structure:** Complete (30 workflows, 8 agent TOMLs, 300 step files)
+- **Content:** Stubs only (28 lines avg vs 170 target)
+- **BMAD Compliance:** 0% (no required sections)
+- **Gap:** ~42,600 lines to add
+
+**All 40 validation checks completed. Spec now fully aligned with V2 implementation and toml-transformation spec.**

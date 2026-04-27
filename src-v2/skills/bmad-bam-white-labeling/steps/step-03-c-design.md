@@ -34,7 +34,7 @@ Design the domain customization layer including custom domain mapping, SSL certi
 
 - Step 02 completed: Branding design established
 - **Load patterns:** `{project-root}/_bmad/bam/data/bam-patterns.csv` → filter: `customization`
-- **Load guide:** `{project-root}/_bmad/bam/data/agent-guides/bam/white-labeling-guide.md`
+- **Load guide:** `{project-root}/_bmad/bam/data/domains/customization.md`
 
 **Web Research (Required):**
 

@@ -29,7 +29,7 @@ Design trace propagation mechanisms including cross-agent context, tool executio
 
 - Step 2 completed: Trace schema designed
 - **Load patterns:** `{project-root}/_bmad/bam/data/bam-patterns.csv` -> filter: `tenant-context-propagation`, `distributed-tracing`
-- **Load guide:** `{project-root}/_bmad/bam/data/agent-guides/bam/context-propagation-patterns.md`
+- **Load guide:** `{project-root}/_bmad/bam/data/domains/observability.md`
 
 ---
 

@@ -37,7 +37,7 @@ Design the resource initialization process including storage provisioning, cache
 
 - Output from Step 2: Provisioning flow and saga design
 - Pattern registry: `{project-root}/_bmad/bam/data/bam-patterns.csv`
-- AI runtime guide: `{project-root}/_bmad/bam/data/agent-guides/bam/ai-runtime.md`
+- AI runtime guide: `{project-root}/_bmad/bam/data/domains/ai-runtime.md`
 
 ---
 

@@ -29,7 +29,7 @@ Design trace analysis capabilities including tenant-scoped search/filtering, lat
 
 - Step 3 completed: Trace propagation designed
 - **Load patterns:** `{project-root}/_bmad/bam/data/bam-patterns.csv` -> filter: `tenant-analytics`, `apm-integration`
-- **Load guide:** `{project-root}/_bmad/bam/data/agent-guides/bam/observability.md`
+- **Load guide:** `{project-root}/_bmad/bam/data/domains/observability.md`
 
 ---
 

@@ -34,7 +34,7 @@ Design the branding customization layer including logos, color schemes, custom C
 
 - Step 01 completed: Scope established
 - **Load patterns:** `{project-root}/_bmad/bam/data/bam-patterns.csv` → filter: `customization`
-- **Load guide:** `{project-root}/_bmad/bam/data/agent-guides/bam/white-labeling-guide.md`
+- **Load guide:** `{project-root}/_bmad/bam/data/domains/customization.md`
 
 **Web Research (Required):**
 
