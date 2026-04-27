@@ -43,9 +43,8 @@ Load the LLM versioning design document and all relevant quality gate checklists
 ## Prerequisites
 
 - LLM versioning design document exists
-- **Load checklist:** `{project-root}/_bmad/bam/data/checklists/qg-m3.md`
-- **Load checklist:** `{project-root}/_bmad/bam/data/checklists/qg-m3.md`
-- **Load checklist:** `{project-root}/_bmad/bam/data/checklists/qg-m3.md`
+- **Load checklist:** `{project-root}/_bmad/bam/data/checklists/qg-m3.md` (Agent Runtime Gate - covers LLM versioning)
+- **Load patterns:** `{project-root}/_bmad/bam/data/ai-runtimes.csv` (AI runtime decision criteria)
 
 ---
 
