@@ -37,7 +37,7 @@ Load the compliance design artifact and validation checklists to prepare for sys
 
 - Compliance design document exists (from Create or Edit mode)
 - **Load artifact:** `{output_folder}/planning-artifacts/compliance-design.md`
-- **Load checklist:** `{project-root}/_bmad/bam/data/checklists/production-readiness.md` (QG-P1)
+- **Load checklist:** `{project-root}/_bmad/bam/data/checklists/qg-p1.md` (QG-P1)
 - **Load checklist:** `{project-root}/_bmad/bam/data/checklists/compliance-continuous-verification.md` (QG-CC)
 - **Load patterns:** `{project-root}/_bmad/bam/data/compliance-frameworks.csv` (for validation criteria)
 

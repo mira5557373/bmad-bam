@@ -29,7 +29,7 @@ Load the production readiness report and QG-P1 quality gate checklist for formal
 
 - Existing production readiness report to validate
 - **Load patterns:** `{project-root}/_bmad/bam/data/bam-patterns.csv` → filter: production
-- **Load checklist:** `{project-root}/_bmad/bam/data/checklists/production-readiness.md`
+- **Load checklist:** `{project-root}/_bmad/bam/data/checklists/qg-p1.md`
 
 ---
 
@@ -64,12 +64,12 @@ If the file does not exist, inform the user and suggest switching to Create mode
 Load the production readiness checklist:
 
 ```
-{project-root}/_bmad/bam/data/checklists/production-readiness.md
+{project-root}/_bmad/bam/data/checklists/qg-p1.md
 ```
 
 | Checklist | Path | Status |
 |-----------|------|--------|
-| QG-P1 | `checklists/production-readiness.md` | Loaded/Missing |
+| QG-P1 | `checklists/qg-p1.md` | Loaded/Missing |
 
 ### 3. Load Prerequisite Gate Reports
 

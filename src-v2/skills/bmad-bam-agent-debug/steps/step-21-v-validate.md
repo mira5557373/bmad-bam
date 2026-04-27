@@ -33,7 +33,7 @@ Execute all QG-AI1 validation checks against the loaded debug report. Verify iss
 
 - Step 20 completed: Artifact loaded
 - **Load patterns:** `{project-root}/_bmad/bam/data/bam-patterns.csv` -> filter: `agent-safety`
-- **Load checklist:** `{project-root}/_bmad/bam/data/checklists/qg-i3-agent-safety.md`
+- **Load checklist:** `{project-root}/_bmad/bam/data/checklists/qg-i3.md`
 
 ---
 

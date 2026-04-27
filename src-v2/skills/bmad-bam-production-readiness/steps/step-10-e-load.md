@@ -28,7 +28,7 @@ Load the existing production readiness report for targeted modifications. Edit m
 
 - Existing production readiness report to modify
 - **Load patterns:** `{project-root}/_bmad/bam/data/bam-patterns.csv` → filter: production
-- **Load checklist:** `{project-root}/_bmad/bam/data/checklists/production-readiness.md`
+- **Load checklist:** `{project-root}/_bmad/bam/data/checklists/qg-p1.md`
 
 ---
 
@@ -61,7 +61,7 @@ If the file does not exist, inform the user and suggest switching to Create mode
 ### 2. Load Context Documents
 
 Also load for reference:
-- Production readiness checklist: `{project-root}/_bmad/bam/data/checklists/production-readiness.md`
+- Production readiness checklist: `{project-root}/_bmad/bam/data/checklists/qg-p1.md`
 - Convergence report: `{output_folder}/planning-artifacts/architecture/convergence-report.md`
 - Master architecture: `{output_folder}/planning-artifacts/architecture/master-architecture.md`
 

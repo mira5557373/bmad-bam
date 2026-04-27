@@ -31,7 +31,7 @@ Load agent tracing design specification for validation against quality gate crit
 
 - Artifact exists at `{output_folder}/planning-artifacts/agent-tracing-design.md`
 - **Load checklist:** `{project-root}/_bmad/bam/data/checklists/qg-m3.md`
-- **Load checklist:** `{project-root}/_bmad/bam/data/checklists/qg-i2-tenant-safety.md`
+- **Load checklist:** `{project-root}/_bmad/bam/data/checklists/qg-i2.md`
 
 ---
 

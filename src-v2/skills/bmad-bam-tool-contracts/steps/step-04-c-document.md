@@ -47,7 +47,7 @@ Design the tool execution environment including sandboxing, resource limits, tim
 - Step 03 completed: Tool registration designed
 - Tool schemas and permissions defined
 - **Load patterns:** `{project-root}/_bmad/bam/data/bam-patterns.csv` → filter: tool-execution
-- **Load checklist:** `{project-root}/_bmad/bam/data/checklists/qg-i3-agent-safety.md`
+- **Load checklist:** `{project-root}/_bmad/bam/data/checklists/qg-i3.md`
 
 ---
 

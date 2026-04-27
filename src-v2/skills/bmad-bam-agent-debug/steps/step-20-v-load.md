@@ -33,7 +33,7 @@ Load the existing agent debug report artifact from the output location. Extract 
 
 - Existing debug report to validate
 - **Load patterns:** `{project-root}/_bmad/bam/data/bam-patterns.csv` -> filter: `agent-safety`
-- **Load checklist:** `{project-root}/_bmad/bam/data/checklists/qg-i3-agent-safety.md`
+- **Load checklist:** `{project-root}/_bmad/bam/data/checklists/qg-i3.md`
 
 ---
 

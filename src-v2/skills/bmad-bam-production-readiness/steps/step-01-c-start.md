@@ -48,7 +48,7 @@ Initialize the production readiness assessment by loading all quality gate artif
 - All module gates passed: QG-M1, QG-M2, QG-M3
 - All convergence gates passed: QG-I1, QG-I2, QG-I3
 - **Load patterns:** `{project-root}/_bmad/bam/data/bam-patterns.csv` → filter: production
-- **Load checklist:** `{project-root}/_bmad/bam/data/checklists/production-readiness.md`
+- **Load checklist:** `{project-root}/_bmad/bam/data/checklists/qg-p1.md`
 
 ---
 
@@ -75,7 +75,7 @@ Load all prerequisite artifacts and verify gate status before establishing produ
 Load the QG-P1 production readiness checklist:
 
 ```
-{project-root}/_bmad/bam/data/checklists/production-readiness.md
+{project-root}/_bmad/bam/data/checklists/qg-p1.md
 ```
 
 Extract:
