@@ -261,3 +261,12 @@ Load decision criteria from pattern registry:
 **PASS CRITERIA:** All CRITICAL checkboxes pass, code ready to commit
 **OWNER:** Developer (individual contributor)
 **REVIEWERS:** Tech Lead, Security (for secrets-related failures)
+
+---
+
+## Change Log
+
+| Version | Date | Author | Changes |
+|---------|------|--------|---------|
+| 2.0.0 | 2026-04-27 | BAM V2 Migration | V2 BMAD format with full sections |
+| 1.0.0 | - | Platform Architect | Initial V1 checklist |

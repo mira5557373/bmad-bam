@@ -341,3 +341,12 @@ Load decision criteria from pattern registry:
 **PASS CRITERIA:** All critical failure scenarios tested, recovery verified, runbooks validated
 **OWNER:** SRE Lead / Reliability Engineering Lead
 **REVIEWERS:** Engineering, SRE, Platform Architecture, Security
+
+---
+
+## Change Log
+
+| Version | Date | Author | Changes |
+|---------|------|--------|---------|
+| 2.0.0 | 2026-04-27 | BAM V2 Migration | V2 BMAD format with full sections |
+| 1.0.0 | - | Platform Architect | Initial V1 checklist |

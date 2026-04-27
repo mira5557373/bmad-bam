@@ -1,7 +1,7 @@
 ---
 name: qg-tc3-e2e-test-coverage
 description: E2E test coverage gate - cross-tenant boundary tests, full flow verification, tenant switching scenarios
-category: quality-gate
+module: bam
 tags: [testing, quality-gate, multi-tenant, tea, e2e-test, cross-tenant, coverage]
 version: 2.0.0
 owner: TEA

@@ -294,3 +294,12 @@ Load decision criteria from pattern registry:
 **PASS CRITERIA:** Incident response procedures documented, on-call configured, postmortem process established
 **OWNER:** SRE Lead / Engineering Manager
 **REVIEWERS:** Engineering, SRE, Customer Success
+
+---
+
+## Change Log
+
+| Version | Date | Author | Changes |
+|---------|------|--------|---------|
+| 2.0.0 | 2026-04-27 | BAM V2 Migration | V2 BMAD format with full sections |
+| 1.0.0 | - | Platform Architect | Initial V1 checklist |

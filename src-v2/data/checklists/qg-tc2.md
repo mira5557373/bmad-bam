@@ -1,7 +1,7 @@
 ---
 name: qg-tc2-integration-test-coverage
 description: Integration test coverage gate - RLS policy tests, cross-module integration, database isolation
-category: quality-gate
+module: bam
 tags: [testing, quality-gate, multi-tenant, tea, integration-test, rls, coverage]
 version: 2.0.0
 owner: TEA

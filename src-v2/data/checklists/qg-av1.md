@@ -1,7 +1,7 @@
 ---
 name: qg-av1-api-versioning
 description: API versioning gate - versioning strategy, backward compatibility, deprecation policy
-category: quality-gate
+module: bam
 tags: [api, quality-gate, multi-tenant, versioning, compatibility]
 version: 2.0.0
 ---

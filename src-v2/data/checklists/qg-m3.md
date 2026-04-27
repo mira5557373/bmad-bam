@@ -1,7 +1,7 @@
 ---
 name: qg-m3-agent-runtime
 description: Agent Runtime Readiness quality gate validating AI runtime infrastructure and tool contracts
-category: quality-gate
+module: bam
 tags: [module, quality-gate, multi-tenant, agent-runtime, ai, tools]
 version: 2.0.0
 ---

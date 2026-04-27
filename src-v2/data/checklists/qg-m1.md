@@ -2,7 +2,7 @@
 name: qg-m1-module-architecture
 description: Module architecture validation gate ensuring bounded context, facade contracts, and sprint readiness
 module: bam
-version: "2.0"
+version: 2.0.0
 tags: [module, quality-gate, multi-tenant, architecture, ddd, sprint-readiness]
 secondary_gates: [QG-S1]
 ---
@@ -252,3 +252,12 @@ Load decision criteria and web search queries from pattern registry:
 **PASS CRITERIA:** All CRITICAL checkboxes completed, architecture implementable, module ready for sprint
 **OWNER:** BAM
 **REVIEWERS:** Platform Architect, Domain Expert, Tech Lead, Product Owner
+
+---
+
+## Change Log
+
+| Version | Date | Author | Changes |
+|---------|------|--------|---------|
+| 2.0.0 | 2026-04-27 | BAM V2 Migration | V2 BMAD format with full sections |
+| 1.0.0 | - | Platform Architect | Initial V1 checklist |

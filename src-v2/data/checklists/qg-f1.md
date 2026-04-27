@@ -230,3 +230,12 @@ Load decision criteria and web search queries from pattern registry:
 **PASS CRITERIA:** All CRITICAL checkboxes completed, foundation ready for module development
 **OWNER:** BAM (Platform Architect persona - Atlas)
 **REVIEWERS:** Platform Architect, Master Architect, Security Lead
+
+---
+
+## Change Log
+
+| Version | Date | Author | Changes |
+|---------|------|--------|---------|
+| 2.0.0 | 2026-04-27 | BAM V2 Migration | V2 BMAD format with full sections |
+| 1.0.0 | - | Platform Architect | Initial V1 checklist |

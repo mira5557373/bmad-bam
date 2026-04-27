@@ -1,7 +1,7 @@
 ---
 name: qg-ops-operations-continuous
 description: Operations continuous gate - monitoring, alerting, runbooks, post-deployment verification, SRE practices
-category: quality-gate
+module: bam
 tags: [operations, quality-gate, multi-tenant, monitoring, sre, post-deployment]
 version: 2.0.0
 ---

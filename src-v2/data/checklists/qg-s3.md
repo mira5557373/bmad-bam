@@ -393,3 +393,12 @@ Load decision criteria and web search queries from pattern registry:
 **PASS CRITERIA:** All CRITICAL checkboxes completed, required categories at threshold
 **OWNER:** Security Architecture
 **REVIEWERS:** CISO, Platform Engineering, Compliance
+
+---
+
+## Change Log
+
+| Version | Date | Author | Changes |
+|---------|------|--------|---------|
+| 2.0.0 | 2026-04-27 | BAM V2 Migration | V2 BMAD format with full sections |
+| 1.0.0 | - | Platform Architect | Initial V1 checklist |

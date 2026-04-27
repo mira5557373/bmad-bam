@@ -1,7 +1,7 @@
 ---
 name: qg-tc1-unit-test-coverage
 description: Unit test coverage gate - tenant context mocking, isolation verification, coverage thresholds
-category: quality-gate
+module: bam
 tags: [testing, quality-gate, multi-tenant, tea, unit-test, coverage]
 version: 2.0.0
 owner: TEA

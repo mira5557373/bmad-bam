@@ -1,7 +1,7 @@
 ---
 name: qg-rr1-research-report
 description: Research report gate - findings documentation, recommendations, validation
-category: quality-gate
+module: bam
 tags: [research, quality-gate, documentation, analysis]
 version: 2.0.0
 ---

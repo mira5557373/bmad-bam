@@ -1,7 +1,7 @@
 ---
 name: qg-wl1-white-labeling
 description: White labeling gate - branding customization, tenant theming, asset management
-category: quality-gate
+module: bam
 tags: [white-labeling, quality-gate, multi-tenant, branding, customization]
 version: 2.0.0
 ---
