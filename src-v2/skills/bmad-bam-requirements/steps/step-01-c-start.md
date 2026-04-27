@@ -2,20 +2,20 @@
 
 ## MANDATORY EXECUTION RULES (READ FIRST)
 
-- 🛑 **NEVER generate content without user input** - Wait for explicit direction
-- 📖 **CRITICAL: ALWAYS read the complete step file** before taking any action
-- 🔄 **CRITICAL: When loading next step with 'C'**, ensure entire file is read
+- 🛑 **NEVER skip source identification** - all requirements must have traceable origins
+- 📖 **CRITICAL: ALWAYS establish requirement ID scheme** before ingestion
+- 🔄 **CRITICAL: Include multi-tenant requirement category** - BAM-specific dimension
 - ⏸️ **ALWAYS pause after presenting findings** and await user direction
-- 🎯 **Focus ONLY on current step scope** - do not look ahead
+- 🎯 **IDENTIFY AI/agent requirements** - separate category for agent runtime needs
+- 📋 **VERIFY compliance requirements exist** - regulatory/security requirements
 
 ## EXECUTION PROTOCOLS
 
-- 🎯 Show your analysis before taking any action
-- 💾 Update document frontmatter after each section completion
-- 📝 Maintain append-only document building
-- ✅ Track progress in `stepsCompleted` array
-- 🔍 Use web search to verify current best practices when making decisions
-- 📎 Reference pattern registry `web_queries` for search topics
+- 🎯 Focus: Initialize requirements ingestion for QG-PL1 compliance
+- 💾 Track: `stepsCompleted: [1]` when complete
+- 📖 Context: Requirements feed master architecture (QG-F1)
+- 🔍 Use web search: Verify current best practices
+- ⚠️ Gate: QG-PL1 (Planning Gate) - all requirements need sources
 
 ---
 

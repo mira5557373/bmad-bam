@@ -2,20 +2,20 @@
 
 ## MANDATORY EXECUTION RULES (READ FIRST)
 
-- 🛑 **NEVER generate content without user input** - Wait for explicit direction
-- 📖 **CRITICAL: ALWAYS read the complete step file** before taking any action
-- 🔄 **CRITICAL: When loading next step with 'C'**, ensure entire file is read
+- 🛑 **NEVER proceed without verifying QG-PL1 checklist readiness**
+- 📖 **CRITICAL: ALWAYS verify source traceability** - every requirement must link to a source
+- 🔄 **CRITICAL: Check requirement ID uniqueness** - no duplicate IDs allowed
 - ⏸️ **ALWAYS pause after presenting findings** and await user direction
-- 🎯 **Focus ONLY on current step scope** - do not look ahead
+- 🎯 **FLAG any 'TBD' or placeholder content** - blocks QG-PL1 validation
+- 📋 **VERIFY multi-tenant and AI/agent coverage** - BAM-specific requirements
 
 ## EXECUTION PROTOCOLS
 
-- 🎯 Show your analysis before taking any action
-- 💾 Update document frontmatter after each section completion
-- 📝 Maintain append-only document building
-- ✅ Track progress in `stepsCompleted` array
-- 🔍 Use web search to verify current best practices when making decisions
-- 📎 Reference pattern registry `web_queries` for search topics
+- 🎯 Focus: Compile requirements document ready for QG-PL1 validation
+- 💾 Track: `stepsCompleted: [1, 2, 3, 4, 5]` when complete
+- 📖 Context: Final compilation before quality gate
+- 🔍 Use web search: Verify current best practices
+- ⚠️ Gate: QG-PL1 (Planning Gate) - validate before architecture
 
 ---
 
@@ -284,6 +284,26 @@ Select an option:
 
 ---
 
+## QG-PL1 Soft Gate Checkpoint
+
+Before completing Create mode, verify QG-PL1 readiness:
+
+| Category | Weight | Status |
+|----------|--------|--------|
+| Document Completeness (25%) | All 11 sections populated | [ ] |
+| Requirements Quality (30%) | Unique IDs, source traceability, measurable criteria | [ ] |
+| Multi-Tenant Coverage (20%) | Isolation, tiers, lifecycle requirements | [ ] |
+| AI/Agent Coverage (15%) | Runtime, context isolation, safety | [ ] |
+| Stakeholder Alignment (10%) | Reviews complete, sign-offs scheduled | [ ] |
+
+**CRITICAL Checks:**
+- [ ] No placeholder/TBD content remaining
+- [ ] All requirements have source references
+- [ ] Requirement IDs are unique across document
+- [ ] Multi-tenant requirements address all tiers
+
+---
+
 ## Create Mode Complete
 
 The requirements analysis document has been compiled and saved. 
@@ -292,5 +312,5 @@ The requirements analysis document has been compiled and saved.
 
 1. **Review:** Share with stakeholders for sign-off
 2. **Iterate:** Use Edit mode to incorporate feedback
-3. **Validate:** Run Validate mode before proceeding to architecture
-4. **Architecture:** Proceed to `bmad-bam-create-master-architecture` workflow
+3. **Validate:** Run Validate mode (QG-PL1) before proceeding to architecture
+4. **Architecture:** Proceed to `bmad-bam-create-master-architecture` workflow (requires QG-PL1 pass)
