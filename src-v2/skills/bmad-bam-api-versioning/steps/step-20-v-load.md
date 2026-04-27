@@ -30,7 +30,7 @@ Load the existing API versioning design artifact and validation checklist in pre
 ## Prerequisites
 
 - API versioning design artifact exists at `{output_folder}/planning-artifacts/api-versioning-design.md`
-- **Load checklist:** `{project-root}/_bmad/bam/data/checklists/api-versioning.md`
+- **Load checklist:** `{project-root}/_bmad/bam/data/checklists/qg-av1.md`
 - **Load patterns:** `{project-root}/_bmad/bam/data/bam-patterns.csv` --> filter: api-versioning
 
 ---
@@ -73,7 +73,7 @@ Load the API versioning design artifact created in Create mode. If the artifact 
 **Read and internalize validation criteria:**
 
 ```
-{project-root}/_bmad/bam/data/checklists/api-versioning.md
+{project-root}/_bmad/bam/data/checklists/qg-av1.md
 ```
 
 Extract the validation categories:

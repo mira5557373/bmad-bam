@@ -37,7 +37,7 @@ Load the data residency design artifact for validation against quality criteria 
 
 - Existing data residency design to validate
 - **Load patterns:** `{project-root}/_bmad/bam/data/bam-patterns.csv` → filter: data-residency
-- **Load checklist:** `{project-root}/_bmad/bam/data/checklists/data-residency-checklist.md`
+- **Load checklist:** `{project-root}/_bmad/bam/data/checklists/qg-dr.md`
 
 ---
 

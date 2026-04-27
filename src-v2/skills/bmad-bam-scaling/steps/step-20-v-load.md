@@ -38,7 +38,7 @@ Load the scaling design artifact and the associated quality gate checklist to pr
 
 - Scaling design document exists at: `{output_folder}/planning-artifacts/scaling-design.md`
 - Quality gate checklist available
-- **Load checklist:** `{project-root}/_bmad/bam/data/checklists/scaling-design.md`
+- **Load checklist:** `{project-root}/_bmad/bam/data/checklists/qg-cp1.md`
 - **Load patterns:** `{project-root}/_bmad/bam/data/bam-patterns.csv` → filter: `scaling-*`
 
 ---

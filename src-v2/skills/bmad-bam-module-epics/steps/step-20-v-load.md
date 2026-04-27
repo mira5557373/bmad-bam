@@ -30,7 +30,7 @@ Load the existing module epic document and validation checklist in preparation f
 ## Prerequisites
 
 - Epic document exists at `{output_folder}/planning-artifacts/modules/{module}/epics.md`
-- **Load checklist:** `{project-root}/_bmad/bam/data/checklists/epic-validation.md` (or equivalent)
+- **Load checklist:** `{project-root}/_bmad/bam/data/checklists/qg-m1.md` (or equivalent)
 - **Load patterns:** `{project-root}/_bmad/bam/data/bam-patterns.csv` → filter: epic-*
 
 ---

@@ -34,14 +34,14 @@ Load the requirements analysis artifact, verify all 11 required sections are pre
 
 - Requirements analysis has been executed (Create mode completed)
 - **Load patterns:** `{project-root}/_bmad/bam/data/bam-patterns.csv` -> filter: `requirements`
-- **Load checklist:** `{project-root}/_bmad/bam/data/checklists/requirements-checklist.md`
+- **Load checklist:** `{project-root}/_bmad/bam/data/checklists/qg-pl1.md`
 
 ---
 
 ## Inputs
 
 - Artifact file path for validation
-- Quality gate checklist: `{project-root}/_bmad/bam/data/checklists/requirements-checklist.md`
+- Quality gate checklist: `{project-root}/_bmad/bam/data/checklists/qg-pl1.md`
 - Pattern registry: `{project-root}/_bmad/bam/data/bam-patterns.csv`
 
 ---

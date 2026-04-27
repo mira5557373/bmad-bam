@@ -30,7 +30,7 @@ Load the event architecture document and all relevant validation checklists for 
 - Existing event architecture document to validate
 - **Load patterns:** `{project-root}/_bmad/bam/data/bam-patterns.csv` → filter: event-driven
 - **Load checklist:** `{project-root}/_bmad/bam/data/checklists/qg-m2.md`
-- **Load checklist:** `{project-root}/_bmad/bam/data/checklists/event-architecture.md`
+- **Load checklist:** `{project-root}/_bmad/bam/data/checklists/qg-m1.md`
 
 ---
 
@@ -66,8 +66,8 @@ Load relevant validation checklists:
 | Checklist | Path | Status |
 |-----------|------|--------|
 | QG-M2 (Tenant Isolation) | `checklists/qg-m2.md` | Loaded/Missing |
-| Event Architecture | `checklists/event-architecture.md` | Loaded/Missing |
-| CloudEvents Compliance | `checklists/cloudevents.md` | Loaded/Missing |
+| Event Architecture | `checklists/qg-m1.md` | Loaded/Missing |
+| CloudEvents Compliance | `checklists/qg-m1.md` | Loaded/Missing |
 
 ### 3. Load Supporting Documents
 

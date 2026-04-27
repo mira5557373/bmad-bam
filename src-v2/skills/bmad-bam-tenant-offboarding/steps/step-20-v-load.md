@@ -30,7 +30,7 @@ Load the tenant offboarding design document and all relevant compliance checklis
 - Existing offboarding design document to validate
 - **Load patterns:** `{project-root}/_bmad/bam/data/bam-patterns.csv` → filter: tenant-lifecycle
 - **Load patterns:** `{project-root}/_bmad/bam/data/compliance-frameworks.csv`
-- **Load checklist:** `{project-root}/_bmad/bam/data/checklists/tenant-lifecycle.md`
+- **Load checklist:** `{project-root}/_bmad/bam/data/checklists/qg-ops.md`
 
 ---
 

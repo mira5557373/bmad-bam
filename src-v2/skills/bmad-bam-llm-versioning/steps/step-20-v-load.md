@@ -95,15 +95,15 @@ Load all applicable quality gate checklists:
 |----------------|----------------|--------|
 | Model registry | `checklists/qg-m3.md` | YES/NO |
 | Version management | `checklists/qg-m3.md` | YES/NO |
-| Fallback configuration | `checklists/ai-fallback.md` | YES/NO |
+| Fallback configuration | `checklists/qg-ai1.md` | YES/NO |
 
 **QG-AI2: AI Operational Monitoring**
 
 | Check Category | Checklist Path | Loaded |
 |----------------|----------------|--------|
 | Quality metrics | `checklists/qg-m3.md` | YES/NO |
-| Cost tracking | `checklists/ai-cost.md` | YES/NO |
-| Observability | `checklists/ai-observability.md` | YES/NO |
+| Cost tracking | `checklists/qg-ai2.md` | YES/NO |
+| Observability | `checklists/qg-ai2.md` | YES/NO |
 
 ### 4. Identify Required Sections
 

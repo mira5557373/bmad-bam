@@ -31,7 +31,7 @@ Load the billing design artifact and validation checklist to prepare for systema
 ## Prerequisites
 
 - Billing design artifact exists at `{output_folder}/planning-artifacts/billing-design.md`
-- **Load checklist:** `{project-root}/_bmad/bam/data/checklists/billing-validation.md` (or equivalent)
+- **Load checklist:** `{project-root}/_bmad/bam/data/checklists/qg-bv1.md` (or equivalent)
 - **Load patterns:** `{project-root}/_bmad/bam/data/bam-patterns.csv` - filter: `billing-*`
 
 ## Actions

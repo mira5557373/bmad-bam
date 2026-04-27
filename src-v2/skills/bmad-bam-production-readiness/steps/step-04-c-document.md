@@ -46,7 +46,7 @@ Validate security hardening measures and compliance readiness for production dep
 
 - Step 03 completed: Observability analysis done
 - **Load patterns:** `{project-root}/_bmad/bam/data/bam-patterns.csv` → filter: security
-- **Load checklist:** `{project-root}/_bmad/bam/data/checklists/qg-security-continuous.md`
+- **Load checklist:** `{project-root}/_bmad/bam/data/checklists/qg-s4.md`
 
 ---
 

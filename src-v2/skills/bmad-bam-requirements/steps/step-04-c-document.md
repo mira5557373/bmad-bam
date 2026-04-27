@@ -30,7 +30,7 @@ Validate requirements completeness through gap analysis, ambiguity resolution, s
 - Step 3 completed (Map Requirements to Modules)
 - All requirements mapped to modules
 - **Load patterns:** `{project-root}/_bmad/bam/data/bam-patterns.csv` -> filter: `requirements`
-- **Load checklist:** `{project-root}/_bmad/bam/data/checklists/requirements-checklist.md`
+- **Load checklist:** `{project-root}/_bmad/bam/data/checklists/qg-pl1.md`
 
 ---
 

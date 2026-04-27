@@ -38,7 +38,7 @@ Validate the scaling design against the quality gate checklist, identifying comp
 
 - Step 20 complete with document and checklist loaded
 - Validation scope determined
-- **Reference checklist:** `{project-root}/_bmad/bam/data/checklists/scaling-design.md`
+- **Reference checklist:** `{project-root}/_bmad/bam/data/checklists/qg-cp1.md`
 
 **Web Research (For Critical Checks):**
 

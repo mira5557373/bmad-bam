@@ -26,7 +26,7 @@ Validate the requirements analysis document against QG-PL1 (Planning Gate) crite
 ## Prerequisites
 
 - Step 20 completed (Load Artifact)
-- **Load checklist:** `{project-root}/_bmad/bam/data/checklists/requirements-checklist.md`
+- **Load checklist:** `{project-root}/_bmad/bam/data/checklists/qg-pl1.md`
 - **Load patterns:** `{project-root}/_bmad/bam/data/bam-patterns.csv` -> filter: `requirements`
 
 ---

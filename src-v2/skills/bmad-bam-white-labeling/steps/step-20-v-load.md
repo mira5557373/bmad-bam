@@ -34,7 +34,7 @@ Load the existing white-labeling design artifact and prepare validation criteria
 
 - Existing white-labeling design to validate
 - **Load patterns:** `{project-root}/_bmad/bam/data/bam-patterns.csv` → filter: `customization`
-- **Load checklist:** `{project-root}/_bmad/bam/data/checklists/white-labeling-checklist.md` (if exists)
+- **Load checklist:** `{project-root}/_bmad/bam/data/checklists/qg-wl1.md` (if exists)
 
 ---
 

@@ -36,14 +36,14 @@ Load the existing tenant onboarding design artifact and prepare the validation c
 
 - Existing tenant onboarding design to validate
 - **Load patterns:** `{project-root}/_bmad/bam/data/bam-patterns.csv` → filter: tenant-lifecycle
-- **Load checklist:** `{project-root}/_bmad/bam/data/checklists/tenant-onboarding-checklist.md`
+- **Load checklist:** `{project-root}/_bmad/bam/data/checklists/qg-ops.md`
 
 ---
 
 ## Inputs
 
 - Document: `{output_folder}/planning-artifacts/tenant-onboarding-design.md`
-- Checklist: `{project-root}/_bmad/bam/data/checklists/tenant-onboarding-checklist.md`
+- Checklist: `{project-root}/_bmad/bam/data/checklists/qg-ops.md`
 - Quality gates: `{project-root}/_bmad/bam/data/quality-gates.csv`
 
 ---

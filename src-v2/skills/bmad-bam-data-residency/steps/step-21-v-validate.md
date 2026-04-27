@@ -37,7 +37,7 @@ Validate completeness and quality of the data residency design against establish
 
 - Step 20 completed: Artifact loaded
 - **Load patterns:** `{project-root}/_bmad/bam/data/bam-patterns.csv` → filter: data-residency
-- **Load checklist:** `{project-root}/_bmad/bam/data/checklists/data-residency-checklist.md`
+- **Load checklist:** `{project-root}/_bmad/bam/data/checklists/qg-dr.md`
 
 ---
 

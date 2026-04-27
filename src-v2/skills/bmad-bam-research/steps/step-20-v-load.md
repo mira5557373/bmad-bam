@@ -37,7 +37,7 @@ Load the research report and validation checklist to prepare for comprehensive q
 
 - Research report exists to validate
 - **Load patterns:** `{project-root}/_bmad/bam/data/bam-patterns.csv` → filter: technology-selection
-- **Load checklist:** `{project-root}/_bmad/bam/data/checklists/research-report.md`
+- **Load checklist:** `{project-root}/_bmad/bam/data/checklists/qg-rr1.md`
 
 ---
 

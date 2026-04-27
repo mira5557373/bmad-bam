@@ -41,7 +41,7 @@ Load all cross-module story artifacts, extract coordination metadata, load the a
 - Cross-module story artifact exists to validate
 - **Load patterns:** `{project-root}/_bmad/bam/data/bam-patterns.csv` → filter: module-boundaries
 - **Load patterns:** `{project-root}/_bmad/bam/data/bam-patterns.csv` → filter: facade-contracts
-- **Load checklist:** `{project-root}/_bmad/bam/data/checklists/cross-module-coordination.md`
+- **Load checklist:** `{project-root}/_bmad/bam/data/checklists/qg-i1.md`
 
 ---
 
