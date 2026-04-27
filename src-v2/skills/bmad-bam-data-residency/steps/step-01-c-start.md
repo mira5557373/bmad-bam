@@ -116,7 +116,7 @@ _Source: [URL]_
 - Compliance requirements matrix
 - Target region definitions
 - Initial data residency requirements
-- **Load template:** `{project-root}/_bmad/bam/data/templates/data-residency-template.md`
+- **Load template:** `{project-root}/_bmad/bam/data/templates/data-residency.md`
 
 ---
 

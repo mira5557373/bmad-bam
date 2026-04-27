@@ -28,7 +28,7 @@ Compile the complete compliance design document, integrating all previous steps 
 
 - Step 04 completed: Compliance monitoring designed
 - All previous step outputs available
-- **Load template:** `{project-root}/_bmad/bam/data/templates/compliance-design-template.md`
+- **Load template:** `{project-root}/_bmad/bam/data/templates/compliance-mapping.md`
 - **Load patterns:** `{project-root}/_bmad/bam/data/bam-patterns.csv` -> filter: `compliance`
 
 **Web Research (Required):**

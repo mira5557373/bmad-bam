@@ -28,7 +28,7 @@ Compile the complete data residency design document, consolidating all design de
 ## Prerequisites
 
 - Steps 1-4 completed with all design decisions
-- **Load template:** `{project-root}/_bmad/bam/data/templates/data-residency-template.md`
+- **Load template:** `{project-root}/_bmad/bam/data/templates/data-residency.md`
 
 ---
 

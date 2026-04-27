@@ -47,7 +47,7 @@ Design the memory isolation verification, audit logging, and compliance features
 - Tenant isolation strategy documented
 - **Load patterns:** `{project-root}/_bmad/bam/data/compliance-frameworks.csv`
 - **Load patterns:** `{project-root}/_bmad/bam/data/bam-patterns.csv` → filter: tenant-lifecycle
-- **Load template:** `{project-root}/_bmad/bam/data/templates/memory-isolation-template.md`
+- **Load template:** `{project-root}/_bmad/bam/data/templates/memory-tier.md`
 
 **Web Research (Required):**
 

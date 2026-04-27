@@ -168,7 +168,7 @@ credit:
 8. Notify customer
 
 **Dispute Handling:**
-- **Load template:** `{project-root}/_bmad/bam/data/templates/billing-disputes-template.md`
+- **Load template:** `{project-root}/_bmad/bam/data/templates/billing-design.md`
 - Track dispute status from payment provider webhooks
 - Provide evidence submission workflow
 - Handle dispute resolution outcomes

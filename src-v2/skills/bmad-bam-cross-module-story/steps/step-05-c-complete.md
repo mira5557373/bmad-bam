@@ -31,7 +31,7 @@ Compile all cross-module story artifacts into a comprehensive epic document, gen
 - All module touchpoints mapped
 - Integration stories defined
 - Dependencies coordinated
-- **Load template:** `{project-root}/_bmad/bam/data/templates/cross-module-story-template.md`
+- **Load template:** `{project-root}/_bmad/bam/data/templates/cross-module-story.md`
 
 ---
 

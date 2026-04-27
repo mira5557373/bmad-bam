@@ -27,7 +27,7 @@ tags: [workflow]
 - **Load patterns:** `{project-root}/_bmad/bam/data/bam-patterns.csv` → filter: tenant-lifecycle
 - **Load patterns:** `{project-root}/_bmad/bam/data/tenant-models.csv`
 - **Load patterns:** `{project-root}/_bmad/bam/data/compliance-frameworks.csv`
-- **Load template:** `{project-root}/_bmad/bam/data/templates/offboarding-runbook-template.md`
+- **Load template:** `{project-root}/_bmad/bam/data/templates/tenant-offboarding.md`
 
 ## Outputs
 
@@ -37,7 +37,7 @@ tags: [workflow]
 - Complete state machine diagram
 - Compliance verification checklist
 - Rollback procedures
-- **Load template:** `{project-root}/_bmad/bam/data/templates/offboarding-runbook-template.md`
+- **Load template:** `{project-root}/_bmad/bam/data/templates/tenant-offboarding.md`
 
 ## Related Workflows
 

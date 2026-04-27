@@ -35,7 +35,7 @@ tags: [workflow]
 - Implementation roadmap
 - Risk assessment matrix
 - Quality gate alignment matrix
-- **Load template:** `{project-root}/_bmad/bam/data/templates/event-driven-design-template.md`
+- **Load template:** `{project-root}/_bmad/bam/data/templates/event-architecture.md`
 
 ## Related Workflows
 

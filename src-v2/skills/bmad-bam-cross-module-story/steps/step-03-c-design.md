@@ -39,7 +39,7 @@ Design integration stories by splitting work along module boundaries, verifying 
 - Facade invocation order matrix
 - Event flow map
 - Pattern registry: `{project-root}/_bmad/bam/data/bam-patterns.csv`
-- **Load template:** `{project-root}/_bmad/bam/data/templates/cross-module-story-template.md`
+- **Load template:** `{project-root}/_bmad/bam/data/templates/cross-module-story.md`
 
 ---
 
