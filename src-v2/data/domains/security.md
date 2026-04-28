@@ -169,3 +169,185 @@ prg_automation:
 - Search: "production readiness checklist AI systems {date}"
 - Search: "deployment gate best practices {date}"
 - Search: "AI compliance production requirements {date}"
+
+---
+
+## AI-Specific Security
+
+### Prompt Injection Prevention
+
+| Attack Type | Detection Method | Mitigation |
+|-------------|------------------|------------|
+| Direct injection | Pattern matching, classifier | Input sanitization, hard block |
+| Indirect injection | Output analysis, canary tokens | Response filtering, flag |
+| Jailbreak attempts | Behavior classifier | Model refusal, alert |
+| Data extraction | Output scanning | PII filter, truncation |
+
+### Detection Flow
+
+```
+User Input
+    │
+    ▼
+┌─────────────┐     ┌─────────────┐     ┌─────────────┐
+│  Pattern    │────▶│  Classifier │────▶│  Canary     │
+│  Matching   │     │  Model      │     │  Token      │
+└─────────────┘     └─────────────┘     └─────────────┘
+    │                     │                   │
+    ▼                     ▼                   ▼
+ Known patterns      Behavior score      Token in output?
+    │                     │                   │
+    └─────────────────────┴───────────────────┘
+                          │
+                          ▼
+                   Risk Score > Threshold?
+                          │
+              ┌───────────┴───────────┐
+             YES                      NO
+              │                        │
+              ▼                        ▼
+         Block + Alert            Process
+```
+
+### AI Red Teaming Checklist
+
+- [ ] Test known prompt injection patterns
+- [ ] Attempt jailbreak techniques
+- [ ] Test data extraction attempts
+- [ ] Verify PII detection in outputs
+- [ ] Test budget limit bypass attempts
+- [ ] Test kill switch response time
+- [ ] Test tool permission boundaries
+- [ ] **CRITICAL:** No unauthorized data access via AI
+
+### LLM Security Controls
+
+```yaml
+llm_security:
+  input_controls:
+    max_input_tokens: 4096
+    sanitization_enabled: true
+    injection_classifier: true
+    
+  output_controls:
+    pii_detection: true
+    pii_action: enum[redact, block, flag]
+    max_output_tokens: 4096
+    response_filtering: true
+    
+  execution_controls:
+    token_budget_per_request: int
+    cost_limit_per_tenant: float
+    kill_switch_enabled: true
+    kill_switch_latency_ms: 100
+    
+  audit:
+    log_all_interactions: true
+    log_prompts: bool  # Configurable for compliance
+    retention_days: 90
+```
+
+---
+
+## Threat Modeling Integration
+
+### STRIDE Analysis per Component
+
+| Component | S | T | R | I | D | E | Priority |
+|-----------|---|---|---|---|---|---|----------|
+| API Gateway | ● | ● | ○ | ● | ○ | ● | High |
+| Auth Service | ● | ● | ● | ● | ● | ○ | Critical |
+| Tenant Service | ● | ○ | ● | ● | ● | ○ | Critical |
+| Database | ● | ● | ○ | ● | ● | ○ | Critical |
+| AI Agent | ● | ● | ● | ● | ● | ● | Critical |
+| Cache | ● | ○ | ○ | ● | ● | ○ | Medium |
+
+Legend: ● = Applicable threat, ○ = Lower risk
+
+### Attack Tree Methodology
+
+```
+Goal: Access other tenant's data
+├── Via Application
+│   ├── IDOR vulnerability
+│   │   └── Mitigation: Tenant context validation
+│   ├── SQL injection
+│   │   └── Mitigation: Parameterized queries + RLS
+│   └── Business logic bypass
+│       └── Mitigation: Authorization checks
+├── Via AI Agent
+│   ├── Prompt injection
+│   │   └── Mitigation: Input sanitization
+│   ├── Tool permission bypass
+│   │   └── Mitigation: Scoped tool access
+│   └── Memory leak
+│       └── Mitigation: Isolated memory per tenant
+└── Via Infrastructure
+    ├── Network sniffing
+    │   └── Mitigation: mTLS everywhere
+    └── Database access
+        └── Mitigation: RLS + encryption
+```
+
+### Threat-to-Control Mapping
+
+| Threat | Control | Implementation | Verification |
+|--------|---------|----------------|--------------|
+| Cross-tenant access | RLS | PostgreSQL policies | Integration tests |
+| Prompt injection | Input filter | Classifier + rules | Red team exercise |
+| Data exfiltration | Output filter | PII detection | Output scanning |
+| Privilege escalation | RBAC | Role checks | Access audit |
+
+---
+
+## Security Operations
+
+### Vulnerability Management
+
+```
+CVE Discovered
+      │
+      ▼
+┌─────────────┐     ┌─────────────┐     ┌─────────────┐
+│  Assess     │────▶│  Prioritize │────▶│  Patch      │
+│  Impact     │     │  by Tenant  │     │  Deploy     │
+└─────────────┘     └─────────────┘     └─────────────┘
+      │                   │                   │
+      ▼                   ▼                   ▼
+  CVSS score         Tenant tier          Rollout plan
+  + exploitability   + data sensitivity   + monitoring
+```
+
+### Patch Priority Matrix
+
+| CVSS Score | Exploitable | Enterprise Tenants | Patch Window |
+|------------|-------------|-------------------|--------------|
+| 9.0+ | Yes | Yes | 24 hours |
+| 9.0+ | Yes | No | 72 hours |
+| 7.0-8.9 | Yes | Any | 1 week |
+| 7.0-8.9 | No | Any | 2 weeks |
+| <7.0 | Any | Any | Next release |
+
+### Penetration Testing Scope
+
+**Multi-Tenant Specific Tests:**
+- [ ] Cross-tenant data access attempts
+- [ ] Tenant ID manipulation
+- [ ] Shared resource isolation
+- [ ] Cache poisoning across tenants
+- [ ] AI agent tenant boundary testing
+
+**AI Component Tests:**
+- [ ] Prompt injection (all known techniques)
+- [ ] Model extraction attempts
+- [ ] Training data extraction
+- [ ] Output manipulation
+- [ ] Budget exhaustion attacks
+
+---
+
+## Pattern References (Enhanced)
+
+- **Zero Trust:** `{project-root}/_bmad/bam/data/patterns/zero-trust.md`
+- **Secrets:** `{project-root}/_bmad/bam/data/patterns/secrets-management.md`
+- **Incident:** `{project-root}/_bmad/bam/data/patterns/incident-response.md`
