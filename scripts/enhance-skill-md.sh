@@ -1,43 +1,37 @@
----
-name: bmad-bam-research
-description: 'Research best practices and patterns'
-module: bam
-tags: [workflow]
----
+#!/bin/bash
+# Enhance SKILL.md files with 6-step activation sequence
 
-# Research
+SKILL_DIR="$1"
+if [ -z "$SKILL_DIR" ]; then
+  echo "Usage: $0 <skill-directory>"
+  exit 1
+fi
 
-## Modes
+SKILL_FILE="$SKILL_DIR/SKILL.md"
+if [ ! -f "$SKILL_FILE" ]; then
+  echo "SKILL.md not found in $SKILL_DIR"
+  exit 1
+fi
 
-| Mode | Purpose | Steps |
-|------|---------|-------|
-| Create | Generate new | step-01-c to step-05-c |
-| Edit | Modify existing | step-10-e to step-11-e |
-| Validate | Check criteria | step-20-v to step-22-v |
+# Extract skill name from directory
+SKILL_NAME=$(basename "$SKILL_DIR")
 
-## Overview
+# Check if already has On Activation
+if grep -q "## On Activation" "$SKILL_FILE"; then
+  echo "Already has activation sequence: $SKILL_FILE"
+  exit 0
+fi
 
- Initialize the technology research scope by loading architecture constraints, identifying research areas, and establishing evaluation criteria for frameworks, services, and patterns. 
+# Find the line after "## Domain References" or end of file
+INSERTION_POINT=$(grep -n "^## Domain References" "$SKILL_FILE" | head -1 | cut -d: -f1)
 
-## Prerequisites
+if [ -z "$INSERTION_POINT" ]; then
+  # No Domain References, append at end
+  INSERTION_POINT=$(wc -l < "$SKILL_FILE")
+fi
 
-
-- Master architecture exists or architecture constraints defined
-- **Load patterns:** `{project-root}/_bmad/bam/data/bam-patterns.csv` → filter: technology-selection
-- **Load patterns:** `{project-root}/_bmad/bam/data/ai-runtimes.csv` (if AI/ML research)
-- **Load patterns:** `{project-root}/_bmad/bam/data/tenant-models.csv` (if tenant technology research)
-
-## Outputs
-
-
-- Complete research report: `{output_folder}/planning-artifacts/research-report.md`
-- ADR (optional): `{output_folder}/planning-artifacts/decisions/{topic}-adr.md`
-
-## Related Workflows
-
-- `bmad-bam-master-architecture`
-- `bmad-bam-module-architecture`
-
+# Create the activation section
+ACTIVATION_SECTION=$(cat << 'ACTIVATION'
 
 ## On Activation
 
@@ -82,8 +76,15 @@ Greet `{user_name}`, speaking in `{communication_language}`.
 Execute each entry in `{workflow.activation_steps_append}` in order.
 
 Activation complete. Begin execution by reading `workflow.md`.
+ACTIVATION
+)
 
-## Domain References
+# Insert before Domain References (or at end)
+{
+  head -n "$((INSERTION_POINT - 1))" "$SKILL_FILE"
+  echo "$ACTIVATION_SECTION"
+  echo ""
+  tail -n "+$INSERTION_POINT" "$SKILL_FILE"
+} > "$SKILL_FILE.tmp" && mv "$SKILL_FILE.tmp" "$SKILL_FILE"
 
-- `{project-root}/_bmad/bam/data/domains/`
-- `{project-root}/_bmad/bam/data/bam-patterns.csv`
+echo "Enhanced: $SKILL_FILE"
