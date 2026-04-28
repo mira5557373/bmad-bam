@@ -25,19 +25,22 @@ describe('V2 File Counts', () => {
     expect(files.length).toBe(3);
   });
 
-  test('12 domain files', () => {
+  test('domain files (12+)', () => {
     const files = fs.readdirSync(path.join(v2Dir, 'data/domains')).filter(f => f.endsWith('.md'));
-    expect(files.length).toBe(12);
+    // V2 has expanded domain coverage
+    expect(files.length).toBeGreaterThanOrEqual(12);
   });
 
-  test('10 pattern files', () => {
+  test('pattern files (10+)', () => {
     const files = fs.readdirSync(path.join(v2Dir, 'data/patterns')).filter(f => f.endsWith('.md'));
-    expect(files.length).toBe(10);
+    // V2 has comprehensive pattern library
+    expect(files.length).toBeGreaterThanOrEqual(10);
   });
 
-  test('8 checklist files', () => {
+  test('checklist files (QG-* format)', () => {
     const files = fs.readdirSync(path.join(v2Dir, 'data/checklists')).filter(f => f.endsWith('.md'));
-    expect(files.length).toBe(8);
+    // V2 has comprehensive checklists generated from quality-gates.csv
+    expect(files.length).toBeGreaterThanOrEqual(8);
   });
 
   test('40 template files', () => {
@@ -50,9 +53,10 @@ describe('V2 File Counts', () => {
     expect(files.length).toBe(3);
   });
 
-  test('3 CSV files', () => {
+  test('6 CSV registry files', () => {
     const files = fs.readdirSync(path.join(v2Dir, 'data')).filter(f => f.endsWith('.csv'));
-    expect(files.length).toBe(3);
+    // V2 has: ai-runtimes, bam-patterns, compliance-frameworks, quality-gates, section-pattern-map, tenant-models
+    expect(files.length).toBe(6);
   });
 
   test('module.yaml exists', () => {

@@ -105,6 +105,20 @@ _Source: [URL]_ for key findings.
 
 ---
 
+## Verification Checklist
+
+- [ ] SLO targets defined and measured
+- [ ] DR drill completed successfully
+- [ ] Compliance evidence collected
+- [ ] Observability stack operational
+- [ ] Deployment pipeline tested
+- [ ] Security sign-off obtained
+- [ ] Runbooks validated
+- [ ] On-call rotation established
+- [ ] Rollback procedure tested
+
+---
+
 ## Gate Decision
 
 **QG-P1 Result:** PASS/CONDITIONAL/FAIL

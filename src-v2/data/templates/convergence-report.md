@@ -108,6 +108,20 @@ _Source: [URL]_ for key findings.
 
 ---
 
+## Verification Checklist
+
+- [ ] QG-I1 facade compatibility verified
+- [ ] QG-I1 event schemas aligned
+- [ ] QG-I1 integration tests passing
+- [ ] QG-I2 tenant isolation verified
+- [ ] QG-I2 audit trail complete
+- [ ] QG-I3 agent safety tests passing
+- [ ] QG-I3 adversarial tests completed
+- [ ] All critical issues resolved
+- [ ] Gate decisions documented
+
+---
+
 ## Gate Decision
 
 | Gate | Result | Notes |

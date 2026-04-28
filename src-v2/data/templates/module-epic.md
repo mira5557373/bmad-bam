@@ -76,6 +76,27 @@ Document module epic for sprint planning
 
 ---
 
+## Web Research Queries
+
+- "agile epic planning best practices {date}"
+- "user story acceptance criteria {date}"
+- "multi-tenant feature planning {date}"
+
+_Source: [URL]_ for key findings.
+
+---
+
+## Verification Checklist
+
+- [ ] Epic overview documented
+- [ ] All stories defined with points
+- [ ] Acceptance criteria in Given/When/Then format
+- [ ] Dependencies identified
+- [ ] Risks assessed with mitigations
+- [ ] Definition of done aligned with QG gates
+
+---
+
 ## Change Log
 
 | Version | Date | Author | Changes |

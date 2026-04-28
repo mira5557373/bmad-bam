@@ -88,6 +88,28 @@ Document quality gate validation results
 
 ---
 
+## Web Research Queries
+
+- "software quality gate validation {date}"
+- "release readiness criteria {date}"
+- "multi-tenant validation patterns {date}"
+
+_Source: [URL]_ for key findings.
+
+---
+
+## Verification Checklist
+
+- [ ] All critical checks executed
+- [ ] All non-critical checks executed
+- [ ] Evidence collected for each check
+- [ ] Issues documented with severity
+- [ ] Recommendations provided
+- [ ] Gate decision documented
+- [ ] Sign-off obtained
+
+---
+
 ## Change Log
 
 | Version | Date | Author | Changes |
