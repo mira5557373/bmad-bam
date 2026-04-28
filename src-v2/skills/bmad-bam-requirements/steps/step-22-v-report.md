@@ -199,6 +199,23 @@ Generate validation report with the following sections:
 
 ---
 
+
+---
+
+## SUCCESS METRICS:
+
+- [ ] Artifact loaded for validation
+- [ ] All checklist items evaluated
+- [ ] Evidence documented for each check
+- [ ] Gate decision determined (PASS/CONDITIONAL/FAIL)
+- [ ] Validation report generated
+
+## FAILURE MODES:
+
+- **Artifact not found:** Cannot validate - run Create mode first
+- **Missing checklist:** Use embedded criteria as fallback
+- **Ambiguous evidence:** Mark as CONDITIONAL, document uncertainty
+
 ## Next Steps
 
 ### If PASS:

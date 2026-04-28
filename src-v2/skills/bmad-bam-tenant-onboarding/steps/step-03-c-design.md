@@ -234,6 +234,24 @@ Ask for confirmation before proceeding to onboarding validation design.
 
 ---
 
+
+---
+
+## SUCCESS METRICS:
+
+- [ ] All required inputs gathered from user
+- [ ] Design decisions documented with rationale
+- [ ] User confirmed choices via A/P/C menu
+- [ ] Output artifact updated with step content
+- [ ] Frontmatter stepsCompleted updated
+
+## FAILURE MODES:
+
+- **Missing input:** Cannot proceed without required context - return to prerequisites
+- **Unclear requirements:** Use Advanced Elicitation (A) to clarify
+- **Conflicting constraints:** Use Party Mode (P) for multi-perspective analysis
+- **User rejects output:** Iterate on design, do not force acceptance
+
 ## Next Step
 
 Proceed to `step-04-c-document.md` to design onboarding validation.

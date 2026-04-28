@@ -212,6 +212,23 @@ Select an option:
 
 ---
 
+
+---
+
+## SUCCESS METRICS:
+
+- [ ] Artifact loaded for validation
+- [ ] All checklist items evaluated
+- [ ] Evidence documented for each check
+- [ ] Gate decision determined (PASS/CONDITIONAL/FAIL)
+- [ ] Validation report generated
+
+## FAILURE MODES:
+
+- **Artifact not found:** Cannot validate - run Create mode first
+- **Missing checklist:** Use embedded criteria as fallback
+- **Ambiguous evidence:** Mark as CONDITIONAL, document uncertainty
+
 ## Next Step
 
 Proceed to `step-22-v-report.md` to generate the validation report.
