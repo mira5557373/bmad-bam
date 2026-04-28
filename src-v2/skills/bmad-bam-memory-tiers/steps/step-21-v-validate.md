@@ -19,6 +19,17 @@
 
 ---
 
+
+## CONTEXT BOUNDARIES:
+
+**IN SCOPE for this step:**
+- Loading artifact and checklist
+- Evaluating against criteria
+- Documenting evidence
+
+**OUT OF SCOPE:**
+- Modifying the artifact
+- Creating new content
 ## Purpose
 
 Execute comprehensive validation checks against QG-M3 (Agent Runtime) quality gate criteria. Document all findings for report generation.

@@ -20,6 +20,17 @@
 
 ---
 
+
+## CONTEXT BOUNDARIES:
+
+**IN SCOPE for this step:**
+- Loading existing artifact
+- Applying user-requested changes
+- Preserving existing content
+
+**OUT OF SCOPE:**
+- Creating new artifacts (use Create mode)
+- Validation (use Validate mode)
 ## Purpose
 
 Apply the identified changes to the existing epic document. Changes are applied incrementally while preserving document structure, maintaining tenant context in all stories, updating sprint allocation as needed, and ensuring consistency across all sections.

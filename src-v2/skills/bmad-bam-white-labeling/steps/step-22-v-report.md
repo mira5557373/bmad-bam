@@ -18,6 +18,17 @@
 
 ---
 
+
+## CONTEXT BOUNDARIES:
+
+**IN SCOPE for this step:**
+- Loading artifact and checklist
+- Evaluating against criteria
+- Documenting evidence
+
+**OUT OF SCOPE:**
+- Modifying the artifact
+- Creating new content
 ## Purpose
 
 Generate a comprehensive validation report documenting all findings and the quality gate decision for the white-labeling design.

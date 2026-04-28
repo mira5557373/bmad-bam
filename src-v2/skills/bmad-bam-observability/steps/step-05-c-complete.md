@@ -19,6 +19,18 @@
 
 ---
 
+
+## CONTEXT BOUNDARIES:
+
+**IN SCOPE for this step:**
+- Gathering required inputs for this step
+- Making design decisions within step scope
+- Documenting decisions with rationale
+
+**OUT OF SCOPE:**
+- Decisions from other steps
+- Implementation details
+- Validation (separate mode)
 ## Purpose
 
 Compile the complete observability design by defining dashboard templates by tier, alerting strategy with tenant context, SLO definitions per tier, and generating the final output artifact.

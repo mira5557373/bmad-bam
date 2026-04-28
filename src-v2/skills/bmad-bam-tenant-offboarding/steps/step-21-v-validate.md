@@ -19,6 +19,17 @@
 
 ---
 
+
+## CONTEXT BOUNDARIES:
+
+**IN SCOPE for this step:**
+- Loading artifact and checklist
+- Evaluating against criteria
+- Documenting evidence
+
+**OUT OF SCOPE:**
+- Modifying the artifact
+- Creating new content
 ## Purpose
 
 Execute formal validation of the offboarding design against compliance requirements (GDPR, CCPA) and operational best practices. This step systematically checks each criterion and documents evidence.

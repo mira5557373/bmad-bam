@@ -25,6 +25,17 @@
 
 ---
 
+
+## CONTEXT BOUNDARIES:
+
+**IN SCOPE for this step:**
+- Loading existing artifact
+- Applying user-requested changes
+- Preserving existing content
+
+**OUT OF SCOPE:**
+- Creating new artifacts (use Create mode)
+- Validation (use Validate mode)
 ## YOUR TASK
 
 Load the existing billing design document, parse its metering infrastructure and subscription management structure, extract the current tier definitions and payment integrations, and present a summary showing what can be edited. Enable the user to select specific sections for modification.

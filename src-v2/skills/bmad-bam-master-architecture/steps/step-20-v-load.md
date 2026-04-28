@@ -25,6 +25,17 @@
 
 ---
 
+
+## CONTEXT BOUNDARIES:
+
+**IN SCOPE for this step:**
+- Loading artifact and checklist
+- Evaluating against criteria
+- Documenting evidence
+
+**OUT OF SCOPE:**
+- Modifying the artifact
+- Creating new content
 ## YOUR TASK
 
 Locate and load the master architecture document and QG-F1 foundation gate checklist. Parse all document sections, identify CRITICAL vs STANDARD checks, map document sections to QG-F1 validation criteria, and prepare the validation context for step-21. Report load status showing which sections are present/missing and confirm readiness to proceed with validation.

@@ -24,6 +24,17 @@
 
 ---
 
+
+## CONTEXT BOUNDARIES:
+
+**IN SCOPE for this step:**
+- Loading existing artifact
+- Applying user-requested changes
+- Preserving existing content
+
+**OUT OF SCOPE:**
+- Creating new artifacts (use Create mode)
+- Validation (use Validate mode)
 ## YOUR TASK
 
 Apply the user-selected changes to the testing strategy document. Verify consistency, update version, and flag any quality gate impacts. Present the modified document for confirmation before saving.

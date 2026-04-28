@@ -23,6 +23,17 @@
 
 ---
 
+
+## CONTEXT BOUNDARIES:
+
+**IN SCOPE for this step:**
+- Loading artifact and checklist
+- Evaluating against criteria
+- Documenting evidence
+
+**OUT OF SCOPE:**
+- Modifying the artifact
+- Creating new content
 ## YOUR TASK
 
 Load the security design artifact and QG-S3 security baseline checklist, map all artifact sections to validation categories, identify CRITICAL checks, and prepare the validation scope for execution in Step 21.

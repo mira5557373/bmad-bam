@@ -19,6 +19,17 @@
 
 ---
 
+
+## CONTEXT BOUNDARIES:
+
+**IN SCOPE for this step:**
+- Loading artifact and checklist
+- Evaluating against criteria
+- Documenting evidence
+
+**OUT OF SCOPE:**
+- Modifying the artifact
+- Creating new content
 ## Purpose
 
 Load the production readiness report and QG-P1 quality gate checklist for formal validation. This step prepares all artifacts needed to execute production readiness validation checks and verify the GO/NO-GO decision is justified.

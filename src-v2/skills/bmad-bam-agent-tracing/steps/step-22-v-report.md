@@ -15,6 +15,17 @@
 - 📖 **Context:** Validate mode - final step producing quality gate report
 - 🚫 **Do NOT:** Proceed to implementation without sign-off
 
+
+## CONTEXT BOUNDARIES:
+
+**IN SCOPE for this step:**
+- Loading artifact and checklist
+- Evaluating against criteria
+- Documenting evidence
+
+**OUT OF SCOPE:**
+- Modifying the artifact
+- Creating new content
 ## YOUR TASK
 
 Compile all validation results into a formal QG-M3/QG-I2 report for agent tracing. Document the gate decision with rationale, list all findings with evidence, and provide recommendations based on the outcome. Save the report to the validation folder.

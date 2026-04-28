@@ -19,6 +19,17 @@
 
 ---
 
+
+## CONTEXT BOUNDARIES:
+
+**IN SCOPE for this step:**
+- Loading artifact and checklist
+- Evaluating against criteria
+- Documenting evidence
+
+**OUT OF SCOPE:**
+- Modifying the artifact
+- Creating new content
 ## Purpose
 
 Execute formal validation of the tool contract design against QG-M3 (Agent Runtime) quality gate criteria. This step systematically checks each criterion and documents evidence for tool contract compliance.

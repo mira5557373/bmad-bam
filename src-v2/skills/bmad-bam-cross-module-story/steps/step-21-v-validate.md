@@ -24,6 +24,17 @@
 
 ---
 
+
+## CONTEXT BOUNDARIES:
+
+**IN SCOPE for this step:**
+- Loading artifact and checklist
+- Evaluating against criteria
+- Documenting evidence
+
+**OUT OF SCOPE:**
+- Modifying the artifact
+- Creating new content
 ## Purpose
 
 Validate the cross-module story against quality criteria ensuring proper module identification, dependency mapping, integration point specification, coordinated story structure, and multi-tenant safety.

@@ -25,6 +25,17 @@
 
 ---
 
+
+## CONTEXT BOUNDARIES:
+
+**IN SCOPE for this step:**
+- Loading existing artifact
+- Applying user-requested changes
+- Preserving existing content
+
+**OUT OF SCOPE:**
+- Creating new artifacts (use Create mode)
+- Validation (use Validate mode)
 ## Purpose
 
 Apply targeted modifications to the white-labeling design, documenting changes with ADR rationale, maintaining version history, and ensuring tier hierarchy consistency across all customization layers.

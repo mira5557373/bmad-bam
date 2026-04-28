@@ -19,6 +19,17 @@
 
 ---
 
+
+## CONTEXT BOUNDARIES:
+
+**IN SCOPE for this step:**
+- Loading artifact and checklist
+- Evaluating against criteria
+- Documenting evidence
+
+**OUT OF SCOPE:**
+- Modifying the artifact
+- Creating new content
 ## Purpose
 
 Execute formal validation of the production readiness report against QG-P1 quality gate criteria. This step systematically validates each category (Infrastructure, Observability, Security, Operations) and verifies the GO/NO-GO decision is justified by evidence.

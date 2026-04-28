@@ -21,6 +21,17 @@
 
 ---
 
+
+## CONTEXT BOUNDARIES:
+
+**IN SCOPE for this step:**
+- Loading artifact and checklist
+- Evaluating against criteria
+- Documenting evidence
+
+**OUT OF SCOPE:**
+- Modifying the artifact
+- Creating new content
 ## Purpose
 
 Generate a formal QG-I1 validation report documenting all facade contract validation findings, the gate decision, and recommended next steps based on the outcome.

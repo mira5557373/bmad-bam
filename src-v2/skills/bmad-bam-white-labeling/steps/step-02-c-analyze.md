@@ -18,6 +18,18 @@
 
 ---
 
+
+## CONTEXT BOUNDARIES:
+
+**IN SCOPE for this step:**
+- Gathering required inputs for this step
+- Making design decisions within step scope
+- Documenting decisions with rationale
+
+**OUT OF SCOPE:**
+- Decisions from other steps
+- Implementation details
+- Validation (separate mode)
 ## YOUR TASK
 
 Design the branding customization layer by defining: logo and visual asset storage (CDN tenant folders with resolution/format specs), CSS variable structure for tenant theming (primary/secondary/semantic/surface/text colors), custom CSS injection architecture (theme variables, component overrides, full stylesheet by tier), email template branding (header logo, color scheme, footer, sender name per tier), and document watermark configuration (PDF exports, reports, invoices). Each component must specify tier availability (Free/Pro/Enterprise/OEM) and fallback behavior.

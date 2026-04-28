@@ -24,6 +24,17 @@
 
 ---
 
+
+## CONTEXT BOUNDARIES:
+
+**IN SCOPE for this step:**
+- Loading artifact and checklist
+- Evaluating against criteria
+- Documenting evidence
+
+**OUT OF SCOPE:**
+- Modifying the artifact
+- Creating new content
 ## Purpose
 
 Execute systematic validation of the testing strategy against all quality gate criteria. Evaluate each CRITICAL and non-critical check, document evidence, and determine gate outcomes.

@@ -19,6 +19,17 @@
 
 ---
 
+
+## CONTEXT BOUNDARIES:
+
+**IN SCOPE for this step:**
+- Loading artifact and checklist
+- Evaluating against criteria
+- Documenting evidence
+
+**OUT OF SCOPE:**
+- Modifying the artifact
+- Creating new content
 ## Purpose
 
 Execute formal validation of the convergence report against QG-I2 (Tenant Safety) and QG-I3 (Agent Safety) quality gate criteria. This step systematically checks each criterion and documents evidence.

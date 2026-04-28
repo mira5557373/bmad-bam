@@ -21,6 +21,17 @@
 
 ---
 
+
+## CONTEXT BOUNDARIES:
+
+**IN SCOPE for this step:**
+- Loading artifact and checklist
+- Evaluating against criteria
+- Documenting evidence
+
+**OUT OF SCOPE:**
+- Modifying the artifact
+- Creating new content
 ## Purpose
 
 Execute systematic validation of the agent runtime architecture against QG-M3 quality gate criteria. Verify orchestration, tool registry, memory tiers, and kill switches meet CRITICAL requirements for tenant-safe agent operations.

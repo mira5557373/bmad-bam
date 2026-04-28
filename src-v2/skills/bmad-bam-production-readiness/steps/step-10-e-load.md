@@ -18,6 +18,17 @@
 
 ---
 
+
+## CONTEXT BOUNDARIES:
+
+**IN SCOPE for this step:**
+- Loading existing artifact
+- Applying user-requested changes
+- Preserving existing content
+
+**OUT OF SCOPE:**
+- Creating new artifacts (use Create mode)
+- Validation (use Validate mode)
 ## Purpose
 
 Load the existing production readiness report for targeted modifications. Edit mode allows updating specific sections, refreshing assessment dates, adding new findings, or modifying the GO/NO-GO decision without recreating the entire assessment from scratch.

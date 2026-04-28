@@ -21,6 +21,17 @@
 
 ---
 
+
+## CONTEXT BOUNDARIES:
+
+**IN SCOPE for this step:**
+- Loading artifact and checklist
+- Evaluating against criteria
+- Documenting evidence
+
+**OUT OF SCOPE:**
+- Modifying the artifact
+- Creating new content
 ## Purpose
 
 Execute systematic validation of the API versioning design against quality criteria. Verify strategy completeness, lifecycle definition, tenant pinning, backward compatibility, and migration strategy.

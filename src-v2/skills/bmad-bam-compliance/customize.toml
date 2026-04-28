@@ -27,7 +27,10 @@ activation_steps_append = [
 # Persistent facts loaded for entire workflow
 persistent_facts = [
   "file:{project-root}/_bmad/bam/data/context/bam-core.md",
+  "file:{project-root}/_bmad/bam/data/domains/compliance.md",
+  "file:{project-root}/_bmad/bam/data/domains/security.md",
   "file:{project-root}/_bmad/bam/data/checklists/qg-f1.md",
+  "file:{project-root}/**/project-context.md",
 ]
 
 # On workflow completion

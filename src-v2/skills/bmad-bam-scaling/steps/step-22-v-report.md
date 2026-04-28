@@ -22,6 +22,17 @@
 
 ---
 
+
+## CONTEXT BOUNDARIES:
+
+**IN SCOPE for this step:**
+- Loading artifact and checklist
+- Evaluating against criteria
+- Documenting evidence
+
+**OUT OF SCOPE:**
+- Modifying the artifact
+- Creating new content
 ## Purpose
 
 Compile the validation results into a comprehensive report, determine the overall validation outcome (PASS, CONDITIONAL, FAIL, or WAIVED), and provide actionable recommendations.

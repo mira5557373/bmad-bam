@@ -19,6 +19,17 @@
 
 ---
 
+
+## CONTEXT BOUNDARIES:
+
+**IN SCOPE for this step:**
+- Loading artifact and checklist
+- Evaluating against criteria
+- Documenting evidence
+
+**OUT OF SCOPE:**
+- Modifying the artifact
+- Creating new content
 ## Purpose
 
 Generate a comprehensive validation report summarizing findings from the event architecture validation steps and determining the final gate outcome for QG-M2 (Tenant Isolation) as it relates to event-driven architecture.

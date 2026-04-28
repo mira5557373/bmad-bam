@@ -18,6 +18,17 @@
 
 ---
 
+
+## CONTEXT BOUNDARIES:
+
+**IN SCOPE for this step:**
+- Loading artifact and checklist
+- Evaluating against criteria
+- Documenting evidence
+
+**OUT OF SCOPE:**
+- Modifying the artifact
+- Creating new content
 ## Purpose
 
 Load the triage report artifact and QG-PL1 quality gate checklist in preparation for validation. This step ensures all required materials are available before executing validation checks.

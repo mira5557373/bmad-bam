@@ -19,6 +19,18 @@
 
 ---
 
+
+## CONTEXT BOUNDARIES:
+
+**IN SCOPE for this step:**
+- Gathering required inputs for this step
+- Making design decisions within step scope
+- Documenting decisions with rationale
+
+**OUT OF SCOPE:**
+- Decisions from other steps
+- Implementation details
+- Validation (separate mode)
 ## Purpose
 
 Design tenant region assignment including region selection at onboarding, region migration workflows, compliance verification per region, and edge location configuration.

@@ -21,6 +21,17 @@
 
 ---
 
+
+## CONTEXT BOUNDARIES:
+
+**IN SCOPE for this step:**
+- Loading artifact and checklist
+- Evaluating against criteria
+- Documenting evidence
+
+**OUT OF SCOPE:**
+- Modifying the artifact
+- Creating new content
 ## YOUR TASK
 
 Execute all data residency validation checks against the loaded artifact. Verify GDPR Article 17 (Right to Erasure), CCPA compliance, cross-border transfer restrictions, and regional consistency. Document each check result with evidence and calculate the final gate decision.

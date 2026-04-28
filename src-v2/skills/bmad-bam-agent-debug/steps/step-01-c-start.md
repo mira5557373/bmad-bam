@@ -9,6 +9,30 @@
 - 🎯 **Focus ONLY on current step scope** - do not look ahead
 - 🔍 Use web search to verify current best practices when making technology decisions
 
+## EXECUTION PROTOCOLS
+
+- 🎯 Focus: Initialize debug session with scope and traces
+- 💾 Track: `stepsCompleted: [1]` when complete
+- 📖 Context: Agent runtime patterns from ai-runtimes.csv
+- 🚫 Do NOT: Begin analysis without establishing scope
+- 🔍 Use web search: Verify current debugging methodologies
+- ⚠️ Gate: Agent runtime configuration must be loaded
+
+---
+
+## CONTEXT BOUNDARIES:
+
+**IN SCOPE for this step:**
+- Identifying debug scope (single/multi-agent/tool/memory/tenant)
+- Loading agent runtime configuration
+- Cataloging available execution traces
+- Documenting issue context
+
+**OUT OF SCOPE:**
+- Analyzing traces (Step 2)
+- Identifying root cause (Step 3)
+- Designing fixes (Step 4)
+
 ---
 
 ## Purpose

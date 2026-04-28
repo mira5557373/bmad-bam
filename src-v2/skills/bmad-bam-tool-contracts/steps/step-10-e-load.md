@@ -18,6 +18,17 @@
 
 ---
 
+
+## CONTEXT BOUNDARIES:
+
+**IN SCOPE for this step:**
+- Loading existing artifact
+- Applying user-requested changes
+- Preserving existing content
+
+**OUT OF SCOPE:**
+- Creating new artifacts (use Create mode)
+- Validation (use Validate mode)
 ## Purpose
 
 Load the existing tool contract design document for modification. Edit mode allows updating tool schemas, adding new tools, modifying permissions, adjusting rate limits, or updating execution configuration without recreating the entire design from scratch.

@@ -22,6 +22,17 @@
 
 ---
 
+
+## CONTEXT BOUNDARIES:
+
+**IN SCOPE for this step:**
+- Loading artifact and checklist
+- Evaluating against criteria
+- Documenting evidence
+
+**OUT OF SCOPE:**
+- Modifying the artifact
+- Creating new content
 ## YOUR TASK
 
 Load the scaling design artifact and QG-M4 validation checklist, extract all scaling configurations for validation, map artifact sections to checklist categories, and prepare the validation scope for execution in Step 21.

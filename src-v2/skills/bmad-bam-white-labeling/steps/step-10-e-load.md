@@ -24,6 +24,17 @@
 
 ---
 
+
+## CONTEXT BOUNDARIES:
+
+**IN SCOPE for this step:**
+- Loading existing artifact
+- Applying user-requested changes
+- Preserving existing content
+
+**OUT OF SCOPE:**
+- Creating new artifacts (use Create mode)
+- Validation (use Validate mode)
 ## Purpose
 
 Load and review existing white-labeling design documents to identify sections requiring modification based on new branding requirements, tier changes, or customization enhancements.

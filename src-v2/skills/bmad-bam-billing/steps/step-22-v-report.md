@@ -18,6 +18,17 @@
 
 ---
 
+
+## CONTEXT BOUNDARIES:
+
+**IN SCOPE for this step:**
+- Loading artifact and checklist
+- Evaluating against criteria
+- Documenting evidence
+
+**OUT OF SCOPE:**
+- Modifying the artifact
+- Creating new content
 ## YOUR TASK
 
 Compile all billing validation results into a formal report. Document the validation decision with rationale, list all findings with evidence for metering, subscriptions, invoicing, and compliance categories, and provide recommendations based on the outcome. Save the report to the validation folder.

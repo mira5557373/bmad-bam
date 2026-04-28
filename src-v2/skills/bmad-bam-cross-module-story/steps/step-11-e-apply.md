@@ -25,6 +25,17 @@
 
 ---
 
+
+## CONTEXT BOUNDARIES:
+
+**IN SCOPE for this step:**
+- Loading existing artifact
+- Applying user-requested changes
+- Preserving existing content
+
+**OUT OF SCOPE:**
+- Creating new artifacts (use Create mode)
+- Validation (use Validate mode)
 ## Purpose
 
 Apply targeted modifications to the cross-module epic documents, documenting changes with ADR rationale while maintaining dependency integrity across modules and ensuring sprint planning alignment.

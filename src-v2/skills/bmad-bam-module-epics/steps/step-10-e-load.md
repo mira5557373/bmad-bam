@@ -18,6 +18,17 @@
 
 ---
 
+
+## CONTEXT BOUNDARIES:
+
+**IN SCOPE for this step:**
+- Loading existing artifact
+- Applying user-requested changes
+- Preserving existing content
+
+**OUT OF SCOPE:**
+- Creating new artifacts (use Create mode)
+- Validation (use Validate mode)
 ## Purpose
 
 Load the existing module epic document for modification. Edit mode allows adding new epics, modifying existing stories, updating estimates, changing sprint allocation, or adjusting done criteria without recreating the entire document from scratch.

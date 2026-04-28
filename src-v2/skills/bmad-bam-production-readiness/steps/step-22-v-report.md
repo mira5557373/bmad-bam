@@ -19,6 +19,17 @@
 
 ---
 
+
+## CONTEXT BOUNDARIES:
+
+**IN SCOPE for this step:**
+- Loading artifact and checklist
+- Evaluating against criteria
+- Documenting evidence
+
+**OUT OF SCOPE:**
+- Modifying the artifact
+- Creating new content
 ## Purpose
 
 Generate a comprehensive validation report summarizing findings from the QG-P1 validation steps and determining the final gate outcome for production readiness. This report provides the official GO/NO-GO decision with full evidence and justification.

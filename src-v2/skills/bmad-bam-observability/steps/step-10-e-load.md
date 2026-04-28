@@ -25,6 +25,17 @@
 
 ---
 
+
+## CONTEXT BOUNDARIES:
+
+**IN SCOPE for this step:**
+- Loading existing artifact
+- Applying user-requested changes
+- Preserving existing content
+
+**OUT OF SCOPE:**
+- Creating new artifacts (use Create mode)
+- Validation (use Validate mode)
 ## YOUR TASK
 
 Load the existing observability design document, parse its structure, extract the current observability configuration including the three pillars (metrics, logs, traces), tenant dimensions, SLO definitions, and alerting rules. Present a summary showing what can be edited and enable the user to select specific sections for modification.

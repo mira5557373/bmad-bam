@@ -21,6 +21,17 @@
 
 ---
 
+
+## CONTEXT BOUNDARIES:
+
+**IN SCOPE for this step:**
+- Loading artifact and checklist
+- Evaluating against criteria
+- Documenting evidence
+
+**OUT OF SCOPE:**
+- Modifying the artifact
+- Creating new content
 ## YOUR TASK
 
 Systematically validate the research report against all 4 validation categories: Completeness (9 criteria), Quality (8 criteria), Multi-Tenant (8 criteria), and Consistency (7 criteria). For each check, record PASS/FAIL with specific evidence. Calculate category scores and overall pass rate. Identify critical issues requiring resolution. Prepare detailed results for Step 22 report generation.

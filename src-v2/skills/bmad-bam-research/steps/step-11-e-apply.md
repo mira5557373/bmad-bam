@@ -23,6 +23,17 @@
 
 ---
 
+
+## CONTEXT BOUNDARIES:
+
+**IN SCOPE for this step:**
+- Loading existing artifact
+- Applying user-requested changes
+- Preserving existing content
+
+**OUT OF SCOPE:**
+- Creating new artifacts (use Create mode)
+- Validation (use Validate mode)
 ## YOUR TASK
 
 Apply the user's selected changes to the research report loaded in step-10. For evaluation changes, verify claims with web search and add citations. For recommendation changes, ensure alignment with updated scores. Cascade updates to affected sections (executive summary, rankings, risk assessment). Update document metadata, add Change Log entry, present diff summary for user approval, and save the updated research report.

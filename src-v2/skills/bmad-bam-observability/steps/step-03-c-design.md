@@ -19,6 +19,18 @@
 
 ---
 
+
+## CONTEXT BOUNDARIES:
+
+**IN SCOPE for this step:**
+- Gathering required inputs for this step
+- Making design decisions within step scope
+- Documenting decisions with rationale
+
+**OUT OF SCOPE:**
+- Decisions from other steps
+- Implementation details
+- Validation (separate mode)
 ## Purpose
 
 Design tenant-aware logging strategy covering structured logging with tenant_id injection, log aggregation with tenant filtering, tier-based retention policies, and PII handling rules for compliance.

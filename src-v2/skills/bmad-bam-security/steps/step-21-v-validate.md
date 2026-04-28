@@ -24,6 +24,17 @@
 
 ---
 
+
+## CONTEXT BOUNDARIES:
+
+**IN SCOPE for this step:**
+- Loading artifact and checklist
+- Evaluating against criteria
+- Documenting evidence
+
+**OUT OF SCOPE:**
+- Modifying the artifact
+- Creating new content
 ## YOUR TASK
 
 Execute comprehensive validation of the security design artifact against QG-S3 security baseline checklist. Evaluate each category (Authentication, Network, Data Protection, Logging, Vulnerability Management, Multi-Tenant Isolation, AI Security) and determine pass/fail status with evidence documentation.

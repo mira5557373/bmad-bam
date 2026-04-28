@@ -20,6 +20,18 @@
 
 ---
 
+
+## CONTEXT BOUNDARIES:
+
+**IN SCOPE for this step:**
+- Gathering required inputs for this step
+- Making design decisions within step scope
+- Documenting decisions with rationale
+
+**OUT OF SCOPE:**
+- Decisions from other steps
+- Implementation details
+- Validation (separate mode)
 ## Purpose
 
 Design the onboarding validation process including health checks for provisioned resources, smoke tests for tenant isolation, billing integration verification, and welcome notification triggers.

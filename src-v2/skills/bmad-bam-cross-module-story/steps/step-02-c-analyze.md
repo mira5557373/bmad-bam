@@ -19,6 +19,18 @@
 
 ---
 
+
+## CONTEXT BOUNDARIES:
+
+**IN SCOPE for this step:**
+- Gathering required inputs for this step
+- Making design decisions within step scope
+- Documenting decisions with rationale
+
+**OUT OF SCOPE:**
+- Decisions from other steps
+- Implementation details
+- Validation (separate mode)
 ## Purpose
 
 Analyze and map the touchpoints where modules interact for each cross-cutting user journey, documenting the sequence of facade invocations, event flows, and data transformation points.

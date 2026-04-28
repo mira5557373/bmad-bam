@@ -18,6 +18,18 @@
 
 ---
 
+
+## CONTEXT BOUNDARIES:
+
+**IN SCOPE for this step:**
+- Gathering required inputs for this step
+- Making design decisions within step scope
+- Documenting decisions with rationale
+
+**OUT OF SCOPE:**
+- Decisions from other steps
+- Implementation details
+- Validation (separate mode)
 ## YOUR TASK
 
 Design the feature customization layer including: feature toggle system with multi-level override hierarchy (Global/Tier/Tenant/User), feature flag storage and evaluation flow, UI component visibility architecture (component schema with tierRequirement, featureFlag, roleRequirement, tenantOverride), menu customization levels by tier (reordering, hiding, renaming, custom items, full restructure), menu configuration schemas, and role naming customization (platform roles with customizable display names, descriptions, icons per tier).

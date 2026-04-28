@@ -25,6 +25,17 @@
 
 ---
 
+
+## CONTEXT BOUNDARIES:
+
+**IN SCOPE for this step:**
+- Loading existing artifact
+- Applying user-requested changes
+- Preserving existing content
+
+**OUT OF SCOPE:**
+- Creating new artifacts (use Create mode)
+- Validation (use Validate mode)
 ## YOUR TASK
 
 Apply the user's requested changes to the data residency design, validate consistency across all regions and compliance zones, update document metadata and ADRs, and present a summary of modifications with any data sovereignty implications.

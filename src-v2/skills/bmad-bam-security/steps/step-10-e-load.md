@@ -25,6 +25,17 @@
 
 ---
 
+
+## CONTEXT BOUNDARIES:
+
+**IN SCOPE for this step:**
+- Loading existing artifact
+- Applying user-requested changes
+- Preserving existing content
+
+**OUT OF SCOPE:**
+- Creating new artifacts (use Create mode)
+- Validation (use Validate mode)
 ## YOUR TASK
 
 Load the existing security design document, parse its structure, extract the current security configuration including authentication patterns, RBAC model, encryption standards, and threat mitigations. Present a summary showing what can be edited and enable the user to select specific sections for modification.

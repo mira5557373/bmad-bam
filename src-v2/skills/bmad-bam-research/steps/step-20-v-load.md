@@ -21,6 +21,17 @@
 
 ---
 
+
+## CONTEXT BOUNDARIES:
+
+**IN SCOPE for this step:**
+- Loading artifact and checklist
+- Evaluating against criteria
+- Documenting evidence
+
+**OUT OF SCOPE:**
+- Modifying the artifact
+- Creating new content
 ## YOUR TASK
 
 Locate and load the research report and research validation checklist. Parse all document sections, extract citation inventory, assess methodology indicators, and prepare the validation context for step-21. Report load status showing section presence/completeness and confirm readiness for comprehensive validation.

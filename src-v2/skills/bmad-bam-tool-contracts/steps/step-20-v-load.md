@@ -19,6 +19,17 @@
 
 ---
 
+
+## CONTEXT BOUNDARIES:
+
+**IN SCOPE for this step:**
+- Loading artifact and checklist
+- Evaluating against criteria
+- Documenting evidence
+
+**OUT OF SCOPE:**
+- Modifying the artifact
+- Creating new content
 ## Purpose
 
 Load the tool contract design document and QG-M3 (Agent Runtime) checklist for formal validation. This step prepares all artifacts needed to verify tool contracts meet agent runtime quality requirements.

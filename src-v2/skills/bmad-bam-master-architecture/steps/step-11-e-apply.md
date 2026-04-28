@@ -27,6 +27,17 @@
 
 ---
 
+
+## CONTEXT BOUNDARIES:
+
+**IN SCOPE for this step:**
+- Loading existing artifact
+- Applying user-requested changes
+- Preserving existing content
+
+**OUT OF SCOPE:**
+- Creating new artifacts (use Create mode)
+- Validation (use Validate mode)
 ## YOUR TASK
 
 Apply the user's selected changes to the master architecture document loaded in step-10. For FROZEN section changes (tenant model, AI runtime), validate cascading impacts and set QG-F1 to PENDING. For MUTABLE section changes (patterns, modules, appendices), validate consistency and apply directly. Update frontmatter version, add Change Log entry, present diff summary for user approval, and save the updated master architecture document.

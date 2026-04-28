@@ -18,6 +18,18 @@
 
 ---
 
+
+## CONTEXT BOUNDARIES:
+
+**IN SCOPE for this step:**
+- Gathering required inputs for this step
+- Making design decisions within step scope
+- Documenting decisions with rationale
+
+**OUT OF SCOPE:**
+- Decisions from other steps
+- Implementation details
+- Validation (separate mode)
 ## YOUR TASK
 
 Initialize the white-labeling design by loading tier configurations (Free/Pro/Enterprise/OEM), identifying the three customization dimensions (Branding, Domain, Email), loading pattern references from `bam-patterns.csv` filtered by `customization`, and capturing initial project requirements including target tiers, branding scope, custom domain needs, email branding, feature customization, and OEM/reseller support requirements. Verify current best practices via web research.

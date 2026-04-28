@@ -23,6 +23,17 @@
 
 ---
 
+
+## CONTEXT BOUNDARIES:
+
+**IN SCOPE for this step:**
+- Loading artifact and checklist
+- Evaluating against criteria
+- Documenting evidence
+
+**OUT OF SCOPE:**
+- Modifying the artifact
+- Creating new content
 ## YOUR TASK
 
 Systematically validate the master architecture document against the QG-F1 Foundation Gate checklist. Evaluate all 4 CRITICAL checks (ALL must pass) and all 6 STANDARD checks (80% must pass). For each check, record PASS/FAIL status with specific evidence from the document. Determine overall outcome (PASS/CONDITIONAL/FAIL) and identify recovery protocol if applicable. Prepare detailed results for Step 22 report generation.

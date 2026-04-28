@@ -15,6 +15,17 @@
 - 📖 **Context:** Validate mode - checking against QG-M3, QG-I2, QG-P1 criteria
 - 🚫 **Do NOT:** Skip critical checks or generate report in this step
 
+
+## CONTEXT BOUNDARIES:
+
+**IN SCOPE for this step:**
+- Loading artifact and checklist
+- Evaluating against criteria
+- Documenting evidence
+
+**OUT OF SCOPE:**
+- Modifying the artifact
+- Creating new content
 ## YOUR TASK
 
 Execute all QG-M3 and QG-I2 validation checks against the loaded agent tracing design artifact. Document each check result with evidence. Verify span hierarchies, tenant context propagation, sampling strategies, and token metrics. Calculate the final gate decision based on CRITICAL and non-critical check outcomes.

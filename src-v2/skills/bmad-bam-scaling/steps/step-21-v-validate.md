@@ -22,6 +22,17 @@
 
 ---
 
+
+## CONTEXT BOUNDARIES:
+
+**IN SCOPE for this step:**
+- Loading artifact and checklist
+- Evaluating against criteria
+- Documenting evidence
+
+**OUT OF SCOPE:**
+- Modifying the artifact
+- Creating new content
 ## YOUR TASK
 
 Execute comprehensive validation of the scaling design artifact against the quality gate checklist. Evaluate each check category (horizontal scaling, database scaling, tenant-aware scaling, capacity planning, cost optimization, runbooks) and determine pass/fail status with evidence documentation.

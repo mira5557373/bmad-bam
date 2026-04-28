@@ -20,6 +20,18 @@
 
 ---
 
+
+## CONTEXT BOUNDARIES:
+
+**IN SCOPE for this step:**
+- Gathering required inputs for this step
+- Making design decisions within step scope
+- Documenting decisions with rationale
+
+**OUT OF SCOPE:**
+- Decisions from other steps
+- Implementation details
+- Validation (separate mode)
 ## Purpose
 
 Compile the complete security design document by synthesizing authentication, authorization, and data protection designs. Map threat mitigations, define penetration test requirements, and output to the planning artifacts folder.

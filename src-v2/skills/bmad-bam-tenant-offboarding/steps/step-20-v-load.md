@@ -19,6 +19,17 @@
 
 ---
 
+
+## CONTEXT BOUNDARIES:
+
+**IN SCOPE for this step:**
+- Loading artifact and checklist
+- Evaluating against criteria
+- Documenting evidence
+
+**OUT OF SCOPE:**
+- Modifying the artifact
+- Creating new content
 ## Purpose
 
 Load the tenant offboarding design document and all relevant compliance checklists for formal validation. This step prepares all artifacts needed to verify compliance with GDPR Article 17 (Right to Erasure), CCPA, and operational best practices.

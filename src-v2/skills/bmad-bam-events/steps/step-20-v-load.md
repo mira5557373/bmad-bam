@@ -19,6 +19,17 @@
 
 ---
 
+
+## CONTEXT BOUNDARIES:
+
+**IN SCOPE for this step:**
+- Loading artifact and checklist
+- Evaluating against criteria
+- Documenting evidence
+
+**OUT OF SCOPE:**
+- Modifying the artifact
+- Creating new content
 ## Purpose
 
 Load the event architecture document and all relevant validation checklists for formal validation. This step prepares all artifacts needed to execute event architecture validation checks against QG-M2 (Tenant Isolation) criteria.

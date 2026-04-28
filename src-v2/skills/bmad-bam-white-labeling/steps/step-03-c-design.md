@@ -18,6 +18,18 @@
 
 ---
 
+
+## CONTEXT BOUNDARIES:
+
+**IN SCOPE for this step:**
+- Gathering required inputs for this step
+- Making design decisions within step scope
+- Documenting decisions with rationale
+
+**OUT OF SCOPE:**
+- Decisions from other steps
+- Implementation details
+- Validation (separate mode)
 ## YOUR TASK
 
 Design the domain customization layer including: custom domain mapping architecture (platform subdomain, custom subdomain, apex domain, multiple domains by tier), SSL certificate provisioning automation (Let's Encrypt with ACME HTTP-01/DNS-01 challenges, certificate manager integration, auto-renewal), DNS configuration guidance for tenants (CNAME, A/AAAA records, TXT verification, CAA records), subdomain allocation strategy (slug validation, uniqueness, history, reserved list), and domain verification flow (verification methods, DNS propagation checking, self-service wizard).

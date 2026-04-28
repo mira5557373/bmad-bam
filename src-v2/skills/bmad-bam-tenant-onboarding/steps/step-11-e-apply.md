@@ -24,6 +24,17 @@
 
 ---
 
+
+## CONTEXT BOUNDARIES:
+
+**IN SCOPE for this step:**
+- Loading existing artifact
+- Applying user-requested changes
+- Preserving existing content
+
+**OUT OF SCOPE:**
+- Creating new artifacts (use Create mode)
+- Validation (use Validate mode)
 ## YOUR TASK
 
 Apply the user's requested changes to the tenant onboarding design while maintaining consistency across the provisioning saga, rollback procedures, resource initialization, and tier configuration. When saga steps change, ensure corresponding rollback/compensation actions are updated. When tier quotas change, verify the hierarchy (Enterprise > Pro > Free). Document all changes with ADR rationale and flag if quality gate re-validation is required.

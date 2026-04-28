@@ -21,6 +21,17 @@
 
 ---
 
+
+## CONTEXT BOUNDARIES:
+
+**IN SCOPE for this step:**
+- Loading artifact and checklist
+- Evaluating against criteria
+- Documenting evidence
+
+**OUT OF SCOPE:**
+- Modifying the artifact
+- Creating new content
 ## YOUR TASK
 
 Compile all validation results from step-21 into a structured research validation report. Calculate final pass rates for all 4 categories (Completeness, Quality, Multi-Tenant, Consistency). Determine the official outcome (PASS/CONDITIONAL/NEEDS REVISION) using exact criteria. Generate the formal validation report with findings, severity assignments, and clear next steps. Save the report to the designated output location.

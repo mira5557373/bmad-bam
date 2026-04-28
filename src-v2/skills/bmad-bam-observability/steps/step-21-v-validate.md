@@ -19,6 +19,17 @@
 
 ---
 
+
+## CONTEXT BOUNDARIES:
+
+**IN SCOPE for this step:**
+- Loading artifact and checklist
+- Evaluating against criteria
+- Documenting evidence
+
+**OUT OF SCOPE:**
+- Modifying the artifact
+- Creating new content
 ## Purpose
 
 Validate the tenant-aware observability design against QG-OC (Observability Completeness) quality criteria. This ensures tenant isolation across all signals (metrics, logs, traces), proper dashboard access controls, and compliance with platform observability patterns.

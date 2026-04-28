@@ -24,6 +24,17 @@
 
 ---
 
+
+## CONTEXT BOUNDARIES:
+
+**IN SCOPE for this step:**
+- Loading existing artifact
+- Applying user-requested changes
+- Preserving existing content
+
+**OUT OF SCOPE:**
+- Creating new artifacts (use Create mode)
+- Validation (use Validate mode)
 ## YOUR TASK
 
 Load the existing tenant onboarding design artifact, parse the provisioning saga with all steps and rollback procedures, extract resource initialization configuration across all tiers (Free, Pro, Enterprise), identify tier-specific isolation settings, and present an interactive menu showing all editable sections for user selection.

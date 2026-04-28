@@ -18,6 +18,18 @@
 
 ---
 
+
+## CONTEXT BOUNDARIES:
+
+**IN SCOPE for this step:**
+- Gathering required inputs for this step
+- Making design decisions within step scope
+- Documenting decisions with rationale
+
+**OUT OF SCOPE:**
+- Decisions from other steps
+- Implementation details
+- Validation (separate mode)
 ## YOUR TASK
 
 Compile all white-labeling design decisions from steps 01-04 into a comprehensive design document: generate executive summary with scope per dimension and tiers affected, compile complete tier feature matrix (Free/Pro/Enterprise/OEM) covering Branding, Domain, and Features categories, document implementation architecture decisions (asset storage, theme delivery, domain handling, feature flags, configuration), generate phased implementation roadmap with dependencies and effort estimates, compile ADR summary with decision status, and output complete document to `{output_folder}/planning-artifacts/white-labeling-design.md`.

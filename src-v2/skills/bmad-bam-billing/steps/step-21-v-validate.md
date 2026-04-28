@@ -18,6 +18,17 @@
 
 ---
 
+
+## CONTEXT BOUNDARIES:
+
+**IN SCOPE for this step:**
+- Loading artifact and checklist
+- Evaluating against criteria
+- Documenting evidence
+
+**OUT OF SCOPE:**
+- Modifying the artifact
+- Creating new content
 ## YOUR TASK
 
 Execute all billing validation checks against the loaded billing design artifact. Document each check result with evidence. Verify tenant isolation in billing data, metering completeness, subscription management, invoicing, payment integration, and revenue recognition compliance. Calculate the final validation decision based on CRITICAL and non-critical check outcomes.

@@ -22,6 +22,17 @@
 
 ---
 
+
+## CONTEXT BOUNDARIES:
+
+**IN SCOPE for this step:**
+- Loading existing artifact
+- Applying user-requested changes
+- Preserving existing content
+
+**OUT OF SCOPE:**
+- Creating new artifacts (use Create mode)
+- Validation (use Validate mode)
 ## Purpose
 
 Load the existing triage report for modification. Edit mode allows updating complexity scores, adjusting priorities, modifying phase assignments, or refreshing timeline estimates without recreating the entire triage analysis from scratch.

@@ -24,6 +24,17 @@
 
 ---
 
+
+## CONTEXT BOUNDARIES:
+
+**IN SCOPE for this step:**
+- Loading artifact and checklist
+- Evaluating against criteria
+- Documenting evidence
+
+**OUT OF SCOPE:**
+- Modifying the artifact
+- Creating new content
 ## YOUR TASK
 
 Compile all validation results from step-21 into a structured QG-F1 validation report. Calculate final pass rates for CRITICAL (4 checks) and STANDARD (6 checks) categories. Determine the official QG-F1 outcome (PASS/CONDITIONAL/FAIL) using exact criteria. Generate the formal validation report with evidence references, recommendations, and clear next steps. Save the report to the designated output location.

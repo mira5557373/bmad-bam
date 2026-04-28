@@ -15,6 +15,17 @@
 - 📖 **Context:** Validate mode - preparing for quality gate checks
 - 🚫 **Do NOT:** Begin validation checks in this step
 
+
+## CONTEXT BOUNDARIES:
+
+**IN SCOPE for this step:**
+- Loading artifact and checklist
+- Evaluating against criteria
+- Documenting evidence
+
+**OUT OF SCOPE:**
+- Modifying the artifact
+- Creating new content
 ## YOUR TASK
 
 Load the agent tracing design artifact created in Create mode. If the artifact does not exist, inform the user and suggest switching to Create mode. Prepare all validation criteria from QG-M3 and QG-I2 checklists for systematic verification of trace schemas, span hierarchies, and tenant context propagation.

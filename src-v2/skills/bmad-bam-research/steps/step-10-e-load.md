@@ -21,6 +21,17 @@
 
 ---
 
+
+## CONTEXT BOUNDARIES:
+
+**IN SCOPE for this step:**
+- Loading existing artifact
+- Applying user-requested changes
+- Preserving existing content
+
+**OUT OF SCOPE:**
+- Creating new artifacts (use Create mode)
+- Validation (use Validate mode)
 ## YOUR TASK
 
 Load the existing research report, parse its structure, extract current technology evaluations and recommendations. Present a summary showing research methodology quality, source credibility, and findings synthesis status. Display an interactive menu for the user to select which sections to modify (evaluations, recommendations, POC plans, citations).

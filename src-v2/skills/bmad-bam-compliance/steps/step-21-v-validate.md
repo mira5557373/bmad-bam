@@ -21,6 +21,17 @@
 
 ---
 
+
+## CONTEXT BOUNDARIES:
+
+**IN SCOPE for this step:**
+- Loading artifact and checklist
+- Evaluating against criteria
+- Documenting evidence
+
+**OUT OF SCOPE:**
+- Modifying the artifact
+- Creating new content
 ## YOUR TASK
 
 Execute all QG-CC and QG-P1 validation checks against the loaded compliance design artifact. Document each check result with evidence. Calculate the final gate decision based on CRITICAL and non-critical check outcomes.
