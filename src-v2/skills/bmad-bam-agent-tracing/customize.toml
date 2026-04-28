@@ -1,8 +1,42 @@
+# Workflow customization for bmad-bam-agent-tracing
+#
+# Merge Order (base → team → user):
+#   1. {skill-root}/customize.toml (this file)
+#   2. {project-root}/_bmad/custom/bmad-bam-agent-tracing.toml (team)
+#   3. {project-root}/_bmad/custom/bmad-bam-agent-tracing.user.toml (personal)
+#
+# Merge Rules:
+#   - Scalars: override wins
+#   - Tables: deep-merge
+#   - Arrays of tables with code/id: replace matching, append new
+#   - Other arrays: append
+
 [workflow]
-persistent_facts = [
-  "file:{project-root}/_bmad/bam/data/context/bam-core.md",
+
+# Pre-activation steps (before config load)
+activation_steps_prepend = [
+  "Loading Agent Tracing workflow context.",
 ]
 
+# Post-greeting steps (before workflow begins)
+activation_steps_append = [
+  "Verify {tenant_model} and {ai_runtime} are configured in config.yaml",
+  "Check for existing artifact at {output_folder}/planning-artifacts/",
+]
+
+# Persistent facts loaded for entire workflow
+persistent_facts = [
+  "file:{project-root}/_bmad/bam/data/context/bam-core.md",
+  "file:{project-root}/_bmad/bam/data/checklists/qg-m3.md",
+]
+
+# On workflow completion
 on_complete = """
 Agent Tracing workflow complete.
+
+**Quality Gate:** QG-M3
+Run validation mode to verify compliance.
+
+**Next Workflows:**
+See Related Workflows in SKILL.md for recommendations.
 """
