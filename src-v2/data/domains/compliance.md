@@ -53,3 +53,190 @@ Tenant → Tier → Compliance Requirements
 
 - "SaaS compliance multi-tenant {date}"
 - "SOC2 GDPR multi-tenant patterns {date}"
+
+---
+
+## GDPR Compliance
+
+### Data Subject Rights (GDPR Articles 15-22)
+
+| Right | Article | Implementation | Automation Level |
+|-------|---------|----------------|------------------|
+| Access | Art. 15 | Export API per tenant | Full |
+| Rectification | Art. 16 | Edit API + audit | Partial |
+| Erasure | Art. 17 | Soft delete + purge job | Full |
+| Portability | Art. 20 | JSON/CSV export | Full |
+| Objection | Art. 21 | Processing flag | Partial |
+| No profiling | Art. 22 | AI opt-out flag | Partial |
+
+### Lawful Basis Tracking
+
+```yaml
+lawful_basis:
+  consent:
+    granular: true
+    withdrawable: true
+    recorded_at: timestamp
+    purpose: string[]
+    
+  legitimate_interest:
+    assessment_documented: bool
+    opt_out_available: true
+    
+  contract:
+    service_agreement_signed: bool
+    necessary_processing_only: true
+```
+
+### Cross-Border Transfer
+
+| Mechanism | When to Use | Documentation |
+|-----------|-------------|---------------|
+| Adequacy decision | EU-approved countries | None required |
+| SCCs | US, other countries | Signed agreement |
+| BCR | Intra-group transfers | Regulatory approval |
+| Consent | Individual transfers | Explicit consent |
+
+### DPO Integration
+
+- Data Protection Officer contact in tenant portal
+- DPIA required for high-risk processing
+- Annual compliance audit per tenant
+
+---
+
+## CCPA Compliance
+
+### Consumer Rights (California)
+
+| Right | Implementation | Timeline |
+|-------|----------------|----------|
+| Right to Know | Disclosure API | 45 days |
+| Right to Delete | Erasure workflow | 45 days |
+| Right to Opt-Out | "Do Not Sell" toggle | Immediate |
+| Non-Discrimination | Pricing parity | Ongoing |
+
+### Do Not Sell Implementation
+
+```yaml
+ccpa_preferences:
+  tenant_id: uuid
+  do_not_sell: bool
+  opt_out_date: timestamp
+  data_categories_disclosed: string[]
+  third_party_sharing: bool
+```
+
+### 12-Month Lookback
+
+- Maintain data collection records for 12 months
+- Disclosure must include categories collected
+- Track all third-party data sharing
+
+---
+
+## SOC 2 Type II
+
+### Trust Service Criteria
+
+| Category | Criteria | BAM Implementation |
+|----------|----------|-------------------|
+| Security | CC1-CC9 | Tenant isolation, encryption, access control |
+| Availability | A1 | SLA monitoring, DR plans, uptime tracking |
+| Confidentiality | C1 | Data classification, encryption, access logs |
+| Processing Integrity | PI1 | Input validation, audit trails, error handling |
+| Privacy | P1-P8 | Consent management, data retention, disclosure |
+
+### Evidence Collection Automation
+
+```yaml
+soc2_evidence:
+  automated_collection:
+    - access_logs
+    - encryption_status
+    - vulnerability_scans
+    - uptime_metrics
+    
+  manual_review:
+    - policy_documents
+    - training_records
+    - vendor_assessments
+    
+  collection_frequency:
+    continuous: ["access_logs", "uptime_metrics"]
+    weekly: ["vulnerability_scans"]
+    quarterly: ["policy_review", "access_review"]
+```
+
+### Continuous Compliance Monitoring
+
+- Real-time control monitoring dashboard
+- Automated evidence collection
+- Gap alerts with remediation guidance
+- Audit-ready report generation
+
+---
+
+## HIPAA Compliance (If Applicable)
+
+### PHI Handling Requirements
+
+| Requirement | Implementation | Verification |
+|-------------|----------------|--------------|
+| BAA required | Agreement before PHI access | Legal review |
+| Minimum necessary | Role-based data access | Access audit |
+| Audit controls | All PHI access logged | Log review |
+| Encryption | At rest and in transit | Scan verification |
+
+### Breach Notification
+
+- 60-day notification requirement
+- Tenant notification within 24 hours of discovery
+- HHS notification for breaches >500 records
+- Media notification for state-wide breaches
+
+---
+
+## PCI-DSS Compliance (If Applicable)
+
+### Cardholder Data Scope
+
+| Data Element | Can Store | Encryption Required |
+|--------------|-----------|---------------------|
+| PAN | Yes (encrypted) | Yes |
+| Cardholder name | Yes | Recommended |
+| Service code | Yes | Yes |
+| Expiration | Yes | Yes |
+| CVV/CVC | No | N/A |
+| Full track data | No | N/A |
+
+### Scope Reduction
+
+- Tokenization with PCI-compliant provider
+- No CHD in logs or backups
+- Segment cardholder data environment
+- Quarterly ASV scans
+
+---
+
+## Compliance Automation
+
+### Continuous Monitoring Dashboard
+
+```
+Compliance Score: 94%
+
+SOC 2: ████████████░░ 92%
+GDPR:  █████████████░ 96%
+HIPAA: ████████████░░ 91%
+
+Outstanding Items: 3
+- Access review overdue (2 days)
+- Vulnerability scan pending
+- Policy update required
+```
+
+### Pattern References
+
+- **Security:** `{project-root}/_bmad/bam/data/patterns/zero-trust.md`
+- **Frameworks:** `{project-root}/_bmad/bam/data/compliance-frameworks.csv`
