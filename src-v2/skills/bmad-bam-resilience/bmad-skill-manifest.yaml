@@ -1,0 +1,9 @@
+type: workflow
+name: bmad-bam-resilience
+displayName: Resilience
+description: 'Design disaster recovery and chaos engineering for multi-tenant SaaS'
+module: bam
+config_variables:
+  - tenant_model
+  - ai_runtime
+step_naming_convention: "step-NN-mode-description"

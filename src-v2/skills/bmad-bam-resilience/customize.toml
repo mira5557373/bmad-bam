@@ -1,0 +1,10 @@
+[workflow]
+persistent_facts = [
+  "Load disaster-recovery patterns from {project-root}/_bmad/bam/data/bam-patterns.csv",
+  "Load chaos-engineering patterns from {project-root}/_bmad/bam/data/bam-patterns.csv",
+  "Reference QG-DR checklist at {project-root}/_bmad/bam/data/checklists/qg-dr.md",
+  "Reference QG-CE1 checklist at {project-root}/_bmad/bam/data/checklists/qg-ce1.md",
+  "Tenant isolation must be maintained during failure scenarios",
+  "RTO/RPO targets vary by tenant tier"
+]
+on_complete = "Resilience design complete. Run validation mode to verify QG-DR and QG-CE1 compliance."
