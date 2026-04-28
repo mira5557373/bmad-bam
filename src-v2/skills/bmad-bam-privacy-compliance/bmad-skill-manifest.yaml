@@ -1,0 +1,6 @@
+type: workflow
+name: bmad-bam-privacy-compliance
+displayName: Privacy Compliance
+description: 'Design GDPR compliance and privacy workflows'
+module: bam
+step_naming_convention: "step-NN-mode-description"

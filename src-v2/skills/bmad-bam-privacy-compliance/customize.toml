@@ -1,0 +1,47 @@
+# Workflow customization for bmad-bam-privacy-compliance
+#
+# Merge Order (base - team - user):
+#   1. {skill-root}/customize.toml (this file)
+#   2. {project-root}/_bmad/custom/bmad-bam-privacy-compliance.toml (team)
+#   3. {project-root}/_bmad/custom/bmad-bam-privacy-compliance.user.toml (personal)
+#
+# Merge Rules:
+#   - Scalars: override wins
+#   - Tables: deep-merge
+#   - Arrays of tables with code/id: replace matching, append new
+#   - Other arrays: append
+
+[workflow]
+
+# Pre-activation steps (before config load)
+activation_steps_prepend = [
+  "Loading Privacy Compliance workflow context.",
+]
+
+# Post-greeting steps (before workflow begins)
+activation_steps_append = [
+  "Verify {tenant_model} and {ai_runtime} are configured in config.yaml",
+  "Check for existing artifact at {output_folder}/planning-artifacts/compliance/",
+]
+
+# Persistent facts loaded for entire workflow
+persistent_facts = [
+  "file:{project-root}/_bmad/bam/data/context/bam-core.md",
+  "file:{project-root}/_bmad/bam/data/domains/compliance.md",
+  "file:{project-root}/_bmad/bam/data/domains/tenant.md",
+  "file:{project-root}/_bmad/bam/data/checklists/qg-cc.md",
+  "file:{project-root}/**/project-context.md",
+]
+
+# On workflow completion
+on_complete = """
+Privacy Compliance workflow complete.
+
+**Quality Gate:** QG-CC (Continuous Compliance)
+Run validation mode to verify compliance requirements are met.
+
+**Next Workflows:**
+- bmad-bam-compliance-mapping - Map controls to frameworks
+- bmad-bam-audit-logging - Implement audit trails
+- bmad-bam-tenant-offboarding - Data erasure workflows
+"""

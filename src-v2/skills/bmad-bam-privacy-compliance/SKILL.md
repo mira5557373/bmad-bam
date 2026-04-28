@@ -1,0 +1,107 @@
+---
+name: bmad-bam-privacy-compliance
+description: 'Design GDPR compliance and privacy workflows'
+module: bam
+tags: [workflow]
+---
+
+# Privacy Compliance
+
+## Modes
+
+| Mode | Purpose | Steps |
+|------|---------|-------|
+| Create | Generate new | step-01-c to step-05-c |
+| Edit | Modify existing | step-10-e to step-11-e |
+| Validate | Check criteria | step-20-v to step-22-v |
+
+## Overview
+
+Design privacy compliance workflows for multi-tenant SaaS platforms, covering GDPR, CCPA, and privacy regulatory requirements. This workflow handles data subject rights, lawful basis tracking, consent management, data portability, and cross-border transfer mechanisms.
+
+**Your Role:** Guide decisions on privacy architecture, consent workflows, and compliance automation while ensuring regulatory requirements are met across tenant boundaries.
+
+## Sub-Workflows
+
+| Code | Name | Focus |
+|------|------|-------|
+| ZGD | GDPR Compliance | Data subject rights, lawful basis, DPO integration |
+| ZDE | Data Export | Data portability, export formats, tenant data isolation |
+| ZCO | Consent Management | Consent workflows, granular permissions, withdrawal |
+
+## Prerequisites
+
+- [ ] Master architecture document exists with tenant model selected
+- [ ] Compliance requirements identified (GDPR, CCPA, or both)
+- [ ] **Load patterns:** `{project-root}/_bmad/bam/data/bam-patterns.csv` - filter: `privacy-*`
+- [ ] **Load patterns:** `{project-root}/_bmad/bam/data/compliance-frameworks.csv`
+
+## Quality Gates
+
+- **QG-CC:** Continuous compliance monitoring
+- Privacy compliance validation checklist
+
+## Outputs
+
+- **Primary:** `{output_folder}/planning-artifacts/compliance/privacy-compliance.md`
+- Data subject rights implementation design
+- Consent management workflow
+- Data export specifications
+- Cross-border transfer documentation
+
+## Related Workflows
+
+- `bmad-bam-compliance-mapping`
+- `bmad-bam-audit-logging`
+- `bmad-bam-tenant-offboarding`
+
+
+## On Activation
+
+### Step 1: Resolve the Workflow Block
+
+Run: `python3 {project-root}/_bmad/scripts/resolve_customization.py --skill {skill-root} --key workflow`
+
+**If the script fails**, resolve the `workflow` block yourself by reading these files in base - team - user order:
+
+1. `{skill-root}/customize.toml` - defaults
+2. `{project-root}/_bmad/custom/{skill-name}.toml` - team overrides
+3. `{project-root}/_bmad/custom/{skill-name}.user.toml` - personal overrides
+
+Apply merge rules: scalars override, tables deep-merge, arrays of tables keyed by `code`/`id` replace matching and append new, other arrays append.
+
+### Step 2: Execute Prepend Steps
+
+Execute each entry in `{workflow.activation_steps_prepend}` in order.
+
+### Step 3: Load Persistent Facts
+
+Treat every entry in `{workflow.persistent_facts}` as foundational context.
+- Entries prefixed `file:` are paths/globs - load contents as facts
+- Other entries are literal facts
+
+### Step 4: Load Config
+
+Load from `{project-root}/_bmad/bam/config.yaml`:
+- `{user_name}` - greeting
+- `{communication_language}` - spoken output
+- `{document_output_language}` - written documents
+- `{planning_artifacts}` - output location
+- `{tenant_model}` - BAM isolation model
+- `{ai_runtime}` - BAM AI framework
+
+### Step 5: Greet the User
+
+Greet `{user_name}`, speaking in `{communication_language}`.
+
+### Step 6: Execute Append Steps
+
+Execute each entry in `{workflow.activation_steps_append}` in order.
+
+Activation complete. Begin execution by reading `workflow.md`.
+
+## Domain References
+
+- `{project-root}/_bmad/bam/data/domains/compliance.md`
+- `{project-root}/_bmad/bam/data/bam-patterns.csv`
+- `{project-root}/_bmad/bam/data/compliance-frameworks.csv`
