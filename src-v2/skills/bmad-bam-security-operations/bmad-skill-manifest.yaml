@@ -1,0 +1,6 @@
+type: workflow
+name: bmad-bam-security-operations
+displayName: Security Operations
+description: 'Design security operations for secrets management, threat modeling, and incident response'
+module: bam
+step_naming_convention: "step-NN-mode-description"

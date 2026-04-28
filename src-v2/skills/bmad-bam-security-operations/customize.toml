@@ -1,0 +1,49 @@
+# Workflow customization for bmad-bam-security-operations
+#
+# Merge Order (base -> team -> user):
+#   1. {skill-root}/customize.toml (this file)
+#   2. {project-root}/_bmad/custom/bmad-bam-security-operations.toml (team)
+#   3. {project-root}/_bmad/custom/bmad-bam-security-operations.user.toml (personal)
+#
+# Merge Rules:
+#   - Scalars: override wins
+#   - Tables: deep-merge
+#   - Arrays of tables with code/id: replace matching, append new
+#   - Other arrays: append
+
+[workflow]
+
+# Pre-activation steps (before config load)
+activation_steps_prepend = [
+  "Loading Security Operations workflow context.",
+  "This workflow covers three sub-domains: ZSR (Secrets), ZST (Threat Model), ZIR (Incident Response).",
+]
+
+# Post-greeting steps (before workflow begins)
+activation_steps_append = [
+  "Verify {tenant_model} and {ai_runtime} are configured in config.yaml",
+  "Check for existing artifact at {output_folder}/planning-artifacts/security-operations.md",
+  "Identify which sub-workflow focus: ZSR (Secrets), ZST (Threat), or ZIR (Incident)",
+]
+
+# Persistent facts loaded for entire workflow
+persistent_facts = [
+  "file:{project-root}/_bmad/bam/data/context/bam-core.md",
+  "file:{project-root}/_bmad/bam/data/domains/security.md",
+  "file:{project-root}/_bmad/bam/data/patterns/secrets-management.md",
+  "file:{project-root}/_bmad/bam/data/patterns/incident-response.md",
+  "file:{project-root}/_bmad/bam/data/checklists/qg-s3.md",
+  "file:{project-root}/_bmad/bam/data/checklists/qg-ir.md",
+  "file:{project-root}/**/project-context.md",
+]
+
+# On workflow completion
+on_complete = """
+Security Operations workflow complete.
+
+**Quality Gates:** QG-S3 (Security Baseline), QG-IR (Incident Response)
+Run validation mode to verify security operations design.
+
+**Next Workflows:**
+See Related Workflows in SKILL.md for recommendations.
+"""
