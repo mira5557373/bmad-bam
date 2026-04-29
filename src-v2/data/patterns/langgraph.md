@@ -1,7 +1,17 @@
+---
+pattern_id: langgraph
+shortcode: ZLG
+category: ai-runtime
+qg_ref: QG-M3
+version: 1.1.0
+last_reviewed: 2026-04-29
+---
+
 # LangGraph Runtime - BAM Pattern
 
-**Loaded by:** ZLG  
-**Applies to:** AI agent orchestration
+**Loaded by:** ZLG
+**Category:** ai-runtime
+**Quality Gate:** QG-M3
 
 ---
 
@@ -67,27 +77,16 @@ Advanced routing in LangGraph graphs:
 | Map-reduce | Parallel processing | Fan-out to N nodes, collect results |
 | Cycle | Iterative refinement | Loop until condition met |
 
-### Conditional Edge Example
+### Conditional Edge Pattern
 
-```python
-def route_based_on_confidence(state):
-    if state["confidence"] >= 0.95:
-        return "execute"
-    elif state["confidence"] >= 0.8:
-        return "review"
-    else:
-        return "reject"
+> **Implementation:** Use web search for current LangGraph API
+> Search: "LangGraph add_conditional_edges example {date}"
 
-graph.add_conditional_edges(
-    "evaluate",
-    route_based_on_confidence,
-    {
-        "execute": "execute_node",
-        "review": "human_review_node",
-        "reject": "rejection_node"
-    }
-)
-```
+**Pattern Structure:**
+- Evaluation function receives state dict
+- Returns string key for routing decision
+- Edge mapping connects keys to target nodes
+- Supports confidence thresholds, tier-based routing, feature flags
 
 ### Multi-Tenant Conditional Routing
 
