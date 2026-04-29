@@ -230,6 +230,78 @@ Loading CrewAI pattern:
 Confirm loaded. Ready for CrewAI implementation guidance.
 """
 
+# ADDITIONAL PATTERN LOADERS (ZPA*)
+
+[[agent.menu]]
+code = "ZPAD"
+description = "Load: AI Deployment pattern (model versioning, rollout)"
+prompt = """
+Loading AI deployment pattern:
+`{project-root}/_bmad/bam/data/patterns/ai-deployment.md`
+
+Confirm loaded. Ready for AI model deployment guidance.
+"""
+
+[[agent.menu]]
+code = "ZPAI"
+description = "Load: AI Discovery pattern (capability registration)"
+prompt = """
+Loading AI discovery pattern:
+`{project-root}/_bmad/bam/data/patterns/ai-discovery.md`
+
+Confirm loaded. Ready for AI agent discovery guidance.
+"""
+
+[[agent.menu]]
+code = "ZPAV"
+description = "Load: AI Verification pattern (output validation)"
+prompt = """
+Loading AI verification pattern:
+`{project-root}/_bmad/bam/data/patterns/ai-verification.md`
+
+Confirm loaded. Ready for AI verification guidance.
+"""
+
+[[agent.menu]]
+code = "ZPPM"
+description = "Load: Provider Management pattern (multi-provider LLM)"
+prompt = """
+Loading provider management pattern:
+`{project-root}/_bmad/bam/data/patterns/provider-management.md`
+
+Confirm loaded. Ready for LLM provider management guidance.
+"""
+
+[[agent.menu]]
+code = "ZPRL"
+description = "Load: Runtime Loops pattern (agent execution cycles)"
+prompt = """
+Loading runtime loops pattern:
+`{project-root}/_bmad/bam/data/patterns/runtime-loops.md`
+
+Confirm loaded. Ready for agent runtime loop guidance.
+"""
+
+[[agent.menu]]
+code = "ZPST"
+description = "Load: State Management pattern (agent state persistence)"
+prompt = """
+Loading state management pattern:
+`{project-root}/_bmad/bam/data/patterns/state-management.md`
+
+Confirm loaded. Ready for agent state management guidance.
+"""
+
+[[agent.menu]]
+code = "ZPTR"
+description = "Load: Tool Resilience pattern (retry, fallback)"
+prompt = """
+Loading tool resilience pattern:
+`{project-root}/_bmad/bam/data/patterns/tool-resilience.md`
+
+Confirm loaded. Ready for tool resilience guidance.
+"""
+
 # SECONDARY WORKFLOWS (ZW*)
 
 [[agent.menu]]
