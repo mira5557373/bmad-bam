@@ -1,6 +1,6 @@
 # CLAUDE.md - BAM Extension Module
 
-> **Quick Start:** BAM is a **pure extension module** with 0 standalone agents, 31 extensions, and 15 customize files. Atlas, Nova, Kai personas are consolidated into `architect-bam.yaml`. Extensions are auto-converted to BMAD's native `.customize.yaml` format via `npm run generate-customize`. Run `npm test` before any PR. Never use `memories:` field. Step files use `Search the web: "{topic} {date}"` directives for current best practices.
+> **Quick Start:** BAM is a **pure extension module** with 0 standalone agents. **V1** (`src/`): 31 extensions, 196 workflows, 15 customize files. **V2** (`src-v2/`): 12 TOML customize files, 33 skills, 26 patterns, 33 checklists - a 6:1 consolidation. Atlas, Nova, Kai personas consolidated into `architect-bam.yaml`. Run `npm test` before any PR. Never use `memories:` field (V1) or TOML `memories` key (V2).
 
 ---
 
@@ -9,29 +9,30 @@
 1. [What is BAM?](#what-is-bam)
 2. [BMAD Method Integration](#bmad-method-integration)
 3. [Architecture Overview](#architecture-overview)
-4. [Configuration Variables](#configuration-variables)
-5. [Directory Structure](#directory-structure)
-6. [Variable Placeholders](#variable-placeholders)
-7. [Extension Pattern (WDS)](#extension-pattern-wds)
-8. [Customize Files (Extension Loading)](#customize-files-extension-loading)
-9. [WDS Agent Coexistence Model](#wds-agent-coexistence-model)
-10. [Step File Pattern (BMM)](#step-file-pattern-bmm)
-11. [Pattern Registry Structure](#pattern-registry-structure)
-12. [Web Search Integration](#web-search-integration)
-13. [Agent Guide Pattern](#agent-guide-pattern)
-14. [Workflow Structure (CEV)](#workflow-structure-cev)
-15. [Module Help CSV Schema](#module-help-csv-schema)
-16. [Quality Gates & Recovery](#quality-gates--recovery)
-17. [Tenant Model Deep Dive](#tenant-model-deep-dive)
-18. [AI Runtime Deep Dive](#ai-runtime-deep-dive)
-19. [Sidecar Memory Pattern](#sidecar-memory-pattern)
-20. [Context Flow](#context-flow)
-21. [Template Variables](#template-variables)
-22. [Naming Conventions](#naming-conventions)
-23. [Common Tasks](#common-tasks)
-24. [Anti-Patterns](#anti-patterns)
-25. [Testing](#testing)
-26. [Quick Reference](#quick-reference)
+4. [V2 Architecture (Consolidated)](#v2-architecture-consolidated)
+5. [Configuration Variables](#configuration-variables)
+6. [Directory Structure](#directory-structure)
+7. [Variable Placeholders](#variable-placeholders)
+8. [Extension Pattern (WDS)](#extension-pattern-wds)
+9. [Customize Files (Extension Loading)](#customize-files-extension-loading)
+10. [WDS Agent Coexistence Model](#wds-agent-coexistence-model)
+11. [Step File Pattern (BMM)](#step-file-pattern-bmm)
+12. [Pattern Registry Structure](#pattern-registry-structure)
+13. [Web Search Integration](#web-search-integration)
+14. [Agent Guide Pattern](#agent-guide-pattern)
+15. [Workflow Structure (CEV)](#workflow-structure-cev)
+16. [Module Help CSV Schema](#module-help-csv-schema)
+17. [Quality Gates & Recovery](#quality-gates--recovery)
+18. [Tenant Model Deep Dive](#tenant-model-deep-dive)
+19. [AI Runtime Deep Dive](#ai-runtime-deep-dive)
+20. [Sidecar Memory Pattern](#sidecar-memory-pattern)
+21. [Context Flow](#context-flow)
+22. [Template Variables](#template-variables)
+23. [Naming Conventions](#naming-conventions)
+24. [Common Tasks](#common-tasks)
+25. [Anti-Patterns](#anti-patterns)
+26. [Testing](#testing)
+27. [Quick Reference](#quick-reference)
 
 ---
 
@@ -98,8 +99,8 @@ BAM Extension Module (Pure Extension - 0 Standalone Agents)
 ├── 196 workflows (179 flat + 17 nested in 7 container directories)
 ├── 6 pattern registry CSVs (192 patterns with decision criteria + web queries with {date} placeholder)
 ├── 233 agent guides (context injection via WDS pattern, all with Web Research sections)
-├── 38 checklists (all QG-named, with web research verification)
-└── 460 templates (output artifacts + sidecar-*.md + spec/catalog files)
+├── 39 checklists (all QG-named, with web research verification)
+└── 461 templates (output artifacts + sidecar-*.md + spec/catalog files)
 ```
 
 **Extension Distribution:**
@@ -117,6 +118,133 @@ BAM Extension Module (Pure Extension - 0 Standalone Agents)
 - Sidecar templates → `src/data/templates/sidecar-*.md` (flat, BMM-compatible naming)
 
 > **Note:** `architect-bam.yaml` has 44 menu items (above the 5-10 recommendation) because it consolidates three architect personas: Atlas (Platform), Nova (AI Runtime), and Kai (Integration). This is an intentional design decision to keep related capabilities together rather than fragmenting into multiple extensions.
+
+---
+
+## V2 Architecture (Consolidated)
+
+BAM V2 (`src-v2/`) is a consolidated redesign achieving 6:1 reduction while maintaining full capability coverage.
+
+```
+BAM V2 Extension Module (src-v2/)
+├── 12 TOML customize files (BMAD v6.4.0 format)
+├── 33 workflow skills (CEV: Create/Edit/Validate modes)
+├── 26 pattern files (with shortcodes ZXX)
+├── 16 domain files (enriched with multi-tenant context)
+├── 33 checklists (QG-* format with recovery protocols)
+├── 40 templates (output artifacts)
+├── 3 persona files (Atlas, Nova, Kai)
+├── 6 CSV registries (patterns, gates, compliance)
+└── 3 sidecar memory templates
+```
+
+### V2 Directory Structure
+
+```
+src-v2/
+├── module.yaml                    # V2 module configuration
+├── customize/                     # 12 TOML files (BMAD v6.4.0)
+│   ├── bmad-agent-architect.toml  # Platform architecture
+│   ├── bmad-agent-devops.toml     # Resilience, DR patterns
+│   ├── bmad-agent-security.toml   # Security operations
+│   ├── bmad-agent-compliance.toml # Privacy, GDPR workflows
+│   ├── bmad-agent-data.toml       # Data residency, tenant lifecycle
+│   └── ... (7 more)
+│
+├── skills/                        # 33 workflow skills
+│   └── bmad-bam-{skill-name}/
+│       ├── SKILL.md               # 6-step activation protocol
+│       ├── bmad-skill-manifest.yaml
+│       ├── customize.toml         # Skill-specific TOML
+│       ├── workflow.md            # Mode router
+│       └── steps/                 # CEV step files
+│           ├── step-01-c-*.md     # Create mode (01-09)
+│           ├── step-10-e-*.md     # Edit mode (10-19)
+│           └── step-20-v-*.md     # Validate mode (20-29)
+│
+└── data/
+    ├── context/bam-core.md        # Core BAM context (all TOMLs reference)
+    ├── personas/                  # 3 architect personas
+    ├── domains/                   # 16 domain files (enriched)
+    ├── patterns/                  # 26 pattern files with shortcodes
+    ├── checklists/                # 33 QG-* checklists
+    ├── templates/                 # 40 output templates
+    ├── sidecar/                   # 3 memory templates
+    └── *.csv                      # 6 registry files
+```
+
+### V2 TOML Format (BMAD v6.4.0)
+
+```toml
+# Example: bmad-agent-security.toml
+[agent]
+activation_steps_append = [
+  "BAM Security capabilities available. Use ZSO for security operations.",
+]
+
+persistent_facts = [
+  "file:{project-root}/_bmad/bam/data/context/bam-core.md",
+  "file:{project-root}/_bmad/bam/data/patterns/zero-trust.md",
+]
+
+principles = [
+  "BAM Security: Zero trust for all tenant boundaries.",
+  "BAM Gates: QG-S3 (Security Baseline), QG-IR (Incident Response).",
+]
+
+[[agent.menu]]
+code = "ZSO"
+description = "Security Operations: secrets, threat modeling, incident response"
+skill = "bmad-bam-security-operations"
+
+[[agent.menu]]
+code = "ZPZT"
+description = "Load: Zero Trust pattern details"
+prompt = """
+Loading zero trust pattern:
+`{project-root}/_bmad/bam/data/patterns/zero-trust.md`
+Confirm loaded. Ready for zero trust architecture guidance.
+"""
+```
+
+### V2 Asset Counts
+
+| Asset | Count | Purpose |
+|-------|-------|---------|
+| TOML customize files | 12 | Agent capability extensions |
+| Workflow skills | 33 | CEV-mode workflows |
+| Pattern files | 26 | Architecture patterns with shortcodes |
+| Domain files | 16 | Enriched multi-tenant domains |
+| Checklists | 33 | Quality gate verification |
+| Templates | 40 | Output artifact templates |
+| Personas | 3 | Atlas, Nova, Kai |
+| CSV registries | 6 | Pattern/gate/compliance data |
+| Sidecar templates | 3 | Persistent memory |
+
+### V1 vs V2 Comparison
+
+| Aspect | V1 (`src/`) | V2 (`src-v2/`) |
+|--------|-------------|----------------|
+| Config format | YAML extensions | TOML (BMAD v6.4.0) |
+| Workflows | 196 | 33 (6:1 consolidation) |
+| Agent guides | 233 | 16 domains + 26 patterns |
+| Templates | 461 | 40 |
+| Checklists | 39 | 33 |
+| Menu codes | Various | Z/Y prefix standard |
+
+### V2 Testing
+
+```bash
+# Run V2-specific tests
+npm test -- test/v2/
+
+# Tests verify:
+# - 12 TOML files with required sections
+# - 33 workflows with CEV steps
+# - All menu codes use Z/Y prefix
+# - No memories field in TOMLs
+# - All TOMLs reference bam-core.md
+```
 
 ---
 
@@ -276,8 +404,8 @@ After `npx bmad-method install`, BAM resources are at:
     └── data/                    # All resources
         ├── agent-guides/bam/    # 233 agent guides
         ├── extensions/          # 31 extension YAMLs
-        ├── templates/           # 460 templates
-        ├── checklists/          # 38 checklists
+        ├── templates/           # 461 templates
+        ├── checklists/          # 39 checklists
         └── *.csv                # 6 pattern registry CSVs
 ```
 
@@ -288,8 +416,8 @@ Run `./scripts/verify-install.sh _bmad/bam` to verify installation:
 ```bash
 # Expected output:
 # [PASS] Agent guides: 233 files
-# [PASS] Templates: 460 files
-# [PASS] Checklists: 38 files
+# [PASS] Templates: 461 files
+# [PASS] Checklists: 39 files
 # [PASS] Extensions: 31 files
 ```
 
@@ -1562,8 +1690,8 @@ npm test
 | Agent guides | Fill content, don't delete | Each guide is referenced by extensions/workflows |
 | Workflows | Enhance, don't remove | Each workflow is a distinct capability |
 | Extensions | Maintain all 31 | Extensions add agent capabilities |
-| Templates | Keep all 460 | Templates produce artifacts |
-| Checklists | Maintain all 38 | Checklists ensure quality gates |
+| Templates | Keep all 461 | Templates produce artifacts |
+| Checklists | Maintain all 39 | Checklists ensure quality gates |
 
 ### When Content Is Missing
 
@@ -1628,8 +1756,8 @@ If tests fail due to missing content, **generate content** rather than adjusting
 | Agent guides | 233 | Fill missing content | Document new additions |
 | Workflows | 191 | Create if needed | Document new additions |
 | Extensions | 31 | Restore from backup | Document additions |
-| Templates | 460 | Regenerate | Document additions |
-| Checklists | 38 | Restore | Document additions |
+| Templates | 461 | Regenerate | Document additions |
+| Checklists | 39 | Restore | Document additions |
 
 ---
 
@@ -1665,8 +1793,8 @@ npm test -- test/schema.test.js   # Specific file
 | Workflows | 191 | 100% (Create-mode steps with directives) |
 | Pattern CSVs | 6 | 100% (`web_queries` column with `{date}`) |
 | Agent Guides | 233 | 100% (all have Web Research section) |
-| Checklists | 38 | 100% have web research verification |
-| Templates | 460 | 100% (all have Web Research section) |
+| Checklists | 39 | 100% have web research verification |
+| Templates | 461 | 100% (all have Web Research section) |
 
 ---
 
