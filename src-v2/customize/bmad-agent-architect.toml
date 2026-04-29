@@ -221,7 +221,7 @@ Confirm loaded. Ready for LangGraph implementation guidance.
 """
 
 [[agent.menu]]
-code = "ZPC"
+code = "ZAC"
 description = "Load: CrewAI runtime pattern details"
 prompt = """
 Loading CrewAI pattern:

@@ -3,7 +3,7 @@
 
 [agent]
 activation_steps_append = [
-  "BAM Compliance capabilities available. Use ZPC for privacy workflows.",
+  "BAM Compliance capabilities available. Use ZPP for privacy workflows.",
 ]
 
 persistent_facts = [
@@ -20,7 +20,7 @@ principles = [
 ]
 
 [[agent.menu]]
-code = "ZPC"
+code = "ZPP"
 description = "Privacy Compliance: GDPR, CCPA workflows"
 skill = "bmad-bam-privacy-compliance"
 
