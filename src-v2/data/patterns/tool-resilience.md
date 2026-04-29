@@ -1,7 +1,8 @@
 # Tool Resilience - BAM Pattern
 
 **Loaded by:** ZTR  
-**Applies to:** Robust tool execution, external API failures, retry/fallback strategies
+**Applies to:** Robust tool execution, external API failures, retry/fallback strategies  
+**See also:** [circuit-breaker.md](circuit-breaker.md) (core pattern definition)
 
 ---
 

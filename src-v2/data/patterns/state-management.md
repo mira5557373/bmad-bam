@@ -1,7 +1,8 @@
 # State Management - BAM Pattern
 
 **Loaded by:** ZSS  
-**Applies to:** Checkpoint persistence, multi-tenant state serialization, interrupt/resume
+**Applies to:** Checkpoint persistence, multi-tenant state serialization, interrupt/resume  
+**See also:** [runtime-loops.md](runtime-loops.md) (Control Loop checkpoint usage)
 
 ---
 

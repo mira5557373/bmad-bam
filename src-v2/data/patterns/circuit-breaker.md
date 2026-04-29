@@ -1,7 +1,8 @@
 # Circuit Breaker - BAM Pattern
 
 **Loaded by:** ZCB  
-**Applies to:** Resilience and fault tolerance
+**Applies to:** Resilience and fault tolerance  
+**See also:** [tool-resilience.md](tool-resilience.md) (applies circuit breaker in fallback chains)
 
 ---
 

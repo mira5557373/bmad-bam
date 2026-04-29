@@ -1,7 +1,8 @@
 # Runtime Loops - BAM Pattern
 
 **Loaded by:** ZRL  
-**Applies to:** NEXUS 40-Layer Architecture, production-grade orchestration, multi-tenant lifecycle
+**Applies to:** NEXUS 40-Layer Architecture, production-grade orchestration, multi-tenant lifecycle  
+**See also:** [state-management.md](state-management.md) (checkpoint implementation), [tenant-quotas.md](tenant-quotas.md) (quota configuration)
 
 ---
 

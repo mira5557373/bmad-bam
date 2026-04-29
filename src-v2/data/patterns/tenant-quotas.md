@@ -1,7 +1,8 @@
 # Tenant Quotas - BAM Pattern
 
 **Loaded by:** ZTQ  
-**Applies to:** Per-tenant resource limits, fair usage policies
+**Applies to:** Per-tenant resource limits, fair usage policies  
+**See also:** [runtime-loops.md](runtime-loops.md) (Economic Loop integration)
 
 ---
 
