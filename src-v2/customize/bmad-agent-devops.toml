@@ -1,0 +1,33 @@
+# BAM DevOps Extensions for bmad-agent-dev
+# Adds disaster recovery, chaos engineering capabilities
+
+[agent]
+activation_steps_append = [
+  "BAM DevOps capabilities available. Use ZRS for resilience workflows.",
+]
+
+persistent_facts = [
+  "file:{project-root}/_bmad/bam/data/patterns/disaster-recovery.md",
+]
+
+principles = [
+  "BAM DevOps: Design for failure, test recovery regularly.",
+  "BAM DevOps: Chaos experiments must be tenant-safe with blast radius containment.",
+  "BAM DevOps: RTO/RPO targets vary by tenant tier.",
+  "BAM Gates: QG-DR (Disaster Recovery), QG-CE1 (Chaos Engineering).",
+]
+
+[[agent.menu]]
+code = "ZRS"
+description = "Resilience: DR and chaos engineering workflows"
+skill = "bmad-bam-resilience"
+
+[[agent.menu]]
+code = "ZPDR"
+description = "Load: Disaster Recovery pattern details"
+prompt = """
+Loading disaster recovery pattern:
+`{project-root}/_bmad/bam/data/patterns/disaster-recovery.md`
+
+Confirm loaded. Ready for DR planning guidance.
+"""

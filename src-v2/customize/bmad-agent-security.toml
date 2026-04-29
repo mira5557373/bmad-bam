@@ -1,0 +1,55 @@
+# BAM Security Extensions for bmad-agent-architect
+# Adds secrets management, threat modeling, incident response
+
+[agent]
+activation_steps_append = [
+  "BAM Security capabilities available. Use ZSO for security operations.",
+]
+
+persistent_facts = [
+  "file:{project-root}/_bmad/bam/data/patterns/secrets-management.md",
+  "file:{project-root}/_bmad/bam/data/patterns/incident-response.md",
+  "file:{project-root}/_bmad/bam/data/patterns/zero-trust.md",
+]
+
+principles = [
+  "BAM Security: Zero trust for all tenant boundaries.",
+  "BAM Security: Secrets must be tenant-isolated and rotatable.",
+  "BAM Security: Incident response must include tenant notification.",
+  "BAM Gates: QG-S3 (Security Baseline), QG-IR (Incident Response).",
+]
+
+[[agent.menu]]
+code = "ZSO"
+description = "Security Operations: secrets, threat modeling, incident response"
+skill = "bmad-bam-security-operations"
+
+[[agent.menu]]
+code = "ZPZT"
+description = "Load: Zero Trust pattern details"
+prompt = """
+Loading zero trust pattern:
+`{project-root}/_bmad/bam/data/patterns/zero-trust.md`
+
+Confirm loaded. Ready for zero trust architecture guidance.
+"""
+
+[[agent.menu]]
+code = "ZPSM"
+description = "Load: Secrets Management pattern details"
+prompt = """
+Loading secrets management pattern:
+`{project-root}/_bmad/bam/data/patterns/secrets-management.md`
+
+Confirm loaded. Ready for secrets architecture guidance.
+"""
+
+[[agent.menu]]
+code = "ZPIR"
+description = "Load: Incident Response pattern details"
+prompt = """
+Loading incident response pattern:
+`{project-root}/_bmad/bam/data/patterns/incident-response.md`
+
+Confirm loaded. Ready for incident response guidance.
+"""

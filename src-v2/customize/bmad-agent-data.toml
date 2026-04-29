@@ -1,0 +1,39 @@
+# BAM Data Extensions for bmad-agent-architect
+# Adds data residency, tenant lifecycle capabilities
+
+[agent]
+activation_steps_append = [
+  "BAM Data capabilities available. Use ZDD for data domain context.",
+]
+
+persistent_facts = [
+  "file:{project-root}/_bmad/bam/data/domains/tenant.md",
+]
+
+principles = [
+  "BAM Data: Tenant data residency is a deployment constraint.",
+  "BAM Data: Data lifecycle must include retention and purge schedules.",
+  "BAM Data: Cross-tenant queries are prohibited by default.",
+]
+
+[[agent.menu]]
+code = "ZDD"
+description = "Load: Data domain context (residency, lifecycle, isolation)"
+prompt = """
+Loading data domain context:
+`{project-root}/_bmad/bam/data/domains/tenant.md`
+`{project-root}/_bmad/bam/data/patterns/rls.md`
+
+Confirm loaded. Ready for data architecture guidance.
+"""
+
+[[agent.menu]]
+code = "ZDL"
+description = "Load: Tenant lifecycle patterns"
+prompt = """
+Loading tenant lifecycle context:
+`{project-root}/_bmad/bam/data/domains/tenant.md`
+
+Focus: provisioning, suspension, termination flows.
+Confirm loaded. Ready for lifecycle design guidance.
+"""

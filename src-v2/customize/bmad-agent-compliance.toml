@@ -1,0 +1,35 @@
+# BAM Compliance Extensions for bmad-agent-analyst
+# Adds GDPR, privacy compliance capabilities
+
+[agent]
+activation_steps_append = [
+  "BAM Compliance capabilities available. Use ZPC for privacy workflows.",
+]
+
+persistent_facts = [
+  "file:{project-root}/_bmad/bam/data/domains/compliance.md",
+  "file:{project-root}/_bmad/bam/data/compliance-frameworks.csv",
+]
+
+principles = [
+  "BAM Compliance: Data subject rights are non-negotiable.",
+  "BAM Compliance: Consent must be granular and auditable.",
+  "BAM Compliance: Cross-border transfers require documented legal basis.",
+  "BAM Gates: QG-CC (Continuous Compliance via qg-ops.md).",
+]
+
+[[agent.menu]]
+code = "ZPC"
+description = "Privacy Compliance: GDPR, CCPA workflows"
+skill = "bmad-bam-privacy-compliance"
+
+[[agent.menu]]
+code = "ZDC"
+description = "Load: Full compliance domain context"
+prompt = """
+Loading compliance domain context:
+`{project-root}/_bmad/bam/data/domains/compliance.md`
+`{project-root}/_bmad/bam/data/compliance-frameworks.csv`
+
+Confirm loaded. Ready for compliance assessment guidance.
+"""
