@@ -49,6 +49,26 @@ Request (X-Tenant-ID)
 | Existing infrastructure | Custom | Leverage investments |
 | Rapid prototyping | LangGraph | Best tooling |
 
+## Runtime Selection Guide
+
+Quick reference for choosing AI agent runtime:
+
+| Use Case | Primary | Alternative | Notes |
+|----------|---------|-------------|-------|
+| State machines | LangGraph | - | Native checkpointing |
+| Role-based crews | CrewAI | LangGraph | Built-in delegation |
+| Multi-agent conversations | AutoGen | CrewAI | Flexible termination |
+| Long-running transactions | Saga | LangGraph | Compensation support |
+| Rapid prototyping | LangGraph | CrewAI | Best tooling |
+
+**Detailed Patterns:**
+- `{project-root}/_bmad/bam/data/patterns/langgraph.md` - State machine runtime
+- `{project-root}/_bmad/bam/data/patterns/agent-orchestration.md` - CrewAI, AutoGen, Saga
+
+**Web Research:**
+- Search: "AI agent runtime comparison {date}"
+- Search: "LangGraph vs CrewAI vs AutoGen {date}"
+
 ## Quality Checks
 
 - [ ] Agent execution respects tenant boundaries

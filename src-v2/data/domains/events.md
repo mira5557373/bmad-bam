@@ -62,3 +62,55 @@ Producer → Topic (partitioned by tenant) → Consumer
 
 - "multi-tenant event driven architecture {date}"
 - "Kafka tenant isolation patterns {date}"
+
+---
+
+## CQRS Pattern
+
+Command Query Responsibility Segregation separates read and write models for optimized scaling.
+
+### When to Use CQRS
+
+**Use when:**
+- Read/write load asymmetry (10:1 or higher)
+- Complex read models with multiple projections
+- Event sourcing is in use
+- Independent scaling requirements
+
+**Do NOT use when:**
+- Simple CRUD operations
+- Consistent read-after-write required
+- Low complexity systems
+
+### CQRS Architecture
+
+```
+┌─────────────────────────────────────┐
+│              CQRS                   │
+│                                     │
+│  ┌─────────┐      ┌─────────┐      │
+│  │ Command │      │  Query  │      │
+│  │  Model  │      │  Model  │      │
+│  └────┬────┘      └────┬────┘      │
+│       │                │           │
+│       ▼                ▼           │
+│  ┌─────────┐      ┌─────────┐      │
+│  │  Write  │─────►│  Read   │      │
+│  │   DB    │ sync │   DB    │      │
+│  └─────────┘      └─────────┘      │
+└─────────────────────────────────────┘
+```
+
+### Multi-Tenant CQRS Considerations
+
+| Concern | Approach |
+|---------|----------|
+| Write DB isolation | RLS/Schema per tenant model |
+| Read DB isolation | Tenant-prefixed materialized views |
+| Event sync | Include tenant_id in all events |
+| Projection filters | Tenant-scoped projections |
+
+**Web Research:**
+- Search: "CQRS implementation patterns {date}"
+- Search: "CQRS multi-tenant SaaS {date}"
+- Search: "event sourcing CQRS patterns {date}"

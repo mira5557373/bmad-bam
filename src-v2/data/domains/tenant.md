@@ -44,6 +44,24 @@ Request → Middleware → TenantContext → All Services
 | Any | PCI/HIPAA | Enterprise | Database |
 | >10000 | Low | All | RLS + Sharding |
 
+## Isolation Strategy Selection
+
+Quick reference for choosing tenant isolation model:
+
+| Requirement | RLS | Schema | Database |
+|-------------|-----|--------|----------|
+| <1000 tenants | Best | OK | Overkill |
+| 1000+ tenants | + Sharding | Complex | Expensive |
+| HIPAA/PCI compliance | Audit needed | Good | Best |
+| Cost optimization | Best | Medium | Expensive |
+| Schema customization | None | Per-tenant | Full |
+
+**Detailed Pattern:** `{project-root}/_bmad/bam/data/patterns/tenant-isolation.md`
+
+**Web Research:**
+- Search: "multi-tenant isolation strategy selection {date}"
+- Search: "RLS vs schema isolation comparison {date}"
+
 ## Quality Checks
 
 - [ ] Tenant ID in all request logs
