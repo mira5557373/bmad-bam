@@ -1,6 +1,6 @@
 # AI Discovery - BAM Pattern
 
-**Loaded by:** ZAL  
+**Loaded by:** ZDV  
 **Applies to:** AI capability publishing and agent discovery
 
 ---

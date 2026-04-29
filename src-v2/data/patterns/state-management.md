@@ -1,6 +1,6 @@
 # State Management - BAM Pattern
 
-**Loaded by:** ZSM  
+**Loaded by:** ZSS  
 **Applies to:** Checkpoint persistence, multi-tenant state serialization, interrupt/resume
 
 ---

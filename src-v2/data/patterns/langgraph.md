@@ -1,6 +1,6 @@
 # LangGraph Runtime - BAM Pattern
 
-**Loaded by:** ZAL  
+**Loaded by:** ZLG  
 **Applies to:** AI agent orchestration
 
 ---

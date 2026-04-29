@@ -1,6 +1,6 @@
 # Action Contract - BAM Pattern
 
-**Loaded by:** ZAL  
+**Loaded by:** ZAX  
 **Applies to:** AI agent action execution, multi-tenant safety, audit trails
 
 ---

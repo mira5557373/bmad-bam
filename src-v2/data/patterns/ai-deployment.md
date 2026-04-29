@@ -1,6 +1,6 @@
 # AI Deployment - BAM Pattern
 
-**Loaded by:** ZAL  
+**Loaded by:** ZDP  
 **Applies to:** AI agent production deployment, version management, gradual rollouts
 
 ---

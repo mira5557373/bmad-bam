@@ -1,6 +1,6 @@
 # AI Observability - BAM Pattern
 
-**Loaded by:** ZAL  
+**Loaded by:** ZAO  
 **Applies to:** AI agent health monitoring, anomaly detection, invisible failure detection, output drift
 
 ---
