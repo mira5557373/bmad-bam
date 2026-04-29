@@ -9,11 +9,11 @@ describe('V2 File Counts', () => {
     expect(files.length).toBe(12);
   });
 
-  test('33 workflow skills', () => {
+  test('34 workflow skills', () => {
     const dirs = fs.readdirSync(path.join(v2Dir, 'skills')).filter(d =>
       d.startsWith('bmad-bam-') && fs.statSync(path.join(v2Dir, 'skills', d)).isDirectory()
     );
-    expect(dirs.length).toBe(33);
+    expect(dirs.length).toBe(34);
   });
 
   test('1 core context file', () => {
@@ -31,10 +31,13 @@ describe('V2 File Counts', () => {
     expect(files.length).toBeGreaterThanOrEqual(12);
   });
 
-  test('pattern files (26+)', () => {
+  test('21 pattern files (post-consolidation)', () => {
     const files = fs.readdirSync(path.join(v2Dir, 'data/patterns')).filter(f => f.endsWith('.md'));
-    // V2 has comprehensive pattern library (22 existing + 4 new: zero-trust, disaster-recovery, secrets-management, incident-response)
-    expect(files.length).toBeGreaterThanOrEqual(26);
+    // V2 consolidated: 27 - 8 thin + 2 consolidated = 21
+    // Thin patterns merged: rls, schema-per-tenant, database-per-tenant → tenant-isolation
+    //                      autogen, crewai, saga → agent-orchestration
+    //                      cqrs → events.md, facade → CSV
+    expect(files.length).toBe(21);
   });
 
   test('checklist files (QG-* format)', () => {
@@ -43,9 +46,9 @@ describe('V2 File Counts', () => {
     expect(files.length).toBeGreaterThanOrEqual(8);
   });
 
-  test('40 template files', () => {
+  test('41 template files', () => {
     const files = fs.readdirSync(path.join(v2Dir, 'data/templates')).filter(f => f.endsWith('.md'));
-    expect(files.length).toBe(40);
+    expect(files.length).toBe(41);
   });
 
   test('3 sidecar files', () => {
