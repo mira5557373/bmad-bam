@@ -1,3 +1,12 @@
+---
+pattern_id: incident-response
+shortcode: ZIR
+category: operations
+qg_ref: QG-IR1
+version: 1.0.0
+last_reviewed: 2026-04-29
+---
+
 # Incident Response - BAM Pattern
 
 **Loaded by:** ZIR  

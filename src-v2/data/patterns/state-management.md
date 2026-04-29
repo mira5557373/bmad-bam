@@ -1,3 +1,12 @@
+---
+pattern_id: state-management
+shortcode: ZSS
+category: ai-runtime
+qg_ref: QG-M3
+version: 1.0.0
+last_reviewed: 2026-04-29
+---
+
 # State Management - BAM Pattern
 
 **Loaded by:** ZSS  

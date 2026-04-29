@@ -1,3 +1,12 @@
+---
+pattern_id: provider-management
+shortcode: ZPV
+category: ai-ops
+qg_ref: QG-M3
+version: 1.0.0
+last_reviewed: 2026-04-29
+---
+
 # Provider Management - BAM Pattern
 
 **Loaded by:** ZPV  

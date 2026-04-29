@@ -1,3 +1,12 @@
+---
+pattern_id: zero-trust
+shortcode: ZZT
+category: security
+qg_ref: QG-S5
+version: 1.0.0
+last_reviewed: 2026-04-29
+---
+
 # Zero Trust Architecture - BAM Pattern
 
 **Loaded by:** ZZT  

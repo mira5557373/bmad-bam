@@ -1,3 +1,12 @@
+---
+pattern_id: ai-discovery
+shortcode: ZDV
+category: discovery
+qg_ref: QG-D1
+version: 1.0.0
+last_reviewed: 2026-04-29
+---
+
 # AI Discovery - BAM Pattern
 
 **Loaded by:** ZDV  

@@ -1,3 +1,12 @@
+---
+pattern_id: ai-deployment
+shortcode: ZDP
+category: ai-ops
+qg_ref: QG-AI1
+version: 1.0.0
+last_reviewed: 2026-04-29
+---
+
 # AI Deployment - BAM Pattern
 
 **Loaded by:** ZDP  

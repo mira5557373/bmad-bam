@@ -1,3 +1,12 @@
+---
+pattern_id: ai-safety
+shortcode: ZAS
+category: ai-safety
+qg_ref: QG-I3
+version: 1.0.0
+last_reviewed: 2026-04-29
+---
+
 # AI Safety - BAM Pattern
 
 **Loaded by:** ZAS  

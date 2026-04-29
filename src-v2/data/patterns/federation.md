@@ -1,3 +1,12 @@
+---
+pattern_id: federation
+shortcode: ZFD
+category: integration
+qg_ref: QG-M3
+version: 1.0.0
+last_reviewed: 2026-04-29
+---
+
 # Federation - BAM Pattern
 
 **Loaded by:** ZFD  

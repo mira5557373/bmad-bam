@@ -1,3 +1,12 @@
+---
+pattern_id: tenant-quotas
+shortcode: ZTQ
+category: tenant
+qg_ref: QG-M2
+version: 1.0.0
+last_reviewed: 2026-04-29
+---
+
 # Tenant Quotas - BAM Pattern
 
 **Loaded by:** ZTQ  

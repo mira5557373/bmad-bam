@@ -1,3 +1,12 @@
+---
+pattern_id: disaster-recovery
+shortcode: ZDR
+category: operations
+qg_ref: QG-DR1
+version: 1.0.0
+last_reviewed: 2026-04-29
+---
+
 # Disaster Recovery - BAM Pattern
 
 **Loaded by:** ZDR  

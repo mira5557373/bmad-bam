@@ -1,3 +1,12 @@
+---
+pattern_id: tool-resilience
+shortcode: ZTR
+category: ai-runtime
+qg_ref: QG-M3
+version: 1.0.0
+last_reviewed: 2026-04-29
+---
+
 # Tool Resilience - BAM Pattern
 
 **Loaded by:** ZTR  

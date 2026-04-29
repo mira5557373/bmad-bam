@@ -1,3 +1,12 @@
+---
+pattern_id: runtime-loops
+shortcode: ZRL
+category: ai-runtime
+qg_ref: QG-M3
+version: 1.0.0
+last_reviewed: 2026-04-29
+---
+
 # Runtime Loops - BAM Pattern
 
 **Loaded by:** ZRL  

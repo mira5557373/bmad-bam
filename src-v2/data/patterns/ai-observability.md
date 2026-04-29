@@ -1,3 +1,12 @@
+---
+pattern_id: ai-observability
+shortcode: ZOB
+category: observability
+qg_ref: QG-AI2
+version: 1.0.0
+last_reviewed: 2026-04-29
+---
+
 # AI Observability - BAM Pattern
 
 **Loaded by:** ZAO  

@@ -1,3 +1,12 @@
+---
+pattern_id: action-contract
+shortcode: ZAX
+category: ai-safety
+qg_ref: QG-AI3
+version: 1.0.0
+last_reviewed: 2026-04-29
+---
+
 # Action Contract - BAM Pattern
 
 **Loaded by:** ZAX  

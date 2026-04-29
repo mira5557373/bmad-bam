@@ -1,3 +1,12 @@
+---
+pattern_id: secrets-management
+shortcode: ZSM
+category: security
+qg_ref: QG-S8
+version: 1.0.0
+last_reviewed: 2026-04-29
+---
+
 # Secrets Management - BAM Pattern
 
 **Loaded by:** ZSM  

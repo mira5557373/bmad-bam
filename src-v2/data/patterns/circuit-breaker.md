@@ -1,3 +1,12 @@
+---
+pattern_id: circuit-breaker
+shortcode: ZCB
+category: resilience
+qg_ref: QG-M1
+version: 1.0.0
+last_reviewed: 2026-04-29
+---
+
 # Circuit Breaker - BAM Pattern
 
 **Loaded by:** ZCB  
