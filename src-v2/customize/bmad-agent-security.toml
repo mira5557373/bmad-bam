@@ -7,6 +7,7 @@ activation_steps_append = [
 ]
 
 persistent_facts = [
+  "file:{project-root}/_bmad/bam/data/context/bam-core.md",
   "file:{project-root}/_bmad/bam/data/patterns/secrets-management.md",
   "file:{project-root}/_bmad/bam/data/patterns/incident-response.md",
   "file:{project-root}/_bmad/bam/data/patterns/zero-trust.md",
