@@ -4,16 +4,16 @@ const path = require('path');
 describe('V2 File Counts', () => {
   const v2Dir = path.join(__dirname, '../../src-v2');
 
-  test('8 TOML customize files', () => {
+  test('12 TOML customize files', () => {
     const files = fs.readdirSync(path.join(v2Dir, 'customize')).filter(f => f.endsWith('.toml'));
-    expect(files.length).toBe(8);
+    expect(files.length).toBe(12);
   });
 
-  test('30 workflow skills', () => {
+  test('33 workflow skills', () => {
     const dirs = fs.readdirSync(path.join(v2Dir, 'skills')).filter(d =>
       d.startsWith('bmad-bam-') && fs.statSync(path.join(v2Dir, 'skills', d)).isDirectory()
     );
-    expect(dirs.length).toBe(30);
+    expect(dirs.length).toBe(33);
   });
 
   test('1 core context file', () => {
@@ -31,10 +31,10 @@ describe('V2 File Counts', () => {
     expect(files.length).toBeGreaterThanOrEqual(12);
   });
 
-  test('pattern files (10+)', () => {
+  test('pattern files (26+)', () => {
     const files = fs.readdirSync(path.join(v2Dir, 'data/patterns')).filter(f => f.endsWith('.md'));
-    // V2 has comprehensive pattern library
-    expect(files.length).toBeGreaterThanOrEqual(10);
+    // V2 has comprehensive pattern library (22 existing + 4 new: zero-trust, disaster-recovery, secrets-management, incident-response)
+    expect(files.length).toBeGreaterThanOrEqual(26);
   });
 
   test('checklist files (QG-* format)', () => {
