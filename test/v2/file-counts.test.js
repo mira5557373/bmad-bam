@@ -4,9 +4,10 @@ const path = require('path');
 describe('V2 File Counts', () => {
   const v2Dir = path.join(__dirname, '../../src-v2');
 
-  test('12 TOML customize files', () => {
+  test('13 TOML customize files', () => {
     const files = fs.readdirSync(path.join(v2Dir, 'customize')).filter(f => f.endsWith('.toml'));
-    expect(files.length).toBe(12);
+    // 12 original + 1 MCP TOML (NEXUS Phase 4)
+    expect(files.length).toBe(13);
   });
 
   test('34 workflow skills', () => {

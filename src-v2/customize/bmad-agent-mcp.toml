@@ -1,0 +1,119 @@
+# BAM MCP Integration Extensions
+# Adds MCP server lifecycle, tool discovery, tenant isolation patterns
+
+[agent]
+activation_steps_append = [
+  "BAM MCP Integration available. Use ZML for server lifecycle, ZMD for tool discovery.",
+]
+
+persistent_facts = [
+  "file:{project-root}/_bmad/bam/data/context/bam-core.md",
+  "file:{project-root}/_bmad/bam/data/domains/mcp.md",
+]
+
+principles = [
+  "BAM MCP: All tool access is tenant-scoped.",
+  "BAM MCP: Server registration includes tenant context.",
+  "BAM MCP: Tool discovery respects tenant boundaries.",
+  "BAM Gates: QG-MCP1 (MCP Integration).",
+]
+
+[[agent.menu]]
+code = "ZML"
+description = "MCP Server Lifecycle: registration, health, versioning"
+prompt = """
+Loading MCP server lifecycle pattern:
+`{project-root}/_bmad/bam/data/patterns/mcp-server-lifecycle.md`
+
+Confirm loaded. Ready for MCP server management guidance.
+"""
+
+[[agent.menu]]
+code = "ZMD"
+description = "MCP Tool Discovery: dynamic capability enumeration"
+prompt = """
+Loading MCP tool discovery pattern:
+`{project-root}/_bmad/bam/data/patterns/mcp-tool-discovery.md`
+
+Confirm loaded. Ready for tool discovery guidance.
+"""
+
+[[agent.menu]]
+code = "ZMT"
+description = "MCP Tenant Isolation: tenant-scoped contexts"
+prompt = """
+Loading MCP tenant isolation pattern:
+`{project-root}/_bmad/bam/data/patterns/mcp-tenant-isolation.md`
+
+Confirm loaded. Ready for MCP isolation guidance.
+"""
+
+[[agent.menu]]
+code = "ZTP"
+description = "Tool Permission Model: granular access control"
+prompt = """
+Loading tool permission model pattern:
+`{project-root}/_bmad/bam/data/patterns/tool-permission-model.md`
+
+Confirm loaded. Ready for tool permission guidance.
+"""
+
+[[agent.menu]]
+code = "ZMF"
+description = "MCP Federation: cross-server orchestration"
+prompt = """
+Loading MCP federation pattern:
+`{project-root}/_bmad/bam/data/patterns/mcp-federation.md`
+
+Confirm loaded. Ready for MCP federation guidance.
+"""
+
+[[agent.menu]]
+code = "ZMC"
+description = "MCP Result Caching: tenant-aware caching"
+prompt = """
+Loading MCP result caching pattern:
+`{project-root}/_bmad/bam/data/patterns/mcp-result-caching.md`
+
+Confirm loaded. Ready for MCP caching guidance.
+"""
+
+[[agent.menu]]
+code = "ZMA"
+description = "MCP Authentication: server auth patterns"
+prompt = """
+Loading MCP authentication pattern:
+`{project-root}/_bmad/bam/data/patterns/mcp-authentication.md`
+
+Confirm loaded. Ready for MCP auth guidance.
+"""
+
+[[agent.menu]]
+code = "ZMV"
+description = "MCP Schema Validation: tool schema validation"
+prompt = """
+Loading MCP schema validation pattern:
+`{project-root}/_bmad/bam/data/patterns/mcp-schema-validation.md`
+
+Confirm loaded. Ready for schema validation guidance.
+"""
+
+[[agent.menu]]
+code = "ZA2"
+description = "A2A Protocol: agent-to-agent communication"
+prompt = """
+Loading A2A protocol pattern:
+`{project-root}/_bmad/bam/data/patterns/a2a-protocol.md`
+
+Confirm loaded. Ready for A2A communication guidance.
+"""
+
+[[agent.menu]]
+code = "ZMR"
+description = "MCP Rate Limiting: per-server tenant limits"
+prompt = """
+Loading MCP rate limiting pattern:
+`{project-root}/_bmad/bam/data/patterns/mcp-rate-limiting.md`
+
+Confirm loaded. Ready for MCP rate limiting guidance.
+"""
