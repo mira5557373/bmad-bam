@@ -32,3 +32,35 @@ Loading disaster recovery pattern:
 
 Confirm loaded. Ready for DR planning guidance.
 """
+
+# NEXUS Phase 2 Operations Patterns
+
+[[agent.menu]]
+code = "ZCI"
+description = "Load: Tenant Chaos Injector pattern"
+prompt = """
+Loading tenant chaos injector pattern:
+`{project-root}/_bmad/bam/data/patterns/tenant-chaos-injector.md`
+
+Use web search for current implementation:
+- "tenant isolation chaos testing {date}"
+- "multi-tenant chaos engineering {date}"
+- "noisy neighbor resilience testing {date}"
+
+Confirm loaded. Ready for chaos testing design.
+"""
+
+[[agent.menu]]
+code = "ZIC"
+description = "Load: Incident Correlation Engine pattern"
+prompt = """
+Loading incident correlation engine pattern:
+`{project-root}/_bmad/bam/data/patterns/incident-correlation-engine.md`
+
+Use web search for current implementation:
+- "incident correlation multi-tenant SaaS {date}"
+- "cross-tenant incident analysis {date}"
+- "AIOps incident correlation {date}"
+
+Confirm loaded. Ready for incident correlation design.
+"""
