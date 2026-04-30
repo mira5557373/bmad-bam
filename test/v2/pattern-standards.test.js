@@ -4,11 +4,12 @@ const path = require('path');
 describe('Pattern Standards', () => {
   const patternsDir = path.join(__dirname, '../../src-v2/data/patterns');
 
-  test('27 pattern files exist (after NEXUS Phase 1)', () => {
+  test('36 pattern files exist (after NEXUS Phase 2)', () => {
     const patterns = fs.readdirSync(patternsDir).filter(f =>
       f.endsWith('.md') && !f.startsWith('.')
     );
-    expect(patterns.length).toBe(27);
+    // 21 base + 6 Phase 1 + 9 Phase 2 = 36
+    expect(patterns.length).toBe(36);
   });
 
   test('no implementation code in patterns', () => {
