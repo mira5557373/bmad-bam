@@ -466,3 +466,65 @@ Use web search for current implementation:
 
 Confirm loaded. Ready for agent handoff design.
 """
+
+# NEXUS Phase 3 Patterns
+
+[[agent.menu]]
+code = "ZAG"
+description = "Load: Agent Registry pattern (agent catalog, governance)"
+prompt = """
+Loading agent registry pattern:
+`{project-root}/_bmad/bam/data/patterns/agent-registry.md`
+
+Use web search for current implementation:
+- "AI agent registry catalog patterns {date}"
+- "agent inventory management enterprise {date}"
+- "Backstage AI agent catalog {date}"
+
+Confirm loaded. Ready for agent registry design.
+"""
+
+[[agent.menu]]
+code = "ZFC"
+description = "Load: Fanout Circuit Breaker pattern (runaway prevention)"
+prompt = """
+Loading fanout circuit breaker pattern:
+`{project-root}/_bmad/bam/data/patterns/fanout-circuit-breaker.md`
+
+Use web search for current implementation:
+- "agent fanout circuit breaker patterns {date}"
+- "LLM runaway loop prevention {date}"
+- "multi-agent cost limiting {date}"
+
+Confirm loaded. Ready for fanout limiting design.
+"""
+
+[[agent.menu]]
+code = "ZBL"
+description = "Load: Blast Radius Simulator pattern (failure impact)"
+prompt = """
+Loading blast radius simulator pattern:
+`{project-root}/_bmad/bam/data/patterns/blast-radius-simulator.md`
+
+Use web search for current implementation:
+- "blast radius simulation distributed systems {date}"
+- "failure impact analysis multi-tenant {date}"
+- "chaos engineering impact assessment {date}"
+
+Confirm loaded. Ready for blast radius analysis.
+"""
+
+[[agent.menu]]
+code = "ZMS"
+description = "Load: Agent Maturity Scoring pattern (readiness assessment)"
+prompt = """
+Loading agent maturity scoring pattern:
+`{project-root}/_bmad/bam/data/patterns/agent-maturity-scoring.md`
+
+Use web search for current implementation:
+- "AI agent maturity model {date}"
+- "agent readiness scoring framework {date}"
+- "MLOps maturity assessment {date}"
+
+Confirm loaded. Ready for maturity scoring design.
+"""
