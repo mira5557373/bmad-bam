@@ -31,13 +31,13 @@ describe('V2 File Counts', () => {
     expect(files.length).toBeGreaterThanOrEqual(12);
   });
 
-  test('21 pattern files (post-consolidation)', () => {
+  test('27 pattern files (after NEXUS Phase 1)', () => {
     const files = fs.readdirSync(path.join(v2Dir, 'data/patterns')).filter(f => f.endsWith('.md'));
-    // V2 consolidated: 27 - 8 thin + 2 consolidated = 21
-    // Thin patterns merged: rls, schema-per-tenant, database-per-tenant → tenant-isolation
-    //                      autogen, crewai, saga → agent-orchestration
-    //                      cqrs → events.md, facade → CSV
-    expect(files.length).toBe(21);
+    // V2 consolidated: 21 base + 6 NEXUS Phase 1 = 27
+    // NEXUS additions: prompt-injection-detection, kill-switch-registry,
+    //                  invisible-failure-detector, grounding-verifier,
+    //                  decision-verification, output-drift-monitor
+    expect(files.length).toBe(27);
   });
 
   test('checklist files (QG-* format)', () => {

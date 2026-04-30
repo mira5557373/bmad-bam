@@ -348,3 +348,61 @@ skill = "bmad-bam-events"
 code = "ZWA"
 description = "Agent Debug: Troubleshoot tenant-scoped agent issues"
 skill = "bmad-bam-agent-debug"
+
+# NEXUS PATTERNS (ZGV, ZDV, ZOD, ZIF)
+
+[[agent.menu]]
+code = "ZGV"
+description = "Load: Grounding Verifier pattern"
+prompt = """
+Loading grounding verifier pattern:
+`{project-root}/_bmad/bam/data/patterns/grounding-verifier.md`
+
+Use web search for current implementation:
+- "RAG grounding verification patterns {date}"
+- "LLM hallucination detection techniques {date}"
+
+Confirm loaded. Ready for grounding verification design.
+"""
+
+[[agent.menu]]
+code = "ZDV"
+description = "Load: Decision Verification pattern"
+prompt = """
+Loading decision verification pattern:
+`{project-root}/_bmad/bam/data/patterns/decision-verification.md`
+
+Use web search for current implementation:
+- "AI agent decision verification patterns {date}"
+- "human-in-the-loop AI systems {date}"
+
+Confirm loaded. Ready for decision verification design.
+"""
+
+[[agent.menu]]
+code = "ZOD"
+description = "Load: Output Drift Monitor pattern"
+prompt = """
+Loading output drift monitor pattern:
+`{project-root}/_bmad/bam/data/patterns/output-drift-monitor.md`
+
+Use web search for current implementation:
+- "ML model drift detection patterns {date}"
+- "LLM output quality monitoring {date}"
+
+Confirm loaded. Ready for drift monitoring design.
+"""
+
+[[agent.menu]]
+code = "ZIF"
+description = "Load: Invisible Failure Detector pattern"
+prompt = """
+Loading invisible failure detector pattern:
+`{project-root}/_bmad/bam/data/patterns/invisible-failure-detector.md`
+
+Use web search for current implementation:
+- "AI output quality monitoring patterns {date}"
+- "silent degradation detection AI systems {date}"
+
+Confirm loaded. Ready for invisible failure detection design.
+"""

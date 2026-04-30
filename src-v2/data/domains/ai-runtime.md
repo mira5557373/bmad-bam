@@ -147,8 +147,26 @@ memory_governance:
 | Embedding drift | Weekly | Re-embed if threshold exceeded |
 | Size monitoring | Hourly | Alert if approaching limit |
 
+## Related Patterns
+
+**Core Runtime:**
+- `{project-root}/_bmad/bam/data/patterns/langgraph.md` - State machine runtime
+- `{project-root}/_bmad/bam/data/patterns/agent-orchestration.md` - CrewAI, AutoGen, Saga
+
+**Verification & Safety:**
+- `{project-root}/_bmad/bam/data/patterns/grounding-verifier.md` - RAG verification
+- `{project-root}/_bmad/bam/data/patterns/decision-verification.md` - Pre-execution gates
+- `{project-root}/_bmad/bam/data/patterns/action-contract.md` - 8-field action contracts
+
+**Monitoring:**
+- `{project-root}/_bmad/bam/data/patterns/output-drift-monitor.md` - Quality monitoring
+- `{project-root}/_bmad/bam/data/patterns/invisible-failure-detector.md` - Silent failure detection
+- `{project-root}/_bmad/bam/data/patterns/ai-observability.md` - AI telemetry
+
 ## Related Web Research
 
 - Search: "AI agent memory lifecycle management {date}"
 - Search: "multi-tenant memory isolation patterns {date}"
 - Search: "LLM context management best practices {date}"
+- Search: "RAG grounding verification patterns {date}"
+- Search: "ML model drift detection patterns {date}"

@@ -208,6 +208,77 @@ saga_contract:
 - Search: "distributed transaction compensation {date}"
 - Search: "saga pattern microservices {date}"
 
+## Agent Registry Pattern (P3-01)
+
+Centralized registry for all deployed agents with capability discovery and lifecycle management.
+
+### Registry Architecture
+
+```
+┌─────────────────────────────────────────────────────────────┐
+│                      Agent Registry                          │
+│                                                              │
+│  ┌──────────────────────────────────────────────────────┐   │
+│  │                 Registry Storage                      │   │
+│  │   Persistent store + cache layer                     │   │
+│  └──────────────────────────────────────────────────────┘   │
+│                           │                                  │
+│         ┌─────────────────┼─────────────────┐               │
+│         ▼                 ▼                 ▼               │
+│  ┌────────────┐   ┌────────────┐   ┌────────────┐          │
+│  │  Register  │   │  Discover  │   │  Lifecycle │          │
+│  │   Agent    │   │   Agents   │   │   Manage   │          │
+│  └────────────┘   └────────────┘   └────────────┘          │
+│         │                 │                 │               │
+│         ▼                 ▼                 ▼               │
+│  ┌──────────────────────────────────────────────────────┐   │
+│  │              Tenant-Scoped Views                      │   │
+│  │   Global agents | Tenant agents | User agents        │   │
+│  └──────────────────────────────────────────────────────┘   │
+└─────────────────────────────────────────────────────────────┘
+```
+
+### Registry Schema
+
+```yaml
+agent_registry:
+  version: "1.0.0"
+  bam_controlled: true
+  
+  agent_definition:
+    id: string
+    name: string
+    version: semver
+    tenant_scope: enum[global, tenant, user]
+    
+  capabilities:
+    tools: list[tool_id]
+    permissions: list[permission]
+    resource_limits:
+      max_tokens_per_request: int
+      max_concurrent_executions: int
+      
+  lifecycle:
+    status: enum[active, suspended, deprecated, retired]
+    created_at: timestamp
+    updated_at: timestamp
+    
+  discovery:
+    tags: list[string]
+    searchable: bool
+    public_to_tenant: bool
+```
+
+### Registry Trade-offs
+
+| Approach | Pros | Cons | Best For |
+|----------|------|------|----------|
+| Centralized registry | Single source of truth | Single point of failure | Small-medium deployments |
+| Federated registry | Resilient, scalable | Consistency challenges | Large distributed systems |
+| Sidecar discovery | Low latency | Complex deployment | Microservices |
+
+---
+
 ## Quality Gate Alignment
 
 | Gate | Verification |

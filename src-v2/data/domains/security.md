@@ -444,3 +444,9 @@ CVE Discovered
 - **SSO & Auth:** `{project-root}/_bmad/bam/data/patterns/sso-auth.md`
 - **Secrets:** `{project-root}/_bmad/bam/data/patterns/secrets-management.md`
 - **Incident:** `{project-root}/_bmad/bam/data/patterns/incident-response.md`
+- **Prompt Injection:** `{project-root}/_bmad/bam/data/patterns/prompt-injection-detection.md`
+- **Kill Switch:** `{project-root}/_bmad/bam/data/patterns/kill-switch-registry.md`
+
+**Web Research:**
+- Search: "prompt injection detection patterns {date}"
+- Search: "AI agent kill switch patterns {date}"

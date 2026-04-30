@@ -71,3 +71,31 @@ Loading SSO & authentication pattern:
 
 Confirm loaded. Ready for authentication architecture guidance.
 """
+
+[[agent.menu]]
+code = "ZPD"
+description = "Load: Prompt Injection Detection pattern"
+prompt = """
+Loading prompt injection detection pattern:
+`{project-root}/_bmad/bam/data/patterns/prompt-injection-detection.md`
+
+Use web search for current implementation:
+- "prompt injection detection patterns {date}"
+- "LLM jailbreak prevention techniques {date}"
+
+Confirm loaded. Ready for prompt injection defense guidance.
+"""
+
+[[agent.menu]]
+code = "ZKS"
+description = "Load: Kill Switch Registry pattern"
+prompt = """
+Loading kill switch registry pattern:
+`{project-root}/_bmad/bam/data/patterns/kill-switch-registry.md`
+
+Use web search for current implementation:
+- "AI agent kill switch patterns {date}"
+- "emergency shutdown multi-tenant systems {date}"
+
+Confirm loaded. Ready for emergency shutdown design.
+"""
