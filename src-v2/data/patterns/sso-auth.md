@@ -296,3 +296,17 @@ session_management:
 - "tenant-scoped session management patterns {date}"
 - "JIT provisioning SCIM integration {date}"
 - "single logout SLO implementation {date}"
+
+---
+
+## Quality Gate Alignment
+
+| Gate | Verification |
+|------|--------------|
+| QG-S5 | Pattern implementation verified |
+
+## Related Patterns
+
+- [zero-trust.md](zero-trust.md) - Security boundaries
+- [secrets-management.md](secrets-management.md) - Credential management
+

@@ -148,3 +148,17 @@ fan_out_breaker:
 - Search: "AI agent kill switch patterns {date}"
 - Search: "fan-out circuit breaker distributed systems {date}"
 - Search: "emergency shutdown AI systems {date}"
+
+---
+
+## Quality Gate Alignment
+
+| Gate | Verification |
+|------|--------------|
+| QG-M1 | Pattern implementation verified |
+
+## Related Patterns
+
+- [circuit-breaker.md](circuit-breaker.md) - Fault tolerance
+- [disaster-recovery.md](disaster-recovery.md) - Business continuity
+

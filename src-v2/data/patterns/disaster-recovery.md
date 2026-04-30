@@ -171,3 +171,17 @@ Primary Region (us-east-1)          Secondary Region (eu-west-1)
 - "cross-region database replication PostgreSQL {date}"
 - "chaos engineering DR testing {date}"
 - "tenant data recovery prioritization {date}"
+
+---
+
+## Quality Gate Alignment
+
+| Gate | Verification |
+|------|--------------|
+| QG-DR1 | Pattern implementation verified |
+
+## Related Patterns
+
+- [circuit-breaker.md](circuit-breaker.md) - Fault tolerance
+- [disaster-recovery.md](disaster-recovery.md) - Business continuity
+

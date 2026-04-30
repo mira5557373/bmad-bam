@@ -238,3 +238,17 @@ tenant_quotas:
 - "kubernetes resource quotas per namespace {date}"
 - "noisy neighbor prevention cloud {date}"
 - "agent concurrency limits distributed systems {date}"
+
+---
+
+## Quality Gate Alignment
+
+| Gate | Verification |
+|------|--------------|
+| QG-M2 | Pattern implementation verified |
+
+## Related Patterns
+
+- [tenant-isolation.md](tenant-isolation.md) - Isolation patterns
+- [tenant-quotas.md](tenant-quotas.md) - Usage limits
+

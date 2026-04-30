@@ -309,3 +309,17 @@ feature_flags:
 - "canary deployment machine learning models {date}"
 - "prompt version management best practices {date}"
 - "AI model gradual rollout strategies {date}"
+
+---
+
+## Quality Gate Alignment
+
+| Gate | Verification |
+|------|--------------|
+| QG-AI1 | Pattern implementation verified |
+
+## Related Patterns
+
+- [langgraph.md](langgraph.md) - Primary AI runtime
+- [agent-orchestration.md](agent-orchestration.md) - Multi-agent patterns
+

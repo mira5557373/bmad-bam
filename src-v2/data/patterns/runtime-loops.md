@@ -471,3 +471,17 @@ recovery_loop:
 - "LangGraph checkpoint restore patterns {date}"
 - "token budget management LLM applications {date}"
 - "circuit breaker patterns distributed agents {date}"
+
+---
+
+## Quality Gate Alignment
+
+| Gate | Verification |
+|------|--------------|
+| QG-M3 | Pattern implementation verified |
+
+## Related Patterns
+
+- [langgraph.md](langgraph.md) - Primary AI runtime
+- [agent-orchestration.md](agent-orchestration.md) - Multi-agent patterns
+

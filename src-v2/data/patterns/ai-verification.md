@@ -315,3 +315,16 @@ verification_tenant_config:
 - "NLI entailment verification LLM {date}"
 - "multi-tenant AI verification patterns {date}"
 - "RAGAS evaluation grounding metrics {date}"
+
+---
+
+## Quality Gate Alignment
+
+| Gate | Verification |
+|------|--------------|
+| QG-I3 | Pattern implementation verified |
+
+## Related Patterns
+
+- See bam-patterns.csv for related patterns
+

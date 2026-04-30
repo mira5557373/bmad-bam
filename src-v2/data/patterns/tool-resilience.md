@@ -347,3 +347,17 @@ budget_guards:
 - "retry budget management microservices {date}"
 - "graceful degradation patterns cloud applications {date}"
 - "exponential backoff jitter implementation {date}"
+
+---
+
+## Quality Gate Alignment
+
+| Gate | Verification |
+|------|--------------|
+| QG-M3 | Pattern implementation verified |
+
+## Related Patterns
+
+- [langgraph.md](langgraph.md) - Primary AI runtime
+- [agent-orchestration.md](agent-orchestration.md) - Multi-agent patterns
+

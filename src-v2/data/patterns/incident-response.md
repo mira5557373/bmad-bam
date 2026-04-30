@@ -202,3 +202,17 @@ Affected tenants will receive SLA credit review.
 - "tenant communication during outage {date}"
 - "AI safety incident response {date}"
 - "postmortem blameless culture {date}"
+
+---
+
+## Quality Gate Alignment
+
+| Gate | Verification |
+|------|--------------|
+| QG-IR1 | Pattern implementation verified |
+
+## Related Patterns
+
+- [circuit-breaker.md](circuit-breaker.md) - Fault tolerance
+- [disaster-recovery.md](disaster-recovery.md) - Business continuity
+

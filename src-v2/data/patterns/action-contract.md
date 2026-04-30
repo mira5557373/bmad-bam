@@ -154,3 +154,17 @@ action_contract:
 - "multi-tenant AI audit trail best practices {date}"
 - "LLM confidence threshold production systems {date}"
 - "agent rollback patterns distributed systems {date}"
+
+---
+
+## Quality Gate Alignment
+
+| Gate | Verification |
+|------|--------------|
+| QG-AI3 | Pattern implementation verified |
+
+## Related Patterns
+
+- [langgraph.md](langgraph.md) - Primary AI runtime
+- [agent-orchestration.md](agent-orchestration.md) - Multi-agent patterns
+

@@ -221,3 +221,16 @@ ai_discovery:
 - "llms.txt standard {date}"
 - "MCP capability discovery patterns {date}"
 - "multi-tenant AI agent federation {date}"
+
+---
+
+## Quality Gate Alignment
+
+| Gate | Verification |
+|------|--------------|
+| QG-D1 | Pattern implementation verified |
+
+## Related Patterns
+
+- See bam-patterns.csv for related patterns
+

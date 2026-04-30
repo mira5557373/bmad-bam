@@ -153,3 +153,17 @@ idempotency_config:
 - Search: "LangGraph conditional edge patterns {date}"
 - Search: "AI tool idempotency patterns {date}"
 - Search: "state machine routing AI agents {date}"
+
+---
+
+## Quality Gate Alignment
+
+| Gate | Verification |
+|------|--------------|
+| QG-M3 | Pattern implementation verified |
+
+## Related Patterns
+
+- [langgraph.md](langgraph.md) - Primary AI runtime
+- [agent-orchestration.md](agent-orchestration.md) - Multi-agent patterns
+

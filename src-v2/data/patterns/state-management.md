@@ -361,3 +361,17 @@ interrupt_config:
 - "temporal vs langgraph state management {date}"
 - "human in the loop agent checkpoint patterns {date}"
 - "distributed state management multi-tenant SaaS {date}"
+
+---
+
+## Quality Gate Alignment
+
+| Gate | Verification |
+|------|--------------|
+| QG-M3 | Pattern implementation verified |
+
+## Related Patterns
+
+- [langgraph.md](langgraph.md) - Primary AI runtime
+- [agent-orchestration.md](agent-orchestration.md) - Multi-agent patterns
+

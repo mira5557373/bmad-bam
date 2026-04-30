@@ -157,3 +157,17 @@ Content-Type: application/json
 - "multi-tenant AI safety guardrails {date}"
 - "agent refusal handling best practices {date}"
 - "prompt injection detection production systems {date}"
+
+---
+
+## Quality Gate Alignment
+
+| Gate | Verification |
+|------|--------------|
+| QG-I3 | Pattern implementation verified |
+
+## Related Patterns
+
+- [langgraph.md](langgraph.md) - Primary AI runtime
+- [agent-orchestration.md](agent-orchestration.md) - Multi-agent patterns
+

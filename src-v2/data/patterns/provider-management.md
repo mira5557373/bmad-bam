@@ -277,3 +277,17 @@ cost_optimization:
 - "OpenAI Anthropic Azure cost optimization {date}"
 - "LLM rate limiting best practices {date}"
 - "AI provider failover patterns production {date}"
+
+---
+
+## Quality Gate Alignment
+
+| Gate | Verification |
+|------|--------------|
+| QG-M3 | Pattern implementation verified |
+
+## Related Patterns
+
+- [langgraph.md](langgraph.md) - Primary AI runtime
+- [agent-orchestration.md](agent-orchestration.md) - Multi-agent patterns
+

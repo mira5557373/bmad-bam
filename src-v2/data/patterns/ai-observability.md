@@ -430,3 +430,16 @@ observability_dashboard:
 - "output drift monitoring AI systems {date}"
 - "OpenTelemetry LLM tracing patterns {date}"
 - "AI observability cost optimization {date}"
+
+---
+
+## Quality Gate Alignment
+
+| Gate | Verification |
+|------|--------------|
+| QG-AI2 | Pattern implementation verified |
+
+## Related Patterns
+
+- See bam-patterns.csv for related patterns
+

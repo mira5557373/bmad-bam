@@ -144,3 +144,16 @@ cross_org_invocation:
 - "data residency multi-region architecture {date}"
 - "agent mesh federation protocols {date}"
 - "enterprise multi-region deployment patterns {date}"
+
+---
+
+## Quality Gate Alignment
+
+| Gate | Verification |
+|------|--------------|
+| QG-M3 | Pattern implementation verified |
+
+## Related Patterns
+
+- See bam-patterns.csv for related patterns
+
