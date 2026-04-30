@@ -250,3 +250,61 @@ Outstanding Items: 3
 
 - "EU AI Act compliance timeline {date}"
 - "regulatory compliance tracking SaaS {date}"
+
+## NEXUS Phase 4 Enterprise Compliance Patterns
+
+**Data Governance:**
+- `{project-root}/_bmad/bam/data/patterns/data-residency.md` - Data location and sovereignty
+- `{project-root}/_bmad/bam/data/patterns/consent-management.md` - User consent tracking
+- `{project-root}/_bmad/bam/data/patterns/data-retention.md` - Retention policy automation
+- `{project-root}/_bmad/bam/data/patterns/anonymization.md` - Data anonymization pipelines
+- `{project-root}/_bmad/bam/data/patterns/data-classification.md` - Data classification schemas
+
+**Data Subject Rights:**
+- `{project-root}/_bmad/bam/data/patterns/right-to-deletion.md` - GDPR Article 17 erasure
+- `{project-root}/_bmad/bam/data/patterns/export-portability.md` - Data portability (Art. 20)
+
+**Compliance Operations:**
+- `{project-root}/_bmad/bam/data/patterns/compliance-reporting.md` - Automated compliance reports
+- `{project-root}/_bmad/bam/data/patterns/access-reviews.md` - Periodic access certification
+- `{project-root}/_bmad/bam/data/patterns/privacy-by-design.md` - Privacy-first architecture
+- `{project-root}/_bmad/bam/data/patterns/vendor-management.md` - Third-party risk management
+
+**Framework-Specific:**
+- `{project-root}/_bmad/bam/data/patterns/soc2-compliance.md` - SOC 2 Type I/II controls
+- `{project-root}/_bmad/bam/data/patterns/hipaa-compliance.md` - HIPAA safeguards
+- `{project-root}/_bmad/bam/data/patterns/pci-dss-compliance.md` - PCI DSS v4.0 controls
+- `{project-root}/_bmad/bam/data/patterns/gdpr-compliance.md` - GDPR implementation
+
+### Data Residency (ZDY)
+
+Multi-region deployment model:
+- Global control plane with regional data planes
+- Tenant-to-region assignment
+- Cross-border transfer rules with legal basis
+- Data classification by residency level
+
+### Consent Management (ZCM)
+
+Granular consent platform:
+- Purpose-based consent tracking
+- Consent versioning and audit trail
+- Downstream system synchronization
+- AI training data consent handling
+
+### Framework Compliance
+
+| Framework | Pattern | Key Controls |
+|-----------|---------|--------------|
+| SOC 2 | ZS2 | CC1-CC9, A1, C1, PI1 |
+| HIPAA | ZHC | Admin, Physical, Technical safeguards |
+| PCI DSS | ZPX | Requirements 1-12 |
+| GDPR | ZGD | Articles 6, 15-22, 25, 30, 33-35 |
+
+### Web Research
+
+- "data residency SaaS architecture patterns {date}"
+- "GDPR consent management platform patterns {date}"
+- "SOC 2 Type II multi-tenant SaaS {date}"
+- "HIPAA SaaS multi-tenant architecture {date}"
+- "PCI DSS v4.0 SaaS requirements {date}"

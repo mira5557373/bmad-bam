@@ -478,3 +478,40 @@ CVE Discovered
 - "secret detection LLM prompts {date}"
 - "canary token prompt tracking {date}"
 - "software bill of materials AI tools {date}"
+
+## NEXUS Phase 4 Enterprise Security Patterns
+
+**Authentication & Authorization:**
+- `{project-root}/_bmad/bam/data/patterns/sso-integration.md` - Multi-tenant SSO (SAML/OIDC/OAuth)
+- `{project-root}/_bmad/bam/data/patterns/agent-rbac.md` - AI agent role-based access control
+- `{project-root}/_bmad/bam/data/patterns/tenant-rbac.md` - Tenant-level permission hierarchies
+
+### SSO Integration (ZSI)
+
+Multi-tenant SSO supports:
+- SAML 2.0 for enterprise IdPs (Okta, Azure AD, OneLogin)
+- OIDC for modern IdPs (Auth0, Cognito)
+- Per-tenant IdP connection configuration
+- JIT provisioning and SCIM directory sync
+
+### Agent RBAC (ZRB)
+
+AI agent permissions include:
+- Role-based tool access control
+- Budget limits per role
+- Audit logging for all agent actions
+- Tenant-scoped agent capabilities
+
+### Tenant RBAC (ZTR)
+
+Multi-layer permission model:
+- Platform roles (cross-tenant admin)
+- Tenant roles (custom per tenant)
+- Resource roles (project/document level)
+- Tier-based feature gates
+
+### Web Research
+
+- "multi-tenant SSO SAML OIDC architecture {date}"
+- "AI agent RBAC patterns enterprise {date}"
+- "tenant-scoped permission hierarchy {date}"

@@ -208,3 +208,50 @@ Use web search for current implementation:
 
 Confirm loaded. Ready for streaming safety design.
 """
+
+# NEXUS Phase 4 Enterprise Security Patterns
+
+[[agent.menu]]
+code = "ZSI"
+description = "Load: SSO Integration pattern (SAML/OIDC/OAuth)"
+prompt = """
+Loading SSO integration pattern:
+`{project-root}/_bmad/bam/data/patterns/sso-integration.md`
+
+Use web search for current implementation:
+- "multi-tenant SSO SAML OIDC architecture {date}"
+- "tenant-specific IdP connection patterns {date}"
+- "SCIM provisioning multi-tenant SaaS {date}"
+
+Confirm loaded. Ready for SSO architecture guidance.
+"""
+
+[[agent.menu]]
+code = "ZRB"
+description = "Load: Agent RBAC pattern (AI agent permissions)"
+prompt = """
+Loading agent RBAC pattern:
+`{project-root}/_bmad/bam/data/patterns/agent-rbac.md`
+
+Use web search for current implementation:
+- "AI agent RBAC patterns enterprise {date}"
+- "LangGraph tool permissions design {date}"
+- "multi-agent authorization frameworks {date}"
+
+Confirm loaded. Ready for agent permission design.
+"""
+
+[[agent.menu]]
+code = "ZTRC"
+description = "Load: Tenant RBAC pattern (tenant-level access control)"
+prompt = """
+Loading tenant RBAC pattern:
+`{project-root}/_bmad/bam/data/patterns/tenant-rbac.md`
+
+Use web search for current implementation:
+- "multi-tenant RBAC SaaS patterns {date}"
+- "custom role definition enterprise {date}"
+- "tenant-scoped permission hierarchy {date}"
+
+Confirm loaded. Ready for tenant access control guidance.
+"""

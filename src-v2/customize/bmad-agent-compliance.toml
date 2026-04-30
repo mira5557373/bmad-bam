@@ -51,3 +51,230 @@ Use web search for current implementation:
 
 Confirm loaded. Ready for regulatory clock design.
 """
+
+# NEXUS Phase 4 Enterprise Compliance Patterns
+
+[[agent.menu]]
+code = "ZDY"
+description = "Load: Data Residency pattern (location requirements)"
+prompt = """
+Loading data residency pattern:
+`{project-root}/_bmad/bam/data/patterns/data-residency.md`
+
+Use web search for current implementation:
+- "data residency SaaS architecture patterns {date}"
+- "multi-region data sovereignty compliance {date}"
+- "GDPR data localization implementation {date}"
+
+Confirm loaded. Ready for data residency guidance.
+"""
+
+[[agent.menu]]
+code = "ZCM"
+description = "Load: Consent Management pattern (user consent tracking)"
+prompt = """
+Loading consent management pattern:
+`{project-root}/_bmad/bam/data/patterns/consent-management.md`
+
+Use web search for current implementation:
+- "GDPR consent management platform patterns {date}"
+- "granular consent UX best practices {date}"
+- "AI training data consent requirements {date}"
+
+Confirm loaded. Ready for consent management guidance.
+"""
+
+[[agent.menu]]
+code = "ZDRP"
+description = "Load: Data Retention pattern (policy automation)"
+prompt = """
+Loading data retention pattern:
+`{project-root}/_bmad/bam/data/patterns/data-retention.md`
+
+Use web search for current implementation:
+- "data retention policy automation SaaS {date}"
+- "GDPR data retention requirements {date}"
+- "legal hold e-discovery multi-tenant {date}"
+
+Confirm loaded. Ready for retention policy guidance.
+"""
+
+[[agent.menu]]
+code = "ZAY"
+description = "Load: Anonymization pattern (data anonymization pipelines)"
+prompt = """
+Loading anonymization pattern:
+`{project-root}/_bmad/bam/data/patterns/anonymization.md`
+
+Use web search for current implementation:
+- "data anonymization GDPR compliance {date}"
+- "k-anonymity l-diversity implementation {date}"
+- "differential privacy ML training {date}"
+
+Confirm loaded. Ready for anonymization guidance.
+"""
+
+[[agent.menu]]
+code = "ZRD"
+description = "Load: Right to Deletion pattern (GDPR erasure)"
+prompt = """
+Loading right to deletion pattern:
+`{project-root}/_bmad/bam/data/patterns/right-to-deletion.md`
+
+Use web search for current implementation:
+- "GDPR Article 17 implementation patterns {date}"
+- "right to erasure SaaS architecture {date}"
+- "AI training data deletion GDPR {date}"
+
+Confirm loaded. Ready for erasure handling guidance.
+"""
+
+[[agent.menu]]
+code = "ZEP"
+description = "Load: Export Portability pattern (data portability)"
+prompt = """
+Loading export portability pattern:
+`{project-root}/_bmad/bam/data/patterns/export-portability.md`
+
+Use web search for current implementation:
+- "GDPR data portability implementation {date}"
+- "data export SaaS architecture {date}"
+- "machine-readable format requirements {date}"
+
+Confirm loaded. Ready for data export guidance.
+"""
+
+[[agent.menu]]
+code = "ZCR"
+description = "Load: Compliance Reporting pattern (automated reports)"
+prompt = """
+Loading compliance reporting pattern:
+`{project-root}/_bmad/bam/data/patterns/compliance-reporting.md`
+
+Use web search for current implementation:
+- "SOC 2 evidence collection automation {date}"
+- "compliance reporting platform patterns {date}"
+- "GRC integration SaaS {date}"
+
+Confirm loaded. Ready for compliance reporting guidance.
+"""
+
+[[agent.menu]]
+code = "ZDCL"
+description = "Load: Data Classification pattern (classification schemas)"
+prompt = """
+Loading data classification pattern:
+`{project-root}/_bmad/bam/data/patterns/data-classification.md`
+
+Use web search for current implementation:
+- "data classification framework enterprise {date}"
+- "automated PII detection patterns {date}"
+- "multi-tenant data labeling {date}"
+
+Confirm loaded. Ready for data classification guidance.
+"""
+
+[[agent.menu]]
+code = "ZAW"
+description = "Load: Access Reviews pattern (periodic certification)"
+prompt = """
+Loading access reviews pattern:
+`{project-root}/_bmad/bam/data/patterns/access-reviews.md`
+
+Use web search for current implementation:
+- "user access review SOC 2 patterns {date}"
+- "access certification automation {date}"
+- "privileged access review best practices {date}"
+
+Confirm loaded. Ready for access review guidance.
+"""
+
+[[agent.menu]]
+code = "ZPB"
+description = "Load: Privacy by Design pattern (PbD implementation)"
+prompt = """
+Loading privacy by design pattern:
+`{project-root}/_bmad/bam/data/patterns/privacy-by-design.md`
+
+Use web search for current implementation:
+- "privacy by design GDPR Article 25 {date}"
+- "data minimization SaaS patterns {date}"
+- "DPIA automation best practices {date}"
+
+Confirm loaded. Ready for privacy architecture guidance.
+"""
+
+[[agent.menu]]
+code = "ZVM"
+description = "Load: Vendor Management pattern (third-party risk)"
+prompt = """
+Loading vendor management pattern:
+`{project-root}/_bmad/bam/data/patterns/vendor-management.md`
+
+Use web search for current implementation:
+- "third-party risk management SaaS {date}"
+- "vendor security assessment automation {date}"
+- "GDPR sub-processor management {date}"
+
+Confirm loaded. Ready for vendor risk guidance.
+"""
+
+[[agent.menu]]
+code = "ZS2"
+description = "Load: SOC 2 Compliance pattern (SOC 2 controls)"
+prompt = """
+Loading SOC 2 compliance pattern:
+`{project-root}/_bmad/bam/data/patterns/soc2-compliance.md`
+
+Use web search for current implementation:
+- "SOC 2 Type II multi-tenant SaaS {date}"
+- "SOC 2 evidence automation {date}"
+- "continuous compliance monitoring SOC 2 {date}"
+
+Confirm loaded. Ready for SOC 2 compliance guidance.
+"""
+
+[[agent.menu]]
+code = "ZHC"
+description = "Load: HIPAA Compliance pattern (healthcare safeguards)"
+prompt = """
+Loading HIPAA compliance pattern:
+`{project-root}/_bmad/bam/data/patterns/hipaa-compliance.md`
+
+Use web search for current implementation:
+- "HIPAA SaaS multi-tenant architecture {date}"
+- "PHI encryption requirements {date}"
+- "HIPAA breach notification requirements {date}"
+
+Confirm loaded. Ready for HIPAA compliance guidance.
+"""
+
+[[agent.menu]]
+code = "ZPX"
+description = "Load: PCI DSS Compliance pattern (payment security)"
+prompt = """
+Loading PCI DSS compliance pattern:
+`{project-root}/_bmad/bam/data/patterns/pci-dss-compliance.md`
+
+Use web search for current implementation:
+- "PCI DSS v4.0 SaaS requirements {date}"
+- "payment tokenization multi-tenant {date}"
+- "PCI scope reduction patterns {date}"
+
+Confirm loaded. Ready for PCI DSS compliance guidance.
+"""
+
+[[agent.menu]]
+code = "ZGD"
+description = "Load: GDPR Compliance pattern (EU data protection)"
+prompt = """
+Loading GDPR compliance pattern:
+`{project-root}/_bmad/bam/data/patterns/gdpr-compliance.md`
+
+Use web search for current implementation:
+- "GDPR SaaS multi-tenant compliance {date}"
+- "data processing agreement template {date}"
+- "GDPR cross-border transfer mechanisms {date}"
+
+Confirm loaded. Ready for GDPR compliance guidance.
+"""

@@ -4,15 +4,15 @@ const path = require('path');
 describe('Pattern Standards', () => {
   const patternsDir = path.join(__dirname, '../../src-v2/data/patterns');
 
-  test('76 pattern files exist (after NEXUS Phase 4 Task 5)', () => {
+  test('94 pattern files exist (after NEXUS Phase 4 Task 6)', () => {
     const patterns = fs.readdirSync(patternsDir).filter(f =>
       f.endsWith('.md') && !f.startsWith('.')
     );
     // 21 base + 6 Phase 1 + 9 Phase 2 + 9 Phase 3 = 45
     // + 10 MCP patterns + 11 RAG patterns + 4 Agent Communication = 70
     // + 6 Advanced AI patterns = 76
-    // Advanced AI: prompt-chaining, chain-of-thought, self-correction, multi-modal-rag, knowledge-refresh, fine-tuning-pipeline
-    expect(patterns.length).toBe(76);
+    // + 18 Enterprise Compliance patterns = 94
+    expect(patterns.length).toBe(94);
   });
 
   test('no implementation code in patterns', () => {
