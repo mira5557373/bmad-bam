@@ -14,15 +14,15 @@ Phase 3 adds 9 high-value patterns to BAM V2, prioritizing the 4 remaining Top 1
 
 | # | Pattern | Shortcode | Category | Domain | QG Ref |
 |---|---------|-----------|----------|--------|--------|
-| 1 | agent-registry | ZAG | operations | operations.md | QG-P1 |
+| 1 | agent-registry | ZAG | operations | observability.md | QG-P1 |
 | 2 | fanout-circuit-breaker | ZFC | safety | ai-runtime.md | QG-AI1 |
 | 3 | regulatory-clock-engine | ZRE | compliance | compliance.md | QG-P1 |
-| 4 | blast-radius-simulator | ZBL | reliability | operations.md | QG-DR1 |
+| 4 | blast-radius-simulator | ZBL | reliability | observability.md | QG-DR1 |
 | 5 | secret-leak-detector | ZSL | security | security.md | QG-S4 |
 | 6 | canary-token-inserter | ZCN | security | security.md | QG-S5 |
 | 7 | tool-sbom-registry | ZTS | security | security.md | QG-AI1 |
 | 8 | streaming-output-decoder | ZSD | safety | ai-runtime.md | QG-S7 |
-| 9 | agent-maturity-scoring | ZMS | lifecycle | operations.md | QG-P1 |
+| 9 | agent-maturity-scoring | ZMS | lifecycle | deployment.md | QG-P1 |
 
 ---
 
@@ -53,10 +53,11 @@ Each pattern implements:
 
 | Domain | Patterns Added |
 |--------|----------------|
-| operations.md | agent-registry, blast-radius-simulator, agent-maturity-scoring |
+| observability.md | agent-registry, blast-radius-simulator |
 | ai-runtime.md | fanout-circuit-breaker, streaming-output-decoder |
 | security.md | secret-leak-detector, canary-token-inserter, tool-sbom-registry |
 | compliance.md | regulatory-clock-engine |
+| deployment.md | agent-maturity-scoring |
 
 ---
 
@@ -64,7 +65,7 @@ Each pattern implements:
 
 ### Pattern 1: Agent Registry (ZAG)
 
-**Category:** operations | **QG:** QG-P1 | **Domain:** operations.md
+**Category:** operations | **QG:** QG-P1 | **Domain:** observability.md
 
 #### When to Use
 - Multiple agents deployed across tenants
@@ -350,7 +351,7 @@ regulatory_clock_engine:
 
 ### Pattern 4: Blast Radius Simulator (ZBL)
 
-**Category:** reliability | **QG:** QG-DR1 | **Domain:** operations.md
+**Category:** reliability | **QG:** QG-DR1 | **Domain:** observability.md
 
 #### When to Use
 - Complex agent dependency graphs
@@ -859,7 +860,7 @@ streaming_output_decoder:
 
 ### Pattern 9: Agent Maturity Scoring (ZMS)
 
-**Category:** lifecycle | **QG:** QG-P1 | **Domain:** operations.md
+**Category:** lifecycle | **QG:** QG-P1 | **Domain:** deployment.md
 
 #### When to Use
 - Evaluating agent readiness for production
@@ -1009,10 +1010,11 @@ src-v2/data/patterns/
 | `src-v2/customize/bmad-agent-architect.toml` | Add ZAG, ZFC, ZBL, ZMS |
 | `src-v2/customize/bmad-agent-security.toml` | Add ZSL, ZCN, ZTS, ZSD |
 | `src-v2/customize/bmad-agent-compliance.toml` | Add ZRE |
-| `src-v2/data/domains/operations.md` | Add 3 pattern refs |
-| `src-v2/data/domains/ai-runtime.md` | Add 2 pattern refs |
-| `src-v2/data/domains/security.md` | Add 3 pattern refs |
-| `src-v2/data/domains/compliance.md` | Add 1 pattern ref |
+| `src-v2/data/domains/observability.md` | Add 2 pattern refs (agent-registry, blast-radius-simulator) |
+| `src-v2/data/domains/ai-runtime.md` | Add 2 pattern refs (fanout-circuit-breaker, streaming-output-decoder) |
+| `src-v2/data/domains/security.md` | Add 3 pattern refs (secret-leak-detector, canary-token-inserter, tool-sbom-registry) |
+| `src-v2/data/domains/compliance.md` | Add 1 pattern ref (regulatory-clock-engine) |
+| `src-v2/data/domains/deployment.md` | Add 1 pattern ref (agent-maturity-scoring) |
 | `test/v2/file-counts.test.js` | Update to 45 patterns |
 | `test/v2/pattern-standards.test.js` | Update to 45 patterns |
 
@@ -1035,7 +1037,7 @@ src-v2/data/patterns/
 - [ ] 4 new entries in `bmad-agent-architect.toml`
 - [ ] 4 new entries in `bmad-agent-security.toml`
 - [ ] 1 new entry in `bmad-agent-compliance.toml`
-- [ ] 4 domain files updated with pattern references
+- [ ] 5 domain files updated with pattern references
 - [ ] All V2 tests pass
 - [ ] No implementation code in any pattern file
 - [ ] All web queries use `{date}` placeholder
