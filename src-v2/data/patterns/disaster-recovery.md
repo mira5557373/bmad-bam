@@ -185,3 +185,55 @@ Primary Region (us-east-1)          Secondary Region (eu-west-1)
 - [circuit-breaker.md](circuit-breaker.md) - Fault tolerance
 - [disaster-recovery.md](disaster-recovery.md) - Business continuity
 
+---
+
+## Multi-Region Failover (Merged Pattern)
+
+**Merged from:** multi-region-failover pattern (consolidated to avoid duplication)
+
+### When to Use
+
+- Active-passive DR across regions
+- Automatic failover triggers
+- Tenant-aware region selection
+- Regulatory data residency requirements
+
+### Configuration Schema
+
+```yaml
+multi_region_failover:
+  version: "1.0.0"
+  bam_controlled: true
+  
+  primary_region: string
+  secondary_regions: list[string]
+  
+  failover:
+    auto_trigger: bool
+    health_threshold: float
+    dns_ttl_seconds: int
+    cooldown_minutes: int
+    
+  tenant_routing:
+    region_affinity: bool
+    data_residency_respect: bool
+    latency_based: bool
+    
+  replication:
+    mode: enum[sync, async]
+    lag_threshold_seconds: int
+```
+
+### Trade-offs
+
+| Strategy | RTO | RPO | Cost |
+|----------|-----|-----|------|
+| Hot standby | Minutes | Near-zero | High |
+| Warm standby | 10-30 min | Minutes | Medium |
+| Cold standby | Hours | Hours | Low |
+
+### Web Research Queries
+
+- "multi-region failover patterns {date}"
+- "active-passive DR SaaS {date}"
+- "tenant-aware region routing {date}"

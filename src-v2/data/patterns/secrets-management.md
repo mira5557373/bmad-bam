@@ -199,3 +199,56 @@ Agent Execution Request
 - [zero-trust.md](zero-trust.md) - Security boundaries
 - [secrets-management.md](secrets-management.md) - Credential management
 
+---
+
+## Encryption Key Management (Merged Pattern)
+
+**Merged from:** encryption-management pattern (consolidated to avoid duplication)
+
+### When to Use
+
+- Managing encryption keys per tenant
+- Key rotation automation
+- Customer-managed key (CMK) support
+- HSM integration for enterprise tiers
+
+### Configuration Schema
+
+```yaml
+encryption_management:
+  version: "1.0.0"
+  bam_controlled: true
+  
+  key_types:
+    - platform_keys: managed
+    - tenant_keys: per-tenant
+    - customer_keys: cmk_enabled
+    
+  rotation:
+    auto_rotate: bool
+    rotation_days: int
+    grace_period_hours: int
+    
+  hsm_integration:
+    enabled: bool
+    provider: enum[aws_cloudhsm, azure_dedicated, gcp_hsm]
+    
+  tenant_tiers:
+    free: platform_keys_only
+    pro: tenant_keys
+    enterprise: customer_managed_keys + hsm
+```
+
+### Trade-offs
+
+| Approach | Security | Cost | Complexity |
+|----------|----------|------|------------|
+| Platform keys | Medium | Low | Low |
+| Per-tenant keys | High | Medium | Medium |
+| Customer-managed | Highest | High | High |
+
+### Web Research Queries
+
+- "encryption key management multi-tenant {date}"
+- "customer managed keys SaaS {date}"
+- "HSM integration best practices {date}"
