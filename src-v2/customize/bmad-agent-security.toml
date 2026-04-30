@@ -146,3 +146,65 @@ Use web search for current implementation:
 
 Confirm loaded. Ready for tool permission design.
 """
+
+# NEXUS Phase 3 Security Patterns
+
+[[agent.menu]]
+code = "ZSL"
+description = "Load: Secret Leak Detector pattern (credential scanning)"
+prompt = """
+Loading secret leak detector pattern:
+`{project-root}/_bmad/bam/data/patterns/secret-leak-detector.md`
+
+Use web search for current implementation:
+- "secret detection LLM prompts {date}"
+- "API key scanning AI systems {date}"
+- "TruffleHog GitLeaks AI integration {date}"
+
+Confirm loaded. Ready for secret detection design.
+"""
+
+[[agent.menu]]
+code = "ZCN"
+description = "Load: Canary Token Inserter pattern (leak tracking)"
+prompt = """
+Loading canary token inserter pattern:
+`{project-root}/_bmad/bam/data/patterns/canary-token-inserter.md`
+
+Use web search for current implementation:
+- "canary token prompt tracking {date}"
+- "LLM data exfiltration detection {date}"
+- "honeypot tokens AI security {date}"
+
+Confirm loaded. Ready for canary token design.
+"""
+
+[[agent.menu]]
+code = "ZTS"
+description = "Load: Tool SBOM Registry pattern (supply chain security)"
+prompt = """
+Loading tool SBOM registry pattern:
+`{project-root}/_bmad/bam/data/patterns/tool-sbom-registry.md`
+
+Use web search for current implementation:
+- "software bill of materials AI tools {date}"
+- "MCP server security SBOM {date}"
+- "CycloneDX SPDX AI integration {date}"
+
+Confirm loaded. Ready for tool SBOM design.
+"""
+
+[[agent.menu]]
+code = "ZSD"
+description = "Load: Streaming Output Decoder pattern (real-time safety)"
+prompt = """
+Loading streaming output decoder pattern:
+`{project-root}/_bmad/bam/data/patterns/streaming-output-decoder.md`
+
+Use web search for current implementation:
+- "streaming LLM output safety filtering {date}"
+- "real-time content moderation streaming {date}"
+- "SSE stream content filtering patterns {date}"
+
+Confirm loaded. Ready for streaming safety design.
+"""
