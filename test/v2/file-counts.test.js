@@ -31,14 +31,13 @@ describe('V2 File Counts', () => {
     expect(files.length).toBeGreaterThanOrEqual(12);
   });
 
-  test('36 pattern files (after NEXUS Phase 2)', () => {
+  test('45 pattern files (after NEXUS Phase 3)', () => {
     const files = fs.readdirSync(path.join(v2Dir, 'data/patterns')).filter(f => f.endsWith('.md'));
-    // V2 consolidated: 21 base + 6 NEXUS Phase 1 + 9 NEXUS Phase 2 = 36
-    // Phase 2: semantic-firewall, output-sanitization, rbac-per-tool,
-    //          reasoning-trace-collector, cost-attribution-engine,
-    //          tenant-chaos-injector, incident-correlation-engine,
-    //          tool-schema-versioning, agent-handoff-protocol
-    expect(files.length).toBe(36);
+    // V2 consolidated: 21 base + 6 Phase 1 + 9 Phase 2 + 9 Phase 3 = 45
+    // Phase 3: agent-registry, fanout-circuit-breaker, regulatory-clock-engine,
+    //          blast-radius-simulator, secret-leak-detector, canary-token-inserter,
+    //          tool-sbom-registry, streaming-output-decoder, agent-maturity-scoring
+    expect(files.length).toBe(45);
   });
 
   test('checklist files (QG-* format)', () => {
