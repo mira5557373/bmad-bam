@@ -64,3 +64,13 @@ Release Pipeline
 - "Multi-tenant SaaS deployment strategies {date}"
 - "Canary deployment tenant isolation patterns {date}"
 - "Blue-green deployment Kubernetes multi-tenant {date}"
+
+## NEXUS Phase 3 Patterns
+
+**Lifecycle Governance:**
+- `{project-root}/_bmad/bam/data/patterns/agent-maturity-scoring.md` - Readiness assessment
+
+### Web Research
+
+- "AI agent maturity model {date}"
+- "agent readiness scoring framework {date}"

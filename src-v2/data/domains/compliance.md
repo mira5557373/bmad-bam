@@ -240,3 +240,13 @@ Outstanding Items: 3
 
 - **Security:** `{project-root}/_bmad/bam/data/patterns/zero-trust.md`
 - **Frameworks:** `{project-root}/_bmad/bam/data/compliance-frameworks.csv`
+
+## NEXUS Phase 3 Patterns
+
+**Regulatory Tracking:**
+- `{project-root}/_bmad/bam/data/patterns/regulatory-clock-engine.md` - Deadline management
+
+### Web Research
+
+- "EU AI Act compliance timeline {date}"
+- "regulatory compliance tracking SaaS {date}"

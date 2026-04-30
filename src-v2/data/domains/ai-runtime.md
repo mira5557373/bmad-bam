@@ -167,6 +167,17 @@ memory_governance:
 - `{project-root}/_bmad/bam/data/patterns/tool-schema-versioning.md` - Tool version control
 - `{project-root}/_bmad/bam/data/patterns/agent-handoff-protocol.md` - Multi-agent handoff
 
+## NEXUS Phase 3 Patterns
+
+**Safety & Control:**
+- `{project-root}/_bmad/bam/data/patterns/fanout-circuit-breaker.md` - Runaway prevention
+- `{project-root}/_bmad/bam/data/patterns/streaming-output-decoder.md` - Real-time safety
+
+### Web Research
+
+- "agent fanout circuit breaker patterns {date}"
+- "streaming LLM output safety filtering {date}"
+
 ## Related Web Research
 
 - Search: "AI agent memory lifecycle management {date}"

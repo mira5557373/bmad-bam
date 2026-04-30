@@ -465,3 +465,16 @@ CVE Discovered
 - "semantic content filtering LLM enterprise {date}"
 - "AI output sanitization patterns {date}"
 - "agent tool RBAC multi-tenant {date}"
+
+## NEXUS Phase 3 Security Patterns
+
+**Detection & Prevention:**
+- `{project-root}/_bmad/bam/data/patterns/secret-leak-detector.md` - Credential scanning
+- `{project-root}/_bmad/bam/data/patterns/canary-token-inserter.md` - Leak tracking
+- `{project-root}/_bmad/bam/data/patterns/tool-sbom-registry.md` - Supply chain security
+
+### Web Research
+
+- "secret detection LLM prompts {date}"
+- "canary token prompt tracking {date}"
+- "software bill of materials AI tools {date}"

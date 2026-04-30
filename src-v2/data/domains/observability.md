@@ -70,3 +70,14 @@ Observability in multi-tenant systems requires tenant-aware metrics, logs, and t
 
 - "AI agent reasoning trace patterns {date}"
 - "incident correlation multi-tenant {date}"
+
+## NEXUS Phase 3 Patterns
+
+**Operations & Reliability:**
+- `{project-root}/_bmad/bam/data/patterns/agent-registry.md` - Agent catalog and governance
+- `{project-root}/_bmad/bam/data/patterns/blast-radius-simulator.md` - Failure impact prediction
+
+### Web Research
+
+- "AI agent registry catalog patterns {date}"
+- "blast radius simulation distributed systems {date}"
