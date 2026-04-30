@@ -570,3 +570,95 @@ Use web search for current implementation:
 
 Confirm loaded. Ready for maturity scoring design.
 """
+
+# NEXUS Phase 4 Task 5 - Advanced AI Patterns
+
+[[agent.menu]]
+code = "ZPC"
+description = "Load: Prompt Chaining pattern (sequential prompt orchestration)"
+prompt = """
+Loading prompt chaining pattern:
+`{project-root}/_bmad/bam/data/patterns/prompt-chaining.md`
+
+Use web search for current implementation:
+- "prompt chaining orchestration patterns {date}"
+- "LangChain prompt pipeline patterns {date}"
+- "sequential LLM prompt patterns {date}"
+
+Confirm loaded. Ready for prompt chaining design.
+"""
+
+[[agent.menu]]
+code = "ZCT"
+description = "Load: Chain of Thought pattern (reasoning transparency)"
+prompt = """
+Loading chain of thought pattern:
+`{project-root}/_bmad/bam/data/patterns/chain-of-thought.md`
+
+Use web search for current implementation:
+- "chain of thought prompting patterns {date}"
+- "LLM reasoning transparency audit {date}"
+- "step by step reasoning LLM best practices {date}"
+
+Confirm loaded. Ready for chain of thought design.
+"""
+
+[[agent.menu]]
+code = "ZSE"
+description = "Load: Self-Correction pattern (self-healing agents)"
+prompt = """
+Loading self-correction pattern:
+`{project-root}/_bmad/bam/data/patterns/self-correction.md`
+
+Use web search for current implementation:
+- "LLM self-correction patterns {date}"
+- "AI agent error recovery best practices {date}"
+- "graceful degradation AI systems {date}"
+
+Confirm loaded. Ready for self-correction design.
+"""
+
+[[agent.menu]]
+code = "ZMM"
+description = "Load: Multi-Modal RAG pattern (image, audio, video retrieval)"
+prompt = """
+Loading multi-modal RAG pattern:
+`{project-root}/_bmad/bam/data/patterns/multi-modal-rag.md`
+
+Use web search for current implementation:
+- "multi-modal RAG architecture patterns {date}"
+- "CLIP ImageBind retrieval systems {date}"
+- "cross-modal search implementation {date}"
+
+Confirm loaded. Ready for multi-modal RAG design.
+"""
+
+[[agent.menu]]
+code = "ZKR"
+description = "Load: Knowledge Refresh pattern (embedding refresh, staleness)"
+prompt = """
+Loading knowledge refresh pattern:
+`{project-root}/_bmad/bam/data/patterns/knowledge-refresh.md`
+
+Use web search for current implementation:
+- "RAG knowledge base refresh patterns {date}"
+- "embedding drift detection techniques {date}"
+- "incremental vector store update patterns {date}"
+
+Confirm loaded. Ready for knowledge refresh design.
+"""
+
+[[agent.menu]]
+code = "ZFT"
+description = "Load: Fine-Tuning Pipeline pattern (model training automation)"
+prompt = """
+Loading fine-tuning pipeline pattern:
+`{project-root}/_bmad/bam/data/patterns/fine-tuning-pipeline.md`
+
+Use web search for current implementation:
+- "LLM fine-tuning pipeline patterns {date}"
+- "multi-tenant model training isolation {date}"
+- "LoRA adapter fine-tuning best practices {date}"
+
+Confirm loaded. Ready for fine-tuning pipeline design.
+"""

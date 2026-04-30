@@ -193,6 +193,27 @@ memory_governance:
 - "event sourcing AI agents patterns {date}"
 - "AI agent marketplace architecture {date}"
 
+## NEXUS Phase 4 Patterns - Advanced AI
+
+**Prompt Engineering & Reasoning:**
+- `{project-root}/_bmad/bam/data/patterns/prompt-chaining.md` - Sequential prompt orchestration
+- `{project-root}/_bmad/bam/data/patterns/chain-of-thought.md` - Reasoning transparency and audit trails
+- `{project-root}/_bmad/bam/data/patterns/self-correction.md` - Self-healing agent patterns
+
+**Knowledge & Model Management:**
+- `{project-root}/_bmad/bam/data/patterns/multi-modal-rag.md` - Image, audio, video retrieval
+- `{project-root}/_bmad/bam/data/patterns/knowledge-refresh.md` - Incremental updates, staleness detection
+- `{project-root}/_bmad/bam/data/patterns/fine-tuning-pipeline.md` - Automated training, model versioning
+
+### Web Research
+
+- "prompt chaining orchestration patterns {date}"
+- "chain of thought prompting patterns {date}"
+- "LLM self-correction patterns {date}"
+- "multi-modal RAG architecture patterns {date}"
+- "RAG knowledge base refresh patterns {date}"
+- "LLM fine-tuning pipeline patterns {date}"
+
 ## Related Web Research
 
 - Search: "AI agent memory lifecycle management {date}"

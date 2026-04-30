@@ -32,14 +32,15 @@ describe('V2 File Counts', () => {
     expect(files.length).toBeGreaterThanOrEqual(12);
   });
 
-  test('70 pattern files (after NEXUS Phase 4 Task 4)', () => {
+  test('76 pattern files (after NEXUS Phase 4 Task 5)', () => {
     const files = fs.readdirSync(path.join(v2Dir, 'data/patterns')).filter(f => f.endsWith('.md'));
     // V2 consolidated: 21 base + 6 Phase 1 + 9 Phase 2 + 9 Phase 3 = 45
     // Phase 4 Task 2: 10 MCP patterns = 55
     // Phase 4 Task 3: 11 RAG patterns = 66
     // Phase 4 Task 4: 4 Agent Communication patterns = 70
-    // Agent Communication: agent-negotiation, cross-tenant-agent, event-driven-agents, agent-marketplace
-    expect(files.length).toBe(70);
+    // Phase 4 Task 5: 6 Advanced AI patterns = 76
+    // Advanced AI: prompt-chaining, chain-of-thought, self-correction, multi-modal-rag, knowledge-refresh, fine-tuning-pipeline
+    expect(files.length).toBe(76);
   });
 
   test('checklist files (QG-* format)', () => {
