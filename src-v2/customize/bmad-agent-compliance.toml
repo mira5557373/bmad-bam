@@ -34,3 +34,20 @@ Loading compliance domain context:
 
 Confirm loaded. Ready for compliance assessment guidance.
 """
+
+# NEXUS Phase 3 Compliance Pattern
+
+[[agent.menu]]
+code = "ZRE"
+description = "Load: Regulatory Clock Engine pattern (deadline tracking)"
+prompt = """
+Loading regulatory clock engine pattern:
+`{project-root}/_bmad/bam/data/patterns/regulatory-clock-engine.md`
+
+Use web search for current implementation:
+- "EU AI Act compliance timeline {date}"
+- "regulatory compliance tracking SaaS {date}"
+- "AI regulation deadline management {date}"
+
+Confirm loaded. Ready for regulatory clock design.
+"""
