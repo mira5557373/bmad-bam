@@ -61,3 +61,13 @@ Testing multi-tenant systems requires isolation verification and cross-tenant bo
 
 - "multi-tenant testing patterns {date}"
 - "tenant isolation testing automation {date}"
+
+## NEXUS Phase 2 Patterns
+
+**Chaos Testing:**
+- `{project-root}/_bmad/bam/data/patterns/tenant-chaos-injector.md` - Isolation chaos
+
+### Web Research
+
+- "tenant chaos engineering patterns {date}"
+- "multi-tenant resilience testing {date}"

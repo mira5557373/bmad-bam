@@ -450,3 +450,18 @@ CVE Discovered
 **Web Research:**
 - Search: "prompt injection detection patterns {date}"
 - Search: "AI agent kill switch patterns {date}"
+
+## NEXUS Phase 2 Patterns
+
+**Content Filtering:**
+- `{project-root}/_bmad/bam/data/patterns/semantic-firewall.md` - Semantic content policy
+- `{project-root}/_bmad/bam/data/patterns/output-sanitization.md` - PII/secret removal
+
+**Tool Security:**
+- `{project-root}/_bmad/bam/data/patterns/rbac-per-tool.md` - Tool permission control
+
+### Web Research
+
+- "semantic content filtering LLM enterprise {date}"
+- "AI output sanitization patterns {date}"
+- "agent tool RBAC multi-tenant {date}"

@@ -57,3 +57,13 @@ Usage Event → Aggregator → Ledger → Invoice
 
 - "SaaS billing metering patterns {date}"
 - "usage-based pricing implementation {date}"
+
+## NEXUS Phase 2 Patterns
+
+**Cost Management:**
+- `{project-root}/_bmad/bam/data/patterns/cost-attribution-engine.md` - AI cost tracking
+
+### Web Research
+
+- "LLM cost attribution enterprise {date}"
+- "AI usage billing patterns {date}"

@@ -163,6 +163,10 @@ memory_governance:
 - `{project-root}/_bmad/bam/data/patterns/invisible-failure-detector.md` - Silent failure detection
 - `{project-root}/_bmad/bam/data/patterns/ai-observability.md` - AI telemetry
 
+**Tool & Agent Management (NEXUS Phase 2):**
+- `{project-root}/_bmad/bam/data/patterns/tool-schema-versioning.md` - Tool version control
+- `{project-root}/_bmad/bam/data/patterns/agent-handoff-protocol.md` - Multi-agent handoff
+
 ## Related Web Research
 
 - Search: "AI agent memory lifecycle management {date}"

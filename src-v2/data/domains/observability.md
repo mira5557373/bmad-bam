@@ -59,3 +59,14 @@ Observability in multi-tenant systems requires tenant-aware metrics, logs, and t
 
 - "multi-tenant observability patterns {date}"
 - "tenant-aware logging metrics {date}"
+
+## NEXUS Phase 2 Patterns
+
+**AI Observability:**
+- `{project-root}/_bmad/bam/data/patterns/reasoning-trace-collector.md` - Reasoning audit
+- `{project-root}/_bmad/bam/data/patterns/incident-correlation-engine.md` - Cross-tenant incidents
+
+### Web Research
+
+- "AI agent reasoning trace patterns {date}"
+- "incident correlation multi-tenant {date}"
