@@ -99,3 +99,50 @@ Use web search for current implementation:
 
 Confirm loaded. Ready for emergency shutdown design.
 """
+
+# NEXUS Phase 2 Security Patterns
+
+[[agent.menu]]
+code = "ZSF"
+description = "Load: Semantic Firewall pattern (content policy)"
+prompt = """
+Loading semantic firewall pattern:
+`{project-root}/_bmad/bam/data/patterns/semantic-firewall.md`
+
+Use web search for current implementation:
+- "semantic firewall LLM production patterns {date}"
+- "AI content policy engine implementation {date}"
+- "embedding-based content moderation {date}"
+
+Confirm loaded. Ready for semantic firewall design.
+"""
+
+[[agent.menu]]
+code = "ZOS"
+description = "Load: Output Sanitization pattern (PII/secrets)"
+prompt = """
+Loading output sanitization pattern:
+`{project-root}/_bmad/bam/data/patterns/output-sanitization.md`
+
+Use web search for current implementation:
+- "LLM output PII detection redaction {date}"
+- "AI secret scanning output filtering {date}"
+- "GDPR compliant AI output {date}"
+
+Confirm loaded. Ready for output sanitization design.
+"""
+
+[[agent.menu]]
+code = "ZRT"
+description = "Load: RBAC Per Tool pattern (agent permissions)"
+prompt = """
+Loading RBAC per tool pattern:
+`{project-root}/_bmad/bam/data/patterns/rbac-per-tool.md`
+
+Use web search for current implementation:
+- "AI agent tool RBAC patterns {date}"
+- "LangGraph tool permissions {date}"
+- "MCP tool access control {date}"
+
+Confirm loaded. Ready for tool permission design.
+"""
