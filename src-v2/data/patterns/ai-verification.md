@@ -1,6 +1,6 @@
 ---
 pattern_id: ai-verification
-shortcode: ZGV
+shortcode: ZAV
 category: testing
 qg_ref: QG-I3
 version: 1.0.0
@@ -9,7 +9,7 @@ last_reviewed: 2026-04-29
 
 # AI Verification - BAM Pattern
 
-**Loaded by:** ZGV  
+**Loaded by:** ZAV  
 **Applies to:** LLM output verification, fact-checking, attribution tracking
 
 ---

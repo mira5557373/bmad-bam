@@ -1,6 +1,6 @@
 ---
 pattern_id: ai-discovery
-shortcode: ZDV
+shortcode: ZAD
 category: discovery
 qg_ref: QG-D1
 version: 1.0.0
@@ -9,7 +9,7 @@ last_reviewed: 2026-04-29
 
 # AI Discovery - BAM Pattern
 
-**Loaded by:** ZDV  
+**Loaded by:** ZAD  
 **Applies to:** AI capability publishing and agent discovery
 
 ---
