@@ -32,15 +32,14 @@ describe('V2 File Counts', () => {
     expect(files.length).toBeGreaterThanOrEqual(12);
   });
 
-  test('66 pattern files (after NEXUS Phase 4 Task 3)', () => {
+  test('70 pattern files (after NEXUS Phase 4 Task 4)', () => {
     const files = fs.readdirSync(path.join(v2Dir, 'data/patterns')).filter(f => f.endsWith('.md'));
     // V2 consolidated: 21 base + 6 Phase 1 + 9 Phase 2 + 9 Phase 3 = 45
     // Phase 4 Task 2: 10 MCP patterns = 55
     // Phase 4 Task 3: 11 RAG patterns = 66
-    // RAG: rag-pipeline, vector-store-multi-tenant, semantic-chunking, hybrid-search,
-    //      knowledge-graph, embedding-lifecycle, context-compilation, context-window-optimization,
-    //      index-management, query-transformation, streaming-rag
-    expect(files.length).toBe(66);
+    // Phase 4 Task 4: 4 Agent Communication patterns = 70
+    // Agent Communication: agent-negotiation, cross-tenant-agent, event-driven-agents, agent-marketplace
+    expect(files.length).toBe(70);
   });
 
   test('checklist files (QG-* format)', () => {

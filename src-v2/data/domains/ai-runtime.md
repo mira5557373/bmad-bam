@@ -178,6 +178,21 @@ memory_governance:
 - "agent fanout circuit breaker patterns {date}"
 - "streaming LLM output safety filtering {date}"
 
+## NEXUS Phase 4 Patterns - Agent Communication
+
+**Multi-Agent Coordination:**
+- `{project-root}/_bmad/bam/data/patterns/agent-negotiation.md` - Agreement protocols
+- `{project-root}/_bmad/bam/data/patterns/cross-tenant-agent.md` - Federation patterns
+- `{project-root}/_bmad/bam/data/patterns/event-driven-agents.md` - Event sourcing
+- `{project-root}/_bmad/bam/data/patterns/agent-marketplace.md` - Registry and discovery
+
+### Web Research
+
+- "multi-agent negotiation consensus patterns {date}"
+- "cross-tenant agent federation patterns {date}"
+- "event sourcing AI agents patterns {date}"
+- "AI agent marketplace architecture {date}"
+
 ## Related Web Research
 
 - Search: "AI agent memory lifecycle management {date}"

@@ -467,6 +467,48 @@ Use web search for current implementation:
 Confirm loaded. Ready for agent handoff design.
 """
 
+# NEXUS Phase 4 Patterns - Agent Communication
+
+[[agent.menu]]
+code = "ZAN"
+description = "Agent Negotiation: multi-agent agreement protocols"
+prompt = """
+Loading agent negotiation pattern:
+`{project-root}/_bmad/bam/data/patterns/agent-negotiation.md`
+
+Confirm loaded. Ready for negotiation protocol guidance.
+"""
+
+[[agent.menu]]
+code = "ZXA"
+description = "Cross-Tenant Agent: federated agent patterns"
+prompt = """
+Loading cross-tenant agent pattern:
+`{project-root}/_bmad/bam/data/patterns/cross-tenant-agent.md`
+
+Confirm loaded. Ready for cross-tenant federation guidance.
+"""
+
+[[agent.menu]]
+code = "ZEA"
+description = "Event-Driven Agents: event-sourced agent architecture"
+prompt = """
+Loading event-driven agents pattern:
+`{project-root}/_bmad/bam/data/patterns/event-driven-agents.md`
+
+Confirm loaded. Ready for event-driven agent guidance.
+"""
+
+[[agent.menu]]
+code = "ZAM"
+description = "Agent Marketplace: agent registry and discovery"
+prompt = """
+Loading agent marketplace pattern:
+`{project-root}/_bmad/bam/data/patterns/agent-marketplace.md`
+
+Confirm loaded. Ready for agent marketplace guidance.
+"""
+
 # NEXUS Phase 3 Patterns
 
 [[agent.menu]]

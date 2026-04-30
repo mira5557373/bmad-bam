@@ -4,13 +4,14 @@ const path = require('path');
 describe('Pattern Standards', () => {
   const patternsDir = path.join(__dirname, '../../src-v2/data/patterns');
 
-  test('66 pattern files exist (after NEXUS Phase 4 Task 3)', () => {
+  test('70 pattern files exist (after NEXUS Phase 4 Task 4)', () => {
     const patterns = fs.readdirSync(patternsDir).filter(f =>
       f.endsWith('.md') && !f.startsWith('.')
     );
     // 21 base + 6 Phase 1 + 9 Phase 2 + 9 Phase 3 = 45
-    // + 10 MCP patterns + 11 RAG patterns = 66
-    expect(patterns.length).toBe(66);
+    // + 10 MCP patterns + 11 RAG patterns + 4 Agent Communication = 70
+    // Agent Communication: agent-negotiation, cross-tenant-agent, event-driven-agents, agent-marketplace
+    expect(patterns.length).toBe(70);
   });
 
   test('no implementation code in patterns', () => {
