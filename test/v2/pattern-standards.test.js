@@ -4,7 +4,7 @@ const path = require('path');
 describe('Pattern Standards', () => {
   const patternsDir = path.join(__dirname, '../../src-v2/data/patterns');
 
-  test('94 pattern files exist (after NEXUS Phase 4 Task 6)', () => {
+  test('106 pattern files exist (after NEXUS Phase 4 Task 7)', () => {
     const patterns = fs.readdirSync(patternsDir).filter(f =>
       f.endsWith('.md') && !f.startsWith('.')
     );
@@ -12,7 +12,8 @@ describe('Pattern Standards', () => {
     // + 10 MCP patterns + 11 RAG patterns + 4 Agent Communication = 70
     // + 6 Advanced AI patterns = 76
     // + 18 Enterprise Compliance patterns = 94
-    expect(patterns.length).toBe(94);
+    // + 12 Scale/Platform patterns = 106
+    expect(patterns.length).toBe(106);
   });
 
   test('no implementation code in patterns', () => {

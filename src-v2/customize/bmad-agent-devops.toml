@@ -64,3 +64,95 @@ Use web search for current implementation:
 
 Confirm loaded. Ready for incident correlation design.
 """
+
+# NEXUS Phase 4 Scaling Patterns
+
+[[agent.menu]]
+code = "ZVT"
+description = "Load: Vertical Scaling pattern"
+prompt = """
+Loading vertical scaling pattern:
+`{project-root}/_bmad/bam/data/patterns/vertical-scaling.md`
+
+Use web search for current implementation:
+- "vertical scaling best practices cloud {date}"
+- "RDS instance resizing zero downtime {date}"
+- "Kubernetes vertical pod autoscaler patterns {date}"
+
+Confirm loaded. Ready for vertical scaling design.
+"""
+
+[[agent.menu]]
+code = "ZGE"
+description = "Load: Geographic Distribution pattern"
+prompt = """
+Loading geographic distribution pattern:
+`{project-root}/_bmad/bam/data/patterns/geo-distribution.md`
+
+Use web search for current implementation:
+- "multi-region database architecture patterns {date}"
+- "global load balancing GeoDNS {date}"
+- "GDPR data residency implementation {date}"
+
+Confirm loaded. Ready for geographic distribution design.
+"""
+
+[[agent.menu]]
+code = "ZED"
+description = "Load: Edge Deployment pattern"
+prompt = """
+Loading edge deployment pattern:
+`{project-root}/_bmad/bam/data/patterns/edge-deployment.md`
+
+Use web search for current implementation:
+- "edge computing patterns multi-tenant SaaS {date}"
+- "Cloudflare Workers edge deployment {date}"
+- "edge AI inference latency optimization {date}"
+
+Confirm loaded. Ready for edge deployment design.
+"""
+
+[[agent.menu]]
+code = "ZLB"
+description = "Load: Load Balancing pattern"
+prompt = """
+Loading load balancing pattern:
+`{project-root}/_bmad/bam/data/patterns/load-balancing.md`
+
+Use web search for current implementation:
+- "load balancing algorithms comparison {date}"
+- "Kubernetes ingress tenant routing {date}"
+- "HAProxy multi-tenant configuration {date}"
+
+Confirm loaded. Ready for load balancing design.
+"""
+
+[[agent.menu]]
+code = "ZCG"
+description = "Load: Cache Invalidation pattern"
+prompt = """
+Loading cache invalidation pattern:
+`{project-root}/_bmad/bam/data/patterns/cache-invalidation.md`
+
+Use web search for current implementation:
+- "cache invalidation patterns distributed systems {date}"
+- "Redis pub/sub cache invalidation {date}"
+- "CDN cache purge strategies {date}"
+
+Confirm loaded. Ready for cache invalidation design.
+"""
+
+[[agent.menu]]
+code = "ZUA"
+description = "Load: Usage Analytics pattern"
+prompt = """
+Loading usage analytics pattern:
+`{project-root}/_bmad/bam/data/patterns/usage-analytics.md`
+
+Use web search for current implementation:
+- "usage analytics multi-tenant SaaS {date}"
+- "LLM token tracking billing {date}"
+- "product analytics event schema design {date}"
+
+Confirm loaded. Ready for usage analytics design.
+"""

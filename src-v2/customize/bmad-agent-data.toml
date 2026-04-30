@@ -38,3 +38,95 @@ Loading tenant lifecycle context:
 Focus: provisioning, suspension, termination flows.
 Confirm loaded. Ready for lifecycle design guidance.
 """
+
+# NEXUS Phase 4 Platform Patterns
+
+[[agent.menu]]
+code = "ZPS"
+description = "Load: Pricing Strategies pattern"
+prompt = """
+Loading pricing strategies pattern:
+`{project-root}/_bmad/bam/data/patterns/pricing-strategies.md`
+
+Use web search for current implementation:
+- "SaaS pricing strategies {date}"
+- "usage-based pricing implementation {date}"
+- "AI LLM pricing models {date}"
+
+Confirm loaded. Ready for pricing strategy design.
+"""
+
+[[agent.menu]]
+code = "ZPF"
+description = "Load: Platform Fees pattern"
+prompt = """
+Loading platform fees pattern:
+`{project-root}/_bmad/bam/data/patterns/platform-fees.md`
+
+Use web search for current implementation:
+- "marketplace take rate benchmarks {date}"
+- "platform fee structure design {date}"
+- "Stripe Connect marketplace fees {date}"
+
+Confirm loaded. Ready for platform fee design.
+"""
+
+[[agent.menu]]
+code = "ZWL"
+description = "Load: White-Label pattern"
+prompt = """
+Loading white-label pattern:
+`{project-root}/_bmad/bam/data/patterns/white-label.md`
+
+Use web search for current implementation:
+- "white-label SaaS architecture {date}"
+- "multi-tenant custom domain routing {date}"
+- "reseller program implementation {date}"
+
+Confirm loaded. Ready for white-label design.
+"""
+
+[[agent.menu]]
+code = "ZRM"
+description = "Load: Reseller Model pattern"
+prompt = """
+Loading reseller model pattern:
+`{project-root}/_bmad/bam/data/patterns/reseller-model.md`
+
+Use web search for current implementation:
+- "SaaS reseller program design {date}"
+- "partner tier structure best practices {date}"
+- "channel partner management {date}"
+
+Confirm loaded. Ready for reseller model design.
+"""
+
+[[agent.menu]]
+code = "ZAI"
+description = "Load: API Integration pattern"
+prompt = """
+Loading API integration pattern:
+`{project-root}/_bmad/bam/data/patterns/api-integration.md`
+
+Use web search for current implementation:
+- "API gateway multi-tenant patterns {date}"
+- "OAuth 2.0 SaaS implementation {date}"
+- "webhook delivery patterns {date}"
+
+Confirm loaded. Ready for API integration design.
+"""
+
+[[agent.menu]]
+code = "ZPA"
+description = "Load: Partner APIs pattern"
+prompt = """
+Loading partner APIs pattern:
+`{project-root}/_bmad/bam/data/patterns/partner-apis.md`
+
+Use web search for current implementation:
+- "partner API design patterns {date}"
+- "reseller portal API integration {date}"
+- "multi-tenant sub-tenant API {date}"
+
+Confirm loaded. Ready for partner API design.
+"""

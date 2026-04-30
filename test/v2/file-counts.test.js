@@ -32,7 +32,7 @@ describe('V2 File Counts', () => {
     expect(files.length).toBeGreaterThanOrEqual(12);
   });
 
-  test('94 pattern files (after NEXUS Phase 4 Task 6)', () => {
+  test('106 pattern files (after NEXUS Phase 4 Task 7)', () => {
     const files = fs.readdirSync(path.join(v2Dir, 'data/patterns')).filter(f => f.endsWith('.md'));
     // V2 consolidated: 21 base + 6 Phase 1 + 9 Phase 2 + 9 Phase 3 = 45
     // Phase 4 Task 2: 10 MCP patterns = 55
@@ -40,12 +40,10 @@ describe('V2 File Counts', () => {
     // Phase 4 Task 4: 4 Agent Communication patterns = 70
     // Phase 4 Task 5: 6 Advanced AI patterns = 76
     // Phase 4 Task 6: 18 Enterprise Compliance patterns = 94
-    // Security: sso-integration, agent-rbac, tenant-rbac
-    // Compliance: data-residency, consent-management, data-retention, anonymization, right-to-deletion,
-    //             export-portability, compliance-reporting, data-classification, access-reviews,
-    //             privacy-by-design, vendor-management, soc2-compliance, hipaa-compliance,
-    //             pci-dss-compliance, gdpr-compliance
-    expect(files.length).toBe(94);
+    // Phase 4 Task 7: 12 Scale/Platform patterns = 106
+    // Scaling: vertical-scaling, geo-distribution, edge-deployment, load-balancing, cache-invalidation, usage-analytics
+    // Platform: pricing-strategies, platform-fees, white-label, reseller-model, api-integration, partner-apis
+    expect(files.length).toBe(106);
   });
 
   test('checklist files (QG-* format)', () => {

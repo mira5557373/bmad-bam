@@ -1,6 +1,6 @@
 ---
 pattern_id: data-classification
-shortcode: ZDC
+shortcode: ZDCL
 category: compliance
 qg_ref: QG-ENT1
 version: 1.0.0
@@ -9,7 +9,7 @@ last_reviewed: 2026-04-30
 
 # Data Classification - BAM Pattern
 
-**Loaded by:** ZDC  
+**Loaded by:** ZDCL  
 **Applies to:** Data classification schemas and enforcement  
 **See also:** [privacy-by-design.md](privacy-by-design.md), [anonymization.md](anonymization.md)
 
