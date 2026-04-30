@@ -406,3 +406,63 @@ Use web search for current implementation:
 
 Confirm loaded. Ready for invisible failure detection design.
 """
+
+[[agent.menu]]
+code = "ZRX"
+description = "Load: Reasoning Trace Collector pattern"
+prompt = """
+Loading reasoning trace collector pattern:
+`{project-root}/_bmad/bam/data/patterns/reasoning-trace-collector.md`
+
+Use web search for current implementation:
+- "AI agent reasoning trace collection {date}"
+- "LLM observability tracing patterns {date}"
+- "LangSmith tracing integration {date}"
+
+Confirm loaded. Ready for reasoning trace design.
+"""
+
+[[agent.menu]]
+code = "ZCA"
+description = "Load: Cost Attribution Engine pattern"
+prompt = """
+Loading cost attribution engine pattern:
+`{project-root}/_bmad/bam/data/patterns/cost-attribution-engine.md`
+
+Use web search for current implementation:
+- "LLM cost attribution multi-tenant {date}"
+- "AI token metering billing patterns {date}"
+- "usage-based AI pricing {date}"
+
+Confirm loaded. Ready for cost attribution design.
+"""
+
+[[agent.menu]]
+code = "ZTV"
+description = "Load: Tool Schema Versioning pattern"
+prompt = """
+Loading tool schema versioning pattern:
+`{project-root}/_bmad/bam/data/patterns/tool-schema-versioning.md`
+
+Use web search for current implementation:
+- "AI tool schema versioning patterns {date}"
+- "agent tool API versioning {date}"
+- "MCP tool version management {date}"
+
+Confirm loaded. Ready for tool versioning design.
+"""
+
+[[agent.menu]]
+code = "ZAH"
+description = "Load: Agent Handoff Protocol pattern"
+prompt = """
+Loading agent handoff protocol pattern:
+`{project-root}/_bmad/bam/data/patterns/agent-handoff-protocol.md`
+
+Use web search for current implementation:
+- "multi-agent handoff protocol {date}"
+- "LangGraph agent handoff {date}"
+- "CrewAI agent delegation patterns {date}"
+
+Confirm loaded. Ready for agent handoff design.
+"""
