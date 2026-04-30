@@ -4,10 +4,10 @@ const path = require('path');
 describe('TOML Customization Files', () => {
   const tomlDir = path.join(__dirname, '../../src-v2/customize');
 
-  test('13 TOML files exist', () => {
+  test('14 TOML files exist', () => {
     const files = fs.readdirSync(tomlDir).filter(f => f.endsWith('.toml'));
-    // 12 original + 1 MCP TOML (NEXUS Phase 4)
-    expect(files.length).toBe(13);
+    // 12 original + 1 MCP TOML + 1 RAG TOML (NEXUS Phase 4)
+    expect(files.length).toBe(14);
   });
 
   test('all TOML files have [agent] section', () => {

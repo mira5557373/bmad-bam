@@ -4,10 +4,10 @@ const path = require('path');
 describe('V2 File Counts', () => {
   const v2Dir = path.join(__dirname, '../../src-v2');
 
-  test('13 TOML customize files', () => {
+  test('14 TOML customize files', () => {
     const files = fs.readdirSync(path.join(v2Dir, 'customize')).filter(f => f.endsWith('.toml'));
-    // 12 original + 1 MCP TOML (NEXUS Phase 4)
-    expect(files.length).toBe(13);
+    // 12 original + 1 MCP TOML + 1 RAG TOML (NEXUS Phase 4)
+    expect(files.length).toBe(14);
   });
 
   test('34 workflow skills', () => {
@@ -32,13 +32,15 @@ describe('V2 File Counts', () => {
     expect(files.length).toBeGreaterThanOrEqual(12);
   });
 
-  test('45 pattern files (after NEXUS Phase 3)', () => {
+  test('66 pattern files (after NEXUS Phase 4 Task 3)', () => {
     const files = fs.readdirSync(path.join(v2Dir, 'data/patterns')).filter(f => f.endsWith('.md'));
     // V2 consolidated: 21 base + 6 Phase 1 + 9 Phase 2 + 9 Phase 3 = 45
-    // Phase 3: agent-registry, fanout-circuit-breaker, regulatory-clock-engine,
-    //          blast-radius-simulator, secret-leak-detector, canary-token-inserter,
-    //          tool-sbom-registry, streaming-output-decoder, agent-maturity-scoring
-    expect(files.length).toBe(45);
+    // Phase 4 Task 2: 10 MCP patterns = 55
+    // Phase 4 Task 3: 11 RAG patterns = 66
+    // RAG: rag-pipeline, vector-store-multi-tenant, semantic-chunking, hybrid-search,
+    //      knowledge-graph, embedding-lifecycle, context-compilation, context-window-optimization,
+    //      index-management, query-transformation, streaming-rag
+    expect(files.length).toBe(66);
   });
 
   test('checklist files (QG-* format)', () => {

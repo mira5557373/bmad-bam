@@ -1,0 +1,129 @@
+# BAM RAG/Knowledge Extensions
+# Adds RAG pipeline, vector store isolation, semantic chunking patterns
+
+[agent]
+activation_steps_append = [
+  "BAM RAG capabilities available. Use ZRP for RAG pipeline, ZVS for vector stores.",
+]
+
+persistent_facts = [
+  "file:{project-root}/_bmad/bam/data/context/bam-core.md",
+  "file:{project-root}/_bmad/bam/data/domains/rag.md",
+]
+
+principles = [
+  "BAM RAG: All knowledge stores are tenant-isolated.",
+  "BAM RAG: Embeddings are versioned and tracked.",
+  "BAM RAG: Citations required for all retrieved content.",
+  "BAM Gates: QG-RAG1 (RAG Quality).",
+]
+
+[[agent.menu]]
+code = "ZRP"
+description = "RAG Pipeline: end-to-end retrieval orchestration"
+prompt = """
+Loading RAG pipeline pattern:
+`{project-root}/_bmad/bam/data/patterns/rag-pipeline.md`
+
+Confirm loaded. Ready for RAG architecture guidance.
+"""
+
+[[agent.menu]]
+code = "ZVS"
+description = "Vector Store Multi-tenant: isolated indexes"
+prompt = """
+Loading vector store multi-tenant pattern:
+`{project-root}/_bmad/bam/data/patterns/vector-store-multi-tenant.md`
+
+Confirm loaded. Ready for vector isolation guidance.
+"""
+
+[[agent.menu]]
+code = "ZSC"
+description = "Semantic Chunking: context-aware document splitting"
+prompt = """
+Loading semantic chunking pattern:
+`{project-root}/_bmad/bam/data/patterns/semantic-chunking.md`
+
+Confirm loaded. Ready for chunking strategy guidance.
+"""
+
+[[agent.menu]]
+code = "ZHS"
+description = "Hybrid Search: vector + keyword fusion"
+prompt = """
+Loading hybrid search pattern:
+`{project-root}/_bmad/bam/data/patterns/hybrid-search.md`
+
+Confirm loaded. Ready for search strategy guidance.
+"""
+
+[[agent.menu]]
+code = "ZKG"
+description = "Knowledge Graph: graph-based knowledge storage"
+prompt = """
+Loading knowledge graph pattern:
+`{project-root}/_bmad/bam/data/patterns/knowledge-graph.md`
+
+Confirm loaded. Ready for knowledge graph guidance.
+"""
+
+[[agent.menu]]
+code = "ZEL"
+description = "Embedding Lifecycle: embedding model management"
+prompt = """
+Loading embedding lifecycle pattern:
+`{project-root}/_bmad/bam/data/patterns/embedding-lifecycle.md`
+
+Confirm loaded. Ready for embedding management guidance.
+"""
+
+[[agent.menu]]
+code = "ZCC"
+description = "Context Compilation: context assembly patterns"
+prompt = """
+Loading context compilation pattern:
+`{project-root}/_bmad/bam/data/patterns/context-compilation.md`
+
+Confirm loaded. Ready for context assembly guidance.
+"""
+
+[[agent.menu]]
+code = "ZCW"
+description = "Context Window Optimization: token budget management"
+prompt = """
+Loading context window optimization pattern:
+`{project-root}/_bmad/bam/data/patterns/context-window-optimization.md`
+
+Confirm loaded. Ready for token budget guidance.
+"""
+
+[[agent.menu]]
+code = "ZIM"
+description = "Index Management: index lifecycle patterns"
+prompt = """
+Loading index management pattern:
+`{project-root}/_bmad/bam/data/patterns/index-management.md`
+
+Confirm loaded. Ready for index lifecycle guidance.
+"""
+
+[[agent.menu]]
+code = "ZQT"
+description = "Query Transformation: query rewriting patterns"
+prompt = """
+Loading query transformation pattern:
+`{project-root}/_bmad/bam/data/patterns/query-transformation.md`
+
+Confirm loaded. Ready for query optimization guidance.
+"""
+
+[[agent.menu]]
+code = "ZSR"
+description = "Streaming RAG: real-time retrieval"
+prompt = """
+Loading streaming RAG pattern:
+`{project-root}/_bmad/bam/data/patterns/streaming-rag.md`
+
+Confirm loaded. Ready for streaming RAG guidance.
+"""
