@@ -1,9 +1,9 @@
 # BAM Security Extensions for bmad-agent-architect
-# Adds secrets management, threat modeling, incident response
+# Adds secrets management, threat modeling, incident response, SSO/OAuth
 
 [agent]
 activation_steps_append = [
-  "BAM Security capabilities available. Use ZSO for security operations.",
+  "BAM Security capabilities available. Use ZSO for operations, ZAI for auth integration.",
 ]
 
 persistent_facts = [
@@ -11,13 +11,15 @@ persistent_facts = [
   "file:{project-root}/_bmad/bam/data/patterns/secrets-management.md",
   "file:{project-root}/_bmad/bam/data/patterns/incident-response.md",
   "file:{project-root}/_bmad/bam/data/patterns/zero-trust.md",
+  "file:{project-root}/_bmad/bam/data/patterns/sso-auth.md",
 ]
 
 principles = [
   "BAM Security: Zero trust for all tenant boundaries.",
   "BAM Security: Secrets must be tenant-isolated and rotatable.",
   "BAM Security: Incident response must include tenant notification.",
-  "BAM Gates: QG-S3 (Security Baseline), QG-IR (Incident Response).",
+  "BAM Security: Authentication must respect tenant context in all flows.",
+  "BAM Gates: QG-S3 (Security Baseline), QG-S5 (Auth), QG-IR (Incident Response).",
 ]
 
 [[agent.menu]]
@@ -53,4 +55,19 @@ Loading incident response pattern:
 `{project-root}/_bmad/bam/data/patterns/incident-response.md`
 
 Confirm loaded. Ready for incident response guidance.
+"""
+
+[[agent.menu]]
+code = "ZAI"
+description = "Auth Integration: SSO, OAuth, API keys, session management"
+skill = "bmad-bam-auth-integration"
+
+[[agent.menu]]
+code = "ZPSA"
+description = "Load: SSO & Authentication pattern details"
+prompt = """
+Loading SSO & authentication pattern:
+`{project-root}/_bmad/bam/data/patterns/sso-auth.md`
+
+Confirm loaded. Ready for authentication architecture guidance.
 """

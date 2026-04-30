@@ -1,7 +1,7 @@
 # Security - BAM Domain Context
 
-**Loaded by:** ZSA, ZST  
-**Related Workflows:** bmad-bam-security-threat-model, bmad-bam-security-baseline
+**Loaded by:** ZSA, ZST, ZAI, ZSO  
+**Related Workflows:** bmad-bam-security-threat-model, bmad-bam-security-baseline, bmad-bam-auth-integration, bmad-bam-security-operations
 
 ---
 
@@ -51,6 +51,96 @@ Security in multi-tenant SaaS requires defense in depth with tenant isolation as
 | Encryption at rest | AES-256 | Tenant key option |
 | Encryption in transit | TLS 1.3 | All traffic |
 
+---
+
+## SSO & Authentication Architecture
+
+### Authentication Flow by Tier
+
+```
+┌─────────────────────────────────────────────────────────────┐
+│                    Authentication Flows                      │
+├─────────────────────────────────────────────────────────────┤
+│                                                              │
+│  FREE TIER          PRO TIER           ENTERPRISE TIER      │
+│  ─────────          ────────           ────────────────     │
+│  Platform Auth      OIDC SSO           SAML 2.0 + OIDC      │
+│  Email/Password     Google/MSFT        Custom IdP            │
+│  MFA Optional       MFA Required       MFA Required          │
+│                     JIT Provisioning   SCIM + JIT            │
+│                                                              │
+└─────────────────────────────────────────────────────────────┘
+```
+
+### SSO Protocol Decision Matrix
+
+| Protocol | Use Case | Tenant Tier | Key Considerations |
+|----------|----------|-------------|-------------------|
+| SAML 2.0 | Enterprise SSO | Enterprise | Mature, complex, XML-based |
+| OIDC | Modern SSO | Pro, Enterprise | Simpler, JSON/JWT, mobile-friendly |
+| OAuth 2.0 | API authorization | All | Token-based, scoped access |
+| API Keys | M2M, CI/CD | All | Simple, rotate regularly |
+
+### Multi-Tenant IdP Architecture
+
+```
+┌──────────────────────────────────────────────────────────────┐
+│                    Platform Auth Service                      │
+├──────────────────────────────────────────────────────────────┤
+│                                                               │
+│    ┌─────────────┐     ┌─────────────┐     ┌─────────────┐   │
+│    │  Tenant A   │     │  Tenant B   │     │  Tenant C   │   │
+│    │  IdP: Okta  │     │  IdP: Azure │     │  IdP: Custom│   │
+│    └──────┬──────┘     └──────┬──────┘     └──────┬──────┘   │
+│           │                   │                   │           │
+│    ┌──────▼──────────────────▼───────────────────▼──────┐    │
+│    │              IdP Connection Manager                 │    │
+│    │   • SAML SP metadata per tenant                     │    │
+│    │   • OIDC RP configuration per tenant                │    │
+│    │   • Certificate management                          │    │
+│    └─────────────────────────────────────────────────────┘    │
+│                              │                                │
+│    ┌─────────────────────────▼─────────────────────────────┐ │
+│    │              Unified Session Manager                   │ │
+│    │   • Session bound to tenant_id                        │ │
+│    │   • Single Logout (SLO) cascade                       │ │
+│    │   • Concurrent session limits                         │ │
+│    └───────────────────────────────────────────────────────┘ │
+│                                                               │
+└──────────────────────────────────────────────────────────────┘
+```
+
+### API Key Architecture
+
+| Key Type | Prefix | Storage | Scope |
+|----------|--------|---------|-------|
+| Primary Key | `bam_pk_` | Argon2id hash | Full tenant access |
+| Secondary Key | `bam_sk_` | Argon2id hash | Rotation support |
+| Service Account | `bam_sa_` | Argon2id hash | Limited permissions |
+
+**Key Lifecycle:**
+```
+Generate (256-bit) ──► Show Once ──► Store Hash ──► Use ──► Rotate (90d) ──► Revoke
+```
+
+### Session Security Controls
+
+| Control | Implementation | Purpose |
+|---------|----------------|---------|
+| ID Regeneration | On auth events | Prevent fixation |
+| Tenant Binding | Session.tenant_id | Isolation |
+| Device Fingerprint | Optional (Enterprise) | Theft detection |
+| Idle Timeout | Tier-based (15m-custom) | Auto-logout |
+| Absolute Timeout | Tier-based (8h-custom) | Force re-auth |
+
+### Authentication Quality Gate (QG-S5)
+
+See `{project-root}/_bmad/bam/data/checklists/qg-s5.md` for:
+- SAML/OIDC protocol security checks
+- OAuth authorization server requirements
+- API key management validation
+- Session isolation verification
+
 ## Quality Checks
 
 - [ ] Authentication enforced at all entry points
@@ -62,6 +152,8 @@ Security in multi-tenant SaaS requires defense in depth with tenant isolation as
 
 - "multi-tenant security patterns {date}"
 - "SaaS security best practices {date}"
+- "enterprise SSO SAML OIDC multi-tenant {date}"
+- "API key authentication best practices {date}"
 
 ---
 
@@ -349,5 +441,6 @@ CVE Discovered
 ## Pattern References (Enhanced)
 
 - **Zero Trust:** `{project-root}/_bmad/bam/data/patterns/zero-trust.md`
+- **SSO & Auth:** `{project-root}/_bmad/bam/data/patterns/sso-auth.md`
 - **Secrets:** `{project-root}/_bmad/bam/data/patterns/secrets-management.md`
 - **Incident:** `{project-root}/_bmad/bam/data/patterns/incident-response.md`

@@ -1,0 +1,22 @@
+# Authentication Integration - Skill Customization
+
+[workflow]
+activation_steps_prepend = []
+
+persistent_facts = [
+  "file:{project-root}/_bmad/bam/data/context/bam-core.md",
+  "file:{project-root}/_bmad/bam/data/patterns/sso-auth.md",
+  "file:{project-root}/_bmad/bam/data/domains/security.md",
+]
+
+activation_steps_append = [
+  "Authentication integration capabilities loaded. Sub-workflows: ZAS (SSO), ZAO (OAuth), ZAK (API Keys), ZAM (Sessions).",
+]
+
+principles = [
+  "BAM Auth: All authentication must respect tenant boundaries.",
+  "BAM Auth: SSO assertions must include tenant context.",
+  "BAM Auth: Sessions are tenant-scoped and tier-aware.",
+  "BAM Auth: API keys inherit tenant permissions.",
+  "BAM Gates: QG-S4 (Auth Security), QG-S5 (Session Security).",
+]

@@ -1,0 +1,9 @@
+type: workflow
+name: bmad-bam-auth-integration
+displayName: Authentication Integration
+description: 'Design enterprise authentication including SSO, OAuth, and identity provider integration'
+module: bam
+config_variables:
+  - tenant_model
+  - ai_runtime
+step_naming_convention: "step-NN-mode-description"
