@@ -910,7 +910,7 @@ Every pattern file MUST begin with this exact frontmatter structure:
 ```yaml
 ---
 pattern_id: {filename-without-extension}  # MUST match filename exactly
-shortcode: Z{XX}                          # Z-prefix, 2-4 uppercase letters, MUST be unique
+shortcode: Z{XX}                          # Z-prefix, 2-4 uppercase alphanumeric, MUST be unique
 category: {valid-category}                # See valid categories below
 qg_ref: QG-{XX}                           # Quality gate reference
 version: 1.0.0                            # Semver format
@@ -921,7 +921,7 @@ last_reviewed: YYYY-MM-DD                 # ISO date format
 **Critical Rules:**
 - `pattern_id` MUST exactly match the filename (e.g., `tenant-isolation.md` → `pattern_id: tenant-isolation`)
 - `shortcode` MUST be unique across ALL pattern files - duplicates cause menu conflicts
-- `shortcode` format: Z-prefix + 2-4 uppercase letters (e.g., ZTI, ZTIS, ZDCL)
+- `shortcode` format: Z-prefix + 2-4 uppercase alphanumeric characters (e.g., ZTI, ZTIS, ZA2 for A2A, ZS2 for SOC2)
 
 ### Valid Categories
 

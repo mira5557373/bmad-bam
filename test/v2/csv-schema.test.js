@@ -52,8 +52,9 @@ describe('CSV Schema Validation', () => {
       expect(csvContent).toContain('tenant-isolation.md');
     });
 
-    test('agent-runtime row has core_pattern_ref', () => {
-      expect(csvContent).toContain('agent-orchestration.md');
+    test('agent-orchestration row has domain_ref', () => {
+      // agent-orchestration pattern has ai-runtime.md as domain_ref
+      expect(csvContent).toContain('ai-runtime.md');
     });
   });
 
