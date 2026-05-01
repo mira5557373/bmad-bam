@@ -5,6 +5,7 @@ category: ai-runtime
 version: 2.0.0
 type: template
 web_research_enabled: true
+source_verification: true
 ---
 
 ## Purpose
@@ -77,7 +78,7 @@ Document AI agent memory tier design with tenant isolation
 | Access | Session-scoped |
 | Tenant Isolation | Tenant ID prefix in Redis |
 
-**Key Pattern:** `tenant:{tenant_id}:session:{session_id}:memory`
+**Key Pattern:** `tenant:{{tenant_id}}:session:{{session_id}}:memory`
 
 ### L3 - Long-term Memory
 
@@ -198,9 +199,9 @@ memory_item:
 
 ## Web Research Queries
 
-- "AI agent memory architecture {date}"
-- "LLM context management patterns {date}"
-- "multi-tenant AI memory isolation {date}"
+- "AI agent memory architecture {{date}}"
+- "LLM context management patterns {{date}}"
+- "multi-tenant AI memory isolation {{date}}"
 
 _Source: [URL]_ for key findings.
 

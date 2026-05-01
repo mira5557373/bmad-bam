@@ -5,6 +5,7 @@ category: integration
 version: 2.0.0
 type: template
 web_research_enabled: true
+source_verification: true
 ---
 
 ## Purpose
@@ -100,9 +101,9 @@ Document cross-module integration verification and convergence results
 
 ## Web Research Queries
 
-- "integration testing best practices {date}"
-- "tenant isolation verification {date}"
-- "AI safety testing patterns {date}"
+- "integration testing best practices {{date}}"
+- "tenant isolation verification {{date}}"
+- "AI safety testing patterns {{date}}"
 
 _Source: [URL]_ for key findings.
 

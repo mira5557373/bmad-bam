@@ -5,6 +5,7 @@ category: operations
 version: 2.0.0
 type: template
 web_research_enabled: true
+source_verification: true
 ---
 
 ## Purpose
@@ -37,10 +38,10 @@ Document tenant-aware observability with metrics, logs, and traces
 
 ```yaml
 labels:
-  tenant_id: "{tenant_id}"      # Required on all tenant metrics
+  tenant_id: "{{tenant_id}}"      # Required on all tenant metrics
   tier: "{free|pro|enterprise}" # Tenant tier
-  module: "{module_name}"       # Source module
-  environment: "{env}"          # prod, staging, dev
+  module: "{{module_name}}"       # Source module
+  environment: "{{env}}"          # prod, staging, dev
 ```
 
 ### Key Metrics
@@ -99,11 +100,11 @@ labels:
 
 ```yaml
 attributes:
-  tenant.id: "{tenant_id}"
-  tenant.tier: "{tier}"
-  user.id: "{user_id}"
-  module.name: "{module}"
-  ai.run.id: "{run_id}"  # For AI agent traces
+  tenant.id: "{{tenant_id}}"
+  tenant.tier: "{{tier}}"
+  user.id: "{{user_id}}"
+  module.name: "{{module}}"
+  ai.run.id: "{{run_id}}"  # For AI agent traces
 ```
 
 ---
@@ -145,9 +146,9 @@ attributes:
 
 ## Web Research Queries
 
-- "multi-tenant observability patterns {date}"
-- "OpenTelemetry tenant isolation {date}"
-- "SaaS monitoring best practices {date}"
+- "multi-tenant observability patterns {{date}}"
+- "OpenTelemetry tenant isolation {{date}}"
+- "SaaS monitoring best practices {{date}}"
 
 _Source: [URL]_ for key findings.
 

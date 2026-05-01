@@ -5,6 +5,7 @@ category: architecture
 version: 2.0.0
 type: template
 web_research_enabled: true
+source_verification: true
 ---
 
 ## Purpose
@@ -35,14 +36,14 @@ Document event-driven architecture design with tenant-aware event routing
 
 ```yaml
 specversion: "1.0"
-type: "com.{{project_name}}.{domain}.{event}"
-source: "/tenants/{tenant_id}/modules/{module}"
-subject: "{entity_type}/{entity_id}"
-id: "{uuid}"
+type: "com.{{project_name}}.{{domain}}.{{event}}"
+source: "/tenants/{{tenant_id}}/modules/{{module}}"
+subject: "{{entity_type}}/{{entity_id}}"
+id: "{{uuid}}"
 time: "{iso8601}"
 datacontenttype: "application/json"
 data:
-  tenant_id: "{tenant_id}"
+  tenant_id: "{{tenant_id}}"
   # event-specific payload
 ```
 
@@ -125,9 +126,9 @@ TenantCreated
 
 ## Web Research Queries
 
-- "event-driven architecture multi-tenant {date}"
-- "CloudEvents specification best practices {date}"
-- "event sourcing tenant isolation {date}"
+- "event-driven architecture multi-tenant {{date}}"
+- "CloudEvents specification best practices {{date}}"
+- "event sourcing tenant isolation {{date}}"
 
 _Source: [URL]_ for key findings.
 

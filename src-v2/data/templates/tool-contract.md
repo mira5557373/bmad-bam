@@ -5,6 +5,7 @@ category: ai-runtime
 version: 2.0.0
 type: template
 web_research_enabled: true
+source_verification: true
 ---
 
 ## Purpose
@@ -243,9 +244,9 @@ it('should respect tenant isolation', async () => {
 
 ## Web Research Queries
 
-- "AI agent tool design patterns {date}"
-- "function calling best practices {date}"
-- "tool interface versioning {date}"
+- "AI agent tool design patterns {{date}}"
+- "function calling best practices {{date}}"
+- "tool interface versioning {{date}}"
 
 _Source: [URL]_ for key findings.
 

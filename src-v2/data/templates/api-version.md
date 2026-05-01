@@ -5,6 +5,7 @@ category: integration
 version: 2.0.0
 type: template
 web_research_enabled: true
+source_verification: true
 ---
 
 ## Purpose
@@ -170,9 +171,9 @@ Link: <https://docs.example.com/migration>; rel="deprecation"
 
 ## Web Research Queries
 
-- "API versioning best practices {date}"
-- "REST API deprecation strategy {date}"
-- "backward compatible API changes {date}"
+- "API versioning best practices {{date}}"
+- "REST API deprecation strategy {{date}}"
+- "backward compatible API changes {{date}}"
 
 _Source: [URL]_ for key findings.
 

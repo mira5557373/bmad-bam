@@ -5,6 +5,7 @@ category: integration
 version: 2.0.0
 type: template
 web_research_enabled: true
+source_verification: true
 ---
 
 ## Purpose
@@ -87,9 +88,9 @@ Document module public interface contract with versioning and compatibility
 
 ## Web Research Queries
 
-- "API versioning patterns {date}"
-- "facade contract design {date}"
-- "backwards compatibility strategies {date}"
+- "API versioning patterns {{date}}"
+- "facade contract design {{date}}"
+- "backwards compatibility strategies {{date}}"
 
 _Source: [URL]_ for key findings.
 

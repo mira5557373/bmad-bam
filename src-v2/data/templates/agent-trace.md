@@ -5,6 +5,7 @@ category: ai-runtime
 version: 2.0.0
 type: template
 web_research_enabled: true
+source_verification: true
 ---
 
 ## Purpose
@@ -168,9 +169,9 @@ Document AI agent execution trace with step-by-step analysis
 
 ## Web Research Queries
 
-- "AI agent tracing best practices {date}"
-- "LLM observability patterns {date}"
-- "{{ai_runtime}} execution monitoring {date}"
+- "AI agent tracing best practices {{date}}"
+- "LLM observability patterns {{date}}"
+- "{{ai_runtime}} execution monitoring {{date}}"
 
 _Source: [URL]_ for key findings.
 

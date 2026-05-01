@@ -5,6 +5,7 @@ category: governance
 version: 2.0.0
 type: template
 web_research_enabled: true
+source_verification: true
 ---
 
 ## Purpose
@@ -181,9 +182,9 @@ We will use **{{ai_runtime}}** because [rationale based on selection].
 
 ## Web Research Queries
 
-- "architecture decision records best practices {date}"
-- "ADR templates lightweight {date}"
-- "documenting technical decisions {date}"
+- "architecture decision records best practices {{date}}"
+- "ADR templates lightweight {{date}}"
+- "documenting technical decisions {{date}}"
 
 _Source: [URL]_ for key findings.
 

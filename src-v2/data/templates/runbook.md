@@ -5,6 +5,7 @@ category: operations
 version: 2.0.0
 type: template
 web_research_enabled: true
+source_verification: true
 ---
 
 ## Purpose
@@ -223,9 +224,9 @@ kubectl set env deployment/{{service_name}} DATABASE_URL={{new_url}}
 
 ## Web Research Queries
 
-- "SRE runbook best practices {date}"
-- "incident response documentation {date}"
-- "operational playbook templates {date}"
+- "SRE runbook best practices {{date}}"
+- "incident response documentation {{date}}"
+- "operational playbook templates {{date}}"
 
 _Source: [URL]_ for key findings.
 

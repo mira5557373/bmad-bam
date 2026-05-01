@@ -5,6 +5,7 @@ category: operations
 version: 2.0.0
 type: template
 web_research_enabled: true
+source_verification: true
 ---
 
 ## Purpose
@@ -33,7 +34,7 @@ Document tenant-aware caching strategy across cache layers
 
 ## Tenant Isolation
 
-**Key Pattern:** `tenant:{tenant_id}:{resource}:{id}`
+**Key Pattern:** `tenant:{{tenant_id}}:{{resource}}:{{id}}`
 
 **Isolation Strategy:**
 - [ ] All cache keys include tenant_id
@@ -65,9 +66,9 @@ Document tenant-aware caching strategy across cache layers
 
 ## Web Research Queries
 
-- "multi-tenant caching patterns {date}"
-- "cache invalidation strategies {date}"
-- "Redis tenant isolation {date}"
+- "multi-tenant caching patterns {{date}}"
+- "cache invalidation strategies {{date}}"
+- "Redis tenant isolation {{date}}"
 
 _Source: [URL]_ for key findings.
 

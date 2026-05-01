@@ -5,6 +5,7 @@ category: operations
 version: 2.0.0
 type: template
 web_research_enabled: true
+source_verification: true
 ---
 
 ## Purpose
@@ -174,9 +175,9 @@ Document capacity planning with growth projections and scaling triggers
 
 ## Web Research Queries
 
-- "SaaS capacity planning best practices {date}"
-- "cloud auto-scaling strategies {date}"
-- "multi-tenant resource forecasting {date}"
+- "SaaS capacity planning best practices {{date}}"
+- "cloud auto-scaling strategies {{date}}"
+- "multi-tenant resource forecasting {{date}}"
 
 _Source: [URL]_ for key findings.
 

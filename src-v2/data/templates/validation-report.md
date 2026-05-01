@@ -5,6 +5,7 @@ category: quality
 version: 2.0.0
 type: template
 web_research_enabled: true
+source_verification: true
 ---
 
 ## Purpose
@@ -90,9 +91,9 @@ Document quality gate validation results
 
 ## Web Research Queries
 
-- "software quality gate validation {date}"
-- "release readiness criteria {date}"
-- "multi-tenant validation patterns {date}"
+- "software quality gate validation {{date}}"
+- "release readiness criteria {{date}}"
+- "multi-tenant validation patterns {{date}}"
 
 _Source: [URL]_ for key findings.
 

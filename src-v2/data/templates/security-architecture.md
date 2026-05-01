@@ -5,6 +5,7 @@ category: security
 version: 2.0.0
 type: template
 web_research_enabled: true
+source_verification: true
 ---
 
 ## Purpose
@@ -160,9 +161,9 @@ roles:
 
 ## Web Research Queries
 
-- "multi-tenant security architecture {date}"
-- "SaaS security best practices {date}"
-- "zero trust architecture patterns {date}"
+- "multi-tenant security architecture {{date}}"
+- "SaaS security best practices {{date}}"
+- "zero trust architecture patterns {{date}}"
 
 _Source: [URL]_ for key findings.
 

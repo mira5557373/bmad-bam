@@ -5,6 +5,7 @@ category: operations
 version: 2.0.0
 type: template
 web_research_enabled: true
+source_verification: true
 ---
 
 ## Purpose
@@ -169,9 +170,9 @@ Document tenant offboarding workflow with data retention and compliance
 
 ## Web Research Queries
 
-- "SaaS customer offboarding best practices {date}"
-- "GDPR right to erasure implementation {date}"
-- "data retention compliance SaaS {date}"
+- "SaaS customer offboarding best practices {{date}}"
+- "GDPR right to erasure implementation {{date}}"
+- "data retention compliance SaaS {{date}}"
 
 _Source: [URL]_ for key findings.
 

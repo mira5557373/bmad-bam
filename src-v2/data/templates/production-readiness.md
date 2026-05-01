@@ -5,6 +5,7 @@ category: operations
 version: 2.0.0
 type: template
 web_research_enabled: true
+source_verification: true
 ---
 
 ## Purpose
@@ -97,9 +98,9 @@ Document production readiness validation for QG-P1 gate
 
 ## Web Research Queries
 
-- "production readiness checklist SaaS {date}"
-- "deployment gates best practices {date}"
-- "multi-tenant production {date}"
+- "production readiness checklist SaaS {{date}}"
+- "deployment gates best practices {{date}}"
+- "multi-tenant production {{date}}"
 
 _Source: [URL]_ for key findings.
 

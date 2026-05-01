@@ -5,6 +5,7 @@ category: architecture
 version: 2.0.0
 type: template
 web_research_enabled: true
+source_verification: true
 ---
 
 ## Purpose
@@ -142,9 +143,9 @@ scaling_policy:
 
 ## Web Research Queries
 
-- "multi-tenant scaling patterns {date}"
-- "noisy neighbor mitigation SaaS {date}"
-- "Kubernetes horizontal pod autoscaling {date}"
+- "multi-tenant scaling patterns {{date}}"
+- "noisy neighbor mitigation SaaS {{date}}"
+- "Kubernetes horizontal pod autoscaling {{date}}"
 
 _Source: [URL]_ for key findings.
 

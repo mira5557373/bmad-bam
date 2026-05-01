@@ -5,6 +5,7 @@ category: planning
 version: 2.0.0
 type: template
 web_research_enabled: true
+source_verification: true
 ---
 
 ## Purpose
@@ -80,9 +81,9 @@ Document requirements ingestion and analysis for multi-tenant AI SaaS
 
 ## Web Research Queries
 
-- "SaaS requirements gathering {date}"
-- "multi-tenant requirements patterns {date}"
-- "AI product requirements {date}"
+- "SaaS requirements gathering {{date}}"
+- "multi-tenant requirements patterns {{date}}"
+- "AI product requirements {{date}}"
 
 _Source: [URL]_ for key findings.
 

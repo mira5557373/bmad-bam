@@ -5,6 +5,7 @@ category: operations
 version: 2.0.0
 type: template
 web_research_enabled: true
+source_verification: true
 ---
 
 ## Purpose
@@ -235,9 +236,9 @@ Thank you for your patience.
 
 ## Web Research Queries
 
-- "zero-downtime database migration {date}"
-- "multi-tenant data migration patterns {date}"
-- "PostgreSQL migration best practices {date}"
+- "zero-downtime database migration {{date}}"
+- "multi-tenant data migration patterns {{date}}"
+- "PostgreSQL migration best practices {{date}}"
 
 _Source: [URL]_ for key findings.
 

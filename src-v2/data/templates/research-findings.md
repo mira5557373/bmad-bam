@@ -5,6 +5,7 @@ category: planning
 version: 2.0.0
 type: template
 web_research_enabled: true
+source_verification: true
 ---
 
 ## Purpose
@@ -187,9 +188,9 @@ Document research findings with sources and recommendations
 
 ## Web Research Queries
 
-- "{{topic}} best practices {date}"
-- "{{topic}} multi-tenant {date}"
-- "{{topic}} case studies {date}"
+- "{{topic}} best practices {{date}}"
+- "{{topic}} multi-tenant {{date}}"
+- "{{topic}} case studies {{date}}"
 
 _Source: [URL]_ for key findings.
 

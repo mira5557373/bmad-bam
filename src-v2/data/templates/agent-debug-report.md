@@ -5,6 +5,7 @@ category: ai-runtime
 version: 2.0.0
 type: template
 web_research_enabled: true
+source_verification: true
 ---
 
 ## Purpose
@@ -151,9 +152,9 @@ No action is required on your part.
 
 ## Web Research Queries
 
-- "AI agent debugging best practices {date}"
-- "LLM agent failure analysis {date}"
-- "{{ai_runtime}} troubleshooting {date}"
+- "AI agent debugging best practices {{date}}"
+- "LLM agent failure analysis {{date}}"
+- "{{ai_runtime}} troubleshooting {{date}}"
 
 _Source: [URL]_ for key findings.
 

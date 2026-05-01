@@ -5,6 +5,7 @@ category: ai-runtime
 version: 2.0.0
 type: template
 web_research_enabled: true
+source_verification: true
 ---
 
 ## Purpose
@@ -117,9 +118,9 @@ Document AI agent orchestration framework, tool registry, and safety controls
 
 ## Web Research Queries
 
-- "LangGraph agent patterns {date}"
-- "AI agent safety guardrails {date}"
-- "multi-tenant AI orchestration {date}"
+- "LangGraph agent patterns {{date}}"
+- "AI agent safety guardrails {{date}}"
+- "multi-tenant AI orchestration {{date}}"
 
 _Source: [URL]_ for key findings.
 

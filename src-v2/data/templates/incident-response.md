@@ -5,6 +5,7 @@ category: operations
 version: 2.0.0
 type: template
 web_research_enabled: true
+source_verification: true
 ---
 
 ## Purpose
@@ -49,7 +50,7 @@ Document incident response procedures with tenant-aware impact assessment
 
 - [ ] Alert received and acknowledged
 - [ ] Initial severity assigned
-- [ ] Incident channel created: `#incident-{date}-{id}`
+- [ ] Incident channel created: `#incident-{{date}}-{{id}}`
 - [ ] Tenant impact assessment started
 
 ### 2. Investigation
@@ -128,9 +129,9 @@ Thank you for your patience.
 
 ## Web Research Queries
 
-- "incident response SaaS multi-tenant {date}"
-- "incident management best practices {date}"
-- "tenant communication during outages {date}"
+- "incident response SaaS multi-tenant {{date}}"
+- "incident management best practices {{date}}"
+- "tenant communication during outages {{date}}"
 
 _Source: [URL]_ for key findings.
 

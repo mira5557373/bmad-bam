@@ -5,6 +5,7 @@ category: quality
 version: 2.0.0
 type: template
 web_research_enabled: true
+source_verification: true
 ---
 
 ## Purpose
@@ -148,9 +149,9 @@ Document quality gate checklist for systematic validation
 
 ## Web Research Queries
 
-- "software quality gates best practices {date}"
-- "release readiness checklist {date}"
-- "multi-tenant validation patterns {date}"
+- "software quality gates best practices {{date}}"
+- "release readiness checklist {{date}}"
+- "multi-tenant validation patterns {{date}}"
 
 _Source: [URL]_ for key findings.
 

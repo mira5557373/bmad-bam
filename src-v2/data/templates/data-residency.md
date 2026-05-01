@@ -5,6 +5,7 @@ category: compliance
 version: 2.0.0
 type: template
 web_research_enabled: true
+source_verification: true
 ---
 
 ## Purpose
@@ -100,9 +101,9 @@ Document data residency requirements, geographic constraints, and regional compl
 
 ## Web Research Queries
 
-- "data residency multi-tenant SaaS {date}"
-- "GDPR data localization requirements {date}"
-- "cross-border data transfer compliance {date}"
+- "data residency multi-tenant SaaS {{date}}"
+- "GDPR data localization requirements {{date}}"
+- "cross-border data transfer compliance {{date}}"
 
 _Source: [URL]_ for key findings.
 

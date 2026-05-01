@@ -5,6 +5,7 @@ category: operations
 version: 2.0.0
 type: template
 web_research_enabled: true
+source_verification: true
 ---
 
 ## Purpose
@@ -195,9 +196,9 @@ Document service level agreements with tier-specific commitments
 
 ## Web Research Queries
 
-- "SaaS SLA best practices {date}"
-- "availability SLA calculations {date}"
-- "service level credits structure {date}"
+- "SaaS SLA best practices {{date}}"
+- "availability SLA calculations {{date}}"
+- "service level credits structure {{date}}"
 
 _Source: [URL]_ for key findings.
 

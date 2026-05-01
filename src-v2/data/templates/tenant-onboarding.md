@@ -5,6 +5,7 @@ category: operations
 version: 2.0.0
 type: template
 web_research_enabled: true
+source_verification: true
 ---
 
 ## Purpose
@@ -160,9 +161,9 @@ The {{project_name}} Team
 
 ## Web Research Queries
 
-- "SaaS tenant onboarding best practices {date}"
-- "self-service provisioning patterns {date}"
-- "customer onboarding automation {date}"
+- "SaaS tenant onboarding best practices {{date}}"
+- "self-service provisioning patterns {{date}}"
+- "customer onboarding automation {{date}}"
 
 _Source: [URL]_ for key findings.
 

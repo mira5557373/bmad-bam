@@ -118,10 +118,10 @@ Document the frozen master architecture for multi-tenant AI SaaS platform
 
 Before finalizing this document, verify current best practices:
 
-- "architecture patterns multi-tenant SaaS {date}"
-- "modular monolith architecture best practices {date}"
-- "tenant isolation strategies enterprise SaaS {date}"
-- "AI agent orchestration patterns multi-tenant {date}"
+- "architecture patterns multi-tenant SaaS {{date}}"
+- "modular monolith architecture best practices {{date}}"
+- "tenant isolation strategies enterprise SaaS {{date}}"
+- "AI agent orchestration patterns multi-tenant {{date}}"
 
 Incorporate relevant findings into the document sections above.
 _Source: [URL]_ for key findings.

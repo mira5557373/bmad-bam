@@ -5,6 +5,7 @@ category: customization
 version: 2.0.0
 type: template
 web_research_enabled: true
+source_verification: true
 ---
 
 ## Purpose
@@ -66,8 +67,8 @@ Document white-label configuration options for tenant customization
 
 | Record Type | Name | Value |
 |-------------|------|-------|
-| CNAME | app.{custom_domain} | {tenant_id}.app.{{project_name}}.com |
-| TXT | _verify.{custom_domain} | {verification_token} |
+| CNAME | app.{{custom_domain}} | {{tenant_id}}.app.{{project_name}}.com |
+| TXT | _verify.{{custom_domain}} | {{verification_token}} |
 
 ### SSL/TLS
 
@@ -158,9 +159,9 @@ white_label:
 
 ## Web Research Queries
 
-- "SaaS white-label implementation {date}"
-- "multi-tenant branding architecture {date}"
-- "custom domain SSL automation {date}"
+- "SaaS white-label implementation {{date}}"
+- "multi-tenant branding architecture {{date}}"
+- "custom domain SSL automation {{date}}"
 
 _Source: [URL]_ for key findings.
 

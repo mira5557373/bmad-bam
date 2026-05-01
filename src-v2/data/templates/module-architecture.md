@@ -5,6 +5,7 @@ category: architecture
 version: 2.0.0
 type: template
 web_research_enabled: true
+source_verification: true
 ---
 
 ## Purpose
@@ -101,9 +102,9 @@ Document module boundaries, facade contracts, and internal structure for modular
 
 ## Web Research Queries
 
-- "bounded context design patterns {date}"
-- "module facade patterns modular monolith {date}"
-- "domain events module boundaries {date}"
+- "bounded context design patterns {{date}}"
+- "module facade patterns modular monolith {{date}}"
+- "domain events module boundaries {{date}}"
 
 _Source: [URL]_ for key findings.
 

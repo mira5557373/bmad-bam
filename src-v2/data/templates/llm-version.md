@@ -5,6 +5,7 @@ category: ai-runtime
 version: 2.0.0
 type: template
 web_research_enabled: true
+source_verification: true
 ---
 
 ## Purpose
@@ -168,9 +169,9 @@ llm_config:
 
 ## Web Research Queries
 
-- "LLM versioning best practices {date}"
-- "AI model management multi-tenant {date}"
-- "LLM upgrade strategies {date}"
+- "LLM versioning best practices {{date}}"
+- "AI model management multi-tenant {{date}}"
+- "LLM upgrade strategies {{date}}"
 
 _Source: [URL]_ for key findings.
 

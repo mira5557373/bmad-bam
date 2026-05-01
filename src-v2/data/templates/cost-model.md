@@ -5,6 +5,7 @@ category: monetization
 version: 2.0.0
 type: template
 web_research_enabled: true
+source_verification: true
 ---
 
 ## Purpose
@@ -149,9 +150,9 @@ Tenant Monthly Cost =
 
 ## Web Research Queries
 
-- "SaaS unit economics benchmarks {date}"
-- "multi-tenant cost allocation {date}"
-- "cloud cost optimization strategies {date}"
+- "SaaS unit economics benchmarks {{date}}"
+- "multi-tenant cost allocation {{date}}"
+- "cloud cost optimization strategies {{date}}"
 
 _Source: [URL]_ for key findings.
 

@@ -5,6 +5,7 @@ category: monetization
 version: 2.0.0
 type: template
 web_research_enabled: true
+source_verification: true
 ---
 
 ## Purpose
@@ -75,9 +76,9 @@ Document usage metering, pricing tiers, and billing integration
 
 ## Web Research Queries
 
-- "usage-based billing SaaS {date}"
-- "metering architecture patterns {date}"
-- "Stripe integration multi-tenant {date}"
+- "usage-based billing SaaS {{date}}"
+- "metering architecture patterns {{date}}"
+- "Stripe integration multi-tenant {{date}}"
 
 _Source: [URL]_ for key findings.
 

@@ -5,6 +5,7 @@ category: quality
 version: 2.0.0
 type: template
 web_research_enabled: true
+source_verification: true
 ---
 
 ## Purpose
@@ -220,9 +221,9 @@ const mockLLM = {
 
 ## Web Research Queries
 
-- "testing pyramid microservices {date}"
-- "multi-tenant testing patterns {date}"
-- "AI agent testing strategies {date}"
+- "testing pyramid microservices {{date}}"
+- "multi-tenant testing patterns {{date}}"
+- "AI agent testing strategies {{date}}"
 
 _Source: [URL]_ for key findings.
 

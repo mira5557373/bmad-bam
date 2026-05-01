@@ -5,6 +5,7 @@ category: planning
 version: 2.0.0
 type: template
 web_research_enabled: true
+source_verification: true
 ---
 
 ## Purpose
@@ -152,9 +153,9 @@ Document user stories that require coordination across module boundaries
 
 ## Web Research Queries
 
-- "cross-team user story management {date}"
-- "microservices story decomposition {date}"
-- "modular monolith coordination patterns {date}"
+- "cross-team user story management {{date}}"
+- "microservices story decomposition {{date}}"
+- "modular monolith coordination patterns {{date}}"
 
 _Source: [URL]_ for key findings.
 

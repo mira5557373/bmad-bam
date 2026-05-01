@@ -5,6 +5,7 @@ category: operations
 version: 2.0.0
 type: template
 web_research_enabled: true
+source_verification: true
 ---
 
 ## Purpose
@@ -213,9 +214,9 @@ Root cause analysis will follow within 24 hours.
 
 ## Web Research Queries
 
-- "Kubernetes rollback best practices {date}"
-- "zero-downtime deployment rollback {date}"
-- "database migration rollback strategies {date}"
+- "Kubernetes rollback best practices {{date}}"
+- "zero-downtime deployment rollback {{date}}"
+- "database migration rollback strategies {{date}}"
 
 _Source: [URL]_ for key findings.
 

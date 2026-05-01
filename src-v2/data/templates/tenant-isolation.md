@@ -5,6 +5,7 @@ category: architecture
 version: 2.0.0
 type: template
 web_research_enabled: true
+source_verification: true
 ---
 
 ## Purpose
@@ -102,9 +103,9 @@ SET app.current_tenant_id = '{{tenant_id}}';
 
 ## Web Research Queries
 
-- "PostgreSQL RLS multi-tenant best practices {date}"
-- "tenant isolation patterns SaaS {date}"
-- "cross-tenant data leak prevention {date}"
+- "PostgreSQL RLS multi-tenant best practices {{date}}"
+- "tenant isolation patterns SaaS {{date}}"
+- "cross-tenant data leak prevention {{date}}"
 
 _Source: [URL]_ for key findings.
 

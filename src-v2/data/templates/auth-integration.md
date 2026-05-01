@@ -3,6 +3,9 @@ name: auth-integration
 description: Authentication integration architecture template
 category: security
 version: 1.0.0
+type: template
+web_research_enabled: true
+source_verification: true
 ---
 
 # Authentication Integration Architecture
@@ -43,9 +46,9 @@ version: 1.0.0
 
 | Setting | Value |
 |---------|-------|
-| Entity ID | `https://{{domain}}/saml/metadata/{tenant_id}` |
-| ACS URL | `https://{{domain}}/saml/acs/{tenant_id}` |
-| SLO URL | `https://{{domain}}/saml/slo/{tenant_id}` |
+| Entity ID | `https://{{domain}}/saml/metadata/{{tenant_id}}` |
+| ACS URL | `https://{{domain}}/saml/acs/{{tenant_id}}` |
+| SLO URL | `https://{{domain}}/saml/slo/{{tenant_id}}` |
 | Name ID Format | emailAddress |
 | Signature Algorithm | RSA-SHA256 |
 

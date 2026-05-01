@@ -5,6 +5,7 @@ category: quality
 version: 2.0.0
 type: template
 web_research_enabled: true
+source_verification: true
 ---
 
 ## Purpose
@@ -179,9 +180,9 @@ npm run test:integration -- --coverage
 
 ## Web Research Queries
 
-- "integration testing microservices {date}"
-- "contract testing best practices {date}"
-- "multi-tenant test isolation {date}"
+- "integration testing microservices {{date}}"
+- "contract testing best practices {{date}}"
+- "multi-tenant test isolation {{date}}"
 
 _Source: [URL]_ for key findings.
 

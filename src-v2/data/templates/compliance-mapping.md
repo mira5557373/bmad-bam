@@ -5,6 +5,7 @@ category: compliance
 version: 2.0.0
 type: template
 web_research_enabled: true
+source_verification: true
 ---
 
 ## Purpose
@@ -61,9 +62,9 @@ Map compliance requirements to implemented controls
 
 ## Web Research Queries
 
-- "SaaS compliance mapping {date}"
-- "SOC2 multi-tenant controls {date}"
-- "GDPR compliance automation {date}"
+- "SaaS compliance mapping {{date}}"
+- "SOC2 multi-tenant controls {{date}}"
+- "GDPR compliance automation {{date}}"
 
 _Source: [URL]_ for key findings.
 
