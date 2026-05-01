@@ -156,3 +156,35 @@ Use web search for current implementation:
 
 Confirm loaded. Ready for usage analytics design.
 """
+
+# NEXUS Phase 4 Additional Patterns
+
+[[agent.menu]]
+code = "ZPR"
+description = "Load: Predictive Scaling pattern (ML-based forecasting)"
+prompt = """
+Loading predictive scaling pattern:
+`{project-root}/_bmad/bam/data/patterns/predictive-scaling.md`
+
+Use web search for current implementation:
+- "predictive autoscaling ML patterns {date}"
+- "time series forecasting infrastructure capacity {date}"
+- "AWS predictive scaling best practices {date}"
+
+Confirm loaded. Ready for predictive scaling design.
+"""
+
+[[agent.menu]]
+code = "ZPP"
+description = "Load: Performance Profiling pattern (flame graphs, bottleneck analysis)"
+prompt = """
+Loading performance profiling pattern:
+`{project-root}/_bmad/bam/data/patterns/performance-profiling.md`
+
+Use web search for current implementation:
+- "continuous profiling production patterns {date}"
+- "flame graph analysis techniques {date}"
+- "performance regression detection CI/CD {date}"
+
+Confirm loaded. Ready for performance profiling design.
+"""

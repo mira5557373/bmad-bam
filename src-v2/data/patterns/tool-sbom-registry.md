@@ -108,6 +108,15 @@ tool_sbom_registry:
 | Auto-generated | Complete | May miss nuances | Large deployments |
 | Third-party service | Expert scanning | Cost, dependency | Enterprise |
 
+
+## Quality Checks
+
+- [ ] Input validation implemented for all entry points
+- [ ] Sensitive data detection and masking configured
+- [ ] Audit logging enabled for security events
+- [ ] Rate limiting prevents abuse
+- [ ] **CRITICAL:** No credential or PII exposure in logs/outputs
+
 ## Web Research Queries
 
 - "software bill of materials AI tools {date}"

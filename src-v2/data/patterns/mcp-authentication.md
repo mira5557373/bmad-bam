@@ -69,6 +69,15 @@ mcp_authentication:
 | OAuth 2.0 | High | Medium | External tools |
 | mTLS | Highest | High | Critical tools |
 
+
+## Quality Checks
+
+- [ ] MCP server registration validated
+- [ ] Tenant isolation enforced on all tool calls
+- [ ] Rate limiting configured per tenant tier
+- [ ] Schema validation enabled for all tools
+- [ ] **CRITICAL:** No cross-tenant tool access possible
+
 ## Web Research Queries
 
 - "MCP server authentication patterns {date}"

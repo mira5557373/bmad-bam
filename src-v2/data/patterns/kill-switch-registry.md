@@ -148,6 +148,15 @@ auto_triggers:
 | Failed recovery | Post-recovery verification checks |
 | Audit gap | Immutable audit log, 365-day retention |
 
+
+## Quality Checks
+
+- [ ] Monitoring dashboards configured
+- [ ] Alerting thresholds defined per tenant tier
+- [ ] Runbooks documented for common failures
+- [ ] Incident escalation paths defined
+- [ ] **CRITICAL:** No alert fatigue from false positives
+
 ## Web Research Queries
 
 - "AI agent kill switch patterns {date}"

@@ -352,6 +352,15 @@ interrupt_config:
 | Eager resume | Fast recovery | Resource spike on restart | Small state, few interrupted |
 | Lazy resume | Smooth resource usage | Slower individual recovery | Large state, many interrupted |
 
+
+## Quality Checks
+
+- [ ] Agent execution respects tenant boundaries
+- [ ] State management includes tenant context
+- [ ] Checkpointing configured for long-running workflows
+- [ ] Timeout and retry policies defined
+- [ ] **CRITICAL:** No cross-tenant state leakage
+
 ## Web Research Queries
 
 - "LangGraph checkpoint persistence production patterns {date}"

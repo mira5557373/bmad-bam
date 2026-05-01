@@ -1,6 +1,6 @@
 # Scaling - BAM Domain Context
 
-**Loaded by:** ZVT, ZGE, ZED, ZLB, ZCG, ZUA  
+**Loaded by:** ZVT, ZGE, ZED, ZLB, ZCG, ZUA, ZPR  
 **Related Workflows:** bmad-bam-production-readiness, bmad-bam-infrastructure-design
 
 ---
@@ -81,6 +81,7 @@ Traffic Analysis
 
 **Scaling:**
 - `{project-root}/_bmad/bam/data/patterns/vertical-scaling.md` - Vertical scaling strategies
+- `{project-root}/_bmad/bam/data/patterns/predictive-scaling.md` - ML-based demand forecasting
 - `{project-root}/_bmad/bam/data/patterns/geo-distribution.md` - Geographic distribution
 - `{project-root}/_bmad/bam/data/patterns/edge-deployment.md` - Edge compute patterns
 - `{project-root}/_bmad/bam/data/patterns/load-balancing.md` - Load balancing strategies

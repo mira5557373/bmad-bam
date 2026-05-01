@@ -287,6 +287,15 @@ session_management:
 | Cross-tenant access | Validate tenant in all auth paths |
 | Key compromise | Rotation, monitoring, alerting |
 
+
+## Quality Checks
+
+- [ ] Input validation implemented for all entry points
+- [ ] Sensitive data detection and masking configured
+- [ ] Audit logging enabled for security events
+- [ ] Rate limiting prevents abuse
+- [ ] **CRITICAL:** No credential or PII exposure in logs/outputs
+
 ## Web Research Queries
 
 - "SAML 2.0 multi-tenant SaaS implementation {date}"

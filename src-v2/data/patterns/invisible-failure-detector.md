@@ -132,6 +132,15 @@ invisible_failure_detection:
 | Privacy in logging | Redact PII from quality logs |
 | Performance impact | Sample-based scoring for high volume |
 
+
+## Quality Checks
+
+- [ ] Monitoring dashboards configured
+- [ ] Alerting thresholds defined per tenant tier
+- [ ] Runbooks documented for common failures
+- [ ] Incident escalation paths defined
+- [ ] **CRITICAL:** No alert fatigue from false positives
+
 ## Web Research Queries
 
 - "AI output quality monitoring patterns {date}"

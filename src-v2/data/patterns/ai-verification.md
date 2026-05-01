@@ -306,6 +306,15 @@ verification_tenant_config:
 | Financial reports | Entailment | Chunk | Flag + Review |
 | Academic research | Hybrid | Sentence | Flag |
 
+
+## Quality Checks
+
+- [ ] Test coverage thresholds defined
+- [ ] Tenant isolation tests included
+- [ ] CI/CD integration configured
+- [ ] Test data properly isolated
+- [ ] **CRITICAL:** No production data in test environments
+
 ## Web Research Queries
 
 - "LLM output grounding verification techniques {date}"

@@ -230,6 +230,15 @@ tenant_quotas:
 | Sliding window | Accurate rate limiting | Memory overhead | Precise burst control |
 | Leaky bucket | Consistent output rate | Can reject valid bursts | Queue-based systems |
 
+
+## Quality Checks
+
+- [ ] Quota limits enforced per tier
+- [ ] Usage tracking accurate
+- [ ] Overage handling defined
+- [ ] Tenant notification configured
+- [ ] **CRITICAL:** No service degradation for compliant tenants
+
 ## Web Research Queries
 
 - "multi-tenant rate limiting patterns {date}"

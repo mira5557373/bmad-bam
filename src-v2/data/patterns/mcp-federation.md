@@ -69,6 +69,15 @@ mcp_federation:
 | Latency-based | Optimal | Medium | Geo-distributed |
 | Tenant-affinity | Consistent | Medium | Data locality |
 
+
+## Quality Checks
+
+- [ ] MCP server registration validated
+- [ ] Tenant isolation enforced on all tool calls
+- [ ] Rate limiting configured per tenant tier
+- [ ] Schema validation enabled for all tools
+- [ ] **CRITICAL:** No cross-tenant tool access possible
+
 ## Web Research Queries
 
 - "MCP server federation patterns {date}"

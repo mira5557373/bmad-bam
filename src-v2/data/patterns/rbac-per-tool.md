@@ -101,6 +101,15 @@ rbac_per_tool:
 | Approval workflows | Maximum control | Latency | High-risk tools |
 | Tier-based | Easy to understand | Coarse-grained | SaaS tiering |
 
+
+## Quality Checks
+
+- [ ] Input validation implemented for all entry points
+- [ ] Sensitive data detection and masking configured
+- [ ] Audit logging enabled for security events
+- [ ] Rate limiting prevents abuse
+- [ ] **CRITICAL:** No credential or PII exposure in logs/outputs
+
 ## Web Research Queries
 
 - "AI agent tool RBAC patterns {date}"

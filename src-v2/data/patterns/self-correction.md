@@ -251,6 +251,15 @@ Level 4: Unavailable
          - Redirect to support
 ```
 
+
+## Quality Checks
+
+- [ ] Prompt templates versioned and tested
+- [ ] Output quality metrics defined
+- [ ] Fallback strategies configured
+- [ ] Token usage tracked per tenant
+- [ ] **CRITICAL:** No hallucination in critical outputs
+
 ## Web Research Queries
 
 - "LLM self-correction patterns {date}"

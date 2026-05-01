@@ -103,6 +103,15 @@ canary_token_inserter:
 | Stealth tokens | Hard to remove | Complex detection | Leak tracking |
 | Callback URLs | Real-time alerts | Infrastructure needed | High security |
 
+
+## Quality Checks
+
+- [ ] Input validation implemented for all entry points
+- [ ] Sensitive data detection and masking configured
+- [ ] Audit logging enabled for security events
+- [ ] Rate limiting prevents abuse
+- [ ] **CRITICAL:** No credential or PII exposure in logs/outputs
+
 ## Web Research Queries
 
 - "canary token prompt tracking {date}"

@@ -196,6 +196,15 @@ prompt_chaining:
 | Budget exceeded | Cost tracking | Pause and notify, request approval |
 | LLM provider error | API error codes | Fallback provider or retry |
 
+
+## Quality Checks
+
+- [ ] Prompt templates versioned and tested
+- [ ] Output quality metrics defined
+- [ ] Fallback strategies configured
+- [ ] Token usage tracked per tenant
+- [ ] **CRITICAL:** No hallucination in critical outputs
+
 ## Web Research Queries
 
 - "prompt chaining orchestration patterns {date}"

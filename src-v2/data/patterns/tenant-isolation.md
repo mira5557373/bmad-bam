@@ -15,12 +15,22 @@ last_reviewed: 2026-04-29
 
 ---
 
-## Decision Framework
+## When to Use
 
-**Use tenant isolation when:**
 - Building multi-tenant SaaS application
 - Data segregation is required between customers
 - Compliance mandates data boundaries
+- Multiple organizations share the same application instance
+- Need different data retention policies per tenant
+
+## When NOT to Use
+
+- Single-tenant deployments
+- Internal tools with unified access model
+- When all users belong to same organization
+- Prototypes without data separation needs
+
+## Decision Framework
 
 **Choose isolation level based on:**
 - Tenant count (<1000 → RLS, 100-500 → Schema, <100 → Database)
@@ -173,6 +183,15 @@ database_isolation_contract:
        └─────────────┴─────────────┘
               Connection Router
 ```
+
+
+## Quality Checks
+
+- [ ] RLS policies cover all tables
+- [ ] Tenant context validated on every request
+- [ ] Cross-tenant queries blocked at DB level
+- [ ] Isolation model documented
+- [ ] **CRITICAL:** No data leakage between tenants
 
 ## Web Research (Implementation)
 

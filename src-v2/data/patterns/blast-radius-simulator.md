@@ -106,6 +106,15 @@ blast_radius_simulator:
 | Live simulation | Accurate | Requires safeguards | Staging env |
 | Probabilistic model | Handles uncertainty | Complex to tune | Mature systems |
 
+
+## Quality Checks
+
+- [ ] Blast radius calculated for all changes
+- [ ] Rollback triggers defined
+- [ ] Monitoring covers blast radius indicators
+- [ ] Runbooks include containment steps
+- [ ] **CRITICAL:** No uncontained failures
+
 ## Web Research Queries
 
 - "blast radius simulation distributed systems {date}"

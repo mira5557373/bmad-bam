@@ -144,6 +144,15 @@ drift_metrics:
 | Privacy in metrics | Aggregate metrics only, no raw content |
 | Performance impact | Sampling for high-volume systems |
 
+
+## Quality Checks
+
+- [ ] Agent execution respects tenant boundaries
+- [ ] State management includes tenant context
+- [ ] Checkpointing configured for long-running workflows
+- [ ] Timeout and retry policies defined
+- [ ] **CRITICAL:** No cross-tenant state leakage
+
 ## Web Research Queries
 
 - "ML model drift detection patterns {date}"

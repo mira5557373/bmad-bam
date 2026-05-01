@@ -15,12 +15,22 @@ last_reviewed: 2026-04-29
 
 ---
 
-## Decision Framework
+## When to Use
 
-**Use agent orchestration when:**
 - Multi-agent coordination is needed
 - Complex workflow with multiple AI participants
 - Role-based task delegation required
+- State machine workflows with conditional branching
+- Long-running transactions requiring compensation logic
+
+## When NOT to Use
+
+- Simple single-agent interactions
+- Stateless request/response patterns
+- When team lacks orchestration framework expertise
+- Minimal AI workflow complexity
+
+## Decision Framework
 
 **Choose framework based on:**
 - Workflow type (state machine → LangGraph, role-based → CrewAI, conversation → AutoGen)
@@ -187,6 +197,15 @@ saga_contract:
 │                                                          │
 └─────────────────────────────────────────────────────────┘
 ```
+
+
+## Quality Checks
+
+- [ ] Agent execution respects tenant boundaries
+- [ ] State management includes tenant context
+- [ ] Checkpointing configured for long-running workflows
+- [ ] Timeout and retry policies defined
+- [ ] **CRITICAL:** No cross-tenant state leakage
 
 ## Web Research (Implementation)
 

@@ -662,3 +662,18 @@ Use web search for current implementation:
 
 Confirm loaded. Ready for fine-tuning pipeline design.
 """
+
+[[agent.menu]]
+code = "ZPG"
+description = "Load: Plugin Architecture pattern (extensibility, hooks, marketplace)"
+prompt = """
+Loading plugin architecture pattern:
+`{project-root}/_bmad/bam/data/patterns/plugin-architecture.md`
+
+Use web search for current implementation:
+- "plugin architecture SaaS extensibility patterns {date}"
+- "v8 isolates sandbox security {date}"
+- "multi-tenant plugin marketplace design {date}"
+
+Confirm loaded. Ready for plugin architecture design.
+"""

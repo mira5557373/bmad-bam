@@ -11,7 +11,7 @@ last_reviewed: 2026-04-30
 
 **Loaded by:** ZTV  
 **Applies to:** Multi-tenant AI systems with evolving tool schemas  
-**See also:** [tool-execution.md](tool-execution.md), [mcp-server-isolation.md](mcp-server-isolation.md)
+**See also:** [tool-execution.md](tool-execution.md), [mcp-tenant-isolation.md](mcp-tenant-isolation.md)
 
 ---
 
@@ -94,6 +94,15 @@ tool_schema_versioning:
 | Per-tenant pinning | Stability | Fragmentation | Enterprise |
 | Auto-upgrade | Always current | Breaking changes | Trusted tools |
 
+
+## Quality Checks
+
+- [ ] Agent execution respects tenant boundaries
+- [ ] State management includes tenant context
+- [ ] Checkpointing configured for long-running workflows
+- [ ] Timeout and retry policies defined
+- [ ] **CRITICAL:** No cross-tenant state leakage
+
 ## Web Research Queries
 
 - "AI tool schema versioning patterns {date}"
@@ -112,4 +121,4 @@ tool_schema_versioning:
 ## Related Patterns
 
 - [tool-execution.md](tool-execution.md) - Tool runtime
-- [mcp-server-isolation.md](mcp-server-isolation.md) - MCP patterns
+- [mcp-tenant-isolation.md](mcp-tenant-isolation.md) - MCP patterns

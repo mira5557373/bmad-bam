@@ -299,6 +299,15 @@ model_version:
 | RLHF | Human feedback | Quality alignment |
 | DPO | Direct preference | Efficient alignment |
 
+
+## Quality Checks
+
+- [ ] Prompt templates versioned and tested
+- [ ] Output quality metrics defined
+- [ ] Fallback strategies configured
+- [ ] Token usage tracked per tenant
+- [ ] **CRITICAL:** No hallucination in critical outputs
+
 ## Web Research Queries
 
 - "LLM fine-tuning pipeline patterns {date}"

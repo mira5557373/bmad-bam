@@ -282,6 +282,15 @@ consistency_patterns:
     fallback_on_stale: enum[error, warn, proceed]
 ```
 
+
+## Quality Checks
+
+- [ ] Message schemas validated
+- [ ] Tenant context propagated in all messages
+- [ ] Timeout handling for agent responses
+- [ ] Dead letter queue configured
+- [ ] **CRITICAL:** No cross-tenant message routing
+
 ## Web Research Queries
 
 - "event sourcing AI agents patterns {date}"

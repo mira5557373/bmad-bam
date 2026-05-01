@@ -150,6 +150,15 @@ Content-Type: application/json
 | Per-request rotation | Maximum security | Key management complexity |
 | Static canaries | Simple implementation | Easier to detect/bypass |
 
+
+## Quality Checks
+
+- [ ] Safety constraints defined and enforced
+- [ ] Human-in-the-loop for high-risk actions
+- [ ] Audit trail for all decisions
+- [ ] Rollback capability tested
+- [ ] **CRITICAL:** No unsafe actions without approval
+
 ## Web Research Queries
 
 - "AI agent prompt injection defense patterns {date}"

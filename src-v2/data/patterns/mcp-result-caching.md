@@ -11,7 +11,7 @@ last_reviewed: 2026-04-30
 
 **Loaded by:** ZMC  
 **Applies to:** Caching tool results in multi-tenant environments  
-**See also:** [mcp-tool-discovery.md](mcp-tool-discovery.md), [caching-strategies.md](caching-strategies.md)
+**See also:** [mcp-tool-discovery.md](mcp-tool-discovery.md), [cache-invalidation.md](cache-invalidation.md)
 
 ---
 
@@ -74,6 +74,15 @@ mcp_result_caching:
 | Tenant | Medium | Full | Low |
 | Global | High | Requires care | Medium |
 
+
+## Quality Checks
+
+- [ ] MCP server registration validated
+- [ ] Tenant isolation enforced on all tool calls
+- [ ] Rate limiting configured per tenant tier
+- [ ] Schema validation enabled for all tools
+- [ ] **CRITICAL:** No cross-tenant tool access possible
+
 ## Web Research Queries
 
 - "tool result caching patterns {date}"
@@ -90,5 +99,5 @@ mcp_result_caching:
 
 ## Related Patterns
 
-- [caching-strategies.md](caching-strategies.md) - General caching
+- [cache-invalidation.md](cache-invalidation.md) - General caching
 - [mcp-tool-discovery.md](mcp-tool-discovery.md) - Tool enumeration

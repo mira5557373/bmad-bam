@@ -339,6 +339,15 @@ budget_guards:
 | Circuit breaker | Prevents cascade failures, fast failure detection | Temporary service unavailability, state management | External dependencies, microservices |
 | Adaptive timeouts | Balances responsiveness with completion | Complexity, may timeout during legitimate slow ops | Variable workloads, multi-tier systems |
 
+
+## Quality Checks
+
+- [ ] Agent execution respects tenant boundaries
+- [ ] State management includes tenant context
+- [ ] Checkpointing configured for long-running workflows
+- [ ] Timeout and retry policies defined
+- [ ] **CRITICAL:** No cross-tenant state leakage
+
 ## Web Research Queries
 
 - "tool retry patterns distributed systems {date}"

@@ -11,7 +11,7 @@ last_reviewed: 2026-04-30
 
 **Loaded by:** ZCA  
 **Applies to:** Multi-tenant AI systems requiring cost tracking and allocation  
-**See also:** [usage-metering.md](usage-metering.md), [llm-cost-tracking.md](llm-cost-tracking.md)
+**See also:** [usage-analytics.md](usage-analytics.md), [tenant-quotas.md](tenant-quotas.md)
 
 ---
 
@@ -107,6 +107,15 @@ cost_attribution_engine:
 | Real-time attribution | Immediate visibility | Complexity | Budget enforcement |
 | Batch attribution | Simple | Delayed insights | Reporting only |
 
+
+## Quality Checks
+
+- [ ] Cost attribution accurate per tenant
+- [ ] Billing integration tested
+- [ ] Usage metrics reconciled
+- [ ] Pricing tiers configured
+- [ ] **CRITICAL:** No billing errors
+
 ## Web Research Queries
 
 - "LLM cost attribution multi-tenant {date}"
@@ -124,5 +133,5 @@ cost_attribution_engine:
 
 ## Related Patterns
 
-- [usage-metering.md](usage-metering.md) - General usage tracking
-- [quota-management.md](quota-management.md) - Quota enforcement
+- [usage-analytics.md](usage-analytics.md) - General usage tracking
+- [tenant-quotas.md](tenant-quotas.md) - Quota enforcement

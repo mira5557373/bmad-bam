@@ -269,6 +269,15 @@ staleness_tracking:
 | User-generated | Variable | Per-tenant config |
 | External feeds | Variable | Webhook + polling fallback |
 
+
+## Quality Checks
+
+- [ ] Prompt templates versioned and tested
+- [ ] Output quality metrics defined
+- [ ] Fallback strategies configured
+- [ ] Token usage tracked per tenant
+- [ ] **CRITICAL:** No hallucination in critical outputs
+
 ## Web Research Queries
 
 - "RAG knowledge base refresh patterns {date}"
@@ -289,7 +298,7 @@ staleness_tracking:
 
 ## Related Patterns
 
-- [embedding-pipeline.md](embedding-pipeline.md) - Embedding generation
+- [embedding-lifecycle.md](embedding-lifecycle.md) - Embedding generation
 - [semantic-chunking.md](semantic-chunking.md) - Chunking strategies
 - [multi-modal-rag.md](multi-modal-rag.md) - Multi-modal content
 - [cost-attribution-engine.md](cost-attribution-engine.md) - Cost tracking

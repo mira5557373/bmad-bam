@@ -104,6 +104,15 @@ fanout_circuit_breaker:
 | Soft limits + alerts | Flexibility | Risk of overrun | Trusted workloads |
 | Adaptive limits | Learns patterns | Complexity | Mature systems |
 
+
+## Quality Checks
+
+- [ ] Circuit breaker thresholds configured
+- [ ] Fallback behavior defined
+- [ ] Recovery procedures documented
+- [ ] Blast radius contained
+- [ ] **CRITICAL:** No cascading failures across tenants
+
 ## Web Research Queries
 
 - "agent fanout circuit breaker patterns {date}"

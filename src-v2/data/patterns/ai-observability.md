@@ -421,6 +421,15 @@ observability_dashboard:
 | Full sampling (100%) | Complete visibility | High storage cost | Debugging, compliance, small scale |
 | Statistical sampling | Cost-effective at scale | May miss rare events | High-volume production |
 
+
+## Quality Checks
+
+- [ ] Metrics collection configured per tenant
+- [ ] Trace sampling appropriate for load
+- [ ] Log retention policies defined
+- [ ] Dashboards accessible per tenant tier
+- [ ] **CRITICAL:** No sensitive data in telemetry
+
 ## Web Research Queries
 
 - "LLM provider health monitoring best practices {date}"

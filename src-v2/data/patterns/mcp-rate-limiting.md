@@ -83,6 +83,15 @@ mcp_rate_limiting:
 | Sliding Window | Highest | Best | High |
 | Fixed Window | Medium | Poor | Low |
 
+
+## Quality Checks
+
+- [ ] MCP server registration validated
+- [ ] Tenant isolation enforced on all tool calls
+- [ ] Rate limiting configured per tenant tier
+- [ ] Schema validation enabled for all tools
+- [ ] **CRITICAL:** No cross-tenant tool access possible
+
 ## Web Research Queries
 
 - "tool rate limiting multi-tenant {date}"

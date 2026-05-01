@@ -11,7 +11,7 @@ last_reviewed: 2026-04-30
 
 **Loaded by:** ZAH  
 **Applies to:** Multi-agent systems requiring task handoff with context preservation  
-**See also:** [agent-orchestration.md](agent-orchestration.md), [agent-coordination.md](agent-coordination.md)
+**See also:** [agent-orchestration.md](agent-orchestration.md), [agent-orchestration.md](agent-orchestration.md)
 
 ---
 
@@ -108,6 +108,15 @@ agent_handoff_protocol:
 | Stateless handoff | Simple | No context | Independent tasks |
 | Checkpoint-based | Resumable | Storage overhead | Long-running tasks |
 
+
+## Quality Checks
+
+- [ ] Agent execution respects tenant boundaries
+- [ ] State management includes tenant context
+- [ ] Checkpointing configured for long-running workflows
+- [ ] Timeout and retry policies defined
+- [ ] **CRITICAL:** No cross-tenant state leakage
+
 ## Web Research Queries
 
 - "multi-agent handoff protocol patterns {date}"
@@ -126,4 +135,4 @@ agent_handoff_protocol:
 ## Related Patterns
 
 - [agent-orchestration.md](agent-orchestration.md) - Orchestration patterns
-- [agent-coordination.md](agent-coordination.md) - Multi-agent coordination
+- [agent-orchestration.md](agent-orchestration.md) - Multi-agent coordination

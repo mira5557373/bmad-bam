@@ -74,6 +74,15 @@ mcp_server_lifecycle:
 | Shared pools | Cost efficient | Noisy neighbor risk | Standard tiers |
 | Hybrid | Balanced | Complexity | Multi-tier SaaS |
 
+
+## Quality Checks
+
+- [ ] MCP server registration validated
+- [ ] Tenant isolation enforced on all tool calls
+- [ ] Rate limiting configured per tenant tier
+- [ ] Schema validation enabled for all tools
+- [ ] **CRITICAL:** No cross-tenant tool access possible
+
 ## Web Research Queries
 
 - "MCP server lifecycle management {date}"

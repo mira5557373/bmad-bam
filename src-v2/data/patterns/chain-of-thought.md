@@ -237,6 +237,15 @@ reasoning_trace:
 | Tree of Thought | Branching reasoning | Exploratory problems |
 | Plan-and-Solve | Decompose then solve | Multi-part problems |
 
+
+## Quality Checks
+
+- [ ] Prompt templates versioned and tested
+- [ ] Output quality metrics defined
+- [ ] Fallback strategies configured
+- [ ] Token usage tracked per tenant
+- [ ] **CRITICAL:** No hallucination in critical outputs
+
 ## Web Research Queries
 
 - "chain of thought prompting patterns {date}"

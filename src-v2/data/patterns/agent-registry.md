@@ -97,6 +97,15 @@ agent_registry:
 | Manual registration | Precise control | May miss agents | Small teams |
 | Hybrid | Balanced | Complexity | Enterprise |
 
+
+## Quality Checks
+
+- [ ] Monitoring dashboards configured
+- [ ] Alerting thresholds defined per tenant tier
+- [ ] Runbooks documented for common failures
+- [ ] Incident escalation paths defined
+- [ ] **CRITICAL:** No alert fatigue from false positives
+
 ## Web Research Queries
 
 - "AI agent registry catalog patterns {date}"

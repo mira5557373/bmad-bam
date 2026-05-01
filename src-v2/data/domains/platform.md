@@ -1,6 +1,6 @@
 # Platform - BAM Domain Context
 
-**Loaded by:** ZPS, ZPF, ZWL, ZRM, ZAI, ZPA  
+**Loaded by:** ZPS, ZPF, ZWL, ZRM, ZAI, ZPA, ZPG  
 **Related Workflows:** bmad-bam-marketplace-design, bmad-bam-partner-integration
 
 ---
@@ -104,6 +104,7 @@ Platform Owner (Super Admin)
 - `{project-root}/_bmad/bam/data/patterns/reseller-model.md` - Reseller/partner patterns
 - `{project-root}/_bmad/bam/data/patterns/api-integration.md` - API integration patterns
 - `{project-root}/_bmad/bam/data/patterns/partner-apis.md` - Partner API management
+- `{project-root}/_bmad/bam/data/patterns/plugin-architecture.md` - Extensibility and plugin marketplace
 
 ### Web Research
 

@@ -115,6 +115,15 @@ streaming_output_decoder:
 | Sentence-level | Better accuracy | Added latency | Balanced |
 | Semantic buffering | Best accuracy | Highest latency | Safety priority |
 
+
+## Quality Checks
+
+- [ ] Circuit breaker thresholds configured
+- [ ] Fallback behavior defined
+- [ ] Recovery procedures documented
+- [ ] Blast radius contained
+- [ ] **CRITICAL:** No cascading failures across tenants
+
 ## Web Research Queries
 
 - "streaming LLM output safety filtering {date}"

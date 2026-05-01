@@ -11,7 +11,7 @@ last_reviewed: 2026-04-30
 
 **Loaded by:** ZRE  
 **Applies to:** AI systems operating in regulated industries with compliance deadlines  
-**See also:** [compliance.md](../domains/compliance.md)
+**See also:** [compliance-reporting.md](compliance-reporting.md)
 
 ---
 
@@ -103,6 +103,15 @@ regulatory_clock_engine:
 | Automated scanning | Complete | Requires maintenance | Multi-regulation |
 | Third-party service | Expert updates | Cost, dependency | Enterprise |
 
+
+## Quality Checks
+
+- [ ] Compliance deadlines tracked
+- [ ] Notification pipeline configured
+- [ ] Audit trail complete
+- [ ] Escalation paths defined
+- [ ] **CRITICAL:** No missed compliance deadlines
+
 ## Web Research Queries
 
 - "EU AI Act compliance timeline {date}"
@@ -120,4 +129,4 @@ regulatory_clock_engine:
 
 ## Related Patterns
 
-- [compliance.md](../domains/compliance.md) - Compliance domain context
+- [compliance-reporting.md](compliance-reporting.md) - Compliance domain context

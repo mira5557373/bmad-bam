@@ -148,6 +148,15 @@ action_contract:
 | Minimal (4-field) | Faster execution, simpler implementation | Limited rollback, partial audit | Internal tools, trusted environments |
 | Async verification | Non-blocking, high throughput | Delayed anomaly detection | High-volume, low-risk actions |
 
+
+## Quality Checks
+
+- [ ] Safety constraints defined and enforced
+- [ ] Human-in-the-loop for high-risk actions
+- [ ] Audit trail for all decisions
+- [ ] Rollback capability tested
+- [ ] **CRITICAL:** No unsafe actions without approval
+
 ## Web Research Queries
 
 - "AI agent action contracts safety patterns {date}"

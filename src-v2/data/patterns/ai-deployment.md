@@ -301,6 +301,15 @@ feature_flags:
 | Canary deploy | Early detection, limited blast radius | Requires traffic splitting infrastructure | Major version upgrades, risky changes |
 | Blue-green | Zero-downtime, easy rollback | Double infrastructure cost during deploy | Enterprise SLA requirements |
 
+
+## Quality Checks
+
+- [ ] Deployment pipeline tested
+- [ ] Rollback procedures documented
+- [ ] Provider failover configured
+- [ ] Cost tracking per tenant enabled
+- [ ] **CRITICAL:** No production deployment without staging validation
+
 ## Web Research Queries
 
 - "AI model deployment rollback automation {date}"

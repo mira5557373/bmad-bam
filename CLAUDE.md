@@ -1,6 +1,6 @@
 # CLAUDE.md - BAM Extension Module
 
-> **Quick Start:** BAM is a **pure extension module** with 0 standalone agents. **V1** (`src/`): 31 extensions, 196 workflows, 15 customize files. **V2** (`src-v2/`): 12 TOML customize files, 33 skills, 26 patterns, 33 checklists - a 6:1 consolidation. Atlas, Nova, Kai personas consolidated into `architect-bam.yaml`. Run `npm test` before any PR. Never use `memories:` field (V1) or TOML `memories` key (V2).
+> **Quick Start:** BAM is a **pure extension module** with 0 standalone agents. **V1** (`src/`): 31 extensions, 196 workflows, 15 customize files. **V2** (`src-v2/`): 14 TOML customize files, 34 skills, 112 patterns, 33 checklists - a 6:1 consolidation. Atlas, Nova, Kai personas consolidated into `architect-bam.yaml`. Run `npm test` before any PR. Never use `memories:` field (V1) or TOML `memories` key (V2).
 
 ---
 
@@ -18,21 +18,23 @@
 10. [WDS Agent Coexistence Model](#wds-agent-coexistence-model)
 11. [Step File Pattern (BMM)](#step-file-pattern-bmm)
 12. [Pattern Registry Structure](#pattern-registry-structure)
-13. [Web Search Integration](#web-search-integration)
-14. [Agent Guide Pattern](#agent-guide-pattern)
-15. [Workflow Structure (CEV)](#workflow-structure-cev)
-16. [Module Help CSV Schema](#module-help-csv-schema)
-17. [Quality Gates & Recovery](#quality-gates--recovery)
-18. [Tenant Model Deep Dive](#tenant-model-deep-dive)
-19. [AI Runtime Deep Dive](#ai-runtime-deep-dive)
-20. [Sidecar Memory Pattern](#sidecar-memory-pattern)
-21. [Context Flow](#context-flow)
-22. [Template Variables](#template-variables)
-23. [Naming Conventions](#naming-conventions)
-24. [Common Tasks](#common-tasks)
-25. [Anti-Patterns](#anti-patterns)
-26. [Testing](#testing)
-27. [Quick Reference](#quick-reference)
+    - [6-Point Anti-Decay Strategy](#6-point-anti-decay-strategy)
+13. [Pattern File Standards (V2)](#pattern-file-standards-v2)
+14. [Web Search Integration](#web-search-integration)
+15. [Agent Guide Pattern](#agent-guide-pattern)
+16. [Workflow Structure (CEV)](#workflow-structure-cev)
+17. [Module Help CSV Schema](#module-help-csv-schema)
+18. [Quality Gates & Recovery](#quality-gates--recovery)
+19. [Tenant Model Deep Dive](#tenant-model-deep-dive)
+20. [AI Runtime Deep Dive](#ai-runtime-deep-dive)
+21. [Sidecar Memory Pattern](#sidecar-memory-pattern)
+22. [Context Flow](#context-flow)
+23. [Template Variables](#template-variables)
+24. [Naming Conventions](#naming-conventions)
+25. [Common Tasks](#common-tasks)
+26. [Anti-Patterns](#anti-patterns)
+27. [Testing](#testing)
+28. [Quick Reference](#quick-reference)
 
 ---
 
@@ -127,12 +129,12 @@ BAM V2 (`src-v2/`) is a consolidated redesign achieving 6:1 reduction while main
 
 ```
 BAM V2 Extension Module (src-v2/)
-├── 12 TOML customize files (BMAD v6.4.0 format)
-├── 33 workflow skills (CEV: Create/Edit/Validate modes)
-├── 26 pattern files (with shortcodes ZXX)
+├── 14 TOML customize files (BMAD v6.4.0 format)
+├── 34 workflow skills (CEV: Create/Edit/Validate modes)
+├── 112 pattern files (with shortcodes ZXX, NEXUS Phase 4 complete)
 ├── 16 domain files (enriched with multi-tenant context)
 ├── 33 checklists (QG-* format with recovery protocols)
-├── 40 templates (output artifacts)
+├── 41 templates (output artifacts)
 ├── 3 persona files (Atlas, Nova, Kai)
 ├── 6 CSV registries (patterns, gates, compliance)
 └── 3 sidecar memory templates
@@ -143,7 +145,7 @@ BAM V2 Extension Module (src-v2/)
 ```
 src-v2/
 ├── module.yaml                    # V2 module configuration
-├── customize/                     # 12 TOML files (BMAD v6.4.0)
+├── customize/                     # 14 TOML files (BMAD v6.4.0)
 │   ├── bmad-agent-architect.toml  # Platform architecture
 │   ├── bmad-agent-devops.toml     # Resilience, DR patterns
 │   ├── bmad-agent-security.toml   # Security operations
@@ -151,7 +153,7 @@ src-v2/
 │   ├── bmad-agent-data.toml       # Data residency, tenant lifecycle
 │   └── ... (7 more)
 │
-├── skills/                        # 33 workflow skills
+├── skills/                        # 34 workflow skills
 │   └── bmad-bam-{skill-name}/
 │       ├── SKILL.md               # 6-step activation protocol
 │       ├── bmad-skill-manifest.yaml
@@ -166,7 +168,7 @@ src-v2/
     ├── context/bam-core.md        # Core BAM context (all TOMLs reference)
     ├── personas/                  # 3 architect personas
     ├── domains/                   # 16 domain files (enriched)
-    ├── patterns/                  # 26 pattern files with shortcodes
+    ├── patterns/                  # 112 pattern files with shortcodes
     ├── checklists/                # 33 QG-* checklists
     ├── templates/                 # 40 output templates
     ├── sidecar/                   # 3 memory templates
@@ -211,12 +213,12 @@ Confirm loaded. Ready for zero trust architecture guidance.
 
 | Asset | Count | Purpose |
 |-------|-------|---------|
-| TOML customize files | 12 | Agent capability extensions |
-| Workflow skills | 33 | CEV-mode workflows |
-| Pattern files | 26 | Architecture patterns with shortcodes |
+| TOML customize files | 14 | Agent capability extensions |
+| Workflow skills | 34 | CEV-mode workflows |
+| Pattern files | 112 | Architecture patterns with shortcodes (NEXUS Phase 4) |
 | Domain files | 16 | Enriched multi-tenant domains |
 | Checklists | 33 | Quality gate verification |
-| Templates | 40 | Output artifact templates |
+| Templates | 41 | Output artifact templates |
 | Personas | 3 | Atlas, Nova, Kai |
 | CSV registries | 6 | Pattern/gate/compliance data |
 | Sidecar templates | 3 | Persistent memory |
@@ -226,9 +228,9 @@ Confirm loaded. Ready for zero trust architecture guidance.
 | Aspect | V1 (`src/`) | V2 (`src-v2/`) |
 |--------|-------------|----------------|
 | Config format | YAML extensions | TOML (BMAD v6.4.0) |
-| Workflows | 196 | 33 (6:1 consolidation) |
-| Agent guides | 233 | 16 domains + 26 patterns |
-| Templates | 461 | 40 |
+| Workflows | 196 | 34 (6:1 consolidation) |
+| Agent guides | 233 | 16 domains + 112 patterns |
+| Templates | 461 | 41 |
 | Checklists | 39 | 33 |
 | Menu codes | Various | Z/Y prefix standard |
 
@@ -239,11 +241,14 @@ Confirm loaded. Ready for zero trust architecture guidance.
 npm test -- test/v2/
 
 # Tests verify:
-# - 12 TOML files with required sections
-# - 33 workflows with CEV steps
+# - 14 TOML files with required sections
+# - 34 workflows with CEV steps
+# - 112 pattern files with required sections
 # - All menu codes use Z/Y prefix
 # - No memories field in TOMLs
 # - All TOMLs reference bam-core.md
+# - No duplicate shortcodes
+# - All pattern cross-references valid
 ```
 
 ---
@@ -855,6 +860,274 @@ agent-langgraph,LangGraph Runtime,ai-runtime,"state machines, conditional branch
 | Can become stale | Web queries fetch current info |
 | Embedded code examples | Decision criteria only |
 | Manual updates needed | Self-refreshing via web |
+
+### 6-Point Anti-Decay Strategy
+
+**Problem:** Static pattern files become outdated. Code written for React 18 in 2024 is misleading when React 19 exists in 2026.
+
+**Solution:** Patterns are **decision guides** that point to web search, not **static encyclopedias** that decay.
+
+| # | Strategy | Implementation | Why It Prevents Decay |
+|---|----------|----------------|----------------------|
+| 1 | **{date} Web Queries** | All `web_queries` use `{date}` placeholder | Searches always return current year results |
+| 2 | **No Implementation Code** | Zero TypeScript/Python/JavaScript in patterns | Code decays fastest; web search gets current code |
+| 3 | **YAML Schemas Only** | `bam_controlled: true` contracts | Schemas are stable; implementation changes |
+| 4 | **last_reviewed Tracking** | Frontmatter `last_reviewed: YYYY-MM-DD` | Identifies stale patterns needing refresh |
+| 5 | **Decision Criteria Focus** | CSV has WHEN to use, not HOW to implement | Criteria stable; implementation evolves |
+| 6 | **Web Research Section** | Every pattern has 3-5 search queries | Agent discovers current best practices |
+
+**How It Works:**
+
+```
+User: "How do I implement tenant isolation?"
+
+❌ OLD (Decays):
+   Pattern has 2024 code → Agent copies stale code → BUG
+
+✅ NEW (Anti-Decay):
+   1. CSV: decision_criteria="<1000 tenants → RLS"
+   2. CSV: web_queries="PostgreSQL RLS multi-tenant {date}"
+   3. Agent searches: "PostgreSQL RLS multi-tenant 2026"
+   4. Gets CURRENT best practices → Correct implementation
+```
+
+**Enforcement:**
+- Tests verify no implementation code blocks (`typescript`, `python`, `javascript`)
+- Tests verify all patterns have `## Web Research Queries` section
+- Tests verify all web queries contain `{date}` placeholder
+- Frontmatter `last_reviewed` enables staleness detection
+
+---
+
+## Pattern File Standards (V2)
+
+V2 pattern files (`src-v2/data/patterns/*.md`) follow strict BMAD compatibility standards. **Every pattern file must pass validation before merge.**
+
+### Required YAML Frontmatter
+
+Every pattern file MUST begin with this exact frontmatter structure:
+
+```yaml
+---
+pattern_id: {filename-without-extension}  # MUST match filename exactly
+shortcode: Z{XX}                          # Z-prefix, 2-4 uppercase letters, MUST be unique
+category: {valid-category}                # See valid categories below
+qg_ref: QG-{XX}                           # Quality gate reference
+version: 1.0.0                            # Semver format
+last_reviewed: YYYY-MM-DD                 # ISO date format
+---
+```
+
+**Critical Rules:**
+- `pattern_id` MUST exactly match the filename (e.g., `tenant-isolation.md` → `pattern_id: tenant-isolation`)
+- `shortcode` MUST be unique across ALL pattern files - duplicates cause menu conflicts
+- `shortcode` format: Z-prefix + 2-4 uppercase letters (e.g., ZTI, ZTIS, ZDCL)
+
+### Valid Categories
+
+| Category | Description | Example Patterns |
+|----------|-------------|------------------|
+| ai-runtime | AI agent orchestration | langgraph, agent-orchestration |
+| compliance | Regulatory compliance | gdpr-compliance, hipaa-compliance |
+| mcp | Model Context Protocol | mcp-server-lifecycle, mcp-tenant-isolation |
+| monetization | Billing and pricing | cost-attribution-engine, pricing-strategies |
+| operations | Operational patterns | disaster-recovery, incident-response |
+| platform | Platform architecture | plugin-architecture, white-label |
+| rag | RAG and knowledge | rag-pipeline, semantic-chunking |
+| scaling | Performance and scale | horizontal-scaling, performance-isolation |
+| security | Security patterns | zero-trust, secrets-management |
+| tenant-isolation | Multi-tenant isolation | tenant-isolation (consolidated) |
+| testing | Testing patterns | testing-isolation, ai-verification |
+
+**Extended categories** (for specialized patterns): `advanced-ai`, `agent-communication`, `observability`, `ai-safety`, `ai-ops`, `resilience`, `lifecycle`, `discovery`, `integration`
+
+### Required Sections
+
+Every pattern file MUST contain these sections in order:
+
+```markdown
+# {Pattern Name} - BAM Pattern
+
+**Loaded by:** {shortcode}  
+**Applies to:** {One-line description}
+
+---
+
+## When to Use
+
+- {Condition 1}
+- {Condition 2}
+- {Condition 3}
+
+## When NOT to Use
+
+- {Anti-condition 1}
+- {Anti-condition 2}
+
+## Architecture
+
+{Diagrams using ASCII art, YAML schemas with bam_controlled: true}
+
+## Trade-offs
+
+| Approach | Pros | Cons | Best For |
+|----------|------|------|----------|
+| {Option} | {Benefit} | {Drawback} | {Use case} |
+
+## Quality Checks
+
+- [ ] {Check item 1}
+- [ ] {Check item 2}
+- [ ] **CRITICAL:** {Critical check - data safety, tenant isolation, etc.}
+
+## Web Research Queries
+
+- "{topic} patterns {date}"
+- "{specific topic} multi-tenant {date}"
+
+---
+
+## Quality Gate Alignment
+
+| Gate | Verification |
+|------|--------------|
+| {QG-XX} | {What this gate verifies} |
+
+## Related Patterns
+
+- [{pattern-name}.md]({pattern-name}.md) - {Relationship}
+```
+
+### Shortcode Uniqueness Rules
+
+**CRITICAL: Duplicate shortcodes break TOML menu systems.**
+
+Before assigning a shortcode:
+1. Check existing shortcodes: `grep "^shortcode:" src-v2/data/patterns/*.md | sort -t':' -k3`
+2. Verify no duplicates: `grep "^shortcode:" *.md | awk -F': ' '{print $2}' | sort | uniq -d`
+3. Use 4-character codes if 3-character conflicts exist (e.g., ZTIS instead of ZTI)
+
+**Shortcode Naming Convention:**
+- First letter: Always `Z` (BAM V2 namespace)
+- Second letter: Category indicator (T=Tenant, A=AI, M=MCP, S=Security, etc.)
+- Remaining letters: Pattern-specific identifier
+
+| Category | Prefix | Examples |
+|----------|--------|----------|
+| Tenant | ZT | ZTI (tenant-isolation), ZTQ (tenant-quotas) |
+| AI/Agent | ZA | ZAO (agent-orchestration), ZAH (agent-handoff) |
+| MCP | ZM | ZML (mcp-lifecycle), ZMT (mcp-tenant-isolation) |
+| Security | ZS | ZSM (secrets-management), ZZT (zero-trust) |
+| RAG | ZR | ZRP (rag-pipeline), ZRS (semantic-chunking) |
+| Scaling | ZP, ZV | ZPI (performance-isolation), ZVS (vertical-scaling) |
+
+### CSV Alignment Requirements
+
+Every pattern file MUST have a corresponding entry in `bam-patterns.csv`:
+
+```csv
+pattern_id,name,category,...,pattern_file,domain_ref,shortcode
+tenant-isolation,Tenant Isolation,tenant-isolation,...,tenant-isolation.md,tenant.md,ZTI
+```
+
+**CSV Columns (17 total):**
+1. `pattern_id` - Must match filename
+2. `name` - Display name
+3. `category` - Must match frontmatter category
+4. `decision_criteria` - When to use
+5. `signals` - Keywords
+6. `intent` - Action phrase
+7. `variants` - Pattern variants (semicolon-separated)
+8. `decision_questions` - Decision prompts
+9. `web_queries` - Web search queries with `{date}` placeholder
+10. `verification_gate` - QG reference (must match frontmatter)
+11. `dependencies` - Related patterns
+12. `conflicts` - Conflicting patterns
+13. `skill_level_notes` - Basic vs Advanced guidance
+14. `related_fragments` - Legacy field
+15. `core_pattern_ref` - For variants pointing to core
+16. `pattern_file` - Filename with .md extension
+17. `domain_ref` - Domain file reference
+18. `shortcode` - Must match frontmatter shortcode
+
+### Cross-Reference Integrity
+
+All markdown links to other patterns MUST reference existing files:
+
+```markdown
+## Related Patterns
+
+- [tenant-isolation.md](tenant-isolation.md) - ✅ File exists
+- [non-existent.md](non-existent.md) - ❌ BROKEN - will fail validation
+```
+
+**Validation command:**
+```bash
+for f in *.md; do
+  grep -oP '\[.*?\]\(([a-zA-Z0-9_-]+\.md)\)' "$f" | grep -oP '\([a-zA-Z0-9_-]+\.md\)' | tr -d '()' | while read ref; do
+    [ ! -f "$ref" ] && echo "BROKEN: $f -> $ref"
+  done
+done
+```
+
+### Quality Checks Format
+
+Quality Checks section MUST use checkbox format with at least one CRITICAL item:
+
+```markdown
+## Quality Checks
+
+- [ ] {Standard check}
+- [ ] {Another standard check}
+- [ ] **CRITICAL:** {Data safety, tenant isolation, or security check}
+```
+
+**Category-specific CRITICAL checks:**
+
+| Category | Required CRITICAL Check |
+|----------|------------------------|
+| tenant-isolation | No cross-tenant data leakage |
+| security | No security vulnerabilities introduced |
+| ai-runtime | No cross-tenant state/context leakage |
+| mcp | Tenant-scoped server/tool access only |
+| rag | No cross-tenant document access |
+| compliance | All regulatory requirements addressed |
+| monetization | No billing errors |
+
+### Pattern Validation Checklist
+
+Before creating or modifying a pattern file:
+
+- [ ] `pattern_id` matches filename exactly
+- [ ] `shortcode` is unique (run duplicate check)
+- [ ] `shortcode` follows Z-prefix convention
+- [ ] `category` is valid
+- [ ] `qg_ref` format is correct (QG-XX or QG-XXn)
+- [ ] `version` is semver (X.Y.Z)
+- [ ] `last_reviewed` is valid ISO date
+- [ ] Has "When to Use" section with 3+ items
+- [ ] Has "When NOT to Use" section with 2+ items
+- [ ] Has "Architecture" section with diagram or schema
+- [ ] Has "Trade-offs" table
+- [ ] Has "Quality Checks" with checkboxes and CRITICAL item
+- [ ] Has "Web Research Queries" with `{date}` placeholder
+- [ ] Has "Quality Gate Alignment" table
+- [ ] Has "Related Patterns" with valid .md links
+- [ ] CSV entry exists with matching shortcode
+- [ ] All cross-references point to existing files
+- [ ] No implementation code (TypeScript/Python/JavaScript blocks)
+
+### Common Pattern Bugs (Avoid These)
+
+| Bug | Example | Fix |
+|-----|---------|-----|
+| Duplicate shortcode | Two files with `shortcode: ZTI` | Use unique 4-char code (ZTIS) |
+| Mismatched pattern_id | File: `foo-bar.md`, frontmatter: `pattern_id: foo_bar` | Must match exactly |
+| Missing CRITICAL check | Quality Checks without `**CRITICAL:**` | Add category-appropriate critical |
+| Broken cross-reference | `[missing.md](missing.md)` | Create file or remove reference |
+| Orphan pattern | File exists but no CSV entry | Add CSV row with all 17 columns |
+| Ghost CSV entry | CSV row but no pattern file | Delete CSV row or create file |
+| Wrong CSV shortcode | CSV has ZTI, file has ZTIS | Must match exactly |
 
 ---
 
@@ -1619,7 +1892,7 @@ touch src/data/agent-guides/bam/{domain}.md
 npm test
 ```
 
-### Adding Patterns to Registry
+### Adding Patterns to Registry (V1)
 
 ```bash
 # 1. Open relevant CSV file
@@ -1634,6 +1907,116 @@ vim src/data/bam-patterns.csv
 # 4. Test
 npm test
 ```
+
+### Adding a New Pattern (V2) - Complete Process
+
+Creating a V2 pattern requires 4 synchronized assets. Follow this checklist:
+
+```bash
+# 1. Check for shortcode conflicts FIRST
+grep "^shortcode:" src-v2/data/patterns/*.md | awk -F': ' '{print $2}' | sort | uniq -d
+# If your desired shortcode appears, use a 4-char variant (e.g., ZTIS instead of ZTI)
+
+# 2. Create pattern file with required structure
+cat > src-v2/data/patterns/{pattern-name}.md << 'EOF'
+---
+pattern_id: {pattern-name}
+shortcode: Z{XX}
+category: {category}
+qg_ref: QG-{XX}
+version: 1.0.0
+last_reviewed: $(date +%Y-%m-%d)
+---
+
+# {Pattern Name} - BAM Pattern
+
+**Loaded by:** Z{XX}  
+**Applies to:** {One-line description}
+
+---
+
+## When to Use
+
+- {Condition 1}
+- {Condition 2}
+- {Condition 3}
+
+## When NOT to Use
+
+- {Anti-condition 1}
+- {Anti-condition 2}
+
+## Architecture
+
+{ASCII diagram or YAML schema with bam_controlled: true}
+
+## Trade-offs
+
+| Approach | Pros | Cons | Best For |
+|----------|------|------|----------|
+| {Option} | {Benefit} | {Drawback} | {Use case} |
+
+## Quality Checks
+
+- [ ] {Standard check}
+- [ ] {Standard check}
+- [ ] **CRITICAL:** {Category-specific safety check}
+
+## Web Research Queries
+
+- "{topic} patterns {date}"
+- "{specific topic} multi-tenant {date}"
+
+---
+
+## Quality Gate Alignment
+
+| Gate | Verification |
+|------|--------------|
+| QG-{XX} | {What this gate verifies} |
+
+## Related Patterns
+
+- [{related}.md]({related}.md) - {Relationship}
+EOF
+
+# 3. Add CSV entry (all 17 columns required)
+# pattern_id,name,category,decision_criteria,signals,intent,variants,
+# decision_questions,web_queries,verification_gate,dependencies,conflicts,
+# skill_level_notes,related_fragments,core_pattern_ref,pattern_file,domain_ref,shortcode
+
+# 4. Add TOML menu entry (if pattern should be loadable)
+# In appropriate src-v2/customize/bmad-agent-{role}.toml:
+[[agent.menu]]
+code = "ZP{XX}"
+description = "Load: {Pattern Name} pattern"
+prompt = """
+Loading pattern:
+\`{project-root}/_bmad/bam/data/patterns/{pattern-name}.md\`
+Confirm loaded.
+"""
+
+# 5. Update domain file (add pattern to domain's Loaded by list)
+# In src-v2/data/domains/{domain}.md, add shortcode to "Loaded by:" line
+
+# 6. Validate
+npm test -- test/v2/
+
+# 7. Final checks
+grep "^shortcode:" src-v2/data/patterns/{pattern-name}.md  # Verify shortcode
+grep "^{pattern-name}," src-v2/data/bam-patterns.csv       # Verify CSV entry
+```
+
+**Validation Checklist:**
+- [ ] `pattern_id` matches filename exactly
+- [ ] `shortcode` is unique (no duplicates)
+- [ ] All required sections present
+- [ ] Quality Checks has `**CRITICAL:**` item
+- [ ] Web Research Queries has `{date}` placeholder
+- [ ] CSV entry has all 17 columns
+- [ ] CSV shortcode matches frontmatter shortcode
+- [ ] All Related Patterns links point to existing files
+- [ ] Tests pass: `npm test -- test/v2/`
 
 ### Updating Quality Gate Checklist
 
@@ -1676,6 +2059,24 @@ npm test
 | **Missing frontmatter** | Template won't pass tests | Always add YAML frontmatter with name, description, category |
 | **Missing Change Log** | No version history | Always add Change Log section at end of templates |
 | **SKILL.md name ≠ directory** | BMB installer skips workflow | `name:` MUST match directory name (BMB uses directory as canonical ID) |
+
+### Pattern File Anti-Patterns (V2)
+
+| Anti-Pattern | Why Wrong | Correct Approach |
+|--------------|-----------|------------------|
+| **Duplicate shortcode** | TOML menu conflicts, wrong pattern loaded | Check uniqueness before assigning: `grep "^shortcode:" *.md \| sort \| uniq -d` |
+| **pattern_id ≠ filename** | CSV/TOML lookups fail | `tenant-isolation.md` → `pattern_id: tenant-isolation` (exact match) |
+| **Missing "When to Use"** | Incomplete decision guidance | Add 3+ bullet points describing usage conditions |
+| **Missing "When NOT to Use"** | Users apply pattern incorrectly | Add 2+ anti-conditions |
+| **Missing CRITICAL check** | No safety gate in Quality Checks | Add `- [ ] **CRITICAL:** {safety check}` for category |
+| **Broken cross-reference** | Dead links in Related Patterns | Verify all `[x.md](x.md)` targets exist before merge |
+| **Orphan pattern file** | Pattern inaccessible from CSV/TOML | Add CSV entry with all 17 columns |
+| **Ghost CSV entry** | CSV references non-existent file | Delete row or create pattern file |
+| **CSV shortcode mismatch** | Inconsistent references | CSV shortcode MUST match frontmatter shortcode |
+| **Implementation code** | Patterns describe WHAT, not HOW | Use YAML schemas, ASCII diagrams only - no TypeScript/Python |
+| **Missing `{date}` in queries** | Web searches become stale | Always use `{date}` placeholder in Web Research Queries |
+| **Non-unique 3-char shortcode** | Conflicts with existing pattern | Use 4-char shortcode (ZTIS) when 3-char (ZTI) conflicts |
+| **Removing broken references** | Loses planned capability | CREATE missing pattern instead of removing reference |
 
 ---
 
@@ -1782,8 +2183,12 @@ npm test -- test/schema.test.js   # Specific file
 | `test/install.test.js` | BMB compatibility, package.json, module.yaml |
 | `test/integration.test.js` | Ecosystem integration (BMM, TEA, WDS, CIS) |
 | `test/customize-files.test.js` | Customize file generation, deduplication, YAML validity |
+| `test/v2/pattern-standards.test.js` | V2 pattern file count, structure, no implementation code |
+| `test/v2/file-counts.test.js` | V2 asset counts (TOMLs, skills, patterns, templates) |
+| `test/v2/csv-schema.test.js` | CSV column validation, shortcode alignment |
+| `test/v2/toml-format.test.js` | TOML syntax, required sections, Z-prefix menus |
 
-### Expected Counts
+### Expected Counts (V1)
 
 | Component | Count | Web Search |
 |-----------|-------|------------|
@@ -1796,11 +2201,52 @@ npm test -- test/schema.test.js   # Specific file
 | Checklists | 39 | 100% have web research verification |
 | Templates | 461 | 100% (all have Web Research section) |
 
+### Expected Counts (V2)
+
+| Component | Count | Validation |
+|-----------|-------|------------|
+| TOML customize files | 14 | All reference bam-core.md, Z-prefix menus |
+| Workflow skills | 34 | CEV steps, manifest present |
+| Pattern files | 112 | Unique shortcodes, all required sections |
+| Domain files | 16 | Enriched with pattern references |
+| Checklists | 33 | QG-* format with recovery protocols |
+| Templates | 41 | Output artifact templates |
+| CSV registries | 6 | All patterns have CSV entries |
+
+### Pattern-Specific Tests
+
+```bash
+# Verify shortcode uniqueness
+npm test -- test/v2/pattern-standards.test.js
+
+# Check for broken cross-references
+for f in src-v2/data/patterns/*.md; do
+  grep -oP '\[.*?\]\(([a-zA-Z0-9_-]+\.md)\)' "$f" | \
+  grep -oP '\([a-zA-Z0-9_-]+\.md\)' | tr -d '()' | while read ref; do
+    [ ! -f "src-v2/data/patterns/$ref" ] && echo "BROKEN: $f -> $ref"
+  done
+done
+
+# Verify all patterns have required sections
+for f in src-v2/data/patterns/*.md; do
+  grep -q "## When to Use" "$f" || echo "MISSING When to Use: $f"
+  grep -q "## Quality Checks" "$f" || echo "MISSING Quality Checks: $f"
+  grep -q "CRITICAL" "$f" || echo "MISSING CRITICAL check: $f"
+done
+
+# Check CSV alignment
+for f in src-v2/data/patterns/*.md; do
+  name="${f%.md}"
+  name="${name##*/}"
+  grep -q "^$name," src-v2/data/bam-patterns.csv || echo "NO CSV: $f"
+done
+```
+
 ---
 
 ## Quick Reference
 
-### File Locations
+### File Locations (V1)
 
 | Need | Location |
 |------|----------|
@@ -1816,6 +2262,46 @@ npm test -- test/schema.test.js   # Specific file
 | Generate customize | `npm run generate-customize` |
 | Verify install | `./scripts/verify-install.sh _bmad/bam` |
 | Fix install | `./scripts/post-install.sh _bmad/bam` |
+
+### File Locations (V2)
+
+| Need | Location |
+|------|----------|
+| Add TOML customize | `src-v2/customize/bmad-agent-{role}.toml` |
+| Add workflow skill | `src-v2/skills/bmad-bam-{name}/` |
+| Add pattern file | `src-v2/data/patterns/{pattern}.md` |
+| Add pattern to CSV | `src-v2/data/bam-patterns.csv` (17 columns) |
+| Add domain file | `src-v2/data/domains/{domain}.md` |
+| Add checklist | `src-v2/data/checklists/qg-{id}.md` |
+| Add template | `src-v2/data/templates/{artifact}.md` |
+| Core context | `src-v2/data/context/bam-core.md` |
+| Persona files | `src-v2/data/personas/{name}.md` |
+| Sidecar templates | `src-v2/data/sidecar/*.md` |
+| Module config | `src-v2/module.yaml` |
+| Run V2 tests | `npm test -- test/v2/` |
+
+### Pattern Commands (V2)
+
+```bash
+# Check shortcode uniqueness
+grep "^shortcode:" src-v2/data/patterns/*.md | awk -F': ' '{print $2}' | sort | uniq -d
+
+# Find pattern by shortcode
+grep -l "^shortcode: ZTI" src-v2/data/patterns/*.md
+
+# List all shortcodes
+grep "^shortcode:" src-v2/data/patterns/*.md | sort -t':' -k3
+
+# Verify pattern has CSV entry
+grep "^tenant-isolation," src-v2/data/bam-patterns.csv
+
+# Find broken cross-references
+for f in src-v2/data/patterns/*.md; do
+  grep -oP '\]\(([a-z-]+\.md)\)' "$f" | tr -d ']()'| while read r; do
+    [ ! -f "src-v2/data/patterns/$r" ] && echo "$f -> $r BROKEN"
+  done
+done
+```
 
 ### Key Commands
 

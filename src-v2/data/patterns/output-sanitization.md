@@ -106,6 +106,15 @@ output_sanitization:
 | Tokenization | Reversible | Storage overhead | Audit requirements |
 | Hard redaction | Simple, secure | Data loss | Maximum security |
 
+
+## Quality Checks
+
+- [ ] Input validation implemented for all entry points
+- [ ] Sensitive data detection and masking configured
+- [ ] Audit logging enabled for security events
+- [ ] Rate limiting prevents abuse
+- [ ] **CRITICAL:** No credential or PII exposure in logs/outputs
+
 ## Web Research Queries
 
 - "LLM output PII detection redaction {date}"

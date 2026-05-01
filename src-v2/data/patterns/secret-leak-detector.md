@@ -107,6 +107,15 @@ secret_leak_detector:
 | Entropy + pattern | Better coverage | False positives | General use |
 | Live validation | Confirms secrets | API overhead | High security |
 
+
+## Quality Checks
+
+- [ ] Input validation implemented for all entry points
+- [ ] Sensitive data detection and masking configured
+- [ ] Audit logging enabled for security events
+- [ ] Rate limiting prevents abuse
+- [ ] **CRITICAL:** No credential or PII exposure in logs/outputs
+
 ## Web Research Queries
 
 - "secret detection LLM prompts {date}"

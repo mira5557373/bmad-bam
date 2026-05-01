@@ -78,6 +78,15 @@ mcp_tenant_isolation:
 | Pool-per-tenant | Strong | Medium | Medium |
 | Dedicated | Complete | High | High |
 
+
+## Quality Checks
+
+- [ ] MCP server registration validated
+- [ ] Tenant isolation enforced on all tool calls
+- [ ] Rate limiting configured per tenant tier
+- [ ] Schema validation enabled for all tools
+- [ ] **CRITICAL:** No cross-tenant tool access possible
+
 ## Web Research Queries
 
 - "MCP tenant isolation patterns {date}"

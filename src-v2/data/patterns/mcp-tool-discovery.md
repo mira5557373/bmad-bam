@@ -79,6 +79,15 @@ mcp_tool_discovery:
 | Push-based | Real-time | Complexity | Dynamic tools |
 | Hybrid | Balanced | Cache invalidation | Production |
 
+
+## Quality Checks
+
+- [ ] MCP server registration validated
+- [ ] Tenant isolation enforced on all tool calls
+- [ ] Rate limiting configured per tenant tier
+- [ ] Schema validation enabled for all tools
+- [ ] **CRITICAL:** No cross-tenant tool access possible
+
 ## Web Research Queries
 
 - "MCP tool discovery patterns {date}"

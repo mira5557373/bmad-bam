@@ -461,6 +461,15 @@ recovery_loop:
 | Economic | Per-request soft | Per-request real-time | Real-time + predictive |
 | Recovery | Basic retry | Checkpoint restore | Full PITR |
 
+
+## Quality Checks
+
+- [ ] Agent execution respects tenant boundaries
+- [ ] State management includes tenant context
+- [ ] Checkpointing configured for long-running workflows
+- [ ] Timeout and retry policies defined
+- [ ] **CRITICAL:** No cross-tenant state leakage
+
 ## Web Research Queries
 
 - "AI agent runtime loop architecture patterns {date}"

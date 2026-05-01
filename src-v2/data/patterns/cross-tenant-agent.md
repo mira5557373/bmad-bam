@@ -261,6 +261,15 @@ cross_tenant_agent:
 | HIPAA | BAA required | Explicit consent + encryption |
 | PCI-DSS | Cardholder isolation | Field masking + restricted scope |
 
+
+## Quality Checks
+
+- [ ] Message schemas validated
+- [ ] Tenant context propagated in all messages
+- [ ] Timeout handling for agent responses
+- [ ] Dead letter queue configured
+- [ ] **CRITICAL:** No cross-tenant message routing
+
 ## Web Research Queries
 
 - "multi-tenant agent federation patterns {date}"

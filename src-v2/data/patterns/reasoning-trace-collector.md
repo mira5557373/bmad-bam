@@ -102,6 +102,15 @@ reasoning_trace_collector:
 | Verbose tracing | Full visibility | High storage cost | Debugging, audit |
 | Debug tracing | Complete picture | Performance impact | Development |
 
+
+## Quality Checks
+
+- [ ] Metrics collection configured per tenant
+- [ ] Trace sampling appropriate for load
+- [ ] Log retention policies defined
+- [ ] Dashboards accessible per tenant tier
+- [ ] **CRITICAL:** No sensitive data in telemetry
+
 ## Web Research Queries
 
 - "AI agent reasoning trace collection {date}"

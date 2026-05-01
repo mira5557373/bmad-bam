@@ -216,6 +216,15 @@ decision_record:
     resolver: string  # agent or human
 ```
 
+
+## Quality Checks
+
+- [ ] Message schemas validated
+- [ ] Tenant context propagated in all messages
+- [ ] Timeout handling for agent responses
+- [ ] Dead letter queue configured
+- [ ] **CRITICAL:** No cross-tenant message routing
+
 ## Web Research Queries
 
 - "multi-agent negotiation consensus patterns {date}"

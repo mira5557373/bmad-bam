@@ -270,6 +270,15 @@ cost_optimization:
 | Multi-provider active-active | Maximum availability, load distribution | Complex implementation, state sync | Mission-critical, high-availability requirements |
 | Reserved capacity (PTU) | Predictable costs, guaranteed capacity | Upfront commitment, capacity planning | Stable, predictable workloads |
 
+
+## Quality Checks
+
+- [ ] Deployment pipeline tested
+- [ ] Rollback procedures documented
+- [ ] Provider failover configured
+- [ ] Cost tracking per tenant enabled
+- [ ] **CRITICAL:** No production deployment without staging validation
+
 ## Web Research Queries
 
 - "LLM provider quota management patterns {date}"

@@ -146,6 +146,15 @@ tenant_grounding:
 | Confidence manipulation | Server-side scoring only |
 | Performance DoS | Rate limit verification requests |
 
+
+## Quality Checks
+
+- [ ] Agent execution respects tenant boundaries
+- [ ] State management includes tenant context
+- [ ] Checkpointing configured for long-running workflows
+- [ ] Timeout and retry policies defined
+- [ ] **CRITICAL:** No cross-tenant state leakage
+
 ## Web Research Queries
 
 - "RAG grounding verification patterns {date}"

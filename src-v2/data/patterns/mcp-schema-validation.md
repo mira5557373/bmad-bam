@@ -81,6 +81,15 @@ mcp_schema_validation:
 | Lenient | Medium | Medium | Good |
 | None | Low | High | Best |
 
+
+## Quality Checks
+
+- [ ] MCP server registration validated
+- [ ] Tenant isolation enforced on all tool calls
+- [ ] Rate limiting configured per tenant tier
+- [ ] Schema validation enabled for all tools
+- [ ] **CRITICAL:** No cross-tenant tool access possible
+
 ## Web Research Queries
 
 - "tool schema validation patterns {date}"

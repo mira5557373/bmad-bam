@@ -214,6 +214,15 @@ ai_discovery:
 - Support backwards compatibility for one major version
 - Deprecate capabilities gracefully with `deprecated: true` flag
 
+
+## Quality Checks
+
+- [ ] Discovery endpoints authenticated
+- [ ] Capability schema validated
+- [ ] Update propagation tested
+- [ ] Cache invalidation configured
+- [ ] **CRITICAL:** No stale capability advertisements
+
 ## Web Research Queries
 
 - "AGENTS.md specification {date}"

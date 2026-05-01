@@ -151,6 +151,15 @@ tenant_injection_config:
 | False positives | Configurable thresholds, allow-lists |
 | Model poisoning | Regular classifier retraining |
 
+
+## Quality Checks
+
+- [ ] Input validation implemented for all entry points
+- [ ] Sensitive data detection and masking configured
+- [ ] Audit logging enabled for security events
+- [ ] Rate limiting prevents abuse
+- [ ] **CRITICAL:** No credential or PII exposure in logs/outputs
+
 ## Web Research Queries
 
 - "prompt injection detection patterns {date}"

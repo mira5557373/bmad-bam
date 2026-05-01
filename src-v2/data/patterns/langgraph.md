@@ -57,6 +57,15 @@ last_reviewed: 2026-04-29
 | Visual debugging | Complexity overhead |
 | Conditional flows | Python-centric |
 
+
+## Quality Checks
+
+- [ ] Agent execution respects tenant boundaries
+- [ ] State management includes tenant context
+- [ ] Checkpointing configured for long-running workflows
+- [ ] Timeout and retry policies defined
+- [ ] **CRITICAL:** No cross-tenant state leakage
+
 ## Web Research Queries
 
 - "LangGraph production patterns {date}"

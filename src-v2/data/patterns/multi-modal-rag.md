@@ -237,6 +237,15 @@ multi_modal_document:
 | Text | Video | "Show onboarding tutorial videos" |
 | Image | Image | Visual similarity search |
 
+
+## Quality Checks
+
+- [ ] Prompt templates versioned and tested
+- [ ] Output quality metrics defined
+- [ ] Fallback strategies configured
+- [ ] Token usage tracked per tenant
+- [ ] **CRITICAL:** No hallucination in critical outputs
+
 ## Web Research Queries
 
 - "multi-modal RAG architecture patterns {date}"
@@ -258,6 +267,6 @@ multi_modal_document:
 ## Related Patterns
 
 - [semantic-chunking.md](semantic-chunking.md) - Text chunking strategies
-- [embedding-pipeline.md](embedding-pipeline.md) - Embedding generation
+- [embedding-lifecycle.md](embedding-lifecycle.md) - Embedding generation
 - [hybrid-search.md](hybrid-search.md) - Combined search patterns
 - [knowledge-refresh.md](knowledge-refresh.md) - Content refresh

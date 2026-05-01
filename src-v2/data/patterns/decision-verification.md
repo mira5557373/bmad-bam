@@ -126,6 +126,15 @@ impact_rules:
 | Stale approvals | Time-bound approval tokens |
 | Audit tampering | Immutable audit log |
 
+
+## Quality Checks
+
+- [ ] Agent execution respects tenant boundaries
+- [ ] State management includes tenant context
+- [ ] Checkpointing configured for long-running workflows
+- [ ] Timeout and retry policies defined
+- [ ] **CRITICAL:** No cross-tenant state leakage
+
 ## Web Research Queries
 
 - "AI agent decision verification patterns {date}"

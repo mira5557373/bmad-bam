@@ -1,6 +1,6 @@
 # Observability - BAM Domain Context
 
-**Loaded by:** ZOB, ZOM  
+**Loaded by:** ZOB, ZOM, ZPP  
 **Related Workflows:** bmad-bam-tenant-aware-observability, bmad-bam-agent-execution-tracing
 
 ---
@@ -76,6 +76,11 @@ Observability in multi-tenant systems requires tenant-aware metrics, logs, and t
 **Operations & Reliability:**
 - `{project-root}/_bmad/bam/data/patterns/agent-registry.md` - Agent catalog and governance
 - `{project-root}/_bmad/bam/data/patterns/blast-radius-simulator.md` - Failure impact prediction
+
+## NEXUS Phase 4 Patterns
+
+**Performance Analysis:**
+- `{project-root}/_bmad/bam/data/patterns/performance-profiling.md` - Flame graphs, bottleneck analysis, CI/CD regression detection
 
 ### Web Research
 
