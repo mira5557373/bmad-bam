@@ -103,6 +103,7 @@ _Source: [URL]_ for key findings.
 - [ ] Error codes documented
 - [ ] Version history maintained
 - [ ] Compatibility rules documented
+- [ ] **CRITICAL:** No cross-tenant data exposure in API responses
 
 ---
 

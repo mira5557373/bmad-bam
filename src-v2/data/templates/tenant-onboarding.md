@@ -179,6 +179,7 @@ _Source: [URL]_ for key findings.
 - [ ] Welcome email configured
 - [ ] First login experience designed
 - [ ] Rollback procedures tested
+- [ ] **CRITICAL:** No operational actions affect wrong tenant
 
 ---
 

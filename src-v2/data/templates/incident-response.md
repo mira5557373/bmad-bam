@@ -145,6 +145,7 @@ _Source: [URL]_ for key findings.
 - [ ] Communication templates ready
 - [ ] Tenant impact tracking configured
 - [ ] PIR process defined
+- [ ] **CRITICAL:** No operational actions affect wrong tenant
 
 ---
 

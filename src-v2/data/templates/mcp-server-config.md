@@ -149,7 +149,7 @@ mcp_permissions:
 ### Cache Key Format
 
 ```
-mcp:{tenant_id}:{tool_id}:{operation}:{hash(params)}
+mcp:{{tenant_id}}:{tool_id}:{operation}:{hash(params)}
 ```
 
 ---

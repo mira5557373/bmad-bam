@@ -142,6 +142,7 @@ _Source: [URL]_ for key findings.
 - [ ] DLQ strategy defined
 - [ ] Ordering guarantees documented
 - [ ] Idempotency implemented
+- [ ] **CRITICAL:** No cross-tenant data leakage possible
 
 ---
 

@@ -117,6 +117,7 @@ _Source: [URL]_ for key findings.
 - [ ] Data classification complete
 - [ ] Cross-region flows justified
 - [ ] Encryption strategy verified
+- [ ] **CRITICAL:** All regulatory requirements addressed
 
 ---
 

@@ -253,6 +253,7 @@ _Source: [URL]_ for key findings.
 - [ ] Monitoring configured
 - [ ] Communication ready
 - [ ] Post-migration verification planned
+- [ ] **CRITICAL:** No operational actions affect wrong tenant
 
 ---
 

@@ -197,6 +197,7 @@ _Source: [URL]_ for key findings.
 - [ ] Contract tests implemented
 - [ ] Coverage thresholds met
 - [ ] CI/CD integrated
+- [ ] **CRITICAL:** Tenant isolation verified in all test scenarios
 
 ---
 

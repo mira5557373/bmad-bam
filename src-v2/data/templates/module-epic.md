@@ -95,6 +95,7 @@ _Source: [URL]_ for key findings.
 - [ ] Dependencies identified
 - [ ] Risks assessed with mitigations
 - [ ] Definition of done aligned with QG gates
+- [ ] **CRITICAL:** Requirements validated against tenant isolation
 
 ---
 

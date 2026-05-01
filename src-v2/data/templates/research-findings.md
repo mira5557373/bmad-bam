@@ -205,6 +205,7 @@ _Source: [URL]_ for key findings.
 - [ ] Risks identified
 - [ ] Recommendations actionable
 - [ ] Action items assigned
+- [ ] **CRITICAL:** Requirements validated against tenant isolation
 
 ---
 

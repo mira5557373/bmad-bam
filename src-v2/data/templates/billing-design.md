@@ -91,6 +91,7 @@ _Source: [URL]_ for key findings.
 - [ ] Billing events implemented
 - [ ] Invoice generation working
 - [ ] Payment integration tested
+- [ ] **CRITICAL:** No billing errors that affect tenant charges
 
 ---
 

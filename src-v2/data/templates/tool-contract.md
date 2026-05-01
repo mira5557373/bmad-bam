@@ -261,6 +261,7 @@ _Source: [URL]_ for key findings.
 - [ ] Side effects documented
 - [ ] Tests written
 - [ ] Version tracked
+- [ ] **CRITICAL:** No cross-tenant AI state or context leakage
 
 ---
 

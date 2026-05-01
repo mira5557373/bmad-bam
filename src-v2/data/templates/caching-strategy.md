@@ -80,6 +80,7 @@ _Source: [URL]_ for key findings.
 - [ ] Tenant isolation verified
 - [ ] Invalidation strategy defined
 - [ ] Cache warming configured
+- [ ] **CRITICAL:** No operational actions affect wrong tenant
 
 ---
 

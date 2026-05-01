@@ -185,6 +185,7 @@ _Source: [URL]_ for key findings.
 - [ ] Upgrade process documented
 - [ ] Deprecation schedule published
 - [ ] Cost tracking enabled
+- [ ] **CRITICAL:** No cross-tenant AI state or context leakage
 
 ---
 

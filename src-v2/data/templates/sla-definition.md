@@ -213,6 +213,7 @@ _Source: [URL]_ for key findings.
 - [ ] Credit structure documented
 - [ ] Monitoring in place
 - [ ] Enterprise customization options listed
+- [ ] **CRITICAL:** No operational actions affect wrong tenant
 
 ---
 

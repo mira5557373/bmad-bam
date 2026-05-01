@@ -117,6 +117,7 @@ _Source: [URL]_ for key findings.
 - [ ] Runbooks validated
 - [ ] On-call rotation established
 - [ ] Rollback procedure tested
+- [ ] **CRITICAL:** No operational actions affect wrong tenant
 
 ---
 

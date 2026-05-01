@@ -188,6 +188,7 @@ _Source: [URL]_ for key findings.
 - [ ] Notifications configured
 - [ ] Reversibility documented
 - [ ] Events implemented
+- [ ] **CRITICAL:** No operational actions affect wrong tenant
 
 ---
 

@@ -165,6 +165,7 @@ _Source: [URL]_ for key findings.
 - [ ] Mitigation plan (if conditional)
 - [ ] Recovery attempted (if fail)
 - [ ] Sign-off obtained
+- [ ] **CRITICAL:** Tenant isolation verified in all test scenarios
 
 ---
 

@@ -6,7 +6,12 @@ version: 1.0.0
 type: template
 web_research_enabled: true
 source_verification: true
+related_patterns: [zero-trust, secrets-management, tenant-isolation]
 ---
+
+## Purpose
+
+Document authentication integration architecture with SSO, OAuth 2.0, and API key management for multi-tenant SaaS
 
 # Authentication Integration Architecture
 
@@ -240,6 +245,31 @@ idp_connection:
 - [ ] Session storage implementation
 - [ ] SLO integration
 - [ ] Audit logging
+
+---
+
+## Web Research Queries
+
+- "SAML 2.0 multi-tenant SaaS best practices {{date}}"
+- "OIDC integration patterns enterprise {{date}}"
+- "OAuth 2.0 security recommendations {{date}}"
+- "API key management security patterns {{date}}"
+
+_Source: [URL]_ for authentication guidance.
+
+---
+
+## Verification Checklist
+
+- [ ] SSO configuration documented
+- [ ] IdP integration settings complete
+- [ ] OAuth scopes defined
+- [ ] API key policies documented
+- [ ] Session timeouts configured
+- [ ] Security mitigations addressed
+- [ ] Compliance requirements mapped
+- [ ] **CRITICAL:** No cross-tenant authentication bypass possible
+- [ ] **CRITICAL:** Token and API key secrets properly encrypted
 
 ---
 

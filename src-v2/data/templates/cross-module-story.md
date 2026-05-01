@@ -169,6 +169,7 @@ _Source: [URL]_ for key findings.
 - [ ] Acceptance criteria complete
 - [ ] Coordination plan established
 - [ ] Risks assessed
+- [ ] **CRITICAL:** Requirements validated against tenant isolation
 
 ---
 

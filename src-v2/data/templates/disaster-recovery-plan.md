@@ -95,7 +95,7 @@ backup_isolation:
     
   object_storage:
     method: prefix_based
-    pattern: "tenant/{tenant_id}/*"
+    pattern: "tenant/{{tenant_id}}/*"
     
   restore_capability:
     single_tenant: true

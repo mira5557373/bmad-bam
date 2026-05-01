@@ -117,6 +117,7 @@ _Source: [URL]_ for key findings.
 - [ ] Dependencies mapped (no circular)
 - [ ] Internal structure follows patterns
 - [ ] Events documented with schemas
+- [ ] **CRITICAL:** No cross-tenant data leakage possible
 
 ---
 

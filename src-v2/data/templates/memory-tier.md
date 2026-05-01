@@ -215,6 +215,7 @@ _Source: [URL]_ for key findings.
 - [ ] Flow documented
 - [ ] Summarization strategy defined
 - [ ] Security controls implemented
+- [ ] **CRITICAL:** No cross-tenant AI state or context leakage
 
 ---
 

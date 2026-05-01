@@ -134,6 +134,7 @@ _Source: [URL]_ for key findings.
 - [ ] Memory tiers configured
 - [ ] Run contracts defined
 - [ ] Safety guardrails active
+- [ ] **CRITICAL:** No cross-tenant AI state or context leakage
 
 ---
 

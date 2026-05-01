@@ -241,6 +241,7 @@ _Source: [URL]_ for key findings.
 - [ ] Procedures documented
 - [ ] Dashboards linked
 - [ ] Contacts updated
+- [ ] **CRITICAL:** No operational actions affect wrong tenant
 
 ---
 

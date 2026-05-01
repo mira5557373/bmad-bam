@@ -163,6 +163,7 @@ _Source: [URL]_ for key findings.
 - [ ] Dashboards created
 - [ ] Alerting configured
 - [ ] Tenant self-service enabled
+- [ ] **CRITICAL:** No operational actions affect wrong tenant
 
 ---
 

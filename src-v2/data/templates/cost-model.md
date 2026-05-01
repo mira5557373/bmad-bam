@@ -168,6 +168,7 @@ _Source: [URL]_ for key findings.
 - [ ] Cost caps enforced
 - [ ] Alerts configured
 - [ ] Optimization opportunities identified
+- [ ] **CRITICAL:** No billing errors that affect tenant charges
 
 ---
 

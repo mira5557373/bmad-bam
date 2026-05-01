@@ -96,6 +96,7 @@ _Source: [URL]_ for key findings.
 - [ ] Non-functional requirements specified
 - [ ] Tenant tier requirements defined
 - [ ] Constraints and assumptions documented
+- [ ] **CRITICAL:** Requirements validated against tenant isolation
 
 ---
 

@@ -136,6 +136,7 @@ _Source: [URL]_ for key findings.
 - [ ] Technology stack aligned with TSA tech-radar
 - [ ] Core contracts and patterns documented
 - [ ] Web research findings incorporated
+- [ ] **CRITICAL:** No cross-tenant data leakage possible
 
 ---
 

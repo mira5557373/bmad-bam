@@ -198,6 +198,7 @@ _Source: [URL]_ for key findings.
 - [ ] Consequences identified
 - [ ] Decision index maintained
 - [ ] Superseded decisions tracked
+- [ ] **CRITICAL:** Decisions documented with tenant impact
 
 ---
 

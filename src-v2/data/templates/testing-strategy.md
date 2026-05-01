@@ -239,6 +239,7 @@ _Source: [URL]_ for key findings.
 - [ ] Performance baselines set
 - [ ] Security testing integrated
 - [ ] CI/CD pipeline configured
+- [ ] **CRITICAL:** Tenant isolation verified in all test scenarios
 
 ---
 

@@ -187,6 +187,7 @@ _Source: [URL]_ for key findings.
 - [ ] Deprecation policy published
 - [ ] Migration guides available
 - [ ] Error responses standardized
+- [ ] **CRITICAL:** No cross-tenant data exposure in API responses
 
 ---
 

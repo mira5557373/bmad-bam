@@ -230,6 +230,7 @@ _Source: [URL]_ for key findings.
 - [ ] Scripts tested
 - [ ] Communication ready
 - [ ] Post-rollback actions assigned
+- [ ] **CRITICAL:** No operational actions affect wrong tenant
 
 ---
 

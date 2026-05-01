@@ -185,6 +185,7 @@ _Source: [URL]_ for key findings.
 - [ ] Decision points explained
 - [ ] Anomalies flagged
 - [ ] Performance within thresholds
+- [ ] **CRITICAL:** No cross-tenant AI state or context leakage
 
 ---
 

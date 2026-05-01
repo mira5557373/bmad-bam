@@ -176,6 +176,7 @@ _Source: [URL]_ for key findings.
 - [ ] Login page customization (Enterprise)
 - [ ] Asset management configured
 - [ ] Validation rules implemented
+- [ ] **CRITICAL:** White-label customizations isolated per tenant
 
 ---
 

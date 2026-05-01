@@ -160,6 +160,7 @@ _Source: [URL]_ for key findings.
 - [ ] Noisy neighbor protections in place
 - [ ] Capacity plan maintained
 - [ ] Load testing completed
+- [ ] **CRITICAL:** No cross-tenant data leakage possible
 
 ---
 

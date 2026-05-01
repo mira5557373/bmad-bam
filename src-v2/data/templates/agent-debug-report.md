@@ -168,6 +168,7 @@ _Source: [URL]_ for key findings.
 - [ ] Resolution applied
 - [ ] Prevention measures defined
 - [ ] Tenant communication sent (if needed)
+- [ ] **CRITICAL:** No cross-tenant AI state or context leakage
 
 ---
 

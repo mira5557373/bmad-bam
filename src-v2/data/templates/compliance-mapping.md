@@ -76,6 +76,7 @@ _Source: [URL]_ for key findings.
 - [ ] Controls mapped to requirements
 - [ ] Evidence collection automated
 - [ ] Audit schedule defined
+- [ ] **CRITICAL:** All regulatory requirements addressed
 
 ---
 

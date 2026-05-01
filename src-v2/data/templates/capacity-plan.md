@@ -193,6 +193,7 @@ _Source: [URL]_ for key findings.
 - [ ] Contingency procedures tested
 - [ ] Budget aligned
 - [ ] Review schedule established
+- [ ] **CRITICAL:** No operational actions affect wrong tenant
 
 ---
 

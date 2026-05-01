@@ -118,6 +118,7 @@ _Source: [URL]_ for key findings.
 - [ ] RLS policies documented
 - [ ] Cross-tenant prevention verified
 - [ ] Tier features documented
+- [ ] **CRITICAL:** No cross-tenant data leakage possible
 
 ---
 
