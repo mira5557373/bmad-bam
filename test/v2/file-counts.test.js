@@ -52,9 +52,9 @@ describe('V2 File Counts', () => {
     expect(files.length).toBeGreaterThanOrEqual(8);
   });
 
-  test('41 template files', () => {
+  test('48 template files (41 original + 7 new MCP/RAG/compliance)', () => {
     const files = fs.readdirSync(path.join(v2Dir, 'data/templates')).filter(f => f.endsWith('.md'));
-    expect(files.length).toBe(41);
+    expect(files.length).toBe(48);
   });
 
   test('3 sidecar files', () => {

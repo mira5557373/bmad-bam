@@ -134,7 +134,7 @@ BAM V2 Extension Module (src-v2/)
 ├── 112 pattern files (with shortcodes ZXX, NEXUS Phase 4 complete)
 ├── 16 domain files (enriched with multi-tenant context)
 ├── 33 checklists (QG-* format with recovery protocols)
-├── 41 templates (output artifacts)
+├── 48 templates (output artifacts)
 ├── 3 persona files (Atlas, Nova, Kai)
 ├── 6 CSV registries (patterns, gates, compliance)
 └── 3 sidecar memory templates
@@ -218,7 +218,7 @@ Confirm loaded. Ready for zero trust architecture guidance.
 | Pattern files | 112 | Architecture patterns with shortcodes (NEXUS Phase 4) |
 | Domain files | 16 | Enriched multi-tenant domains |
 | Checklists | 33 | Quality gate verification |
-| Templates | 41 | Output artifact templates |
+| Templates | 48 | Output artifact templates |
 | Personas | 3 | Atlas, Nova, Kai |
 | CSV registries | 6 | Pattern/gate/compliance data |
 | Sidecar templates | 3 | Persistent memory |
@@ -2210,7 +2210,7 @@ npm test -- test/schema.test.js   # Specific file
 | Pattern files | 112 | Unique shortcodes, all required sections |
 | Domain files | 16 | Enriched with pattern references |
 | Checklists | 33 | QG-* format with recovery protocols |
-| Templates | 41 | Output artifact templates |
+| Templates | 48 | Output artifact templates |
 | CSV registries | 6 | All patterns have CSV entries |
 
 ### Pattern-Specific Tests
