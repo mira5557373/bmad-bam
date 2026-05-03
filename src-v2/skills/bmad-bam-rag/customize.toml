@@ -1,0 +1,23 @@
+[workflow]
+
+activation_steps_prepend = [
+  "Loading RAG Pipeline Configuration workflow context.",
+]
+
+activation_steps_append = [
+  "Check for existing RAG patterns in pattern registry.",
+]
+
+persistent_facts = [
+  "file:{project-root}/_bmad/bam/data/context/bam-core.md",
+  "file:{project-root}/_bmad/bam/data/patterns/rag-*.md",
+]
+
+on_complete = """
+RAG Pipeline Configuration workflow complete.
+
+**Next Steps:**
+- Implement vector store based on configuration
+- Test tenant isolation in retrieval
+- Validate chunking and embedding quality
+"""

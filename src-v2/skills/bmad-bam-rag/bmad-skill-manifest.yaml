@@ -1,0 +1,6 @@
+type: workflow
+name: bmad-bam-rag
+displayName: RAG Pipeline Configuration
+description: 'Design RAG pipeline with multi-tenant vector storage'
+module: bam
+step_naming_convention: "step-NN-mode-description"
