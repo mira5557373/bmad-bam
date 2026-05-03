@@ -88,7 +88,7 @@ Establish DR testing cadence:
 - Failover procedure runbooks
 - Communication templates
 - DR testing schedule
-- **Load template:** `{project-root}/_bmad/bam/data/templates/disaster-recovery-template.md`
+- **Load template:** `./templates/disaster-recovery-plan.md`
 
 ## Next Step
 

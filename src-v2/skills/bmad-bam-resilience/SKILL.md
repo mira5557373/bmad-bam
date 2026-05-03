@@ -63,4 +63,4 @@ All outputs are written to `{output_folder}/resilience/`:
 
 - **Patterns:** `{project-root}/_bmad/bam/data/bam-patterns.csv` → filter: `disaster-recovery`, `chaos-engineering`
 - **Checklists:** `{project-root}/_bmad/bam/data/checklists/qg-dr.md`, `qg-ce1.md`
-- **Templates:** `{project-root}/_bmad/bam/data/templates/disaster-recovery-template.md`, `chaos-engineering-template.md`
+- **Templates:** `./templates/disaster-recovery-plan.md`, `./templates/chaos-engineering.md`
