@@ -40,7 +40,7 @@ Compile the complete scaling design document including capacity planning guideli
 
 - Steps 01-04 complete
 - All scaling components designed (horizontal, database, tenant-aware)
-- **Load template:** `{project-root}/_bmad/bam/data/templates/scaling-design.md`
+- **Load template:** `./templates/scaling-design.md`
 
 **Web Research (Required):**
 

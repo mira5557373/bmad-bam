@@ -50,7 +50,7 @@ Compile the complete observability design by defining dashboard templates by tie
 - Logging specification from Step 03
 - Tracing specification from Step 04
 - Pattern registry: `{project-root}/_bmad/bam/data/bam-patterns.csv`
-- Template: `{project-root}/_bmad/bam/data/templates/observability-design.md`
+- Template: `./templates/observability-design.md`
 
 ---
 
@@ -385,8 +385,8 @@ Confirm artifact generation.
 - Alert rules configuration
 - SLO definitions
 - **Output to:** `{output_folder}/planning-artifacts/observability-design.md`
-- **Load template:** `{project-root}/_bmad/bam/data/templates/observability-design.md`
-- **Load template:** `{project-root}/_bmad/bam/data/templates/runbook.md`
+- **Load template:** `./templates/observability-design.md`
+- **Load template:** `./templates/runbook.md`
 
 ---
 

@@ -35,8 +35,8 @@ tags: [workflow]
 - Alert rules configuration
 - SLO definitions
 - **Output to:** `{output_folder}/planning-artifacts/observability-design.md`
-- **Load template:** `{project-root}/_bmad/bam/data/templates/observability-design.md`
-- **Load template:** `{project-root}/_bmad/bam/data/templates/runbook.md`
+- **Load template:** `./templates/observability-design.md`
+- **Load template:** `./templates/runbook.md`
 
 ## Related Workflows
 

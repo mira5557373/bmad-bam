@@ -41,14 +41,14 @@ Compile the complete tenant onboarding design document including executive summa
 ## Prerequisites
 
 - Steps 1-4 completed: Full onboarding design ready
-- **Load template:** `{project-root}/_bmad/bam/data/templates/tenant-onboarding.md`
+- **Load template:** `./templates/tenant-onboarding.md`
 
 ---
 
 ## Inputs
 
 - Output from Steps 1-4: Complete onboarding design
-- Template: `{project-root}/_bmad/bam/data/templates/tenant-onboarding.md`
+- Template: `./templates/tenant-onboarding.md`
 - Pattern registry outputs for reference
 
 ---

@@ -41,7 +41,7 @@ Compile the complete security design document by synthesizing authentication, au
 ## Prerequisites
 
 - Steps 1-4 complete with all security domain designs
-- **Load template:** `{project-root}/_bmad/bam/data/templates/security-architecture.md`
+- **Load template:** `./templates/security-architecture.md`
 - **Load checklist:** `{project-root}/_bmad/bam/data/checklists/qg-m2.md`
 
 ---

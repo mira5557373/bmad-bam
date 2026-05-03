@@ -139,7 +139,7 @@ Ask for confirmation before proceeding to provisioning flow design.
 - Per-tier provisioning requirements matrix
 - Onboarding scope definition
 - Design decisions documented in frontmatter
-- **Load template:** `{project-root}/_bmad/bam/data/templates/tenant-onboarding.md`
+- **Load template:** `./templates/tenant-onboarding.md`
 
 ---
 

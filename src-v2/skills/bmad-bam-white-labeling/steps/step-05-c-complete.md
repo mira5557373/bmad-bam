@@ -45,7 +45,7 @@ Compile all white-labeling design decisions into a comprehensive design document
 ## Prerequisites
 
 - Steps 01-04 completed: All customization dimensions designed
-- **Load template:** `{project-root}/_bmad/bam/data/templates/white-label-config.md`
+- **Load template:** `./templates/white-label-config.md`
 - **Load patterns:** `{project-root}/_bmad/bam/data/bam-patterns.csv` → filter: `customization`
 
 ---

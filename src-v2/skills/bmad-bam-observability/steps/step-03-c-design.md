@@ -330,7 +330,7 @@ Select an option:
 - Context injection design
 - Retention policy configuration
 - PII handling rules
-- **Load template:** `{project-root}/_bmad/bam/data/templates/observability-design.md`
+- **Load template:** `./templates/observability-design.md`
 
 ---
 

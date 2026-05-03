@@ -53,7 +53,7 @@ describe('V2 File Counts', () => {
     expect(files.length).toBeGreaterThanOrEqual(8);
   });
 
-  test('22 template files (34 - 12 moved to SKILL_OWNED batch 1)', () => {
+  test('10 template files (22 - 12 moved to SKILL_OWNED batch 2)', () => {
     const files = fs.readdirSync(path.join(v2Dir, 'data/templates')).filter(f => f.endsWith('.md'));
     // 48 original - 3 moved to standards - 4 moved to new skills (mcp, rag, governance, platform)
     // - 7 moved to producer skills (master-architecture, tenant-isolation, agent-runtime,
@@ -61,7 +61,10 @@ describe('V2 File Counts', () => {
     // - 12 moved to SKILL_OWNED batch 1 (agent-debug, agent-tracing, api-versioning,
     //   auth-integration, caching, compliance, cross-module-story, data-residency,
     //   resilience, events, llm-versioning, memory-tiers)
-    expect(files.length).toBe(22);
+    // - 12 moved to SKILL_OWNED batch 2 (module-epic, observability-design, runbook,
+    //   production-readiness, requirements-analysis, research-findings, scaling-design,
+    //   security-architecture, tenant-offboarding, tenant-onboarding, tool-contract, white-label-config)
+    expect(files.length).toBe(10);
   });
 
   test('3 standard files (FORMAT_STANDARD templates moved from templates/)', () => {

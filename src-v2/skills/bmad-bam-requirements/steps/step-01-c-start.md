@@ -167,7 +167,7 @@ _Source: [URL]_
 - Requirements source catalog
 - Initial requirements document structure
 - Analysis framework definition
-- **Load template:** `{project-root}/_bmad/bam/data/templates/requirements-analysis.md`
+- **Load template:** `./templates/requirements-analysis.md`
 
 ---
 

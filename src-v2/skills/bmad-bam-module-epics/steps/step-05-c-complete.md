@@ -29,7 +29,7 @@
 - **From Step 02:** Epic scope, acceptance criteria, multi-tenant considerations
 - **From Step 03:** User stories, estimates, dependencies, sprint allocation
 - **From Step 04:** Quality gate requirements, test coverage, documentation, review checkpoints
-- **Template:** `{project-root}/_bmad/bam/data/templates/module-epic.md`
+- **Template:** `./templates/module-epic.md`
 
 ### Output
 
@@ -56,7 +56,7 @@ Compile the final epic document by consolidating all content from Steps 1-4. Use
 Load the epic template:
 
 ```
-{project-root}/_bmad/bam/data/templates/module-epic.md
+./templates/module-epic.md
 ```
 
 ### Action 2: Compile Document

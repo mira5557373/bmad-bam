@@ -27,7 +27,7 @@
 
 - **From Step 01:** Module boundaries, epic categories, module architecture
 - **Pattern registry:** `{project-root}/_bmad/bam/data/bam-patterns.csv`
-- **Template:** `{project-root}/_bmad/bam/data/templates/module-epic.md`
+- **Template:** `./templates/module-epic.md`
 
 ### Output
 
