@@ -1,9 +1,18 @@
 ---
-name: decision-log
-description: Document architecture decision records (ADRs)
-category: governance
-version: 2.0.0
-type: template
+# BMAD WORKFLOW STATE
+stepsCompleted: []
+inputDocuments: []
+workflowType: 'bam-governance'
+project_name: '{{project_name}}'
+user_name: '{{user_name}}'
+date: '{{date}}'
+
+# BAM EXTENSIONS
+bam_name: decision-log
+bam_description: "Document architecture decision records (ADRs)"
+bam_category: governance
+bam_version: 2.0.0
+bam_type: template
 web_research_enabled: true
 source_verification: true
 ---

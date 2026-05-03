@@ -1,9 +1,18 @@
 ---
-name: rollback-plan
-description: Document deployment rollback procedures
-category: operations
-version: 2.0.0
-type: template
+# BMAD WORKFLOW STATE
+stepsCompleted: []
+inputDocuments: []
+workflowType: 'bam-resilience'
+project_name: '{{project_name}}'
+user_name: '{{user_name}}'
+date: '{{date}}'
+
+# BAM EXTENSIONS
+bam_name: rollback-plan
+bam_description: "Document deployment rollback procedures"
+bam_category: operations
+bam_version: 2.0.0
+bam_type: template
 web_research_enabled: true
 source_verification: true
 ---

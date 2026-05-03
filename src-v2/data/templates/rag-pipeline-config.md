@@ -1,12 +1,21 @@
 ---
-name: rag-pipeline-config
-description: RAG pipeline configuration with multi-tenant vector storage
-category: rag
-version: 1.0.0
-type: template
+# BMAD WORKFLOW STATE
+stepsCompleted: []
+inputDocuments: []
+workflowType: 'bam-rag'
+project_name: '{{project_name}}'
+user_name: '{{user_name}}'
+date: '{{date}}'
+
+# BAM EXTENSIONS
+bam_name: rag-pipeline-config
+bam_description: "RAG pipeline configuration with multi-tenant vector storage"
+bam_category: rag
+bam_version: 2.0.0
+bam_type: template
+bam_related_patterns: [rag-pipeline, vector-store-multi-tenant, semantic-chunking, embedding-lifecycle]
 web_research_enabled: true
 source_verification: true
-related_patterns: [rag-pipeline, vector-store-multi-tenant, semantic-chunking, embedding-lifecycle]
 ---
 
 ## Purpose

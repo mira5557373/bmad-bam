@@ -1,12 +1,21 @@
 ---
-name: mcp-server-config
-description: MCP server configuration and multi-tenant isolation template
-category: mcp
-version: 1.0.0
-type: template
+# BMAD WORKFLOW STATE
+stepsCompleted: []
+inputDocuments: []
+workflowType: 'bam-mcp'
+project_name: '{{project_name}}'
+user_name: '{{user_name}}'
+date: '{{date}}'
+
+# BAM EXTENSIONS
+bam_name: mcp-server-config
+bam_description: "MCP server configuration and multi-tenant isolation template"
+bam_category: mcp
+bam_version: 2.0.0
+bam_type: template
+bam_related_patterns: [mcp-server-lifecycle, mcp-tenant-isolation, mcp-tool-discovery, mcp-authentication]
 web_research_enabled: true
 source_verification: true
-related_patterns: [mcp-server-lifecycle, mcp-tenant-isolation, mcp-tool-discovery, mcp-authentication]
 ---
 
 ## Purpose

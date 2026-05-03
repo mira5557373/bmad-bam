@@ -1,12 +1,21 @@
 ---
-name: hipaa-compliance-report
-description: HIPAA compliance documentation for healthcare SaaS applications
-category: compliance
-version: 1.0.0
-type: template
+# BMAD WORKFLOW STATE
+stepsCompleted: []
+inputDocuments: []
+workflowType: 'bam-privacy-compliance'
+project_name: '{{project_name}}'
+user_name: '{{user_name}}'
+date: '{{date}}'
+
+# BAM EXTENSIONS
+bam_name: hipaa-compliance-report
+bam_description: "HIPAA compliance documentation for healthcare SaaS applications"
+bam_category: compliance
+bam_version: 2.0.0
+bam_type: template
+bam_related_patterns: [hipaa-compliance, encryption-management, audit-trail]
 web_research_enabled: true
 source_verification: true
-related_patterns: [hipaa-compliance, encryption-management, audit-trail]
 ---
 
 ## Purpose

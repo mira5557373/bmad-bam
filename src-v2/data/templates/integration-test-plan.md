@@ -1,9 +1,18 @@
 ---
-name: integration-test-plan
-description: Document integration testing strategy with tenant isolation
-category: quality
-version: 2.0.0
-type: template
+# BMAD WORKFLOW STATE
+stepsCompleted: []
+inputDocuments: []
+workflowType: 'bam-testing'
+project_name: '{{project_name}}'
+user_name: '{{user_name}}'
+date: '{{date}}'
+
+# BAM EXTENSIONS
+bam_name: integration-test-plan
+bam_description: "Document integration testing strategy with tenant isolation"
+bam_category: quality
+bam_version: 2.0.0
+bam_type: template
 web_research_enabled: true
 source_verification: true
 ---

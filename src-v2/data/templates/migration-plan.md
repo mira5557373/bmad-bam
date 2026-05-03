@@ -1,9 +1,18 @@
 ---
-name: migration-plan
-description: Document data migration plan with tenant-aware execution
-category: operations
-version: 2.0.0
-type: template
+# BMAD WORKFLOW STATE
+stepsCompleted: []
+inputDocuments: []
+workflowType: 'bam-resilience'
+project_name: '{{project_name}}'
+user_name: '{{user_name}}'
+date: '{{date}}'
+
+# BAM EXTENSIONS
+bam_name: migration-plan
+bam_description: "Document data migration plan with tenant-aware execution"
+bam_category: operations
+bam_version: 2.0.0
+bam_type: template
 web_research_enabled: true
 source_verification: true
 ---

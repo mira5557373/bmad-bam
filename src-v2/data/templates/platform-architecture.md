@@ -1,12 +1,21 @@
 ---
-name: platform-architecture
-description: Platform architecture for extensibility, plugins, and partner ecosystem
-category: platform
-version: 1.0.0
-type: template
+# BMAD WORKFLOW STATE
+stepsCompleted: []
+inputDocuments: []
+workflowType: 'bam-platform'
+project_name: '{{project_name}}'
+user_name: '{{user_name}}'
+date: '{{date}}'
+
+# BAM EXTENSIONS
+bam_name: platform-architecture
+bam_description: "Platform architecture for extensibility, plugins, and partner ecosystem"
+bam_category: platform
+bam_version: 2.0.0
+bam_type: template
+bam_related_patterns: [plugin-architecture, white-label, api-marketplace, partner-integration]
 web_research_enabled: true
 source_verification: true
-related_patterns: [plugin-architecture, white-label, api-marketplace, partner-integration]
 ---
 
 ## Purpose

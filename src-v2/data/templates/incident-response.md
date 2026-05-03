@@ -1,9 +1,18 @@
 ---
-name: incident-response
-description: Document incident response procedures with tenant impact assessment
-category: operations
-version: 2.0.0
-type: template
+# BMAD WORKFLOW STATE
+stepsCompleted: []
+inputDocuments: []
+workflowType: 'bam-security-operations'
+project_name: '{{project_name}}'
+user_name: '{{user_name}}'
+date: '{{date}}'
+
+# BAM EXTENSIONS
+bam_name: incident-response
+bam_description: "Document incident response procedures with tenant impact assessment"
+bam_category: operations
+bam_version: 2.0.0
+bam_type: template
 web_research_enabled: true
 source_verification: true
 ---

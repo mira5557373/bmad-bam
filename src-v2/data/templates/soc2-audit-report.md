@@ -1,12 +1,21 @@
 ---
-name: soc2-audit-report
-description: SOC 2 Type II audit documentation and control mapping
-category: compliance
-version: 1.0.0
-type: template
+# BMAD WORKFLOW STATE
+stepsCompleted: []
+inputDocuments: []
+workflowType: 'bam-compliance'
+project_name: '{{project_name}}'
+user_name: '{{user_name}}'
+date: '{{date}}'
+
+# BAM EXTENSIONS
+bam_name: soc2-audit-report
+bam_description: "SOC 2 Type II audit documentation and control mapping"
+bam_category: compliance
+bam_version: 2.0.0
+bam_type: template
+bam_related_patterns: [soc2-compliance, audit-trail, compliance-reporting]
 web_research_enabled: true
 source_verification: true
-related_patterns: [soc2-compliance, audit-trail, compliance-reporting]
 ---
 
 ## Purpose

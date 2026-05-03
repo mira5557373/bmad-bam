@@ -1,12 +1,21 @@
 ---
-name: gdpr-compliance-report
-description: GDPR compliance documentation and data subject rights implementation
-category: compliance
-version: 1.0.0
-type: template
+# BMAD WORKFLOW STATE
+stepsCompleted: []
+inputDocuments: []
+workflowType: 'bam-privacy-compliance'
+project_name: '{{project_name}}'
+user_name: '{{user_name}}'
+date: '{{date}}'
+
+# BAM EXTENSIONS
+bam_name: gdpr-compliance-report
+bam_description: "GDPR compliance documentation and data subject rights implementation"
+bam_category: compliance
+bam_version: 2.0.0
+bam_type: template
+bam_related_patterns: [gdpr-compliance, consent-management, data-retention, anonymization]
 web_research_enabled: true
 source_verification: true
-related_patterns: [gdpr-compliance, consent-management, data-retention, anonymization]
 ---
 
 ## Purpose
