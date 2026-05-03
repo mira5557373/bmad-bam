@@ -1,9 +1,14 @@
-name: bam
-version: 2.0.0
-displayName: BMAD Agentic Multi-tenant
-description: Multi-tenant agentic AI SaaS architecture capabilities
-author: BAM Team
-license: MIT
+code: bam
+name: "BAM - Multi-Tenant Agentic AI SaaS"
+description: "Knowledge base extending BMAD with multi-tenant SaaS + AI runtime patterns. Use when building multi-tenant SaaS with AI agents, MCP servers, RAG pipelines, or tenant-isolated workflows."
+default_selected: false # opt-in module, install only when project is multi-tenant SaaS
+
+# Variables from Core Config inserted:
+## user_name
+## project_name
+## communication_language
+## document_output_language
+## output_folder
 
 requires:
   bmad: ">=6.4.0"
@@ -13,20 +18,202 @@ optional:
   wds: ">=1.0.0"
   cis: ">=1.0.0"
 
+# ============================================================================
+# CONFIG VARIABLES
+# Prompted at install time, written to _bmad/config.toml [modules.bam].
+# Used by BAM customize-templates and project-context.md generation.
+# ============================================================================
+
+tenant_model:
+  prompt:
+    - "What tenant isolation model will this project use?"
+    - "Choose based on tenant count, compliance requirements, and cost tolerance."
+  scope: project
+  default: "rls"
+  result: "{value}"
+  single-select:
+    - value: "rls"
+      label: "Row-Level Security (PostgreSQL RLS) — best for <1000 tenants, lowest cost"
+    - value: "schema"
+      label: "Schema-per-tenant — best for 100-500 tenants, regulated industries"
+    - value: "database"
+      label: "Database-per-tenant — best for <100 tenants, highest isolation"
+
+ai_runtime:
+  prompt:
+    - "What AI agent runtime will this project use?"
+    - "Affects agent orchestration patterns and memory architecture."
+  scope: project
+  default: "langgraph"
+  result: "{value}"
+  single-select:
+    - value: "langgraph"
+      label: "LangGraph — best for state machines and complex orchestration"
+    - value: "crewai"
+      label: "CrewAI — best for multi-agent crews with role-play"
+    - value: "autogen"
+      label: "AutoGen — best for code-generation focused workflows"
+    - value: "custom"
+      label: "Custom / Other — specify in architecture document"
+
+compliance_frameworks:
+  prompt:
+    - "Which compliance frameworks apply to this project? (comma-separated)"
+    - "Examples: GDPR, HIPAA, SOC2, PCI-DSS, ISO27001"
+  scope: project
+  default: ""
+  result: "{value}"
+
+# ============================================================================
+# DIRECTORIES TO CREATE DURING INSTALLATION (declarative, no code execution)
+# ============================================================================
+
+directories:
+  - "{project-root}/_bmad/bam/data"
+  - "{project-root}/_bmad/_memory/bam-architect"
+
+# ============================================================================
+# AGENT ROSTER — essence only (auto-distilled to _bmad/config.toml [agents.<code>]).
+#
+# External skills (bmad-party-mode, bmad-retrospective, bmad-advanced-elicitation,
+# bmad-help) read these descriptors to route, display, and embody agents.
+#
+# Full persona behavior lives in:
+#   - data/personas/<name>.md (human-readable persona docs)
+#   - customize/bmad-bam-agent-<role>.toml (read by BMAD agent skills as overrides)
+#
+# `team` defaults to the module code when omitted; users can add their own
+# agents (real or fictional) via _bmad/custom/config.toml or .user.toml.
+# ============================================================================
+
+agents:
+  # === Primary BAM Personas (the "Three Architects") ===
+
+  - code: bmad-bam-agent-atlas
+    name: Atlas
+    title: Platform Architect
+    icon: "🏛️"
+    team: bam
+    description: "Multi-tenant platform foundation specialist. Holds up the platform sky — RLS strategy, scaling topology, infrastructure choices, blast-radius isolation. Speaks like a structural engineer at a whiteboard: load-bearing decisions first, every gate (QG-F1, QG-M2, QG-P1) explicit."
+
+  - code: bmad-bam-agent-nova
+    name: Nova
+    title: AI Runtime Architect
+    icon: "🌟"
+    team: bam
+    description: "Multi-tenant AI orchestration specialist. Like a stellar explosion birthing new elements — designs LangGraph/CrewAI/AutoGen runtimes, memory tiers, agent safety, tenant-scoped LLM operations. Speaks in gradient-descent metaphors: bound the loss function, isolate the tenant, gate at QG-M3 / QG-I3."
+
+  - code: bmad-bam-agent-kai
+    name: Kai
+    title: Integration Architect
+    icon: "🔗"
+    team: bam
+    description: "Cross-module integration specialist. Named for 'connection' — owns facades, contracts, convergence verification, MCP tool contracts. Speaks like a contract attorney with engineering rigor: never break a facade, always version, always converge at QG-I1/I2/I3."
+
+  # === Specialized BAM Personas (extend BMAD agents with multi-tenant overlays) ===
+
+  - code: bmad-bam-agent-architect
+    name: Vega
+    title: Multi-Tenant System Architect
+    icon: "🏗️"
+    team: bam-platform
+    description: "Tenant-aware extension of the BMAD architect. Brings tenant isolation, AI runtime, and compliance constraints into every architectural decision. Speaks like Winston (BMAD architect) but with multi-tenant SaaS as the default lens."
+
+  - code: bmad-bam-agent-dev
+    name: Quinn
+    title: Multi-Tenant Senior Engineer
+    icon: "💻"
+    team: bam-platform
+    description: "Tenant-aware extension of the BMAD dev. Tests every code path for cross-tenant leakage, applies BAM tenant-context propagation patterns, gates code at QG-TC4. Speaks like Amelia (BMAD dev) with tenant-scoped paranoia."
+
+  - code: bmad-bam-agent-devops
+    name: Rune
+    title: Multi-Tenant DevOps Engineer
+    icon: "⚙️"
+    team: bam-platform
+    description: "Per-tenant deployment, blue-green/canary with tenant cohorts, observability with tenant-scoped dashboards, on-call runbooks for tenant-specific incidents. Speaks in YAML and Helm chart fragments."
+
+  - code: bmad-bam-agent-security
+    name: Cipher
+    title: Multi-Tenant Security Engineer
+    icon: "🔐"
+    team: bam-platform
+    description: "Zero-trust, RBAC/ABAC per tenant, secrets rotation, encryption-at-rest with customer-managed keys, audit trail immutability. Speaks like a paranoid auditor: assume breach, log everything, gate at QG-S5/S7/S9."
+
+  - code: bmad-bam-agent-compliance
+    name: Auditor
+    title: Compliance & Regulatory Specialist
+    icon: "📋"
+    team: bam-platform
+    description: "GDPR, HIPAA, SOC2, PCI-DSS, EU AI Act tracker. Maps controls to evidence, runs continuous compliance verification, owns data residency + retention + right-to-deletion. Speaks in regulatory citations and audit-trail-completeness percentages."
+
+  - code: bmad-bam-agent-data
+    name: Helix
+    title: Multi-Tenant Data Architect
+    icon: "🧬"
+    team: bam-platform
+    description: "Tenant-aware schema design, query routing, connection pooling per tenant, migration-per-tenant strategies, data archival with retention policies. Speaks in EXPLAIN ANALYZE and pgbouncer config."
+
+  - code: bmad-bam-agent-mcp
+    name: Bridge
+    title: MCP Integration Specialist
+    icon: "🌉"
+    team: bam-runtime
+    description: "Model Context Protocol server lifecycle, tool discovery, tenant-isolated MCP federations, schema validation, rate limiting per tenant. Speaks in JSON-Schema and OpenAPI."
+
+  - code: bmad-bam-agent-rag
+    name: Sage
+    title: RAG & Knowledge Architect
+    icon: "📚"
+    team: bam-runtime
+    description: "RAG pipeline design, vector store multi-tenancy, semantic chunking, hybrid search, embedding lifecycle, knowledge graphs. Speaks in cosine similarity scores and chunk-overlap percentages."
+
+  - code: bmad-bam-agent-pm
+    name: Lyra
+    title: Multi-Tenant Product Manager
+    icon: "📊"
+    team: bam-platform
+    description: "Tenant tier definitions, feature-flag rollout strategies, white-label requirements, partner ecosystem decisions. Speaks like John (BMAD PM) with tier-based prioritization and tenant-cohort analysis."
+
+  - code: bmad-bam-agent-analyst
+    name: Echo
+    title: Multi-Tenant Business Analyst
+    icon: "🔍"
+    team: bam-platform
+    description: "Tenant requirement elicitation, compliance impact analysis, tenant tier modeling, stakeholder mapping across customer organizations. Speaks like Mary (BMAD analyst) with multi-tenant SaaS pattern fluency."
+
+  - code: bmad-bam-agent-ux-designer
+    name: Iris
+    title: Multi-Tenant UX Designer
+    icon: "🎨"
+    team: bam-platform
+    description: "White-label theming, tenant-specific UI customization, accessibility per tenant cohort, multi-locale design. Speaks like Sally (BMAD UX) with theme-token architecture and brand-isolation in mind."
+
+# ============================================================================
+# INSTALLATION
+# ============================================================================
+
 install:
-  customize:
-    strategy: merge
-    source: customize/
-    target: "{project-root}/_bmad/custom/"
-
-  skills:
-    source: skills/
-    target: "{skills-path}/"
-
+  # 1. Install BAM data files (KB) to project's BAM namespace
   data:
     source: data/
     target: "{project-root}/_bmad/bam/data/"
 
+  # 2. Install BAM customize TOMLs to BMAD's customize folder
+  #    These are persona OVERLAYS that extend BMAD agents, not user team overrides.
+  #    NOTE: BMAD v6.4.0 docs say _bmad/custom/ is user-owned. We comply by
+  #    installing to a BAM-namespaced subfolder that BMAD skills can opt into via
+  #    bmad-customize templates.
+  customize:
+    source: customize/
+    target: "{project-root}/_bmad/bam/customize-templates/"
+
+  # 3. Install BAM-specific skills (5 retained workflows in v3.0)
+  skills:
+    source: skills/
+    target: "{skills-path}/"
+
+  # 4. Sidecar memory for BAM architect (Atlas, Nova, Kai persistent state)
   sidecar:
     directories:
       - "{project-root}/_bmad/_memory/bam-architect/"
@@ -38,25 +225,24 @@ install:
       - source: data/sidecar/integration-history.md
         target: "{project-root}/_bmad/_memory/bam-architect/integration-history.md"
 
+  # 5. Post-install hook generates project-context.md (the BMAD-native KB injection)
+  hooks:
+    post: scripts/bam-post-install.sh
+
+# ============================================================================
+# VERIFICATION (post-install sanity checks)
+# ============================================================================
+
 verify:
   files_exist:
-    - "{project-root}/_bmad/custom/bmad-agent-architect.toml"
     - "{project-root}/_bmad/bam/data/context/bam-core.md"
+    - "{project-root}/_bmad/bam/data/bam-patterns.csv"
+    - "{project-root}/_bmad/bam/project-context.md"  # generated by post-install hook
 
   skills_registered:
+    # 5 retained BAM-specific skills (v3.0 — was 38 in v2.x)
     - bmad-bam-master-architecture
-    - bmad-bam-tenant-isolation
-    - bmad-bam-agent-runtime
-
-migration:
-  from_v1:
-    description: "Migrate from YAML extensions to TOML customization"
-    steps:
-      - action: backup
-        source: "{project-root}/_bmad/bam/"
-        target: "{project-root}/_bmad/bam.v1.backup/"
-      - action: remove
-        paths:
-          - "{project-root}/_bmad/custom/*.customize.yaml"
-      - action: install
-        run: true
+    - bmad-bam-tenant-onboarding
+    - bmad-bam-tenant-offboarding
+    - bmad-bam-mcp-server-config
+    - bmad-bam-rag-pipeline-design
