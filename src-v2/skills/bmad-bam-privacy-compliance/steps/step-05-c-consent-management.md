@@ -314,7 +314,7 @@ Compile all steps into the final document:
 3. Proceed to `bmad-bam-audit-logging` for audit implementation
 ```
 
-**Load template:** `{project-root}/_bmad/bam/data/templates/privacy-compliance-template.md`
+**Load template:** `./templates/gdpr-compliance-report.md`
 
 ## Verification
 

@@ -61,6 +61,7 @@ All outputs are written to `{output_folder}/resilience/`:
 
 ## Templates
 
+- `templates/chaos-engineering.md` - Chaos engineering test plan template
 - `templates/disaster-recovery-plan.md` - Disaster recovery plan template
 - `templates/migration-plan.md` - Migration plan template
 - `templates/rollback-plan.md` - Rollback plan template
