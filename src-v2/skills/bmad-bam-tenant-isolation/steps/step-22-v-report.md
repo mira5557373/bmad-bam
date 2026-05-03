@@ -42,7 +42,7 @@ Generate a formal QG-M2 validation report documenting all tenant isolation valid
 
 - Step 21 completed: All validation checks run
 - Gate decision calculated (PASS/CONDITIONAL/FAIL)
-- **Load template:** `{project-root}/_bmad/bam/data/templates/validation-report.md`
+- **Load standard:** `{project-root}/_bmad/bam/data/standards/std-validation-report.md`
 
 ---
 

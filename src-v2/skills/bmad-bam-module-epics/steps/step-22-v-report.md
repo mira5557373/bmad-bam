@@ -42,7 +42,7 @@ Generate a formal epic validation report documenting all validation findings, th
 
 - Step 21 completed: All validation checks run
 - Validation decision calculated (PASS/CONDITIONAL/FAIL)
-- **Load template:** `{project-root}/_bmad/bam/data/templates/validation-report.md`
+- **Load standard:** `{project-root}/_bmad/bam/data/standards/std-validation-report.md`
 
 ---
 

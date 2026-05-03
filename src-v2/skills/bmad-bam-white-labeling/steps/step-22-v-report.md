@@ -39,7 +39,7 @@ Generate a comprehensive validation report documenting all findings and the qual
 
 - Step 21 completed: Validation checks executed
 - Gate decision calculated
-- **Load template:** `{project-root}/_bmad/bam/data/templates/validation-report.md` (if exists)
+- **Load standard:** `{project-root}/_bmad/bam/data/standards/std-validation-report.md` (if exists)
 
 ---
 

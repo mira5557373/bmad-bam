@@ -1,6 +1,6 @@
 # CLAUDE.md - BAM Extension Module
 
-> **Quick Start:** BAM is a **pure extension module** for multi-tenant SaaS. **14 TOMLs, 34 skills, 112 patterns, 20 domains, 37 checklists, 48 templates**. Run `npm test` before any PR. Never use TOML `memories` key.
+> **Quick Start:** BAM is a **pure extension module** for multi-tenant SaaS. **14 TOMLs, 34 skills, 112 patterns, 20 domains, 37 checklists, 45 templates, 3 standards**. Run `npm test` before any PR. Never use TOML `memories` key.
 
 ---
 
@@ -33,7 +33,8 @@ src-v2/
     ├── patterns/        # 112 pattern files with shortcodes
     ├── domains/         # 20 domain context files
     ├── checklists/      # 37 QG-* quality gate checklists
-    ├── templates/       # 48 output artifact templates
+    ├── templates/       # 45 output artifact templates
+    ├── standards/       # 3 shared format standards (std-*)
     ├── personas/        # 3 architect personas
     ├── sidecar/         # 3 memory templates
     └── *.csv            # 6 registry files
@@ -48,7 +49,8 @@ src-v2/
 | Pattern files | 112 | Architecture patterns with shortcodes |
 | Domain files | 20 | Multi-tenant context |
 | Checklists | 37 | Quality gate verification |
-| Templates | 48 | Output artifacts |
+| Templates | 45 | Output artifacts |
+| Standards | 3 | Shared format standards (validation, convergence, gate) |
 | CSV registries | 6 | Pattern/gate/compliance data |
 
 ---
@@ -180,6 +182,7 @@ skill = "bmad-bam-tenant-isolation"
 | Add domain | `src-v2/data/domains/{domain}.md` |
 | Add checklist | `src-v2/data/checklists/qg-{id}.md` |
 | Add template | `src-v2/data/templates/{artifact}.md` |
+| Add standard | `src-v2/data/standards/std-{name}.md` |
 | Core context | `src-v2/data/context/bam-core.md` |
 | Pattern CSV | `src-v2/data/bam-patterns.csv` |
 
@@ -214,7 +217,8 @@ npm test -- --watch         # Watch mode
 | Patterns | 112 |
 | Domains | 20 |
 | Checklists | 37 |
-| Templates | 48 |
+| Templates | 45 |
+| Standards | 3 |
 
 **Validation Commands:**
 ```bash

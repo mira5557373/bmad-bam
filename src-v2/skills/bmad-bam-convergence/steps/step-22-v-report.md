@@ -40,7 +40,7 @@ Generate a comprehensive validation report summarizing findings from the converg
 
 - Step 20 completed: Artifacts loaded
 - Step 21 completed: Validation executed
-- **Load template:** `{project-root}/_bmad/bam/data/templates/convergence-report.md`
+- **Load standard:** `{project-root}/_bmad/bam/data/standards/std-convergence-report.md`
 
 ---
 

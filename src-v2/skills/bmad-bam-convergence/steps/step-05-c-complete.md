@@ -45,7 +45,7 @@ Compile the final convergence verification report with QG-I1 (Cross-Module Conve
 
 - Step 04 completed: Agent safety verified
 - All verification data from Steps 02-04 available
-- **Load template:** `{project-root}/_bmad/bam/data/templates/convergence-report.md`
+- **Load standard:** `{project-root}/_bmad/bam/data/standards/std-convergence-report.md`
 - **Load checklists:** QG-I1, QG-I2, QG-I3 from `{project-root}/_bmad/bam/data/checklists/`
 
 ---
@@ -319,7 +319,7 @@ Ask for confirmation before finalizing report.
 - `{output_folder}/planning-artifacts/architecture/convergence-report.md`
 - Gate decisions: QG-I1, QG-I2, QG-I3
 - Release recommendation: GO / GO with Conditions / NO-GO
-- **Load template:** `{project-root}/_bmad/bam/data/templates/convergence-report.md`
+- **Load standard:** `{project-root}/_bmad/bam/data/standards/std-convergence-report.md`
 
 ---
 

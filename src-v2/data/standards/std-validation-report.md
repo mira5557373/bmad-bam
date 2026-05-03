@@ -2,19 +2,18 @@
 # BMAD WORKFLOW STATE
 stepsCompleted: []
 inputDocuments: []
-workflowType: 'bam-validation'
-project_name: '{{project_name}}'
-user_name: '{{user_name}}'
-date: '{{date}}'
+workflowType: 'standard'
+
+# STANDARD METADATA
+type: standard
+standard_version: 2.0.0
+consumers: [all-qg-skills]
+breaking_change_policy: semver
 
 # BAM EXTENSIONS
-bam_name: validation-report
-bam_description: "Document validation results for quality gate"
+bam_name: std-validation-report
+bam_description: "Standard format for quality gate validation reports"
 bam_category: quality
-bam_version: 2.0.0
-bam_type: template
-web_research_enabled: true
-source_verification: true
 ---
 
 ## Purpose

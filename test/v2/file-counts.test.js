@@ -52,9 +52,14 @@ describe('V2 File Counts', () => {
     expect(files.length).toBeGreaterThanOrEqual(8);
   });
 
-  test('48 template files (41 original + 7 new MCP/RAG/compliance)', () => {
+  test('45 template files (48 - 3 moved to standards)', () => {
     const files = fs.readdirSync(path.join(v2Dir, 'data/templates')).filter(f => f.endsWith('.md'));
-    expect(files.length).toBe(48);
+    expect(files.length).toBe(45);
+  });
+
+  test('3 standard files (FORMAT_STANDARD templates moved from templates/)', () => {
+    const files = fs.readdirSync(path.join(v2Dir, 'data/standards')).filter(f => f.endsWith('.md'));
+    expect(files.length).toBe(3);
   });
 
   test('3 sidecar files', () => {
@@ -83,6 +88,7 @@ describe('V2 File Counts', () => {
       'data/patterns',
       'data/checklists',
       'data/templates',
+      'data/standards',
       'data/sidecar'
     ];
 
