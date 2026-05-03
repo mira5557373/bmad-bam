@@ -4,11 +4,13 @@ const path = require('path');
 describe('Workflow CEV Modes', () => {
   const skillsDir = path.join(__dirname, '../../src-v2/skills');
 
-  test('35 workflows exist', () => {
+  test('38 workflows exist', () => {
     const workflows = fs.readdirSync(skillsDir).filter(d =>
       d.startsWith('bmad-bam-') && fs.statSync(path.join(skillsDir, d)).isDirectory()
     );
-    expect(workflows.length).toBe(35);
+    // 35 original + 1 mcp + 1 rag + 1 governance + 1 platform - 1 merged = 38
+    // (Note: governance was created separately, merged with existing count)
+    expect(workflows.length).toBe(38);
   });
 
   test('each workflow has required files', () => {

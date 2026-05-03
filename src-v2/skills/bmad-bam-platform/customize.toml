@@ -1,0 +1,23 @@
+[workflow]
+
+activation_steps_prepend = [
+  "Loading Platform Architecture workflow context.",
+]
+
+activation_steps_append = [
+  "Check for existing platform patterns in pattern registry.",
+]
+
+persistent_facts = [
+  "file:{project-root}/_bmad/bam/data/context/bam-core.md",
+  "file:{project-root}/_bmad/bam/data/patterns/plugin-*.md",
+]
+
+on_complete = """
+Platform Architecture workflow complete.
+
+**Next Steps:**
+- Implement plugin SDK based on architecture
+- Configure white-label system
+- Set up partner API
+"""
