@@ -15,9 +15,9 @@ This document defines the architecture for full BMAD Method v6.4.0+ workflow int
 1. **Three-tier template architecture:** Standards, Artifact-Dependency, Skill-Owned
 2. **Full skill encapsulation:** Templates move to per-skill `templates/` directories
 3. **BMAD-compatible frontmatter:** All templates gain workflow state fields
-4. **Two new skills:** `bmad-bam-mcp` and `bmad-bam-rag` for orphan templates
+4. **Four new skills:** `bmad-bam-mcp`, `bmad-bam-rag`, `bmad-bam-governance`, `bmad-bam-platform`
 
-**Scope:** 48 templates, 34 existing skills, 2 new skills, 3 standards
+**Scope:** 48 templates, 34 existing skills, 4 new skills, 3 standards
 
 ---
 
@@ -199,13 +199,13 @@ bam_category: quality
 |----------|----------------|-----------|
 | `capacity-plan.md` | `bmad-bam-scaling` | Capacity is part of scaling |
 | `cost-model.md` | `bmad-bam-billing` | Cost model is billing-adjacent |
-| `decision-log.md` | `bmad-bam-master-architecture` | ADRs are architecture governance |
+| `decision-log.md` | **NEW: `bmad-bam-governance`** | ADRs need dedicated governance skill |
 | `gdpr-compliance-report.md` | `bmad-bam-privacy-compliance` | GDPR is privacy |
 | `hipaa-compliance-report.md` | `bmad-bam-privacy-compliance` | HIPAA is privacy |
 | `incident-response.md` | `bmad-bam-security-operations` | Incidents are SecOps |
 | `integration-test-plan.md` | `bmad-bam-testing` | Testing strategy |
 | `migration-plan.md` | `bmad-bam-resilience` | Migrations are resilience |
-| `platform-architecture.md` | `bmad-bam-master-architecture` | Platform extends master |
+| `platform-architecture.md` | **NEW: `bmad-bam-platform`** | Platform needs dedicated skill |
 | `rollback-plan.md` | `bmad-bam-resilience` | Rollback is resilience |
 | `sla-definition.md` | `bmad-bam-production-readiness` | SLAs are prod requirement |
 | `soc2-audit-report.md` | `bmad-bam-compliance` | SOC2 is compliance |
@@ -272,6 +272,60 @@ src-v2/skills/bmad-bam-rag/
 - `semantic-chunking.md`
 - `embedding-lifecycle.md`
 
+### bmad-bam-governance
+
+**Purpose:** Manage architecture decision records (ADRs) and governance documentation
+
+**Structure:**
+```
+src-v2/skills/bmad-bam-governance/
+├── SKILL.md
+├── bmad-skill-manifest.yaml
+├── customize.toml
+├── workflow.md
+├── templates/
+│   └── decision-log.md
+└── steps/
+    ├── step-01-c-start.md
+    ├── step-02-c-decision-context.md
+    ├── step-03-c-options.md
+    ├── step-04-c-decision.md
+    ├── step-05-c-document.md
+    └── step-22-v-report.md
+```
+
+**Patterns Referenced:**
+- Architecture decision record patterns
+- Governance workflow patterns
+
+### bmad-bam-platform
+
+**Purpose:** Design platform architecture for extensibility, plugins, and partner ecosystem
+
+**Structure:**
+```
+src-v2/skills/bmad-bam-platform/
+├── SKILL.md
+├── bmad-skill-manifest.yaml
+├── customize.toml
+├── workflow.md
+├── templates/
+│   └── platform-architecture.md
+└── steps/
+    ├── step-01-c-start.md
+    ├── step-02-c-extensibility.md
+    ├── step-03-c-plugins.md
+    ├── step-04-c-marketplace.md
+    ├── step-05-c-document.md
+    └── step-22-v-report.md
+```
+
+**Patterns Referenced:**
+- `plugin-architecture.md`
+- `white-label.md`
+- `api-marketplace.md`
+- `partner-integration.md`
+
 ---
 
 ## Broken Reference Fixes
@@ -280,7 +334,7 @@ src-v2/skills/bmad-bam-rag/
 |------------------|-------|-----|
 | `disaster-recovery-template.md` | `bmad-bam-resilience` | Change to `disaster-recovery-plan.md` |
 | `privacy-compliance-template.md` | `bmad-bam-privacy-compliance` | Change to `gdpr-compliance-report.md` |
-| `chaos-engineering-template.md` | `bmad-bam-resilience` | CREATE NEW in skill's `templates/` |
+| `chaos-engineering-template.md` | `bmad-bam-resilience` | CREATE NEW based on `data/patterns/chaos-engineering*.md` |
 
 ---
 
@@ -312,16 +366,16 @@ src-v2/skills/bmad-bam-rag/
 
 ### Phase 3: Create New Skills
 
-**Scope:** `bmad-bam-mcp`, `bmad-bam-rag`
+**Scope:** `bmad-bam-mcp`, `bmad-bam-rag`, `bmad-bam-governance`, `bmad-bam-platform`
 
 **Steps:**
-1. Create skill directory structure
-2. Create SKILL.md, manifest, workflow, steps
-3. Move templates to skill's `templates/` directory
-4. Create `chaos-engineering.md` template
+1. Create skill directory structure for all 4 new skills
+2. Create SKILL.md, manifest, workflow, steps for each
+3. Move templates to each skill's `templates/` directory
+4. Create `chaos-engineering.md` template (based on existing patterns)
 5. Run `npm test`
 
-**Duration:** 2-3 hours
+**Duration:** 4-5 hours
 
 ### Phase 4: Restructure to Per-Skill Templates
 
@@ -368,7 +422,9 @@ src-v2/skills/bmad-bam-rag/
 ### Phase 3 Validation
 - [ ] `bmad-bam-mcp` skill complete
 - [ ] `bmad-bam-rag` skill complete
-- [ ] `chaos-engineering.md` template created
+- [ ] `bmad-bam-governance` skill complete
+- [ ] `bmad-bam-platform` skill complete
+- [ ] `chaos-engineering.md` template created (based on patterns)
 - [ ] `npm test` passes
 
 ### Phase 4 Validation
@@ -401,7 +457,7 @@ src-v2/skills/bmad-bam-rag/
 1. All 48 BAM templates have BMAD-compatible frontmatter
 2. All templates in per-skill directories (except standards)
 3. 3 FORMAT_STANDARD templates in `data/standards/`
-4. 2 new skills (`bmad-bam-mcp`, `bmad-bam-rag`) functional
+4. 4 new skills (`bmad-bam-mcp`, `bmad-bam-rag`, `bmad-bam-governance`, `bmad-bam-platform`) functional
 5. No broken template references
 6. `npm test` passes
 7. BMAD workflows can load, track progress, and resume BAM templates
