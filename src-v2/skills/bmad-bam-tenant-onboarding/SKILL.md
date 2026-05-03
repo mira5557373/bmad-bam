@@ -1,6 +1,6 @@
 ---
 name: bmad-bam-tenant-onboarding
-description: 'Design tenant onboarding workflow'
+description: 'Design tenant onboarding workflow for multi-tenant SaaS platforms covering provisioning, isolation setup, billing setup, sandbox provisioning, and welcome flows. Use when planning tenant signup processes, designing self-service onboarding, configuring tenant tier provisioning, or building tenant lifecycle automation.'
 module: bam
 tags: [workflow]
 ---

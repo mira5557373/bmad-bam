@@ -1,6 +1,6 @@
 ---
 name: bmad-bam-tenant-offboarding
-description: 'Design tenant offboarding workflow'
+description: 'Design tenant offboarding workflow for multi-tenant SaaS platforms covering data export, GDPR right-to-deletion, account closure, billing settlement, and audit trail preservation. Use when planning tenant offboarding processes, implementing GDPR compliance, designing data portability, or building tenant lifecycle automation.'
 module: bam
 tags: [workflow]
 ---

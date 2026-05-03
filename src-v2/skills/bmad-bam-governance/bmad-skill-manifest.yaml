@@ -1,6 +1,0 @@
-type: workflow
-name: bmad-bam-governance
-displayName: Architecture Governance
-description: 'Manage architecture decision records (ADRs) and governance documentation'
-module: bam
-step_naming_convention: "step-NN-mode-description"

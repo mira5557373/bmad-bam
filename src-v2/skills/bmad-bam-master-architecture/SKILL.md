@@ -1,6 +1,6 @@
 ---
 name: bmad-bam-master-architecture
-description: 'Create master architecture with tenant model and foundation design'
+description: 'Create master architecture for a multi-tenant agentic AI SaaS platform — tenant isolation model selection (RLS / schema-per-tenant / database-per-tenant), AI runtime selection (LangGraph / CrewAI / AutoGen), module boundaries, foundational quality gates (QG-F1). Use when starting a new multi-tenant SaaS project, designing the platform foundation, or rebaselining tenant architecture.'
 module: bam
 tags: [foundation, architecture]
 ---
