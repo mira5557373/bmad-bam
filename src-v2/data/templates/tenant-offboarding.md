@@ -1,9 +1,18 @@
 ---
-name: tenant-offboarding
-description: Document tenant offboarding workflow and data retention
-category: operations
-version: 2.0.0
-type: template
+# BMAD WORKFLOW STATE
+stepsCompleted: []
+inputDocuments: []
+workflowType: 'bam-tenant-offboarding'
+project_name: '{{project_name}}'
+user_name: '{{user_name}}'
+date: '{{date}}'
+
+# BAM EXTENSIONS
+bam_name: tenant-offboarding
+bam_description: "Document tenant offboarding workflow and data retention"
+bam_category: operations
+bam_version: 2.0.0
+bam_type: template
 web_research_enabled: true
 source_verification: true
 ---

@@ -1,9 +1,18 @@
 ---
-name: white-label-config
-description: Document white-label configuration for tenant branding
-category: customization
-version: 2.0.0
-type: template
+# BMAD WORKFLOW STATE
+stepsCompleted: []
+inputDocuments: []
+workflowType: 'bam-white-labeling'
+project_name: '{{project_name}}'
+user_name: '{{user_name}}'
+date: '{{date}}'
+
+# BAM EXTENSIONS
+bam_name: white-label-config
+bam_description: "Document white-label configuration for tenant branding"
+bam_category: customization
+bam_version: 2.0.0
+bam_type: template
 web_research_enabled: true
 source_verification: true
 ---

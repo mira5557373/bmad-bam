@@ -1,9 +1,18 @@
 ---
-name: tenant-onboarding
-description: Document tenant onboarding workflow and provisioning
-category: operations
-version: 2.0.0
-type: template
+# BMAD WORKFLOW STATE
+stepsCompleted: []
+inputDocuments: []
+workflowType: 'bam-tenant-onboarding'
+project_name: '{{project_name}}'
+user_name: '{{user_name}}'
+date: '{{date}}'
+
+# BAM EXTENSIONS
+bam_name: tenant-onboarding
+bam_description: "Document tenant onboarding workflow and provisioning"
+bam_category: operations
+bam_version: 2.0.0
+bam_type: template
 web_research_enabled: true
 source_verification: true
 ---

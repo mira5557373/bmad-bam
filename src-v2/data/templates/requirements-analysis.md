@@ -1,9 +1,18 @@
 ---
-name: requirements-analysis
-description: Document requirements analysis and tenant context
-category: planning
-version: 2.0.0
-type: template
+# BMAD WORKFLOW STATE
+stepsCompleted: []
+inputDocuments: []
+workflowType: 'bam-requirements'
+project_name: '{{project_name}}'
+user_name: '{{user_name}}'
+date: '{{date}}'
+
+# BAM EXTENSIONS
+bam_name: requirements-analysis
+bam_description: "Document requirements analysis and tenant context"
+bam_category: planning
+bam_version: 2.0.0
+bam_type: template
 web_research_enabled: true
 source_verification: true
 ---

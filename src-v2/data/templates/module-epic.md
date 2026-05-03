@@ -1,9 +1,18 @@
 ---
-name: module-epic
-description: Document module epic with stories and acceptance criteria
-category: planning
-version: 2.0.0
-type: template
+# BMAD WORKFLOW STATE
+stepsCompleted: []
+inputDocuments: []
+workflowType: 'bam-module-epics'
+project_name: '{{project_name}}'
+user_name: '{{user_name}}'
+date: '{{date}}'
+
+# BAM EXTENSIONS
+bam_name: module-epic
+bam_description: "Document module epic with stories and acceptance criteria"
+bam_category: planning
+bam_version: 2.0.0
+bam_type: template
 web_research_enabled: true
 source_verification: true
 ---

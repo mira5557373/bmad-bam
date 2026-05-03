@@ -1,9 +1,19 @@
 ---
-name: research-findings
-description: Document research findings and recommendations
-category: planning
-version: 2.0.0
-type: template
+# BMAD WORKFLOW STATE
+stepsCompleted: []
+inputDocuments: []
+workflowType: 'bam-research'
+lastStep: 1
+project_name: '{{project_name}}'
+user_name: '{{user_name}}'
+date: '{{date}}'
+
+# BAM EXTENSIONS
+bam_name: research-findings
+bam_description: "Document research findings and recommendations"
+bam_category: planning
+bam_version: 2.0.0
+bam_type: template
 web_research_enabled: true
 source_verification: true
 ---
