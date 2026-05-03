@@ -40,7 +40,7 @@ Compile the complete agent tracing design document from all previous steps and o
 ## Prerequisites
 
 - Steps 1-4 completed
-- **Load template:** `{project-root}/_bmad/bam/data/templates/agent-trace.md`
+- **Load template:** `./templates/agent-trace.md`
 - All design components documented
 
 ---

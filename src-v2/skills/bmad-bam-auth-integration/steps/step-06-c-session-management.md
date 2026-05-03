@@ -193,4 +193,4 @@ Submit for **QG-S4** (Authentication Security) and **QG-S5** (Session Security) 
 
 ## Template
 
-Load and populate: `{project-root}/_bmad/bam/data/templates/auth-integration.md`
+Load and populate: `./templates/auth-integration.md`

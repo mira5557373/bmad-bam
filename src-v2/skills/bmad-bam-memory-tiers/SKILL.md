@@ -27,7 +27,7 @@ tags: [workflow]
 - **Load patterns:** `{project-root}/_bmad/bam/data/bam-patterns.csv` → filter: memory-tiers
 - **Load patterns:** `{project-root}/_bmad/bam/data/ai-runtimes.csv`
 - **Load patterns:** `{project-root}/_bmad/bam/data/tenant-models.csv`
-- **Load template:** `{project-root}/_bmad/bam/data/templates/memory-tier.md`
+- **Load template:** `./templates/memory-tier.md`
 
 ## Outputs
 
