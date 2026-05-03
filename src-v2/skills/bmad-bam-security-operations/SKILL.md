@@ -56,6 +56,10 @@ Search the web: "incident response SaaS best practices {date}"
 - Incident response runbooks
 - Tenant notification procedures
 
+## Templates
+
+- `templates/incident-response.md` - Incident response runbook template
+
 ## Related Workflows
 
 - `bmad-bam-compliance`

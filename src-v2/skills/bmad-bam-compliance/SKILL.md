@@ -34,11 +34,15 @@ Search the web: "GDPR SOC2 HIPAA PCI-DSS SaaS architecture {date}"
 
 ## Outputs
 
-
 - Complete compliance design document at `{output_folder}/planning-artifacts/compliance-design.md`
 - Implementation roadmap with milestones
 - Compliance risk matrix
 - Control-to-framework mapping
+
+## Templates
+
+- `templates/compliance-mapping.md` - Compliance mapping template
+- `templates/soc2-audit-report.md` - SOC2 audit report template
 
 ## Related Workflows
 

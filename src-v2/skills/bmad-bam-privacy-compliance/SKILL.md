@@ -49,6 +49,11 @@ Design privacy compliance workflows for multi-tenant SaaS platforms, covering GD
 - Data export specifications
 - Cross-border transfer documentation
 
+## Templates
+
+- `templates/gdpr-compliance-report.md` - GDPR compliance documentation
+- `templates/hipaa-compliance-report.md` - HIPAA compliance documentation
+
 ## Related Workflows
 
 - `bmad-bam-compliance-mapping`

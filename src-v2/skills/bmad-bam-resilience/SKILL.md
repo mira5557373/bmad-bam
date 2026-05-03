@@ -59,8 +59,13 @@ All outputs are written to `{output_folder}/resilience/`:
 5. Verify prerequisites are met
 6. Route to appropriate step file
 
+## Templates
+
+- `templates/disaster-recovery-plan.md` - Disaster recovery plan template
+- `templates/migration-plan.md` - Migration plan template
+- `templates/rollback-plan.md` - Rollback plan template
+
 ## Domain References
 
 - **Patterns:** `{project-root}/_bmad/bam/data/bam-patterns.csv` → filter: `disaster-recovery`, `chaos-engineering`
 - **Checklists:** `{project-root}/_bmad/bam/data/checklists/qg-dr.md`, `qg-ce1.md`
-- **Templates:** `./templates/disaster-recovery-plan.md`, `./templates/chaos-engineering.md`

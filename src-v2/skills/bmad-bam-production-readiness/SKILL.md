@@ -34,12 +34,16 @@ tags: [quality-gate, workflow]
 
 ## Outputs
 
-
 - Production readiness report: `{output_folder}/planning-artifacts/production-readiness-report.md`
 - QG-P1 gate decision (GO / GO WITH CONDITIONS / NO-GO)
 - Risk assessment matrix
 - Rollback procedures
 - Sign-off checklist
+
+## Templates
+
+- `templates/production-readiness.md` - Production readiness report template
+- `templates/sla-definition.md` - SLA definition template
 
 ## Related Workflows
 

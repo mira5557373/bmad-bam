@@ -35,6 +35,11 @@ Design the billing and metering system for multi-tenant SaaS with tier-based pri
 - Compliance requirements documentation
 - Analytics and reporting specifications
 
+## Templates
+
+- `templates/billing-design.md` - Billing system design template
+- `templates/cost-model.md` - Cost model template
+
 ## Related Workflows
 
 - `bmad-bam-convergence`

@@ -34,12 +34,16 @@ Search the web: "horizontal vs vertical scaling decision criteria {date}"
 
 ## Outputs
 
-
 - **Primary:** `{output_folder}/planning-artifacts/scaling-design.md`
 - Capacity planning guidelines
 - Cost optimization strategies
 - Operational runbooks
 - Complete scaling design document
+
+## Templates
+
+- `templates/scaling-design.md` - Scaling design document template
+- `templates/capacity-plan.md` - Capacity planning template
 
 ## Related Workflows
 

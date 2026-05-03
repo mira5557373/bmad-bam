@@ -53,9 +53,11 @@ describe('V2 File Counts', () => {
     expect(files.length).toBeGreaterThanOrEqual(8);
   });
 
-  test('10 template files (22 - 12 moved to SKILL_OWNED batch 2)', () => {
+  test('0 template files (all templates moved to skill directories)', () => {
     const files = fs.readdirSync(path.join(v2Dir, 'data/templates')).filter(f => f.endsWith('.md'));
-    // 48 original - 3 moved to standards - 4 moved to new skills (mcp, rag, governance, platform)
+    // All 48 templates have been moved:
+    // - 3 moved to data/standards/ (FORMAT_STANDARD templates)
+    // - 4 moved to new skills (mcp, rag, governance, platform)
     // - 7 moved to producer skills (master-architecture, tenant-isolation, agent-runtime,
     //   billing-design, testing-strategy, module-architecture, facade-contract)
     // - 12 moved to SKILL_OWNED batch 1 (agent-debug, agent-tracing, api-versioning,
@@ -64,7 +66,11 @@ describe('V2 File Counts', () => {
     // - 12 moved to SKILL_OWNED batch 2 (module-epic, observability-design, runbook,
     //   production-readiness, requirements-analysis, research-findings, scaling-design,
     //   security-architecture, tenant-offboarding, tenant-onboarding, tool-contract, white-label-config)
-    expect(files.length).toBe(10);
+    // - 10 moved to assigned ORPHAN skills (capacity-plan->scaling, cost-model->billing,
+    //   gdpr/hipaa->privacy-compliance, incident-response->security-operations,
+    //   integration-test-plan->testing, migration/rollback->resilience,
+    //   sla-definition->production-readiness, soc2-audit-report->compliance)
+    expect(files.length).toBe(0);
   });
 
   test('3 standard files (FORMAT_STANDARD templates moved from templates/)', () => {

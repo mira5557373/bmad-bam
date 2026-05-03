@@ -32,10 +32,14 @@ Design comprehensive testing strategy for multi-tenant SaaS architecture. This w
 
 ## Outputs
 
-
 - **Primary:** `{output_folder}/planning-artifacts/testing-strategy.md`
 - **Frontmatter:** Version, tenant model, TEA status, gate statuses
 - **Sections:** All 11 sections as documented above
+
+## Templates
+
+- `templates/testing-strategy.md` - Testing strategy document template
+- `templates/integration-test-plan.md` - Integration test plan template
 
 ## Related Workflows
 
