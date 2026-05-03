@@ -1,0 +1,940 @@
+=== bmad-bam-agent-debug ===
+
+Validating skills in: B:\2026\Aprial\bmad-bam\external\bmad-method\src
+Mode: WARNING (exit 0)
+
+
+..\..\src-v2\skills\bmad-bam-agent-debug
+  [MEDIUM] SKILL-06 — description Quality
+    File: SKILL.md
+    description does not contain "Use when" or "Use if" trigger phrase.
+
+────────────────────────────────────────────────────────────
+
+Summary:
+   Skills scanned: 1
+   Skills with findings: 1
+   Total findings: 1
+
+   | Severity | Count |
+   |----------|-------|
+   | MEDIUM   |     1 |
+
+   Run with --strict to treat HIGH+ findings as errors.
+
+
+=== bmad-bam-agent-runtime ===
+
+Validating skills in: B:\2026\Aprial\bmad-bam\external\bmad-method\src
+Mode: WARNING (exit 0)
+
+
+..\..\src-v2\skills\bmad-bam-agent-runtime
+  [MEDIUM] SKILL-06 — description Quality
+    File: SKILL.md
+    description does not contain "Use when" or "Use if" trigger phrase.
+
+────────────────────────────────────────────────────────────
+
+Summary:
+   Skills scanned: 1
+   Skills with findings: 1
+   Total findings: 1
+
+   | Severity | Count |
+   |----------|-------|
+   | MEDIUM   |     1 |
+
+   Run with --strict to treat HIGH+ findings as errors.
+
+
+=== bmad-bam-agent-tracing ===
+
+Validating skills in: B:\2026\Aprial\bmad-bam\external\bmad-method\src
+Mode: WARNING (exit 0)
+
+
+..\..\src-v2\skills\bmad-bam-agent-tracing
+  [MEDIUM] SKILL-06 — description Quality
+    File: SKILL.md
+    description does not contain "Use when" or "Use if" trigger phrase.
+
+────────────────────────────────────────────────────────────
+
+Summary:
+   Skills scanned: 1
+   Skills with findings: 1
+   Total findings: 1
+
+   | Severity | Count |
+   |----------|-------|
+   | MEDIUM   |     1 |
+
+   Run with --strict to treat HIGH+ findings as errors.
+
+
+=== bmad-bam-api-versioning ===
+
+Validating skills in: B:\2026\Aprial\bmad-bam\external\bmad-method\src
+Mode: WARNING (exit 0)
+
+
+..\..\src-v2\skills\bmad-bam-api-versioning
+  [MEDIUM] SKILL-06 — description Quality
+    File: SKILL.md
+    description does not contain "Use when" or "Use if" trigger phrase.
+
+────────────────────────────────────────────────────────────
+
+Summary:
+   Skills scanned: 1
+   Skills with findings: 1
+   Total findings: 1
+
+   | Severity | Count |
+   |----------|-------|
+   | MEDIUM   |     1 |
+
+   Run with --strict to treat HIGH+ findings as errors.
+
+
+=== bmad-bam-auth-integration ===
+
+Validating skills in: B:\2026\Aprial\bmad-bam\external\bmad-method\src
+Mode: WARNING (exit 0)
+
+
+..\..\src-v2\skills\bmad-bam-auth-integration
+  [MEDIUM] SKILL-06 — description Quality
+    File: SKILL.md
+    description does not contain "Use when" or "Use if" trigger phrase.
+  [LOW] STEP-07 — Step Count
+    File: steps/
+    11 step files found — more than 10 risks LLM context degradation.
+
+────────────────────────────────────────────────────────────
+
+Summary:
+   Skills scanned: 1
+   Skills with findings: 1
+   Total findings: 2
+
+   | Severity | Count |
+   |----------|-------|
+   | MEDIUM   |     1 |
+   | LOW      |     1 |
+
+   Run with --strict to treat HIGH+ findings as errors.
+
+
+=== bmad-bam-billing ===
+
+Validating skills in: B:\2026\Aprial\bmad-bam\external\bmad-method\src
+Mode: WARNING (exit 0)
+
+
+..\..\src-v2\skills\bmad-bam-billing
+  [MEDIUM] SKILL-06 — description Quality
+    File: SKILL.md
+    description does not contain "Use when" or "Use if" trigger phrase.
+
+────────────────────────────────────────────────────────────
+
+Summary:
+   Skills scanned: 1
+   Skills with findings: 1
+   Total findings: 1
+
+   | Severity | Count |
+   |----------|-------|
+   | MEDIUM   |     1 |
+
+   Run with --strict to treat HIGH+ findings as errors.
+
+
+=== bmad-bam-caching ===
+
+Validating skills in: B:\2026\Aprial\bmad-bam\external\bmad-method\src
+Mode: WARNING (exit 0)
+
+
+..\..\src-v2\skills\bmad-bam-caching
+  [MEDIUM] SKILL-06 — description Quality
+    File: SKILL.md
+    description does not contain "Use when" or "Use if" trigger phrase.
+
+────────────────────────────────────────────────────────────
+
+Summary:
+   Skills scanned: 1
+   Skills with findings: 1
+   Total findings: 1
+
+   | Severity | Count |
+   |----------|-------|
+   | MEDIUM   |     1 |
+
+   Run with --strict to treat HIGH+ findings as errors.
+
+
+=== bmad-bam-compliance ===
+
+Validating skills in: B:\2026\Aprial\bmad-bam\external\bmad-method\src
+Mode: WARNING (exit 0)
+
+
+..\..\src-v2\skills\bmad-bam-compliance
+  [MEDIUM] SKILL-06 — description Quality
+    File: SKILL.md
+    description does not contain "Use when" or "Use if" trigger phrase.
+
+────────────────────────────────────────────────────────────
+
+Summary:
+   Skills scanned: 1
+   Skills with findings: 1
+   Total findings: 1
+
+   | Severity | Count |
+   |----------|-------|
+   | MEDIUM   |     1 |
+
+   Run with --strict to treat HIGH+ findings as errors.
+
+
+=== bmad-bam-convergence ===
+
+Validating skills in: B:\2026\Aprial\bmad-bam\external\bmad-method\src
+Mode: WARNING (exit 0)
+
+
+..\..\src-v2\skills\bmad-bam-convergence
+  [MEDIUM] SKILL-06 — description Quality
+    File: SKILL.md
+    description does not contain "Use when" or "Use if" trigger phrase.
+  [LOW] SEQ-02 — No Time Estimates
+    File: steps\step-05-c-complete.md (line 189)
+    Time estimate pattern found: "| Issue | Severity | Workaround | Fix ETA |"
+
+────────────────────────────────────────────────────────────
+
+Summary:
+   Skills scanned: 1
+   Skills with findings: 1
+   Total findings: 2
+
+   | Severity | Count |
+   |----------|-------|
+   | MEDIUM   |     1 |
+   | LOW      |     1 |
+
+   Run with --strict to treat HIGH+ findings as errors.
+
+
+=== bmad-bam-cross-module-story ===
+
+Validating skills in: B:\2026\Aprial\bmad-bam\external\bmad-method\src
+Mode: WARNING (exit 0)
+
+
+..\..\src-v2\skills\bmad-bam-cross-module-story
+  [MEDIUM] SKILL-06 — description Quality
+    File: SKILL.md
+    description does not contain "Use when" or "Use if" trigger phrase.
+
+────────────────────────────────────────────────────────────
+
+Summary:
+   Skills scanned: 1
+   Skills with findings: 1
+   Total findings: 1
+
+   | Severity | Count |
+   |----------|-------|
+   | MEDIUM   |     1 |
+
+   Run with --strict to treat HIGH+ findings as errors.
+
+
+=== bmad-bam-data-residency ===
+
+Validating skills in: B:\2026\Aprial\bmad-bam\external\bmad-method\src
+Mode: WARNING (exit 0)
+
+
+..\..\src-v2\skills\bmad-bam-data-residency
+  [MEDIUM] SKILL-06 — description Quality
+    File: SKILL.md
+    description does not contain "Use when" or "Use if" trigger phrase.
+
+────────────────────────────────────────────────────────────
+
+Summary:
+   Skills scanned: 1
+   Skills with findings: 1
+   Total findings: 1
+
+   | Severity | Count |
+   |----------|-------|
+   | MEDIUM   |     1 |
+
+   Run with --strict to treat HIGH+ findings as errors.
+
+
+=== bmad-bam-events ===
+
+Validating skills in: B:\2026\Aprial\bmad-bam\external\bmad-method\src
+Mode: WARNING (exit 0)
+
+
+..\..\src-v2\skills\bmad-bam-events
+  [MEDIUM] SKILL-06 — description Quality
+    File: SKILL.md
+    description does not contain "Use when" or "Use if" trigger phrase.
+
+────────────────────────────────────────────────────────────
+
+Summary:
+   Skills scanned: 1
+   Skills with findings: 1
+   Total findings: 1
+
+   | Severity | Count |
+   |----------|-------|
+   | MEDIUM   |     1 |
+
+   Run with --strict to treat HIGH+ findings as errors.
+
+
+=== bmad-bam-facade-contract ===
+
+Validating skills in: B:\2026\Aprial\bmad-bam\external\bmad-method\src
+Mode: WARNING (exit 0)
+
+
+..\..\src-v2\skills\bmad-bam-facade-contract
+  [MEDIUM] SKILL-06 — description Quality
+    File: SKILL.md
+    description does not contain "Use when" or "Use if" trigger phrase.
+
+────────────────────────────────────────────────────────────
+
+Summary:
+   Skills scanned: 1
+   Skills with findings: 1
+   Total findings: 1
+
+   | Severity | Count |
+   |----------|-------|
+   | MEDIUM   |     1 |
+
+   Run with --strict to treat HIGH+ findings as errors.
+
+
+=== bmad-bam-governance ===
+
+Validating skills in: B:\2026\Aprial\bmad-bam\external\bmad-method\src
+Mode: WARNING (exit 0)
+
+
+────────────────────────────────────────────────────────────
+
+Summary:
+   Skills scanned: 1
+   Skills with findings: 0
+   Total findings: 0
+
+   All skills passed validation!
+
+
+=== bmad-bam-llm-versioning ===
+
+Validating skills in: B:\2026\Aprial\bmad-bam\external\bmad-method\src
+Mode: WARNING (exit 0)
+
+
+..\..\src-v2\skills\bmad-bam-llm-versioning
+  [MEDIUM] SKILL-06 — description Quality
+    File: SKILL.md
+    description does not contain "Use when" or "Use if" trigger phrase.
+
+────────────────────────────────────────────────────────────
+
+Summary:
+   Skills scanned: 1
+   Skills with findings: 1
+   Total findings: 1
+
+   | Severity | Count |
+   |----------|-------|
+   | MEDIUM   |     1 |
+
+   Run with --strict to treat HIGH+ findings as errors.
+
+
+=== bmad-bam-master-architecture ===
+
+Validating skills in: B:\2026\Aprial\bmad-bam\external\bmad-method\src
+Mode: WARNING (exit 0)
+
+
+..\..\src-v2\skills\bmad-bam-master-architecture
+  [MEDIUM] SKILL-06 — description Quality
+    File: SKILL.md
+    description does not contain "Use when" or "Use if" trigger phrase.
+
+────────────────────────────────────────────────────────────
+
+Summary:
+   Skills scanned: 1
+   Skills with findings: 1
+   Total findings: 1
+
+   | Severity | Count |
+   |----------|-------|
+   | MEDIUM   |     1 |
+
+   Run with --strict to treat HIGH+ findings as errors.
+
+
+=== bmad-bam-mcp ===
+
+Validating skills in: B:\2026\Aprial\bmad-bam\external\bmad-method\src
+Mode: WARNING (exit 0)
+
+
+────────────────────────────────────────────────────────────
+
+Summary:
+   Skills scanned: 1
+   Skills with findings: 0
+   Total findings: 0
+
+   All skills passed validation!
+
+
+=== bmad-bam-memory-tiers ===
+
+Validating skills in: B:\2026\Aprial\bmad-bam\external\bmad-method\src
+Mode: WARNING (exit 0)
+
+
+..\..\src-v2\skills\bmad-bam-memory-tiers
+  [MEDIUM] SKILL-06 — description Quality
+    File: SKILL.md
+    description does not contain "Use when" or "Use if" trigger phrase.
+
+────────────────────────────────────────────────────────────
+
+Summary:
+   Skills scanned: 1
+   Skills with findings: 1
+   Total findings: 1
+
+   | Severity | Count |
+   |----------|-------|
+   | MEDIUM   |     1 |
+
+   Run with --strict to treat HIGH+ findings as errors.
+
+
+=== bmad-bam-module-architecture ===
+
+Validating skills in: B:\2026\Aprial\bmad-bam\external\bmad-method\src
+Mode: WARNING (exit 0)
+
+
+..\..\src-v2\skills\bmad-bam-module-architecture
+  [MEDIUM] SKILL-06 — description Quality
+    File: SKILL.md
+    description does not contain "Use when" or "Use if" trigger phrase.
+
+────────────────────────────────────────────────────────────
+
+Summary:
+   Skills scanned: 1
+   Skills with findings: 1
+   Total findings: 1
+
+   | Severity | Count |
+   |----------|-------|
+   | MEDIUM   |     1 |
+
+   Run with --strict to treat HIGH+ findings as errors.
+
+
+=== bmad-bam-module-epics ===
+
+Validating skills in: B:\2026\Aprial\bmad-bam\external\bmad-method\src
+Mode: WARNING (exit 0)
+
+
+..\..\src-v2\skills\bmad-bam-module-epics
+  [MEDIUM] SKILL-06 — description Quality
+    File: SKILL.md
+    description does not contain "Use when" or "Use if" trigger phrase.
+
+────────────────────────────────────────────────────────────
+
+Summary:
+   Skills scanned: 1
+   Skills with findings: 1
+   Total findings: 1
+
+   | Severity | Count |
+   |----------|-------|
+   | MEDIUM   |     1 |
+
+   Run with --strict to treat HIGH+ findings as errors.
+
+
+=== bmad-bam-observability ===
+
+Validating skills in: B:\2026\Aprial\bmad-bam\external\bmad-method\src
+Mode: WARNING (exit 0)
+
+
+..\..\src-v2\skills\bmad-bam-observability
+  [MEDIUM] SKILL-06 — description Quality
+    File: SKILL.md
+    description does not contain "Use when" or "Use if" trigger phrase.
+
+────────────────────────────────────────────────────────────
+
+Summary:
+   Skills scanned: 1
+   Skills with findings: 1
+   Total findings: 1
+
+   | Severity | Count |
+   |----------|-------|
+   | MEDIUM   |     1 |
+
+   Run with --strict to treat HIGH+ findings as errors.
+
+
+=== bmad-bam-platform ===
+
+Validating skills in: B:\2026\Aprial\bmad-bam\external\bmad-method\src
+Mode: WARNING (exit 0)
+
+
+────────────────────────────────────────────────────────────
+
+Summary:
+   Skills scanned: 1
+   Skills with findings: 0
+   Total findings: 0
+
+   All skills passed validation!
+
+
+=== bmad-bam-privacy-compliance ===
+
+Validating skills in: B:\2026\Aprial\bmad-bam\external\bmad-method\src
+Mode: WARNING (exit 0)
+
+
+..\..\src-v2\skills\bmad-bam-privacy-compliance
+  [MEDIUM] SKILL-06 — description Quality
+    File: SKILL.md
+    description does not contain "Use when" or "Use if" trigger phrase.
+
+────────────────────────────────────────────────────────────
+
+Summary:
+   Skills scanned: 1
+   Skills with findings: 1
+   Total findings: 1
+
+   | Severity | Count |
+   |----------|-------|
+   | MEDIUM   |     1 |
+
+   Run with --strict to treat HIGH+ findings as errors.
+
+
+=== bmad-bam-production-readiness ===
+
+Validating skills in: B:\2026\Aprial\bmad-bam\external\bmad-method\src
+Mode: WARNING (exit 0)
+
+
+..\..\src-v2\skills\bmad-bam-production-readiness
+  [MEDIUM] SKILL-06 — description Quality
+    File: SKILL.md
+    description does not contain "Use when" or "Use if" trigger phrase.
+  [LOW] SEQ-02 — No Time Estimates
+    File: steps\step-05-c-complete.md (line 223)
+    Time estimate pattern found: "| Component | Estimated Time | Dependencies |"
+
+────────────────────────────────────────────────────────────
+
+Summary:
+   Skills scanned: 1
+   Skills with findings: 1
+   Total findings: 2
+
+   | Severity | Count |
+   |----------|-------|
+   | MEDIUM   |     1 |
+   | LOW      |     1 |
+
+   Run with --strict to treat HIGH+ findings as errors.
+
+
+=== bmad-bam-rag ===
+
+Validating skills in: B:\2026\Aprial\bmad-bam\external\bmad-method\src
+Mode: WARNING (exit 0)
+
+
+────────────────────────────────────────────────────────────
+
+Summary:
+   Skills scanned: 1
+   Skills with findings: 0
+   Total findings: 0
+
+   All skills passed validation!
+
+
+=== bmad-bam-requirements ===
+
+Validating skills in: B:\2026\Aprial\bmad-bam\external\bmad-method\src
+Mode: WARNING (exit 0)
+
+
+..\..\src-v2\skills\bmad-bam-requirements
+  [MEDIUM] SKILL-06 — description Quality
+    File: SKILL.md
+    description does not contain "Use when" or "Use if" trigger phrase.
+
+────────────────────────────────────────────────────────────
+
+Summary:
+   Skills scanned: 1
+   Skills with findings: 1
+   Total findings: 1
+
+   | Severity | Count |
+   |----------|-------|
+   | MEDIUM   |     1 |
+
+   Run with --strict to treat HIGH+ findings as errors.
+
+
+=== bmad-bam-research ===
+
+Validating skills in: B:\2026\Aprial\bmad-bam\external\bmad-method\src
+Mode: WARNING (exit 0)
+
+
+..\..\src-v2\skills\bmad-bam-research
+  [MEDIUM] SKILL-06 — description Quality
+    File: SKILL.md
+    description does not contain "Use when" or "Use if" trigger phrase.
+
+────────────────────────────────────────────────────────────
+
+Summary:
+   Skills scanned: 1
+   Skills with findings: 1
+   Total findings: 1
+
+   | Severity | Count |
+   |----------|-------|
+   | MEDIUM   |     1 |
+
+   Run with --strict to treat HIGH+ findings as errors.
+
+
+=== bmad-bam-resilience ===
+
+Validating skills in: B:\2026\Aprial\bmad-bam\external\bmad-method\src
+Mode: WARNING (exit 0)
+
+
+..\..\src-v2\skills\bmad-bam-resilience
+  [MEDIUM] SKILL-06 — description Quality
+    File: SKILL.md
+    description does not contain "Use when" or "Use if" trigger phrase.
+  [LOW] SEQ-02 — No Time Estimates
+    File: templates\rollback-plan.md (line 149)
+    Time estimate pattern found: "**Duration:** ~5 minutes"
+  [LOW] SEQ-02 — No Time Estimates
+    File: templates\rollback-plan.md (line 159)
+    Time estimate pattern found: "**Duration:** ~15 minutes"
+  [LOW] SEQ-02 — No Time Estimates
+    File: templates\rollback-plan.md (line 171)
+    Time estimate pattern found: "**Duration:** ~30 minutes"
+
+────────────────────────────────────────────────────────────
+
+Summary:
+   Skills scanned: 1
+   Skills with findings: 1
+   Total findings: 4
+
+   | Severity | Count |
+   |----------|-------|
+   | MEDIUM   |     1 |
+   | LOW      |     3 |
+
+   Run with --strict to treat HIGH+ findings as errors.
+
+
+=== bmad-bam-scaling ===
+
+Validating skills in: B:\2026\Aprial\bmad-bam\external\bmad-method\src
+Mode: WARNING (exit 0)
+
+
+..\..\src-v2\skills\bmad-bam-scaling
+  [MEDIUM] SKILL-06 — description Quality
+    File: SKILL.md
+    description does not contain "Use when" or "Use if" trigger phrase.
+
+────────────────────────────────────────────────────────────
+
+Summary:
+   Skills scanned: 1
+   Skills with findings: 1
+   Total findings: 1
+
+   | Severity | Count |
+   |----------|-------|
+   | MEDIUM   |     1 |
+
+   Run with --strict to treat HIGH+ findings as errors.
+
+
+=== bmad-bam-security ===
+
+Validating skills in: B:\2026\Aprial\bmad-bam\external\bmad-method\src
+Mode: WARNING (exit 0)
+
+
+..\..\src-v2\skills\bmad-bam-security
+  [MEDIUM] SKILL-06 — description Quality
+    File: SKILL.md
+    description does not contain "Use when" or "Use if" trigger phrase.
+
+────────────────────────────────────────────────────────────
+
+Summary:
+   Skills scanned: 1
+   Skills with findings: 1
+   Total findings: 1
+
+   | Severity | Count |
+   |----------|-------|
+   | MEDIUM   |     1 |
+
+   Run with --strict to treat HIGH+ findings as errors.
+
+
+=== bmad-bam-security-operations ===
+
+Validating skills in: B:\2026\Aprial\bmad-bam\external\bmad-method\src
+Mode: WARNING (exit 0)
+
+
+..\..\src-v2\skills\bmad-bam-security-operations
+  [MEDIUM] SKILL-06 — description Quality
+    File: SKILL.md
+    description does not contain "Use when" or "Use if" trigger phrase.
+  [LOW] STEP-07 — Step Count
+    File: steps/
+    12 step files found — more than 10 risks LLM context degradation.
+
+────────────────────────────────────────────────────────────
+
+Summary:
+   Skills scanned: 1
+   Skills with findings: 1
+   Total findings: 2
+
+   | Severity | Count |
+   |----------|-------|
+   | MEDIUM   |     1 |
+   | LOW      |     1 |
+
+   Run with --strict to treat HIGH+ findings as errors.
+
+
+=== bmad-bam-tenant-isolation ===
+
+Validating skills in: B:\2026\Aprial\bmad-bam\external\bmad-method\src
+Mode: WARNING (exit 0)
+
+
+..\..\src-v2\skills\bmad-bam-tenant-isolation
+  [MEDIUM] SKILL-06 — description Quality
+    File: SKILL.md
+    description does not contain "Use when" or "Use if" trigger phrase.
+
+────────────────────────────────────────────────────────────
+
+Summary:
+   Skills scanned: 1
+   Skills with findings: 1
+   Total findings: 1
+
+   | Severity | Count |
+   |----------|-------|
+   | MEDIUM   |     1 |
+
+   Run with --strict to treat HIGH+ findings as errors.
+
+
+=== bmad-bam-tenant-offboarding ===
+
+Validating skills in: B:\2026\Aprial\bmad-bam\external\bmad-method\src
+Mode: WARNING (exit 0)
+
+
+..\..\src-v2\skills\bmad-bam-tenant-offboarding
+  [MEDIUM] SKILL-06 — description Quality
+    File: SKILL.md
+    description does not contain "Use when" or "Use if" trigger phrase.
+
+────────────────────────────────────────────────────────────
+
+Summary:
+   Skills scanned: 1
+   Skills with findings: 1
+   Total findings: 1
+
+   | Severity | Count |
+   |----------|-------|
+   | MEDIUM   |     1 |
+
+   Run with --strict to treat HIGH+ findings as errors.
+
+
+=== bmad-bam-tenant-onboarding ===
+
+Validating skills in: B:\2026\Aprial\bmad-bam\external\bmad-method\src
+Mode: WARNING (exit 0)
+
+
+..\..\src-v2\skills\bmad-bam-tenant-onboarding
+  [MEDIUM] SKILL-06 — description Quality
+    File: SKILL.md
+    description does not contain "Use when" or "Use if" trigger phrase.
+
+────────────────────────────────────────────────────────────
+
+Summary:
+   Skills scanned: 1
+   Skills with findings: 1
+   Total findings: 1
+
+   | Severity | Count |
+   |----------|-------|
+   | MEDIUM   |     1 |
+
+   Run with --strict to treat HIGH+ findings as errors.
+
+
+=== bmad-bam-testing ===
+
+Validating skills in: B:\2026\Aprial\bmad-bam\external\bmad-method\src
+Mode: WARNING (exit 0)
+
+
+..\..\src-v2\skills\bmad-bam-testing
+  [MEDIUM] SKILL-06 — description Quality
+    File: SKILL.md
+    description does not contain "Use when" or "Use if" trigger phrase.
+
+────────────────────────────────────────────────────────────
+
+Summary:
+   Skills scanned: 1
+   Skills with findings: 1
+   Total findings: 1
+
+   | Severity | Count |
+   |----------|-------|
+   | MEDIUM   |     1 |
+
+   Run with --strict to treat HIGH+ findings as errors.
+
+
+=== bmad-bam-tool-contracts ===
+
+Validating skills in: B:\2026\Aprial\bmad-bam\external\bmad-method\src
+Mode: WARNING (exit 0)
+
+
+..\..\src-v2\skills\bmad-bam-tool-contracts
+  [MEDIUM] SKILL-06 — description Quality
+    File: SKILL.md
+    description does not contain "Use when" or "Use if" trigger phrase.
+
+────────────────────────────────────────────────────────────
+
+Summary:
+   Skills scanned: 1
+   Skills with findings: 1
+   Total findings: 1
+
+   | Severity | Count |
+   |----------|-------|
+   | MEDIUM   |     1 |
+
+   Run with --strict to treat HIGH+ findings as errors.
+
+
+=== bmad-bam-triage ===
+
+Validating skills in: B:\2026\Aprial\bmad-bam\external\bmad-method\src
+Mode: WARNING (exit 0)
+
+
+..\..\src-v2\skills\bmad-bam-triage
+  [MEDIUM] SKILL-06 — description Quality
+    File: SKILL.md
+    description does not contain "Use when" or "Use if" trigger phrase.
+
+────────────────────────────────────────────────────────────
+
+Summary:
+   Skills scanned: 1
+   Skills with findings: 1
+   Total findings: 1
+
+   | Severity | Count |
+   |----------|-------|
+   | MEDIUM   |     1 |
+
+   Run with --strict to treat HIGH+ findings as errors.
+
+
+=== bmad-bam-white-labeling ===
+
+Validating skills in: B:\2026\Aprial\bmad-bam\external\bmad-method\src
+Mode: WARNING (exit 0)
+
+
+..\..\src-v2\skills\bmad-bam-white-labeling
+  [MEDIUM] SKILL-06 — description Quality
+    File: SKILL.md
+    description does not contain "Use when" or "Use if" trigger phrase.
+
+────────────────────────────────────────────────────────────
+
+Summary:
+   Skills scanned: 1
+   Skills with findings: 1
+   Total findings: 1
+
+   | Severity | Count |
+   |----------|-------|
+   | MEDIUM   |     1 |
+
+   Run with --strict to treat HIGH+ findings as errors.
+
+
