@@ -1,9 +1,18 @@
 ---
-name: facade-contract
-description: Document module facade contract and versioning
-category: integration
-version: 2.0.0
-type: template
+# BMAD WORKFLOW STATE
+stepsCompleted: []
+inputDocuments: []
+workflowType: 'bam-facade-contract'
+project_name: '{{project_name}}'
+user_name: '{{user_name}}'
+date: '{{date}}'
+
+# BAM EXTENSIONS
+bam_name: facade-contract
+bam_description: "Document module facade contract and versioning"
+bam_category: integration
+bam_version: 2.0.0
+bam_type: template
 web_research_enabled: true
 source_verification: true
 ---

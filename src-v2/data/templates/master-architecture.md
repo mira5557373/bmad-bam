@@ -1,9 +1,18 @@
 ---
-name: master-architecture
-description: Document the frozen master architecture for multi-tenant AI SaaS platform
-category: architecture
-version: 2.0.0
-type: template
+# BMAD WORKFLOW STATE
+stepsCompleted: []
+inputDocuments: []
+workflowType: 'bam-master-architecture'
+project_name: '{{project_name}}'
+user_name: '{{user_name}}'
+date: '{{date}}'
+
+# BAM EXTENSIONS
+bam_name: master-architecture
+bam_description: "Document the frozen master architecture for multi-tenant AI SaaS platform"
+bam_category: architecture
+bam_version: 2.0.0
+bam_type: template
 web_research_enabled: true
 source_verification: true
 ---

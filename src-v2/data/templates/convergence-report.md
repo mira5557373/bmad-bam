@@ -1,9 +1,18 @@
 ---
-name: convergence-report
-description: Document integration verification results across modules
-category: integration
-version: 2.0.0
-type: template
+# BMAD WORKFLOW STATE
+stepsCompleted: []
+inputDocuments: []
+workflowType: 'bam-convergence'
+project_name: '{{project_name}}'
+user_name: '{{user_name}}'
+date: '{{date}}'
+
+# BAM EXTENSIONS
+bam_name: convergence-report
+bam_description: "Document integration verification results across modules"
+bam_category: integration
+bam_version: 2.0.0
+bam_type: template
 web_research_enabled: true
 source_verification: true
 ---

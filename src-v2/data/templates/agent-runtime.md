@@ -1,9 +1,18 @@
 ---
-name: agent-runtime
-description: Document AI agent runtime architecture and safety guardrails
-category: ai-runtime
-version: 2.0.0
-type: template
+# BMAD WORKFLOW STATE
+stepsCompleted: []
+inputDocuments: []
+workflowType: 'bam-agent-runtime'
+project_name: '{{project_name}}'
+user_name: '{{user_name}}'
+date: '{{date}}'
+
+# BAM EXTENSIONS
+bam_name: agent-runtime
+bam_description: "Document AI agent runtime architecture and safety guardrails"
+bam_category: ai-runtime
+bam_version: 2.0.0
+bam_type: template
 web_research_enabled: true
 source_verification: true
 ---

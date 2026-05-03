@@ -1,9 +1,18 @@
 ---
-name: testing-strategy
-description: Document comprehensive testing strategy with tenant coverage
-category: quality
-version: 2.0.0
-type: template
+# BMAD WORKFLOW STATE
+stepsCompleted: []
+inputDocuments: []
+workflowType: 'bam-testing'
+project_name: '{{project_name}}'
+user_name: '{{user_name}}'
+date: '{{date}}'
+
+# BAM EXTENSIONS
+bam_name: testing-strategy
+bam_description: "Document comprehensive testing strategy with tenant coverage"
+bam_category: quality
+bam_version: 2.0.0
+bam_type: template
 web_research_enabled: true
 source_verification: true
 ---

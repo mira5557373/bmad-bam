@@ -1,9 +1,18 @@
 ---
-name: validation-report
-description: Document validation results for quality gate
-category: quality
-version: 2.0.0
-type: template
+# BMAD WORKFLOW STATE
+stepsCompleted: []
+inputDocuments: []
+workflowType: 'bam-validation'
+project_name: '{{project_name}}'
+user_name: '{{user_name}}'
+date: '{{date}}'
+
+# BAM EXTENSIONS
+bam_name: validation-report
+bam_description: "Document validation results for quality gate"
+bam_category: quality
+bam_version: 2.0.0
+bam_type: template
 web_research_enabled: true
 source_verification: true
 ---
