@@ -1,9 +1,18 @@
 ---
-name: memory-tier
-description: Document AI agent memory tier architecture
-category: ai-runtime
-version: 2.0.0
-type: template
+# BMAD WORKFLOW STATE
+stepsCompleted: []
+inputDocuments: []
+workflowType: 'bam-memory-tiers'
+project_name: '{{project_name}}'
+user_name: '{{user_name}}'
+date: '{{date}}'
+
+# BAM EXTENSIONS
+bam_name: memory-tier
+bam_description: "Document AI agent memory tier architecture"
+bam_category: ai-runtime
+bam_version: 2.0.0
+bam_type: template
 web_research_enabled: true
 source_verification: true
 ---

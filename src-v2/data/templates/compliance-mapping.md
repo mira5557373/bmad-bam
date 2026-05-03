@@ -1,9 +1,18 @@
 ---
-name: compliance-mapping
-description: Document compliance framework requirements and controls
-category: compliance
-version: 2.0.0
-type: template
+# BMAD WORKFLOW STATE
+stepsCompleted: []
+inputDocuments: []
+workflowType: 'bam-compliance'
+project_name: '{{project_name}}'
+user_name: '{{user_name}}'
+date: '{{date}}'
+
+# BAM EXTENSIONS
+bam_name: compliance-mapping
+bam_description: "Document compliance framework requirements and controls"
+bam_category: compliance
+bam_version: 2.0.0
+bam_type: template
 web_research_enabled: true
 source_verification: true
 ---

@@ -1,9 +1,18 @@
 ---
-name: caching-strategy
-description: Document multi-level caching with tenant isolation
-category: operations
-version: 2.0.0
-type: template
+# BMAD WORKFLOW STATE
+stepsCompleted: []
+inputDocuments: []
+workflowType: 'bam-caching'
+project_name: '{{project_name}}'
+user_name: '{{user_name}}'
+date: '{{date}}'
+
+# BAM EXTENSIONS
+bam_name: caching-strategy
+bam_description: "Document multi-level caching with tenant isolation"
+bam_category: operations
+bam_version: 2.0.0
+bam_type: template
 web_research_enabled: true
 source_verification: true
 ---

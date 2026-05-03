@@ -1,9 +1,18 @@
 ---
-name: agent-debug-report
-description: Document AI agent debugging analysis and resolution
-category: ai-runtime
-version: 2.0.0
-type: template
+# BMAD WORKFLOW STATE
+stepsCompleted: []
+inputDocuments: []
+workflowType: 'bam-agent-debug'
+project_name: '{{project_name}}'
+user_name: '{{user_name}}'
+date: '{{date}}'
+
+# BAM EXTENSIONS
+bam_name: agent-debug-report
+bam_description: "Document AI agent debugging analysis and resolution"
+bam_category: ai-runtime
+bam_version: 2.0.0
+bam_type: template
 web_research_enabled: true
 source_verification: true
 ---

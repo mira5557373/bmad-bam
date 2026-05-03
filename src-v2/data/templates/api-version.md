@@ -1,9 +1,18 @@
 ---
-name: api-version
-description: Document API versioning strategy and compatibility
-category: integration
-version: 2.0.0
-type: template
+# BMAD WORKFLOW STATE
+stepsCompleted: []
+inputDocuments: []
+workflowType: 'bam-api-versioning'
+project_name: '{{project_name}}'
+user_name: '{{user_name}}'
+date: '{{date}}'
+
+# BAM EXTENSIONS
+bam_name: api-version
+bam_description: "Document API versioning strategy and compatibility"
+bam_category: integration
+bam_version: 2.0.0
+bam_type: template
 web_research_enabled: true
 source_verification: true
 ---

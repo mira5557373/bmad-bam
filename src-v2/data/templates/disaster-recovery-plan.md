@@ -1,12 +1,21 @@
 ---
-name: disaster-recovery-plan
-description: Disaster recovery and business continuity planning for multi-tenant SaaS
-category: operations
-version: 1.0.0
-type: template
+# BMAD WORKFLOW STATE
+stepsCompleted: []
+inputDocuments: []
+workflowType: 'bam-resilience'
+project_name: '{{project_name}}'
+user_name: '{{user_name}}'
+date: '{{date}}'
+
+# BAM EXTENSIONS
+bam_name: disaster-recovery-plan
+bam_description: "Disaster recovery and business continuity planning for multi-tenant SaaS"
+bam_category: operations
+bam_version: 2.0.0
+bam_type: template
 web_research_enabled: true
 source_verification: true
-related_patterns: [disaster-recovery, backup-restore, tenant-recovery]
+bam_related_patterns: [disaster-recovery, backup-restore, tenant-recovery]
 ---
 
 ## Purpose

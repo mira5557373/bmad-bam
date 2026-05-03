@@ -1,9 +1,18 @@
 ---
-name: event-architecture
-description: Document event-driven architecture with tenant isolation
-category: architecture
-version: 2.0.0
-type: template
+# BMAD WORKFLOW STATE
+stepsCompleted: []
+inputDocuments: []
+workflowType: 'bam-events'
+project_name: '{{project_name}}'
+user_name: '{{user_name}}'
+date: '{{date}}'
+
+# BAM EXTENSIONS
+bam_name: event-architecture
+bam_description: "Document event-driven architecture with tenant isolation"
+bam_category: architecture
+bam_version: 2.0.0
+bam_type: template
 web_research_enabled: true
 source_verification: true
 ---

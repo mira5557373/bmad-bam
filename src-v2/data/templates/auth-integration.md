@@ -1,12 +1,21 @@
 ---
-name: auth-integration
-description: Authentication integration architecture template
-category: security
-version: 1.0.0
-type: template
+# BMAD WORKFLOW STATE
+stepsCompleted: []
+inputDocuments: []
+workflowType: 'bam-auth-integration'
+project_name: '{{project_name}}'
+user_name: '{{user_name}}'
+date: '{{date}}'
+
+# BAM EXTENSIONS
+bam_name: auth-integration
+bam_description: "Authentication integration architecture template"
+bam_category: security
+bam_version: 2.0.0
+bam_type: template
 web_research_enabled: true
 source_verification: true
-related_patterns: [zero-trust, secrets-management, tenant-isolation]
+bam_related_patterns: [zero-trust, secrets-management, tenant-isolation]
 ---
 
 ## Purpose
