@@ -10,11 +10,12 @@ describe('V2 File Counts', () => {
     expect(files.length).toBe(14);
   });
 
-  test('36 workflow skills', () => {
+  test('37 workflow skills', () => {
     const dirs = fs.readdirSync(path.join(v2Dir, 'skills')).filter(d =>
       d.startsWith('bmad-bam-') && fs.statSync(path.join(v2Dir, 'skills', d)).isDirectory()
     );
-    expect(dirs.length).toBe(36);
+    // 36 original + 1 governance skill
+    expect(dirs.length).toBe(37);
   });
 
   test('1 core context file', () => {
@@ -52,9 +53,10 @@ describe('V2 File Counts', () => {
     expect(files.length).toBeGreaterThanOrEqual(8);
   });
 
-  test('43 template files (48 - 3 moved to standards - 2 moved to skills)', () => {
+  test('42 template files (48 - 3 moved to standards - 3 moved to skills)', () => {
     const files = fs.readdirSync(path.join(v2Dir, 'data/templates')).filter(f => f.endsWith('.md'));
-    expect(files.length).toBe(43);
+    // 48 original - 3 moved to standards - 3 moved to skills (mcp, rag, governance)
+    expect(files.length).toBe(42);
   });
 
   test('3 standard files (FORMAT_STANDARD templates moved from templates/)', () => {
