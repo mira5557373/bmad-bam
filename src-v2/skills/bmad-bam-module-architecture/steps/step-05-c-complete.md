@@ -17,7 +17,7 @@
 
 - 🎯 Compile all module decisions into final architecture document
 - 💾 Save document to: `{output_folder}/planning-artifacts/{module_name}-architecture.md`
-- 📖 Load template: `{project-root}/_bmad/bam/data/templates/module-architecture.md`
+- 📖 Load template: `./templates/module-architecture.md`
 - 📖 Reference all previous steps for content
 - 🚫 DO NOT proceed without QG-M1 checkpoint verification
 - ⚠️ Flag any missing sections or incomplete decisions
@@ -30,7 +30,7 @@
 This step operates within these boundaries:
 
 - **Input context:** All outputs from Steps 01-04
-- **Template:** `{project-root}/_bmad/bam/data/templates/module-architecture.md`
+- **Template:** `./templates/module-architecture.md`
 - **Output:** `{output_folder}/planning-artifacts/{module_name}-architecture.md`
 - **Quality gate:** QG-M1 (Module Architecture) checkpoint required
 
@@ -49,7 +49,7 @@ Compile all module architecture decisions from Steps 01-04 into the final module
 **Read template:**
 
 ```
-{project-root}/_bmad/bam/data/templates/module-architecture.md
+./templates/module-architecture.md
 ```
 
 **Template sections to populate:**

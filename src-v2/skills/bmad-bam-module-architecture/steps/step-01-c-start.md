@@ -242,7 +242,7 @@ Ready to proceed to analysis? (y/n)
 - Tenant behavior requirements
 
 **Note:** Full module architecture document created in later steps using:
-`{project-root}/_bmad/bam/data/templates/module-architecture.md`
+`./templates/module-architecture.md`
 
 ---
 

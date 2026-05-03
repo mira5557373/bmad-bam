@@ -39,7 +39,7 @@ Design the internal architecture for an individual module within the modular mon
 
 - **Module Architecture Document:** `{output_folder}/planning-artifacts/module-architecture-{module}.md`
 - Contains: Domain model, aggregate boundaries, repository patterns, service layer, tenant context integration
-- **Load template:** `{project-root}/_bmad/bam/data/templates/module-architecture.md`
+- **Load template:** `./templates/module-architecture.md`
 
 ## Related Workflows
 

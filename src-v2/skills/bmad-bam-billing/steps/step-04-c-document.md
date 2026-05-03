@@ -39,7 +39,7 @@ Design the invoicing and payment processing systems including invoice generation
 - Step 03 complete (subscription management designed)
 - Tier configurations and proration rules defined
 - **Load patterns:** `{project-root}/_bmad/bam/data/bam-patterns.csv` - filter: `payment-*`
-- **Load template:** `{project-root}/_bmad/bam/data/templates/billing-design.md`
+- **Load template:** `./templates/billing-design.md`
 
 ## Actions
 
@@ -180,7 +180,7 @@ credit:
 8. Notify customer
 
 **Dispute Handling:**
-- **Load template:** `{project-root}/_bmad/bam/data/templates/billing-design.md`
+- **Load template:** `./templates/billing-design.md`
 - Track dispute status from payment provider webhooks
 - Provide evidence submission workflow
 - Handle dispute resolution outcomes

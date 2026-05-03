@@ -39,7 +39,7 @@ Complete the billing design workflow by addressing revenue recognition, complian
 - Steps 01-04 complete
 - All billing components designed
 - **Load patterns:** `{project-root}/_bmad/bam/data/compliance-frameworks.csv`
-- **Load template:** `{project-root}/_bmad/bam/data/templates/billing-design.md`
+- **Load template:** `./templates/billing-design.md`
 
 ## Actions
 

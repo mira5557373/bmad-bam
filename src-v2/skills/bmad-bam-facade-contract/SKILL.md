@@ -40,7 +40,7 @@ Define the integration contracts between modules in a modular monolith architect
 
 - **Facade Contract Document:** `{output_folder}/planning-artifacts/facade-contract-{module}.md`
 - Contains: API operations, input/output schemas, error contracts, tenant context requirements, versioning strategy
-- **Load template:** `{project-root}/_bmad/bam/data/templates/facade-contract.md`
+- **Load template:** `./templates/facade-contract.md`
 
 ## Related Workflows
 

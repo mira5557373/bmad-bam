@@ -40,7 +40,7 @@ Design the foundational architecture for a multi-tenant SaaS platform with AI ag
 
 - **Master Architecture Document:** `{output_folder}/planning-artifacts/master-architecture.md`
 - Contains: Tenant model selection, module inventory, AI runtime choice, integration patterns, quality gates
-- **Load template:** `{project-root}/_bmad/bam/data/templates/master-architecture.md`
+- **Load template:** `./templates/master-architecture.md`
 
 
 

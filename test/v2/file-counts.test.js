@@ -53,10 +53,12 @@ describe('V2 File Counts', () => {
     expect(files.length).toBeGreaterThanOrEqual(8);
   });
 
-  test('41 template files (48 - 3 moved to standards - 4 moved to skills)', () => {
+  test('34 template files (48 - 3 standards - 4 new skills - 7 artifact dependency)', () => {
     const files = fs.readdirSync(path.join(v2Dir, 'data/templates')).filter(f => f.endsWith('.md'));
-    // 48 original - 3 moved to standards - 4 moved to skills (mcp, rag, governance, platform)
-    expect(files.length).toBe(41);
+    // 48 original - 3 moved to standards - 4 moved to new skills (mcp, rag, governance, platform)
+    // - 7 moved to producer skills (master-architecture, tenant-isolation, agent-runtime,
+    //   billing-design, testing-strategy, module-architecture, facade-contract)
+    expect(files.length).toBe(34);
   });
 
   test('3 standard files (FORMAT_STANDARD templates moved from templates/)', () => {
