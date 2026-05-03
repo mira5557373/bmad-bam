@@ -1,0 +1,6 @@
+type: workflow
+name: bmad-bam-mcp
+displayName: MCP Server Configuration
+description: 'Design MCP server configuration and multi-tenant isolation'
+module: bam
+step_naming_convention: "step-NN-mode-description"

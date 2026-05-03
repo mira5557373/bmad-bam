@@ -1,0 +1,22 @@
+[workflow]
+
+activation_steps_prepend = [
+  "Loading MCP Server Configuration workflow context.",
+]
+
+activation_steps_append = [
+  "Check for existing MCP patterns in pattern registry.",
+]
+
+persistent_facts = [
+  "file:{project-root}/_bmad/bam/data/context/bam-core.md",
+  "file:{project-root}/_bmad/bam/data/patterns/mcp-*.md",
+]
+
+on_complete = """
+MCP Server Configuration workflow complete.
+
+**Next Steps:**
+- Implement MCP server based on configuration
+- Test tenant isolation
+"""
