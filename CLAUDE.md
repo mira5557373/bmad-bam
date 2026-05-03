@@ -1,6 +1,6 @@
 # CLAUDE.md - BAM Extension Module
 
-> **Quick Start:** BAM is a **pure extension module** for multi-tenant SaaS. **14 TOMLs, 34 skills, 112 patterns, 20 domains, 37 checklists, 45 templates, 3 standards**. Run `npm test` before any PR. Never use TOML `memories` key.
+> **Quick Start:** BAM is a **pure extension module** for multi-tenant SaaS. **14 TOMLs, 38 skills, 112 patterns, 20 domains, 37 checklists, 46 templates, 3 standards**. Run `npm test` before any PR. Never use TOML `memories` key.
 
 ---
 
@@ -27,13 +27,15 @@ BAM (BMAD Agentic Multi-tenant) adds multi-tenant SaaS architecture capabilities
 ```
 src-v2/
 ├── customize/           # 14 TOML files (agent extensions)
-├── skills/              # 34 workflow skills (CEV modes)
+├── skills/              # 38 workflow skills (CEV modes)
+│   └── bmad-bam-*/
+│       └── templates/   # 46 templates (moved from data/templates/)
 └── data/
     ├── context/         # bam-core.md (loaded by all TOMLs)
     ├── patterns/        # 112 pattern files with shortcodes
     ├── domains/         # 20 domain context files
     ├── checklists/      # 37 QG-* quality gate checklists
-    ├── templates/       # 45 output artifact templates
+    ├── templates/       # Empty (templates moved to skills)
     ├── standards/       # 3 shared format standards (std-*)
     ├── personas/        # 3 architect personas
     ├── sidecar/         # 3 memory templates
@@ -45,11 +47,11 @@ src-v2/
 | Asset | Count | Purpose |
 |-------|-------|---------|
 | TOML customize | 14 | Agent capability extensions |
-| Workflow skills | 34 | CEV-mode workflows |
+| Workflow skills | 38 | CEV-mode workflows |
 | Pattern files | 112 | Architecture patterns with shortcodes |
 | Domain files | 20 | Multi-tenant context |
 | Checklists | 37 | Quality gate verification |
-| Templates | 45 | Output artifacts |
+| Templates | 46 | Output artifacts (in skill templates/) |
 | Standards | 3 | Shared format standards (validation, convergence, gate) |
 | CSV registries | 6 | Pattern/gate/compliance data |
 
@@ -72,6 +74,7 @@ src-v2/skills/bmad-bam-{name}/
 ├── bmad-skill-manifest.yaml    # Metadata
 ├── customize.toml              # Skill-specific TOML
 ├── workflow.md                 # Mode router
+├── templates/                  # Output artifact templates
 └── steps/                      # CEV step files
 ```
 
@@ -181,7 +184,7 @@ skill = "bmad-bam-tenant-isolation"
 | Add pattern | `src-v2/data/patterns/{pattern}.md` |
 | Add domain | `src-v2/data/domains/{domain}.md` |
 | Add checklist | `src-v2/data/checklists/qg-{id}.md` |
-| Add template | `src-v2/data/templates/{artifact}.md` |
+| Add template | `src-v2/skills/bmad-bam-{skill}/templates/{artifact}.md` |
 | Add standard | `src-v2/data/standards/std-{name}.md` |
 | Core context | `src-v2/data/context/bam-core.md` |
 | Pattern CSV | `src-v2/data/bam-patterns.csv` |
@@ -213,11 +216,11 @@ npm test -- --watch         # Watch mode
 | Asset | Count |
 |-------|-------|
 | TOML files | 14 |
-| Skills | 34 |
+| Skills | 38 |
 | Patterns | 112 |
 | Domains | 20 |
 | Checklists | 37 |
-| Templates | 45 |
+| Templates | 46 |
 | Standards | 3 |
 
 **Validation Commands:**
@@ -262,7 +265,8 @@ Before submitting changes:
 1. Create `src-v2/skills/bmad-bam-{name}/`
 2. Add SKILL.md, bmad-skill-manifest.yaml, workflow.md
 3. Add steps/ with CEV step files
-4. Run tests
+4. Add templates/ with output artifact templates
+5. Run tests
 
 ---
 
