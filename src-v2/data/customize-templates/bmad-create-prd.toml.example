@@ -1,0 +1,40 @@
+# BAM v3 Customize Template — bmad-create-prd
+# ============================================================================
+# Enriches BMAD's bmad-create-prd with multi-tenant SaaS + compliance context.
+# Apply via: bmad-customize → Workflow → bmad-create-prd → bmad-create-prd.toml.example
+# ============================================================================
+
+[workflow]
+
+activation_steps_prepend = [
+  "If this is a multi-tenant project (_bmad/config.toml [modules.bam].tenant_model is set), load BAM compliance and tenant requirement patterns.",
+]
+
+activation_steps_append = [
+  "Ensure PRD captures: tenant tier definitions, compliance frameworks, AI capability requirements, white-label scope.",
+  "Reference BAM compliance frameworks: {compliance_frameworks}.",
+]
+
+persistent_facts = [
+  "file:{project-root}/_bmad/bam/data/context/bam-core.md",
+  "file:{project-root}/_bmad/bam/data/domains/tenant.md",
+  "file:{project-root}/_bmad/bam/data/domains/compliance.md",
+  "file:{project-root}/_bmad/bam/data/patterns/tenant-isolation.md",
+  "file:{project-root}/_bmad/bam/data/patterns/data-residency.md",
+  "file:{project-root}/_bmad/bam/data/patterns/gdpr-compliance.md",
+  "file:{project-root}/_bmad/bam/data/patterns/consent-management.md",
+  "BAM principle: PRD requirements must include tenant tier, compliance, and AI capability dimensions.",
+  "BAM principle: Compliance frameworks (GDPR, HIPAA, SOC2, PCI-DSS) drive non-functional requirements.",
+]
+
+on_complete = """
+PRD complete. Multi-tenant requirement checklist:
+
+1. ✅ Tenant tier definitions (Free/Pro/Enterprise or domain-specific)?
+2. ✅ Compliance frameworks identified ({compliance_frameworks})?
+3. ✅ AI capability requirements specified?
+4. ✅ White-label / customization scope defined?
+5. ✅ Data residency requirements per tenant cohort?
+
+Next: bmad-create-architecture (tenant-aware via BAM customize template).
+"""

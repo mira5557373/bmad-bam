@@ -1,0 +1,92 @@
+# BAM v3 Customize Template — bmad-create-architecture
+# ============================================================================
+# This file is a TEMPLATE that BAM ships to enrich BMAD's bmad-create-architecture
+# with multi-tenant SaaS patterns.
+#
+# To install:
+#   1. Run the `bmad-customize` skill (BMAD's canonical override authoring tool)
+#   2. Choose: Customize → Workflow → bmad-create-architecture
+#   3. Apply BAM template: bmad-create-architecture.toml.example
+#
+# OR copy manually:
+#   cp _bmad/bam/customize-templates/bmad-create-architecture.toml.example \
+#      _bmad/custom/bmad-create-architecture.toml
+#
+# ============================================================================
+# WHAT THIS DOES
+# ============================================================================
+#
+# Injects BAM tenant + AI runtime + foundation patterns into BMAD's
+# architecture workflow. The result: when you run bmad-create-architecture,
+# the agent automatically considers:
+#   - Tenant isolation strategy (RLS / schema / database)
+#   - AI runtime selection (LangGraph / CrewAI / AutoGen)
+#   - Foundation quality gate (QG-F1)
+#   - Module boundaries with multi-tenant constraints
+#
+# NOTE: BAM's _bmad/bam/project-context.md is auto-loaded by every BMAD skill
+# anyway (via the universal **/project-context.md glob). This template adds
+# DEEPER, targeted patterns specifically for architecture decisions.
+#
+# ============================================================================
+
+[workflow]
+
+# Steps to run BEFORE the standard bmad-create-architecture activation.
+# Use for context-loading that must be in place before greeting.
+activation_steps_prepend = [
+  "Detect if this is a multi-tenant project by checking _bmad/config.toml [modules.bam].tenant_model.",
+  "If multi-tenant: load BAM tenant + AI runtime patterns as foundational facts (see persistent_facts below).",
+]
+
+# Steps to run AFTER greeting, before workflow body.
+# Use for setup that should happen once user has been acknowledged.
+activation_steps_append = [
+  "Confirm tenant model: rls / schema / database. Default from BAM config: {tenant_model}.",
+  "Confirm AI runtime: langgraph / crewai / autogen. Default from BAM config: {ai_runtime}.",
+  "Cite QG-F1 (Foundation Gate) checklist for architecture sign-off: _bmad/bam/data/checklists/qg-f1.md",
+]
+
+# Persistent facts loaded for the entire workflow run.
+# Each entry is either a literal sentence or a `file:` reference (glob supported).
+persistent_facts = [
+  # Foundational BAM context (also loaded by every BMAD skill via universal glob,
+  # but explicit reference here ensures load order)
+  "file:{project-root}/_bmad/bam/data/context/bam-core.md",
+
+  # Domain knowledge specific to architecture decisions
+  "file:{project-root}/_bmad/bam/data/domains/tenant.md",
+  "file:{project-root}/_bmad/bam/data/domains/ai-runtime.md",
+  "file:{project-root}/_bmad/bam/data/domains/integration.md",
+
+  # Highest-leverage patterns for architecture-stage decisions
+  "file:{project-root}/_bmad/bam/data/patterns/tenant-isolation.md",
+  "file:{project-root}/_bmad/bam/data/patterns/agent-runtime.md",
+  "file:{project-root}/_bmad/bam/data/patterns/agent-orchestration.md",
+  "file:{project-root}/_bmad/bam/data/patterns/module-boundaries.md",
+  "file:{project-root}/_bmad/bam/data/patterns/facade-contracts.md",
+
+  # Quality gate checklist — tells the agent the acceptance criteria
+  "file:{project-root}/_bmad/bam/data/checklists/qg-f1.md",
+
+  # Stylistic guardrail
+  "BAM principle: Tenant isolation is a first-class architectural concern, not an afterthought.",
+  "BAM principle: AI agent runtime choice constrains everything downstream — decide before module design.",
+  "BAM principle: Every architectural decision passes QG-F1 → QG-M1/M2/M3 → QG-P1 in order.",
+]
+
+# Scalar: runs after the architecture document is finalized.
+on_complete = """
+Architecture document complete. Multi-tenant verification:
+
+1. ✅ Tenant model documented and isolation strategy explicit?
+2. ✅ AI runtime selected with rationale (LangGraph/CrewAI/AutoGen)?
+3. ✅ Module boundaries respect tenant context propagation?
+4. ✅ QG-F1 checklist items addressed?
+
+Next BAM workflows to consider:
+  - bmad-bam-master-architecture (BAM-flavored deep architecture if needed)
+  - bmad-bam-tenant-onboarding (tenant lifecycle design)
+  - bmad-bam-mcp-server-config (if AI agents will use MCP tools)
+  - bmad-bam-rag-pipeline-design (if AI agents will use RAG)
+"""

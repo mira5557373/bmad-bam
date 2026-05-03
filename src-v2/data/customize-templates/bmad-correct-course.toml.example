@@ -1,0 +1,39 @@
+# BAM v3 Customize Template — bmad-correct-course
+# ============================================================================
+# Enriches BMAD's bmad-correct-course (incident response / pivot workflow) with
+# multi-tenant incident handling patterns.
+# Apply via: bmad-customize → Workflow → bmad-correct-course → bmad-correct-course.toml.example
+# ============================================================================
+
+[workflow]
+
+activation_steps_prepend = [
+  "Determine incident scope: single-tenant or platform-wide.",
+  "Load BAM incident response and triage patterns.",
+]
+
+activation_steps_append = [
+  "Cite BAM kill-switch registry (ZKS) before any platform-wide intervention.",
+  "Cite incident-correlation-engine pattern (ZIC) for cross-tenant analysis.",
+]
+
+persistent_facts = [
+  "file:{project-root}/_bmad/bam/data/context/bam-core.md",
+  "file:{project-root}/_bmad/bam/data/domains/observability.md",
+  "file:{project-root}/_bmad/bam/data/patterns/incident-response.md",
+  "file:{project-root}/_bmad/bam/data/patterns/incident-correlation-engine.md",
+  "file:{project-root}/_bmad/bam/data/patterns/kill-switch-registry.md",
+  "file:{project-root}/_bmad/bam/data/patterns/blast-radius-simulator.md",
+  "BAM principle: Multi-tenant incidents require blast-radius assessment FIRST.",
+  "BAM principle: Use kill-switch registry (ZKS) for platform-wide AI agent shutdowns.",
+  "BAM principle: Tenant-isolated incident response — never expose one tenant's incident to another.",
+]
+
+on_complete = """
+Course correction documented. Multi-tenant incident checklist:
+
+1. ✅ Blast radius assessed (single tenant / cohort / platform)?
+2. ✅ Kill switch armed if AI agents involved?
+3. ✅ Tenant-specific incident comms drafted?
+4. ✅ Post-mortem template includes tenant impact analysis?
+"""
