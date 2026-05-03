@@ -105,7 +105,7 @@ Design agent-specific chaos:
 - Chaos experiment catalog
 - Experiment runbooks
 - Progression timeline
-- **Load template:** `{project-root}/_bmad/bam/data/templates/chaos-engineering-template.md`
+- **Load template:** `./templates/chaos-engineering.md`
 
 ## Next Step
 
