@@ -1,39 +1,71 @@
-# BMB Registry Entry for BAM Module
+# BMB Registry Entry for BAM v3 Module
 # ============================================================================
-# This file documents the registry entry needed to add BAM to the official
+# This file documents the registry entry needed to add BAM v3 to the official
 # BMAD Method Base (BMB) module registry.
 #
-# IMPORTANT: To fully fix the installation issue, this entry must be added to:
-# 1. Remote: https://github.com/bmad-code-org/bmad-plugins-marketplace/registry/official.yaml
-# 2. Fallback: bmad-method/tools/installer/modules/registry-fallback.yaml
+# Submission target:
+#   https://github.com/bmad-code-org/bmad-plugins-marketplace
+#   → registry/official.yaml
 #
-# Until this is added to the official registry, use the post-install script
-# to copy the data/ directory manually.
+# OR fallback for direct installs:
+#   bmad-method/tools/installer/modules/registry-fallback.yaml
 # ============================================================================
 
 # Add this entry to the modules section of the registry YAML:
 
 bmad-bam:
   url: https://github.com/bmad-code-org/bmad-bam
-  module-definition: src/module.yaml
-  code: bmad-bam
+  module-definition: src-v2/module.yaml   # v3 uses src-v2/ directory
+  code: bam
   name: "BAM - Multi-Tenant Agentic AI SaaS"
-  description: "Extension module that adds multi-tenant capabilities, modular monolith patterns, and AI agent architecture to the BMAD Method"
-  defaultSelected: false
+  description: "Knowledge base extending BMAD with multi-tenant SaaS + AI runtime patterns. Use when building multi-tenant SaaS with AI agents, MCP servers, RAG pipelines, or tenant-isolated workflows."
+  defaultSelected: false   # opt-in only
   type: bmad-org
   npmPackage: bmad-bam
+  version: ">=3.0.0"
+  requires:
+    bmad: ">=6.4.0"
 
 # ============================================================================
-# WHY THIS IS NEEDED
+# WHAT BAM v3 PROVIDES (post-install)
 # ============================================================================
 #
-# Without this registry entry, BMB installs BAM via "plugin resolution" which:
-# - ONLY copies skill directories from marketplace.json plugins[].skills[]
-# - IGNORES the data/ directory (agent-guides, templates, checklists, extensions)
+# After `npx bmad-method install` selects BAM:
 #
-# With this registry entry, BMB uses "external module" installation which:
-# - Copies the ENTIRE src/ directory including data/
-# - Properly installs all 721 resource files
+# 1. KB at _bmad/bam/data/
+#    - 112 patterns (data/patterns/) with shortcode index (_index.md)
+#    - 15 quality-gate checklists (data/checklists/)
+#    - 10 domain guides (data/domains/)
+#    - 48 BMAD-compatible templates (data/templates/)
+#    - 14 persona docs (data/personas/)
+#    - 1 operational runbook (data/runbooks/)
+#    - 3 BMAD customize templates (data/customize-templates/)
+#    - 5 standards + 5 context + 3 sidecar memory files
+#    - 7 CSV registries (bam-patterns, section-pattern-map, quality-gates,
+#      tenant-models, ai-runtimes, compliance-frameworks, ai-safety-controls)
+#
+# 2. Native KB injection at _bmad/bam/project-context.md
+#    Auto-loaded by every BMAD skill via universal glob:
+#      persistent_facts = ["file:{project-root}/**/project-context.md"]
+#    No customize override required for basic integration.
+#
+# 3. 5 BAM-specific skills at {skills-path}/:
+#    - bmad-bam-master-architecture
+#    - bmad-bam-tenant-onboarding
+#    - bmad-bam-tenant-offboarding
+#    - bmad-bam-mcp-server-config
+#    - bmad-bam-rag-pipeline-design
+#
+# 4. 14 agent personas in _bmad/config.toml [agents.*]:
+#    - 3 architects: Atlas (platform), Nova (AI runtime), Kai (integration)
+#    - 11 specialists: Vega, Quinn, Rune, Cipher, Auditor, Helix, Bridge,
+#      Sage, Lyra, Echo, Iris
+#    - team filter: bam | bam-platform | bam-runtime
+#
+# 5. Config variables (prompted at install):
+#    - tenant_model:        rls | schema | database
+#    - ai_runtime:          langgraph | crewai | autogen | custom
+#    - compliance_frameworks: GDPR, HIPAA, SOC2, PCI-DSS, etc.
 #
 # ============================================================================
 # VERIFICATION AFTER REGISTRY UPDATE
@@ -43,12 +75,39 @@ bmad-bam:
 #
 #   npx bmad-method install
 #   # Select BAM module
+#   # Answer prompts: tenant_model, ai_runtime, compliance_frameworks
 #
 #   # Then verify:
-#   ls _bmad/bmad-bam/data/          # Should show subdirs + CSVs
-#   ls _bmad/bmad-bam/data/agent-guides/bam/ | wc -l   # Should be 223
-#   ls _bmad/bmad-bam/data/templates/ | wc -l          # Should be 456
-#   ls _bmad/bmad-bam/data/checklists/ | wc -l         # Should be 37
-#   ls _bmad/bmad-bam/data/extensions/ | wc -l         # Should be 32
+#   ls _bmad/bam/                                     # KB root
+#   cat _bmad/bam/project-context.md | head -20       # native injection file
+#   ls _bmad/bam/data/patterns/ | wc -l               # 112+ patterns
+#   cat _bmad/bam/data/patterns/_index.md | head -20  # shortcode index
+#   ls _bmad/bam/customize-templates/                 # 3 .toml.example
+#
+#   # Verify the 5 retained skills installed:
+#   ls _bmad/skills/bmad-bam-master-architecture/SKILL.md
+#   ls _bmad/skills/bmad-bam-tenant-onboarding/SKILL.md
+#   ls _bmad/skills/bmad-bam-tenant-offboarding/SKILL.md
+#   ls _bmad/skills/bmad-bam-mcp-server-config/SKILL.md
+#   ls _bmad/skills/bmad-bam-rag-pipeline-design/SKILL.md
+#
+#   # Verify 14 personas distilled to central config:
+#   grep -A 1 'bmad-bam-agent-' _bmad/config.toml
+#
+#   # Smoke test:
+#   bmad-create-architecture
+#   # ... agent should auto-load _bmad/bam/project-context.md and produce
+#   # a tenant-aware architecture document without any user customization.
+#
+# ============================================================================
+# v2 → v3 BREAKING CHANGES
+# ============================================================================
+#
+# - 38 BAM skills reduced to 5 (see MIGRATION-V2-TO-V3.md)
+# - data/ structure reorganized (added: patterns/_index.md, runbooks/,
+#   customize-templates/)
+# - module.yaml schema changed: name → code, added agents block, added
+#   config-vars (tenant_model, ai_runtime, compliance_frameworks)
+# - module-definition path: src/module.yaml → src-v2/module.yaml
 #
 # ============================================================================
