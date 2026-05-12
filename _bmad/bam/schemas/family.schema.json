@@ -1,0 +1,117 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/mira5557373/bmad-bam/_bmad/bam/schemas/family.schema.json",
+  "title": "BAM family.json",
+  "description": "Records which BAM activation plan (A, B, or C) the host BMAD install supports, plus installed BAM modules, smoke-test outcomes, and context-budget guardrails. Produced by bmad-bam-smoke-test step-08 and by tests/wave-0/run-smoke-test.sh.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version",
+    "bmad_version",
+    "plan",
+    "installed",
+    "smoke_test",
+    "shared_mode",
+    "context-budget"
+  ],
+  "properties": {
+    "schema_version": {
+      "type": "string",
+      "description": "Semver of this JSON Schema's contract. Bump on breaking schema changes.",
+      "pattern": "^[0-9]+\\.[0-9]+\\.[0-9]+$"
+    },
+    "bmad_version": {
+      "type": "string",
+      "description": "BMAD method version under test at smoke-test time."
+    },
+    "plan": {
+      "description": "Activation plan selected by the most recent smoke-test run. Null when no plan passed.",
+      "oneOf": [
+        {"type": "string", "enum": ["A", "B", "C"]},
+        {"type": "null"}
+      ]
+    },
+    "installed": {
+      "type": "array",
+      "description": "BAM modules installed in this host project.",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["module", "version", "installed_at", "scope"],
+        "properties": {
+          "module": {"type": "string"},
+          "version": {"type": "string"},
+          "installed_at": {"type": "string", "format": "date-time"},
+          "scope": {"type": "string", "description": "Free-form scope marker (e.g. wave-0-skeleton, full-module)."}
+        }
+      }
+    },
+    "smoke_test": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["completed_at", "plan_selected", "log_directory"],
+      "properties": {
+        "completed_at": {"type": "string", "format": "date-time"},
+        "plan_selected": {
+          "oneOf": [
+            {"type": "string", "enum": ["A", "B", "C"]},
+            {"type": "null"}
+          ]
+        },
+        "log_directory": {"type": "string", "description": "Path (relative to project root) where intermediate workflow artifacts are written."},
+        "runner": {"type": "string", "description": "Path to the runner that produced this result (e.g. tests/wave-0/run-smoke-test.sh)."},
+        "targets": {
+          "type": "object",
+          "description": "Per-skill verification results for each plan (spec §7.3 mandates >=2 target skills).",
+          "additionalProperties": false,
+          "properties": {
+            "plan_a": {"oneOf": [{"$ref": "#/$defs/target_result_array"}, {"type": "null"}]},
+            "plan_b": {"oneOf": [{"$ref": "#/$defs/target_result_array"}, {"type": "null"}]},
+            "plan_c": {"oneOf": [{"$ref": "#/$defs/target_result_array"}, {"type": "null"}]}
+          }
+        }
+      }
+    },
+    "shared_mode": {
+      "type": "boolean",
+      "description": "Whether this BAM install is in shared (multi-project) mode. P2 territory."
+    },
+    "context-budget": {
+      "type": "object",
+      "description": "Token budget guardrails per spec §6.10.",
+      "additionalProperties": false,
+      "required": [
+        "tier1-total-max-tokens",
+        "tier1-per-module-max-tokens",
+        "tier2-max-tokens",
+        "warn-at-tier3-tokens",
+        "fail-at-total-tokens"
+      ],
+      "properties": {
+        "tier1-total-max-tokens": {"type": "integer", "minimum": 0},
+        "tier1-per-module-max-tokens": {
+          "type": "object",
+          "description": "Per-module Tier-1 (project-context.md) ceiling. Keys are BAM module short codes.",
+          "additionalProperties": {"type": "integer", "minimum": 0}
+        },
+        "tier2-max-tokens": {"type": "integer", "minimum": 0},
+        "warn-at-tier3-tokens": {"type": "integer", "minimum": 0},
+        "fail-at-total-tokens": {"type": "integer", "minimum": 0}
+      }
+    }
+  },
+  "$defs": {
+    "target_result_array": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["skill", "result"],
+        "properties": {
+          "skill": {"type": "string"},
+          "result": {"type": "string", "enum": ["pass", "fail", "unknown"]}
+        }
+      }
+    }
+  }
+}

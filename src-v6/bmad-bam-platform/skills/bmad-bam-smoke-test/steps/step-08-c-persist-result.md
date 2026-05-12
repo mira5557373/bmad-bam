@@ -10,7 +10,11 @@ outputs: [family.json]
 
 ## Purpose
 
-Write `{project-root}/_bmad/bam/family.json` with the selected plan, installed modules state, smoke-test outcomes, and timestamps. P2 and all subsequent waves read this file to know how to activate.
+Write `{project-root}/_bmad/bam/family.json` with the selected plan, installed modules state, smoke-test outcomes (including per-skill results per spec §7.3), and timestamps. P2 and all subsequent waves read this file to know how to activate.
+
+## Schema
+
+The canonical contract is `_bmad/bam/schemas/family.schema.json` (committed under this repo's `_bmad/bam/schemas/`). Producers MUST match it. Required top-level keys: `schema_version`, `bmad_version`, `plan`, `installed`, `smoke_test`, `shared_mode`, `context-budget`. Run the validator at the end of this step.
 
 ## Action
 
@@ -34,12 +38,35 @@ if [ "$PLAN" = "unknown" ]; then
     exit 1
 fi
 
-# Get BMAD version
-BMAD_VERSION=$(grep -oE 'bmad_version=[0-9.]+' "$LOG_DIR/bmad-version.txt" | cut -d= -f2)
+# Read BMAD version (robust against pre-release/build suffixes)
+BMAD_VERSION=$(grep -oE 'bmad_version=\S+' "$LOG_DIR/bmad-version.txt" | cut -d= -f2)
+
+# Per-target results from plan-a/b-result.txt: parse `target.<skill>=<pass|fail>` lines
+build_target_json() {
+    local result_file="$1"
+    [ ! -f "$result_file" ] && { printf 'null'; return; }
+    local first=1
+    printf '['
+    while IFS= read -r line; do
+        case "$line" in
+            target.*=*)
+                skill="${line#target.}"
+                result="${skill#*=}"
+                skill="${skill%%=*}"
+                if [ "$first" -eq 0 ]; then printf ', '; fi
+                printf '{"skill": "%s", "result": "%s"}' "$skill" "$result"
+                first=0
+                ;;
+        esac
+    done < "$result_file"
+    printf ']'
+}
 
 TIMESTAMP=$(date -u +%Y-%m-%dT%H:%M:%SZ)
+PLAN_A_TARGETS=$(build_target_json "$LOG_DIR/plan-a-result.txt")
+PLAN_B_TARGETS=$(build_target_json "$LOG_DIR/plan-b-result.txt")
 
-# Write family.json atomically
+mkdir -p "$(dirname "$FAMILY_JSON")"
 TMP="$(mktemp)"
 cat > "$TMP" <<EOF
 {
@@ -57,18 +84,32 @@ cat > "$TMP" <<EOF
   "smoke_test": {
     "completed_at": "$TIMESTAMP",
     "plan_selected": "$PLAN",
-    "log_directory": "_bmad/bam/install-logs/"
+    "log_directory": "_bmad/bam/install-logs/",
+    "runner": "bmad-bam-smoke-test/workflow.md",
+    "targets": {
+      "plan_a": $PLAN_A_TARGETS,
+      "plan_b": $PLAN_B_TARGETS
+    }
   },
   "shared_mode": false,
   "context-budget": {
     "tier1-total-max-tokens": 40000,
+    "tier1-per-module-max-tokens": {
+      "platform": 5000,
+      "data": 4000,
+      "ai": 8000,
+      "rag": 4000,
+      "integration": 5000,
+      "trust": 6000,
+      "ops": 4000,
+      "ux": 4000
+    },
+    "tier2-max-tokens": 20000,
     "warn-at-tier3-tokens": 30000,
     "fail-at-total-tokens": 150000
   }
 }
 EOF
-
-mkdir -p "$(dirname "$FAMILY_JSON")"
 mv -f "$TMP" "$FAMILY_JSON"
 
 echo "Wrote $FAMILY_JSON (plan=$PLAN)"
@@ -86,4 +127,18 @@ case "$PLAN" in
   A|B|C) echo "PASS: plan=$PLAN persisted" ;;
   *) echo "FAIL: invalid plan=$PLAN"; exit 1 ;;
 esac
+
+# Optional: validate against the canonical JSON Schema if jsonschema is installed.
+# Family.json producers MUST pass this check.
+SCHEMA="$PROJECT_ROOT/_bmad/bam/schemas/family.schema.json"
+if [ -f "$SCHEMA" ] && python3 -c "import jsonschema" 2>/dev/null; then
+    python3 - "$FAMILY_JSON" "$SCHEMA" <<'PY' && echo "PASS: schema validation"
+import json, sys, jsonschema
+inst = json.load(open(sys.argv[1]))
+schema = json.load(open(sys.argv[2]))
+jsonschema.validate(inst, schema)
+PY
+else
+    echo "INFO: jsonschema not installed or schema missing; skipped strict validation"
+fi
 ```
