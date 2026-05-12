@@ -1916,7 +1916,7 @@ EOF
 
 These are templates that get populated as the project evolves. Empty templates with section structure committed now.
 
-- [ ] **Step 1: Write runtime-preferences.md template**
+- [x] **Step 1: Write runtime-preferences.md template**
 
 ```markdown
 # Atlas — Runtime Preferences
@@ -1946,7 +1946,7 @@ Project-specific defaults and preferences that override fragment-level recommend
 Atlas reads this file at session start and adjusts recommendations accordingly. If unset, Atlas asks the user before making infra-specific suggestions.
 ```
 
-- [ ] **Step 2: Write integration-history.md template**
+- [x] **Step 2: Write integration-history.md template**
 
 ```markdown
 # Atlas — Integration History
@@ -1961,7 +1961,7 @@ Convergence outcomes from cross-module integration design (Kai's territory). Atl
 |---|---|---|---|
 ```
 
-- [ ] **Step 3: Commit**
+- [x] **Step 3: Commit**
 
 ```bash
 git add _bmad/_memory/atlas/runtime-preferences.md \
