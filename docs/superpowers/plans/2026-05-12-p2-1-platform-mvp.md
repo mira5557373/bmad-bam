@@ -818,6 +818,12 @@ Content focus:
 
 Steps mirror Task 6. Commit message: `feat(p2): add tenant-isolation-testing-patterns fragment`.
 
+- [x] **Step 1: Write the fragment** (565 lines; 9 H2 sections; 9 concrete pytest snippets covering per-tenant fixture, polluted-state fixture, cross-tenant FK fixture, parametrized cross-tenant SELECT, RLS INSERT violation, noisy-neighbor latency, RLS bypass family — SECURITY DEFINER / SET ROLE / search_path / BYPASSRLS port — tenant lifecycle, Hypothesis property-based state machine)
+- [x] **Step 2: Validate frontmatter** (python3 yaml.safe_load → OK)
+- [x] **Step 3: Verify 9 required sections present** (When to Use, When NOT to Use, Fixture Patterns, Test Types, Tooling, Anti-Patterns, Quality Checks, Web Research Queries, Cross-references)
+- [x] **Step 4: Verify CRITICAL marker present**
+- [x] **Step 5: Commit**
+
 ---
 
 ## Tasks 11–13: Build 3 patterns
