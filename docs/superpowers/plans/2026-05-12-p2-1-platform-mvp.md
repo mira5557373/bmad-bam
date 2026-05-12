@@ -1410,7 +1410,7 @@ EOF
 **Files:**
 - Create: `src-v6/bmad-bam-platform/skills/bmad-bam-design-tenancy-model/steps/step-04-c-recommendation.md`
 
-- [ ] **Step 1: Write the step file**
+- [x] **Step 1: Write the step file**
 
 ````markdown
 ---
@@ -1473,7 +1473,7 @@ Human-approval. Never auto-runs; user must approve the recommendation explicitly
 `step-05-c-write-design.md`
 ````
 
-- [ ] **Step 2: Commit**
+- [x] **Step 2: Commit**
 
 ```bash
 git add src-v6/bmad-bam-platform/skills/bmad-bam-design-tenancy-model/steps/step-04-c-recommendation.md
