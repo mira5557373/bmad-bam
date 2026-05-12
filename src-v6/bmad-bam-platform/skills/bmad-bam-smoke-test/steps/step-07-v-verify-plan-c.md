@@ -1,6 +1,6 @@
 ---
 step_id: 07-v-verify-plan-c
-auto-runnable: false      # human approval required — Plan C means manual step in install path
+auto_runnable: false      # human approval required — Plan C means manual step in install path
 gate: human-approval
 inputs: [sentinel.txt, plan-b-result.txt]
 outputs: [plan-c-result.txt]

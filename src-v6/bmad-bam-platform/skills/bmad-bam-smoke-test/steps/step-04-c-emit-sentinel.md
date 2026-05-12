@@ -1,6 +1,6 @@
 ---
 step_id: 04-c-emit-sentinel
-auto-runnable: true
+auto_runnable: true
 gate: machine-checkable
 inputs: [install-status.txt]
 outputs: [sentinel.txt]

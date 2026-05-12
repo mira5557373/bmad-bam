@@ -1,6 +1,6 @@
 ---
 step_id: 01-c-elicit-context
-auto-runnable: false
+auto_runnable: false
 gate: human-approval
 inputs: []
 outputs: [tenancy-context.json]

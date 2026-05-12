@@ -1,6 +1,6 @@
 ---
 step_id: 03-c-install-test-mode
-auto-runnable: true
+auto_runnable: true
 gate: machine-checkable
 inputs: [universal-glob-presence.txt]
 outputs: [install-status.txt]

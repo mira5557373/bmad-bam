@@ -1,6 +1,6 @@
 ---
 step_id: 02-c-detect-universal-glob
-auto-runnable: true
+auto_runnable: true
 gate: machine-checkable
 inputs: [bmad-version.txt]
 outputs: [universal-glob-presence.txt]

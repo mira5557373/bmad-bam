@@ -1,6 +1,6 @@
 ---
 step_id: 06-v-verify-plan-b
-auto-runnable: true
+auto_runnable: true
 gate: machine-checkable
 inputs: [sentinel.txt, plan-a-result.txt]
 outputs: [plan-b-result.txt]

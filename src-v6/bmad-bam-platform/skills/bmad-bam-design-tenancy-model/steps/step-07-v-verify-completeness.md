@@ -1,6 +1,6 @@
 ---
 step_id: 07-v-verify-completeness
-auto-runnable: true
+auto_runnable: true
 gate: machine-checkable
 inputs: [tenancy-model.md, ADR]
 outputs: [QG-M2-partial-evidence.md]

@@ -1,6 +1,6 @@
 ---
 step_id: 06-c-record-adr
-auto-runnable: true
+auto_runnable: true
 gate: machine-checkable
 inputs: [recommendation.json, tenancy-model.md]
 outputs: [<NNN>-tenancy-model.md ADR]

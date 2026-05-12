@@ -1,6 +1,6 @@
 ---
 step_id: 04-c-recommendation
-auto-runnable: false
+auto_runnable: false
 gate: human-approval
 inputs: [decision-matrix.json]
 outputs: [recommendation.json]

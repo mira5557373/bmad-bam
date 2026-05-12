@@ -1,6 +1,6 @@
 ---
 step_id: 02-c-load-options
-auto-runnable: true
+auto_runnable: true
 gate: machine-checkable
 inputs: [tenancy-context.json]
 outputs: [options-loaded.json]

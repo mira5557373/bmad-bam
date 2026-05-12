@@ -57,7 +57,7 @@ content = open(sys.argv[1]).read()
 parts = content.split('---', 2)
 assert len(parts) >= 3, f'no frontmatter in {sys.argv[1]}'
 fm = yaml.safe_load(parts[1])
-required = ['step_id', 'auto-runnable', 'gate']
+required = ['step_id', 'auto_runnable', 'gate']
 missing = [k for k in required if k not in fm]
 assert not missing, f'missing frontmatter keys {missing} in {sys.argv[1]}'
 " "$step"

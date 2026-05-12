@@ -1,6 +1,6 @@
 ---
 step_id: 01-c-run-finalize
-auto-runnable: true
+auto_runnable: true
 gate: machine-checkable
 inputs: [_bmad/config.toml]
 outputs: [_bmad/bam-activation/platform/project-context.md, _bmad/bam/install-logs/platform-install.log, _bmad/_memory/atlas/architecture-decisions/INDEX.md]

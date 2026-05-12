@@ -1,6 +1,6 @@
 ---
 step_id: 05-c-write-design
-auto-runnable: true
+auto_runnable: true
 gate: machine-checkable
 inputs: [tenancy-context.json, recommendation.json]
 outputs: [tenancy-model.md]

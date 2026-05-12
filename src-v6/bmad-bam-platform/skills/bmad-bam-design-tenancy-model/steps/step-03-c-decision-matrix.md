@@ -1,6 +1,6 @@
 ---
 step_id: 03-c-decision-matrix
-auto-runnable: true
+auto_runnable: true
 gate: machine-checkable
 inputs: [tenancy-context.json, options-loaded.json]
 outputs: [decision-matrix.json]
