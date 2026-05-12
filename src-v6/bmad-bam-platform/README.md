@@ -41,13 +41,13 @@ This is the Path B activation step that materializes the universal-glob auto-loa
 
 ## Use
 
+After finalize, invoke Atlas's workflows via BMAD's standard `bmad run`:
+
 ```bash
-@Atlas
-# OR
-bmad bmad-bam-design-tenancy-model
+bmad run bmad-bam-design-tenancy-model
 ```
 
-Runs the design-tenancy-model workflow; produces tenancy-model.md.
+Runs the design-tenancy-model workflow; produces `docs/architecture/tenancy-model.md` + an ADR + partial QG-M2 evidence.
 
 ## Smoke test
 
