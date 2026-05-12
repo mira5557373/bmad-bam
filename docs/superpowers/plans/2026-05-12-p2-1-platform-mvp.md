@@ -907,6 +907,10 @@ CRITICAL: `**CRITICAL:** cell migration tooling MUST be implemented before any s
 
 Commit message: `feat(p2): add cell-based-with-routing pattern`.
 
+- [x] **Step 1: Write the pattern** (446 lines; 8 H2 sections; ASCII routing-flow diagram + cell-control-plane vs data-plane explanation + Envoy Lua `lookup_cell` Redis-cache-with-catalog-DB-fallback + Envoy YAML with JWT-authn filter + Kubernetes default-deny NetworkPolicy + capacity-aware tenant-onboarding Python pseudocode + cell-split runbook summary)
+- [x] **Step 2: Validate frontmatter + sections** (python3 yaml.safe_load → OK; 8 H2 sections present; CRITICAL marker present; 5 `{date}` placeholders in Web Research Queries)
+- [x] **Step 3: Commit**
+
 ---
 
 ## Task 14: Update Atlas index CSV with all new fragments + patterns
