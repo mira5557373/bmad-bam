@@ -278,7 +278,7 @@ EOF
 
 For this task, we'll just verify the existing `smoke-test/customize.toml` (from Wave 0 remediation) is consistent with the convention, and document the persona pattern in the standards file (Task 4).
 
-- [ ] **Step 1: Re-read the smoke-test customize.toml as reference**
+- [x] **Step 1: Re-read the smoke-test customize.toml as reference**
 
 Run: `cat src-v6/bmad-bam-platform/skills/bmad-bam-smoke-test/customize.toml`
 
@@ -286,13 +286,15 @@ Note its shape: `[agent]` block with `role`, `identity`, `communication_style`, 
 
 This is the template for Atlas's persona overlays in ALL his skills. Each skill gets its own customize.toml with persona overlay tuned to that skill's menu.
 
-- [ ] **Step 2: Note the namespace rule**
+_Verified 2026-05-12: smoke-test customize.toml has all required keys (role, identity, communication_style, principles, persistent_facts with universal-glob, [[agent.menu]] entries ST + SI). Shape matches the template described above._
+
+- [x] **Step 2: Note the namespace rule**
 
 `smoke-test` uses `[agent]` (it's an agent menu skill). `design-tenancy-model` will use `[workflow]` (it's a CEV workflow skill). The `persistent_facts` line must appear in WHICHEVER block matches the skill type, per spec §7.1.
 
 No code change in this task — proceeds to Task 4 (standards) then Task 7 (build the design-tenancy-model customize.toml).
 
-- [ ] **Step 3: Commit a marker file documenting the convention**
+- [x] **Step 3: Commit a marker file documenting the convention**
 
 Append to `src-v6/bmad-bam-platform/agents/atlas/resources/platform-index.csv` (no change yet; we'll add fragment rows in Task 11). Skip git commit for this task.
 
@@ -303,11 +305,11 @@ Append to `src-v6/bmad-bam-platform/agents/atlas/resources/platform-index.csv` (
 **Files:**
 - Modify: `src-v6/bmad-bam-platform/module.yaml`
 
-- [ ] **Step 1: Read current module.yaml `agents:` block**
+- [x] **Step 1: Read current module.yaml `agents:` block**
 
 Run: `awk '/^agents:/,/^[a-zA-Z]/' src-v6/bmad-bam-platform/module.yaml | head -20`
 
-- [ ] **Step 2: Replace with full Atlas registration**
+- [x] **Step 2: Replace with full Atlas registration**
 
 Edit the `agents:` block in `src-v6/bmad-bam-platform/module.yaml`. Replace the current entry with:
 
@@ -321,7 +323,7 @@ agents:
     description: "Multi-tenant SaaS platform architect. Holds up the platform sky — RLS strategy, modular monolith decomposition, tenant tier modeling, FinOps. Speaks like a structural engineer at a whiteboard: load-bearing decisions first, every gate explicit. Owns QG-F1 (Foundation), QG-M1 (Module Architecture), QG-M2 (Tenant Isolation), QG-DA1 (Data Architecture)."
 ```
 
-- [ ] **Step 3: Verify module.yaml still parses**
+- [x] **Step 3: Verify module.yaml still parses**
 
 Run:
 ```bash
@@ -330,7 +332,7 @@ python3 -c "import yaml; m = yaml.safe_load(open('src-v6/bmad-bam-platform/modul
 
 Expected: `OK: Atlas`
 
-- [ ] **Step 4: Commit**
+- [x] **Step 4: Commit**
 
 ```bash
 git add src-v6/bmad-bam-platform/module.yaml

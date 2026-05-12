@@ -45,7 +45,7 @@ agents:
     title: Platform Architect
     icon: "🏛️"
     team: bam-platform
-    description: "Wave 0 stub. Full persona arrives in P2 — structural engineer's discipline applied to multi-tenant SaaS: load-bearing decisions first, every quality gate explicit."
+    description: "Multi-tenant SaaS platform architect. Holds up the platform sky — RLS strategy, modular monolith decomposition, tenant tier modeling, FinOps. Speaks like a structural engineer at a whiteboard: load-bearing decisions first, every gate explicit. Owns QG-F1 (Foundation), QG-M1 (Module Architecture), QG-M2 (Tenant Isolation), QG-DA1 (Data Architecture)."
 
 # --- BAM-specific extensions (not consumed by BMAD's installer) -------------
 # The keys below are documentation for BAM's own tooling and human readers.
