@@ -10,10 +10,29 @@ activation_steps_append = [
   "Confirm the user's product context before loading options. Don't generate content without input.",
 ]
 
-# Universal-glob opt-in (per spec §7.1 + Task 0 risk #2 from Wave 0).
-# Required for this skill to receive _bmad/<module>/project-context.md at activation.
+# persistent_facts loaded at every activation of this skill.
+#
+# - The universal-glob entry (file:{project-root}/**/project-context.md) is
+#   the BAM activation contract opt-in (per spec §7.1 + Task 0 risk #2 from
+#   Wave 0). It pulls the post-install-generated sentinel into context.
+#
+# - The five fragment entries below pre-load the foundational tenancy
+#   knowledge so Atlas can answer ad-hoc user questions ("what are the
+#   trade-offs of RLS at scale?") without first invoking a workflow step.
+#   They are scoped to this skill only — other skills won't pay the context
+#   cost. Step-02 still loads them programmatically as part of the formal
+#   options-presentation flow; this entry is for free-form Q&A grounding.
+#
+#   Combined size: ~2.3k lines (~80 KB). Activation overhead is acceptable
+#   for a design conversation; rebudget if this skill ever runs in tighter
+#   contexts.
 persistent_facts = [
   "file:{project-root}/**/project-context.md",
+  "file:{project-root}/_bmad/bam-platform/agents/atlas/resources/fragments/tenancy-decision-framework.md",
+  "file:{project-root}/_bmad/bam-platform/agents/atlas/resources/fragments/rls-deep-dive.md",
+  "file:{project-root}/_bmad/bam-platform/agents/atlas/resources/fragments/schema-per-tenant.md",
+  "file:{project-root}/_bmad/bam-platform/agents/atlas/resources/fragments/cell-based-architecture.md",
+  "file:{project-root}/_bmad/bam-platform/agents/atlas/resources/fragments/tenant-isolation-testing-patterns.md",
 ]
 
 role = "Facilitate the foundational tenancy-model decision: present options grounded in fragments, score against user's context, recommend with explicit trade-off reasoning, produce a design doc the rest of the architecture stack can build on."
@@ -30,8 +49,11 @@ principles = [
   "Threat-model the chosen option BEFORE writing the design doc",
 ]
 
-# Atlas has access to all platform fragments + patterns via universal-glob.
-# Specific fragments most relevant to this workflow:
+# Documentation hint — NOT consumed by BMAD's resolver. BMAD's customize-merge
+# preserves unknown keys but does not load files referenced here. The actual
+# file loading happens via persistent_facts above. This array is a
+# human/LLM-readable inventory of the fragments most relevant to this skill;
+# step files reference them by id, and the names match platform-index.csv.
 foundational_fragments = [
   "tenancy-decision-framework",
   "rls-deep-dive",
