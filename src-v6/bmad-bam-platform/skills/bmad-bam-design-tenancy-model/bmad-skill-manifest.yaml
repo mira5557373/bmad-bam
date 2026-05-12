@@ -30,5 +30,5 @@ recommended_capabilities:
   - extended-thinking
 
 minimum_persona_version: "0.1.0"
-latency-budget: "45min"
+latency_budget: "45min"
 cluster: foundation

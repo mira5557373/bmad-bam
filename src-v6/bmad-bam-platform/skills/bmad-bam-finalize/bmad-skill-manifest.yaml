@@ -23,5 +23,5 @@ execution_mode:
 
 recommended_capabilities: []
 minimum_persona_version: "0.1.0"
-latency-budget: "2min"
+latency_budget: "2min"
 cluster: foundation

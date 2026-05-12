@@ -24,8 +24,14 @@ post-install-notes: |
 
       bmad run bmad-bam-finalize
 
-  This generates _bmad/platform/project-context.md (the universal-glob auto-load
-  sentinel) and writes _bmad/bam/family.json. Re-running is safe.
+  This step generates the universal-glob auto-load sentinel at
+    {project-root}/_bmad/platform/project-context.md
+  and appends an audit entry to
+    {project-root}/_bmad/bam/install-logs/platform-install.log
+  Re-running is safe (the sentinel is replaced atomically; the log is append-only).
+
+  Once finalize completes, Atlas's design workflows are usable, e.g.:
+      bmad run bmad-bam-design-tenancy-model
 
 # Directories to create during installation (declarative, no code execution).
 # BMAD's installer reads this list. All other declarations below are loaded by
