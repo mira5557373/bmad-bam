@@ -2207,7 +2207,7 @@ EOF
 **Files:**
 - Modify: `src-v6/bmad-bam-platform/README.md`
 
-- [ ] **Step 1: Rewrite the README**
+- [x] **Step 1: Rewrite the README**
 
 Update `src-v6/bmad-bam-platform/README.md`:
 
@@ -2272,7 +2272,7 @@ Verifies machinery; doesn't invoke LLM.
 P2.2: 2 more tenancy workflows (modular-monolith + tier-model) + cross-family record-decision workflow.
 ```
 
-- [ ] **Step 2: Commit**
+- [x] **Step 2: Commit**
 
 ```bash
 git add src-v6/bmad-bam-platform/README.md
