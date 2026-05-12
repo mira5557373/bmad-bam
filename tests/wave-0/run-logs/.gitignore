@@ -1,0 +1,5 @@
+# Durable run logs from tests/wave-0/run-smoke-test.sh
+# Keep the directory tracked but don't commit individual run snapshots.
+*
+!.gitignore
+!.gitkeep

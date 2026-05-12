@@ -40,6 +40,15 @@ read to fully answer Steps 3–5.
 
 - Why not a BMAD CLI subcommand: only `install`, `status`, and `uninstall` are registered (`external/bmad-method/tools/installer/commands/` directory listing). No `customize --show`, `debug`, or context-dump command exists in v6.6.0.
 
+## Refinement (post-Wave-0 remediation)
+
+**Namespace split discovered during multi-skill runner verification.** The 30 BMAD v6.6.0 skills that ship the universal-glob are split by customize.toml namespace:
+
+- **Agent skills (6):** `bmad-agent-analyst`, `bmad-agent-architect`, `bmad-agent-dev`, `bmad-agent-pm`, `bmad-agent-tech-writer`, `bmad-agent-ux-designer`. Customize.toml uses `[agent]` block; universal-glob lives at `agent.persistent_facts`.
+- **Workflow skills (24):** `bmad-create-architecture`, `bmad-create-prd`, `bmad-create-story`, `bmad-validate-prd`, etc. Customize.toml uses `[workflow]` block; universal-glob lives at `workflow.persistent_facts`.
+
+Initial investigation (above) examined only `bmad-agent-analyst` and recorded the resolver invocation as `--key agent.persistent_facts`. That's correct for agent skills, but returns `{}` for workflow skills. Spec §7.3 mandates testing `bmad-create-architecture` and `bmad-create-prd` — both are workflows — so the smoke-test runner / helper must query both namespaces and treat presence in either as a hit. `tests/wave-0/lib/inspect-context.sh` (post-remediation) does this.
+
 ## Risks identified
 
 1. **LLM-side `file:` expansion is by-design untestable headlessly.** The contract that turns the TOML string `file:{project-root}/**/project-context.md` into actually-loaded file contents lives in 30 separate SKILL.md prompts, each telling the LLM to do the loading. Plans A + B (the headless portion of the smoke test) prove the universal-glob string round-trips through merge and that the file BAM drops at install time is present at a glob-matching path. They do **not** prove an LLM will actually read it. Plan C (manual agent run) is required for a true end-to-end signal.
