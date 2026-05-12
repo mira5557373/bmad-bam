@@ -601,7 +601,7 @@ EOF
 
 Per spec §8.1, QG-M2 is criticality=blocking, depends-on=[QG-F1, QG-M1].
 
-- [ ] **Step 1: Write the gate checklist**
+- [x] **Step 1: Write the gate checklist**
 
 Create `src-v6/bmad-bam-platform/data/checklists/QG-M2.md`:
 
@@ -669,7 +669,7 @@ Verify that the chosen tenancy model (decided at QG-F1) is correctly implemented
 - `tenant isolation testing strategies {date}`
 ```
 
-- [ ] **Step 2: Commit**
+- [x] **Step 2: Commit**
 
 ```bash
 git add src-v6/bmad-bam-platform/data/checklists/QG-M2.md
