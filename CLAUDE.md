@@ -1,6 +1,13 @@
 # CLAUDE.md - BAM Extension Module
 
-> **Quick Start:** BAM is a **pure extension module** for multi-tenant SaaS. **14 TOMLs, 38 skills, 112 patterns, 20 domains, 37 checklists, 46 templates, 3 standards**. Run `npm test` before any PR. Never use TOML `memories` key.
+> **⚠️ READ FIRST — V6 IN PROGRESS (2026-05-11):**
+> This file describes **BAM v3** (which still lives in `src-v2/`). v6 is being built fresh in `src-v6/`.
+> - **Canonical v6 spec (LOCKED):** `docs/v6-final-architecture.md` (1538 lines, v0.4)
+> - **Active implementation plan:** `docs/superpowers/plans/2026-05-11-wave-0-smoke-test.md`
+> - **For fresh Claude Code sessions on RDP:** see `docs/v6-rdp-kickoff.md`
+> - v3 conventions below remain valid for `src-v2/` only. For v6 work, treat this file as historical.
+
+> **Quick Start (v3 only):** BAM is a **pure extension module** for multi-tenant SaaS. **14 TOMLs, 38 skills, 112 patterns, 20 domains, 37 checklists, 46 templates, 3 standards**. Run `npm test` before any PR. Never use TOML `memories` key.
 
 ---
 
