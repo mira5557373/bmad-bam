@@ -22,7 +22,7 @@ BAM v6's activation mechanism depends on BMAD v6.4.0+'s universal-glob pattern. 
 
 ## Decision
 
-Selected Plan: **A**.
+Selected Plan: **A**. PR: https://github.com/mira5557373/bmad-bam/pull/1.
 
 The headless smoke test (`tests/wave-0/run-smoke-test.sh`) ran against BMAD v6.6.0 (submodule `e36f219c`) and confirmed:
 - The literal universal-glob string `file:{project-root}/**/project-context.md` survives BMAD's three-layer customize merge into a core skill's resolved `agent.persistent_facts`.

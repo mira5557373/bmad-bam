@@ -64,22 +64,22 @@ Files created in this plan, organized by responsibility:
 - Read any file matching `external/bmad-method/**/*.js` containing `persistent_facts` or `customize` keyword
 - Create: `tests/wave-0/INVESTIGATION-NOTES.md` (records findings)
 
-- [ ] **Step 1: Read BMAD installer entry point**
+- [x] **Step 1: Read BMAD installer entry point**
 
 Run: `cat external/bmad-method/tools/installer/bmad-cli.js | head -50`
 Expected: shows CLI entry; note where `install` command dispatches.
 
-- [ ] **Step 2: Read install command**
+- [x] **Step 2: Read install command**
 
 Run: `cat external/bmad-method/tools/installer/commands/install.js`
 Expected: shows install flow. Note: where does it merge customize.toml? How does universal-glob `file:{project-root}/**/project-context.md` get resolved at run time vs install time?
 
-- [ ] **Step 3: Search for universal-glob handling**
+- [x] **Step 3: Search for universal-glob handling**
 
 Run: `grep -rn "project-context\|persistent_facts\|universal" external/bmad-method/tools/ | head -30`
 Expected: lines showing where BMAD reads `persistent_facts` and resolves glob patterns.
 
-- [ ] **Step 4: Determine resolution time**
+- [x] **Step 4: Determine resolution time**
 
 Read identified files. Decide:
 - Does BMAD resolve the glob at INSTALL time (writing resolved paths into `_bmad/custom/`)?
@@ -87,7 +87,7 @@ Read identified files. Decide:
 
 Record decision in `tests/wave-0/INVESTIGATION-NOTES.md` under heading "Glob resolution time".
 
-- [ ] **Step 5: Identify observation point for smoke test**
+- [x] **Step 5: Identify observation point for smoke test**
 
 Based on Step 4, decide HOW the smoke test will verify the sentinel token reaches a skill's context:
 
@@ -96,7 +96,7 @@ Based on Step 4, decide HOW the smoke test will verify the sentinel token reache
 
 Record decision in `INVESTIGATION-NOTES.md` under heading "Observation point".
 
-- [ ] **Step 6: Write the investigation notes**
+- [x] **Step 6: Write the investigation notes**
 
 Create `tests/wave-0/INVESTIGATION-NOTES.md` with the following exact structure:
 
@@ -118,7 +118,7 @@ Create `tests/wave-0/INVESTIGATION-NOTES.md` with the following exact structure:
 - <list any concerns>
 ```
 
-- [ ] **Step 7: Commit**
+- [x] **Step 7: Commit**
 
 ```bash
 git add tests/wave-0/INVESTIGATION-NOTES.md
@@ -144,12 +144,12 @@ EOF
 - Create: `src-v6/.gitkeep`
 - Create: `tests/wave-0/.gitkeep`
 
-- [ ] **Step 1: Verify parent paths**
+- [x] **Step 1: Verify parent paths**
 
 Run: `ls -d src-v6 tests 2>/dev/null || echo "missing"`
 Expected: either both directories listed, or "missing" if neither exists.
 
-- [ ] **Step 2: Create directory tree**
+- [x] **Step 2: Create directory tree**
 
 Run:
 ```bash
@@ -163,7 +163,7 @@ touch src-v6/.gitkeep tests/wave-0/.gitkeep
 
 Expected: no errors. (`mkdir -p` is idempotent.)
 
-- [ ] **Step 3: Verify structure**
+- [x] **Step 3: Verify structure**
 
 Run: `find src-v6 tests/wave-0 -type d | sort`
 Expected output (exact):
@@ -185,7 +185,7 @@ tests/wave-0/fixtures/test-bmad-project/_bmad
 tests/wave-0/lib
 ```
 
-- [ ] **Step 4: Commit skeleton**
+- [x] **Step 4: Commit skeleton**
 
 ```bash
 git add src-v6/.gitkeep tests/wave-0/.gitkeep
@@ -206,7 +206,7 @@ EOF
 - Create: `tests/wave-0/fixtures/test-bmad-project/.gitkeep`
 - Create: `tests/wave-0/fixtures/README.md`
 
-- [ ] **Step 1: Write fixture's BMAD config**
+- [x] **Step 1: Write fixture's BMAD config**
 
 Create `tests/wave-0/fixtures/test-bmad-project/_bmad/config.toml`:
 
@@ -222,7 +222,7 @@ version = ">=6.4.0"
 # but no real product code or modules installed beyond what bmad-bam-smoke-test installs
 ```
 
-- [ ] **Step 2: Add fixture README**
+- [x] **Step 2: Add fixture README**
 
 Create `tests/wave-0/fixtures/README.md`:
 
@@ -238,7 +238,7 @@ A minimal BMAD-initialized project. The smoke test copies this fixture to a temp
 The fixture must remain **minimal** — adding unrelated modules would obscure what Wave 0 is testing.
 ```
 
-- [ ] **Step 3: Verify files exist with expected content**
+- [x] **Step 3: Verify files exist with expected content**
 
 Run: `cat tests/wave-0/fixtures/test-bmad-project/_bmad/config.toml`
 Expected: shows the TOML content from Step 1.
@@ -246,7 +246,7 @@ Expected: shows the TOML content from Step 1.
 Run: `cat tests/wave-0/fixtures/README.md`
 Expected: shows the README content from Step 2.
 
-- [ ] **Step 4: Commit fixture**
+- [x] **Step 4: Commit fixture**
 
 ```bash
 git add tests/wave-0/fixtures/
@@ -266,7 +266,7 @@ EOF
 - Create: `tests/wave-0/lib/sentinel.sh`
 - Create: `src-v6/bmad-bam-platform/scripts/generate-sentinel.py`
 
-- [ ] **Step 1: Write the Python helper that generates BAM_LOAD_VERIFY tokens**
+- [x] **Step 1: Write the Python helper that generates BAM_LOAD_VERIFY tokens**
 
 Create `src-v6/bmad-bam-platform/scripts/generate-sentinel.py`:
 
@@ -292,16 +292,16 @@ if __name__ == "__main__":
     sys.exit(main())
 ```
 
-- [ ] **Step 2: Make the Python helper executable**
+- [x] **Step 2: Make the Python helper executable**
 
 Run: `chmod +x src-v6/bmad-bam-platform/scripts/generate-sentinel.py`
 
-- [ ] **Step 3: Run the helper to verify token format**
+- [x] **Step 3: Run the helper to verify token format**
 
 Run: `src-v6/bmad-bam-platform/scripts/generate-sentinel.py`
 Expected: prints one line matching pattern `BAM_LOAD_VERIFY_[a-f0-9]{32}`. Run twice; tokens MUST differ.
 
-- [ ] **Step 4: Write a bash wrapper for use in shell scripts**
+- [x] **Step 4: Write a bash wrapper for use in shell scripts**
 
 Create `tests/wave-0/lib/sentinel.sh`:
 
@@ -329,12 +329,12 @@ generate_sentinel() {
 }
 ```
 
-- [ ] **Step 5: Test the bash wrapper**
+- [x] **Step 5: Test the bash wrapper**
 
 Run: `bash -c 'source tests/wave-0/lib/sentinel.sh; generate_sentinel'`
 Expected: prints one `BAM_LOAD_VERIFY_<hex>` line; exit code 0.
 
-- [ ] **Step 6: Commit**
+- [x] **Step 6: Commit**
 
 ```bash
 git add src-v6/bmad-bam-platform/scripts/generate-sentinel.py tests/wave-0/lib/sentinel.sh
@@ -353,7 +353,7 @@ EOF
 **Files:**
 - Create: `src-v6/bmad-bam-platform/agents/atlas/atlas.md`
 
-- [ ] **Step 1: Write the persona stub**
+- [x] **Step 1: Write the persona stub**
 
 Create `src-v6/bmad-bam-platform/agents/atlas/atlas.md`:
 
@@ -387,12 +387,12 @@ Structural engineer: load-bearing decisions first, every gate explicit. Full voi
 - `resources/fragments/sentinel.md` — Wave 0 sentinel fragment
 ```
 
-- [ ] **Step 2: Verify file**
+- [x] **Step 2: Verify file**
 
 Run: `head -10 src-v6/bmad-bam-platform/agents/atlas/atlas.md`
 Expected: shows the frontmatter block with `code: bmad-bam-agent-atlas` and `name: Atlas`.
 
-- [ ] **Step 3: Commit**
+- [x] **Step 3: Commit**
 
 ```bash
 git add src-v6/bmad-bam-platform/agents/atlas/atlas.md
@@ -414,7 +414,7 @@ EOF
 - Create: `src-v6/bmad-bam-platform/agents/atlas/resources/fragments/sentinel.md`
 - Create: `src-v6/bmad-bam-platform/agents/atlas/resources/platform-index.csv`
 
-- [ ] **Step 1: Write the sentinel fragment**
+- [x] **Step 1: Write the sentinel fragment**
 
 Create `src-v6/bmad-bam-platform/agents/atlas/resources/fragments/sentinel.md`:
 
@@ -446,7 +446,7 @@ The actual sentinel token is injected at install time by `scripts/post-install.s
 This fragment is retired (status: superseded) once Wave 0 selects a plan. The `bmad-bam-platform` module's real fragments arrive in P2.
 ```
 
-- [ ] **Step 2: Write the index CSV**
+- [x] **Step 2: Write the index CSV**
 
 Create `src-v6/bmad-bam-platform/agents/atlas/resources/platform-index.csv`:
 
@@ -455,17 +455,17 @@ id,name,description,tags,tier,fragment_file
 sentinel,Wave 0 Sentinel Fragment,Anchor for smoke-test sentinel token injection,"wave-0,experimental",specialized,fragments/sentinel.md
 ```
 
-- [ ] **Step 3: Verify CSV parses (single data row)**
+- [x] **Step 3: Verify CSV parses (single data row)**
 
 Run: `tail -n +2 src-v6/bmad-bam-platform/agents/atlas/resources/platform-index.csv | wc -l`
 Expected: `1`
 
-- [ ] **Step 4: Verify fragment file referenced exists**
+- [x] **Step 4: Verify fragment file referenced exists**
 
 Run: `awk -F',' 'NR>1 {print $6}' src-v6/bmad-bam-platform/agents/atlas/resources/platform-index.csv | while read f; do test -f "src-v6/bmad-bam-platform/agents/atlas/resources/$f" && echo "OK: $f" || echo "MISSING: $f"; done`
 Expected output: `OK: fragments/sentinel.md`
 
-- [ ] **Step 5: Commit**
+- [x] **Step 5: Commit**
 
 ```bash
 git add src-v6/bmad-bam-platform/agents/atlas/resources/
@@ -484,7 +484,7 @@ EOF
 **Files:**
 - Create: `src-v6/bmad-bam-platform/scripts/post-install.sh`
 
-- [ ] **Step 1: Write the post-install script**
+- [x] **Step 1: Write the post-install script**
 
 Create `src-v6/bmad-bam-platform/scripts/post-install.sh`:
 
@@ -567,11 +567,11 @@ echo "[$(date -u +%Y-%m-%dT%H:%M:%SZ)] post-install ran; sentinel=$SENTINEL; tar
 echo "$SENTINEL"
 ```
 
-- [ ] **Step 2: Make executable**
+- [x] **Step 2: Make executable**
 
 Run: `chmod +x src-v6/bmad-bam-platform/scripts/post-install.sh`
 
-- [ ] **Step 3: Test post-install against fixture**
+- [x] **Step 3: Test post-install against fixture**
 
 Run:
 ```bash
@@ -597,7 +597,7 @@ rm -rf "$WORK_DIR"
 
 Expected output: three "OK:" lines, exit code 0.
 
-- [ ] **Step 4: Test idempotency**
+- [x] **Step 4: Test idempotency**
 
 Run:
 ```bash
@@ -612,7 +612,7 @@ rm -rf "$WORK_DIR"
 
 Expected: `Log lines after 2 runs: 2`. (Idempotent in that re-running doesn't corrupt state; logs append.)
 
-- [ ] **Step 5: Test failure on missing BMAD config**
+- [x] **Step 5: Test failure on missing BMAD config**
 
 Run:
 ```bash
@@ -626,7 +626,7 @@ rm -rf "$WORK_DIR"
 
 Expected: error message containing "not a BMAD project" and exit code 66.
 
-- [ ] **Step 6: Commit**
+- [x] **Step 6: Commit**
 
 ```bash
 git add src-v6/bmad-bam-platform/scripts/post-install.sh
@@ -647,7 +647,7 @@ EOF
 **Files:**
 - Create: `src-v6/bmad-bam-platform/module.yaml`
 
-- [ ] **Step 1: Write module.yaml**
+- [x] **Step 1: Write module.yaml**
 
 Create `src-v6/bmad-bam-platform/module.yaml`:
 
@@ -704,12 +704,12 @@ verify:
     - bmad-bam-smoke-test
 ```
 
-- [ ] **Step 2: Verify YAML parses**
+- [x] **Step 2: Verify YAML parses**
 
 Run: `python3 -c "import yaml; yaml.safe_load(open('src-v6/bmad-bam-platform/module.yaml'))" && echo "OK"`
 Expected: `OK`. If error, fix YAML syntax.
 
-- [ ] **Step 3: Verify required fields present**
+- [x] **Step 3: Verify required fields present**
 
 Run:
 ```bash
@@ -728,7 +728,7 @@ EOF
 
 Expected: `OK: all required fields present`.
 
-- [ ] **Step 4: Commit**
+- [x] **Step 4: Commit**
 
 ```bash
 git add src-v6/bmad-bam-platform/module.yaml
@@ -751,7 +751,7 @@ EOF
 - Create: `src-v6/bmad-bam-platform/skills/bmad-bam-smoke-test/bmad-skill-manifest.yaml`
 - Create: `src-v6/bmad-bam-platform/skills/bmad-bam-smoke-test/workflow.md`
 
-- [ ] **Step 1: Write SKILL.md**
+- [x] **Step 1: Write SKILL.md**
 
 Create `src-v6/bmad-bam-platform/skills/bmad-bam-smoke-test/SKILL.md`:
 
@@ -787,7 +787,7 @@ BAM v6 relies on BMAD v6.4.0+'s universal-glob pattern `file:{project-root}/**/p
 See `workflow.md` for the mode router and `steps/` for individual step files.
 ```
 
-- [ ] **Step 2: Write bmad-skill-manifest.yaml**
+- [x] **Step 2: Write bmad-skill-manifest.yaml**
 
 Create `src-v6/bmad-bam-platform/skills/bmad-bam-smoke-test/bmad-skill-manifest.yaml`:
 
@@ -821,7 +821,7 @@ latency-budget: "10min"
 cluster: foundation
 ```
 
-- [ ] **Step 3: Write workflow.md (mode router)**
+- [x] **Step 3: Write workflow.md (mode router)**
 
 Create `src-v6/bmad-bam-platform/skills/bmad-bam-smoke-test/workflow.md`:
 
@@ -846,7 +846,7 @@ Sequential execution; halt on first failure unless step says otherwise.
 If step 5 passes → final plan = A. If step 6 passes → B. If step 7 passes → C. If step 7 fails → escalate to user (BAM cannot activate).
 ```
 
-- [ ] **Step 4: Verify frontmatter parses**
+- [x] **Step 4: Verify frontmatter parses**
 
 Run:
 ```bash
@@ -862,7 +862,7 @@ EOF
 
 Expected: `OK: manifest parses + required fields present`.
 
-- [ ] **Step 5: Commit**
+- [x] **Step 5: Commit**
 
 ```bash
 git add src-v6/bmad-bam-platform/skills/bmad-bam-smoke-test/SKILL.md \
@@ -883,7 +883,7 @@ EOF
 **Files:**
 - Create: `src-v6/bmad-bam-platform/skills/bmad-bam-smoke-test/steps/step-01-c-verify-bmad-version.md`
 
-- [ ] **Step 1: Write the step file**
+- [x] **Step 1: Write the step file**
 
 Create the step file:
 
@@ -943,7 +943,7 @@ status=ok
 ```
 ````
 
-- [ ] **Step 2: Commit**
+- [x] **Step 2: Commit**
 
 ```bash
 git add src-v6/bmad-bam-platform/skills/bmad-bam-smoke-test/steps/step-01-c-verify-bmad-version.md
@@ -962,7 +962,7 @@ EOF
 **Files:**
 - Create: `src-v6/bmad-bam-platform/skills/bmad-bam-smoke-test/steps/step-02-c-detect-universal-glob.md`
 
-- [ ] **Step 1: Write the step file**
+- [x] **Step 1: Write the step file**
 
 Create the step:
 
@@ -1021,7 +1021,7 @@ verified_at=<ISO-8601 UTC>
 ```
 ````
 
-- [ ] **Step 2: Commit**
+- [x] **Step 2: Commit**
 
 ```bash
 git add src-v6/bmad-bam-platform/skills/bmad-bam-smoke-test/steps/step-02-c-detect-universal-glob.md
@@ -1040,7 +1040,7 @@ EOF
 **Files:**
 - Create: `src-v6/bmad-bam-platform/skills/bmad-bam-smoke-test/steps/step-03-c-install-test-mode.md`
 
-- [ ] **Step 1: Write the step file**
+- [x] **Step 1: Write the step file**
 
 ````markdown
 ---
@@ -1102,7 +1102,7 @@ verified_at=<ISO-8601 UTC>
 ```
 ````
 
-- [ ] **Step 2: Commit**
+- [x] **Step 2: Commit**
 
 ```bash
 git add src-v6/bmad-bam-platform/skills/bmad-bam-smoke-test/steps/step-03-c-install-test-mode.md
@@ -1121,7 +1121,7 @@ EOF
 **Files:**
 - Create: `src-v6/bmad-bam-platform/skills/bmad-bam-smoke-test/steps/step-04-c-emit-sentinel.md`
 
-- [ ] **Step 1: Write the step file**
+- [x] **Step 1: Write the step file**
 
 ````markdown
 ---
@@ -1168,7 +1168,7 @@ echo "PASS"
 ```
 ````
 
-- [ ] **Step 2: Commit**
+- [x] **Step 2: Commit**
 
 ```bash
 git add src-v6/bmad-bam-platform/skills/bmad-bam-smoke-test/steps/step-04-c-emit-sentinel.md
@@ -1187,7 +1187,7 @@ EOF
 **Files:**
 - Create: `src-v6/bmad-bam-platform/skills/bmad-bam-smoke-test/steps/step-05-v-verify-plan-a.md`
 
-- [ ] **Step 1: Write the step file**
+- [x] **Step 1: Write the step file**
 
 ````markdown
 ---
@@ -1276,7 +1276,7 @@ verified_at=<ISO-8601 UTC>
 ```
 ````
 
-- [ ] **Step 2: Commit**
+- [x] **Step 2: Commit**
 
 ```bash
 git add src-v6/bmad-bam-platform/skills/bmad-bam-smoke-test/steps/step-05-v-verify-plan-a.md
@@ -1295,7 +1295,7 @@ EOF
 **Files:**
 - Create: `src-v6/bmad-bam-platform/skills/bmad-bam-smoke-test/steps/step-06-v-verify-plan-b.md`
 
-- [ ] **Step 1: Write the step file**
+- [x] **Step 1: Write the step file**
 
 ````markdown
 ---
@@ -1364,7 +1364,7 @@ verified_at=<ISO-8601 UTC>
 ```
 ````
 
-- [ ] **Step 2: Commit**
+- [x] **Step 2: Commit**
 
 ```bash
 git add src-v6/bmad-bam-platform/skills/bmad-bam-smoke-test/steps/step-06-v-verify-plan-b.md
@@ -1383,7 +1383,7 @@ EOF
 **Files:**
 - Create: `src-v6/bmad-bam-platform/skills/bmad-bam-smoke-test/steps/step-07-v-verify-plan-c.md`
 
-- [ ] **Step 1: Write the step file**
+- [x] **Step 1: Write the step file**
 
 ````markdown
 ---
@@ -1455,7 +1455,7 @@ verified_at=<ISO-8601 UTC>
 ```
 ````
 
-- [ ] **Step 2: Commit**
+- [x] **Step 2: Commit**
 
 ```bash
 git add src-v6/bmad-bam-platform/skills/bmad-bam-smoke-test/steps/step-07-v-verify-plan-c.md
@@ -1476,7 +1476,7 @@ EOF
 **Files:**
 - Create: `src-v6/bmad-bam-platform/skills/bmad-bam-smoke-test/steps/step-08-c-persist-result.md`
 
-- [ ] **Step 1: Write the step file**
+- [x] **Step 1: Write the step file**
 
 ````markdown
 ---
@@ -1570,7 +1570,7 @@ esac
 ```
 ````
 
-- [ ] **Step 2: Commit**
+- [x] **Step 2: Commit**
 
 ```bash
 git add src-v6/bmad-bam-platform/skills/bmad-bam-smoke-test/steps/step-08-c-persist-result.md
@@ -1590,7 +1590,7 @@ EOF
 - Create: `tests/wave-0/run-smoke-test.sh`
 - Create: `tests/wave-0/lib/inspect-context.sh`
 
-- [ ] **Step 1: Write the inspect-context helper**
+- [x] **Step 1: Write the inspect-context helper**
 
 Create `tests/wave-0/lib/inspect-context.sh`:
 
@@ -1629,7 +1629,7 @@ console.log(JSON.stringify(result, null, 2));
 }
 ```
 
-- [ ] **Step 2: Write the end-to-end integration test**
+- [x] **Step 2: Write the end-to-end integration test**
 
 Create `tests/wave-0/run-smoke-test.sh`:
 
@@ -1727,7 +1727,7 @@ else
 fi
 ```
 
-- [ ] **Step 3: Make executable**
+- [x] **Step 3: Make executable**
 
 Run:
 ```bash
@@ -1735,7 +1735,7 @@ chmod +x tests/wave-0/run-smoke-test.sh
 chmod +x tests/wave-0/lib/inspect-context.sh
 ```
 
-- [ ] **Step 4: Commit**
+- [x] **Step 4: Commit**
 
 ```bash
 git add tests/wave-0/run-smoke-test.sh tests/wave-0/lib/inspect-context.sh
@@ -1756,7 +1756,7 @@ EOF
 - May modify: `tests/wave-0/INVESTIGATION-NOTES.md` (if mechanism turns out different)
 - May modify: `tests/wave-0/lib/inspect-context.sh` (if mechanism needs tweaking)
 
-- [ ] **Step 1: Run the integration test**
+- [x] **Step 1: Run the integration test**
 
 Run: `tests/wave-0/run-smoke-test.sh`
 
@@ -1765,7 +1765,7 @@ Expected outcomes:
 - Exit 0 with `Plan B selected` (acceptable)
 - Exit 2 with `No plan worked in automated test` (requires real-install Plan C)
 
-- [ ] **Step 2: Triage failure if exit != 0**
+- [x] **Step 2: Triage failure if exit != 0**
 
 If exit 2 (no plan worked):
 
@@ -1777,11 +1777,11 @@ If exit 2 (no plan worked):
    If empty, BMAD does not ship universal-glob — escalate to user; this means BAM v6's premise is unsupported in this BMAD version.
 3. If mechanism wrong, fix `inspect-context.sh` and re-run.
 
-- [ ] **Step 3: Record real-install Plan-C-requires test**
+- [x] **Step 3: Record real-install Plan-C-requires test**
 
 If the automated test cannot verify Plan C (requires user), record that as a known-limitation in `tests/wave-0/INVESTIGATION-NOTES.md` under heading "Plan C verification gap".
 
-- [ ] **Step 4: Capture the actual Plan outcome**
+- [x] **Step 4: Capture the actual Plan outcome**
 
 Whatever plan succeeded, record in `tests/wave-0/WAVE-0-OUTCOME.md`:
 
@@ -1805,7 +1805,7 @@ Whatever plan succeeded, record in `tests/wave-0/WAVE-0-OUTCOME.md`:
 - If None: BAM v6 architecture is blocked; escalate before proceeding to P2.
 ```
 
-- [ ] **Step 5: Commit outcome record**
+- [x] **Step 5: Commit outcome record**
 
 ```bash
 git add tests/wave-0/WAVE-0-OUTCOME.md tests/wave-0/INVESTIGATION-NOTES.md
@@ -1824,7 +1824,7 @@ EOF
 **Files:**
 - Create: `src-v6/bmad-bam-platform/README.md`
 
-- [ ] **Step 1: Write the README**
+- [x] **Step 1: Write the README**
 
 Create `src-v6/bmad-bam-platform/README.md`:
 
@@ -1872,7 +1872,7 @@ Selects Plan A (universal-glob auto-load), Plan B (explicit overlay), or Plan C 
 After Wave 0 succeeds: proceed to plan **P2 — v6.0 bmad-bam-platform full module**.
 ```
 
-- [ ] **Step 2: Commit**
+- [x] **Step 2: Commit**
 
 ```bash
 git add src-v6/bmad-bam-platform/README.md
@@ -1892,11 +1892,11 @@ EOF
 - Create: `_bmad/_memory/atlas/architecture-decisions/2026-05-11-001-wave-0-plan-selected.md`
 - Create: `_bmad/_memory/atlas/architecture-decisions/INDEX.md`
 
-- [ ] **Step 1: Create the ADR directory in the repo's own _bmad/_memory/**
+- [x] **Step 1: Create the ADR directory in the repo's own _bmad/_memory/**
 
 Run: `mkdir -p _bmad/_memory/atlas/architecture-decisions`
 
-- [ ] **Step 2: Write the Wave 0 outcome ADR**
+- [x] **Step 2: Write the Wave 0 outcome ADR**
 
 Create `_bmad/_memory/atlas/architecture-decisions/2026-05-11-001-wave-0-plan-selected.md`:
 
@@ -1944,7 +1944,7 @@ Selected Plan: **<A | B | C>** (replace with actual outcome from `tests/wave-0/W
 If a future BMAD upgrade enables a better plan, run `bmad-bam-smoke-test` again. It will re-select and update `family.json`. A new ADR supersedes this one.
 ```
 
-- [ ] **Step 3: Create INDEX.md**
+- [x] **Step 3: Create INDEX.md**
 
 Create `_bmad/_memory/atlas/architecture-decisions/INDEX.md`:
 
@@ -1956,7 +1956,7 @@ Create `_bmad/_memory/atlas/architecture-decisions/INDEX.md`:
 | 2026-05-11-001 | Wave 0 plan selected | accepted | 2026-05-11 |
 ```
 
-- [ ] **Step 4: Commit Wave 0 wrap-up**
+- [x] **Step 4: Commit Wave 0 wrap-up**
 
 ```bash
 git add _bmad/_memory/atlas/architecture-decisions/
@@ -1977,19 +1977,19 @@ EOF
 **Files:**
 - Conditional modify: `CLAUDE.md`
 
-- [ ] **Step 1: Check whether Wave 0 outcome warrants CLAUDE.md update**
+- [x] **Step 1: Check whether Wave 0 outcome warrants CLAUDE.md update**
 
 Read `tests/wave-0/WAVE-0-OUTCOME.md`. If Wave 0 selected Plan A and no surprises arose, **skip this task** entirely — proceed to Task 22.
 
 If Wave 0 selected Plan B or C, or if there were surprises (BMAD version oddities, customize-resolution mechanics), continue.
 
-- [ ] **Step 2: Read current CLAUDE.md**
+- [x] **Step 2: Read current CLAUDE.md**
 
 Run: `head -100 CLAUDE.md`
 
 Locate the section that describes BAM's relationship to BMAD (currently describes v3).
 
-- [ ] **Step 3: Add a Wave 0 outcomes note**
+- [x] **Step 3: Add a Wave 0 outcomes note**
 
 Edit `CLAUDE.md` to insert near the top (right after the `> **Quick Start:**` block):
 
@@ -1999,7 +1999,7 @@ Edit `CLAUDE.md` to insert near the top (right after the `> **Quick Start:**` bl
 
 (Replace `<A | B | C>` with the actual plan recorded in WAVE-0-OUTCOME.md.)
 
-- [ ] **Step 4: Commit (only if changes made)**
+- [x] **Step 4: Commit (only if changes made)**
 
 ```bash
 git diff CLAUDE.md | head -20
