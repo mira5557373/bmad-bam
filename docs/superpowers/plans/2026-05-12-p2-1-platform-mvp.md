@@ -2293,7 +2293,7 @@ EOF
 - Create: `_bmad/_memory/atlas/architecture-decisions/<YYYY-MM-DD>-003-p2-mvp-scope.md`
 - Modify: `_bmad/_memory/atlas/architecture-decisions/INDEX.md`
 
-- [ ] **Step 1: Write ADR 002 — activation path selected**
+- [x] **Step 1: Write ADR 002 — activation path selected**
 
 Create `_bmad/_memory/atlas/architecture-decisions/<TODAY>-002-activation-path-selected.md`:
 
@@ -2334,7 +2334,7 @@ All v6.0+ BAM modules use this same activation mechanism. <List specific implica
 (Per spec §7.6, paths A/B/D were considered. <Why the others were rejected>.)
 ```
 
-- [ ] **Step 2: Write ADR 003 — P2.1 scope**
+- [x] **Step 2: Write ADR 003 — P2.1 scope**
 
 Create `_bmad/_memory/atlas/architecture-decisions/<TODAY>-003-p2-mvp-scope.md`:
 
@@ -2375,7 +2375,7 @@ P2.2-P2.5 add platform workflows incrementally. v6.0 ships when all of P2.x comp
 - Split by capability area (foundation / lifecycle / FinOps / migration) — rejected, would leave activation unverified for too long
 ```
 
-- [ ] **Step 3: Update INDEX.md**
+- [x] **Step 3: Update INDEX.md**
 
 Edit `_bmad/_memory/atlas/architecture-decisions/INDEX.md` to add 2 new rows:
 
@@ -2384,7 +2384,7 @@ Edit `_bmad/_memory/atlas/architecture-decisions/INDEX.md` to add 2 new rows:
 | <YYYY-MM-DD>-003 | P2.1 MVP scope — activation + Atlas + 1 workflow | accepted | <YYYY-MM-DD> |
 ```
 
-- [ ] **Step 4: Commit**
+- [x] **Step 4: Commit**
 
 ```bash
 git add _bmad/_memory/atlas/architecture-decisions/
