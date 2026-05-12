@@ -918,7 +918,7 @@ Commit message: `feat(p2): add cell-based-with-routing pattern`.
 **Files:**
 - Modify: `src-v6/bmad-bam-platform/agents/atlas/resources/platform-index.csv`
 
-- [ ] **Step 1: Append new rows**
+- [x] **Step 1: Append new rows**
 
 Open `src-v6/bmad-bam-platform/agents/atlas/resources/platform-index.csv`. Verify the header is:
 
@@ -940,7 +940,7 @@ tenant-isolation-testing-patterns,Tenant-Isolation Testing Patterns,Fixture patt
 
 Patterns also get rows. Spec §6.4 says the CSV is for fragments primarily; patterns get auto-indexed via `_bmad/bam/docs/PATTERNS.md` (auto-generated). For now we'll keep fragment-only in `platform-index.csv`. Patterns will appear in family-wide docs in a future task.
 
-- [ ] **Step 2: Validate CSV parses**
+- [x] **Step 2: Validate CSV parses**
 
 Run:
 ```bash
@@ -955,7 +955,7 @@ for r in rows:
 
 Expected: 6 rows (sentinel + 5 new fragments).
 
-- [ ] **Step 3: Verify all referenced fragment files exist**
+- [x] **Step 3: Verify all referenced fragment files exist**
 
 Run:
 ```bash
@@ -970,7 +970,7 @@ with open(base + 'platform-index.csv') as f:
 
 Expected: 6 "OK ->" lines.
 
-- [ ] **Step 4: Commit**
+- [x] **Step 4: Commit**
 
 ```bash
 git add src-v6/bmad-bam-platform/agents/atlas/resources/platform-index.csv
