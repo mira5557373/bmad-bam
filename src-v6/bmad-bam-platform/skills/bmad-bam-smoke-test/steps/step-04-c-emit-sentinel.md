@@ -1,0 +1,42 @@
+---
+step_id: 04-c-emit-sentinel
+auto-runnable: true
+gate: machine-checkable
+inputs: [install-status.txt]
+outputs: [sentinel.txt]
+---
+
+# Step 04 — Read sentinel from generated project-context.md
+
+## Purpose
+
+Sanity check: read back the sentinel from the freshly generated `project-context.md` and stash it so the Plan A/B/C verification steps can compare against it.
+
+## Action
+
+```bash
+PROJECT_ROOT="${BMAD_PROJECT_ROOT:-$PWD}"
+CONTEXT_FILE="$PROJECT_ROOT/_bmad/platform/project-context.md"
+
+# Extract the sentinel token (first line matching BAM_LOAD_VERIFY_ pattern)
+SENTINEL=$(grep -o 'BAM_LOAD_VERIFY_[a-f0-9]\{32\}' "$CONTEXT_FILE" | head -1)
+
+if [ -z "$SENTINEL" ]; then
+    echo "FAIL: no sentinel found in $CONTEXT_FILE"
+    exit 1
+fi
+
+echo "Sentinel: $SENTINEL"
+
+# Persist for downstream steps
+mkdir -p "$PROJECT_ROOT/_bmad/bam/install-logs"
+echo "$SENTINEL" > "$PROJECT_ROOT/_bmad/bam/install-logs/sentinel.txt"
+```
+
+## Verification
+
+```bash
+test -s "$PROJECT_ROOT/_bmad/bam/install-logs/sentinel.txt" || { echo "FAIL: sentinel.txt empty"; exit 1; }
+grep -qE '^BAM_LOAD_VERIFY_[a-f0-9]{32}$' "$PROJECT_ROOT/_bmad/bam/install-logs/sentinel.txt" || { echo "FAIL: sentinel format"; exit 1; }
+echo "PASS"
+```

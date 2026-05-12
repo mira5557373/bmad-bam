@@ -1,0 +1,55 @@
+code: bam-platform
+name: "BAM v6 — Platform Module"
+description: "Multi-tenant SaaS platform foundation. Wave 0: smoke-test skeleton only. Wave P2 builds the full module."
+default_selected: false
+
+# Variables from Core Config inserted:
+## user_name
+## project_name
+## communication_language
+## document_output_language
+## output_folder
+
+# Directories to create during installation (declarative, no code execution).
+# BMAD's installer reads this list. All other declarations below are loaded by
+# BMAD-side tooling that scans the module's filesystem layout — there is no
+# `install:` or `verify:` key recognised by the BMAD installer in v6.6.0.
+directories:
+  - "{project-root}/_bmad/platform"
+  - "{project-root}/_bmad/bam"
+  - "{project-root}/_bmad/bam/install-logs"
+
+# Agent roster — essence only. Full persona behavior lives in each agent's
+# customize.toml inside the skill that owns it. `team` defaults to the module
+# code when omitted.
+agents:
+  - code: bmad-bam-agent-atlas
+    name: Atlas
+    title: Platform Architect
+    icon: "🏛️"
+    team: bam-platform
+    description: "Wave 0 stub. Full persona arrives in P2 — structural engineer's discipline applied to multi-tenant SaaS: load-bearing decisions first, every quality gate explicit."
+
+# --- BAM-specific extensions (not consumed by BMAD's installer) -------------
+# The keys below are documentation for BAM's own tooling and human readers.
+# They have no effect on BMAD's install/uninstall flow. P2 may move them to a
+# separate BAM-side manifest file once that tooling exists.
+
+# Minimum BMAD method version this module supports. Enforced by the
+# bmad-bam-smoke-test skill (step-01), not by BMAD's installer.
+x-bam-requires:
+  bmad: ">=6.4.0,<7.0.0"
+  python: ">=3.11"        # resolve_customization.py uses stdlib tomllib
+
+# Post-install hook BAM invokes after BMAD's own install finishes.
+# Run from the module root with one argument: the host project root.
+x-bam-post-install: scripts/post-install.sh
+
+# Wave 0 verification artefacts. The runner (tests/wave-0/run-smoke-test.sh)
+# and step-08 each write a family.json that should contain these paths.
+x-bam-wave-0-artifacts:
+  generated:
+    - "{project-root}/_bmad/platform/project-context.md"   # by post-install
+    - "{project-root}/_bmad/bam/family.json"               # by step-08
+  skills-registered:
+    - bmad-bam-smoke-test

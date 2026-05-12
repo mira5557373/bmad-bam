@@ -1,6 +1,15 @@
 # CLAUDE.md - BAM Extension Module
 
-> **Quick Start:** BAM is a **pure extension module** for multi-tenant SaaS. **14 TOMLs, 38 skills, 112 patterns, 20 domains, 37 checklists, 46 templates, 3 standards**. Run `npm test` before any PR. Never use TOML `memories` key.
+> **⚠️ READ FIRST — V6 IN PROGRESS (2026-05-11):**
+> This file describes **BAM v3** (which still lives in `src-v2/`). v6 is being built fresh in `src-v6/`.
+> - **Canonical v6 spec (LOCKED):** `docs/v6-final-architecture.md` (1538 lines, v0.4)
+> - **Active implementation plan:** `docs/superpowers/plans/2026-05-11-wave-0-smoke-test.md`
+> - **For fresh Claude Code sessions on RDP:** see `docs/v6-rdp-kickoff.md`
+> - v3 conventions below remain valid for `src-v2/` only. For v6 work, treat this file as historical.
+
+> **Quick Start (v3 only):** BAM is a **pure extension module** for multi-tenant SaaS. **14 TOMLs, 38 skills, 112 patterns, 20 domains, 37 checklists, 46 templates, 3 standards**. Run `npm test` before any PR. Never use TOML `memories` key.
+
+> **Wave 0 outcome (2026-05-12):** BAM v6 selected **Plan A** for activation against BMAD v6.6.0 — the universal-glob string `file:{project-root}/**/project-context.md` survives BMAD's three-layer customize merge into core skills' resolved `agent.persistent_facts`. P2+ inherits this selection from `_bmad/bam/family.json`. See `_bmad/_memory/atlas/architecture-decisions/2026-05-11-001-wave-0-plan-selected.md` (Atlas ADR) and `tests/wave-0/WAVE-0-OUTCOME.md` (run output + Plan-A caveats) for detail. Task 0 mechanism note: BMAD's customize resolver is **Python** (`_bmad/scripts/resolve_customization.py`, requires Python 3.11+); it does string-level TOML merge only — `file:`/glob expansion happens at LLM activation, not in the resolver.
 
 ---
 
