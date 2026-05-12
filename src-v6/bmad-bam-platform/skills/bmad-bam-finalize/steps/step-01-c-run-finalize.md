@@ -3,7 +3,7 @@ step_id: 01-c-run-finalize
 auto-runnable: true
 gate: machine-checkable
 inputs: [_bmad/config.toml]
-outputs: [_bmad/bam-activation/platform/project-context.md, _bmad/bam/install-logs/platform-install.log]
+outputs: [_bmad/bam-activation/platform/project-context.md, _bmad/bam/install-logs/platform-install.log, _bmad/_memory/atlas/architecture-decisions/INDEX.md]
 ---
 
 # Step 01 — Run the platform finalize script
@@ -66,9 +66,35 @@ the real work (sentinel generation, atomic write, install log append, Python
    write via `mv`, install-log append, and Python 3.11+ pre-flight. Do not
    re-implement any of that here.
 
+4. **Seed Atlas's sidecar memory directories (idempotent).** Downstream BAM
+   workflows (e.g., `bmad-bam-design-tenancy-model` step-06) append ADRs to
+   `_bmad/_memory/atlas/architecture-decisions/INDEX.md`. In a fresh project
+   that directory and index don't exist yet — append-only semantics on a
+   missing file are undefined. Create them with the canonical header if absent:
+
+   ```bash
+   ADR_DIR="$PROJECT_ROOT/_bmad/_memory/atlas/architecture-decisions"
+   INDEX="$ADR_DIR/INDEX.md"
+   mkdir -p "$ADR_DIR"
+   if [ ! -f "$INDEX" ]; then
+       cat > "$INDEX" <<'INDEX_EOF'
+   # Atlas — Architecture Decisions Index
+
+   | ID | Title | Status | Date |
+   |---|---|---|---|
+   INDEX_EOF
+       echo "Seeded $INDEX (empty index with header)"
+   fi
+   ```
+
+   The `_bmad/_memory/atlas/` namespace lives outside BMAD's install target
+   (`_bmad/bam-platform/`), so it survives re-installs. Existing ADRs are
+   never overwritten — only the header gets written, and only if INDEX.md
+   is absent. Safe to re-run.
+
 ## Verification (machine-checkable)
 
-After the invocation, both output files must exist:
+After the invocation, all three output paths must exist:
 
 ```bash
 test -f "$PROJECT_ROOT/_bmad/bam-activation/platform/project-context.md" \
@@ -76,6 +102,9 @@ test -f "$PROJECT_ROOT/_bmad/bam-activation/platform/project-context.md" \
 
 test -s "$PROJECT_ROOT/_bmad/bam/install-logs/platform-install.log" \
     || { echo "FAIL: install log not appended" >&2; exit 1; }
+
+test -f "$PROJECT_ROOT/_bmad/_memory/atlas/architecture-decisions/INDEX.md" \
+    || { echo "FAIL: Atlas ADR INDEX.md not seeded" >&2; exit 1; }
 
 # Sentinel token round-trip: the value the script printed on stdout must
 # appear inside the generated file.
@@ -90,6 +119,9 @@ Exit non-zero → surface `post-install.sh`'s stderr verbatim and halt.
 
 ## Idempotence
 
-Re-running this step is safe: `post-install.sh` writes via `mv` (atomic
-replace), so a previous sentinel is overwritten with a fresh one. The install
-log is append-only, so each finalize run leaves an audit trail.
+Re-running this step is safe:
+- `post-install.sh` writes via `mv` (atomic replace), so a previous sentinel
+  is overwritten with a fresh one.
+- The install log is append-only — each finalize run leaves an audit trail.
+- The Atlas ADR INDEX.md is created only if absent; pre-existing ADRs are
+  never overwritten.

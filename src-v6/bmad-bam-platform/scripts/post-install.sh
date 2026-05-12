@@ -110,4 +110,20 @@ LOG_DIR="$PROJECT_ROOT/_bmad/bam/install-logs"
 mkdir -p "$LOG_DIR"
 echo "[$(date -u +%Y-%m-%dT%H:%M:%SZ)] post-install ran; sentinel=$SENTINEL; target=$TARGET_FILE" >> "$LOG_DIR/platform-install.log"
 
+# Seed Atlas's sidecar memory ADR index (idempotent — only writes if absent).
+# Downstream workflows (bmad-bam-design-tenancy-model step-06) append ADRs to
+# this file. In a fresh project the directory + index don't exist; append-only
+# semantics on a missing file are undefined.
+ADR_DIR="$PROJECT_ROOT/_bmad/_memory/atlas/architecture-decisions"
+INDEX="$ADR_DIR/INDEX.md"
+mkdir -p "$ADR_DIR"
+if [ ! -f "$INDEX" ]; then
+    cat > "$INDEX" <<'INDEX_EOF'
+# Atlas — Architecture Decisions Index
+
+| ID | Title | Status | Date |
+|---|---|---|---|
+INDEX_EOF
+fi
+
 echo "$SENTINEL"

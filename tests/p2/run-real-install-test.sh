@@ -76,6 +76,18 @@ if [ -z "$SENTINEL" ]; then
 fi
 echo ">>> sentinel: $SENTINEL"
 
+# Verify Atlas's sidecar ADR INDEX was seeded (downstream workflows assume it exists)
+INDEX="$WORK_DIR/_bmad/_memory/atlas/architecture-decisions/INDEX.md"
+if [ ! -f "$INDEX" ]; then
+    echo "FAIL: Atlas ADR INDEX.md not seeded by finalize" >&2
+    exit 1
+fi
+if ! grep -q '^# Atlas — Architecture Decisions Index' "$INDEX"; then
+    echo "FAIL: ADR INDEX.md missing canonical header" >&2
+    exit 1
+fi
+echo ">>> ADR INDEX seeded: $INDEX"
+
 # Headless portion done — print manual probe instructions
 echo
 bash "$REPO_ROOT/tests/p2/lib/probe-llm-context.sh" "$WORK_DIR" "$SENTINEL"
