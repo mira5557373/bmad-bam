@@ -96,7 +96,7 @@ Files created or modified in this plan:
 - Search: any reference to `npm`, `package.json`, `postinstall`, `child_process`, `spawn` in installer code
 - Create: `tests/p2/INVESTIGATION-NOTES.md` (records findings)
 
-- [ ] **Step 1: Search installer code for npm/package.json references**
+- [x] **Step 1: Search installer code for npm/package.json references**
 
 Run:
 ```bash
@@ -106,7 +106,7 @@ grep -rn -E "npm|package\.json|postinstall|child_process|spawn|exec" \
 
 Expected: lines showing how (or whether) the installer invokes npm. If no hits, BMAD doesn't use npm — Path A doesn't work and we need Path B.
 
-- [ ] **Step 2: Search for how modules get materialized into the target project**
+- [x] **Step 2: Search for how modules get materialized into the target project**
 
 Run:
 ```bash
@@ -116,7 +116,7 @@ grep -rn -E "_installModule|installModule|copyModule|materialize" \
 
 Expected: lines showing the function that takes a module source and copies/installs it into a project. Read that function.
 
-- [ ] **Step 3: Read the relevant install function**
+- [x] **Step 3: Read the relevant install function**
 
 Identify the function name from Step 2. Read it via:
 ```bash
@@ -128,7 +128,7 @@ Determine:
 - Does it just `cp -r` the source directory?
 - Does it run any postinstall-like hook from any source (package.json scripts? module.yaml? a convention file?)?
 
-- [ ] **Step 4: Check if BMAD itself has a `postinstall`-equivalent mechanism**
+- [x] **Step 4: Check if BMAD itself has a `postinstall`-equivalent mechanism**
 
 Run:
 ```bash
@@ -138,7 +138,7 @@ grep -rn -E "post.?install|postInstall|after.?install|onInstall|hook" \
 
 If hits exist, read the context — BMAD may have its own hook mechanism we missed in Wave 0.
 
-- [ ] **Step 5: Determine viability of Path A vs need for Path B**
+- [x] **Step 5: Determine viability of Path A vs need for Path B**
 
 Decision tree:
 
@@ -146,7 +146,7 @@ Decision tree:
 - If BMAD doesn't use npm but has its own hook mechanism → **Path D (new)**: use BMAD's native hook. Document.
 - If BMAD does neither → **Path A unviable**; fall back to Path B (manual `bmad-bam-finalize` workflow).
 
-- [ ] **Step 6: Write the investigation notes**
+- [x] **Step 6: Write the investigation notes**
 
 Create `tests/p2/INVESTIGATION-NOTES.md`:
 
