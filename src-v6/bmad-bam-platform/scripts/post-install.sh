@@ -28,6 +28,22 @@ if [ ! -f "$PROJECT_ROOT/_bmad/config.toml" ]; then
     exit 66
 fi
 
+# Python 3.11+ pre-check (Task 0 risk #4). BAM's smoke-test workflow invokes
+# BMAD's resolve_customization.py which uses stdlib `tomllib` (3.11+). Failing
+# here gives a clear error before later steps confuse the user with a
+# missing-module trace from inside the resolver.
+if ! command -v python3 >/dev/null 2>&1; then
+    echo "ERROR: python3 not found on PATH; BAM requires Python 3.11+ for the BMAD customize resolver" >&2
+    exit 75
+fi
+PY_MAJOR="$(python3 -c 'import sys; print(sys.version_info[0])' 2>/dev/null || echo 0)"
+PY_MINOR="$(python3 -c 'import sys; print(sys.version_info[1])' 2>/dev/null || echo 0)"
+if [ "$PY_MAJOR" -lt 3 ] || { [ "$PY_MAJOR" -eq 3 ] && [ "$PY_MINOR" -lt 11 ]; }; then
+    echo "ERROR: python3 is $PY_MAJOR.$PY_MINOR; BAM requires Python >= 3.11" >&2
+    echo "       (BMAD's resolve_customization.py uses stdlib 'tomllib', new in 3.11)" >&2
+    exit 75
+fi
+
 # Generate sentinel token
 if [ ! -x "$SENTINEL_PY" ]; then
     echo "ERROR: sentinel generator not executable at $SENTINEL_PY" >&2
