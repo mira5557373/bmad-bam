@@ -10,6 +10,23 @@ default_selected: false
 ## document_output_language
 ## output_folder
 
+# Activation guidance shown to the user by BMAD's installer immediately after
+# this module's configuration is collected. BMAD's installer reads this key and
+# pipes each line to the user via prompts.log.message (see
+# external/bmad-method/tools/installer/modules/official-modules.js
+# `displayModulePostConfigNotes`, ~lines 2103-2143). It is NOT executed code.
+#
+# We use Path B activation (manual finalize) per the v0.5 patch outcome (Task 0
+# of P2.1, 2026-05-12) — npm postinstall is not viable as a target-project
+# activation mechanism. See tests/p2/INVESTIGATION-NOTES.md for full rationale.
+post-install-notes: |
+  BAM v6 platform module installed. To finalize activation, run:
+
+      bmad run bmad-bam-finalize
+
+  This generates _bmad/platform/project-context.md (the universal-glob auto-load
+  sentinel) and writes _bmad/bam/family.json. Re-running is safe.
+
 # Directories to create during installation (declarative, no code execution).
 # BMAD's installer reads this list. All other declarations below are loaded by
 # BMAD-side tooling that scans the module's filesystem layout — there is no
@@ -41,15 +58,18 @@ x-bam-requires:
   bmad: ">=6.4.0,<7.0.0"
   python: ">=3.11"        # resolve_customization.py uses stdlib tomllib
 
-# Post-install hook BAM invokes after BMAD's own install finishes.
-# Run from the module root with one argument: the host project root.
-x-bam-post-install: scripts/post-install.sh
-
 # Wave 0 verification artefacts. The runner (tests/wave-0/run-smoke-test.sh)
 # and step-08 each write a family.json that should contain these paths.
+#
+# Activation script (`scripts/post-install.sh`) is now invoked by the
+# bmad-bam-finalize skill, surfaced to the user via `post-install-notes` above.
+# The former `x-bam-post-install:` key was removed in P2.1 Task 1 (Path B) —
+# it was a dead key (BMAD's installer ignores `x-*` extensions; see
+# tests/p2/INVESTIGATION-NOTES.md "Surprising / worth flagging" #3).
 x-bam-wave-0-artifacts:
   generated:
-    - "{project-root}/_bmad/platform/project-context.md"   # by post-install
-    - "{project-root}/_bmad/bam/family.json"               # by step-08
+    - "{project-root}/_bmad/platform/project-context.md"   # by bmad-bam-finalize
+    - "{project-root}/_bmad/bam/family.json"               # by smoke-test step-08
   skills-registered:
     - bmad-bam-smoke-test
+    - bmad-bam-finalize

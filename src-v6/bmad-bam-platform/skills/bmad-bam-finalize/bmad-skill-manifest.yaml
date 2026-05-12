@@ -1,0 +1,27 @@
+name: bmad-bam-finalize
+description: "Finalize BAM v6 platform activation: generate _bmad/platform/project-context.md sentinel via scripts/post-install.sh. Run once after `bmad install bmad-bam-platform`."
+module: bmad-bam-platform
+persona: atlas
+version: 0.1.0
+
+inputs:
+  - artifact: _bmad/config.toml
+    required: true
+    resolver: specific-path
+
+outputs:
+  - artifact: project-context.md
+    location: "{project-root}/_bmad/platform/"
+    required: true
+  - artifact: platform-install.log
+    location: "{project-root}/_bmad/bam/install-logs/"
+    required: true
+
+execution_mode:
+  default: assisted
+  alternatives: [manual]
+
+recommended_capabilities: []
+minimum_persona_version: "0.1.0"
+latency-budget: "2min"
+cluster: foundation

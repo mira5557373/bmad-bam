@@ -195,13 +195,15 @@ EOF
 
 ## Task 1: Add npm postinstall mechanism (if Task 0 confirms Path A)
 
+_Path A invalidated by Task 0; this task was re-shaped to Path B. See `tests/p2/INVESTIGATION-NOTES.md` § "Implications for P2.1 plan". Original Step 1 (`package.json`) is OBSOLETE; the work below is what was actually done._
+
 **Branch on Task 0:** if Path A is NOT viable, skip this task and jump to the Path-B variant (documented in Task 0's notes; you'll need to author it).
 
 **Files:**
 - Create: `src-v6/bmad-bam-platform/package.json`
 - Modify: `src-v6/bmad-bam-platform/scripts/post-install.sh` — accept current-working-directory invocation
 
-- [ ] **Step 1: Write package.json**
+- [x] **Step 1: Write package.json**
 
 Create `src-v6/bmad-bam-platform/package.json`:
 
@@ -226,7 +228,7 @@ Notes on this file:
 - `INIT_CWD` is npm's standard environment variable identifying the directory where `npm install` was invoked; fallback to `$PWD` for non-npm invocations
 - `version` bumps to 0.2.0 (Wave 0 was 0.1.0)
 
-- [ ] **Step 2: Modify post-install.sh to honor `INIT_CWD` invocation**
+- [x] **Step 2: Modify post-install.sh to honor `INIT_CWD` invocation**
 
 The current `post-install.sh` takes `<project-root>` as $1. When invoked via npm postinstall, $1 will be `${INIT_CWD:-$PWD}` (the directory where `bmad install` was run). Verify this is correct.
 
@@ -234,7 +236,7 @@ Read `src-v6/bmad-bam-platform/scripts/post-install.sh` and confirm the existing
 
 If a discrepancy exists, fix by adjusting the path resolution.
 
-- [ ] **Step 3: Test npm postinstall locally**
+- [x] **Step 3: Test npm postinstall locally**
 
 Run:
 ```bash
@@ -250,7 +252,7 @@ rm -rf "$WORK_DIR"
 
 Expected: `npm install` triggers postinstall; postinstall script runs; `_bmad/platform/project-context.md` appears in WORK_DIR. If not, debug before committing.
 
-- [ ] **Step 4: Commit**
+- [x] **Step 4: Commit**
 
 ```bash
 git add src-v6/bmad-bam-platform/package.json
