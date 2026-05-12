@@ -1,9 +1,10 @@
 #!/usr/bin/env bash
 # src-v6/bmad-bam-platform/scripts/post-install.sh
 #
-# Wave 0 post-install hook.
-# Generates _bmad/bam-activation/platform/project-context.md in the host project, containing
-# a BAM_LOAD_VERIFY_<uuid> sentinel token. Idempotent + atomic.
+# Activation finalizer for bmad-bam-platform (Path B per spec §7.6).
+# Invoked by the bmad-bam-finalize skill after `bmad install bmad-bam-platform`.
+# Generates _bmad/bam-activation/platform/project-context.md in the host project,
+# containing a BAM_LOAD_VERIFY_<uuid> sentinel token. Idempotent + atomic.
 #
 # Usage: post-install.sh <project-root>
 
@@ -65,19 +66,39 @@ cat > "$TMP_FILE" <<EOF
 
 # BAM v6 Platform Module — Project Context
 
-## Wave 0 Sentinel
+This file is the BAM v6 activation sentinel for the bmad-bam-platform module.
+BMAD core skills auto-load it at activation via the universal-glob pattern
+(\`file:{project-root}/**/project-context.md\`) declared in each skill's
+\`customize.toml: persistent_facts\`.
+
+## Activation sentinel
 
 $SENTINEL
 
-If you see the token above in a BMAD skill's loaded context, the universal-glob mechanism (Plan A) is working.
+If a BMAD skill's loaded context contains the token above, the universal-glob
+activation mechanism is working end-to-end. (Headlessly verified during Wave 0;
+LLM-side ratification: \`tests/p2/PLAN-C-RATIFICATION.md\`.)
 
 ## Installed personas
 
-- Atlas (🏛️ Platform Architect) — stub in Wave 0; full persona in P2.
+- **Atlas** (🏛️ Platform Architect) — multi-tenant SaaS platform architect.
+  Holds up the platform sky: RLS strategy, modular monolith decomposition,
+  tenant tier modeling, FinOps. Speaks like a structural engineer at a
+  whiteboard. Owns QG-F1, QG-M1, QG-M2, QG-DA1.
 
-## Wave 0 status
+## Installed skills
 
-Module installed in Wave 0 smoke-test mode. Run the smoke-test workflow to determine which activation plan applies.
+- **bmad-bam-finalize** — this activation finalizer (re-runnable).
+- **bmad-bam-smoke-test** — Wave 0 activation-mechanism verification.
+- **bmad-bam-design-tenancy-model** — first BAM workflow (P2.1). Produces
+  \`docs/architecture/tenancy-model.md\` + ADR + partial QG-M2 evidence.
+  Invoke via \`bmad run bmad-bam-design-tenancy-model\`.
+
+## Module status
+
+Module installed via Path B (manual finalize) per spec §7.6 / P2.1 Task 0.
+Re-run \`bmad run bmad-bam-finalize\` after any \`bmad install bmad-bam-platform\`
+upgrade to refresh this sentinel.
 
 EOF
 
