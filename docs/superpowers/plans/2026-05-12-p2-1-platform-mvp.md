@@ -1641,7 +1641,7 @@ EOF
 - Create: `src-v6/bmad-bam-platform/skills/bmad-bam-design-tenancy-model/steps/step-07-v-verify-completeness.md`
 - Create: `src-v6/bmad-bam-platform/skills/bmad-bam-design-tenancy-model/templates/tenancy-model.md.template`
 
-- [ ] **Step 1: Write step-07**
+- [x] **Step 1: Write step-07**
 
 ````markdown
 ---
@@ -1704,7 +1704,7 @@ Machine-checkable: evidence file exists + frontmatter parses + auto_checkable_pc
 `bmad-bam-design-tenancy-model` Create mode done.
 ````
 
-- [ ] **Step 2: Write the template**
+- [x] **Step 2: Write the template**
 
 Create `src-v6/bmad-bam-platform/skills/bmad-bam-design-tenancy-model/templates/tenancy-model.md.template`:
 
@@ -1777,7 +1777,7 @@ After this design is approved:
 3. Run `bmad-bam-design-multi-tenant-testing` to define the isolation test suite (drives full QG-M2)
 ```
 
-- [ ] **Step 3: Commit**
+- [x] **Step 3: Commit**
 
 ```bash
 git add src-v6/bmad-bam-platform/skills/bmad-bam-design-tenancy-model/steps/step-07-v-verify-completeness.md \
