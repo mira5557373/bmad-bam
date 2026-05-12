@@ -179,7 +179,7 @@ Create `tests/p2/INVESTIGATION-NOTES.md`:
 - <if Path D: redesign Task 1 around BMAD's native hook>
 ```
 
-- [ ] **Step 7: Commit**
+- [x] **Step 7: Commit**
 
 ```bash
 git add tests/p2/INVESTIGATION-NOTES.md
