@@ -355,7 +355,7 @@ EOF
 
 These three standards are family-wide (per spec §6.6). Live in platform's data/standards/ and synced to `_bmad/bam/standards/` on install (in a future task).
 
-- [ ] **Step 1: Write std-frontmatter.md**
+- [x] **Step 1: Write std-frontmatter.md**
 
 Create `src-v6/bmad-bam-platform/data/standards/std-frontmatter.md`:
 
@@ -407,7 +407,7 @@ When a fragment's content changes:
 - Update `status` if deprecating or marking experimental
 ```
 
-- [ ] **Step 2: Write std-validation.md**
+- [x] **Step 2: Write std-validation.md**
 
 Create `src-v6/bmad-bam-platform/data/standards/std-validation.md`:
 
@@ -476,7 +476,7 @@ Body (required sections):
 - `## Next gate` — what gate (if any) is unblocked by this decision
 ```
 
-- [ ] **Step 3: Write std-adr.md**
+- [x] **Step 3: Write std-adr.md**
 
 Create `src-v6/bmad-bam-platform/data/standards/std-adr.md`:
 
@@ -569,7 +569,7 @@ Each persona's `architecture-decisions/` directory has an `INDEX.md`:
 `record-decision` workflow maintains INDEX.md automatically.
 ```
 
-- [ ] **Step 4: Verify all three parse as YAML frontmatter**
+- [x] **Step 4: Verify all three parse as YAML frontmatter**
 
 Run:
 ```bash
@@ -580,7 +580,7 @@ done
 
 Expected: 3 "OK:" lines.
 
-- [ ] **Step 5: Commit**
+- [x] **Step 5: Commit**
 
 ```bash
 git add src-v6/bmad-bam-platform/data/standards/
