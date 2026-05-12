@@ -4,6 +4,14 @@
 > Question answered: how does `bmad install bmad-bam-platform` materialize the
 > module into a target project, and does it trigger an npm lifecycle that BAM
 > can hook for activation?
+>
+> **Adjudicates §7.6 of `docs/v6-final-architecture.md`** (the section that
+> enumerates activation Paths A/B/C/D and, in the v0.5 patch, named Path A as
+> the default). This investigation re-evaluates that default empirically.
+>
+> **Caveat — source-read only:** findings are derived from reading BMAD 6.6.0
+> source under `external/bmad-method/`; no live `bmad install` run was
+> performed. Re-test recommended if BMAD's installer changes.
 
 ## BMAD version under test
 - **Version:** 6.6.0 (`external/bmad-method/package.json` line 4)
@@ -12,7 +20,7 @@
 ## Install path BAM actually takes
 
 BAM v6 ships `.claude-plugin/marketplace.json` (Wave 0 confirmed; see
-`/.claude-plugin/marketplace.json`). The presence of this file routes BAM
+`{project-root}/.claude-plugin/marketplace.json`). The presence of this file routes BAM
 through BMAD's **community-module + plugin-resolver** pipeline, NOT the
 "copy whole module dir" legacy path. Concretely, in
 `external/bmad-method/tools/installer/modules/official-modules.js`:
@@ -182,3 +190,24 @@ activation itself must always be Path B.
    `module.yaml` and `fs.ensureDir`s each entry. This is useful for Task 1
    to pre-create `_bmad/platform/` and `_bmad/bam/` so the user-run
    finalize skill has somewhere to write.
+
+## Spec impact
+
+This finding contradicts `docs/v6-final-architecture.md` §7.6 as patched in
+v0.5:
+
+- **v0.5 patch (c)** ratified **Path A (npm `postinstall`)** as the default
+  activation mechanism for v6.0.
+- **This investigation invalidates that empirically:** Path A runs in the
+  BMAD cache directory with no access to the host project root, only fires
+  on fresh-clone / version-bump, and any files it writes outside the
+  declared `skillPaths` are discarded by the installer copy step. It cannot
+  serve as the v6.0 default.
+- **Actual default for v6.0 is Path B** (manual finalize workflow surfaced
+  via `post-install-notes`), per the "Activation path selected for P2.1"
+  section above.
+- **Recommendation for the user:** spec §7.6 needs a v0.6 patch (or an
+  inline annotation) to record Path B as the default activation mechanism
+  and demote Path A to "non-viable for target-project activation; usable
+  only for harmless prep in the cache dir." **This is a finding only — the
+  spec is not modified here.** The user is in control of `docs/v6-final-architecture.md`.
