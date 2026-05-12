@@ -1,0 +1,9 @@
+[project]
+name = "wave-0-test-fixture"
+type = "bmad-test-project"
+
+[bmad]
+version = ">=6.4.0"
+
+# Minimum config: enough that BMAD identifies this as a valid project
+# but no real product code or modules installed beyond what bmad-bam-smoke-test installs
