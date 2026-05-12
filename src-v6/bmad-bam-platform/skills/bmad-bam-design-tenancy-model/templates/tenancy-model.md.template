@@ -55,7 +55,7 @@ Greenfield/brownfield: {{greenfield_or_brownfield}}
 
 ## Quality gate references
 
-- [QG-M2 — Tenant Isolation](../../_bmad/platform/data/checklists/QG-M2.md) — partial evidence emitted by this workflow; full satisfaction requires design-multi-tenant-testing + design-modular-monolith + design-tenant-onboarding
+- [QG-M2 — Tenant Isolation](../../_bmad/bam-platform/data/checklists/QG-M2.md) — partial evidence emitted by this workflow; full satisfaction requires design-multi-tenant-testing + design-modular-monolith + design-tenant-onboarding
 
 ## Next steps
 

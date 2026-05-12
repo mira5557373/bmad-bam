@@ -17,7 +17,7 @@ Load the 4 tenancy-model options (RLS, schema-per-tenant, cell-based, hybrid) fr
 
 1. Read the elicited context from `_bmad/bam/cache/tenancy-design/{date}/tenancy-context.json`.
 
-2. Load the `tenancy-decision-framework` fragment from `_bmad/platform/agents/atlas/resources/fragments/tenancy-decision-framework.md` (via the universal-glob).
+2. Load the `tenancy-decision-framework` fragment from `_bmad/bam-platform/agents/atlas/resources/fragments/tenancy-decision-framework.md`. (`_bmad/bam-platform/` is BMAD's install target per `module.yaml: code: bam-platform`; the universal-glob sentinel at `_bmad/bam-activation/platform/project-context.md` lives in a separate, install-survival namespace.)
 
 3. For each option, summarize:
    - **RLS** — Reference `rls-deep-dive` fragment + `rls-row-level-security` pattern. Note: lowest cost, weakest isolation, performance ceiling around 1000 tenants.
