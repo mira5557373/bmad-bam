@@ -1256,7 +1256,7 @@ EOF
 **Files:**
 - Create: `src-v6/bmad-bam-platform/skills/bmad-bam-design-tenancy-model/steps/step-02-c-load-options.md`
 
-- [ ] **Step 1: Write the step file**
+- [x] **Step 1: Write the step file**
 
 ````markdown
 ---
@@ -1312,7 +1312,7 @@ Machine-checkable: verify file exists + options_considered has 1-4 entries + fra
 `step-03-c-decision-matrix.md`
 ````
 
-- [ ] **Step 2: Commit**
+- [x] **Step 2: Commit**
 
 ```bash
 git add src-v6/bmad-bam-platform/skills/bmad-bam-design-tenancy-model/steps/step-02-c-load-options.md
