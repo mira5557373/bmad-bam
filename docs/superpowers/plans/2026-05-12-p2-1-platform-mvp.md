@@ -835,8 +835,6 @@ Each pattern is concrete decision-ready guidance. Shorter than fragments (200-40
 **Files:**
 - Create: `src-v6/bmad-bam-platform/data/patterns/rls-row-level-security.md`
 
-- [ ] **Step 1: Write the pattern**
-
 Required frontmatter (per std-frontmatter):
 ```yaml
 ---
@@ -869,11 +867,9 @@ Required body sections (per spec §6.3):
 
 Target length: 250-350 lines.
 
-- [ ] **Step 2: Validate frontmatter + sections**
-
-Run validation similar to fragment Task 6 Steps 2-4.
-
-- [ ] **Step 3: Commit**
+- [x] **Step 1: Write the pattern** (360 lines; 8 H2 sections; ASCII query-flow diagram + YAML data-model schema + real SQL CREATE TABLE/POLICY snippet + migration template + linter bash + pgbouncer.ini snippet + BYPASSRLS / SECURITY DEFINER audit queries)
+- [x] **Step 2: Validate frontmatter + sections** (python3 yaml.safe_load → OK; 8 H2 sections present; CRITICAL marker present)
+- [x] **Step 3: Commit**
 
 ```bash
 git add src-v6/bmad-bam-platform/data/patterns/rls-row-level-security.md
