@@ -786,6 +786,12 @@ Content focus:
 
 Steps mirror Task 6. Commit message: `feat(p2): add schema-per-tenant fragment`.
 
+- [x] **Step 1: Write the fragment** (460 lines; 9 H2 sections; real SQL snippet for CREATE SCHEMA / GRANT / SET LOCAL search_path; pgbouncer.ini transaction-pool config snippet; per-tenant migration runner pseudocode)
+- [x] **Step 2: Validate frontmatter** (python3 yaml.safe_load → OK)
+- [x] **Step 3: Verify 9 required sections present** (When to Use, When NOT to Use, How Schema-Per-Tenant Works, Failure Modes, Operational Patterns, Trade-offs, Quality Checks, Web Research Queries, Cross-references)
+- [x] **Step 4: Verify CRITICAL marker present**
+- [x] **Step 5: Commit**
+
 ### Task 9: Build `cell-based-architecture.md` fragment
 
 Content focus:
