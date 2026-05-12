@@ -1,0 +1,2 @@
+id,name,description,tags,tier,fragment_file
+sentinel,Wave 0 Sentinel Fragment,Anchor for smoke-test sentinel token injection,"wave-0,experimental",specialized,fragments/sentinel.md
