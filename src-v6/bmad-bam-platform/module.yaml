@@ -25,7 +25,7 @@ post-install-notes: |
       bmad run bmad-bam-finalize
 
   This step generates the universal-glob auto-load sentinel at
-    {project-root}/_bmad/platform/project-context.md
+    {project-root}/_bmad/bam-activation/platform/project-context.md
   and appends an audit entry to
     {project-root}/_bmad/bam/install-logs/platform-install.log
   Re-running is safe (the sentinel is replaced atomically; the log is append-only).
@@ -38,7 +38,7 @@ post-install-notes: |
 # BMAD-side tooling that scans the module's filesystem layout — there is no
 # `install:` or `verify:` key recognised by the BMAD installer in v6.6.0.
 directories:
-  - "{project-root}/_bmad/platform"
+  - "{project-root}/_bmad/bam-activation/platform"
   - "{project-root}/_bmad/bam"
   - "{project-root}/_bmad/bam/install-logs"
 
@@ -74,7 +74,7 @@ x-bam-requires:
 # tests/p2/INVESTIGATION-NOTES.md "Surprising / worth flagging" #3).
 x-bam-wave-0-artifacts:
   generated:
-    - "{project-root}/_bmad/platform/project-context.md"   # by bmad-bam-finalize
+    - "{project-root}/_bmad/bam-activation/platform/project-context.md"   # by bmad-bam-finalize
     - "{project-root}/_bmad/bam/family.json"               # by smoke-test step-08
   skills-registered:
     - bmad-bam-smoke-test

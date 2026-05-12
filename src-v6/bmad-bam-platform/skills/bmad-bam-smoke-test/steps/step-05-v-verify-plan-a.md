@@ -18,7 +18,7 @@ BMAD v6.6.0's resolver is `_bmad/scripts/resolve_customization.py` (Python, stdl
 
 This means Plan A is verified headlessly by two parts:
 1. The literal universal-glob string survives the three-layer merge into the target skill's resolved `agent.persistent_facts`.
-2. The sentinel `project-context.md` exists at a path the glob would match when the LLM runs (BMAD-documented canonical location: `_bmad-output/project-context.md`, per `external/bmad-method/docs/how-to/project-context.md`; our post-install also places `_bmad/platform/project-context.md` which `**` matches).
+2. The sentinel `project-context.md` exists at a path the glob would match when the LLM runs (BMAD-documented canonical location: `_bmad-output/project-context.md`, per `external/bmad-method/docs/how-to/project-context.md`; our post-install also places `_bmad/bam-activation/platform/project-context.md` which `**` matches).
 
 Part 3 (the LLM actually reading the file and echoing the sentinel back) is by-design untestable headlessly — see Plan C / Task 18 manual verification.
 
@@ -62,13 +62,13 @@ if ! echo "$RESOLVED" | grep -qF "$GLOB_STRING"; then
 fi
 
 # Part 2: sentinel project-context.md exists at a glob-matching path?
-if [ ! -f "$PROJECT_ROOT/_bmad/platform/project-context.md" ]; then
+if [ ! -f "$PROJECT_ROOT/_bmad/bam-activation/platform/project-context.md" ]; then
     echo "PLAN_A_FAIL: sentinel project-context.md not present at expected path"
     exit 1
 fi
 
 # Part 3 (sanity): the sentinel token matches what step 04 recorded
-if ! grep -qF "$SENTINEL" "$PROJECT_ROOT/_bmad/platform/project-context.md"; then
+if ! grep -qF "$SENTINEL" "$PROJECT_ROOT/_bmad/bam-activation/platform/project-context.md"; then
     echo "PLAN_A_FAIL: sentinel token in project-context.md differs from sentinel.txt"
     exit 1
 fi

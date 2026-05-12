@@ -154,7 +154,7 @@ async installFromResolution(resolved, bmadDir, fileTrackingCallback = null, opti
   1. Discovers `{project-root}` from CWD (skills run with the host project
      as cwd at LLM activation time).
   2. Materializes the universal-glob activation files into
-     `{project-root}/_bmad/platform/` and writes `_bmad/bam/family.json`
+     `{project-root}/_bmad/bam-activation/platform/` and writes `_bmad/bam/family.json`
      as the Wave-0 contract dictates.
   3. Idempotent: re-running must be safe.
 - Add a `post-install-notes` block to each BAM module's `module.yaml` that
@@ -188,7 +188,7 @@ activation itself must always be Path B.
    directory creation, no code execution) — `installer.js` calls
    `createModuleDirectories` (`official-modules.js:587-`) which reads
    `module.yaml` and `fs.ensureDir`s each entry. This is useful for Task 1
-   to pre-create `_bmad/platform/` and `_bmad/bam/` so the user-run
+   to pre-create `_bmad/bam-activation/platform/` and `_bmad/bam/` so the user-run
    finalize skill has somewhere to write.
 
 ## Spec impact

@@ -41,7 +41,7 @@ cat > "$OVERRIDE_TOML" <<'EOF'
 # Authored by bmad-bam-smoke-test step-06; do not edit by hand.
 [agent]
 persistent_facts = [
-  "file:{project-root}/_bmad/platform/project-context.md",
+  "file:{project-root}/_bmad/bam-activation/platform/project-context.md",
 ]
 EOF
 
@@ -53,11 +53,11 @@ fi
 # Re-run resolver after planting the override
 RESOLVED=$(python3 "$RESOLVER" --skill "$TARGET_SKILL_DIR" --key agent.persistent_facts 2>/dev/null)
 
-EXPLICIT_PATH='file:{project-root}/_bmad/platform/project-context.md'
+EXPLICIT_PATH='file:{project-root}/_bmad/bam-activation/platform/project-context.md'
 if echo "$RESOLVED" | grep -qF "$EXPLICIT_PATH"; then
     # Also confirm the sentinel file is present (same as Plan A part 2)
-    if [ ! -f "$PROJECT_ROOT/_bmad/platform/project-context.md" ] || \
-       ! grep -qF "$SENTINEL" "$PROJECT_ROOT/_bmad/platform/project-context.md"; then
+    if [ ! -f "$PROJECT_ROOT/_bmad/bam-activation/platform/project-context.md" ] || \
+       ! grep -qF "$SENTINEL" "$PROJECT_ROOT/_bmad/bam-activation/platform/project-context.md"; then
         echo "PLAN_B_FAIL: explicit path in resolved JSON but sentinel file missing/mismatched"
         exit 1
     fi

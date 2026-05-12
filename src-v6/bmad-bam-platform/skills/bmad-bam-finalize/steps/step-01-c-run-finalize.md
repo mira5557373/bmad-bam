@@ -3,14 +3,14 @@ step_id: 01-c-run-finalize
 auto-runnable: true
 gate: machine-checkable
 inputs: [_bmad/config.toml]
-outputs: [_bmad/platform/project-context.md, _bmad/bam/install-logs/platform-install.log]
+outputs: [_bmad/bam-activation/platform/project-context.md, _bmad/bam/install-logs/platform-install.log]
 ---
 
 # Step 01 — Run the platform finalize script
 
 ## Purpose
 
-Generate (or refresh) `{project-root}/_bmad/platform/project-context.md` — the
+Generate (or refresh) `{project-root}/_bmad/bam-activation/platform/project-context.md` — the
 universal-glob sentinel that opts the host project into BAM v6's Plan A
 activation contract (Wave 0, ratified 2026-05-12).
 
@@ -71,7 +71,7 @@ the real work (sentinel generation, atomic write, install log append, Python
 After the invocation, both output files must exist:
 
 ```bash
-test -f "$PROJECT_ROOT/_bmad/platform/project-context.md" \
+test -f "$PROJECT_ROOT/_bmad/bam-activation/platform/project-context.md" \
     || { echo "FAIL: project-context.md not created" >&2; exit 1; }
 
 test -s "$PROJECT_ROOT/_bmad/bam/install-logs/platform-install.log" \
@@ -79,7 +79,7 @@ test -s "$PROJECT_ROOT/_bmad/bam/install-logs/platform-install.log" \
 
 # Sentinel token round-trip: the value the script printed on stdout must
 # appear inside the generated file.
-grep -qF "$SENTINEL" "$PROJECT_ROOT/_bmad/platform/project-context.md" \
+grep -qF "$SENTINEL" "$PROJECT_ROOT/_bmad/bam-activation/platform/project-context.md" \
     || { echo "FAIL: sentinel token not found in generated file" >&2; exit 1; }
 
 echo "OK: BAM v6 platform activation finalized."

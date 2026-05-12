@@ -63,13 +63,13 @@ case "$PATH_SELECTED" in
 esac
 
 # Verify the sentinel landed
-if [ ! -f "$WORK_DIR/_bmad/platform/project-context.md" ]; then
-    echo "FAIL: _bmad/platform/project-context.md not generated" >&2
+if [ ! -f "$WORK_DIR/_bmad/bam-activation/platform/project-context.md" ]; then
+    echo "FAIL: _bmad/bam-activation/platform/project-context.md not generated" >&2
     exit 1
 fi
 
 SENTINEL=$(grep -oE 'BAM_LOAD_VERIFY_[a-f0-9]{32}' \
-    "$WORK_DIR/_bmad/platform/project-context.md" | head -1)
+    "$WORK_DIR/_bmad/bam-activation/platform/project-context.md" | head -1)
 if [ -z "$SENTINEL" ]; then
     echo "FAIL: no sentinel token found in project-context.md" >&2
     exit 1

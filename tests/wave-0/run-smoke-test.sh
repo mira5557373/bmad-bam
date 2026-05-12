@@ -18,7 +18,7 @@
 #     a glob-matching path. Verified against TWO target skills per spec §7.3.
 #   - Plan B (fallback): an explicit user-tier override placed at
 #     `_bmad/custom/<skill-basename>.toml` puts the literal explicit path
-#     `file:{project-root}/_bmad/platform/project-context.md` into the
+#     `file:{project-root}/_bmad/bam-activation/platform/project-context.md` into the
 #     resolved `agent.persistent_facts`.
 #   - Plan C is *not* exercised here; it requires a live LLM session.
 #
@@ -213,18 +213,18 @@ if [ -z "$SENTINEL" ]; then
 fi
 echo ">>> step-03: sentinel=$SENTINEL"
 
-if [ ! -f "$WORK_DIR/_bmad/platform/project-context.md" ]; then
-    echo "ERROR: project-context.md not present at $WORK_DIR/_bmad/platform/project-context.md" >&2
+if [ ! -f "$WORK_DIR/_bmad/bam-activation/platform/project-context.md" ]; then
+    echo "ERROR: project-context.md not present at $WORK_DIR/_bmad/bam-activation/platform/project-context.md" >&2
     exit 1
 fi
-if ! grep -qF "$SENTINEL" "$WORK_DIR/_bmad/platform/project-context.md"; then
+if ! grep -qF "$SENTINEL" "$WORK_DIR/_bmad/bam-activation/platform/project-context.md"; then
     echo "ERROR: sentinel token not found inside project-context.md" >&2
     exit 1
 fi
 write_step_artifact "install-status.txt" \
 "status=installed
 sentinel=$SENTINEL
-target=_bmad/platform/project-context.md
+target=_bmad/bam-activation/platform/project-context.md
 verified_at=$(date -u +%Y-%m-%dT%H:%M:%SZ)"
 
 # ---------------------------------------------------------------------------
@@ -257,8 +257,8 @@ for skill in "${TARGET_SKILL_NAMES[@]}"; do
 
     if [ -n "$resolved" ] \
         && printf '%s' "$resolved" | grep -qF "$GLOB_LITERAL" \
-        && [ -f "$WORK_DIR/_bmad/platform/project-context.md" ] \
-        && grep -qF "$SENTINEL" "$WORK_DIR/_bmad/platform/project-context.md"; then
+        && [ -f "$WORK_DIR/_bmad/bam-activation/platform/project-context.md" ] \
+        && grep -qF "$SENTINEL" "$WORK_DIR/_bmad/bam-activation/platform/project-context.md"; then
         PLAN_A_PER_SKILL[$skill]="pass"
         echo "    [$skill] pass"
     else
@@ -292,7 +292,7 @@ fi
 # target skill, the explicit path survives merge into resolved persistent_facts.
 # ---------------------------------------------------------------------------
 declare -A PLAN_B_PER_SKILL=()
-PLAN_B_PATH='file:{project-root}/_bmad/platform/project-context.md'
+PLAN_B_PATH='file:{project-root}/_bmad/bam-activation/platform/project-context.md'
 
 if [ "$PLAN" = "unknown" ]; then
     echo ">>> step-06: Plan B check (multi-skill)"

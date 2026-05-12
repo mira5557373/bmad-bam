@@ -16,7 +16,7 @@ Sanity check: read back the sentinel from the freshly generated `project-context
 
 ```bash
 PROJECT_ROOT="${BMAD_PROJECT_ROOT:-$PWD}"
-CONTEXT_FILE="$PROJECT_ROOT/_bmad/platform/project-context.md"
+CONTEXT_FILE="$PROJECT_ROOT/_bmad/bam-activation/platform/project-context.md"
 
 # Extract the sentinel token (first line matching BAM_LOAD_VERIFY_ pattern)
 SENTINEL=$(grep -o 'BAM_LOAD_VERIFY_[a-f0-9]\{32\}' "$CONTEXT_FILE" | head -1)

@@ -2,7 +2,7 @@
 # src-v6/bmad-bam-platform/scripts/post-install.sh
 #
 # Wave 0 post-install hook.
-# Generates _bmad/platform/project-context.md in the host project, containing
+# Generates _bmad/bam-activation/platform/project-context.md in the host project, containing
 # a BAM_LOAD_VERIFY_<uuid> sentinel token. Idempotent + atomic.
 #
 # Usage: post-install.sh <project-root>
@@ -52,7 +52,7 @@ fi
 SENTINEL="$(python3 "$SENTINEL_PY")"
 
 # Target directory + file
-TARGET_DIR="$PROJECT_ROOT/_bmad/platform"
+TARGET_DIR="$PROJECT_ROOT/_bmad/bam-activation/platform"
 TARGET_FILE="$TARGET_DIR/project-context.md"
 TMP_FILE="$(mktemp "${TARGET_DIR}.XXXXXX.tmp" 2>/dev/null || mktemp /tmp/bam-platform.XXXXXX.tmp)"
 

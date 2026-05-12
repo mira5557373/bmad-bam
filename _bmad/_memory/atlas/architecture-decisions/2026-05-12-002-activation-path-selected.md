@@ -45,4 +45,4 @@ P2.1 ships this for `bmad-bam-platform` (`src-v6/bmad-bam-platform/skills/bmad-b
 
 - **Path A (npm postinstall)** — rejected. Source-read evidence in `tests/p2/INVESTIGATION-NOTES.md` shows npm runs in BMAD's cache dir, not the host project, and only on fresh clone. Cannot serve as a reliable target-project activation hook.
 - **Path D (BMAD-native code hook)** — rejected. Does not exist. BMAD's only post-install mechanism is `post-install-notes`, which is text-display only.
-- **Path C (LLM-side glob activation alone, no finalize step)** — rejected as the primary mechanism. Plan C remains the ratification path for the LLM-side contract, but it relies on `_bmad/platform/project-context.md` being written somehow; Path B is the mechanism that writes it.
+- **Path C (LLM-side glob activation alone, no finalize step)** — rejected as the primary mechanism. Plan C remains the ratification path for the LLM-side contract, but it relies on `_bmad/bam-activation/platform/project-context.md` being written somehow; Path B is the mechanism that writes it.

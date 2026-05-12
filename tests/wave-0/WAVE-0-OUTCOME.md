@@ -126,3 +126,9 @@ Plan C (LLM-side activation contract verification) is to be performed during P2.
 - Plan C outcome: pending (recorded in `tests/p2/PLAN-C-RATIFICATION.md` after Task 25)
 - Activation path for v6.0: **Path B** (manual finalize) — *not* the v0.5-patched Path A
 - Implications for P2.2+: P2.2+ modules inherit Path B; bmad-bam-finalize skill is the activation entry point
+
+---
+
+## P2.1 Update — Sentinel namespace rename (2026-05-12, F3)
+
+P2.1 renamed the sentinel namespace from `_bmad/platform/` to `_bmad/bam-activation/platform/` to disambiguate from BMAD's `_bmad/bam-platform/` install target (which BMAD wipes and re-copies on every install). Wave 0's headless test still passes against the new namespace — the universal-glob `file:{project-root}/**/project-context.md` continues to match because `**` is depth-agnostic. The per-module pattern is preserved: future modules will write to `_bmad/bam-activation/data/`, `_bmad/bam-activation/ai/`, etc. The narrative references to `_bmad/platform/...` earlier in this document describe the original Wave 0 run and are left as historical context.

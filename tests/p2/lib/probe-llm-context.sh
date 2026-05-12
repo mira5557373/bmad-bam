@@ -16,7 +16,7 @@ cat <<EOF
 PLAN C — MANUAL LLM-SIDE VERIFICATION
 
 The headless tests prove:
-  1. project-context.md exists at $PROJECT_ROOT/_bmad/platform/
+  1. project-context.md exists at $PROJECT_ROOT/_bmad/bam-activation/platform/
   2. universal-glob string survives merge into target skills
   3. file contains sentinel: $SENTINEL
 
