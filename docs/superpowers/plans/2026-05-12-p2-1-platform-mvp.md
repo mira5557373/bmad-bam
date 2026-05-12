@@ -1556,7 +1556,7 @@ EOF
 **Files:**
 - Create: `src-v6/bmad-bam-platform/skills/bmad-bam-design-tenancy-model/steps/step-06-c-record-adr.md`
 
-- [ ] **Step 1: Write the step file**
+- [x] **Step 1: Write the step file**
 
 ````markdown
 ---
@@ -1623,7 +1623,7 @@ Machine-checkable: ADR file exists, has valid frontmatter, INDEX.md updated.
 `step-07-v-verify-completeness.md`
 ````
 
-- [ ] **Step 2: Commit**
+- [x] **Step 2: Commit**
 
 ```bash
 git add src-v6/bmad-bam-platform/skills/bmad-bam-design-tenancy-model/steps/step-06-c-record-adr.md
