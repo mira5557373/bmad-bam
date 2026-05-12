@@ -1801,7 +1801,7 @@ EOF
 
 This is a non-LLM smoke test verifying the workflow's machinery (step files exist, templates parse, manifests validate). LLM-dependent behavior is verified in the real-install end-to-end test (Task 25).
 
-- [ ] **Step 1: Write the test**
+- [x] **Step 1: Write the test**
 
 ```bash
 #!/usr/bin/env bash
@@ -1878,13 +1878,13 @@ echo "    [valid] template has placeholders"
 echo ">>> PASS: smoke test"
 ```
 
-- [ ] **Step 2: Make executable**
+- [x] **Step 2: Make executable**
 
 ```bash
 chmod +x src-v6/bmad-bam-platform/skills/bmad-bam-design-tenancy-model/tests/smoke-test.sh
 ```
 
-- [ ] **Step 3: Run the smoke test**
+- [x] **Step 3: Run the smoke test**
 
 ```bash
 src-v6/bmad-bam-platform/skills/bmad-bam-design-tenancy-model/tests/smoke-test.sh
@@ -1892,7 +1892,7 @@ src-v6/bmad-bam-platform/skills/bmad-bam-design-tenancy-model/tests/smoke-test.s
 
 Expected output: many `[present]` / `[valid]` lines + `>>> PASS: smoke test`. If any FAIL, fix the underlying issue (likely a missed required field in frontmatter or a template without placeholders) before committing.
 
-- [ ] **Step 4: Commit**
+- [x] **Step 4: Commit**
 
 ```bash
 git add src-v6/bmad-bam-platform/skills/bmad-bam-design-tenancy-model/tests/smoke-test.sh
