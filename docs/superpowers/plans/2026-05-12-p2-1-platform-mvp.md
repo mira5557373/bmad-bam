@@ -892,6 +892,10 @@ CRITICAL: `**CRITICAL:** schema migrations must be transactionally per-schema; p
 
 Commit message: `feat(p2): add schema-per-tenant-with-pgbouncer pattern`.
 
+- [x] **Step 1: Write the pattern** (376 lines; 8 H2 sections; connection-flow ASCII + 2-tenant namespace SQL example + real pgbouncer.ini with prepared-statement/LISTEN/advisory-lock caveats + onboarding SQL with template clone + per-request middleware + parallel migration runner pseudocode + offboarding SQL with backup-retention warning)
+- [x] **Step 2: Validate frontmatter + sections** (8 H2 sections present; CRITICAL marker present in Quality Checks; frontmatter matches spec)
+- [x] **Step 3: Commit**
+
 ### Task 13: Build `cell-based-with-routing.md` pattern
 
 Same shape. Topic: cell-based architecture with tenant→cell routing at gateway. Specific patterns:
