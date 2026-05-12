@@ -1987,7 +1987,7 @@ This test runs `bmad install bmad-bam-platform` against a real BMAD project (not
 
 The test then probes whether the LLM at activation actually loads project-context.md — the Plan C ratification ask from Wave 0.
 
-- [ ] **Step 1: Create a real BMAD-initialized fixture**
+- [x] **Step 1: Create a real BMAD-initialized fixture**
 
 Run (on a developer machine):
 
@@ -2001,7 +2001,7 @@ cd tests/p2/fixtures
 
 Document the exact steps you took in `tests/p2/fixtures/real-bmad-project/SETUP-NOTES.md`.
 
-- [ ] **Step 2: Write probe-llm-context.sh**
+- [x] **Step 2: Write probe-llm-context.sh**
 
 Create `tests/p2/lib/probe-llm-context.sh`:
 
@@ -2050,7 +2050,7 @@ WAVE-0-OUTCOME.md and tests/p2/PLAN-C-RATIFICATION.md.
 EOF
 ```
 
-- [ ] **Step 3: Write run-real-install-test.sh**
+- [x] **Step 3: Write run-real-install-test.sh**
 
 Create `tests/p2/run-real-install-test.sh`:
 
@@ -2108,7 +2108,7 @@ echo ">>> Headless portion PASS. Manual LLM probe pending."
 echo ">>> Record outcome in tests/p2/PLAN-C-RATIFICATION.md when done."
 ```
 
-- [ ] **Step 4: Make executable + run headless portion**
+- [x] **Step 4: Make executable + run headless portion**
 
 ```bash
 chmod +x tests/p2/run-real-install-test.sh tests/p2/lib/probe-llm-context.sh
@@ -2117,7 +2117,7 @@ tests/p2/run-real-install-test.sh
 
 Expected: headless portion completes; manual probe instructions printed; WORK_DIR retained for inspection.
 
-- [ ] **Step 5: Perform manual LLM probe**
+- [x] **Step 5: Perform manual LLM probe**
 
 Follow the instructions printed by probe-llm-context.sh. Record the outcome (sentinel returned by LLM or not) in a new file:
 
@@ -2151,7 +2151,7 @@ If PASS: §7 activation contract holds end-to-end. P2.2+ can proceed with confid
 If FAIL: escalate. Universal-glob string survives merge but LLM doesn't actually load files; mechanism redesign needed.
 ```
 
-- [ ] **Step 6: Commit**
+- [x] **Step 6: Commit**
 
 ```bash
 git add tests/p2/

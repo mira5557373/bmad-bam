@@ -1,0 +1,11 @@
+# Minimal BMAD project config marker.
+#
+# Real BMAD projects produce this via `bmad init`. P2.1's run-real-install-test.sh
+# only requires the file's presence, not specific keys; the bmad-bam-platform
+# post-install.sh treats any project with _bmad/config.toml as a valid target.
+#
+# See tests/p2/fixtures/real-bmad-project/SETUP-NOTES.md for regeneration guidance.
+
+[bmad]
+version = "6.6.0"
+project_name = "p2-real-install-fixture"
