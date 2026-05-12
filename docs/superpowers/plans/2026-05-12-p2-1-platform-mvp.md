@@ -2173,7 +2173,7 @@ EOF
 **Files:**
 - Modify: `tests/wave-0/WAVE-0-OUTCOME.md`
 
-- [ ] **Step 1: Append a P2.1 ratification section**
+- [x] **Step 1: Append a P2.1 ratification section**
 
 Add a new section at the end of `tests/wave-0/WAVE-0-OUTCOME.md`:
 
@@ -2188,7 +2188,7 @@ Plan C (LLM-side activation contract verification) was performed during P2.1 imp
 - Implications for P2.2+: <referenced from ratification doc>
 ```
 
-- [ ] **Step 2: Commit**
+- [x] **Step 2: Commit**
 
 ```bash
 git add tests/wave-0/WAVE-0-OUTCOME.md

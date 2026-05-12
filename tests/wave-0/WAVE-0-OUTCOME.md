@@ -114,3 +114,15 @@ Plan C verification gap is documented under "Risks identified" #1 in `tests/wave
 4. **Task 0's resolver invocation generalised over agent skills only**; workflow skills require `--key workflow.persistent_facts`. Corrected in remediation (helper now queries both).
 5. **Plan's `module.yaml` had `install:`/`verify:`/`requires:` blocks BMAD's installer doesn't read.** Corrected in remediation (C2) — those moved under `x-bam-*` keys with explicit "not consumed by BMAD installer" comments.
 6. (Self-inflicted) Heredoc copy-paste error in Task 1 commit message during subagent prompt construction; amended in-place.
+
+---
+
+## P2.1 Update — Plan C Ratification (2026-05-12)
+
+Plan C (LLM-side activation contract verification) is to be performed during P2.1 Task 25's real-install end-to-end test. Outcome will be recorded in `tests/p2/PLAN-C-RATIFICATION.md`.
+
+**Plus a separate P2.1 finding (Task 0):** the v0.5 spec patch (c) named §7.6 Path A (npm postinstall) as the v6.0 default activation mechanism. Task 0's empirical investigation invalidated this — npm postinstall runs in BMAD's cache directory, not the host project, so Path A is non-viable for target-project activation. P2.1 ships Path B (manual finalize via `bmad-bam-finalize` skill, surfaced through BMAD's native `post-install-notes` channel). The spec needs a v0.6 patch to demote Path A and ratify Path B as the default. See `tests/p2/INVESTIGATION-NOTES.md` for full evidence.
+
+- Plan C outcome: pending (recorded in `tests/p2/PLAN-C-RATIFICATION.md` after Task 25)
+- Activation path for v6.0: **Path B** (manual finalize) — *not* the v0.5-patched Path A
+- Implications for P2.2+: P2.2+ modules inherit Path B; bmad-bam-finalize skill is the activation entry point
