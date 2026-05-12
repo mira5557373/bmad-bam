@@ -692,7 +692,7 @@ Each fragment task follows the same pattern. Steps shown in detail for Task 6 (`
 **Files:**
 - Create: `src-v6/bmad-bam-platform/agents/atlas/resources/fragments/tenancy-decision-framework.md`
 
-- [ ] **Step 1: Write the fragment**
+- [x] **Step 1: Write the fragment**
 
 Create the file with required frontmatter (per `std-frontmatter`) and required body sections (per spec §6.3). Target length: 400-500 lines.
 
@@ -711,7 +711,7 @@ Required sections (write substantive content for each):
 
 Write substantive content (not stubs). Each section should be 30-100 lines.
 
-- [ ] **Step 2: Validate frontmatter**
+- [x] **Step 2: Validate frontmatter**
 
 Run:
 ```bash
@@ -721,7 +721,7 @@ python3 -c "import yaml,sys; yaml.safe_load(open(sys.argv[1]).read().split('---'
 
 Expected: `OK`.
 
-- [ ] **Step 3: Verify required sections present**
+- [x] **Step 3: Verify required sections present**
 
 Run:
 ```bash
@@ -735,7 +735,7 @@ done
 
 Expected: 9 "OK:" lines.
 
-- [ ] **Step 4: Verify CRITICAL marker present**
+- [x] **Step 4: Verify CRITICAL marker present**
 
 Run:
 ```bash
@@ -746,7 +746,7 @@ grep -q "\*\*CRITICAL:\*\*" \
 
 Expected: `OK: CRITICAL marker present`.
 
-- [ ] **Step 5: Commit**
+- [x] **Step 5: Commit**
 
 ```bash
 git add src-v6/bmad-bam-platform/agents/atlas/resources/fragments/tenancy-decision-framework.md
