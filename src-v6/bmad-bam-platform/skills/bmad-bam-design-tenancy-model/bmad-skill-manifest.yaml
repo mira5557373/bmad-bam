@@ -1,0 +1,34 @@
+name: bmad-bam-design-tenancy-model
+description: "Facilitate tenancy-model decision; produce tenancy-model.md + ADR"
+module: bmad-bam-platform
+persona: atlas
+version: 0.1.0
+
+inputs:
+  - artifact: product-brief.md
+    required: false
+    resolver: latest-in-docs
+  - artifact: prd.md
+    required: false
+    resolver: latest-in-docs
+
+outputs:
+  - artifact: tenancy-model.md
+    location: "{project-root}/docs/architecture/"
+    required: true
+  - sidecar: architecture-decisions/{date}-NNN-tenancy-model.md
+    persona: atlas
+    required: true
+  - gate-evidence: QG-M2/tenancy-decision.md
+    conditional: pass-only
+
+execution_mode:
+  default: assisted
+  alternatives: [manual]
+
+recommended_capabilities:
+  - extended-thinking
+
+minimum_persona_version: "0.1.0"
+latency-budget: "45min"
+cluster: foundation

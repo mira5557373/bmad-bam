@@ -996,7 +996,7 @@ This is the centerpiece deliverable of P2.1 — the first invokable BAM workflow
 - Create: `src-v6/bmad-bam-platform/skills/bmad-bam-design-tenancy-model/workflow.md`
 - Create: `src-v6/bmad-bam-platform/skills/bmad-bam-design-tenancy-model/customize.toml`
 
-- [ ] **Step 1: Write SKILL.md**
+- [x] **Step 1: Write SKILL.md**
 
 ```markdown
 ---
@@ -1034,7 +1034,7 @@ Choose THE foundational tenancy isolation strategy for a multi-tenant SaaS produ
 See `workflow.md` for the mode router and `steps/` for individual step files.
 ```
 
-- [ ] **Step 2: Write bmad-skill-manifest.yaml**
+- [x] **Step 2: Write bmad-skill-manifest.yaml**
 
 ```yaml
 name: bmad-bam-design-tenancy-model
@@ -1073,7 +1073,7 @@ latency-budget: "45min"
 cluster: foundation
 ```
 
-- [ ] **Step 3: Write workflow.md (mode router)**
+- [x] **Step 3: Write workflow.md (mode router)**
 
 ```markdown
 # bmad-bam-design-tenancy-model — Workflow Router
@@ -1093,7 +1093,7 @@ Sequential execution; assisted mode (default). Human-approval gates at decision 
 7. `steps/step-07-v-verify-completeness.md` — gate evidence for QG-M2 (partial)
 ```
 
-- [ ] **Step 4: Write customize.toml (full Atlas overlay; [workflow] namespace per spec §7.1)**
+- [x] **Step 4: Write customize.toml (full Atlas overlay; [workflow] namespace per spec §7.1)**
 
 ```toml
 # Full Atlas persona overlay for design-tenancy-model.
@@ -1139,7 +1139,7 @@ foundational_fragments = [
 ]
 ```
 
-- [ ] **Step 5: Validate all 4 files parse correctly**
+- [x] **Step 5: Validate all 4 files parse correctly**
 
 Run:
 ```bash
@@ -1158,7 +1158,7 @@ Expected:
 - `manifest OK: bmad-bam-design-tenancy-model`
 - `customize.toml OK: namespace = ['workflow']`
 
-- [ ] **Step 6: Commit**
+- [x] **Step 6: Commit**
 
 ```bash
 git add src-v6/bmad-bam-platform/skills/bmad-bam-design-tenancy-model/
