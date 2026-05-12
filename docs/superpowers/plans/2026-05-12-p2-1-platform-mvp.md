@@ -802,6 +802,12 @@ Content focus:
 
 Steps mirror Task 6. Commit message: `feat(p2): add cell-based-architecture fragment`.
 
+- [x] **Step 1: Write the fragment** (521 lines; 9 H2 sections; ASCII cell topology diagram; Envoy gateway routing config snippet + Kubernetes NetworkPolicy YAML + Prometheus relabel config)
+- [x] **Step 2: Validate frontmatter** (python3 yaml.safe_load → OK)
+- [x] **Step 3: Verify 9 required sections present** (When to Use, When NOT to Use, How Cell-Based Architecture Works, Failure Modes, Operational Patterns, Trade-offs, Quality Checks, Web Research Queries, Cross-references)
+- [x] **Step 4: Verify CRITICAL marker present**
+- [x] **Step 5: Commit**
+
 ### Task 10: Build `tenant-isolation-testing-patterns.md` fragment
 
 Content focus:
