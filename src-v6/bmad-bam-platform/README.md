@@ -6,9 +6,9 @@ The platform foundation module of the BAM v6 family. Owns multi-tenant SaaS plat
 
 ## What ships in Wave 0
 
-- 1 persona stub: Atlas (Platform Architect) — registration only
+- 1 persona stub: Atlas (Platform Architect) — registered in `module.yaml`'s `agents:` block; Wave-0-stub overlay lives in `skills/bmad-bam-smoke-test/customize.toml`
 - 1 fragment: `sentinel.md` — anchor for smoke-test sentinel injection
-- 1 skill: `bmad-bam-smoke-test` — Wave 0 verification workflow (8 steps)
+- 1 skill: `bmad-bam-smoke-test` (SKILL.md + customize.toml + bmad-skill-manifest.yaml + workflow.md + 8 steps)
 - 1 post-install script: generates `_bmad/platform/project-context.md`
 
 ## What does NOT ship in Wave 0
