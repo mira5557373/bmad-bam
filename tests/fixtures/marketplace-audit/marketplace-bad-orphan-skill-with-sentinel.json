@@ -1,0 +1,14 @@
+{
+  "name": "audit-fixture", "owner": { "name": "BAM Test Harness" },
+  "description": "GOOD-with-sentinel — check (d): orphans with .no-marketplace are excluded; this fixture should PASS.",
+  "plugins": [{
+    "name": "bmad-bam-platform", "source": "./", "version": "0.0.1",
+    "description": "Good fixture with sentinel-suppressed orphan.",
+    "author": { "name": "BAM Test Harness" },
+    "skills": [
+      "./tests/fixtures/marketplace-audit/fake-source/skills/skill-alpha",
+      "./tests/fixtures/marketplace-audit/fake-source/skills/skill-orphan",
+      "./tests/fixtures/marketplace-audit/fake-v6/bam-faux/skills/good-skill"
+    ]
+  }]
+}

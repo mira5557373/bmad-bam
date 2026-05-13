@@ -1,0 +1,12 @@
+{
+  "name": "audit-fixture", "owner": { "name": "BAM Test Harness" },
+  "description": "BAD — check (e): fake-v6/bam-faux/module.yaml exists but no plugin entry.",
+  "plugins": [{
+    "name": "unrelated-plugin", "source": "./", "version": "0.0.1",
+    "description": "Plugin doesn't list skills from bam-faux.",
+    "author": { "name": "BAM Test Harness" },
+    "skills": [
+      "./tests/fixtures/marketplace-audit/fake-source/skills/skill-alpha"
+    ]
+  }]
+}

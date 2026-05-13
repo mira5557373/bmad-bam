@@ -1,0 +1,13 @@
+{
+  "name": "audit-fixture", "owner": { "name": "BAM Test Harness" },
+  "description": "BAD — check (b): entry is module-root (./agents/), not /skills/<name>/.",
+  "plugins": [{
+    "name": "bmad-bam-platform", "source": "./", "version": "0.0.1",
+    "description": "Bad fixture (module-root entry).",
+    "author": { "name": "BAM Test Harness" },
+    "skills": [
+      "./tests/fixtures/marketplace-audit/fake-source/skills/skill-alpha",
+      "./tests/fixtures/marketplace-audit/fake-source/agents"
+    ]
+  }]
+}

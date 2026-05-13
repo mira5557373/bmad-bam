@@ -1,0 +1,19 @@
+{
+  "name": "audit-fixture",
+  "owner": { "name": "BAM Test Harness" },
+  "description": "Known-good minimal marketplace.json for audit testing — passes all 6 checks.",
+  "plugins": [
+    {
+      "name": "bmad-bam-platform",
+      "source": "./",
+      "description": "Test fixture plugin (good).",
+      "version": "0.0.1",
+      "author": { "name": "BAM Test Harness" },
+      "skills": [
+        "./tests/fixtures/marketplace-audit/fake-source/skills/skill-alpha",
+        "./tests/fixtures/marketplace-audit/fake-source/skills/skill-orphan",
+        "./tests/fixtures/marketplace-audit/fake-v6/bam-faux/skills/good-skill"
+      ]
+    }
+  ]
+}

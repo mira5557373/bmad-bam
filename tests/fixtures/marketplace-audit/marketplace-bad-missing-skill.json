@@ -1,0 +1,14 @@
+{
+  "name": "audit-fixture",
+  "owner": { "name": "BAM Test Harness" },
+  "description": "BAD — check (a): skill path listed but missing on disk.",
+  "plugins": [{
+    "name": "bmad-bam-platform", "source": "./", "version": "0.0.1",
+    "description": "Bad fixture (missing skill).",
+    "author": { "name": "BAM Test Harness" },
+    "skills": [
+      "./tests/fixtures/marketplace-audit/fake-source/skills/skill-alpha",
+      "./tests/fixtures/marketplace-audit/fake-source/skills/skill-does-not-exist"
+    ]
+  }]
+}

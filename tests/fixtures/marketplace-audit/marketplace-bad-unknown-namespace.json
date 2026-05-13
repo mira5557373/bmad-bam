@@ -1,0 +1,12 @@
+{
+  "name": "audit-fixture", "owner": { "name": "BAM Test Harness" },
+  "description": "BAD — check (f): step file in fake-v6-with-bad references _bmad/wrongns/. Use with --v6-root tests/fixtures/marketplace-audit/fake-v6-with-bad.",
+  "plugins": [{
+    "name": "bmad-bam-faux", "source": "./", "version": "0.0.1",
+    "description": "Bad fixture (unknown namespace in step file).",
+    "author": { "name": "BAM Test Harness" },
+    "skills": [
+      "./tests/fixtures/marketplace-audit/fake-v6-with-bad/bam-faux/skills/bad-namespace-skill"
+    ]
+  }]
+}
