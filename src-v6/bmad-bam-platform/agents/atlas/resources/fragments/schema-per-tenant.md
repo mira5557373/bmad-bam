@@ -11,7 +11,7 @@ author: atlas
 references:
   - "https://www.pgbouncer.org/config.html"
   - "https://docs.aws.amazon.com/wellarchitected/latest/saas-lens/silo-isolation.html"
-tested-against: []
+tested_against: []
 ---
 
 # Schema-Per-Tenant Isolation — Deep Dive

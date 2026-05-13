@@ -10,7 +10,7 @@ status: active
 author: atlas
 references:
   - "https://www.postgresql.org/docs/current/ddl-rowsecurity.html"
-tested-against:
+tested_against:
   - platform: "PostgreSQL 16"
     verified: 2026-05-12
 ---

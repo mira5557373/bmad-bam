@@ -11,7 +11,7 @@ author: atlas
 references:
   - "https://stripe.com/blog/multi-tenant-saas"
   - "https://docs.aws.amazon.com/wellarchitected/latest/saas-lens/saas-lens.html"
-tested-against: []
+tested_against: []
 ---
 
 # Tenancy Model Decision Framework

@@ -4,12 +4,12 @@ title: BAM verify-* Workflow Output Standard
 category: standard
 kind: fragment
 qg_ref: null
-last_reviewed: 2026-05-12
-version: 1.0.0
+last_reviewed: 2026-05-13
+version: 1.0.1
 status: active
 author: atlas
 references: ["docs/v6-final-architecture.md#8-quality-gates--release-gates"]
-tested-against: []
+tested_against: []
 ---
 
 # Validation Output Standard

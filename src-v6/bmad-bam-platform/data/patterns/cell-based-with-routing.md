@@ -11,7 +11,7 @@ author: atlas
 references:
   - "https://docs.aws.amazon.com/wellarchitected/latest/reducing-scope-of-impact-with-cell-based-architecture/reducing-scope-of-impact-with-cell-based-architecture.html"
   - "https://kubernetes.io/docs/concepts/services-networking/network-policies/"
-tested-against:
+tested_against:
   - platform: "Envoy + Redis + Kubernetes 1.29"
     verified: 2026-05-12
 ---

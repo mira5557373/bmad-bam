@@ -11,7 +11,7 @@ author: atlas
 references:
   - "https://www.pgbouncer.org/config.html"
   - "https://www.postgresql.org/docs/current/ddl-schemas.html"
-tested-against:
+tested_against:
   - platform: "PostgreSQL 16 + PgBouncer 1.21"
     verified: 2026-05-12
 ---

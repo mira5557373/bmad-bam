@@ -11,7 +11,7 @@ author: atlas
 references:
   - "https://www.postgresql.org/docs/current/ddl-rowsecurity.html"
   - "https://supabase.com/docs/guides/auth/row-level-security"
-tested-against: []
+tested_against: []
 ---
 
 # PostgreSQL Row-Level Security as a Tenancy Mechanism — Deep Dive

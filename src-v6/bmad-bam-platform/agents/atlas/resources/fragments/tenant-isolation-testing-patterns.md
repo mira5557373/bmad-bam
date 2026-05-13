@@ -11,7 +11,7 @@ author: atlas
 references:
   - "https://owasp.org/www-project-application-security-verification-standard/"
   - "https://kubernetes.io/docs/concepts/services-networking/network-policies/"
-tested-against: []
+tested_against: []
 ---
 
 # Tenant Isolation Testing Patterns

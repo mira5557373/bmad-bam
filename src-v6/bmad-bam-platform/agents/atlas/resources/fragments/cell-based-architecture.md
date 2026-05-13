@@ -11,7 +11,7 @@ author: atlas
 references:
   - "https://docs.aws.amazon.com/wellarchitected/latest/reducing-scope-of-impact-with-cell-based-architecture/reducing-scope-of-impact-with-cell-based-architecture.html"
   - "https://aws.amazon.com/builders-library/avoiding-overload-in-distributed-systems-by-putting-the-smaller-service-in-control/"
-tested-against: []
+tested_against: []
 ---
 
 # Cell-Based Architecture for Multi-Tenant SaaS — Deep Dive

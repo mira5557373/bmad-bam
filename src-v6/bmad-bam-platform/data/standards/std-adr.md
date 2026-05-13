@@ -4,15 +4,17 @@ title: BAM Architecture Decision Record Standard
 category: standard
 kind: fragment
 qg_ref: null
-last_reviewed: 2026-05-12
-version: 1.0.0
+last_reviewed: 2026-05-13
+version: 1.1.0
 status: active
 author: atlas
 references: ["docs/v6-final-architecture.md#43-sidecar-memory--adr-directory-format"]
-tested-against: []
+tested_against: []
 ---
 
 # ADR Standard (MADR-lite)
+
+> **Convention note:** ADR frontmatter uses **kebab-case** keys (`related-personas`, `superseded-by`, `dependencies-on-other-decisions`, `generated-by`, `authored-by`) per the MADR-lite external convention. This intentionally differs from BAM step-file / manifest / fragment frontmatter, which uses snake_case (see `std-frontmatter.md` Convention map). MADR-lite is a well-known ADR format with its own tooling ecosystem; preserving kebab-case here maintains compatibility with that tooling. The std-frontmatter Convention map documents the full per-context convention rule.
 
 All ADRs MUST follow this format. One ADR per file. Append-only. Files live at:
 
