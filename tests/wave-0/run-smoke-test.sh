@@ -109,7 +109,7 @@ if [ ! -d "$FIXTURE_DIR" ] || [ ! -f "$FIXTURE_DIR/_bmad/config.toml" ]; then
     exit 70
 fi
 
-POST_INSTALL="$REPO_ROOT/src-v6/bmad-bam-platform/scripts/post-install.sh"
+POST_INSTALL="$REPO_ROOT/src-v6/bmad-bam-platform/skills/bmad-bam-finalize/scripts/post-install.sh"
 if [ ! -x "$POST_INSTALL" ]; then
     echo "ERROR: post-install hook not executable at $POST_INSTALL" >&2
     exit 70

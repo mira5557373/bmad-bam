@@ -7,3 +7,4 @@
 | 2026-05-12-003 | P2.1 MVP scope — activation + Atlas + 1 workflow | accepted | 2026-05-12 |
 | 2026-05-13-004 | Fix std-frontmatter internal drift; document convention map | accepted | 2026-05-13 |
 | 2026-05-13-005 | Align project-context.md location to BMM convention ({output_folder}/) | accepted | 2026-05-13 |
+| 2026-05-13-006 | Refactor module shape to BMM canonical (Atlas-as-skill) | accepted | 2026-05-13 |

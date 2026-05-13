@@ -1,8 +1,10 @@
 #!/usr/bin/env bash
-# src-v6/bmad-bam-platform/scripts/post-install.sh
+# src-v6/bmad-bam-platform/skills/bmad-bam-finalize/scripts/post-install.sh
 #
 # Activation finalizer for bmad-bam-platform (Path B per spec §7.6).
 # Invoked by the bmad-bam-finalize skill after `bmad install bmad-bam-platform`.
+# Skill-local script per BMM convention (each skill is self-contained;
+# no module-root scripts/ dir; see v0.8 spec §6.1).
 # Generates {output_folder}/bam-platform-project-context.md in the host project,
 # containing a BAM_LOAD_VERIFY_<uuid> sentinel token. Idempotent + atomic.
 #

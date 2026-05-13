@@ -17,7 +17,7 @@ Load the 4 tenancy-model options (RLS, schema-per-tenant, cell-based, hybrid) fr
 
 1. Read the elicited context from `_bmad/bam/cache/tenancy-design/{date}/tenancy-context.json`.
 
-2. Load the `tenancy-decision-framework` fragment from `_bmad/bam-platform/agents/atlas/resources/fragments/tenancy-decision-framework.md`. (`_bmad/bam-platform/` is BMAD's install target per `module.yaml: code: bam-platform`; the universal-glob sentinel itself lives at `{output_folder}/bam-platform-project-context.md` outside `_bmad/` — BMM-aligned per v0.7 spec §7.6 — so it survives BMAD's install-time wipe.)
+2. Load the `tenancy-decision-framework` fragment from `_bmad/bam-platform/bmad-bam-agent-atlas/resources/fragments/tenancy-decision-framework.md`. (Path notes: `_bmad/bam-platform/` is BMAD's install target per `module.yaml: code: bam-platform`. `bmad-bam-agent-atlas/` is the canonical home for shared platform-module content per the bmad-tea pattern — see `external/bmad-tea/src/agents/bmad-tea/resources/`. Workflow steps reference Atlas's fragments by EXPLICIT PATH because universal-glob `**/project-context.md` only auto-loads `project-context.md`-named files, not arbitrary fragments. The activation sentinel itself lives at `{output_folder}/bam-platform-project-context.md` per v0.7 spec §7.6.)
 
 3. For each option, summarize:
    - **RLS** — Reference `rls-deep-dive` fragment + `rls-row-level-security` pattern. Note: lowest cost, weakest isolation, performance ceiling around 1000 tenants.

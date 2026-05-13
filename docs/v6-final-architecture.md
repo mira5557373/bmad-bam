@@ -1,6 +1,6 @@
 # BAM v6 — Final Architecture Specification
 
-> **Status:** Final v0.7 (post-P2.1-Phase-B; §7.6 module activation aligned with BMM convention — sentinel writes to `{output_folder}/`, eliminating BAM-invented "activation namespace")
+> **Status:** Final v0.8 (post-P2.1-Phase-C; module shape aligned with BMM-canonical pattern — Atlas-as-skill, no module-root content dirs, marketplace.json lists only real skills; zero BAM-invented infrastructure divergences remain)
 > **Date:** 2026-05-13
 > **Supersedes:** `docs/v6-information-package.md` and `docs/v6-rdp-implementation-guide.md` as the architecture record.
 > **Constraint:** Products built with BMAD/BMM/BAM must be production-ready, feature-rich, market-leader, cutting-edge. Time and money are not constraints.
@@ -657,37 +657,50 @@ _bmad/
         └── integration-history.md
 ```
 
-### 6.1 Per-module directory shape
+### 6.1 Per-module directory shape (BMM-canonical, post-P2.1-Phase-C / v0.8)
+
+**Empirically grounded:** matches BMM (`external/bmad-method/src/bmm-skills/`) and bmad-tea (`external/bmad-tea/src/agents/bmad-tea/`) reference patterns exactly. Module root contains only manifest files; ALL content lives inside `skills/<skill-name>/`. There are no module-root `agents/`, `data/`, or `scripts/` directories — that pattern was BAM-invented and is forbidden.
 
 ```
 bmad-bam-<module>/
-├── module.yaml
-├── agents/<persona>/
-│   └── resources/
-│       ├── <module>-index.csv
-│       └── fragments/
-├── skills/                          # 6-27 workflow skills (CEV)
-│   └── bmad-bam-<workflow>/
-│       ├── SKILL.md
-│       ├── bmad-skill-manifest.yaml
-│       ├── customize.toml
-│       ├── workflow.md
-│       ├── steps/
-│       ├── templates/
-│       └── tests/                   # workflow test fixtures
-├── data/
-│   ├── patterns/
-│   ├── anti-patterns/
-│   ├── checklists/
-│   ├── csvs/
-│   ├── standards/                   # module-specific (family-wide in _bmad/bam/standards/)
-│   └── vertical-addons/             # opt-in packs (trust module only)
-├── customize-templates/
-├── mcp-server/                      # platform module only
-├── tests/                           # module-level tests
-└── scripts/
-    └── post-install.sh
+├── module.yaml                              # BMAD module declaration (code/name/description/agents/directories/x-bam-*)
+├── module-help.csv                          # BMM-style help CSV (13 columns; one row per skill)
+├── README.md                                # human-readable module overview
+└── skills/
+    ├── bmad-bam-agent-<persona-name>/       # PERSONA-AS-SKILL (canonical home for shared content)
+    │   ├── SKILL.md                         # persona description; invocable via `bmad run bmad-bam-agent-<persona-name>`
+    │   ├── customize.toml                   # [agent] namespace; persistent_facts loads own resources via {skill-root}
+    │   └── resources/
+    │       ├── <module>-index.csv           # fragment index (id, name, description, tags, tier, fragment_file)
+    │       ├── bam-patterns.csv             # pattern index (+ qg_ref column)
+    │       ├── fragments/                   # substantive .md knowledge fragments (~400-600 lines each)
+    │       ├── patterns/                    # concrete implementation patterns
+    │       ├── anti-patterns/               # documented anti-pattern fragments (optional)
+    │       ├── checklists/                  # QG-* gate criteria checklists
+    │       └── standards/                   # family-wide BAM authoring standards (std-frontmatter, std-validation, std-adr, ...)
+    └── bmad-bam-<workflow>/                 # WORKFLOW SKILLS (CEV-mode design workflows)
+        ├── SKILL.md
+        ├── bmad-skill-manifest.yaml         # inputs/outputs/execution_mode declarations
+        ├── customize.toml                   # [workflow] namespace; persistent_facts can reference Atlas's resources by explicit path
+        ├── workflow.md                      # mode router
+        ├── steps/                           # step-NN-{c|e|v}-*.md files
+        ├── templates/                       # output-artifact templates (handlebars-style)
+        ├── data/                            # skill-local data (optional; for skill-private content not shared)
+        ├── scripts/                         # skill-local scripts (e.g., bmad-bam-finalize ships post-install.sh here)
+        └── tests/                           # workflow test fixtures
 ```
+
+**Key conventions:**
+
+1. **Persona-as-skill:** every BAM module has at least one persona-skill named `bmad-bam-agent-<name>` (e.g., `bmad-bam-agent-atlas`). It IS a real BMAD skill — invocable, listed in marketplace.json. Its `resources/` is the canonical home for shared content (fragments, patterns, checklists, standards) that other workflow skills in the same module reference.
+
+2. **Cross-skill content access:** workflow skills reference the persona-skill's resources by explicit installed path: `_bmad/<module-code>/bmad-bam-agent-<name>/resources/<subdir>/<file>.md`. Universal-glob `**/project-context.md` does NOT auto-load arbitrary fragments — it only matches files named `project-context.md`. Per bmad-tea precedent (`agents/bmad-tea/resources/` referenced by paths in workflow steps).
+
+3. **Scripts are skill-local:** if a skill needs a script, it ships inside `skills/<skill-name>/scripts/`. No module-root `scripts/` dir. (e.g., `bmad-bam-finalize/scripts/post-install.sh`).
+
+4. **Marketplace.json lists only real skills:** every entry resolves to a `skills/<skill-name>/` directory. No module-root content directory entries (those were a BAM workaround and have been removed).
+
+5. **No customize-templates dir at module root:** if a BAM module needs to overlay a BMAD-core skill, that overlay lives at install time per BMM's three-layer merge (base + team + user) — see spec §7.1. There is no `customize-templates/` source-tree subdir.
 
 ### 6.2 Fragment / pattern frontmatter schema
 
@@ -1562,6 +1575,7 @@ BAM module changes during active session: Claude detects via `_bmad/bam/install-
 | 0.5 | 2026-05-12 | **Wave 0 spec-defect patch.** 3 defects fixed against BMAD v6.6.0 empirical reality (PR #1 + remediation surfaced these): (1) §3.4 module.yaml schema corrected — BMAD installer ignores `requires:`/`install:`/`verify:`/`hooks:`; BAM uses `x-bam-*` extension namespace instead; (2) §7.1 namespace clarified — BMAD splits skills across `[agent]` (6) and `[workflow]` (24) namespaces; BAM modules must use the right namespace per skill type; (3) new §7.6 — module activation in real installs requires out-of-band trigger (recommended: npm `postinstall`); BMAD installer does not auto-run `scripts/post-install.sh`. Architectural shape unchanged; ~1500 → ~1560 lines |
 | 0.6 | 2026-05-12 | **§7.6 Path B reframing (drafted but superseded).** P2.1 Task 0 empirically invalidated Path A (npm postinstall runs in BMAD cache dir, not host project; fires only on fresh clone; outputs outside `skillPaths` are discarded). v0.6 demoted Path A to "REJECTED for activation", promoted Path B (manual `bmad-bam-finalize`) as default, reframed Path C (upstream hook) as "not yet available in BMAD 6.6.0". Draft preserved at `docs/v6-spec-patches/v0.6-section-7-6-path-b-default.md`; superseded by v0.7 (sentinel location also realigned). |
 | 0.7 | 2026-05-13 | **§7.6 BMM location alignment (P2.1 Phase B / Concern 1).** Path B retained as the default activation mechanism; sentinel-file LOCATION moved from BAM-invented `_bmad/bam-activation/<module>/project-context.md` to BMM-canonical `{output_folder}/bam-<module-name>-project-context.md` (default `_bmad-output/bam-platform-project-context.md`). Eliminates the "survival namespace" concept entirely — BAM's sentinel now lives outside `_bmad/` (just like BMM's `bmad-generate-project-context` output), so BMAD installer's `fs.remove(targetPath)` doesn't touch it. Empirically grounded against BMM (`external/bmad-method/src/bmm-skills/3-solutioning/bmad-generate-project-context/steps/step-02-generate.md:295`) which writes to `{output_folder}/project-context.md`. BAM uses a per-module filename (`bam-<module-name>-project-context.md`) to avoid colliding with BMM's user-generated file. Universal-glob `**/project-context.md` loads both. Resolver helper `resolve_output_folder()` in `scripts/post-install.sh` ports BMM's `installer.js:1465-1511` logic to bash. ADR 005 records the alignment; ADR 002 (Path A→B selection) annotated with supersession pointer to ADR 005. v0.6 draft marked SUPERSEDED. Architectural shape unchanged; spec §7.6 rewritten. |
+| 0.8 | 2026-05-13 | **§6.1 module shape canonical refactor (P2.1 Phase C / Concern 2).** BAM v6 module structure migrated from BAM-invented (module-root `agents/`, `data/`, `scripts/`) to BMM/bmad-tea canonical (everything is a skill). Atlas is now `skills/bmad-bam-agent-atlas/` — a real BMAD skill, invocable as `bmad run bmad-bam-agent-atlas` AND the canonical home for shared platform-module resources. All fragments + patterns + checklists + standards moved to `bmad-bam-agent-atlas/resources/`; scripts moved into `bmad-bam-finalize/scripts/` (skill-local). Marketplace.json: 6 entries (3 real + 3 module-root dir misuse) → 4 real-skill entries. `module-help.csv` added at module root per BMM convention. `foundational_fragments` array dropped from `bmad-bam-design-tenancy-model/customize.toml` (BAM-invented; zero equivalent in BMM/bmad-tea). §6.1 rewritten verbatim against BMM (`external/bmad-method/src/bmm-skills/`) and bmad-tea (`external/bmad-tea/src/agents/bmad-tea/`) as empirical precedents. ADR 006 records the refactor; depends on ADR 005. After this patch, BAM v6 contains ZERO BAM-invented infrastructure divergences from canonical BMAD. All path references in workflow steps + templates + tests updated atomically. Tests pass (Wave 0 smoke, P2 real-install, design-tenancy-model skill smoke). |
 
 ---
 

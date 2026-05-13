@@ -42,18 +42,23 @@ case "$PATH_SELECTED" in
     exit 1
     ;;
   B)
-    # Simulate "bmad install bmad-bam-platform" — copy module assets into _bmad/bam-platform/
-    # (matches BMAD's installFromResolution behavior per Task 0 findings)
+    # Simulate "bmad install bmad-bam-platform" per BMAD-canonical (v0.8 §6.1) shape:
+    # marketplace.json lists only real skills, so installer copies skill dirs flat
+    # into _bmad/bam-platform/<skill-name>/. NO module-root agents/data/scripts/
+    # dirs exist any more (Phase C refactor).
     mkdir -p "$WORK_DIR/_bmad/bam-platform"
-    cp -a "$SOURCE/scripts" "$WORK_DIR/_bmad/bam-platform/"
-    cp -a "$SOURCE/skills" "$WORK_DIR/_bmad/bam-platform/"
-    cp -a "$SOURCE/agents" "$WORK_DIR/_bmad/bam-platform/" 2>/dev/null || true
-    cp -a "$SOURCE/data" "$WORK_DIR/_bmad/bam-platform/" 2>/dev/null || true
+    # Copy each skill listed in marketplace.json into the install target
+    for skill_dir in "$SOURCE/skills"/*; do
+      skill_name="$(basename "$skill_dir")"
+      cp -a "$skill_dir" "$WORK_DIR/_bmad/bam-platform/$skill_name"
+    done
     cp "$SOURCE/module.yaml" "$WORK_DIR/_bmad/bam-platform/" 2>/dev/null || true
-    echo ">>> module assets copied to _bmad/bam-platform/"
+    cp "$SOURCE/module-help.csv" "$WORK_DIR/_bmad/bam-platform/" 2>/dev/null || true
+    echo ">>> module assets copied to _bmad/bam-platform/ (4 skills, no module-root content dirs)"
 
     # Simulate "bmad run bmad-bam-finalize" — invoke the underlying script
-    bash "$WORK_DIR/_bmad/bam-platform/scripts/post-install.sh" "$WORK_DIR"
+    # (now skill-local at _bmad/bam-platform/bmad-bam-finalize/scripts/post-install.sh)
+    bash "$WORK_DIR/_bmad/bam-platform/bmad-bam-finalize/scripts/post-install.sh" "$WORK_DIR"
     echo ">>> finalize script ran"
     ;;
   *)

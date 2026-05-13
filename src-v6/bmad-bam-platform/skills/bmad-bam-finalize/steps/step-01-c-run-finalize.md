@@ -41,19 +41,20 @@ the real work (sentinel generation, atomic write, install log append, Python
    If `_bmad/config.toml` is missing, halt and tell the user to `cd` into their
    BMAD project root and re-invoke.
 
-2. **Locate `scripts/post-install.sh`.** It ships alongside this skill in the
-   installed `bmad-bam-platform` module:
+2. **Locate `scripts/post-install.sh`.** It ships inside this finalize skill's
+   own directory (skill-local, per BMM canonical "each skill self-contained"
+   pattern; spec §6.1 v0.8):
 
    ```bash
-   SCRIPT="$PROJECT_ROOT/_bmad/bam-platform/scripts/post-install.sh"
+   SCRIPT="$PROJECT_ROOT/_bmad/bam-platform/bmad-bam-finalize/scripts/post-install.sh"
    if [ ! -x "$SCRIPT" ]; then
        # Source-tree fallback for development checkouts:
-       SCRIPT="$PROJECT_ROOT/src-v6/bmad-bam-platform/scripts/post-install.sh"
+       SCRIPT="$PROJECT_ROOT/src-v6/bmad-bam-platform/skills/bmad-bam-finalize/scripts/post-install.sh"
    fi
    if [ ! -x "$SCRIPT" ]; then
        echo "ERROR: post-install.sh not found or not executable." >&2
-       echo "       Expected: _bmad/bam-platform/scripts/post-install.sh (installed)" >&2
-       echo "       Or:       src-v6/bmad-bam-platform/scripts/post-install.sh (dev checkout)" >&2
+       echo "       Expected: _bmad/bam-platform/bmad-bam-finalize/scripts/post-install.sh (installed)" >&2
+       echo "       Or:       src-v6/bmad-bam-platform/skills/bmad-bam-finalize/scripts/post-install.sh (dev checkout)" >&2
        exit 73
    fi
    ```

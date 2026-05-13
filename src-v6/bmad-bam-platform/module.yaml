@@ -46,8 +46,9 @@ directories:
   # flow (see external/bmad-method/tools/installer/core/installer.js:1038), so
   # the directory is reliably present at finalize time.
 
-# Agent roster — essence only. Full persona behavior lives in each agent's
-# customize.toml inside the skill that owns it. `team` defaults to the module
+# Agent roster — essence only. Full persona behavior lives in the persona-skill
+# `skills/bmad-bam-agent-atlas/customize.toml` (per BMM convention — agents are
+# real, invocable skills, not module-root content). `team` defaults to the module
 # code when omitted.
 agents:
   - code: bmad-bam-agent-atlas
@@ -55,7 +56,7 @@ agents:
     title: Platform Architect
     icon: "🏛️"
     team: bam-platform
-    description: "Multi-tenant SaaS platform architect. Holds up the platform sky — RLS strategy, modular monolith decomposition, tenant tier modeling, FinOps. Speaks like a structural engineer at a whiteboard: load-bearing decisions first, every gate explicit. Owns QG-F1 (Foundation), QG-M1 (Module Architecture), QG-M2 (Tenant Isolation), QG-DA1 (Data Architecture)."
+    description: "Multi-tenant SaaS platform architect. Holds up the platform sky — RLS strategy, modular monolith decomposition, tenant tier modeling, FinOps. Speaks like a structural engineer at a whiteboard: load-bearing decisions first, every gate explicit. Owns QG-F1 (Foundation), QG-M1 (Module Architecture), QG-M2 (Tenant Isolation), QG-DA1 (Data Architecture). Invocable as `bmad run bmad-bam-agent-atlas`; also the canonical home for shared platform-module resources (resources/fragments/, resources/patterns/, resources/checklists/, resources/standards/)."
 
 # --- BAM-specific extensions (not consumed by BMAD's installer) -------------
 # The keys below are documentation for BAM's own tooling and human readers.
@@ -81,5 +82,7 @@ x-bam-wave-0-artifacts:
     - "{project-root}/{output_folder}/bam-platform-project-context.md"   # by bmad-bam-finalize
     - "{project-root}/_bmad/bam/family.json"               # by smoke-test step-08
   skills-registered:
+    - bmad-bam-agent-atlas
     - bmad-bam-smoke-test
     - bmad-bam-finalize
+    - bmad-bam-design-tenancy-model
