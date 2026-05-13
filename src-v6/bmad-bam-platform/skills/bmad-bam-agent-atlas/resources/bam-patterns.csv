@@ -1,0 +1,4 @@
+id,name,description,tags,tier,qg_ref,pattern_file
+rls-row-level-security,PostgreSQL Row-Level Security for Tenant Isolation,RLS recipe; SET LOCAL pattern; CI-enforced policy discipline; pgbouncer caveats,"tenancy,rls,postgres,recipe",core,QG-M2,patterns/rls-row-level-security.md
+schema-per-tenant-with-pgbouncer,Schema-Per-Tenant with PgBouncer Connection Pooling,Per-tenant schema recipe; transaction-pool pgbouncer; per-schema migration runner,"tenancy,schema,postgres,pgbouncer,recipe",extended,QG-M2,patterns/schema-per-tenant-with-pgbouncer.md
+cell-based-with-routing,Cell-Based Architecture with Tenant→Cell Routing at the Gateway,Cell-routing recipe; Envoy/Lua + Redis lookup; Kubernetes NetworkPolicy; cell-split runbook reference,"tenancy,cell-based,scale,envoy,kubernetes,recipe",extended,QG-M2,patterns/cell-based-with-routing.md

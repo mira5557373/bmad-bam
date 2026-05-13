@@ -1,0 +1,66 @@
+---
+id: tenancy-model
+title: "{{project_name}} — Tenancy Model"
+status: draft
+date: "{{today}}"
+persona: atlas
+workflow_run_id: "{{run_id}}"
+---
+
+# Tenancy Model — {{project_name}}
+
+## Decision
+
+**Chosen model:** {{recommended_option}}
+**Confidence:** {{confidence}}
+
+## Context
+
+Tenant count projection (12mo): {{tenant_count_12mo}} ({{tenant_segment}} segment)
+Compliance frameworks: {{compliance_frameworks}}
+Per-tenant data volume: ~{{data_volume_per_tenant_gb_year}} GB/year
+Blast-radius tolerance: {{blast_radius_tolerance}}
+Cost ceiling per tenant: ${{cost_ceiling_per_tenant_usd_month}}/month
+Ops team size: {{ops_team_size}}
+Multi-region: {{multi_region}}
+Greenfield/brownfield: {{greenfield_or_brownfield}}
+
+## Rationale
+
+{{primary_reasoning}}
+
+## Architecture
+
+{{architecture_section_for_chosen_option}}
+
+(Pulled from the matching fragment: rls-deep-dive / schema-per-tenant / cell-based-architecture.)
+
+## Risks + Mitigations
+
+{{risks}}
+
+| Risk | Mitigation |
+|---|---|
+| {{risk_1}} | {{mitigation_1}} |
+| {{risk_2}} | {{mitigation_2}} |
+| {{risk_3}} | {{mitigation_3}} |
+
+## Migration trigger
+
+{{migration_trigger}}
+
+## Alternatives considered
+
+{{alternatives_rejected_table}}
+
+## Quality gate references
+
+- [QG-M2 — Tenant Isolation](../../_bmad/bam-platform/bmad-bam-agent-atlas/resources/checklists/QG-M2.md) — partial evidence emitted by this workflow; full satisfaction requires design-multi-tenant-testing + design-modular-monolith + design-tenant-onboarding
+
+## Next steps
+
+After this design is approved:
+
+1. Run `bmad-bam-design-modular-monolith` to decompose the product into bounded contexts (input to QG-M1)
+2. Run `bmad-bam-design-tenant-tier-model` to define tier structure (drives subsequent isolation refinement)
+3. Run `bmad-bam-design-multi-tenant-testing` to define the isolation test suite (drives full QG-M2)

@@ -1,0 +1,7 @@
+id,name,description,tags,tier,fragment_file
+sentinel,Wave 0 Sentinel Fragment,Anchor for smoke-test sentinel token injection,"wave-0,experimental",specialized,fragments/sentinel.md
+tenancy-decision-framework,Tenancy Model Decision Framework,Inputs + decision tree to select RLS / schema-per-tenant / cell-based,"tenancy,decision,foundational",core,fragments/tenancy-decision-framework.md
+rls-deep-dive,RLS Deep Dive,PostgreSQL Row-Level Security as tenancy mechanism; failure modes; tooling,"tenancy,rls,postgres",extended,fragments/rls-deep-dive.md
+schema-per-tenant,Schema-Per-Tenant Deep Dive,Per-tenant schema isolation; pgbouncer routing; migration discipline,"tenancy,schema,postgres",extended,fragments/schema-per-tenant.md
+cell-based-architecture,Cell-Based Architecture Deep Dive,Per-cell isolation; tenant-to-cell routing; cross-cell migration constraints,"tenancy,cell-based,scale",extended,fragments/cell-based-architecture.md
+tenant-isolation-testing-patterns,Tenant-Isolation Testing Patterns,Fixture patterns; cross-tenant assertions; bypass attempts; noisy-neighbor simulation,"tenancy,testing,quality",core,fragments/tenant-isolation-testing-patterns.md

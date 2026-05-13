@@ -10,17 +10,45 @@ default_selected: false
 ## document_output_language
 ## output_folder
 
+# Activation guidance shown to the user by BMAD's installer immediately after
+# this module's configuration is collected. BMAD's installer reads this key and
+# pipes each line to the user via prompts.log.message (see
+# external/bmad-method/tools/installer/modules/official-modules.js
+# `displayModulePostConfigNotes`, ~lines 2103-2143). It is NOT executed code.
+#
+# We use Path B activation (manual finalize) per the v0.5 patch outcome (Task 0
+# of P2.1, 2026-05-12) — npm postinstall is not viable as a target-project
+# activation mechanism. See tests/p2/INVESTIGATION-NOTES.md for full rationale.
+post-install-notes: |
+  BAM v6 platform module installed. To finalize activation, run:
+
+      bmad run bmad-bam-finalize
+
+  This step generates the universal-glob auto-load sentinel at
+    {project-root}/{output_folder}/bam-platform-project-context.md
+  (default {output_folder} is _bmad-output/, per BMM convention — see
+  v0.7 spec §7.6) and appends an audit entry to
+    {project-root}/_bmad/bam/install-logs/platform-install.log
+  Re-running is safe (the sentinel is replaced atomically; the log is append-only).
+
+  Once finalize completes, Atlas's design workflows are usable, e.g.:
+      bmad run bmad-bam-design-tenancy-model
+
 # Directories to create during installation (declarative, no code execution).
 # BMAD's installer reads this list. All other declarations below are loaded by
 # BMAD-side tooling that scans the module's filesystem layout — there is no
 # `install:` or `verify:` key recognised by the BMAD installer in v6.6.0.
 directories:
-  - "{project-root}/_bmad/platform"
   - "{project-root}/_bmad/bam"
   - "{project-root}/_bmad/bam/install-logs"
+  # NOTE: the sentinel file lives in {output_folder}/ (BMM-aligned per v0.7 §7.6),
+  # NOT inside _bmad/. BMAD's installer creates _bmad-output/ via the core config
+  # flow (see external/bmad-method/tools/installer/core/installer.js:1038), so
+  # the directory is reliably present at finalize time.
 
-# Agent roster — essence only. Full persona behavior lives in each agent's
-# customize.toml inside the skill that owns it. `team` defaults to the module
+# Agent roster — essence only. Full persona behavior lives in the persona-skill
+# `skills/bmad-bam-agent-atlas/customize.toml` (per BMM convention — agents are
+# real, invocable skills, not module-root content). `team` defaults to the module
 # code when omitted.
 agents:
   - code: bmad-bam-agent-atlas
@@ -28,7 +56,7 @@ agents:
     title: Platform Architect
     icon: "🏛️"
     team: bam-platform
-    description: "Wave 0 stub. Full persona arrives in P2 — structural engineer's discipline applied to multi-tenant SaaS: load-bearing decisions first, every quality gate explicit."
+    description: "Multi-tenant SaaS platform architect. Holds up the platform sky — RLS strategy, modular monolith decomposition, tenant tier modeling, FinOps. Speaks like a structural engineer at a whiteboard: load-bearing decisions first, every gate explicit. Owns QG-F1 (Foundation), QG-M1 (Module Architecture), QG-M2 (Tenant Isolation), QG-DA1 (Data Architecture). Invocable as `bmad run bmad-bam-agent-atlas`; also the canonical home for shared platform-module resources (resources/fragments/, resources/patterns/, resources/checklists/, resources/standards/)."
 
 # --- BAM-specific extensions (not consumed by BMAD's installer) -------------
 # The keys below are documentation for BAM's own tooling and human readers.
@@ -41,15 +69,20 @@ x-bam-requires:
   bmad: ">=6.4.0,<7.0.0"
   python: ">=3.11"        # resolve_customization.py uses stdlib tomllib
 
-# Post-install hook BAM invokes after BMAD's own install finishes.
-# Run from the module root with one argument: the host project root.
-x-bam-post-install: scripts/post-install.sh
-
 # Wave 0 verification artefacts. The runner (tests/wave-0/run-smoke-test.sh)
 # and step-08 each write a family.json that should contain these paths.
+#
+# Activation script (`scripts/post-install.sh`) is now invoked by the
+# bmad-bam-finalize skill, surfaced to the user via `post-install-notes` above.
+# The former `x-bam-post-install:` key was removed in P2.1 Task 1 (Path B) —
+# it was a dead key (BMAD's installer ignores `x-*` extensions; see
+# tests/p2/INVESTIGATION-NOTES.md "Surprising / worth flagging" #3).
 x-bam-wave-0-artifacts:
   generated:
-    - "{project-root}/_bmad/platform/project-context.md"   # by post-install
-    - "{project-root}/_bmad/bam/family.json"               # by step-08
+    - "{project-root}/{output_folder}/bam-platform-project-context.md"   # by bmad-bam-finalize
+    - "{project-root}/_bmad/bam/family.json"               # by smoke-test step-08
   skills-registered:
+    - bmad-bam-agent-atlas
     - bmad-bam-smoke-test
+    - bmad-bam-finalize
+    - bmad-bam-design-tenancy-model

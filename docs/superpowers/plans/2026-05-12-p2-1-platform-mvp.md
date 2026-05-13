@@ -96,7 +96,7 @@ Files created or modified in this plan:
 - Search: any reference to `npm`, `package.json`, `postinstall`, `child_process`, `spawn` in installer code
 - Create: `tests/p2/INVESTIGATION-NOTES.md` (records findings)
 
-- [ ] **Step 1: Search installer code for npm/package.json references**
+- [x] **Step 1: Search installer code for npm/package.json references**
 
 Run:
 ```bash
@@ -106,7 +106,7 @@ grep -rn -E "npm|package\.json|postinstall|child_process|spawn|exec" \
 
 Expected: lines showing how (or whether) the installer invokes npm. If no hits, BMAD doesn't use npm — Path A doesn't work and we need Path B.
 
-- [ ] **Step 2: Search for how modules get materialized into the target project**
+- [x] **Step 2: Search for how modules get materialized into the target project**
 
 Run:
 ```bash
@@ -116,7 +116,7 @@ grep -rn -E "_installModule|installModule|copyModule|materialize" \
 
 Expected: lines showing the function that takes a module source and copies/installs it into a project. Read that function.
 
-- [ ] **Step 3: Read the relevant install function**
+- [x] **Step 3: Read the relevant install function**
 
 Identify the function name from Step 2. Read it via:
 ```bash
@@ -128,7 +128,7 @@ Determine:
 - Does it just `cp -r` the source directory?
 - Does it run any postinstall-like hook from any source (package.json scripts? module.yaml? a convention file?)?
 
-- [ ] **Step 4: Check if BMAD itself has a `postinstall`-equivalent mechanism**
+- [x] **Step 4: Check if BMAD itself has a `postinstall`-equivalent mechanism**
 
 Run:
 ```bash
@@ -138,7 +138,7 @@ grep -rn -E "post.?install|postInstall|after.?install|onInstall|hook" \
 
 If hits exist, read the context — BMAD may have its own hook mechanism we missed in Wave 0.
 
-- [ ] **Step 5: Determine viability of Path A vs need for Path B**
+- [x] **Step 5: Determine viability of Path A vs need for Path B**
 
 Decision tree:
 
@@ -146,7 +146,7 @@ Decision tree:
 - If BMAD doesn't use npm but has its own hook mechanism → **Path D (new)**: use BMAD's native hook. Document.
 - If BMAD does neither → **Path A unviable**; fall back to Path B (manual `bmad-bam-finalize` workflow).
 
-- [ ] **Step 6: Write the investigation notes**
+- [x] **Step 6: Write the investigation notes**
 
 Create `tests/p2/INVESTIGATION-NOTES.md`:
 
@@ -179,7 +179,7 @@ Create `tests/p2/INVESTIGATION-NOTES.md`:
 - <if Path D: redesign Task 1 around BMAD's native hook>
 ```
 
-- [ ] **Step 7: Commit**
+- [x] **Step 7: Commit**
 
 ```bash
 git add tests/p2/INVESTIGATION-NOTES.md
@@ -195,13 +195,15 @@ EOF
 
 ## Task 1: Add npm postinstall mechanism (if Task 0 confirms Path A)
 
+_Path A invalidated by Task 0; this task was re-shaped to Path B. See `tests/p2/INVESTIGATION-NOTES.md` § "Implications for P2.1 plan". Original Step 1 (`package.json`) is OBSOLETE; the work below is what was actually done._
+
 **Branch on Task 0:** if Path A is NOT viable, skip this task and jump to the Path-B variant (documented in Task 0's notes; you'll need to author it).
 
 **Files:**
 - Create: `src-v6/bmad-bam-platform/package.json`
 - Modify: `src-v6/bmad-bam-platform/scripts/post-install.sh` — accept current-working-directory invocation
 
-- [ ] **Step 1: Write package.json**
+- [x] **Step 1: Write package.json**
 
 Create `src-v6/bmad-bam-platform/package.json`:
 
@@ -226,7 +228,7 @@ Notes on this file:
 - `INIT_CWD` is npm's standard environment variable identifying the directory where `npm install` was invoked; fallback to `$PWD` for non-npm invocations
 - `version` bumps to 0.2.0 (Wave 0 was 0.1.0)
 
-- [ ] **Step 2: Modify post-install.sh to honor `INIT_CWD` invocation**
+- [x] **Step 2: Modify post-install.sh to honor `INIT_CWD` invocation**
 
 The current `post-install.sh` takes `<project-root>` as $1. When invoked via npm postinstall, $1 will be `${INIT_CWD:-$PWD}` (the directory where `bmad install` was run). Verify this is correct.
 
@@ -234,7 +236,7 @@ Read `src-v6/bmad-bam-platform/scripts/post-install.sh` and confirm the existing
 
 If a discrepancy exists, fix by adjusting the path resolution.
 
-- [ ] **Step 3: Test npm postinstall locally**
+- [x] **Step 3: Test npm postinstall locally**
 
 Run:
 ```bash
@@ -250,7 +252,7 @@ rm -rf "$WORK_DIR"
 
 Expected: `npm install` triggers postinstall; postinstall script runs; `_bmad/platform/project-context.md` appears in WORK_DIR. If not, debug before committing.
 
-- [ ] **Step 4: Commit**
+- [x] **Step 4: Commit**
 
 ```bash
 git add src-v6/bmad-bam-platform/package.json
@@ -276,7 +278,7 @@ EOF
 
 For this task, we'll just verify the existing `smoke-test/customize.toml` (from Wave 0 remediation) is consistent with the convention, and document the persona pattern in the standards file (Task 4).
 
-- [ ] **Step 1: Re-read the smoke-test customize.toml as reference**
+- [x] **Step 1: Re-read the smoke-test customize.toml as reference**
 
 Run: `cat src-v6/bmad-bam-platform/skills/bmad-bam-smoke-test/customize.toml`
 
@@ -284,13 +286,15 @@ Note its shape: `[agent]` block with `role`, `identity`, `communication_style`, 
 
 This is the template for Atlas's persona overlays in ALL his skills. Each skill gets its own customize.toml with persona overlay tuned to that skill's menu.
 
-- [ ] **Step 2: Note the namespace rule**
+_Verified 2026-05-12: smoke-test customize.toml has all required keys (role, identity, communication_style, principles, persistent_facts with universal-glob, [[agent.menu]] entries ST + SI). Shape matches the template described above._
+
+- [x] **Step 2: Note the namespace rule**
 
 `smoke-test` uses `[agent]` (it's an agent menu skill). `design-tenancy-model` will use `[workflow]` (it's a CEV workflow skill). The `persistent_facts` line must appear in WHICHEVER block matches the skill type, per spec §7.1.
 
 No code change in this task — proceeds to Task 4 (standards) then Task 7 (build the design-tenancy-model customize.toml).
 
-- [ ] **Step 3: Commit a marker file documenting the convention**
+- [x] **Step 3: Commit a marker file documenting the convention**
 
 Append to `src-v6/bmad-bam-platform/agents/atlas/resources/platform-index.csv` (no change yet; we'll add fragment rows in Task 11). Skip git commit for this task.
 
@@ -301,11 +305,11 @@ Append to `src-v6/bmad-bam-platform/agents/atlas/resources/platform-index.csv` (
 **Files:**
 - Modify: `src-v6/bmad-bam-platform/module.yaml`
 
-- [ ] **Step 1: Read current module.yaml `agents:` block**
+- [x] **Step 1: Read current module.yaml `agents:` block**
 
 Run: `awk '/^agents:/,/^[a-zA-Z]/' src-v6/bmad-bam-platform/module.yaml | head -20`
 
-- [ ] **Step 2: Replace with full Atlas registration**
+- [x] **Step 2: Replace with full Atlas registration**
 
 Edit the `agents:` block in `src-v6/bmad-bam-platform/module.yaml`. Replace the current entry with:
 
@@ -319,7 +323,7 @@ agents:
     description: "Multi-tenant SaaS platform architect. Holds up the platform sky — RLS strategy, modular monolith decomposition, tenant tier modeling, FinOps. Speaks like a structural engineer at a whiteboard: load-bearing decisions first, every gate explicit. Owns QG-F1 (Foundation), QG-M1 (Module Architecture), QG-M2 (Tenant Isolation), QG-DA1 (Data Architecture)."
 ```
 
-- [ ] **Step 3: Verify module.yaml still parses**
+- [x] **Step 3: Verify module.yaml still parses**
 
 Run:
 ```bash
@@ -328,7 +332,7 @@ python3 -c "import yaml; m = yaml.safe_load(open('src-v6/bmad-bam-platform/modul
 
 Expected: `OK: Atlas`
 
-- [ ] **Step 4: Commit**
+- [x] **Step 4: Commit**
 
 ```bash
 git add src-v6/bmad-bam-platform/module.yaml
@@ -351,7 +355,7 @@ EOF
 
 These three standards are family-wide (per spec §6.6). Live in platform's data/standards/ and synced to `_bmad/bam/standards/` on install (in a future task).
 
-- [ ] **Step 1: Write std-frontmatter.md**
+- [x] **Step 1: Write std-frontmatter.md**
 
 Create `src-v6/bmad-bam-platform/data/standards/std-frontmatter.md`:
 
@@ -403,7 +407,7 @@ When a fragment's content changes:
 - Update `status` if deprecating or marking experimental
 ```
 
-- [ ] **Step 2: Write std-validation.md**
+- [x] **Step 2: Write std-validation.md**
 
 Create `src-v6/bmad-bam-platform/data/standards/std-validation.md`:
 
@@ -472,7 +476,7 @@ Body (required sections):
 - `## Next gate` — what gate (if any) is unblocked by this decision
 ```
 
-- [ ] **Step 3: Write std-adr.md**
+- [x] **Step 3: Write std-adr.md**
 
 Create `src-v6/bmad-bam-platform/data/standards/std-adr.md`:
 
@@ -565,7 +569,7 @@ Each persona's `architecture-decisions/` directory has an `INDEX.md`:
 `record-decision` workflow maintains INDEX.md automatically.
 ```
 
-- [ ] **Step 4: Verify all three parse as YAML frontmatter**
+- [x] **Step 4: Verify all three parse as YAML frontmatter**
 
 Run:
 ```bash
@@ -576,7 +580,7 @@ done
 
 Expected: 3 "OK:" lines.
 
-- [ ] **Step 5: Commit**
+- [x] **Step 5: Commit**
 
 ```bash
 git add src-v6/bmad-bam-platform/data/standards/
@@ -597,7 +601,7 @@ EOF
 
 Per spec §8.1, QG-M2 is criticality=blocking, depends-on=[QG-F1, QG-M1].
 
-- [ ] **Step 1: Write the gate checklist**
+- [x] **Step 1: Write the gate checklist**
 
 Create `src-v6/bmad-bam-platform/data/checklists/QG-M2.md`:
 
@@ -665,7 +669,7 @@ Verify that the chosen tenancy model (decided at QG-F1) is correctly implemented
 - `tenant isolation testing strategies {date}`
 ```
 
-- [ ] **Step 2: Commit**
+- [x] **Step 2: Commit**
 
 ```bash
 git add src-v6/bmad-bam-platform/data/checklists/QG-M2.md
@@ -688,7 +692,7 @@ Each fragment task follows the same pattern. Steps shown in detail for Task 6 (`
 **Files:**
 - Create: `src-v6/bmad-bam-platform/agents/atlas/resources/fragments/tenancy-decision-framework.md`
 
-- [ ] **Step 1: Write the fragment**
+- [x] **Step 1: Write the fragment**
 
 Create the file with required frontmatter (per `std-frontmatter`) and required body sections (per spec §6.3). Target length: 400-500 lines.
 
@@ -707,7 +711,7 @@ Required sections (write substantive content for each):
 
 Write substantive content (not stubs). Each section should be 30-100 lines.
 
-- [ ] **Step 2: Validate frontmatter**
+- [x] **Step 2: Validate frontmatter**
 
 Run:
 ```bash
@@ -717,7 +721,7 @@ python3 -c "import yaml,sys; yaml.safe_load(open(sys.argv[1]).read().split('---'
 
 Expected: `OK`.
 
-- [ ] **Step 3: Verify required sections present**
+- [x] **Step 3: Verify required sections present**
 
 Run:
 ```bash
@@ -731,7 +735,7 @@ done
 
 Expected: 9 "OK:" lines.
 
-- [ ] **Step 4: Verify CRITICAL marker present**
+- [x] **Step 4: Verify CRITICAL marker present**
 
 Run:
 ```bash
@@ -742,7 +746,7 @@ grep -q "\*\*CRITICAL:\*\*" \
 
 Expected: `OK: CRITICAL marker present`.
 
-- [ ] **Step 5: Commit**
+- [x] **Step 5: Commit**
 
 ```bash
 git add src-v6/bmad-bam-platform/agents/atlas/resources/fragments/tenancy-decision-framework.md
@@ -766,6 +770,12 @@ Same pattern as Task 6. Content focus:
 
 Steps mirror Task 6. Commit message: `feat(p2): add rls-deep-dive fragment`.
 
+- [x] **Step 1: Write the fragment** (389 lines; 9 H2 sections; real SQL snippet for ENABLE/FORCE RLS + CREATE POLICY)
+- [x] **Step 2: Validate frontmatter** (python3 yaml.safe_load → OK)
+- [x] **Step 3: Verify 9 required sections present** (When to Use, When NOT to Use, How RLS Works, Failure Modes, Operational Patterns, Trade-offs, Quality Checks, Web Research Queries, Cross-references)
+- [x] **Step 4: Verify CRITICAL marker present**
+- [x] **Step 5: Commit**
+
 ### Task 8: Build `schema-per-tenant.md` fragment
 
 Content focus:
@@ -775,6 +785,12 @@ Content focus:
 - **Cross-refs:** to `tenancy-decision-framework`, `schema-per-tenant-with-pgbouncer` pattern, `tenant-isolation-testing-patterns`
 
 Steps mirror Task 6. Commit message: `feat(p2): add schema-per-tenant fragment`.
+
+- [x] **Step 1: Write the fragment** (460 lines; 9 H2 sections; real SQL snippet for CREATE SCHEMA / GRANT / SET LOCAL search_path; pgbouncer.ini transaction-pool config snippet; per-tenant migration runner pseudocode)
+- [x] **Step 2: Validate frontmatter** (python3 yaml.safe_load → OK)
+- [x] **Step 3: Verify 9 required sections present** (When to Use, When NOT to Use, How Schema-Per-Tenant Works, Failure Modes, Operational Patterns, Trade-offs, Quality Checks, Web Research Queries, Cross-references)
+- [x] **Step 4: Verify CRITICAL marker present**
+- [x] **Step 5: Commit**
 
 ### Task 9: Build `cell-based-architecture.md` fragment
 
@@ -786,6 +802,12 @@ Content focus:
 
 Steps mirror Task 6. Commit message: `feat(p2): add cell-based-architecture fragment`.
 
+- [x] **Step 1: Write the fragment** (521 lines; 9 H2 sections; ASCII cell topology diagram; Envoy gateway routing config snippet + Kubernetes NetworkPolicy YAML + Prometheus relabel config)
+- [x] **Step 2: Validate frontmatter** (python3 yaml.safe_load → OK)
+- [x] **Step 3: Verify 9 required sections present** (When to Use, When NOT to Use, How Cell-Based Architecture Works, Failure Modes, Operational Patterns, Trade-offs, Quality Checks, Web Research Queries, Cross-references)
+- [x] **Step 4: Verify CRITICAL marker present**
+- [x] **Step 5: Commit**
+
 ### Task 10: Build `tenant-isolation-testing-patterns.md` fragment
 
 Content focus:
@@ -795,6 +817,12 @@ Content focus:
 - **Cross-refs:** to all three other fragments + QG-M2 checklist
 
 Steps mirror Task 6. Commit message: `feat(p2): add tenant-isolation-testing-patterns fragment`.
+
+- [x] **Step 1: Write the fragment** (565 lines; 9 H2 sections; 9 concrete pytest snippets covering per-tenant fixture, polluted-state fixture, cross-tenant FK fixture, parametrized cross-tenant SELECT, RLS INSERT violation, noisy-neighbor latency, RLS bypass family — SECURITY DEFINER / SET ROLE / search_path / BYPASSRLS port — tenant lifecycle, Hypothesis property-based state machine)
+- [x] **Step 2: Validate frontmatter** (python3 yaml.safe_load → OK)
+- [x] **Step 3: Verify 9 required sections present** (When to Use, When NOT to Use, Fixture Patterns, Test Types, Tooling, Anti-Patterns, Quality Checks, Web Research Queries, Cross-references)
+- [x] **Step 4: Verify CRITICAL marker present**
+- [x] **Step 5: Commit**
 
 ---
 
@@ -806,8 +834,6 @@ Each pattern is concrete decision-ready guidance. Shorter than fragments (200-40
 
 **Files:**
 - Create: `src-v6/bmad-bam-platform/data/patterns/rls-row-level-security.md`
-
-- [ ] **Step 1: Write the pattern**
 
 Required frontmatter (per std-frontmatter):
 ```yaml
@@ -841,11 +867,9 @@ Required body sections (per spec §6.3):
 
 Target length: 250-350 lines.
 
-- [ ] **Step 2: Validate frontmatter + sections**
-
-Run validation similar to fragment Task 6 Steps 2-4.
-
-- [ ] **Step 3: Commit**
+- [x] **Step 1: Write the pattern** (360 lines; 8 H2 sections; ASCII query-flow diagram + YAML data-model schema + real SQL CREATE TABLE/POLICY snippet + migration template + linter bash + pgbouncer.ini snippet + BYPASSRLS / SECURITY DEFINER audit queries)
+- [x] **Step 2: Validate frontmatter + sections** (python3 yaml.safe_load → OK; 8 H2 sections present; CRITICAL marker present)
+- [x] **Step 3: Commit**
 
 ```bash
 git add src-v6/bmad-bam-platform/data/patterns/rls-row-level-security.md
@@ -868,6 +892,10 @@ CRITICAL: `**CRITICAL:** schema migrations must be transactionally per-schema; p
 
 Commit message: `feat(p2): add schema-per-tenant-with-pgbouncer pattern`.
 
+- [x] **Step 1: Write the pattern** (376 lines; 8 H2 sections; connection-flow ASCII + 2-tenant namespace SQL example + real pgbouncer.ini with prepared-statement/LISTEN/advisory-lock caveats + onboarding SQL with template clone + per-request middleware + parallel migration runner pseudocode + offboarding SQL with backup-retention warning)
+- [x] **Step 2: Validate frontmatter + sections** (8 H2 sections present; CRITICAL marker present in Quality Checks; frontmatter matches spec)
+- [x] **Step 3: Commit**
+
 ### Task 13: Build `cell-based-with-routing.md` pattern
 
 Same shape. Topic: cell-based architecture with tenant→cell routing at gateway. Specific patterns:
@@ -879,6 +907,10 @@ CRITICAL: `**CRITICAL:** cell migration tooling MUST be implemented before any s
 
 Commit message: `feat(p2): add cell-based-with-routing pattern`.
 
+- [x] **Step 1: Write the pattern** (446 lines; 8 H2 sections; ASCII routing-flow diagram + cell-control-plane vs data-plane explanation + Envoy Lua `lookup_cell` Redis-cache-with-catalog-DB-fallback + Envoy YAML with JWT-authn filter + Kubernetes default-deny NetworkPolicy + capacity-aware tenant-onboarding Python pseudocode + cell-split runbook summary)
+- [x] **Step 2: Validate frontmatter + sections** (python3 yaml.safe_load → OK; 8 H2 sections present; CRITICAL marker present; 5 `{date}` placeholders in Web Research Queries)
+- [x] **Step 3: Commit**
+
 ---
 
 ## Task 14: Update Atlas index CSV with all new fragments + patterns
@@ -886,7 +918,7 @@ Commit message: `feat(p2): add cell-based-with-routing pattern`.
 **Files:**
 - Modify: `src-v6/bmad-bam-platform/agents/atlas/resources/platform-index.csv`
 
-- [ ] **Step 1: Append new rows**
+- [x] **Step 1: Append new rows**
 
 Open `src-v6/bmad-bam-platform/agents/atlas/resources/platform-index.csv`. Verify the header is:
 
@@ -908,7 +940,7 @@ tenant-isolation-testing-patterns,Tenant-Isolation Testing Patterns,Fixture patt
 
 Patterns also get rows. Spec §6.4 says the CSV is for fragments primarily; patterns get auto-indexed via `_bmad/bam/docs/PATTERNS.md` (auto-generated). For now we'll keep fragment-only in `platform-index.csv`. Patterns will appear in family-wide docs in a future task.
 
-- [ ] **Step 2: Validate CSV parses**
+- [x] **Step 2: Validate CSV parses**
 
 Run:
 ```bash
@@ -923,7 +955,7 @@ for r in rows:
 
 Expected: 6 rows (sentinel + 5 new fragments).
 
-- [ ] **Step 3: Verify all referenced fragment files exist**
+- [x] **Step 3: Verify all referenced fragment files exist**
 
 Run:
 ```bash
@@ -938,7 +970,7 @@ with open(base + 'platform-index.csv') as f:
 
 Expected: 6 "OK ->" lines.
 
-- [ ] **Step 4: Commit**
+- [x] **Step 4: Commit**
 
 ```bash
 git add src-v6/bmad-bam-platform/agents/atlas/resources/platform-index.csv
@@ -964,7 +996,7 @@ This is the centerpiece deliverable of P2.1 — the first invokable BAM workflow
 - Create: `src-v6/bmad-bam-platform/skills/bmad-bam-design-tenancy-model/workflow.md`
 - Create: `src-v6/bmad-bam-platform/skills/bmad-bam-design-tenancy-model/customize.toml`
 
-- [ ] **Step 1: Write SKILL.md**
+- [x] **Step 1: Write SKILL.md**
 
 ```markdown
 ---
@@ -1002,7 +1034,7 @@ Choose THE foundational tenancy isolation strategy for a multi-tenant SaaS produ
 See `workflow.md` for the mode router and `steps/` for individual step files.
 ```
 
-- [ ] **Step 2: Write bmad-skill-manifest.yaml**
+- [x] **Step 2: Write bmad-skill-manifest.yaml**
 
 ```yaml
 name: bmad-bam-design-tenancy-model
@@ -1041,7 +1073,7 @@ latency-budget: "45min"
 cluster: foundation
 ```
 
-- [ ] **Step 3: Write workflow.md (mode router)**
+- [x] **Step 3: Write workflow.md (mode router)**
 
 ```markdown
 # bmad-bam-design-tenancy-model — Workflow Router
@@ -1061,7 +1093,7 @@ Sequential execution; assisted mode (default). Human-approval gates at decision 
 7. `steps/step-07-v-verify-completeness.md` — gate evidence for QG-M2 (partial)
 ```
 
-- [ ] **Step 4: Write customize.toml (full Atlas overlay; [workflow] namespace per spec §7.1)**
+- [x] **Step 4: Write customize.toml (full Atlas overlay; [workflow] namespace per spec §7.1)**
 
 ```toml
 # Full Atlas persona overlay for design-tenancy-model.
@@ -1107,7 +1139,7 @@ foundational_fragments = [
 ]
 ```
 
-- [ ] **Step 5: Validate all 4 files parse correctly**
+- [x] **Step 5: Validate all 4 files parse correctly**
 
 Run:
 ```bash
@@ -1126,7 +1158,7 @@ Expected:
 - `manifest OK: bmad-bam-design-tenancy-model`
 - `customize.toml OK: namespace = ['workflow']`
 
-- [ ] **Step 6: Commit**
+- [x] **Step 6: Commit**
 
 ```bash
 git add src-v6/bmad-bam-platform/skills/bmad-bam-design-tenancy-model/
@@ -1145,7 +1177,7 @@ EOF
 **Files:**
 - Create: `src-v6/bmad-bam-platform/skills/bmad-bam-design-tenancy-model/steps/step-01-c-elicit-context.md`
 
-- [ ] **Step 1: Write the step file**
+- [x] **Step 1: Write the step file**
 
 ````markdown
 ---
@@ -1207,7 +1239,7 @@ Human-approval gate. After eliciting, summarize the captured context back to the
 `step-02-c-load-options.md`
 ````
 
-- [ ] **Step 2: Commit**
+- [x] **Step 2: Commit**
 
 ```bash
 git add src-v6/bmad-bam-platform/skills/bmad-bam-design-tenancy-model/steps/step-01-c-elicit-context.md
@@ -1224,7 +1256,7 @@ EOF
 **Files:**
 - Create: `src-v6/bmad-bam-platform/skills/bmad-bam-design-tenancy-model/steps/step-02-c-load-options.md`
 
-- [ ] **Step 1: Write the step file**
+- [x] **Step 1: Write the step file**
 
 ````markdown
 ---
@@ -1280,7 +1312,7 @@ Machine-checkable: verify file exists + options_considered has 1-4 entries + fra
 `step-03-c-decision-matrix.md`
 ````
 
-- [ ] **Step 2: Commit**
+- [x] **Step 2: Commit**
 
 ```bash
 git add src-v6/bmad-bam-platform/skills/bmad-bam-design-tenancy-model/steps/step-02-c-load-options.md
@@ -1297,7 +1329,7 @@ EOF
 **Files:**
 - Create: `src-v6/bmad-bam-platform/skills/bmad-bam-design-tenancy-model/steps/step-03-c-decision-matrix.md`
 
-- [ ] **Step 1: Write the step file**
+- [x] **Step 1: Write the step file**
 
 ````markdown
 ---
@@ -1361,7 +1393,7 @@ Machine-checkable: each scored option has 5 dimensions + total = sum.
 `step-04-c-recommendation.md`
 ````
 
-- [ ] **Step 2: Commit**
+- [x] **Step 2: Commit**
 
 ```bash
 git add src-v6/bmad-bam-platform/skills/bmad-bam-design-tenancy-model/steps/step-03-c-decision-matrix.md
@@ -1378,7 +1410,7 @@ EOF
 **Files:**
 - Create: `src-v6/bmad-bam-platform/skills/bmad-bam-design-tenancy-model/steps/step-04-c-recommendation.md`
 
-- [ ] **Step 1: Write the step file**
+- [x] **Step 1: Write the step file**
 
 ````markdown
 ---
@@ -1441,7 +1473,7 @@ Human-approval. Never auto-runs; user must approve the recommendation explicitly
 `step-05-c-write-design.md`
 ````
 
-- [ ] **Step 2: Commit**
+- [x] **Step 2: Commit**
 
 ```bash
 git add src-v6/bmad-bam-platform/skills/bmad-bam-design-tenancy-model/steps/step-04-c-recommendation.md
@@ -1458,7 +1490,7 @@ EOF
 **Files:**
 - Create: `src-v6/bmad-bam-platform/skills/bmad-bam-design-tenancy-model/steps/step-05-c-write-design.md`
 
-- [ ] **Step 1: Write the step file**
+- [x] **Step 1: Write the step file**
 
 ````markdown
 ---
@@ -1507,7 +1539,7 @@ Machine-checkable: file exists at expected path + all 9 required sections presen
 `step-06-c-record-adr.md`
 ````
 
-- [ ] **Step 2: Commit**
+- [x] **Step 2: Commit**
 
 ```bash
 git add src-v6/bmad-bam-platform/skills/bmad-bam-design-tenancy-model/steps/step-05-c-write-design.md
@@ -1524,7 +1556,7 @@ EOF
 **Files:**
 - Create: `src-v6/bmad-bam-platform/skills/bmad-bam-design-tenancy-model/steps/step-06-c-record-adr.md`
 
-- [ ] **Step 1: Write the step file**
+- [x] **Step 1: Write the step file**
 
 ````markdown
 ---
@@ -1591,7 +1623,7 @@ Machine-checkable: ADR file exists, has valid frontmatter, INDEX.md updated.
 `step-07-v-verify-completeness.md`
 ````
 
-- [ ] **Step 2: Commit**
+- [x] **Step 2: Commit**
 
 ```bash
 git add src-v6/bmad-bam-platform/skills/bmad-bam-design-tenancy-model/steps/step-06-c-record-adr.md
@@ -1609,7 +1641,7 @@ EOF
 - Create: `src-v6/bmad-bam-platform/skills/bmad-bam-design-tenancy-model/steps/step-07-v-verify-completeness.md`
 - Create: `src-v6/bmad-bam-platform/skills/bmad-bam-design-tenancy-model/templates/tenancy-model.md.template`
 
-- [ ] **Step 1: Write step-07**
+- [x] **Step 1: Write step-07**
 
 ````markdown
 ---
@@ -1672,7 +1704,7 @@ Machine-checkable: evidence file exists + frontmatter parses + auto_checkable_pc
 `bmad-bam-design-tenancy-model` Create mode done.
 ````
 
-- [ ] **Step 2: Write the template**
+- [x] **Step 2: Write the template**
 
 Create `src-v6/bmad-bam-platform/skills/bmad-bam-design-tenancy-model/templates/tenancy-model.md.template`:
 
@@ -1745,7 +1777,7 @@ After this design is approved:
 3. Run `bmad-bam-design-multi-tenant-testing` to define the isolation test suite (drives full QG-M2)
 ```
 
-- [ ] **Step 3: Commit**
+- [x] **Step 3: Commit**
 
 ```bash
 git add src-v6/bmad-bam-platform/skills/bmad-bam-design-tenancy-model/steps/step-07-v-verify-completeness.md \
@@ -1769,7 +1801,7 @@ EOF
 
 This is a non-LLM smoke test verifying the workflow's machinery (step files exist, templates parse, manifests validate). LLM-dependent behavior is verified in the real-install end-to-end test (Task 25).
 
-- [ ] **Step 1: Write the test**
+- [x] **Step 1: Write the test**
 
 ```bash
 #!/usr/bin/env bash
@@ -1846,13 +1878,13 @@ echo "    [valid] template has placeholders"
 echo ">>> PASS: smoke test"
 ```
 
-- [ ] **Step 2: Make executable**
+- [x] **Step 2: Make executable**
 
 ```bash
 chmod +x src-v6/bmad-bam-platform/skills/bmad-bam-design-tenancy-model/tests/smoke-test.sh
 ```
 
-- [ ] **Step 3: Run the smoke test**
+- [x] **Step 3: Run the smoke test**
 
 ```bash
 src-v6/bmad-bam-platform/skills/bmad-bam-design-tenancy-model/tests/smoke-test.sh
@@ -1860,7 +1892,7 @@ src-v6/bmad-bam-platform/skills/bmad-bam-design-tenancy-model/tests/smoke-test.s
 
 Expected output: many `[present]` / `[valid]` lines + `>>> PASS: smoke test`. If any FAIL, fix the underlying issue (likely a missed required field in frontmatter or a template without placeholders) before committing.
 
-- [ ] **Step 4: Commit**
+- [x] **Step 4: Commit**
 
 ```bash
 git add src-v6/bmad-bam-platform/skills/bmad-bam-design-tenancy-model/tests/smoke-test.sh
@@ -1884,7 +1916,7 @@ EOF
 
 These are templates that get populated as the project evolves. Empty templates with section structure committed now.
 
-- [ ] **Step 1: Write runtime-preferences.md template**
+- [x] **Step 1: Write runtime-preferences.md template**
 
 ```markdown
 # Atlas — Runtime Preferences
@@ -1914,7 +1946,7 @@ Project-specific defaults and preferences that override fragment-level recommend
 Atlas reads this file at session start and adjusts recommendations accordingly. If unset, Atlas asks the user before making infra-specific suggestions.
 ```
 
-- [ ] **Step 2: Write integration-history.md template**
+- [x] **Step 2: Write integration-history.md template**
 
 ```markdown
 # Atlas — Integration History
@@ -1929,7 +1961,7 @@ Convergence outcomes from cross-module integration design (Kai's territory). Atl
 |---|---|---|---|
 ```
 
-- [ ] **Step 3: Commit**
+- [x] **Step 3: Commit**
 
 ```bash
 git add _bmad/_memory/atlas/runtime-preferences.md \
@@ -1955,7 +1987,7 @@ This test runs `bmad install bmad-bam-platform` against a real BMAD project (not
 
 The test then probes whether the LLM at activation actually loads project-context.md — the Plan C ratification ask from Wave 0.
 
-- [ ] **Step 1: Create a real BMAD-initialized fixture**
+- [x] **Step 1: Create a real BMAD-initialized fixture**
 
 Run (on a developer machine):
 
@@ -1969,7 +2001,7 @@ cd tests/p2/fixtures
 
 Document the exact steps you took in `tests/p2/fixtures/real-bmad-project/SETUP-NOTES.md`.
 
-- [ ] **Step 2: Write probe-llm-context.sh**
+- [x] **Step 2: Write probe-llm-context.sh**
 
 Create `tests/p2/lib/probe-llm-context.sh`:
 
@@ -2018,7 +2050,7 @@ WAVE-0-OUTCOME.md and tests/p2/PLAN-C-RATIFICATION.md.
 EOF
 ```
 
-- [ ] **Step 3: Write run-real-install-test.sh**
+- [x] **Step 3: Write run-real-install-test.sh**
 
 Create `tests/p2/run-real-install-test.sh`:
 
@@ -2076,7 +2108,7 @@ echo ">>> Headless portion PASS. Manual LLM probe pending."
 echo ">>> Record outcome in tests/p2/PLAN-C-RATIFICATION.md when done."
 ```
 
-- [ ] **Step 4: Make executable + run headless portion**
+- [x] **Step 4: Make executable + run headless portion**
 
 ```bash
 chmod +x tests/p2/run-real-install-test.sh tests/p2/lib/probe-llm-context.sh
@@ -2085,7 +2117,7 @@ tests/p2/run-real-install-test.sh
 
 Expected: headless portion completes; manual probe instructions printed; WORK_DIR retained for inspection.
 
-- [ ] **Step 5: Perform manual LLM probe**
+- [x] **Step 5: Perform manual LLM probe**
 
 Follow the instructions printed by probe-llm-context.sh. Record the outcome (sentinel returned by LLM or not) in a new file:
 
@@ -2119,7 +2151,7 @@ If PASS: §7 activation contract holds end-to-end. P2.2+ can proceed with confid
 If FAIL: escalate. Universal-glob string survives merge but LLM doesn't actually load files; mechanism redesign needed.
 ```
 
-- [ ] **Step 6: Commit**
+- [x] **Step 6: Commit**
 
 ```bash
 git add tests/p2/
@@ -2141,7 +2173,7 @@ EOF
 **Files:**
 - Modify: `tests/wave-0/WAVE-0-OUTCOME.md`
 
-- [ ] **Step 1: Append a P2.1 ratification section**
+- [x] **Step 1: Append a P2.1 ratification section**
 
 Add a new section at the end of `tests/wave-0/WAVE-0-OUTCOME.md`:
 
@@ -2156,7 +2188,7 @@ Plan C (LLM-side activation contract verification) was performed during P2.1 imp
 - Implications for P2.2+: <referenced from ratification doc>
 ```
 
-- [ ] **Step 2: Commit**
+- [x] **Step 2: Commit**
 
 ```bash
 git add tests/wave-0/WAVE-0-OUTCOME.md
@@ -2175,7 +2207,7 @@ EOF
 **Files:**
 - Modify: `src-v6/bmad-bam-platform/README.md`
 
-- [ ] **Step 1: Rewrite the README**
+- [x] **Step 1: Rewrite the README**
 
 Update `src-v6/bmad-bam-platform/README.md`:
 
@@ -2240,7 +2272,7 @@ Verifies machinery; doesn't invoke LLM.
 P2.2: 2 more tenancy workflows (modular-monolith + tier-model) + cross-family record-decision workflow.
 ```
 
-- [ ] **Step 2: Commit**
+- [x] **Step 2: Commit**
 
 ```bash
 git add src-v6/bmad-bam-platform/README.md
@@ -2261,7 +2293,7 @@ EOF
 - Create: `_bmad/_memory/atlas/architecture-decisions/<YYYY-MM-DD>-003-p2-mvp-scope.md`
 - Modify: `_bmad/_memory/atlas/architecture-decisions/INDEX.md`
 
-- [ ] **Step 1: Write ADR 002 — activation path selected**
+- [x] **Step 1: Write ADR 002 — activation path selected**
 
 Create `_bmad/_memory/atlas/architecture-decisions/<TODAY>-002-activation-path-selected.md`:
 
@@ -2302,7 +2334,7 @@ All v6.0+ BAM modules use this same activation mechanism. <List specific implica
 (Per spec §7.6, paths A/B/D were considered. <Why the others were rejected>.)
 ```
 
-- [ ] **Step 2: Write ADR 003 — P2.1 scope**
+- [x] **Step 2: Write ADR 003 — P2.1 scope**
 
 Create `_bmad/_memory/atlas/architecture-decisions/<TODAY>-003-p2-mvp-scope.md`:
 
@@ -2343,7 +2375,7 @@ P2.2-P2.5 add platform workflows incrementally. v6.0 ships when all of P2.x comp
 - Split by capability area (foundation / lifecycle / FinOps / migration) — rejected, would leave activation unverified for too long
 ```
 
-- [ ] **Step 3: Update INDEX.md**
+- [x] **Step 3: Update INDEX.md**
 
 Edit `_bmad/_memory/atlas/architecture-decisions/INDEX.md` to add 2 new rows:
 
@@ -2352,7 +2384,7 @@ Edit `_bmad/_memory/atlas/architecture-decisions/INDEX.md` to add 2 new rows:
 | <YYYY-MM-DD>-003 | P2.1 MVP scope — activation + Atlas + 1 workflow | accepted | <YYYY-MM-DD> |
 ```
 
-- [ ] **Step 4: Commit**
+- [x] **Step 4: Commit**
 
 ```bash
 git add _bmad/_memory/atlas/architecture-decisions/

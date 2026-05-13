@@ -1,6 +1,6 @@
 ---
 step_id: 08-c-persist-result
-auto-runnable: true
+auto_runnable: true
 gate: machine-checkable
 inputs: [plan-a-result.txt, plan-b-result.txt, plan-c-result.txt]
 outputs: [family.json]

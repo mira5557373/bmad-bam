@@ -1,6 +1,6 @@
 ---
 step_id: 01-c-verify-bmad-version
-auto-runnable: true
+auto_runnable: true
 gate: machine-checkable
 inputs: []
 outputs: [bmad-version.txt]

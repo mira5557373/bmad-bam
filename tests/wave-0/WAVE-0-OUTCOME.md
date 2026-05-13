@@ -114,3 +114,29 @@ Plan C verification gap is documented under "Risks identified" #1 in `tests/wave
 4. **Task 0's resolver invocation generalised over agent skills only**; workflow skills require `--key workflow.persistent_facts`. Corrected in remediation (helper now queries both).
 5. **Plan's `module.yaml` had `install:`/`verify:`/`requires:` blocks BMAD's installer doesn't read.** Corrected in remediation (C2) — those moved under `x-bam-*` keys with explicit "not consumed by BMAD installer" comments.
 6. (Self-inflicted) Heredoc copy-paste error in Task 1 commit message during subagent prompt construction; amended in-place.
+
+---
+
+## P2.1 Update — Plan C Ratification (2026-05-12)
+
+Plan C (LLM-side activation contract verification) is to be performed during P2.1 Task 25's real-install end-to-end test. Outcome will be recorded in `tests/p2/PLAN-C-RATIFICATION.md`.
+
+**Plus a separate P2.1 finding (Task 0):** the v0.5 spec patch (c) named §7.6 Path A (npm postinstall) as the v6.0 default activation mechanism. Task 0's empirical investigation invalidated this — npm postinstall runs in BMAD's cache directory, not the host project, so Path A is non-viable for target-project activation. P2.1 ships Path B (manual finalize via `bmad-bam-finalize` skill, surfaced through BMAD's native `post-install-notes` channel). The spec needs a v0.6 patch to demote Path A and ratify Path B as the default. See `tests/p2/INVESTIGATION-NOTES.md` for full evidence.
+
+- Plan C outcome: pending (recorded in `tests/p2/PLAN-C-RATIFICATION.md` after Task 25)
+- Activation path for v6.0: **Path B** (manual finalize) — *not* the v0.5-patched Path A
+- Implications for P2.2+: P2.2+ modules inherit Path B; bmad-bam-finalize skill is the activation entry point
+
+---
+
+## P2.1 Update — Sentinel namespace rename (2026-05-12, F3)
+
+P2.1 renamed the sentinel namespace from `_bmad/platform/` to `_bmad/bam-activation/platform/` to disambiguate from BMAD's `_bmad/bam-platform/` install target (which BMAD wipes and re-copies on every install). Wave 0's headless test still passes against the new namespace — the universal-glob `file:{project-root}/**/project-context.md` continues to match because `**` is depth-agnostic. The per-module pattern is preserved: future modules will write to `_bmad/bam-activation/data/`, `_bmad/bam-activation/ai/`, etc. The narrative references to `_bmad/platform/...` earlier in this document describe the original Wave 0 run and are left as historical context.
+
+## P2.1 Update — BMM-aligned location (2026-05-13, Phase B / Concern 1)
+
+The `_bmad/bam-activation/platform/` namespace introduced above (P2.1 F3) was a BAM-invented "survival namespace" workaround. Deep BMM analysis revealed BMM's `bmad-generate-project-context` writes its `project-context.md` to `{output_folder}/` (default `_bmad-output/`) — outside `_bmad/` entirely, so BMAD's install-time wipe (`fs.remove(targetPath)` per `official-modules.js:348`) doesn't touch it. BAM should follow the same convention.
+
+Phase B of the pre-merge alignment refactor moves the sentinel to `{output_folder}/bam-platform-project-context.md` and abolishes the `_bmad/bam-activation/` namespace entirely. Filename `bam-platform-project-context.md` keeps BAM's content distinct from BMM's user-generated `project-context.md` (no collision; universal-glob matches both because `**/project-context.md` matches any path ending in `project-context.md`).
+
+After this change, BAM has zero invented "survival namespaces" — alignment with BMM is complete on the activation axis. ADR 005 records the decision; the historical narrative above (P2.1 F3, original Wave 0) is preserved as the empirical record of how BAM arrived at the BMM-aligned answer.

@@ -1,6 +1,6 @@
 ---
 step_id: 05-v-verify-plan-a
-auto-runnable: true
+auto_runnable: true
 gate: machine-checkable
 inputs: [sentinel.txt]
 outputs: [plan-a-result.txt]
@@ -18,7 +18,7 @@ BMAD v6.6.0's resolver is `_bmad/scripts/resolve_customization.py` (Python, stdl
 
 This means Plan A is verified headlessly by two parts:
 1. The literal universal-glob string survives the three-layer merge into the target skill's resolved `agent.persistent_facts`.
-2. The sentinel `project-context.md` exists at a path the glob would match when the LLM runs (BMAD-documented canonical location: `_bmad-output/project-context.md`, per `external/bmad-method/docs/how-to/project-context.md`; our post-install also places `_bmad/platform/project-context.md` which `**` matches).
+2. The sentinel `bam-platform-project-context.md` exists at a path the glob would match when the LLM runs. BAM uses the BMM-aligned canonical location: `{output_folder}/bam-platform-project-context.md` (default `_bmad-output/bam-platform-project-context.md`), outside `_bmad/<module-code>/` so BMAD's install-time wipe doesn't touch it. The universal-glob `**/project-context.md` matches it because the filename ends in `project-context.md` and `**` matches arbitrary depth.
 
 Part 3 (the LLM actually reading the file and echoing the sentinel back) is by-design untestable headlessly — see Plan C / Task 18 manual verification.
 
@@ -61,15 +61,21 @@ if ! echo "$RESOLVED" | grep -qF "$GLOB_STRING"; then
     exit 1
 fi
 
-# Part 2: sentinel project-context.md exists at a glob-matching path?
-if [ ! -f "$PROJECT_ROOT/_bmad/platform/project-context.md" ]; then
-    echo "PLAN_A_FAIL: sentinel project-context.md not present at expected path"
+# Part 2: sentinel bam-platform-project-context.md exists at glob-matching path (BMM-aligned).
+# Resolve {output_folder} (default _bmad-output).
+OUTPUT_FOLDER_REL="$(grep -E '^[[:space:]]*output_folder[[:space:]]*=' "$PROJECT_ROOT/_bmad/config.toml" 2>/dev/null | head -1 | sed -E 's/^[[:space:]]*output_folder[[:space:]]*=[[:space:]]*"?([^"#]+)"?.*/\1/' | sed -E 's/[[:space:]]+$//' || echo)"
+OUTPUT_FOLDER_REL="${OUTPUT_FOLDER_REL:-_bmad-output}"
+OUTPUT_FOLDER_REL="${OUTPUT_FOLDER_REL#\{project-root\}/}"
+SENTINEL_FILE="$PROJECT_ROOT/$OUTPUT_FOLDER_REL/bam-platform-project-context.md"
+
+if [ ! -f "$SENTINEL_FILE" ]; then
+    echo "PLAN_A_FAIL: sentinel bam-platform-project-context.md not present at $SENTINEL_FILE"
     exit 1
 fi
 
 # Part 3 (sanity): the sentinel token matches what step 04 recorded
-if ! grep -qF "$SENTINEL" "$PROJECT_ROOT/_bmad/platform/project-context.md"; then
-    echo "PLAN_A_FAIL: sentinel token in project-context.md differs from sentinel.txt"
+if ! grep -qF "$SENTINEL" "$SENTINEL_FILE"; then
+    echo "PLAN_A_FAIL: sentinel token in bam-platform-project-context.md differs from sentinel.txt"
     exit 1
 fi
 
