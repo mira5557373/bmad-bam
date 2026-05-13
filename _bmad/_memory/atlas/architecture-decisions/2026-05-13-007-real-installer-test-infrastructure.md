@@ -12,7 +12,7 @@ assumptions:
   - The cp-based simulators (Wave 0, P2.1) are kept as Tier-1 mechanism checks; not deleted.
   - The `bmad` CLI is not universally available on contributor machines; a hard requirement would block contributions.
   - LLM-side activation cannot be reliably automated in CI (spec §7.3); a manual ritual is acceptable for release cadence.
-  - BMAD v6.6.0's installer offers no API to install from a local checkout (verified against `external/bmad-method/tools/installer/`).
+  - BMAD v6.6.0 DOES expose `bmad install --custom-source <local-path>` (verified at `external/bmad-method/tools/installer/modules/custom-module-manager.js:99-110` local-path detection + `:326-329` non-cloning path), but for BAM's current layout it resolves via PluginResolver Strategy 5 (synthesized fallback), not Strategy 1 (verified at `tools/installer/modules/plugin-resolver.js:63-97`). Strategy 5 produces a degraded install: skills copy correctly, but the real `module.yaml` (with `agents:` block, `directories:`, `x-bam-*` extensions) is replaced by a stub synthesized from marketplace.json metadata.
 dependencies-on-other-decisions:
   - 2026-05-12-002
   - 2026-05-13-005
@@ -31,13 +31,27 @@ Both bugs were caught post-execution by a manual audit, not by tests. The shared
 
 P2.2 is about to add two more workflows. Without closing this blind spot, the same class of bug can ship again.
 
-The original kickoff proposed a 3-tier strategy: Tier 1 (always-run static + simulated), Tier 2 (opt-in real-install), Tier 3 (manual LLM probe). During plan drafting, an external review surfaced — and direct source-reading confirmed — that BMAD v6.6.0's installer has no API to install from a local checkout:
-- No `--from <path>` flag in `commands/install.js` (grep returns 0)
-- No `BAM_LOCAL_SOURCE` env override anywhere in installer source
-- Cache-directory symlink workaround triggers `git reset --hard origin/HEAD` against the symlink target per `community-manager.js:292` — destroys local commits
-- Bare-copy workaround hits the same destructive git operation
+The original kickoff proposed a 3-tier strategy: Tier 1 (always-run static + simulated), Tier 2 (opt-in real-install), Tier 3 (manual LLM probe). During plan drafting, an external review claimed BMAD v6.6.0 had no local-install API. Direct deep source-reading partially refutes that:
 
-Automated Tier-2 PASS-mode is therefore not tractable without upstream BMAD changes or CI infrastructure not yet built.
+- `bmad install --custom-source <path>` IS documented in `commands/install.js:36` ("Comma-separated Git URLs **or local paths** to install custom modules from").
+- `parseSource` (`custom-module-manager.js:99-110`) detects local paths by `/`, `./`, `../`, `~` prefix and routes to `_parseLocalPath` which validates existence and returns `type: 'local'`.
+- `resolveSource` (`custom-module-manager.js:326-329`) takes the local-source branch: `rootDir = parsed.localPath; repoPath = null; sourceUrl = null` — **the `git reset --hard origin/HEAD` at `community-manager.js:292` is never executed for local sources** because that path requires `repoPath` (cache clone). The earlier claim was wrong.
+- `readMarketplaceJsonFromDisk` looks at `<rootDir>/.claude-plugin/marketplace.json` — which is **exactly where BAM's marketplace.json lives**.
+
+So a local install reaches PluginResolver. But BAM's layout post-Phase-C falls into PluginResolver Strategy 5 (synthesized fallback), not Strategy 1 (`plugin-resolver.js:63-97`). Strategy 1 requires `module.yaml` + `module-help.csv` at the common parent of all listed skills. For BAM, all 4 skills sit under `src-v6/bmad-bam-platform/skills/`, so the common parent is `<...>/skills/`. But BAM's real `module.yaml` lives at `<...>/bmad-bam-platform/module.yaml` — one level above the common parent. Strategies 2-4 also don't match (no `-setup` skill, multiple skills, no `assets/module.yaml` per skill). Strategy 5 synthesizes a stub from plugin metadata and ignores BAM's real `module.yaml`. Compare with bmad-tea (`external/bmad-tea/`), whose skills span `src/agents/` + `src/workflows/testarch/` so common parent = `src/`, matching `src/module.yaml` — that layout passes Strategy 1 cleanly.
+
+The result is that an automated `bmad install --custom-source $(pwd)` against BAM:
+- ✅ Reads marketplace.json correctly
+- ✅ Copies 4 skill dirs to `_bmad/bmad-bam-platform/<skill>/` via `installFromResolution` (`official-modules.js:344-410`)
+- ✅ Synthesizes a stub `module-help.csv`
+- ❌ Does NOT install BAM's real `module.yaml` — Strategy 5 has `moduleYamlPath: null`; downstream `resolveInstalledModuleYaml` (`project-root.js:102-`) returns null for BAM, so `agents:` registration / `directories:` / `x-bam-*` extensions are silently lost
+- ⚠️ Partial validation — Tier-2 would catch skill-copy + marketplace.json correctness (PR #2 Bug 1) but NOT module.yaml integrity
+
+Automated Tier-2 PASS-mode is therefore not tractable for v6.0 because of **four** real reasons:
+1. Hard requirement on `bmad` CLI for every contributor (BMAD not universally installed; CI runners would need `npm install` of bmad-method as a precondition).
+2. Strategy-5 degradation: only validates skill-copy and marketplace.json correctness, not full module.yaml integrity (this is a fixable BAM-side concern — see Concern 5 below — but out of P2.2 scope).
+3. `npm install` triggers transitively from `cloneRepo` for git-URL custom modules (`custom-module-manager.js:483-499`); for local sources it skips, BUT downstream BMAD `bmad` CLI dependencies still need to be installed somewhere.
+4. CI infrastructure (push-and-pin, ephemeral tmpdir-as-project-root with `bmad install --directory`) not yet built — P2.x scope.
 
 ## Decision
 
@@ -63,7 +77,8 @@ The existing cp-based tests are NOT rewritten; they remain Tier-1 mechanism chec
 
 ## Alternatives Considered
 
-- **Original 3-tier with automated Tier-2 PASS-mode.** Rejected: empirically depends on BMAD APIs that don't exist in v6.6.0 (`--from`, `BAM_LOCAL_SOURCE`); workarounds (symlink, bare copy) trigger destructive git operations. Shipping a script that pretends to work would create false confidence.
+- **Original 3-tier with automated Tier-2 PASS-mode using `bmad install --custom-source $(pwd)`.** Viable in principle (the API exists; local-path source bypasses git operations on the source), but rejected for v6.0 because: (i) BAM's layout falls into PluginResolver Strategy 5 — only partial validation, real `module.yaml` not exercised; (ii) hard dep on `bmad` CLI on every dev/CI machine; (iii) lacks ephemeral-tmpdir test-project scaffolding (`bmad install --directory <tmp>`). Promoted to Concern 5 backlog.
+- **Conditional Tier-2 (`SKIP` when `bmad` CLI missing, run when present).** Considered. Rejected for v6.0 because the Strategy-5 degradation makes the PASS mode validate less than it appears to — green CI on a conditional Tier-2 would imply more coverage than it delivers. Better to keep the stub honest about what's missing. Revisit after Concern 5 resolution (layout fix → Strategy 1).
 - **Tier-2 via Node-bypass** (call `installFromResolution` directly via a Node wrapper). Rejected: only tests file-copy semantics; doesn't exercise the `bmad install` CLI chain or `community-manager` git/npm operations. Added complexity (Node wrapper, BMAD module imports) for partial coverage that Tier-1's expanded checks largely subsume.
 - **Tier-2 via CI push-and-pin** (push branch to fork; install with `--pin <sha>`). Rejected for v6.0: requires CI infrastructure not yet built (GitHub Actions runner with `bmad` CLI, fork-push credentials, marketplace fork management). P2.x scope.
 - **Drop Tier-2 entirely.** Rejected: the deferred stub is honest documentation of what would be tested if it could be; deleting it loses that signal. Future BAM developers seeing the stub know "this is something we'd test if we could."
@@ -72,6 +87,7 @@ The existing cp-based tests are NOT rewritten; they remain Tier-1 mechanism chec
 ## Revisit triggers
 
 This ADR is reconsidered when ANY of these happen:
-1. BMAD ships a local-install API (`bmad install --from <path>` or equivalent) — Tier-2 stub becomes a real script.
-2. P2.x adds CI infrastructure for push-and-pin against a tagged SHA — Tier-2 PASS-mode lands in CI, stays SKIP locally.
+1. Concern 5 lands (BAM marketplace layout rearranged so PluginResolver Strategy 1 applies — `module.yaml` + `module-help.csv` at the common parent of all skills, mirroring bmad-tea's `src/` placement). After that, automated Tier-2 PASS-mode via `bmad install --custom-source $(pwd) --directory <tmpdir> --yes` becomes meaningful (full module.yaml exercise, not synthesized fallback).
+2. P2.x adds CI infrastructure for `bmad` CLI provisioning + ephemeral tmpdir test-project scaffolding — Tier-2 PASS-mode lands in CI, stays SKIP locally for contributors without `bmad`.
 3. A regression class slips past Tier-1 expanded checks — the gap motivates either more Tier-1 checks or a different Tier-2 design.
+4. BMAD ships a true `--from <path>` API that bypasses the marketplace.json resolver (e.g., direct skill-tree install) — would simplify Tier-2 by removing the Strategy-5 caveat.
