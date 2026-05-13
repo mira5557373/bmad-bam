@@ -41,9 +41,24 @@ Empty file is sufficient; the audit only checks for presence. Skills WITH the se
 - `fake-v6/bam-faux/skills/good-skill` — clean skill for the good fixture to satisfy check (e)
 - `fake-v6-with-bad/bam-faux/skills/bad-namespace-skill/steps/step-bad.md` — exercises check (f). Note: this lives in a **separate** v6-root (`fake-v6-with-bad/`) so the clean fixtures using `fake-v6/` aren't tripped by it. The check-(f) fixture passes `--v6-root fake-v6-with-bad` explicitly. (The skill dir does not have a `.no-marketplace` sentinel — that's unrelated to check (f), which scans step files regardless of the orphan-check status.)
 
+## Running the fixtures
+
+The driver script `tests/audit-marketplace-fixtures.sh` runs all fixtures and asserts each behaves as documented in the Fixtures table:
+
+```bash
+tests/audit-marketplace-fixtures.sh        # run all 8 cases
+tests/audit-marketplace-fixtures.sh -v     # verbose: show stderr per case
+```
+
+Contract:
+- Good fixtures must exit 0.
+- Bad fixtures must exit non-zero AND emit their named `(check X)` tag on stderr. A bad fixture MAY also trip other checks (documented above) — the driver only asserts the primary check fires.
+
+If any fixture's behavior drifts (e.g., a check is renamed or removed), the driver fails and prints the deviating case.
+
 ## Adding a new fixture
 
 1. Add a new `marketplace-<good|bad>-<failure-mode>.json` file.
 2. Create whatever on-disk shape under `fake-source/` or `fake-v6/` makes the fixture isolate that failure mode.
-3. Add a row to the Fixtures table.
-4. Add a test case in `tests/audit-marketplace.sh`'s fixture-verification block (the calling test, NOT the audit script itself).
+3. Add a row to the Fixtures table above.
+4. Add an `assert_case` invocation to `tests/audit-marketplace-fixtures.sh` with the expected outcome (`pass` or `fail`) and tag (e.g., `"(check g)"`).
