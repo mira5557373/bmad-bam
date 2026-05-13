@@ -3,7 +3,8 @@
 **Status:** approved (design), pending implementation
 **Date:** 2026-05-13
 **Author:** collaborative (atlas + claude-opus-4-7)
-**Related ADRs:** 001 (Wave-0 plan A), 005 (project-context location), 006 (Atlas-as-skill), 007 (3-tier test strategy)
+**RDP review:** 2026-05-13 — incorporated findings G1 (file counts), G2 (`--modules bbp`), G3 (9-infrastructure semantics), M1 (edge cases), M2 (module-help.csv), M4 (P4 in Commit 1), R1 (PR checklist), R2 (migration cleanup), R3 (diff structure), R4 (Concern 7 parallelism), R5 (ADR 007 prior amendment)
+**Related ADRs:** 001 (Wave-0 plan A), 005 (project-context location), 006 (Atlas-as-skill), 007 (3-tier test strategy — amended in commit b2c779d)
 **Successor ADR:** 008 (to be authored during implementation)
 
 ---
@@ -55,7 +56,7 @@ Phase semantics map to BAM's existing quality-gate (QG) model:
 - **2-modules** — QG-M1/M2/M3 (tenant-isolation, agent-runtime, future Nova)
 - **3-integration** — QG-I1/I2/I3 (convergence, future Kai)
 - **4-readiness** — QG-P1 (production-readiness)
-- **9-infrastructure** — operational skills not part of user-facing workflow (smoke-test, finalize)
+- **9-infrastructure** — bootstrap + operational skills not phase-bound. `bmad-bam-finalize` IS user-facing (invoked by the user post-install via `post-install-notes`) but doesn't fit the QG-progression phases — it's the activation bootstrap. `bmad-bam-smoke-test` is installation-verification, also not phase-bound. The `9-` numeric prefix gives sort-order at the end without implying these are "final phase" workflows. (Compare: BMM has no analog because BMM is monolithic; BAM's multi-module structure motivates this category.)
 
 Common parent of all listed skills spans 4 different phase dirs → collapses to `src-v6/bmad-bam-platform/` → matches module.yaml location → **Strategy 1 succeeds**.
 
@@ -98,23 +99,29 @@ Rationale: spec §6.1 documents the universal-glob `**/project-context.md` as a 
 
 ## 4. Migration scope — four rename patterns
 
-| Pattern | Before | After | Files | Occurrences |
+Pattern hit counts (empirically verified across the repo, excluding `external/`):
+
+| Pattern | Before | After | Total files | Total occurrences |
 |---|---|---|---|---|
-| **P1** | `_bmad/bam-platform/` | `_bmad/bbp/` | 11 | 30 |
-| **P2** | `bam-platform-project-context.md` | `bbp/project-context.md` (path context) or `project-context.md` (filename-only context) | 25 | 59 |
-| **P3** | `code: bam-platform` | `code: bbp` | 3 | 4 |
-| **P4** | `team: bam-platform` | `team: bam` | 1 | 1 |
-| **Union** | — | — | **34 matches total → 32 require migration** (2 are this design doc + `tests/integration/CONCERN-5-PLUGIN-RESOLVER-STRATEGY-5.md` which intentionally reference the OLD strings to describe the migration; they don't get renamed) | **~94** |
+| **P1** | `_bmad/bam-platform/` | `_bmad/bbp/` | 12 | 33 |
+| **P2** | `bam-platform-project-context.md` | `bbp/project-context.md` (path context) or `project-context.md` (filename-only context) | 26 | 61 |
+| **P3** | `code: bam-platform` | `code: bbp` | 4 | 5 |
+| **P4** | `team: bam-platform` | `team: bam` | 5 | 14 |
+| **P5** | `module-help.csv` content (output-location / outputs columns) | New paths per P2 | 1 (within above) | — |
 
-### Active vs historical treatment
+### Categorized treatment (unique files = 35)
 
-| Category | Files | Treatment |
+| Category | Count | Treatment |
 |---|---|---|
-| Active operational (`src-v6/`) | ~17 | Full rename |
-| Active spec (`docs/v6-final-architecture.md`) | 1 | §6.1/§7.6/§7.1 prose update + v0.9 changelog |
-| Tests (`tests/`) | ~13 | Full rename in active tests |
-| Historical ADRs 001-005, P2.1 plan, Wave 0 plan, RDP kickoffs, v0.6 patch | ~10 | One-line annotation at top: *"Pre-Concern-5 path references reflect module state at decision time. Post-Concern-5 the module code is `bbp` and the sentinel is at `{output_folder}/bbp/project-context.md`; see ADR 008."* Body untouched. |
-| Audit fixtures (`tests/fixtures/marketplace-audit/*.json`) | 6 | Unchanged (plugin name `bmad-bam-platform` doesn't change) |
+| **Active operational** (`src-v6/bmad-bam-platform/`) | 16 | Full P1-P4 sweep; module-help.csv columns updated per P2 |
+| **Active spec** (`docs/v6-final-architecture.md`) | 1 | §6.1/§7.6/§7.1 prose update + v0.9 changelog entry |
+| **Active tests** (`tests/integration/MANUAL.md`, `tests/p2/lib/probe-llm-context.sh`, `tests/p2/run-real-install-test.sh`, `tests/wave-0/run-smoke-test.sh`) | 4 | Full P1-P4 sweep |
+| **Historical / annotation-only** (ADRs 002, 005, 006, 007; P2.1 plan; Wave 0 plan; RDP kickoff; v0.6 superseded patch; INVESTIGATION-NOTES; WAVE-0-OUTCOME) | 10 | One-line annotation at body top: *"Pre-Concern-5 path references reflect module state at decision time. Post-Concern-5 the module code is `bbp` and the sentinel is at `{output_folder}/bbp/project-context.md`; see ADR 008."* Body untouched. |
+| **v3 frozen** (`src-v2/module.yaml`) | 1 | NOT TOUCHED. v3 is legacy/deprecated; its `team: bam-platform` reference (9 occurrences) stays. |
+| **Concern 5 self-references** (this design doc, `tests/integration/CONCERN-5-PLUGIN-RESOLVER-STRATEGY-5.md`) | 2 | NOT TOUCHED. These DESCRIBE the migration; intentionally retain the OLD strings as referents. |
+| **Audit fixtures** (`tests/fixtures/marketplace-audit/*.json`) | 0 | Unchanged. They reference plugin name `bmad-bam-platform` (long form), which isn't changing. |
+
+**Effective scope: 21 files get full P1-P4 sweep + 10 get a one-line annotation + 1 v3 untouched + 2 self-referential = 34 files in total review surface.**
 
 ## 5. Audit + test updates
 
@@ -163,6 +170,15 @@ For each (scan_root, mode):
 - `marketplace-good-phase-numbered.json` + on-disk `fake-source/1-test-phase/skill-phased/.gitkeep` — exercises check (b) regex + check (d) phase-mode scan happy path
 - `marketplace-bad-phase-orphan.json` + on-disk `fake-source/1-test-phase/skill-phased-orphan/.gitkeep` — exercises check (d) orphan detection in phase mode
 - 2 new `assert_case` invocations in `tests/audit-marketplace-fixtures.sh`
+
+### Phase-mode edge cases — explicitly out of scope for v6.0
+
+Edge cases the audit's phase-mode scan handles implicitly but doesn't have dedicated fixtures for; surface as new fixtures only if regressions appear:
+
+- **Empty phase dir** (e.g., `3-integration/.gitkeep` only). `find -mindepth 1 -maxdepth 1 -type d` returns nothing; algorithm gracefully no-ops. ✓ correct by construction.
+- **`.no-marketplace` at phase-dir level vs skill-level**. Spec is silent; design intent: phase-dir-level sentinel means "skip entire phase from orphan check". Implementation should preserve this semantic if the case appears.
+- **Mixed phase + flat layouts in same module**. Each listed skill independently triggers its mode; possible to have two scan_roots for the same module dir. Algorithm dedupes by scan_root path.
+- **Module-root skill outside any phase** (e.g., a stray `bmad-bam-something/` directly under module dir, with no phase prefix). Would be flagged as orphan by check (d). Intentional: phase-mode discipline requires skills live inside a phase dir.
 
 ### Smoke tests + runners
 
@@ -230,10 +246,21 @@ Body sections: Context, Decision, Consequences, Alternatives Considered, Revisit
 
 | Commit | Files | Contents |
 |---|---|---|
-| **1: code/config/test atomic** | ~50 | Structural moves (git mv); module.yaml (P3+P4+P2); marketplace.json (paths + version 0.3.0→0.4.0); P1/P2 sweeps in src-v6/ + tests/; post-install.sh sentinel-path update; audit-marketplace.sh (check b regex + check d algorithm); 2 new audit fixtures + driver assert_cases; `.gitkeep` files in empty phase dirs |
+| **1: code/config/test atomic** | ~30 active files | Structural moves (`git mv` for 4 skill dirs); module.yaml — P3 (`code: bam-platform` → `code: bbp`), P4 (`team: bam-platform` → `team: bam`), P2 (sentinel filename refs in `x-bam-wave-0-artifacts`); marketplace.json (paths phase-prefixed + version 0.3.0→0.4.0); module-help.csv (P2 in `output-location` + `outputs` columns); P1+P2 sweeps in src-v6/ + active tests; post-install.sh sentinel-path update + `mkdir -p` for subdir; audit-marketplace.sh (check b regex + check d phase-mode algorithm); 2 new audit fixtures + on-disk skeletons + driver assert_cases; `.gitkeep` files in empty phase dirs (3-integration/, 4-readiness/) |
 | **2: docs atomic** | ~12 | Spec §6.1/§7.6/§7.1 + v0.9 changelog; ADR 008 new file; ADR 006 body refinement note; ADR 007 body annotation; ADRs 001-005 one-line annotations; INDEX.md update |
 
 Both commits leave Tier-1 green. Single PR.
+
+### Reviewability — diff structure for Commit 1
+
+The atomic Commit 1 diff is large (~30 files). Recommend PR description guides reviewers to look at the changes in 4 logical groups (in this order):
+
+1. **Structural moves** (just file paths, easy to scan) — `git diff --stat` shows the moves
+2. **Metadata** — `module.yaml`, `marketplace.json`, `module-help.csv` content updates
+3. **Audit changes** — `tests/audit-marketplace.sh` (check (b) regex + check (d) phase-mode algorithm) + new fixtures
+4. **Bulk sweeps** — P1/P2/P3/P4 string replacements; mechanical, low semantic content
+
+This is a PR-description discipline, not a commit-split (per the user's no-backwards-compat / no-transitional-state stance).
 
 ## 9. Verification plan
 
@@ -251,7 +278,8 @@ tests/integration/run-real-install.sh                                           
 
 **Pre-merge gate — Plan C ratification (MANUAL, ~20 min):**
 
-1. `WORK_DIR=$(mktemp -d); bmad install --custom-source $(pwd) --modules bmad-bam-platform --directory "$WORK_DIR" --tools claude-code --yes`
+1. `WORK_DIR=$(mktemp -d); bmad install --custom-source $(pwd) --modules bbp --directory "$WORK_DIR" --tools claude-code --yes`
+   - **Note:** `--modules` takes module CODES (per `install.js:32` doc: example "bmm,bmb"). After the rename, the code is `bbp`. The plugin NAME `bmad-bam-platform` stays in marketplace.json (that's the long-form marketplace identifier).
 2. Verify Strategy 1 succeeded: `ls $WORK_DIR/_bmad/bbp/` should show 4 skill dirs + `module-help.csv`
 3. `cd "$WORK_DIR" && bmad run bmad-bam-finalize`
 4. Verify sentinel: `cat $WORK_DIR/_bmad-output/bbp/project-context.md | grep BAM_LOAD_VERIFY_`
@@ -262,17 +290,65 @@ tests/integration/run-real-install.sh                                           
 
 Record outcome in `tests/p2/PLAN-C-RATIFICATION.md` with date, BMAD version, observed token, and PASS/FAIL.
 
+### Enforcing the Plan C pre-merge gate (R1 mitigation)
+
+To prevent the gate from being skipped accidentally:
+
+1. **PR description checklist** (mandatory) — the Concern 5 PR description includes:
+   ```markdown
+   - [ ] Tier-1 audit + fixtures green
+   - [ ] Wave 0 + P2 smoke tests green
+   - [ ] design-tenancy-model skill smoke green
+   - [ ] Plan C manual ratification PASS — outcome recorded in tests/p2/PLAN-C-RATIFICATION.md
+         - BMAD version: ___
+         - Sentinel token observed: BAM_LOAD_VERIFY_____
+         - Result: PASS / FAIL
+   ```
+2. **Plan C ratification file** has a `## Concern 5 ratification` section template that must be filled in before the PR can be marked ready-to-merge.
+3. The user (you) verbally confirms Plan C ran with PASS before approving the merge — matches the "do not merge without my approval" stance.
+
 ## 10. Risk register
 
 | Risk | Mitigation |
 |---|---|
 | Universal-glob doesn't load `{output_folder}/bbp/project-context.md` at LLM activation | Plan C ratification is **pre-merge gate**. Failure blocks merge. Forward-fix: try alternate sentinel paths; amend ADR 008. |
 | Audit check (d) phase-mode has untested edge cases | 2 new fixtures cover good + orphan cases; real marketplace.json post-refactor exercises live behavior. Edge cases surface as fixture additions in future PRs. |
-| Path-prefix change `_bmad/bam-platform/` → `_bmad/bbp/` breaks user's existing local install | Per user's "no backwards compat" stance, accepted. PR description includes migration note: `rm -rf _bmad/bam-platform/ && bmad install bmad-bam-platform`. |
+| Path-prefix change `_bmad/bam-platform/` → `_bmad/bbp/` breaks user's existing local install | Per user's "no backwards compat" stance, accepted. PR description includes full migration recipe (see below). |
+| Stale sentinel file at `{output_folder}/bam-platform-project-context.md` orphaned post-rename | If universal-glob is strict (per spec §6.1), the stale file is silently ignored (filename mismatch). If glob is lenient, BOTH old + new sentinels load → potentially confusing context. Migration recipe includes `rm -f` of the stale file. |
+| Cross-module install log at `_bmad/bam/install-logs/platform-install.log` has stale `_bmad/bam-platform/` references | Cosmetic only — log is append-only history. Acceptable as-is. |
 | Concern 5 PR collides with another in-flight PR | Sequence Concern 5 BEFORE any new content PRs. After merge, content PRs rebase. |
 | `team: bam` collides with another BMAD module's team | Verified — no other BMAD module uses `bam`. Low risk. |
 | Commit 1 atomic refactor introduces a missed reference | Pre-commit verification: run P1/P2/P3/P4 greps post-edit, confirm 0 remaining matches in active files. |
 | Future BAM module's phase name has 3+ hyphen-separated words (e.g., `2-plan-and-design`) | Permissive regex `[0-9]+-[a-z][a-z0-9-]*` already handles multi-hyphen. ✓ |
+
+## 10.1 User migration recipe (for existing local installs)
+
+Any user with a pre-existing BAM v6 install (post-PR-#2, pre-Concern-5) needs to migrate. Include this in the Concern 5 PR description verbatim:
+
+```bash
+# 1. Remove the old installed module (will be recreated under the new bbp/ path)
+rm -rf _bmad/bam-platform/
+
+# 2. Remove the orphan sentinel file (will be regenerated under bbp/ subdir)
+# Resolve {output_folder} from your _bmad/config.toml; default is _bmad-output/
+OUTPUT_FOLDER="$(python3 -c "
+import tomllib
+c = tomllib.load(open('_bmad/config.toml', 'rb'))
+v = c.get('bmad', {}).get('output_folder', '_bmad-output')
+print(v.replace('{project-root}/', '').lstrip('/') or '_bmad-output')
+")"
+rm -f "$OUTPUT_FOLDER/bam-platform-project-context.md"
+
+# 3. Re-install (post-Concern-5 marketplace.json + module.yaml)
+bmad install bmad-bam-platform  # registry-listed plugin name unchanged
+#   OR for local-source verification:
+bmad install --custom-source $(git rev-parse --show-toplevel) --modules bbp --tools claude-code --yes
+
+# 4. Re-run finalize to write the new sentinel at the bbp/ subdir
+bmad run bmad-bam-finalize
+```
+
+Pre-existing memory in `_bmad/_memory/atlas/architecture-decisions/`, design artifacts in `docs/architecture/`, and other user-generated content are preserved — they live OUTSIDE `_bmad/bam-platform/`.
 
 ## 11. Effort estimate
 
@@ -292,9 +368,17 @@ Record outcome in `tests/p2/PLAN-C-RATIFICATION.md` with date, BMAD version, obs
 
 ## 12. Followup sequencing
 
-| PR | Concern | Purpose |
-|---|---|---|
-| PR #4 (this design's implementation) | Concern 5 | Layout + `bbp` short-code + subdir sentinel + ADR 008 |
-| PR #5 | Concern 7 | `module.yaml` `directories:` block — convert to BMM-canonical `{name}` variable form |
-| PR #6 | ADR 007 trigger #1 | Promote `tests/integration/run-real-install.sh` from SKIP stub to real Tier-2 PASS-mode using `bmad install --custom-source` |
-| PR #7+ | P2.2 content | New workflow skills (master-architecture, module-architecture, agent-runtime, etc.) land into the established `1-foundation/`, `2-modules/`, `3-integration/`, `4-readiness/` structure |
+| PR | Concern | Purpose | Depends on |
+|---|---|---|---|
+| **PR #4** (this design's implementation) | Concern 5 | Layout + `bbp` short-code + subdir sentinel + ADR 008 | PR #3 merged |
+| **PR #5** | Concern 7 | `module.yaml` `directories:` block — convert to BMM-canonical `{name}` variable form | **Parallelizable with PR #4** — see note below |
+| **PR #6** | ADR 007 trigger #1 | Promote `tests/integration/run-real-install.sh` from SKIP stub to real Tier-2 PASS-mode using `bmad install --custom-source` | PR #4 merged (Strategy 1 must succeed for Tier-2 to validate full install) |
+| **PR #7+** | P2.2 content | New workflow skills (master-architecture, module-architecture, agent-runtime, etc.) land into the established `1-foundation/`, `2-modules/`, `3-integration/`, `4-readiness/` structure | PR #4 merged (need the phase layout in place) |
+
+**Note on PR #5 parallelism:** Concern 7 is technically independent of Concern 5 — they touch the same `module.yaml` file (so a literal merge would conflict) but the changes are localized: Concern 5 touches `code:`, `team:`, and `x-bam-wave-0-artifacts:` fields; Concern 7 touches `directories:` and adds `module_config` entries. If solo development, sequencing PR #4 → PR #5 is the safer coordination choice (avoids merge conflicts). Parallel only if two people are coordinating live.
+
+### ADR 007's status post-Concern-5
+
+ADR 007 was substantively amended in commit `b2c779d` ("fix(p2-2): correct ADR 007 + Tier-2 docs with empirical reality") which corrected its empirically-wrong premise that "BMAD v6.6.0 has no local-install API". That amendment established that `--custom-source` exists; the actual deferral reason is BAM's Strategy-5 fallback (which Concern 5 fixes).
+
+So when Concern 5 lands, the Concern-5-fixes-Strategy-5 narrative completes ADR 007's substantive revision arc. The Concern 5 implementation only adds a small annotation to ADR 007 saying revisit trigger #1 has fired — the deeper amendment is already in place. PR #6 then promotes the Tier-2 stub.
