@@ -2,6 +2,14 @@
 
 Fixtures used by `tests/audit-marketplace.sh` to verify each failure mode is caught.
 
+Each "bad" fixture is named for the *primary* failure mode it exercises. A given
+bad fixture may also trip other checks — a bad fixture doesn't have to perfectly
+satisfy the unrelated checks; it only needs to fail the named primary check.
+Test assertions check for the *presence* of the named `(check X)` tag in the
+audit's stderr output (via `grep -q`), not that it's the only error emitted.
+This is intentional: each fixture is a minimal demonstration of one check
+firing, not a fully-clean marketplace that exercises one check in isolation.
+
 ## Fixtures
 
 | Fixture | Outcome | Check |
@@ -31,7 +39,7 @@ Empty file is sufficient; the audit only checks for presence. Skills WITH the se
 - `fake-source/agents/` — module-root dir; references in fixture exercise check (b)
 - `fake-v6/bam-faux/module.yaml` — fixture v6 module-yaml
 - `fake-v6/bam-faux/skills/good-skill` — clean skill for the good fixture to satisfy check (e)
-- `fake-v6/bam-faux/skills/bad-namespace-skill/steps/step-bad.md` — exercises check (f); skill dir has `.no-marketplace` so it doesn't trip check (d) when unlisted
+- `fake-v6-with-bad/bam-faux/skills/bad-namespace-skill/steps/step-bad.md` — exercises check (f). Note: this lives in a **separate** v6-root (`fake-v6-with-bad/`) so the clean fixtures using `fake-v6/` aren't tripped by it. The check-(f) fixture passes `--v6-root fake-v6-with-bad` explicitly. (The skill dir does not have a `.no-marketplace` sentinel — that's unrelated to check (f), which scans step files regardless of the orphan-check status.)
 
 ## Adding a new fixture
 

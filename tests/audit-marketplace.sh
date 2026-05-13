@@ -49,6 +49,14 @@ if ! command -v python3 >/dev/null 2>&1; then
     exit 1
 fi
 
+# Pre-check: marketplace.json must be valid JSON. Without this, downstream
+# `python3 -c "json.load(...)"` calls below dump a confusing Python traceback
+# on malformed JSON; surface a friendly error instead.
+if ! python3 -c "import json,sys; json.load(open(sys.argv[1]))" "$MARKETPLACE" 2>/dev/null; then
+    echo "FAIL: marketplace.json is not valid JSON: $MARKETPLACE" >&2
+    exit 1
+fi
+
 ERRORS=0
 emit() { echo "FAIL: $1" >&2; ERRORS=$((ERRORS + 1)); }
 
@@ -211,6 +219,10 @@ is_known_ns() {
 }
 
 if [ -d "$V6_ROOT" ]; then
+    # Dedup per (file, namespace) so a single bad file referencing the same
+    # unknown ns on multiple lines (or multiple times on one line) only emits
+    # once. Reviewers see one FAIL per actual problem, not N copies.
+    declare -A F_SEEN
     # Scan all step files + templates under v6 skills
     while IFS= read -r md; do
         [ -z "$md" ] && continue
@@ -222,8 +234,12 @@ if [ -d "$V6_ROOT" ]; then
                 if ! is_known_ns "$ns"; then
                     # Allow config.toml as a special case (it's a file, not a ns)
                     if [ "$ns" != "config.toml" ]; then
-                        relative="${md#$REPO_ROOT/}"
-                        emit "step/template $relative references unknown namespace _bmad/$ns/ (check f). Known: _bmad/<code>/ for codes [$KNOWN_CODES], plus _bmad/_memory/, _bmad/bam/, _bmad-output/, _bmad/config.toml"
+                        key="$md|$ns"
+                        if [ -z "${F_SEEN[$key]:-}" ]; then
+                            F_SEEN[$key]=1
+                            relative="${md#$REPO_ROOT/}"
+                            emit "step/template $relative references unknown namespace _bmad/$ns/ (check f). Known: _bmad/<code>/ for codes [$KNOWN_CODES], plus _bmad/_memory/, _bmad/bam/, _bmad-output/, _bmad/config.toml"
+                        fi
                     fi
                 fi
                 line="${line/_bmad\/$ns\//}"  # consume to find next
