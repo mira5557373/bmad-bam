@@ -27,14 +27,31 @@ set -euo pipefail
 REPO_ROOT="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
 MARKETPLACE="${1:-$REPO_ROOT/.claude-plugin/marketplace.json}"
 
-# Optional --v6-root and --skill-root flags (mainly for fixture testing)
+# Optional --v6-root and --skill-root flags (mainly for fixture testing).
+# Both are resolved to absolute paths so downstream comparisons against
+# LISTED_RESOLVED (which always contains absolute paths) work regardless of
+# whether the caller passed a relative or absolute path.
 V6_ROOT="$REPO_ROOT/src-v6"
 SKILL_ROOT_OVERRIDE=""
 shift || true
 while [ "$#" -gt 0 ]; do
     case "$1" in
-        --v6-root) V6_ROOT="$2"; shift 2 ;;
-        --skill-root) SKILL_ROOT_OVERRIDE="$2"; shift 2 ;;
+        --v6-root)
+            if [ ! -d "$2" ]; then
+                echo "FAIL: --v6-root path does not exist: $2" >&2
+                exit 64
+            fi
+            V6_ROOT="$(cd "$2" && pwd)"
+            shift 2
+            ;;
+        --skill-root)
+            if [ ! -d "$2" ]; then
+                echo "FAIL: --skill-root path does not exist: $2" >&2
+                exit 64
+            fi
+            SKILL_ROOT_OVERRIDE="$(cd "$2" && pwd)"
+            shift 2
+            ;;
         *) echo "Unknown arg: $1" >&2; exit 64 ;;
     esac
 done
