@@ -12,9 +12,11 @@
 #   external/bmad-method/tools/installer/modules/custom-module-manager.js:99-110
 #     parseSource() detects /, ./, ../, ~ prefixes as local
 #   external/bmad-method/tools/installer/modules/custom-module-manager.js:326-329
-#     resolveSource() local branch: rootDir=localPath, repoPath=null — NO
-#     git reset --hard happens on the local source (community-manager.js:292
-#     only fires for clone-cache paths, which local sources skip entirely)
+#     resolveSource() local branch: rootDir=localPath, repoPath=null —
+#     cloneRepo() never invoked, so neither CustomModuleManager.cloneRepo:427
+#     nor CommunityModuleManager:292's `git reset --hard origin/HEAD` can
+#     fire against the local source. (The latter only runs for community-
+#     registry modules anyway — never a custom-source local path.)
 #
 # The reasons Tier-2 PASS-mode is deferred for v6.0:
 #

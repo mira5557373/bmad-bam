@@ -51,7 +51,7 @@ bmad install \
 What this does (per source-reading, BMAD v6.6.0):
 
 - Reads `$REPO_ROOT/.claude-plugin/marketplace.json` directly (no clone, no cache).
-- Resolves the 4 listed skills via PluginResolver. For BAM's current layout, this falls into **Strategy 5** (synthesized fallback) — `module.yaml` gets stubbed, `module-help.csv` gets synthesized from skill SKILL.md frontmatter.
+- Resolves the 4 listed skills via PluginResolver. For BAM's current layout, this falls into **Strategy 5** (synthesized fallback). The synthesized `module.yaml` lives only in `CustomModuleManager._resolutionCache` (in-memory) — it is NEVER written to disk. A `module-help.csv` IS synthesized from each skill's SKILL.md frontmatter and written to the installed module root.
 - Copies the 4 skill directories into `$WORK_DIR/_bmad/bmad-bam-platform/<skill-name>/`.
 - Writes the project manifest tracking your local source path.
 
@@ -138,8 +138,8 @@ rm -rf "$WORK_DIR"
 
 Because BAM currently resolves via Strategy 5 (synthesized fallback):
 
-- The real `src-v6/bmad-bam-platform/module.yaml` is NOT installed. Its `agents:` block, `directories:`, `x-bam-*` extensions, and `post-install-notes` are bypassed.
-- Skill content + `marketplace.json` correctness ARE validated. The Path B (manual finalize) activation chain works.
+- The real `src-v6/bmad-bam-platform/module.yaml` is NOT installed (NOT replaced with a stub — there is no `module.yaml` at all in `$WORK_DIR/_bmad/bmad-bam-platform/`). Its `agents:` block, `directories:`, `x-bam-*` extensions, and `post-install-notes` are silently inert post-install.
+- Skill content + `marketplace.json` correctness ARE validated. The Path B (manual finalize) activation chain works because `bmad run` walks installed skill dirs by SKILL.md, not module.yaml.
 - For full module.yaml validation, Concern 5 must land first (layout fix → Strategy 1 succeeds), after which this procedure exercises the full install.
 
 ## Future state

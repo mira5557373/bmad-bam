@@ -36,20 +36,22 @@ SKILL_ROOT_OVERRIDE=""
 shift || true
 while [ "$#" -gt 0 ]; do
     case "$1" in
-        --v6-root)
-            if [ ! -d "$2" ]; then
-                echo "FAIL: --v6-root path does not exist: $2" >&2
+        --v6-root|--skill-root)
+            flag="$1"
+            if [ "$#" -lt 2 ]; then
+                echo "FAIL: $flag requires a path argument" >&2
                 exit 64
             fi
-            V6_ROOT="$(cd "$2" && pwd)"
-            shift 2
-            ;;
-        --skill-root)
             if [ ! -d "$2" ]; then
-                echo "FAIL: --skill-root path does not exist: $2" >&2
+                echo "FAIL: $flag path does not exist: $2" >&2
                 exit 64
             fi
-            SKILL_ROOT_OVERRIDE="$(cd "$2" && pwd)"
+            resolved="$(cd "$2" && pwd)"
+            if [ "$flag" = "--v6-root" ]; then
+                V6_ROOT="$resolved"
+            else
+                SKILL_ROOT_OVERRIDE="$resolved"
+            fi
             shift 2
             ;;
         *) echo "Unknown arg: $1" >&2; exit 64 ;;

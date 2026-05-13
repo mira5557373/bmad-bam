@@ -10,7 +10,7 @@ When `bmad install --custom-source <path-to-bmad-bam>` runs against BAM, BMAD's 
 
 ## Empirical chain
 
-PluginResolver Strategy 1 (`plugin-resolver.js:63-97`) requires `module.yaml` + `module-help.csv` at the **common parent of all listed skills**.
+PluginResolver Strategy 1 (`plugin-resolver.js:72-99`) requires `module.yaml` + `module-help.csv` at the **common parent of all listed skills**.
 
 BAM's `.claude-plugin/marketplace.json` lists 4 skills, all under `src-v6/bmad-bam-platform/skills/`:
 
@@ -35,12 +35,12 @@ BAM's actual files are at:
 
 One level above the common parent. Strategy 1 fails.
 
-Strategies 2-4 also don't match: no `-setup` skill, multiple skills (not single standalone), no `assets/module.yaml` per skill. Strategy 5 (synthesized fallback at `plugin-resolver.js:230-275`) always succeeds; it returns a `ResolvedModule` with `moduleYamlPath: null` and `synthesizedModuleYaml: { code, name, description, module_version, default_selected }` built from `marketplace.json` plugin metadata.
+Strategies 2-4 also don't match: no `-setup` skill, multiple skills (not single standalone), no `assets/module.yaml` per skill. Strategy 5 (synthesized fallback at `plugin-resolver.js:229-`) always succeeds; it returns a `ResolvedModule` with `moduleYamlPath: null` and `synthesizedModuleYaml: { code, name, description, module_version, default_selected }` built from `marketplace.json` plugin metadata.
 
 `installFromResolution` (`external/bmad-method/tools/installer/modules/official-modules.js:344-410`) then:
 - Copies each skill dir to `<bmadDir>/<code>/<skill-leaf>/` ✅
-- Writes synthesized `module-help.csv` ✅
-- Does NOT write the synthesized `module.yaml` to disk — it's kept in the manifest only
+- Writes synthesized `module-help.csv` to `<bmadDir>/<code>/module-help.csv` ✅
+- Does NOT write any `module.yaml` to disk — neither real nor synthesized. The `synthesizedModuleYaml` object exists only inside `CustomModuleManager._resolutionCache` (per-process, in-memory). BMAD's own comment at `official-modules.js:145` confirms: "Check resolution cache for strategy 5 modules (no module.yaml on disk)".
 
 Downstream, `resolveInstalledModuleYaml` (`external/bmad-method/tools/installer/project-root.js:102-`) searches standard candidate paths for the real module.yaml in the local source. Its search order:
 1. `<root>/skills/module.yaml`
