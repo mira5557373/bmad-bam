@@ -8,3 +8,4 @@
 | 2026-05-13-004 | Fix std-frontmatter internal drift; document convention map | accepted | 2026-05-13 |
 | 2026-05-13-005 | Align project-context.md location to BMM convention ({output_folder}/) | accepted | 2026-05-13 |
 | 2026-05-13-006 | Refactor module shape to BMM canonical (Atlas-as-skill) | accepted | 2026-05-13 |
+| 2026-05-13-007 | Adopt 3-tier test strategy with Tier-2 PASS-mode deferred (BMAD has no local-install API) | accepted | 2026-05-13 |
