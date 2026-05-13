@@ -10,7 +10,7 @@ outputs: [plan-c-result.txt]
 
 ## Purpose
 
-If both Plans A and B failed in resolver-side checks, fall back to a **manual** end-to-end run: a live LLM (Claude Code, Cursor, etc.) is asked to recite the sentinel token. Success = the LLM echoes back the exact `BAM_LOAD_VERIFY_<uuid>` from `_bmad/bam-activation/platform/project-context.md`, proving it actually loaded the file at activation. Plan C is the worst-case operational fallback; selecting it means BAM has a real UX regression vs Plans A and B (the user is in the loop on every install).
+If both Plans A and B failed in resolver-side checks, fall back to a **manual** end-to-end run: a live LLM (Claude Code, Cursor, etc.) is asked to recite the sentinel token. Success = the LLM echoes back the exact `BAM_LOAD_VERIFY_<uuid>` from `{output_folder}/bam-platform-project-context.md` (default `_bmad-output/bam-platform-project-context.md`, BMM-aligned per v0.7 spec §7.6), proving it actually loaded the file at activation. Plan C is the worst-case operational fallback; selecting it means BAM has a real UX regression vs Plans A and B (the user is in the loop on every install).
 
 ## Mechanism (per Task 0 / INVESTIGATION-NOTES.md)
 

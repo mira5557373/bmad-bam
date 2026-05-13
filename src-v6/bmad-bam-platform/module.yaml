@@ -25,8 +25,9 @@ post-install-notes: |
       bmad run bmad-bam-finalize
 
   This step generates the universal-glob auto-load sentinel at
-    {project-root}/_bmad/bam-activation/platform/project-context.md
-  and appends an audit entry to
+    {project-root}/{output_folder}/bam-platform-project-context.md
+  (default {output_folder} is _bmad-output/, per BMM convention — see
+  v0.7 spec §7.6) and appends an audit entry to
     {project-root}/_bmad/bam/install-logs/platform-install.log
   Re-running is safe (the sentinel is replaced atomically; the log is append-only).
 
@@ -38,9 +39,12 @@ post-install-notes: |
 # BMAD-side tooling that scans the module's filesystem layout — there is no
 # `install:` or `verify:` key recognised by the BMAD installer in v6.6.0.
 directories:
-  - "{project-root}/_bmad/bam-activation/platform"
   - "{project-root}/_bmad/bam"
   - "{project-root}/_bmad/bam/install-logs"
+  # NOTE: the sentinel file lives in {output_folder}/ (BMM-aligned per v0.7 §7.6),
+  # NOT inside _bmad/. BMAD's installer creates _bmad-output/ via the core config
+  # flow (see external/bmad-method/tools/installer/core/installer.js:1038), so
+  # the directory is reliably present at finalize time.
 
 # Agent roster — essence only. Full persona behavior lives in each agent's
 # customize.toml inside the skill that owns it. `team` defaults to the module
@@ -74,7 +78,7 @@ x-bam-requires:
 # tests/p2/INVESTIGATION-NOTES.md "Surprising / worth flagging" #3).
 x-bam-wave-0-artifacts:
   generated:
-    - "{project-root}/_bmad/bam-activation/platform/project-context.md"   # by bmad-bam-finalize
+    - "{project-root}/{output_folder}/bam-platform-project-context.md"   # by bmad-bam-finalize
     - "{project-root}/_bmad/bam/family.json"               # by smoke-test step-08
   skills-registered:
     - bmad-bam-smoke-test

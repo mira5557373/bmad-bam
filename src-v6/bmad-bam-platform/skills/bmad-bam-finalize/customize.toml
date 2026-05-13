@@ -31,7 +31,7 @@ persistent_facts = [
   "file:{project-root}/**/project-context.md",
 ]
 
-role = "Run the BAM v6 platform module's activation finalizer once: invoke scripts/post-install.sh against the host project root so the universal-glob sentinel lands in _bmad/bam-activation/platform/."
+role = "Run the BAM v6 platform module's activation finalizer once: invoke scripts/post-install.sh against the host project root so the universal-glob sentinel lands in {output_folder}/bam-platform-project-context.md (BMM-aligned per v0.7 spec §7.6)."
 
 identity = "Structural engineer's discipline applied to activation: one job, done atomically, verified before claiming success."
 

@@ -24,7 +24,7 @@ test -d "$SOURCE_DIR" || { echo "ERROR: $SOURCE_DIR missing"; exit 1; }
 # Confirm host project has BMAD config
 test -f "$PROJECT_ROOT/_bmad/config.toml" || { echo "ERROR: $PROJECT_ROOT not a BMAD project"; exit 1; }
 
-# Run post-install (creates _bmad/bam-activation/platform/, generates project-context.md)
+# Run post-install (creates {output_folder}/, generates bam-platform-project-context.md)
 SENTINEL=$("$SOURCE_DIR/scripts/post-install.sh" "$PROJECT_ROOT")
 
 echo "Install complete; sentinel=$SENTINEL"
@@ -33,11 +33,17 @@ echo "Install complete; sentinel=$SENTINEL"
 ## Verification
 
 ```bash
-# project-context.md must exist
-test -f "$PROJECT_ROOT/_bmad/bam-activation/platform/project-context.md" || { echo "FAIL: project-context.md missing"; exit 1; }
+# Resolve {output_folder} (default _bmad-output if unset; per BMM convention)
+OUTPUT_FOLDER_REL="$(grep -E '^[[:space:]]*output_folder[[:space:]]*=' "$PROJECT_ROOT/_bmad/config.toml" 2>/dev/null | head -1 | sed -E 's/^[[:space:]]*output_folder[[:space:]]*=[[:space:]]*"?([^"#]+)"?.*/\1/' | sed -E 's/[[:space:]]+$//' || echo)"
+OUTPUT_FOLDER_REL="${OUTPUT_FOLDER_REL:-_bmad-output}"
+OUTPUT_FOLDER_REL="${OUTPUT_FOLDER_REL#\{project-root\}/}"
+SENTINEL_FILE="$PROJECT_ROOT/$OUTPUT_FOLDER_REL/bam-platform-project-context.md"
+
+# bam-platform-project-context.md must exist (BMM-aligned location)
+test -f "$SENTINEL_FILE" || { echo "FAIL: $SENTINEL_FILE missing"; exit 1; }
 
 # sentinel must be present in it
-grep -q "BAM_LOAD_VERIFY_" "$PROJECT_ROOT/_bmad/bam-activation/platform/project-context.md" || { echo "FAIL: sentinel missing"; exit 1; }
+grep -q "BAM_LOAD_VERIFY_" "$SENTINEL_FILE" || { echo "FAIL: sentinel missing"; exit 1; }
 
 # install log must exist
 test -f "$PROJECT_ROOT/_bmad/bam/install-logs/platform-install.log" || { echo "FAIL: log missing"; exit 1; }
@@ -52,6 +58,7 @@ Write `{project-root}/_bmad/bam/install-logs/install-status.txt`:
 ```
 status=installed
 sentinel=<BAM_LOAD_VERIFY_...>
-target=_bmad/bam-activation/platform/project-context.md
+output_folder=<resolved-value>
+target=<output_folder>/bam-platform-project-context.md
 verified_at=<ISO-8601 UTC>
 ```

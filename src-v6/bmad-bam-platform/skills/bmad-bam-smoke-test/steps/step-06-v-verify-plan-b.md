@@ -34,14 +34,21 @@ OVERRIDE_TOML="$OVERRIDE_DIR/$SKILL_BASENAME.toml"
 
 mkdir -p "$OVERRIDE_DIR"
 
-# Plan B: explicit overlay. List the BAM project-context.md path directly so it
-# does NOT depend on glob expansion at activation.
-cat > "$OVERRIDE_TOML" <<'EOF'
+# Resolve {output_folder} so explicit override targets the BMM-aligned path
+OUTPUT_FOLDER_REL="$(grep -E '^[[:space:]]*output_folder[[:space:]]*=' "$PROJECT_ROOT/_bmad/config.toml" 2>/dev/null | head -1 | sed -E 's/^[[:space:]]*output_folder[[:space:]]*=[[:space:]]*"?([^"#]+)"?.*/\1/' | sed -E 's/[[:space:]]+$//' || echo)"
+OUTPUT_FOLDER_REL="${OUTPUT_FOLDER_REL:-_bmad-output}"
+OUTPUT_FOLDER_REL="${OUTPUT_FOLDER_REL#\{project-root\}/}"
+SENTINEL_FILE="$PROJECT_ROOT/$OUTPUT_FOLDER_REL/bam-platform-project-context.md"
+EXPLICIT_PATH="file:{project-root}/$OUTPUT_FOLDER_REL/bam-platform-project-context.md"
+
+# Plan B: explicit overlay. List the BAM bam-platform-project-context.md path directly
+# so it does NOT depend on glob expansion at activation.
+cat > "$OVERRIDE_TOML" <<EOF
 # Plan B explicit overlay — installed by bmad-bam-platform when Plan A doesn't work.
 # Authored by bmad-bam-smoke-test step-06; do not edit by hand.
 [agent]
 persistent_facts = [
-  "file:{project-root}/_bmad/bam-activation/platform/project-context.md",
+  "$EXPLICIT_PATH",
 ]
 EOF
 
@@ -53,15 +60,13 @@ fi
 # Re-run resolver after planting the override
 RESOLVED=$(python3 "$RESOLVER" --skill "$TARGET_SKILL_DIR" --key agent.persistent_facts 2>/dev/null)
 
-EXPLICIT_PATH='file:{project-root}/_bmad/bam-activation/platform/project-context.md'
 if echo "$RESOLVED" | grep -qF "$EXPLICIT_PATH"; then
     # Also confirm the sentinel file is present (same as Plan A part 2)
-    if [ ! -f "$PROJECT_ROOT/_bmad/bam-activation/platform/project-context.md" ] || \
-       ! grep -qF "$SENTINEL" "$PROJECT_ROOT/_bmad/bam-activation/platform/project-context.md"; then
-        echo "PLAN_B_FAIL: explicit path in resolved JSON but sentinel file missing/mismatched"
+    if [ ! -f "$SENTINEL_FILE" ] || ! grep -qF "$SENTINEL" "$SENTINEL_FILE"; then
+        echo "PLAN_B_FAIL: explicit path in resolved JSON but sentinel file missing/mismatched at $SENTINEL_FILE"
         exit 1
     fi
-    echo "PLAN_B_PASS: explicit overlay survived merge; sentinel file in place"
+    echo "PLAN_B_PASS: explicit overlay survived merge; sentinel file in place at $SENTINEL_FILE"
     exit 0
 else
     echo "PLAN_B_FAIL: explicit overlay did not appear in resolved persistent_facts"

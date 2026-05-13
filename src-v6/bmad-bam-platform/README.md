@@ -6,7 +6,7 @@ The platform foundation module of the BAM v6 family. Owns multi-tenant SaaS plat
 
 ## What ships in P2.1
 
-- **Activation mechanism (§7.6 Path B — selected after Task 0 invalidated Path A)** — BMAD's native `post-install-notes` channel surfaces `bmad-bam-finalize`, a one-shot skill the user invokes after `bmad install bmad-bam-platform` to generate `_bmad/bam-activation/platform/project-context.md` for universal-glob auto-load.
+- **Activation mechanism (§7.6 Path B — selected after Task 0 invalidated Path A)** — BMAD's native `post-install-notes` channel surfaces `bmad-bam-finalize`, a one-shot skill the user invokes after `bmad install bmad-bam-platform` to generate `{output_folder}/bam-platform-project-context.md` (default `_bmad-output/bam-platform-project-context.md`, BMM-aligned per v0.7 spec §7.6) for universal-glob auto-load.
 - **Atlas full persona** — voice, role, identity, principles, menu. Lives in each skill's customize.toml (per BMAD convention).
 - **One complete workflow** — `bmad-bam-design-tenancy-model` (7 steps + template). Produces tenancy-model.md design doc + ADR + partial QG-M2 evidence.
 - **5 supporting fragments** — tenancy-decision-framework, rls-deep-dive, schema-per-tenant, cell-based-architecture, tenant-isolation-testing-patterns.

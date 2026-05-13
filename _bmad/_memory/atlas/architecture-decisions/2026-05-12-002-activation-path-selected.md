@@ -8,6 +8,7 @@ related-personas: []
 modules: [bmad-bam-platform, bmad-bam-data, bmad-bam-ai, bmad-bam-ux]
 supersedes: null
 superseded-by: null
+extended-by: 2026-05-13-005
 assumptions:
   - BMAD 6.6.0 installer materializes community modules via fs.copy of declared skillPaths, not via running npm install in the host project
   - BMAD's native post-install-notes channel reliably surfaces user-facing instructions after install
@@ -17,6 +18,8 @@ dependencies-on-other-decisions:
 generated-by: claude-opus-4-7
 authored-by: collaborative
 ---
+
+> **Note (added 2026-05-13):** This ADR established Path B (manual finalize). The SENTINEL FILE LOCATION it chose (`_bmad/bam-activation/platform/project-context.md`) was later superseded by **ADR 2026-05-13-005**, which aligned the location with BMM's convention (`{output_folder}/bam-platform-project-context.md`). Path B itself remains the selected activation mechanism; only the destination path was realigned. See ADR 005 for the canonical current state.
 
 ## Context
 

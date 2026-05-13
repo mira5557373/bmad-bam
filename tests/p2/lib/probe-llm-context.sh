@@ -16,7 +16,8 @@ cat <<EOF
 PLAN C — MANUAL LLM-SIDE VERIFICATION
 
 The headless tests prove:
-  1. project-context.md exists at $PROJECT_ROOT/_bmad/bam-activation/platform/
+  1. bam-platform-project-context.md exists at $PROJECT_ROOT/{output_folder}/
+     (default: _bmad-output/; BMM-aligned per v0.7 spec §7.6)
   2. universal-glob string survives merge into target skills
   3. file contains sentinel: $SENTINEL
 

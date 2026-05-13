@@ -3,16 +3,20 @@ step_id: 01-c-run-finalize
 auto_runnable: true
 gate: machine-checkable
 inputs: [_bmad/config.toml]
-outputs: [_bmad/bam-activation/platform/project-context.md, _bmad/bam/install-logs/platform-install.log, _bmad/_memory/atlas/architecture-decisions/INDEX.md]
+outputs: ["{output_folder}/bam-platform-project-context.md", _bmad/bam/install-logs/platform-install.log, _bmad/_memory/atlas/architecture-decisions/INDEX.md]
 ---
 
 # Step 01 — Run the platform finalize script
 
 ## Purpose
 
-Generate (or refresh) `{project-root}/_bmad/bam-activation/platform/project-context.md` — the
+Generate (or refresh) `{project-root}/{output_folder}/bam-platform-project-context.md` — the
 universal-glob sentinel that opts the host project into BAM v6's Plan A
 activation contract (Wave 0, ratified 2026-05-12).
+
+Path is BMM-aligned per v0.7 spec §7.6: file lives in BMAD's `{output_folder}/`
+(default `_bmad-output/`), outside `_bmad/<module-code>/`. This survives BMAD's
+install-time wipe (`fs.remove(targetPath)` per `official-modules.js:348`).
 
 This step is a thin wrapper around `scripts/post-install.sh`. The script does
 the real work (sentinel generation, atomic write, install log append, Python
@@ -94,11 +98,19 @@ the real work (sentinel generation, atomic write, install log append, Python
 
 ## Verification (machine-checkable)
 
-After the invocation, all three output paths must exist:
+After the invocation, all three output paths must exist. The sentinel file
+lives at `{output_folder}/bam-platform-project-context.md`; resolve
+`{output_folder}` from `_bmad/config.toml` (default `_bmad-output`):
 
 ```bash
-test -f "$PROJECT_ROOT/_bmad/bam-activation/platform/project-context.md" \
-    || { echo "FAIL: project-context.md not created" >&2; exit 1; }
+# Resolve {output_folder} the same way post-install.sh does (BMM convention)
+OUTPUT_FOLDER_REL="$(grep -E '^[[:space:]]*output_folder[[:space:]]*=' "$PROJECT_ROOT/_bmad/config.toml" 2>/dev/null | head -1 | sed -E 's/^[[:space:]]*output_folder[[:space:]]*=[[:space:]]*"?([^"#]+)"?.*/\1/' | sed -E 's/[[:space:]]+$//' || echo)"
+OUTPUT_FOLDER_REL="${OUTPUT_FOLDER_REL:-_bmad-output}"
+OUTPUT_FOLDER_REL="${OUTPUT_FOLDER_REL#\{project-root\}/}"
+SENTINEL_FILE="$PROJECT_ROOT/$OUTPUT_FOLDER_REL/bam-platform-project-context.md"
+
+test -f "$SENTINEL_FILE" \
+    || { echo "FAIL: bam-platform-project-context.md not created at $SENTINEL_FILE" >&2; exit 1; }
 
 test -s "$PROJECT_ROOT/_bmad/bam/install-logs/platform-install.log" \
     || { echo "FAIL: install log not appended" >&2; exit 1; }
@@ -108,10 +120,10 @@ test -f "$PROJECT_ROOT/_bmad/_memory/atlas/architecture-decisions/INDEX.md" \
 
 # Sentinel token round-trip: the value the script printed on stdout must
 # appear inside the generated file.
-grep -qF "$SENTINEL" "$PROJECT_ROOT/_bmad/bam-activation/platform/project-context.md" \
+grep -qF "$SENTINEL" "$SENTINEL_FILE" \
     || { echo "FAIL: sentinel token not found in generated file" >&2; exit 1; }
 
-echo "OK: BAM v6 platform activation finalized."
+echo "OK: BAM v6 platform activation finalized. Sentinel at $SENTINEL_FILE."
 ```
 
 Exit 0 → success; report the sentinel and the file path to the user.
