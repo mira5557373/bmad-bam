@@ -3,7 +3,8 @@
 **Status:** approved (design), pending implementation
 **Date:** 2026-05-13
 **Author:** collaborative (atlas + claude-opus-4-7)
-**RDP review:** 2026-05-13 — incorporated findings G1 (file counts), G2 (`--modules bbp`), G3 (9-infrastructure semantics), M1 (edge cases), M2 (module-help.csv), M4 (P4 in Commit 1), R1 (PR checklist), R2 (migration cleanup), R3 (diff structure), R4 (Concern 7 parallelism), R5 (ADR 007 prior amendment)
+**RDP review v1:** 2026-05-13 — incorporated G1 (file counts), G2 (`--modules bbp`), G3 (9-infrastructure semantics), M1 (edge cases), M2 (module-help.csv), M4 (P4 in Commit 1), R1 (PR checklist), R2 (migration cleanup), R3 (diff structure), R4 (Concern 7 parallelism), R5 (ADR 007 prior amendment)
+**RDP review v2:** 2026-05-13 — incorporated G4 (P6 source-tree pattern), G5 (ADR 007 title still empirically wrong), M5 (count drift footnote), M6 (math wording), M7 (Plan C REPO_ROOT capture), M8 (ADR 008 records 9-infrastructure as BAM-extension)
 **Related ADRs:** 001 (Wave-0 plan A), 005 (project-context location), 006 (Atlas-as-skill), 007 (3-tier test strategy — amended in commit b2c779d)
 **Successor ADR:** 008 (to be authored during implementation)
 
@@ -97,9 +98,9 @@ Rationale: spec §6.1 documents the universal-glob `**/project-context.md` as a 
 | `_bmad/bam/install-logs/` BAM-family namespace | Unchanged (cross-module shared state, not module-specific) |
 | ADR 006's "everything is a skill" stance | Refined (WHERE skills live), not superseded (WHAT skills are) |
 
-## 4. Migration scope — four rename patterns
+## 4. Migration scope — six rename patterns (P1-P6)
 
-Pattern hit counts (empirically verified across the repo, excluding `external/`):
+Pattern hit counts (empirically verified across the repo, excluding `external/`; counts as of commit 73e3391 — self-additions inside this design doc may drift totals by 1-2 occurrences in P2/P4; non-material):
 
 | Pattern | Before | After | Total files | Total occurrences |
 |---|---|---|---|---|
@@ -108,20 +109,23 @@ Pattern hit counts (empirically verified across the repo, excluding `external/`)
 | **P3** | `code: bam-platform` | `code: bbp` | 4 | 5 |
 | **P4** | `team: bam-platform` | `team: bam` | 5 | 14 |
 | **P5** | `module-help.csv` content (output-location / outputs columns) | New paths per P2 | 1 (within above) | — |
+| **P6** | `src-v6/bmad-bam-platform/skills/<skill>` (source-tree references; phase-grouping refactor invalidates) | `src-v6/bmad-bam-platform/<phase>/<skill>` (per phase assignment in §2.1: Atlas→1-foundation, design-tenancy-model→2-modules, smoke-test/finalize→9-infrastructure) | 14 active (of 23 matches) | ~70 occurrences in active files |
 
-### Categorized treatment (unique files = 35)
+### Categorized treatment (unique files = ~40 across all 6 patterns)
 
 | Category | Count | Treatment |
 |---|---|---|
-| **Active operational** (`src-v6/bmad-bam-platform/`) | 16 | Full P1-P4 sweep; module-help.csv columns updated per P2 |
-| **Active spec** (`docs/v6-final-architecture.md`) | 1 | §6.1/§7.6/§7.1 prose update + v0.9 changelog entry |
-| **Active tests** (`tests/integration/MANUAL.md`, `tests/p2/lib/probe-llm-context.sh`, `tests/p2/run-real-install-test.sh`, `tests/wave-0/run-smoke-test.sh`) | 4 | Full P1-P4 sweep |
-| **Historical / annotation-only** (ADRs 002, 005, 006, 007; P2.1 plan; Wave 0 plan; RDP kickoff; v0.6 superseded patch; INVESTIGATION-NOTES; WAVE-0-OUTCOME) | 10 | One-line annotation at body top: *"Pre-Concern-5 path references reflect module state at decision time. Post-Concern-5 the module code is `bbp` and the sentinel is at `{output_folder}/bbp/project-context.md`; see ADR 008."* Body untouched. |
+| **Active operational** (`src-v6/bmad-bam-platform/`) | ~20 | Full P1-P6 sweep; module-help.csv columns updated per P2; source-tree refs in Atlas fragments + finalize scripts updated per P6 |
+| **Active spec** (`docs/v6-final-architecture.md`) | 1 | §6.1/§7.6/§7.1 prose update + v0.9 changelog entry (not a P1-P6 sweep — semantic rewrite) |
+| **Active tests** (`tests/integration/MANUAL.md`, `tests/p2/lib/probe-llm-context.sh`, `tests/p2/run-real-install-test.sh`, `tests/wave-0/run-smoke-test.sh`, `tests/wave-0/lib/sentinel.sh`, `tests/README.md`, `tests/integration/run-real-install.sh`, `src-v6/.../design-tenancy-model/tests/smoke-test.sh`) | ~8 | Full P1-P6 sweep |
+| **`.claude-plugin/marketplace.json`** | 1 | Phase-prefixed skill paths (P6) + version 0.3.0→0.4.0 |
+| **Historical / annotation-only** (ADRs 002, 005, 006; P2.1 plan; Wave 0 plan; RDP kickoffs; v0.6 superseded patch; INVESTIGATION-NOTES; WAVE-0-OUTCOME) | ~9 | One-line annotation at body top: *"Pre-Concern-5 path references reflect module state at decision time. Post-Concern-5 the module code is `bbp` and the sentinel is at `{output_folder}/bbp/project-context.md`; see ADR 008."* Body untouched. |
+| **ADR 007** (special case) | 1 | Title update + body path-refs sweep + trigger-fire annotation — see §6 |
 | **v3 frozen** (`src-v2/module.yaml`) | 1 | NOT TOUCHED. v3 is legacy/deprecated; its `team: bam-platform` reference (9 occurrences) stays. |
 | **Concern 5 self-references** (this design doc, `tests/integration/CONCERN-5-PLUGIN-RESOLVER-STRATEGY-5.md`) | 2 | NOT TOUCHED. These DESCRIBE the migration; intentionally retain the OLD strings as referents. |
 | **Audit fixtures** (`tests/fixtures/marketplace-audit/*.json`) | 0 | Unchanged. They reference plugin name `bmad-bam-platform` (long form), which isn't changing. |
 
-**Effective scope: 21 files get full P1-P4 sweep + 10 get a one-line annotation + 1 v3 untouched + 2 self-referential = 34 files in total review surface.**
+**Effective scope: ~28 active files get content updates (~20 source + ~8 tests) + 1 spec prose-rewrite + 1 marketplace.json + 1 ADR 007 (special) + 9 historical annotations = ~40 files in total review surface.**
 
 ## 5. Audit + test updates
 
@@ -216,6 +220,7 @@ assumptions:
   - ADR 006's "everything is a skill" stance stands; Concern 5 refines WHERE skills live
   - Universal-glob '**/project-context.md' strictly matches the literal filename (per spec §6.1)
   - bbp/bbd/bba/bbr/bbi/bbt/bbo/bbu short codes are not used by other BMAD modules
+  - 9-infrastructure/ is a deliberate BAM-extension of the BMM pattern (BMM has no analog since BMM is monolithic). BAM's multi-module structure motivates the category for bootstrap + operational skills (smoke-test, finalize) that don't fit the QG-progression phases (1-4). The 9- prefix sorts last. This is BMM-extension, not BMM-violation.
 dependencies-on-other-decisions:
   - 2026-05-11-001
   - 2026-05-13-005
@@ -230,7 +235,10 @@ Body sections: Context, Decision, Consequences, Alternatives Considered, Revisit
 ### Other ADRs
 
 - **ADR 006** — body-only `## Refinement note` pointing forward to ADR 008. Core "Atlas-as-skill" claim stands; layout refined. No frontmatter change.
-- **ADR 007** — body annotation: *"Revisit trigger #1 fires when Concern 5 lands (ADR 008). Follow-up PR recommended to promote Tier-2 stub to real `bmad install --custom-source` script."*
+- **ADR 007** — three updates in the Concern 5 PR (since this PR is already touching it):
+  1. **Title correction**: current title says *"Adopt 3-tier test strategy with Tier-2 PASS-mode deferred (BMAD has no local-install API)"*. The parenthetical is empirically wrong post-commit b2c779d (which amended the body to acknowledge `--custom-source` exists). Update to: *"Adopt 3-tier test strategy with Tier-2 PASS-mode deferred (BAM falls into Strategy 5)"*.
+  2. **Body path-refs sweep** (P1+P2+P6 patterns): ADR 007 cites paths like `src-v6/bmad-bam-platform/skills/bmad-bam-finalize/scripts/post-install.sh` and `_bmad/bam-platform/`. Post-refactor these become `src-v6/bmad-bam-platform/9-infrastructure/bmad-bam-finalize/scripts/post-install.sh` and `_bmad/bbp/`. Update inline.
+  3. **Trigger-fire annotation**: add body note *"Revisit trigger #1 fires when Concern 5 lands (ADR 008). Follow-up PR #6 promotes Tier-2 stub to real `bmad install --custom-source` script."*
 - **ADRs 001-005** — one-line annotation at body top (see Section 4 historical treatment); body content unchanged.
 - **INDEX.md** — add ADR 008 row.
 
@@ -278,8 +286,13 @@ tests/integration/run-real-install.sh                                           
 
 **Pre-merge gate — Plan C ratification (MANUAL, ~20 min):**
 
-1. `WORK_DIR=$(mktemp -d); bmad install --custom-source $(pwd) --modules bbp --directory "$WORK_DIR" --tools claude-code --yes`
-   - **Note:** `--modules` takes module CODES (per `install.js:32` doc: example "bmm,bmb"). After the rename, the code is `bbp`. The plugin NAME `bmad-bam-platform` stays in marketplace.json (that's the long-form marketplace identifier).
+1. ```bash
+   REPO_ROOT="$(git rev-parse --show-toplevel)"   # capture BEFORE any cd
+   WORK_DIR=$(mktemp -d)
+   bmad install --custom-source "$REPO_ROOT" --modules bbp --directory "$WORK_DIR" --tools claude-code --yes
+   ```
+   - **Note:** `--modules` takes module CODES (per `install.js:32` doc: example `"bmm,bmb"`). After the rename, the code is `bbp`. The plugin NAME `bmad-bam-platform` stays in marketplace.json (that's the long-form marketplace identifier).
+   - **Defensive:** capturing `REPO_ROOT` before `WORK_DIR` and using the explicit variable avoids future maintenance hazards if someone reorders commands and `$(pwd)` shifts unexpectedly.
 2. Verify Strategy 1 succeeded: `ls $WORK_DIR/_bmad/bbp/` should show 4 skill dirs + `module-help.csv`
 3. `cd "$WORK_DIR" && bmad run bmad-bam-finalize`
 4. Verify sentinel: `cat $WORK_DIR/_bmad-output/bbp/project-context.md | grep BAM_LOAD_VERIFY_`
