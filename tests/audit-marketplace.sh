@@ -118,60 +118,95 @@ while IFS= read -r skill; do
         emit "skill path does not exist: $skill (check a)"
         continue
     fi
-    # Check (b): path must be a leaf-skill entry — must contain a /skills/ or
-    # /workflows/ segment (v6 = /skills/<name>; v3 = /workflows/[<category>/]<name>).
-    # This catches module-root entries (e.g., ./agents).
-    # Accepts v3 + v6 skill-path conventions, including v3's categorized subdirs
-    # like /workflows/foundation/<name>. Exempts two v3-legacy bundled-content
-    # entries (./src/data and ./src/_config) that ship as part of the v3 plugin's
-    # data/config bundle — these are stable, well-known entries.
+    # Check (b): path must be a leaf-skill entry — must contain a phase-numbered
+    # segment (N-<name>/, BMM-canonical, e.g. /1-foundation/, /2-plan-workflows/),
+    # OR a /skills/ segment (legacy v6 pre-Concern-5 layout, retained for
+    # backward fixture-compat), OR a /workflows/ segment (v3 BAM, optionally with
+    # nested categories like /workflows/foundation/<name>).
+    # The phase regex [0-9]+-[a-z][a-z0-9-]* supports multi-word phase names
+    # like BMM's 2-plan-workflows. This catches module-root entries (e.g.,
+    # ./agents). Exempts two v3-legacy bundled-content entries (./src/data and
+    # ./src/_config) that ship as part of the v3 plugin's data/config bundle —
+    # these are stable, well-known entries.
     if [[ "$skill" == "./src/data" || "$skill" == "./src/_config" ]]; then
         :  # v3 legacy bundled-content carve-out
-    elif [[ ! "$skill" =~ /(skills|workflows)/ ]]; then
-        emit "skill entry is not under a /skills/ or /workflows/ segment: $skill (check b)"
+    elif [[ ! "$skill" =~ /([0-9]+-[a-z][a-z0-9-]*|skills|workflows)/ ]]; then
+        emit "skill entry is not under a phase dir (N-<name>/), /skills/, or /workflows/ segment: $skill (check b)"
     fi
 done <<<"$LISTED_SKILLS"
 
 # ─── Check (d): orphans (with .no-marketplace sentinel exclusion) ─────────
-# Per-plugin skill-root inference: derive the skills/ parent from each
-# plugin's listed skills, so multiple plugins (multiple modules) work.
+# Per-plugin scan-mode inference: each listed skill path determines a scan
+# root + mode (phase | flat). Then walk scan roots looking for sibling skill
+# dirs not listed in marketplace.json.
+#   - Phase mode (paths matching /<N>-<word>/): scan root = module dir
+#     (grandparent of skill leaf); walk all <N>-<word>/ children, then each
+#     child's direct subdirs are potential skills.
+#   - Flat mode (paths matching /skills/): scan root = .../skills/; walk
+#     direct subdirs.
+# v3 /workflows/ paths silently skip (legacy, not in scope for orphan check).
+
+declare -A SCAN_MODE_OF  # key=scan_root abs path, value="phase" or "flat"
 
 if [ -n "$SKILL_ROOT_OVERRIDE" ]; then
-    SKILL_ROOTS=("$SKILL_ROOT_OVERRIDE")
+    SCAN_MODE_OF["$SKILL_ROOT_OVERRIDE"]="flat"
 else
-    # Derive: for each listed skill of form .../skills/<name>, the skills root
-    # is its parent dir. Deduplicate.
-    SKILL_ROOTS=()
     for r in "${LISTED_RESOLVED[@]:-}"; do
         [ -z "$r" ] && continue
-        if [[ "$r" == */skills/* ]]; then
-            root="${r%/skills/*}/skills"
-            already=0
-            for s in "${SKILL_ROOTS[@]:-}"; do
-                [ "$s" = "$root" ] && already=1 && break
-            done
-            [ "$already" -eq 0 ] && SKILL_ROOTS+=("$root")
+        if [[ "$r" =~ /[0-9]+-[a-z][a-z0-9-]*/ ]]; then
+            # Phase mode: scan root = module dir (grandparent of skill leaf)
+            phase_dir="$(dirname "$r")"
+            module_dir="$(dirname "$phase_dir")"
+            SCAN_MODE_OF["$module_dir"]="phase"
+        elif [[ "$r" == */skills/* ]]; then
+            # Flat mode: scan root = .../skills/
+            scan_root="${r%/skills/*}/skills"
+            SCAN_MODE_OF["$scan_root"]="flat"
         fi
+        # v3 /workflows/ paths: no entry; silently skip
     done
 fi
 
-for skill_root in "${SKILL_ROOTS[@]:-}"; do
-    [ -z "$skill_root" ] && continue
-    [ -d "$skill_root" ] || continue
-    while IFS= read -r ondisk; do
-        # Sentinel exclusion
-        if [ -f "$ondisk/.no-marketplace" ]; then
-            continue
-        fi
-        listed=0
-        for r in "${LISTED_RESOLVED[@]:-}"; do
-            [ "$r" = "$ondisk" ] && listed=1 && break
-        done
-        if [ "$listed" -eq 0 ]; then
-            relative="${ondisk#$REPO_ROOT/}"
-            emit "skill exists on disk but not listed in marketplace.json: $relative (check d) — add to plugins[*].skills, or create a .no-marketplace sentinel file to exclude"
-        fi
-    done < <(find "$skill_root" -mindepth 1 -maxdepth 1 -type d 2>/dev/null)
+# Iterate scan roots by mode
+for scan_root in "${!SCAN_MODE_OF[@]}"; do
+    [ -d "$scan_root" ] || continue
+    mode="${SCAN_MODE_OF[$scan_root]}"
+
+    if [ "$mode" = "phase" ]; then
+        # Walk each phase-numbered subdir, then each phase dir's direct skill children
+        while IFS= read -r phase_dir; do
+            [ -z "$phase_dir" ] && continue
+            while IFS= read -r ondisk; do
+                # Sentinel exclusion
+                if [ -f "$ondisk/.no-marketplace" ]; then
+                    continue
+                fi
+                listed=0
+                for r in "${LISTED_RESOLVED[@]:-}"; do
+                    [ "$r" = "$ondisk" ] && listed=1 && break
+                done
+                if [ "$listed" -eq 0 ]; then
+                    relative="${ondisk#$REPO_ROOT/}"
+                    emit "skill exists on disk but not listed in marketplace.json: $relative (check d, phase mode) — add to plugins[*].skills, or create a .no-marketplace sentinel file to exclude"
+                fi
+            done < <(find "$phase_dir" -mindepth 1 -maxdepth 1 -type d 2>/dev/null)
+        done < <(find "$scan_root" -mindepth 1 -maxdepth 1 -type d -regextype posix-extended -regex '.*/[0-9]+-[a-z][a-z0-9-]*' 2>/dev/null)
+    else
+        # Flat mode: scan direct children of scan root
+        while IFS= read -r ondisk; do
+            if [ -f "$ondisk/.no-marketplace" ]; then
+                continue
+            fi
+            listed=0
+            for r in "${LISTED_RESOLVED[@]:-}"; do
+                [ "$r" = "$ondisk" ] && listed=1 && break
+            done
+            if [ "$listed" -eq 0 ]; then
+                relative="${ondisk#$REPO_ROOT/}"
+                emit "skill exists on disk but not listed in marketplace.json: $relative (check d) — add to plugins[*].skills, or create a .no-marketplace sentinel file to exclude"
+            fi
+        done < <(find "$scan_root" -mindepth 1 -maxdepth 1 -type d 2>/dev/null)
+    fi
 done
 
 # ─── Check (e): every v6 module-yaml has a matching plugin entry ──────────

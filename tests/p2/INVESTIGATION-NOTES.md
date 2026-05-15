@@ -180,7 +180,7 @@ activation itself must always be Path B.
    non-issue (we install via marketplace skill paths, never the repo root),
    but a future BAM contributor who adds a top-level `module.yaml` and bypasses
    marketplace.json could accidentally cause a full `node_modules` tree to
-   land in `_bmad/bam-platform/`. Flag for the contributor docs.
+   land in `_bmad/bbp/`. Flag for the contributor docs.
 3. **`x-bam-post-install` in our own module.yaml is dead** (BMAD ignores
    `x-*` keys). Task 1 should remove or relocate it to avoid implying a
    nonexistent mechanism.

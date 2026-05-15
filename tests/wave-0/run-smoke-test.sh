@@ -18,7 +18,7 @@
 #     a glob-matching path. Verified against TWO target skills per spec §7.3.
 #   - Plan B (fallback): an explicit user-tier override placed at
 #     `_bmad/custom/<skill-basename>.toml` puts the literal explicit path
-#     `file:{project-root}/_bmad-output/bam-platform-project-context.md` into the
+#     `file:{project-root}/_bmad-output/bbp/project-context.md` into the
 #     resolved `agent.persistent_facts`. Path is BMM-aligned (v0.7 spec §7.6):
 #     sentinel lives in BMAD's `{output_folder}` outside `_bmad/<module-code>/`.
 #   - Plan C is *not* exercised here; it requires a live LLM session.
@@ -109,7 +109,7 @@ if [ ! -d "$FIXTURE_DIR" ] || [ ! -f "$FIXTURE_DIR/_bmad/config.toml" ]; then
     exit 70
 fi
 
-POST_INSTALL="$REPO_ROOT/src-v6/bmad-bam-platform/skills/bmad-bam-finalize/scripts/post-install.sh"
+POST_INSTALL="$REPO_ROOT/src-v6/bmad-bam-platform/9-infrastructure/bmad-bam-finalize/scripts/post-install.sh"
 if [ ! -x "$POST_INSTALL" ]; then
     echo "ERROR: post-install hook not executable at $POST_INSTALL" >&2
     exit 70
@@ -219,21 +219,21 @@ echo ">>> step-03: sentinel=$SENTINEL"
 OUTPUT_FOLDER_REL="$(grep -E '^[[:space:]]*output_folder[[:space:]]*=' "$WORK_DIR/_bmad/config.toml" 2>/dev/null | head -1 | sed -E 's/^[[:space:]]*output_folder[[:space:]]*=[[:space:]]*"?([^"#]+)"?.*/\1/' | sed -E 's/[[:space:]]+$//' || echo)"
 OUTPUT_FOLDER_REL="${OUTPUT_FOLDER_REL:-_bmad-output}"
 OUTPUT_FOLDER_REL="${OUTPUT_FOLDER_REL#\{project-root\}/}"
-SENTINEL_FILE="$WORK_DIR/$OUTPUT_FOLDER_REL/bam-platform-project-context.md"
+SENTINEL_FILE="$WORK_DIR/$OUTPUT_FOLDER_REL/bbp/project-context.md"
 
 if [ ! -f "$SENTINEL_FILE" ]; then
-    echo "ERROR: bam-platform-project-context.md not present at $SENTINEL_FILE" >&2
+    echo "ERROR: project-context.md not present at $SENTINEL_FILE" >&2
     exit 1
 fi
 if ! grep -qF "$SENTINEL" "$SENTINEL_FILE"; then
-    echo "ERROR: sentinel token not found inside bam-platform-project-context.md" >&2
+    echo "ERROR: sentinel token not found inside project-context.md" >&2
     exit 1
 fi
 write_step_artifact "install-status.txt" \
 "status=installed
 sentinel=$SENTINEL
 output_folder=$OUTPUT_FOLDER_REL
-target=$OUTPUT_FOLDER_REL/bam-platform-project-context.md
+target=$OUTPUT_FOLDER_REL/bbp/project-context.md
 verified_at=$(date -u +%Y-%m-%dT%H:%M:%SZ)"
 
 # ---------------------------------------------------------------------------
@@ -301,7 +301,7 @@ fi
 # target skill, the explicit path survives merge into resolved persistent_facts.
 # ---------------------------------------------------------------------------
 declare -A PLAN_B_PER_SKILL=()
-PLAN_B_PATH="file:{project-root}/$OUTPUT_FOLDER_REL/bam-platform-project-context.md"
+PLAN_B_PATH="file:{project-root}/$OUTPUT_FOLDER_REL/bbp/project-context.md"
 
 if [ "$PLAN" = "unknown" ]; then
     echo ">>> step-06: Plan B check (multi-skill)"

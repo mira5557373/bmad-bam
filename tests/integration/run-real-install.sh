@@ -22,7 +22,7 @@
 #
 #   1. BAM's marketplace layout falls into PluginResolver Strategy 5
 #      (synthesized fallback), not Strategy 1. All BAM skills sit under
-#      src-v6/bmad-bam-platform/skills/, so the common parent is .../skills/.
+#      src-v6/bmad-bam-platform/*/, so the common parent is .../*/.
 #      But BAM's module.yaml lives at .../bmad-bam-platform/module.yaml —
 #      one level up. plugin-resolver.js:63-97 only matches Strategy 1 when
 #      module.yaml + module-help.csv sit AT the common parent. Result: a

@@ -44,10 +44,12 @@ assert_case() {
     local name="$1" outcome="$2" tag="$3" market="$4" v6r="$5" skr="$6"
     local stderr_out exit_code
 
-    stderr_out="$("$AUDIT" "$market" --v6-root "$v6r" --skill-root "$skr" 2>&1 1>/dev/null || true)"
+    local skr_args=()
+    [ -n "$skr" ] && skr_args=(--skill-root "$skr")
+    stderr_out="$("$AUDIT" "$market" --v6-root "$v6r" "${skr_args[@]}" 2>&1 1>/dev/null || true)"
     # Re-run to capture exit code; `|| true` prevents `set -e` from killing us
     # on the expected non-zero exits from bad fixtures.
-    "$AUDIT" "$market" --v6-root "$v6r" --skill-root "$skr" >/dev/null 2>&1 && exit_code=0 || exit_code=$?
+    "$AUDIT" "$market" --v6-root "$v6r" "${skr_args[@]}" >/dev/null 2>&1 && exit_code=0 || exit_code=$?
 
     local ok=1
     case "$outcome" in
@@ -92,6 +94,15 @@ assert_case "good-orphan-with-sentinel" pass "" \
     "$F/fake-v6" \
     "$F/fake-source/skills"
 
+# Phase-mode fixtures (Concern 5)
+# Skill-root arg deliberately empty so audit auto-detects phase mode from the
+# listed skill path. With --skill-root present, mode would force to flat and
+# the bad-phase-orphan tag would be (check d) not (check d, phase mode).
+assert_case "good-phase-numbered" pass "" \
+    "$F/marketplace-good-phase-numbered.json" \
+    "$F/fake-source" \
+    ""
+
 # Bad cases (expect non-zero exit, named tag must appear in stderr)
 assert_case "bad-missing-skill (check a)" fail "(check a)" \
     "$F/marketplace-bad-missing-skill.json" \
@@ -122,6 +133,17 @@ assert_case "bad-unknown-namespace (check f)" fail "(check f)" \
     "$F/marketplace-bad-unknown-namespace.json" \
     "$F/fake-v6-with-bad" \
     "$F/fake-v6-with-bad/bam-faux/skills"
+
+# bad-phase-orphan needs the .no-marketplace sentinel removed for this run
+# (the sentinel is restored after) — this exercises check (d) phase-mode orphan
+SENTINEL_PATH="$F/fake-source/1-test-phase/skill-phased-orphan/.no-marketplace"
+rm -f "$SENTINEL_PATH"
+assert_case "bad-phase-orphan (check d phase)" fail "(check d, phase mode)" \
+    "$F/marketplace-bad-phase-orphan.json" \
+    "$F/fake-source" \
+    ""
+# Restore sentinel for other tests
+touch "$SENTINEL_PATH"
 
 echo ""
 echo "=== Results: $PASS pass, $FAIL fail ==="

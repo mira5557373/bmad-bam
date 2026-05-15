@@ -1,4 +1,4 @@
-code: bam-platform
+code: bbp
 name: "BAM v6 — Platform Module"
 description: "Multi-tenant SaaS platform foundation. Wave 0: smoke-test skeleton only. Wave P2 builds the full module."
 default_selected: false
@@ -25,7 +25,7 @@ post-install-notes: |
       bmad run bmad-bam-finalize
 
   This step generates the universal-glob auto-load sentinel at
-    {project-root}/{output_folder}/bam-platform-project-context.md
+    {project-root}/{output_folder}/bbp/project-context.md
   (default {output_folder} is _bmad-output/, per BMM convention — see
   v0.7 spec §7.6) and appends an audit entry to
     {project-root}/_bmad/bam/install-logs/platform-install.log
@@ -55,7 +55,7 @@ agents:
     name: Atlas
     title: Platform Architect
     icon: "🏛️"
-    team: bam-platform
+    team: bam
     description: "Multi-tenant SaaS platform architect. Holds up the platform sky — RLS strategy, modular monolith decomposition, tenant tier modeling, FinOps. Speaks like a structural engineer at a whiteboard: load-bearing decisions first, every gate explicit. Owns QG-F1 (Foundation), QG-M1 (Module Architecture), QG-M2 (Tenant Isolation), QG-DA1 (Data Architecture). Invocable as `bmad run bmad-bam-agent-atlas`; also the canonical home for shared platform-module resources (resources/fragments/, resources/patterns/, resources/checklists/, resources/standards/)."
 
 # --- BAM-specific extensions (not consumed by BMAD's installer) -------------
@@ -79,7 +79,7 @@ x-bam-requires:
 # tests/p2/INVESTIGATION-NOTES.md "Surprising / worth flagging" #3).
 x-bam-wave-0-artifacts:
   generated:
-    - "{project-root}/{output_folder}/bam-platform-project-context.md"   # by bmad-bam-finalize
+    - "{project-root}/{output_folder}/bbp/project-context.md"   # by bmad-bam-finalize
     - "{project-root}/_bmad/bam/family.json"               # by smoke-test step-08
   skills-registered:
     - bmad-bam-agent-atlas

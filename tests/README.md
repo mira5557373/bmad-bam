@@ -6,7 +6,7 @@ Three tiers of regression coverage. Each tier catches a different class of bug; 
 
 | Tier | When | Scripts | What it catches |
 |---|---|---|---|
-| **1 — always run** | Every commit; CI | `tests/audit-marketplace.sh` (6 checks)<br>`tests/audit-marketplace-fixtures.sh` (8 fixture cases)<br>`tests/wave-0/run-smoke-test.sh`<br>`tests/p2/run-real-install-test.sh`<br>`src-v6/bmad-bam-platform/skills/*/tests/smoke-test.sh` | Static marketplace consistency (incl. v6 module presence + step file namespace coherence); audit's own check coverage verified via fixtures; resolver-side string merge; cp-based Path B simulation; skill machinery |
+| **1 — always run** | Every commit; CI | `tests/audit-marketplace.sh` (6 checks)<br>`tests/audit-marketplace-fixtures.sh` (8 fixture cases)<br>`tests/wave-0/run-smoke-test.sh`<br>`tests/p2/run-real-install-test.sh`<br>`src-v6/bmad-bam-platform/*/*/tests/smoke-test.sh` | Static marketplace consistency (incl. v6 module presence + step file namespace coherence); audit's own check coverage verified via fixtures; resolver-side string merge; cp-based Path B simulation; skill machinery |
 | **2 — deferred** | Manual only in v6.0 | `tests/integration/run-real-install.sh` (always SKIPs) + `tests/integration/MANUAL.md` (runbook) | Real `bmad install` + finalize + sentinel emission — PASS-mode deferred until BMAD ships local-install API or P2.x adds CI infrastructure |
 | **3 — manual** | Pre-release / per BMAD upgrade | `tests/p2/lib/probe-llm-context.sh` (instructions; the probe is human-driven) | Plan C — LLM-side activation contract |
 
@@ -28,7 +28,7 @@ tests/audit-marketplace.sh
 tests/audit-marketplace-fixtures.sh                      # asserts audit's 6 checks behave as documented
 tests/wave-0/run-smoke-test.sh
 tests/p2/run-real-install-test.sh
-src-v6/bmad-bam-platform/skills/bmad-bam-design-tenancy-model/tests/smoke-test.sh
+src-v6/bmad-bam-platform/2-modules/bmad-bam-design-tenancy-model/tests/smoke-test.sh
 
 # Tier 2 — always SKIPs in v6.0 (exit 77); manual procedure documented
 tests/integration/run-real-install.sh                    # prints SKIP message; exit 77

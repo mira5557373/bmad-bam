@@ -32,7 +32,7 @@ No module-root `agents/`, `data/`, or `scripts/` directories — BMM canonical p
 ## What ships in P2.1
 
 - **Atlas persona-skill (`bmad-bam-agent-atlas`)** — invocable directly (`bmad run bmad-bam-agent-atlas`) AND the canonical home for shared platform-module resources. Other skills reference Atlas's resources by explicit installed path (bmad-tea pattern).
-- **Activation mechanism (§7.6 Path B — selected after Task 0 invalidated Path A)** — BMAD's native `post-install-notes` channel surfaces `bmad-bam-finalize`, a one-shot skill the user invokes after `bmad install bmad-bam-platform` to generate `{output_folder}/bam-platform-project-context.md` (default `_bmad-output/bam-platform-project-context.md`, BMM-aligned per v0.7 spec §7.6) for universal-glob auto-load.
+- **Activation mechanism (§7.6 Path B — selected after Task 0 invalidated Path A)** — BMAD's native `post-install-notes` channel surfaces `bmad-bam-finalize`, a one-shot skill the user invokes after `bmad install bmad-bam-platform` to generate `{output_folder}/bbp/project-context.md` (default `_bmad-output/bbp/project-context.md`, BMM-aligned per v0.7 spec §7.6) for universal-glob auto-load.
 - **One complete CEV workflow** — `bmad-bam-design-tenancy-model` (7 steps + template). Produces tenancy-model.md design doc + ADR + partial QG-M2 evidence.
 - **5 supporting fragments** — tenancy-decision-framework, rls-deep-dive, schema-per-tenant, cell-based-architecture, tenant-isolation-testing-patterns (in Atlas's `resources/fragments/`).
 - **3 patterns** — rls-row-level-security, schema-per-tenant-with-pgbouncer, cell-based-with-routing (in Atlas's `resources/patterns/`).
@@ -77,7 +77,7 @@ Runs the design-tenancy-model workflow; produces `docs/architecture/tenancy-mode
 ## Smoke test
 
 ```bash
-src-v6/bmad-bam-platform/skills/bmad-bam-design-tenancy-model/tests/smoke-test.sh
+src-v6/bmad-bam-platform/2-modules/bmad-bam-design-tenancy-model/tests/smoke-test.sh
 ```
 
 Verifies machinery; doesn't invoke LLM.

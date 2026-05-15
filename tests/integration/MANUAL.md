@@ -91,12 +91,12 @@ except Exception:
 print(v.replace('{project-root}/', '').lstrip('/') or '_bmad-output')
 ")"
 
-SENTINEL_FILE="$WORK_DIR/$OUTPUT_FOLDER/bam-platform-project-context.md"
+SENTINEL_FILE="$WORK_DIR/$OUTPUT_FOLDER/bbp/project-context.md"
 ls "$SENTINEL_FILE"
 grep -oE 'BAM_LOAD_VERIFY_[a-f0-9]{32}' "$SENTINEL_FILE"
 ```
 
-Expected: file exists at `{output_folder}/bam-platform-project-context.md`, contains a 32-hex `BAM_LOAD_VERIFY` token.
+Expected: file exists at `{output_folder}/bbp/project-context.md`, contains a 32-hex `BAM_LOAD_VERIFY` token.
 
 ### 7. Optional — exercise Tier-3 LLM-side probe
 

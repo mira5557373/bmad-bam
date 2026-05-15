@@ -1,0 +1,12 @@
+{
+  "name": "audit-fixture", "owner": { "name": "BAM Test Harness" },
+  "description": "BAD — check (d) phase mode: skill-phased-orphan exists at 1-test-phase/ but not listed. (For this fixture, the .no-marketplace sentinel on skill-phased-orphan must be REMOVED — see fixture runner.)",
+  "plugins": [{
+    "name": "bmad-bam-platform-faux", "source": "./", "version": "0.0.1",
+    "description": "Bad fixture (phase-mode orphan).",
+    "author": { "name": "BAM Test Harness" },
+    "skills": [
+      "./tests/fixtures/marketplace-audit/fake-source/1-test-phase/skill-phased"
+    ]
+  }]
+}

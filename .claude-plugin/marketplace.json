@@ -217,15 +217,15 @@
       "name": "bmad-bam-platform",
       "source": "./",
       "description": "BAM v6 Platform Module — multi-tenant SaaS foundation (Wave 0 + P2.1 MVP). Ships: bmad-bam-agent-atlas (persona-as-skill; canonical home for shared platform-module resources), bmad-bam-finalize (Path B activation), bmad-bam-smoke-test (Wave 0 verification), bmad-bam-design-tenancy-model (first CEV workflow). Module-shape matches BMM-canonical pattern (no module-root content dirs; everything is a skill).",
-      "version": "0.3.0",
+      "version": "0.4.0",
       "author": {
         "name": "BMAD Community"
       },
       "skills": [
-        "./src-v6/bmad-bam-platform/skills/bmad-bam-agent-atlas",
-        "./src-v6/bmad-bam-platform/skills/bmad-bam-smoke-test",
-        "./src-v6/bmad-bam-platform/skills/bmad-bam-finalize",
-        "./src-v6/bmad-bam-platform/skills/bmad-bam-design-tenancy-model"
+        "./src-v6/bmad-bam-platform/1-foundation/bmad-bam-agent-atlas",
+        "./src-v6/bmad-bam-platform/9-infrastructure/bmad-bam-smoke-test",
+        "./src-v6/bmad-bam-platform/9-infrastructure/bmad-bam-finalize",
+        "./src-v6/bmad-bam-platform/2-modules/bmad-bam-design-tenancy-model"
       ]
     }
   ]

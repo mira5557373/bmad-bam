@@ -22,6 +22,8 @@ firing, not a fully-clean marketplace that exercises one check in isolation.
 | `marketplace-bad-orphan-skill-with-sentinel.json` | PASS | (d) sentinel correctly excludes |
 | `marketplace-bad-missing-module-entry.json` | FAIL | (e) v6 module has no plugin |
 | `marketplace-bad-unknown-namespace.json` | FAIL | (f) step file unknown namespace |
+| `marketplace-good-phase-numbered.json` | PASS | (b) phase regex + (d) phase-mode scan |
+| `marketplace-bad-phase-orphan.json` | FAIL | (d) phase-mode orphan detection |
 
 ## Sentinel — `.no-marketplace`
 
@@ -40,13 +42,15 @@ Empty file is sufficient; the audit only checks for presence. Skills WITH the se
 - `fake-v6/bam-faux/module.yaml` — fixture v6 module-yaml
 - `fake-v6/bam-faux/skills/good-skill` — clean skill for the good fixture to satisfy check (e)
 - `fake-v6-with-bad/bam-faux/skills/bad-namespace-skill/steps/step-bad.md` — exercises check (f). Note: this lives in a **separate** v6-root (`fake-v6-with-bad/`) so the clean fixtures using `fake-v6/` aren't tripped by it. The check-(f) fixture passes `--v6-root fake-v6-with-bad` explicitly. (The skill dir does not have a `.no-marketplace` sentinel — that's unrelated to check (f), which scans step files regardless of the orphan-check status.)
+- `fake-source/1-test-phase/skill-phased` — listed in good-phase-numbered fixture; tests phase-mode scan
+- `fake-source/1-test-phase/skill-phased-orphan` — has `.no-marketplace` (good fixture); driver toggles sentinel for bad-phase-orphan fixture run
 
 ## Running the fixtures
 
 The driver script `tests/audit-marketplace-fixtures.sh` runs all fixtures and asserts each behaves as documented in the Fixtures table:
 
 ```bash
-tests/audit-marketplace-fixtures.sh        # run all 8 cases
+tests/audit-marketplace-fixtures.sh        # run all 10 cases
 tests/audit-marketplace-fixtures.sh -v     # verbose: show stderr per case
 ```
 
