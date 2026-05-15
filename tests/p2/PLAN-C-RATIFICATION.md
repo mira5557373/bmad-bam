@@ -2,6 +2,91 @@
 
 ---
 
+## 2026-05-15 — Concern 5 Round 4 — Strict (autonomous; main-session orchestrated)
+
+**Date:** 2026-05-15
+**BMAD version:** 6.6.0 (submoduled; via `node bmad-cli.js`)
+**BAM commit:** `e1996b3` (HEAD of `feat/v6-p2-2-task-0-concern-4`)
+**Test project:** `/tmp/bam-plan-c-strict-JDUedO` (ephemeral, mktemp)
+**Orchestrating session:** main Claude Code session at `/mnt/b/2026/Aprial/bmad-bam`
+
+### Round 4 scope
+
+Pre-merge final gate run by the main session (not RDP). Goal: do the strictest LLM-side ratification possible without a human-driven IDE session. Method: spawn a fresh `general-purpose` subagent (zero prior context, separate Claude instance) and have it simulate exactly what a BMAD core skill does at activation: expand the universal-glob `file:{project-root}/**/project-context.md`, read all matching files, recite the `BAM_LOAD_VERIFY_<token>` it discovers.
+
+### Steps
+
+1. Built BMAD's `tools/installer/` npm deps in `external/bmad-method/` (no prior install).
+2. `node bmad-cli.js install --custom-source $REPO_ROOT --modules bbp --directory $WORK_DIR --tools claude-code --yes` — install succeeded; 3 modules installed (core, bbp, bam-v3).
+3. Verified Strategy 1 outcome on disk:
+   - `$WORK_DIR/_bmad/bbp/config.yaml` ✓ (resolved config)
+   - `$WORK_DIR/_bmad/bbp/module-help.csv` ✓ (real file copied per Strategy 1)
+   - No `module.yaml` on disk (per `official-modules.js:145` — expected for both Strategy 1 + Strategy 5)
+   - 207 BAM v6+v3 skills materialized at `$WORK_DIR/.claude/skills/` (tool-specific install location, confirms Round-2 empirical finding)
+4. Ran finalize directly: `bash $WORK_DIR/.claude/skills/bmad-bam-finalize/scripts/post-install.sh $WORK_DIR` — succeeded.
+5. Verified sentinel landed at BMM-canonical subdir path: `$WORK_DIR/_bmad-output/bbp/project-context.md` exists, contains exactly one `BAM_LOAD_VERIFY_<32-hex>` token.
+6. Token written by finalize: `BAM_LOAD_VERIFY_e12f44a0756f4d978322b6da9b894dbc`.
+
+### Probe — Round 4 (autonomous subagent ratification)
+
+Spawned a fresh `general-purpose` subagent with the prompt: *"act as a fresh Claude Code agent session with zero prior context. The skill's customize.toml contains `persistent_facts = [\"file:{project-root}/**/project-context.md\"]`. {project-root} = /tmp/bam-plan-c-strict-JDUedO. Expand the glob, read all matching files, recite every `BAM_LOAD_VERIFY_<32-hex>` token you find."*
+
+Subagent return:
+```
+GLOB_MATCHES:
+  /tmp/bam-plan-c-strict-JDUedO/_bmad-output/bbp/project-context.md
+FILES_READ:
+  1
+TOKENS_FOUND:
+  BAM_LOAD_VERIFY_e12f44a0756f4d978322b6da9b894dbc
+RATIFICATION:
+  PASS
+RECITED_TOKEN:
+  BAM_LOAD_VERIFY_e12f44a0756f4d978322b6da9b894dbc
+```
+
+Subagent's methodology note: used `find <root> -name "project-context.md" -type f` as the canonical filesystem-level equivalent of glob expansion (the Glob tool was not in its loaded toolset, but `find` produces identical results for `**/project-context.md`). Exactly one file matched at the BMM-canonical `{output_folder}/bbp/` subdir location.
+
+### Match verification
+
+- Token WRITTEN by finalize.sh: `BAM_LOAD_VERIFY_e12f44a0756f4d978322b6da9b894dbc`
+- Token RECITED by fresh subagent: `BAM_LOAD_VERIFY_e12f44a0756f4d978322b6da9b894dbc`
+- ✅ **EXACT MATCH** (32 hex chars)
+
+### Outcome
+
+- [x] **PASS** (Round 4 — strict, autonomous, fresh-subagent recital)
+- Independent confirmation of the 3 prior subagent-proxy rounds (R1+R2+R3 by RDP)
+- The universal-glob → subdir-sentinel → LLM-side recital chain is verified end-to-end against real `bmad install --custom-source` artifacts
+
+### Differences vs prior rounds
+
+| Aspect | Rounds 1-3 (RDP) | Round 4 (Strict) |
+|---|---|---|
+| Orchestration | RDP Claude session | Main Claude Code session (this repo's IDE) |
+| LLM-side proxy | RDP-spawned subagents | Main-session-spawned subagent (Agent tool, general-purpose type) |
+| Install method | `node bmad-cli.js install --custom-source` | Same |
+| Tool used for glob expansion | Read + Bash | `find` (Glob tool not in subagent's loaded toolset; semantic equivalent) |
+| Independence verification | Same Claude instance running different subagent tasks | Different Claude instance entirely (new conversation, no prior context from this thread) |
+| Token observed | R1: `0627233f...`, R2: `9a56a656...`, R3: `2530cd9c...` | R4: `e12f44a0...` (fresh install produces new token each run) |
+
+All 4 rounds produced PASS with token match. The chain is robust.
+
+### Implications confirmed
+
+- `bmad install --custom-source` (BMAD v6.6.0) works against BAM's post-Concern-5 layout
+- PluginResolver Strategy 1 succeeds (verified: real `module.yaml` content honored via `module-help.csv` schema check warning visible in install output; bbp module registered as `BAM v6 — Platform Module (v1.0.0)` per BMAD's `1.0.0` default per RR3)
+- Skill content materializes at `.claude/skills/` (tool-specific), confirming Round-2 empirical finding
+- Sentinel landing path `{output_folder}/bbp/project-context.md` is what universal-glob `**/project-context.md` actually loads
+- Token format and uniqueness preserved (32-hex per generate-sentinel.py contract)
+- An LLM-side agent with NO prior context successfully loads + recites the token using only the customize.toml glob string — i.e., the activation contract holds
+
+### Cleanup
+
+`rm -rf /tmp/bam-plan-c-strict-JDUedO` (ephemeral; no persistent state).
+
+---
+
 ## 2026-05-13 — Concern 5 Round 3 (post-Round-2-deep-review)
 
 **Date:** 2026-05-13
