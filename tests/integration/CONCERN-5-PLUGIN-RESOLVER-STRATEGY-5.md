@@ -1,8 +1,10 @@
 # Concern 5 — BAM marketplace layout falls into PluginResolver Strategy 5
 
-**Status:** open / backlog. Referenced from ADR 007.
+> **⚡ Resolved 2026-05-13 (PR #3 extended to cover Concern 5; ADR 008 records the decision):** BAM's marketplace layout now succeeds at PluginResolver Strategy 1. Skills are grouped under phase-numbered subdirs (`1-foundation/`, `2-modules/`, `9-infrastructure/`), so the common parent equals the module dir where `module.yaml` + `module-help.csv` both live. Real `module.yaml` is honored at install time. ADR 007 revisit trigger #1 is now FIRED; PR #6 promotes the Tier-2 stub. This discovery note is retained as the historical empirical record — path references in the body reflect pre-Concern-5 module state.
+
+**Status:** ~~open / backlog~~ → resolved 2026-05-13 (Concern 5 PR; ADR 008). Originally referenced from ADR 007.
 **Discovered:** PR #3 review (Concern 4 deep dive).
-**Scope:** does not block PR #3; tracks a follow-up that unblocks Tier-2 PASS-mode.
+**Scope:** ~~does not block PR #3~~ → folded into the same PR #3 (Concerns 4 + 5 combined).
 
 ## Summary
 

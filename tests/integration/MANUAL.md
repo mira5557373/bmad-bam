@@ -51,8 +51,8 @@ bmad install \
 What this does (per source-reading, BMAD v6.6.0):
 
 - Reads `$REPO_ROOT/.claude-plugin/marketplace.json` directly (no clone, no cache).
-- Resolves the 4 listed skills via PluginResolver. For BAM's current layout, this falls into **Strategy 5** (synthesized fallback). The synthesized `module.yaml` lives only in `CustomModuleManager._resolutionCache` (in-memory) — it is NEVER written to disk. A `module-help.csv` IS synthesized from each skill's SKILL.md frontmatter and written to the installed module root.
-- Copies the 4 skill directories into `$WORK_DIR/_bmad/bmad-bam-platform/<skill-name>/`.
+- Resolves the 4 listed skills via PluginResolver. **Post-Concern-5** (ADR 008, PR #3 commit `7d17446`) BAM's marketplace layout succeeds at **Strategy 1**: the common parent of the 4 listed skills (phase-grouped under `1-foundation/`, `2-modules/`, `9-infrastructure/`) is the module dir itself, where the real `module.yaml` + `module-help.csv` both live. Strategy 1 reads the real `module.yaml`; `agents:`, `directories:`, `x-bam-*` extensions are no longer inert.
+- Copies the 4 skill directories into `$WORK_DIR/_bmad/bbp/<skill-name>/` (flat — install path uses module code from module.yaml, which is `bbp` post-Concern-5).
 - Writes the project manifest tracking your local source path.
 
 Expected output: install succeeds; no errors about missing skills or path traversal.
@@ -60,7 +60,7 @@ Expected output: install succeeds; no errors about missing skills or path traver
 ### 4. Verify skill content landed
 
 ```bash
-ls "$WORK_DIR/_bmad/bmad-bam-platform/" | sort
+ls "$WORK_DIR/_bmad/bbp/" | sort
 # Expect:
 #   bmad-bam-agent-atlas/
 #   bmad-bam-design-tenancy-model/
@@ -68,6 +68,8 @@ ls "$WORK_DIR/_bmad/bmad-bam-platform/" | sort
 #   bmad-bam-smoke-test/
 #   module-help.csv
 ```
+
+(No `module.yaml` on disk — Strategy 1 reads it from source via the resolution cache; only `module-help.csv` lands on disk. See ADR 008 for the empirical chain.)
 
 If any expected directory is missing, the install pipeline failed — `marketplace.json` or skill paths drifted (the class of bug PR #2 originally shipped).
 
@@ -119,7 +121,7 @@ Add a comment to the PR with:
 - Local source SHA verified
 - Sentinel token observed
 - Plan C ratification result (if exercised)
-- Any anomalies (especially around Strategy-5 synthesized module.yaml — see Concern 5 backlog)
+- Any anomalies (e.g., Strategy-1 module.yaml parsing edge cases — Concern 5 has resolved Strategy-5 fallback per ADR 008)
 
 ### 9. Clean up
 
@@ -136,12 +138,12 @@ rm -rf "$WORK_DIR"
 
 ## Limitations of this manual procedure
 
-Because BAM currently resolves via Strategy 5 (synthesized fallback):
+Post-Concern-5 (ADR 008), BAM's marketplace layout succeeds at PluginResolver Strategy 1:
 
-- The real `src-v6/bmad-bam-platform/module.yaml` is NOT installed (NOT replaced with a stub — there is no `module.yaml` at all in `$WORK_DIR/_bmad/bmad-bam-platform/`). Its `agents:` block, `directories:`, `x-bam-*` extensions, and `post-install-notes` are silently inert post-install.
-- Skill content + `marketplace.json` correctness ARE validated. The Path B (manual finalize) activation chain works because `bmad run` walks installed skill dirs by SKILL.md, not module.yaml.
-- For full module.yaml validation, Concern 5 must land first (layout fix → Strategy 1 succeeds), after which this procedure exercises the full install.
+- The real `src-v6/bmad-bam-platform/module.yaml` IS honored at install time (read from source via resolution cache; not written to disk per BMAD's design — see `official-modules.js:145`). `agents:`, `directories:`, `x-bam-*` extensions, and `post-install-notes` are no longer inert.
+- Skill content + `marketplace.json` correctness ARE validated. Path B (manual finalize) activation chain works.
+- Tier-3 (Plan C LLM-side ratification) remains the gate for verifying that BMAD core skills actually load the sentinel at activation — see `tests/p2/PLAN-C-RATIFICATION.md`.
 
 ## Future state
 
-When Concern 5 (marketplace layout fix) + CI infrastructure land, `tests/integration/run-real-install.sh` upgrades from SKIP to a real script that automates this exact procedure inside `$(mktemp -d)`.
+When CI infrastructure for ephemeral tmpdir (`bmad install --directory <tmpdir>`) lands, `tests/integration/run-real-install.sh` upgrades from SKIP to a real script that automates this exact procedure inside `$(mktemp -d)`. PR #6 owns that promotion per ADR 007 trigger #1 (marked FIRED by Concern 5).

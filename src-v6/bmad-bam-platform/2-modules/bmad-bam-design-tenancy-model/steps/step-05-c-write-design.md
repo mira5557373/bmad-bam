@@ -15,7 +15,7 @@ Produce a tenancy-model.md design doc using the template + inputs from prior ste
 
 ## Actions
 
-1. Read template at `skills/bmad-bam-design-tenancy-model/templates/tenancy-model.md.template`.
+1. Read template at `../templates/tenancy-model.md.template` (skill-relative; BMM convention).
 2. Substitute placeholders with values from `tenancy-context.json` + `recommendation.json` + relevant fragments.
 3. Write the populated doc to `{project-root}/docs/architecture/tenancy-model.md`.
 4. Validate sections present per template.

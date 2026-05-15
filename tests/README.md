@@ -50,7 +50,7 @@ When in doubt, prefer Tier 1 — broader coverage, lower cost.
 
 ## `.no-marketplace` sentinel
 
-A skill dir under `src-v6/*/skills/<name>/` containing a file named `.no-marketplace` is excluded from the orphan check `audit-marketplace.sh` (d). Use cases:
+A skill dir (under `src-v6/<module>/<N-phase>/<name>/` post-Concern-5, or legacy `src-v6/<module>/skills/<name>/` for backward fixture-compat) containing a file named `.no-marketplace` is excluded from the orphan check `audit-marketplace.sh` (d). The audit walks phase mode + flat mode (v3 `/workflows/` paths silently skip). Use cases:
 - WIP skill not yet marketplace-ready
 - Test-only or internal-helper skill that should never be installed
 

@@ -20,21 +20,20 @@
 #
 # The reasons Tier-2 PASS-mode is deferred for v6.0:
 #
-#   1. BAM's marketplace layout falls into PluginResolver Strategy 5
-#      (synthesized fallback), not Strategy 1. All BAM skills sit under
-#      src-v6/bmad-bam-platform/*/, so the common parent is .../*/.
-#      But BAM's module.yaml lives at .../bmad-bam-platform/module.yaml —
-#      one level up. plugin-resolver.js:63-97 only matches Strategy 1 when
-#      module.yaml + module-help.csv sit AT the common parent. Result: a
-#      `bmad install --custom-source $(pwd)` would copy the 4 skills but
-#      synthesize a stub module.yaml from marketplace.json metadata,
-#      losing BAM's real agents:/directories:/x-bam-* extensions. Partial
-#      validation only — promoted to Concern 5 backlog.
+#   1. ~~BAM falls into PluginResolver Strategy 5~~ — RESOLVED 2026-05-13
+#      (Concern 5, ADR 008, PR #3 commit `7d17446`). BAM's marketplace
+#      layout now succeeds at PluginResolver Strategy 1: skills are
+#      grouped under phase-numbered subdirs (1-foundation/, 2-modules/,
+#      9-infrastructure/), so common parent = src-v6/bmad-bam-platform/,
+#      where module.yaml + module-help.csv both live. Real module.yaml
+#      is honored at install time; `agents:`, `directories:`, `x-bam-*`
+#      are no longer inert. → Promotion to PASS-mode is now blocked
+#      only by reasons 2 + 3 below.
 #
 #   2. Hard dependency on `bmad` CLI on every contributor/CI machine.
 #      Without it, Tier-2 cannot run; with it gated behind "skip when
-#      missing", green CI would imply more coverage than the Strategy-5
-#      degraded install actually delivers.
+#      missing", green CI would imply more coverage than the install
+#      actually delivers on machines where bmad is absent.
 #
 #   3. CI infrastructure for ephemeral tmpdir-as-project-root
 #      (bmad install --directory <tmpdir>) + bmad-method npm-install
@@ -42,10 +41,11 @@
 #
 # A future v6.x Tier-2 PASS-mode would look roughly like:
 #   bmad install --custom-source "$(git rev-parse --show-toplevel)" \
-#                --modules bmad-bam-platform \
+#                --modules bbp \
 #                --directory "$(mktemp -d)" \
 #                --tools claude-code --yes
-# and would land alongside the Concern-5 layout fix.
+# PR #6 promotes this stub to a real script per ADR 007's trigger #1
+# (marked FIRED 2026-05-13 by Concern 5 landing).
 #
 # In the meantime: Tier-1 (tests/audit-marketplace.sh) catches the
 # regression classes Tier-2 was originally meant to catch (marketplace.json
@@ -59,11 +59,11 @@ SKIP: Tier-2 real-install PASS-mode is deferred in v6.0.
 
   BMAD v6.6.0 DOES have a local-install API (bmad install --custom-source
   <path>). The deferral is because:
-    - BAM's marketplace layout currently resolves via PluginResolver Strategy
-      5 (synthesized fallback) — real module.yaml is bypassed, only partial
-      validation. Tracked as Concern 5.
+    - ~~BAM's layout forces Strategy 5~~ RESOLVED 2026-05-13 (Concern 5,
+      ADR 008): phase-grouped layout now succeeds at Strategy 1.
     - Hard dep on bmad CLI on every dev/CI machine.
     - Ephemeral tmpdir CI scaffolding (bmad install --directory) not built.
+    - PR #6 promotes this stub to a real script (ADR 007 trigger #1 FIRED).
 
   See this script's header comment for full empirical evidence chain.
 

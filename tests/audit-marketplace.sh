@@ -6,9 +6,12 @@
 #
 # Checks:
 #   (a) every listed skill path exists on disk
-#   (b) every listed skill ends in /skills/<name> (no module-root entries)
+#   (b) every listed skill is under /<N>-<phase>/<name>/ (BMM-canonical),
+#       /skills/<name>/ (legacy v6 pre-Concern-5), or /workflows/[<cat>/]<name>/
+#       (v3); no module-root entries
 #   (c) every plugin has a `version` field
-#   (d) no orphans — every skill under <plugin-derived-skill-root>/ is listed,
+#   (d) no orphans — every skill under <plugin-derived-scan-root>/ is listed
+#       (phase mode walks <module>/<N-phase>/<skill>/; flat mode walks .../skills/<skill>/),
 #       UNLESS the skill dir contains a `.no-marketplace` sentinel file
 #   (e) every v6 module under <v6-root>/ (each src-v6/*/module.yaml) has at
 #       least one corresponding plugin entry in marketplace.json

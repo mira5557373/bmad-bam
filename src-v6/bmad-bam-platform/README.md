@@ -1,33 +1,37 @@
 # bmad-bam-platform
 
-> **Status:** P2.1 MVP (post-Wave-0 + 3 pre-merge alignment phases). One usable workflow + activation mechanism realized + module shape canonical-aligned with BMM.
+> **Status:** P2.2 MVP (post-Wave-0 + Concern 5 layout refactor). One usable workflow + Path B activation + module shape phase-grouped per BMM canonical. Module code: `bbp`.
 
 The platform foundation module of the BAM v6 family. Owns multi-tenant SaaS platform foundation: tenancy isolation, modular monolith decomposition, deployment topology, FinOps, tenant tier modeling, billing/tax/rate-limiting.
 
-## Module structure (BMM-canonical, per v0.8 spec §6.1)
+## Module structure (BMM-canonical phase-grouped, per v0.9 spec §6.1)
 
 ```
 bmad-bam-platform/
-├── module.yaml                          (BMAD module declaration; x-bam-* extensions)
+├── module.yaml                          (BMAD module declaration; code=bbp; x-bam-* extensions)
 ├── module-help.csv                      (BMM convention)
 ├── README.md                            (this file)
-└── skills/
-    ├── bmad-bam-agent-atlas/            (persona-as-skill; canonical home for shared content)
-    │   ├── SKILL.md
-    │   ├── customize.toml
-    │   └── resources/
-    │       ├── platform-index.csv       (fragment index)
-    │       ├── bam-patterns.csv         (pattern index)
-    │       ├── fragments/               (6 fragments)
-    │       ├── patterns/                (3 patterns)
-    │       ├── checklists/              (QG-M2)
-    │       └── standards/               (std-frontmatter, std-validation, std-adr)
-    ├── bmad-bam-smoke-test/             (Wave 0 verification workflow)
-    ├── bmad-bam-finalize/               (Path B activation; ships scripts/post-install.sh)
-    └── bmad-bam-design-tenancy-model/   (first CEV design workflow)
+├── 1-foundation/                        QG-F1 — Atlas + foundation skills
+│   └── bmad-bam-agent-atlas/            persona-as-skill; canonical home for shared content
+│       ├── SKILL.md
+│       ├── customize.toml
+│       └── resources/
+│           ├── platform-index.csv       fragment index
+│           ├── bam-patterns.csv         pattern index
+│           ├── fragments/               6 fragments
+│           ├── patterns/                3 patterns
+│           ├── checklists/              QG-M2
+│           └── standards/               std-frontmatter, std-validation, std-adr
+├── 2-modules/                           QG-M1/M2/M3 — tenant + agent-runtime workflows
+│   └── bmad-bam-design-tenancy-model/   first CEV design workflow
+├── 3-integration/                       QG-I1/I2/I3 — placeholder (future Kai workflows)
+├── 4-readiness/                         QG-P1 — placeholder (future production-readiness)
+└── 9-infrastructure/                    bootstrap + operational (BAM-extension of BMM)
+    ├── bmad-bam-smoke-test/             Wave 0 verification workflow
+    └── bmad-bam-finalize/               Path B activation; ships scripts/post-install.sh
 ```
 
-No module-root `agents/`, `data/`, or `scripts/` directories — BMM canonical pattern.
+Phase-numbered grouping (BMM convention) means the common parent of all listed skills = the module dir itself = `module.yaml` location → PluginResolver Strategy 1 succeeds → real `module.yaml` is honored at install time. See ADR 008 for the empirical chain. No module-root `agents/`, `data/`, or `scripts/` directories.
 
 ## What ships in P2.1
 

@@ -47,9 +47,9 @@ directories:
   # the directory is reliably present at finalize time.
 
 # Agent roster — essence only. Full persona behavior lives in the persona-skill
-# `skills/bmad-bam-agent-atlas/customize.toml` (per BMM convention — agents are
-# real, invocable skills, not module-root content). `team` defaults to the module
-# code when omitted.
+# `1-foundation/bmad-bam-agent-atlas/customize.toml` (BMM-canonical phase-grouped
+# layout per Concern 5 / v0.9 spec §6.1 — agents are real, invocable skills, not
+# module-root content). `team` defaults to the module code when omitted.
 agents:
   - code: bmad-bam-agent-atlas
     name: Atlas
