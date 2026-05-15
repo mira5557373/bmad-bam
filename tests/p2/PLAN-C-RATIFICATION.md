@@ -2,6 +2,51 @@
 
 ---
 
+## 2026-05-13 — Concern 5 Round 2 (post-deep-review)
+
+**Date:** 2026-05-13
+**BMAD version:** 6.6.0 (submoduled; via `node bmad-cli.js`)
+**BAM commit:** post-Round-2 gap fixes (to be committed atop `2857b4b`)
+**Test project:** `/tmp/bam-plan-c-r2-SGsUb` (ephemeral)
+**Sentinel token observed:** `BAM_LOAD_VERIFY_9a56a656fd854616b600a9a19c03dffc`
+
+### Round 2 verification scope
+
+Round 1's Plan C only verified the universal-glob → sentinel chain. Round 2 deep review uncovered that `bmad-bam-design-tenancy-model`'s `persistent_facts` referenced 5 cross-skill `file:` paths at `_bmad/bbp/bmad-bam-agent-atlas/resources/fragments/<file>.md` — but real `bmad install --tools claude-code` puts skill content at `.claude/skills/<skill>/`, NOT at `_bmad/<code>/<skill>/`. The cross-skill `file:` paths would silently fail to resolve at activation.
+
+Round 2 fixes:
+- Dropped the 5 broken `file:` entries from `bmad-bam-design-tenancy-model/customize.toml`; only the universal-glob remains
+- Rewrote `step-02-c-load-options.md`'s fragment-loading instruction to use BMM convention: runtime Read tool with tool-aware path fallback (`.claude/skills/...` → `.cursor/skills/...` → `_bmad/bbp/...`)
+- Softened ADR 008 + spec §6.1 + README claims to match empirical reality (tool-specific install location; `directories:` partial honor; etc.)
+- Added `module_version: "0.4.0"` to module.yaml (BMAD plugin-resolver expects this field for Strategy-1 version-fallback)
+- Documented cp-sim divergence vs real install in MANUAL.md (PR #6 promotes Tier-2 PASS-mode)
+
+### Probe — Round 2 (autonomous)
+
+1. `node external/bmad-method/tools/installer/bmad-cli.js install --custom-source $REPO_ROOT --modules bmm,bbp --directory $WORK_DIR --tools claude-code --yes` → install succeeded; 4 modules registered.
+2. Strategy 1 verified: `$WORK_DIR/_bmad/bbp/` contains `config.yaml` + `module-help.csv`.
+3. Defensive mkdir verified: `bmad-bam-finalize/scripts/post-install.sh` creates `_bmad/bam/install-logs/` at runtime (the `directories:` declaration was partially honored — module.yaml top-level dir created but not the nested subdir).
+4. Sentinel emitted to `$WORK_DIR/_bmad-output/bbp/project-context.md` with token `BAM_LOAD_VERIFY_9a56a656fd854616b600a9a19c03dffc`.
+5. Subagent re-verified BOTH contracts:
+   - Universal-glob → sentinel chain: `sentinel_token: BAM_LOAD_VERIFY_9a56a656fd854616b600a9a19c03dffc`
+   - Cross-skill fragment access (step-02's runtime Read with path-fallback):
+     - `fragment_path_claude_code: exists` ✓
+     - `fragment_path_cursor: missing` (expected — not installed)
+     - `fragment_path_bmad_internal: missing` (expected — BMAD doesn't materialize skill content at `_bmad/<code>/<skill>/`)
+     - `fragment_first_match: .claude/skills/bmad-bam-agent-atlas/resources/fragments/tenancy-decision-framework.md` ✓
+
+### Outcome
+
+- [x] **PASS** (Round 2) — both universal-glob and cross-skill fragment-loading contracts proven; step-02's tool-aware path fallback works correctly for claude-code (and would work for cursor or BMAD-internal if those install variants materialized content there).
+
+### Implications confirmed by Round 2
+
+- Workflow design now matches empirical BMAD behavior: BMM-style runtime Read for cross-skill resources, not persistent_facts `file:` entries that assume `_bmad/<code>/<skill>/` paths.
+- ADR 008's claims aligned with empirical observation: Strategy 1 succeeds; module.yaml read into resolution cache; `post-install-notes` displays; `module-help.csv` rows merge; `agents:` recorded in skill-manifest.csv; `directories:` partially honored; `x-bam-*` BAM-tooling-only.
+- Workflow runtime correctness restored: step-02's fragment Read will succeed in actual claude-code installs.
+
+---
+
 ## 2026-05-13 — Concern 5 ratification (PR #3, post-Concern-5)
 
 **Date:** 2026-05-13

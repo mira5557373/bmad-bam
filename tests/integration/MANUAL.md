@@ -138,6 +138,8 @@ rm -rf "$WORK_DIR"
 
 ## Limitations of this manual procedure
 
+**Structural divergence between cp-sim tests and real `bmad install`:** the `tests/p2/run-real-install-test.sh` cp-simulator copies skill content into `_bmad/bbp/<skill-name>/` (its model of "Path B install"), but real BMAD installs skill content into the **tool-specific dir** — `.claude/skills/<skill-name>/` for claude-code, `.cursor/skills/<skill-name>/` for cursor, etc. `_bmad/<code>/` only holds the resolved `config.yaml` + `module-help.csv` after real install (verified empirically against bmad CLI v6.6.0). The cp-sim is approximate: it validates Strategy 1 module-level invariants (module.yaml + module-help.csv at common parent, sentinel writes correctly) but NOT the actual skill-content install LOCATION. The Plan C ratification (`tests/p2/PLAN-C-RATIFICATION.md`) is the gate for cross-tool-dir behavior; PR #6's Tier-2 PASS-mode promotion automates that.
+
 Post-Concern-5 (ADR 008), BAM's marketplace layout succeeds at PluginResolver Strategy 1:
 
 - The real `src-v6/bmad-bam-platform/module.yaml` IS honored at install time (read from source via resolution cache; not written to disk per BMAD's design — see `official-modules.js:145`). `agents:`, `directories:`, `x-bam-*` extensions, and `post-install-notes` are no longer inert.

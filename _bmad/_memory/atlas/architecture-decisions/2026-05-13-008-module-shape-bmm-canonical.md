@@ -56,7 +56,13 @@ Three coupled changes, landed in one atomic refactor:
 
 ## Consequences
 
-- PluginResolver Strategy 1 succeeds; real `module.yaml` honored at install time. `agents:`, `directories:`, `x-bam-*`, `post-install-notes` no longer silently inert.
+- PluginResolver Strategy 1 succeeds; real `module.yaml` is read into BMAD's resolution cache at install time. Empirically verified (Plan C, 2026-05-13, against bmad CLI v6.6.0):
+  - `post-install-notes` displays during install ✓
+  - `module-help.csv` rows merge into the resolved `_bmad/_config/bmad-help.csv` ✓
+  - `agents:` block is RECORDED in `_bmad/_config/skill-manifest.csv` (Atlas's SKILL.md path documented as `_bmad/bbp/bmad-bam-agent-atlas/SKILL.md`); the agent itself is invocable as a skill via `bmad run bmad-bam-agent-atlas` — BMAD core uses skills as the unit of invocation; no separate "agent entity" registration.
+  - `directories:` declarations are PARTIALLY honored — empirical test showed `_bmad/bam/` was created but the nested `_bmad/bam/install-logs/` was NOT. `bmad-bam-finalize/scripts/post-install.sh` defensively mkdirs the install-logs dir at runtime.
+  - `x-bam-*` extensions remain BAM-tooling-only (BMAD's installer ignores them, per spec §3.4)
+- Skills' on-disk content lives at the **tool-specific dir** (e.g., `.claude/skills/<skill>/`, `.cursor/skills/<skill>/`), NOT at `_bmad/<code>/<skill>/`. `_bmad/<code>/` holds the resolved `config.yaml` + `module-help.csv` only. Cross-skill resource loading via persistent_facts `file:` entries should NOT assume `_bmad/<code>/<skill>/` paths; use the universal-glob mechanism for shared context, or runtime Read tool from step files for explicit cross-skill resources (BMM convention, post-Round-2-review-2026-05-13).
 - ADR 007's revisit trigger #1 fires: Tier-2 PASS-mode is now tractable (PR #6 follow-up promotes the stub).
 - Breaking change for any user with a pre-existing `_bmad/bam-platform/` install. Migration recipe documented in PR description; users `rm -rf` the old install dir + re-install.
 - Future BAM modules adopt the same phase-grouping + 3-letter-code pattern.

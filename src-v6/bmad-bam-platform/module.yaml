@@ -1,5 +1,6 @@
 code: bbp
 name: "BAM v6 — Platform Module"
+module_version: "0.4.0"   # BMAD plugin-resolver.js uses moduleData.module_version as fallback when marketplace.json plugin.version is absent
 description: "Multi-tenant SaaS platform foundation. Wave 0: smoke-test skeleton only. Wave P2 builds the full module."
 default_selected: false
 

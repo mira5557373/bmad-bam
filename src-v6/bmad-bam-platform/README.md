@@ -31,7 +31,7 @@ bmad-bam-platform/
     └── bmad-bam-finalize/               Path B activation; ships scripts/post-install.sh
 ```
 
-Phase-numbered grouping (BMM convention) means the common parent of all listed skills = the module dir itself = `module.yaml` location → PluginResolver Strategy 1 succeeds → real `module.yaml` is honored at install time. See ADR 008 for the empirical chain. No module-root `agents/`, `data/`, or `scripts/` directories.
+Phase-numbered grouping (BMM convention) means the common parent of all listed skills = the module dir itself = `module.yaml` location → PluginResolver Strategy 1 succeeds → real `module.yaml` is read into BMAD's resolution cache at install time. Empirically (Plan C, 2026-05-13): `post-install-notes` displays, `module-help.csv` rows merge into the resolved help catalog, `agents:` block records Atlas's SKILL.md path, `directories:` is partially honored (top-level only), and skills' on-disk content materializes at the tool-specific dir (`.claude/skills/`, `.cursor/skills/`, etc.) — not at `_bmad/<code>/<skill>/`. See ADR 008 for the full empirical chain. No module-root `agents/`, `data/`, or `scripts/` directories.
 
 ## What ships in P2.1
 

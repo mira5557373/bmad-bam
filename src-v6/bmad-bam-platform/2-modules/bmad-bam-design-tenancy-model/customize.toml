@@ -26,13 +26,19 @@ activation_steps_append = [
 #   Combined size: ~2.3k lines (~80 KB). Activation overhead is acceptable
 #   for a design conversation; rebudget if this skill ever runs in tighter
 #   contexts.
+#
+# IMPLEMENTATION NOTE (post-Concern-5 / 2026-05-13):
+#
+# Atlas's fragments (tenancy-decision-framework, rls-deep-dive, schema-per-tenant,
+# cell-based-architecture, tenant-isolation-testing-patterns) are NOT preloaded
+# via file: entries here. BMAD installs skills at tool-specific paths (e.g.,
+# `.claude/skills/bmad-bam-agent-atlas/resources/fragments/...` for claude-code),
+# not at `_bmad/<code>/<skill>/`, so explicit cross-skill file: paths cannot be
+# reliably resolved at activation. Per BMM convention, cross-skill resources are
+# loaded at runtime via Read tool from step files (see step-02-c-load-options.md),
+# which uses {project-root}-relative paths the harness can resolve in any tool-dir.
 persistent_facts = [
   "file:{project-root}/**/project-context.md",
-  "file:{project-root}/_bmad/bbp/bmad-bam-agent-atlas/resources/fragments/tenancy-decision-framework.md",
-  "file:{project-root}/_bmad/bbp/bmad-bam-agent-atlas/resources/fragments/rls-deep-dive.md",
-  "file:{project-root}/_bmad/bbp/bmad-bam-agent-atlas/resources/fragments/schema-per-tenant.md",
-  "file:{project-root}/_bmad/bbp/bmad-bam-agent-atlas/resources/fragments/cell-based-architecture.md",
-  "file:{project-root}/_bmad/bbp/bmad-bam-agent-atlas/resources/fragments/tenant-isolation-testing-patterns.md",
 ]
 
 role = "Facilitate the foundational tenancy-model decision: present options grounded in fragments, score against user's context, recommend with explicit trade-off reasoning, produce a design doc the rest of the architecture stack can build on."

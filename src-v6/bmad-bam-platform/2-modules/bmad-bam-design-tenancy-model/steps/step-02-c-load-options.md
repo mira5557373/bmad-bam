@@ -17,7 +17,12 @@ Load the 4 tenancy-model options (RLS, schema-per-tenant, cell-based, hybrid) fr
 
 1. Read the elicited context from `_bmad/bam/cache/tenancy-design/{date}/tenancy-context.json`.
 
-2. Load the `tenancy-decision-framework` fragment from `_bmad/bbp/bmad-bam-agent-atlas/resources/fragments/tenancy-decision-framework.md`. (Path notes: `_bmad/bbp/` is BMAD's install target per `module.yaml: code: bam-platform`. `bmad-bam-agent-atlas/` is the canonical home for shared platform-module content per the bmad-tea pattern — see `external/bmad-tea/src/agents/bmad-tea/resources/`. Workflow steps reference Atlas's fragments by EXPLICIT PATH because universal-glob `**/project-context.md` only auto-loads `project-context.md`-named files, not arbitrary fragments. The activation sentinel itself lives at `{output_folder}/bbp/project-context.md` per v0.7 spec §7.6.)
+2. Load Atlas's `tenancy-decision-framework` fragment via Read tool. The fragment lives in Atlas's persona-skill resources; resolve the path by trying these in order (first hit wins, per BMAD tool-specific install convention):
+   - `{project-root}/.claude/skills/bmad-bam-agent-atlas/resources/fragments/tenancy-decision-framework.md` (claude-code)
+   - `{project-root}/.cursor/skills/bmad-bam-agent-atlas/resources/fragments/tenancy-decision-framework.md` (cursor)
+   - `{project-root}/_bmad/bbp/bmad-bam-agent-atlas/resources/fragments/tenancy-decision-framework.md` (BMAD-internal manifest path; may not exist in all tool installs — BMAD records this logical path in skill-manifest.csv but materializes file content at the tool-specific dir above)
+
+   (Path notes: BMAD installs the bmad-bam-platform module's config at `_bmad/bbp/` but the skills' content lives at the tool-specific `<tool>/skills/<skill>/` per BMAD installer behavior, verified empirically against bmad CLI v6.6.0. Workflow steps reference Atlas's fragments by Read-at-runtime rather than via persistent_facts `file:` entries — BMM convention — because explicit file: paths in cross-skill resource loads do not resolve uniformly across tool dirs. Activation auto-loaded context is just the universal-glob `**/project-context.md` sentinel at `{output_folder}/bbp/project-context.md`.)
 
 3. For each option, summarize:
    - **RLS** — Reference `rls-deep-dive` fragment + `rls-row-level-security` pattern. Note: lowest cost, weakest isolation, performance ceiling around 1000 tenants.
