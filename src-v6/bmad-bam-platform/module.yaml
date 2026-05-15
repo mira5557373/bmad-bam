@@ -1,6 +1,6 @@
 code: bbp
 name: "BAM v6 — Platform Module"
-module_version: "0.4.0"   # BMAD plugin-resolver.js uses moduleData.module_version as fallback when marketplace.json plugin.version is absent
+version: "0.4.0"   # Documented for tooling that reads module.yaml directly. NOTE: BMAD's installer (official-modules.js:155, v6.6.0) defaults to '1.0.0' downstream of plugin-resolver, so `bmad status` will show `bbp 1.0.0` regardless. Field is preserved as the canonical source of truth.
 description: "Multi-tenant SaaS platform foundation. Wave 0: smoke-test skeleton only. Wave P2 builds the full module."
 default_selected: false
 
@@ -21,9 +21,14 @@ default_selected: false
 # of P2.1, 2026-05-12) — npm postinstall is not viable as a target-project
 # activation mechanism. See tests/p2/INVESTIGATION-NOTES.md for full rationale.
 post-install-notes: |
-  BAM v6 platform module installed. To finalize activation, run:
+  BAM v6 platform module installed. To finalize activation, invoke the
+  `bmad-bam-finalize` skill in your AI agent:
 
-      bmad run bmad-bam-finalize
+      Claude Code: type `/bmad-bam-finalize` or ask "run bmad-bam-finalize"
+      Cursor:      type `/bmad-bam-finalize`
+      Direct:      bash {project-root}/.claude/skills/bmad-bam-finalize/scripts/post-install.sh {project-root}
+
+  (Replace `.claude/skills/` with your tool's skill dir as appropriate.)
 
   This step generates the universal-glob auto-load sentinel at
     {project-root}/{output_folder}/bbp/project-context.md
@@ -33,7 +38,7 @@ post-install-notes: |
   Re-running is safe (the sentinel is replaced atomically; the log is append-only).
 
   Once finalize completes, Atlas's design workflows are usable, e.g.:
-      bmad run bmad-bam-design-tenancy-model
+      `/bmad-bam-design-tenancy-model` in Claude Code/Cursor
 
 # Directories to create during installation (declarative, no code execution).
 # BMAD's installer reads this list. All other declarations below are loaded by
@@ -57,7 +62,7 @@ agents:
     title: Platform Architect
     icon: "🏛️"
     team: bam
-    description: "Multi-tenant SaaS platform architect. Holds up the platform sky — RLS strategy, modular monolith decomposition, tenant tier modeling, FinOps. Speaks like a structural engineer at a whiteboard: load-bearing decisions first, every gate explicit. Owns QG-F1 (Foundation), QG-M1 (Module Architecture), QG-M2 (Tenant Isolation), QG-DA1 (Data Architecture). Invocable as `bmad run bmad-bam-agent-atlas`; also the canonical home for shared platform-module resources (resources/fragments/, resources/patterns/, resources/checklists/, resources/standards/)."
+    description: "Multi-tenant SaaS platform architect. Holds up the platform sky — RLS strategy, modular monolith decomposition, tenant tier modeling, FinOps. Speaks like a structural engineer at a whiteboard: load-bearing decisions first, every gate explicit. Owns QG-F1 (Foundation), QG-M1 (Module Architecture), QG-M2 (Tenant Isolation), QG-DA1 (Data Architecture). Invocable via `/bmad-bam-agent-atlas` (Claude Code/Cursor) or natural-language activation; also the canonical home for shared platform-module resources (resources/fragments/, resources/patterns/, resources/checklists/, resources/standards/)."
 
 # --- BAM-specific extensions (not consumed by BMAD's installer) -------------
 # The keys below are documentation for BAM's own tooling and human readers.

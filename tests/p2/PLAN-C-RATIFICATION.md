@@ -2,6 +2,58 @@
 
 ---
 
+## 2026-05-13 — Concern 5 Round 3 (post-Round-2-deep-review)
+
+**Date:** 2026-05-13
+**BMAD version:** 6.6.0 (submoduled; via `node bmad-cli.js`)
+**BAM commit:** post-Round-3 gap fixes (to be committed atop `4b6de69`)
+
+### Round 3 scope
+
+Round 2 fixed cross-skill resource access (R1) and softened over-stated claims (R10). Round 3 deep review of real `bmad install` behavior caught:
+
+- **RR1 (CRITICAL):** `bmad run X` is NOT a real BMAD CLI subcommand — only `install`, `status`, `uninstall` exist. Our ~19 references across module.yaml's `post-install-notes` (user-facing!), Atlas's SKILL.md, README.md, post-install.sh's generated sentinel content, MANUAL.md, and ADRs would have produced "unknown command" errors for users.
+- **RR2:** Audit's check (d) uses bash 4+ assoc arrays (`declare -A`) — would fail on macOS bash 3.2.
+- **RR3:** Round-2's `module_version` field → renamed to `version`. NOTE: BMAD's `official-modules.js:155` defaults to `'1.0.0'` regardless; `bmad status` shows `1.0.0` despite our `0.4.0` declaration. Field preserved as canonical source-of-truth.
+- **RR4:** PLAN-C R2 record claimed defensive mkdir was a Round-2 fix — corrected: it was already in place.
+
+### Round 3 fixes applied
+
+1. RR1: rewrote `bmad run X` → slash-command form across module.yaml post-install-notes, Atlas SKILL.md (4 refs), README.md (3 refs), post-install.sh sentinel content (3 refs), MANUAL.md (1 ref).
+2. RR1: annotated ADRs 002 + 006 + 008 with "Invocation-syntax correction" note (historical wording preserved with explicit "correct form" pointer).
+3. RR2: added bash-version guard at top of `tests/audit-marketplace.sh` (exits 64 with Homebrew install hint if bash <4).
+4. RR3: module.yaml `module_version` → `version`; comment documents BMAD's downstream `1.0.0` default.
+5. RR4: Plan-C R2 record clarified.
+
+### Probe — Round 3 (autonomous subagent ratification)
+
+Subagent ran fresh install + finalize + 6 independent verifications:
+
+```
+install_succeeded:           yes
+sentinel_token:              BAM_LOAD_VERIFY_2530cd9cd6264884a8a6ce0b00c73ce6
+rr1_install_notes_correct:   yes  (post-install-notes mention `/bmad-bam-finalize`, not `bmad run`)
+rr1_sentinel_clean:          yes  (0 occurrences of `bmad run` in generated project-context.md)
+rr2_audit_passes:            yes  (audit-marketplace.sh runs to completion under bash 5)
+rr2_guard_present:           yes  (BASH_VERSINFO[0] < 4 check at script top)
+universal_glob_matches:      1    (project-context.md sentinel)
+fragment_atlas_readable:     yes  (.claude/skills/bmad-bam-agent-atlas/resources/fragments/... accessible)
+```
+
+### Outcome
+
+- [x] **PASS** (Round 3) — all 8 verification contracts proven autonomously.
+
+### Implications confirmed
+
+- User-facing install instructions now describe the actual invocation mechanism (AI-agent slash command or natural-language activation), not a fictional CLI subcommand.
+- Macos bash 3.2 contributors get a clear actionable error instead of cryptic syntax failures.
+- Cross-skill resource access (R1 Round-2 fix) remains verified.
+- Universal-glob → sentinel chain remains verified.
+- BMAD's `1.0.0` default version is a known BMAD-side limitation; documented in module.yaml comment.
+
+---
+
 ## 2026-05-13 — Concern 5 Round 2 (post-deep-review)
 
 **Date:** 2026-05-13
@@ -25,7 +77,7 @@ Round 2 fixes:
 
 1. `node external/bmad-method/tools/installer/bmad-cli.js install --custom-source $REPO_ROOT --modules bmm,bbp --directory $WORK_DIR --tools claude-code --yes` → install succeeded; 4 modules registered.
 2. Strategy 1 verified: `$WORK_DIR/_bmad/bbp/` contains `config.yaml` + `module-help.csv`.
-3. Defensive mkdir verified: `bmad-bam-finalize/scripts/post-install.sh` creates `_bmad/bam/install-logs/` at runtime (the `directories:` declaration was partially honored — module.yaml top-level dir created but not the nested subdir).
+3. Defensive mkdir verified (already present pre-Round-2; not a Round-2 addition): `bmad-bam-finalize/scripts/post-install.sh:156` does `mkdir -p "$LOG_DIR"` for `_bmad/bam/install-logs/` at runtime — confirmed working in real install since the `directories:` declaration was only partially honored (module.yaml top-level dir created but not the nested subdir).
 4. Sentinel emitted to `$WORK_DIR/_bmad-output/bbp/project-context.md` with token `BAM_LOAD_VERIFY_9a56a656fd854616b600a9a19c03dffc`.
 5. Subagent re-verified BOTH contracts:
    - Universal-glob → sentinel chain: `sentinel_token: BAM_LOAD_VERIFY_9a56a656fd854616b600a9a19c03dffc`

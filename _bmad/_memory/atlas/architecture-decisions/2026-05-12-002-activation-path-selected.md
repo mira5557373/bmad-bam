@@ -22,6 +22,8 @@ authored-by: collaborative
 > **Note (added 2026-05-13):** This ADR established Path B (manual finalize). The SENTINEL FILE LOCATION it chose (`_bmad/bam-activation/platform/project-context.md`) was later superseded by **ADR 2026-05-13-005**, which aligned the location with BMM's convention (`{output_folder}/bam-platform-project-context.md`). Path B itself remains the selected activation mechanism; only the destination path was realigned. See ADR 005 for the canonical current state.
 
 > **Pre-Concern-5 note (added 2026-05-13):** Path references in this ADR (`_bmad/bam-platform/`, `bam-platform-project-context.md`) reflect module state at decision time. Post-Concern-5 the module code is `bbp` and the sentinel is at `{output_folder}/bbp/project-context.md`; see ADR 008.
+>
+> **Invocation-syntax correction (Round-3, 2026-05-13):** Body references to `bmad run bmad-bam-finalize` reflect aspirational wording at the time of writing. The correct invocation is `/bmad-bam-finalize` in the AI agent (Claude Code/Cursor slash command) or natural-language activation. `bmad run <skill>` is NOT a real BMAD CLI subcommand (verified against bmad-cli.js v6.6.0; only `install`, `status`, `uninstall` exist). The Path B decision stands; only the invocation form was misremembered.
 
 ## Context
 

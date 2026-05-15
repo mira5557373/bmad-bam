@@ -77,7 +77,7 @@ If any expected directory is missing, the install pipeline failed — `marketpla
 
 ```bash
 cd "$WORK_DIR"
-bmad run bmad-bam-finalize
+bash "$WORK_DIR/.claude/skills/bmad-bam-finalize/scripts/post-install.sh" "$WORK_DIR"  # direct invocation; or `/bmad-bam-finalize` in a Claude Code session opened to $WORK_DIR
 ```
 
 ### 6. Verify the sentinel landed at the BMM-canonical location

@@ -19,6 +19,8 @@ generated-by: claude-opus-4-7
 authored-by: collaborative
 ---
 
+> **Invocation-syntax correction (Round-3, 2026-05-13):** Body reference to `bmad run bmad-bam-agent-atlas` reflects aspirational wording at the time of writing. Correct invocation: `/bmad-bam-agent-atlas` in the AI agent (Claude Code/Cursor slash command) or natural-language activation. `bmad run <skill>` is NOT a real BMAD CLI subcommand (verified against bmad-cli.js v6.6.0; only `install`, `status`, `uninstall` exist). The Atlas-as-skill decision stands.
+
 ## Context
 
 BAM v6 module shape (as built in P2.1) had module-root `agents/`, `data/`, and `scripts/` directories. The earlier audit surfaced that BMAD's marketplace mechanism doesn't support module-root content; the RDP workaround listed them as "skills" in marketplace.json — semantic misuse with cosmetic risk if BMAD's skill validator/registry gets stricter.

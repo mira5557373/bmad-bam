@@ -27,6 +27,16 @@
 
 set -euo pipefail
 
+# Bash 4+ required: check (d) uses associative arrays (declare -A).
+# macOS ships bash 3.2 by default; this script requires bash >= 4.0 (e.g.,
+# via `brew install bash` on macOS, or system bash on most Linux distros).
+if (( BASH_VERSINFO[0] < 4 )); then
+    echo "ERROR: bash >= 4.0 required (you have bash ${BASH_VERSION})." >&2
+    echo "  On macOS, install via Homebrew:  brew install bash" >&2
+    echo "  Then re-run with the newer bash:  /usr/local/bin/bash tests/audit-marketplace.sh" >&2
+    exit 64
+fi
+
 REPO_ROOT="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
 MARKETPLACE="${1:-$REPO_ROOT/.claude-plugin/marketplace.json}"
 

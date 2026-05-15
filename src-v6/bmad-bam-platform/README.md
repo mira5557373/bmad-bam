@@ -35,7 +35,7 @@ Phase-numbered grouping (BMM convention) means the common parent of all listed s
 
 ## What ships in P2.1
 
-- **Atlas persona-skill (`bmad-bam-agent-atlas`)** — invocable directly (`bmad run bmad-bam-agent-atlas`) AND the canonical home for shared platform-module resources. Other skills reference Atlas's resources by explicit installed path (bmad-tea pattern).
+- **Atlas persona-skill (`bmad-bam-agent-atlas`)** — invocable directly via `/bmad-bam-agent-atlas` (Claude Code/Cursor slash command) or natural-language activation in any BMAD-aware AI agent; also the canonical home for shared platform-module resources. Other skills reference Atlas's resources by explicit installed path (bmad-tea pattern).
 - **Activation mechanism (§7.6 Path B — selected after Task 0 invalidated Path A)** — BMAD's native `post-install-notes` channel surfaces `bmad-bam-finalize`, a one-shot skill the user invokes after `bmad install bmad-bam-platform` to generate `{output_folder}/bbp/project-context.md` (default `_bmad-output/bbp/project-context.md`, BMM-aligned per v0.7 spec §7.6) for universal-glob auto-load.
 - **One complete CEV workflow** — `bmad-bam-design-tenancy-model` (7 steps + template). Produces tenancy-model.md design doc + ADR + partial QG-M2 evidence.
 - **5 supporting fragments** — tenancy-decision-framework, rls-deep-dive, schema-per-tenant, cell-based-architecture, tenant-isolation-testing-patterns (in Atlas's `resources/fragments/`).
@@ -60,20 +60,22 @@ Phase-numbered grouping (BMM convention) means the common parent of all listed s
 bmad install bmad-bam-platform
 ```
 
-After install, BMAD displays `post-install-notes` directing the user to run:
+After install, BMAD displays `post-install-notes` directing the user to invoke the `bmad-bam-finalize` skill in their AI agent:
 
-```bash
-bmad run bmad-bam-finalize
+```text
+Claude Code: /bmad-bam-finalize        (or natural language: "run bmad-bam-finalize")
+Cursor:      /bmad-bam-finalize
+Direct:      bash <project>/.claude/skills/bmad-bam-finalize/scripts/post-install.sh <project>
 ```
 
 This is the Path B activation step that materializes the universal-glob auto-load sentinel into the host project.
 
 ## Use
 
-After finalize, invoke Atlas's workflows via BMAD's standard `bmad run`:
+After finalize, invoke Atlas's workflows via the AI agent's slash command or natural-language trigger:
 
-```bash
-bmad run bmad-bam-design-tenancy-model
+```text
+Claude Code: /bmad-bam-design-tenancy-model
 ```
 
 Runs the design-tenancy-model workflow; produces `docs/architecture/tenancy-model.md` + an ADR + partial QG-M2 evidence.
