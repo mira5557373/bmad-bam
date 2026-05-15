@@ -1,5 +1,7 @@
 # Wave 0 — Outcome
 
+> **Pre-Concern-5 note (added 2026-05-13):** Path references in this document (`_bmad/bam-platform/`, `bam-platform-project-context.md`, `src-v6/.../skills/...`) reflect module state at the time of writing. Post-Concern-5 the module code is `bbp`, the sentinel lives at `{output_folder}/bbp/project-context.md`, and skills are organized by phase dir (`1-foundation/`, `2-modules/`, `9-infrastructure/`); see ADR 008.
+
 **Date:** 2026-05-12
 **BMAD version under test:** 6.6.0 (`external/bmad-method` submodule at `e36f219c`)
 **Selected Plan:** **A**

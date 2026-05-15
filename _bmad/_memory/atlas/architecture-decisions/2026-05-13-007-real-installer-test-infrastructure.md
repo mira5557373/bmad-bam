@@ -1,6 +1,6 @@
 ---
 id: 2026-05-13-007
-title: Adopt 3-tier test strategy with Tier-2 PASS-mode deferred (BMAD has no local-install API)
+title: Adopt 3-tier test strategy with Tier-2 PASS-mode deferred (BAM falls into PluginResolver Strategy 5)
 status: accepted
 date: 2026-05-13
 persona: atlas
@@ -25,7 +25,7 @@ authored-by: collaborative
 
 PR #2 shipped two bugs that the existing tests did not catch:
 - marketplace.json had only v3 paths, so a real `bmad install bmad-bam-platform` would have copied v3 content rather than P2.1.
-- The sentinel namespace (`_bmad/platform/`) collided with BMAD's install target (`_bmad/bam-platform/`), so workflow step files referenced the wrong namespace.
+- The sentinel namespace (`_bmad/platform/`) collided with BMAD's install target (`_bmad/bam-platform/`, pre-Concern-5 — now `_bmad/bbp/`), so workflow step files referenced the wrong namespace.
 
 Both bugs were caught post-execution by a manual audit, not by tests. The shared cause: the existing tests (`tests/wave-0/run-smoke-test.sh`, `tests/p2/run-real-install-test.sh`) simulate `bmad install` via `cp -a`. cp does not check marketplace.json. cp copies wherever told, not where real BMAD does.
 
@@ -38,13 +38,13 @@ The original kickoff proposed a 3-tier strategy: Tier 1 (always-run static + sim
 - `resolveSource` (`custom-module-manager.js:326-329`) takes the local-source branch: `rootDir = parsed.localPath; repoPath = null; sourceUrl = null` — **`cloneRepo` is never invoked**, so neither of the two git-reset code paths can fire: the one inside `CustomModuleManager.cloneRepo` at `:427` (for URL refresh of cached clones) is gated on having a `repoCacheDir`, and the one inside `CommunityModuleManager` at `community-manager.js:292` only runs for community-registry modules (which `--custom-source <local-path>` does not route through). The earlier claim ("symlink the cache dir → git reset destroys local commits") only applied to a hypothetical workaround for installing a registry-listed community module via cache spoofing; it never applied to a custom-source local path, which goes through a completely different code path.
 - `readMarketplaceJsonFromDisk` looks at `<rootDir>/.claude-plugin/marketplace.json` — which is **exactly where BAM's marketplace.json lives**.
 
-So a local install reaches PluginResolver. But BAM's layout post-Phase-C falls into PluginResolver Strategy 5 (synthesized fallback), not Strategy 1 (`plugin-resolver.js:72-99`). Strategy 1 requires `module.yaml` + `module-help.csv` at the common parent of all listed skills. For BAM, all 4 skills sit under `src-v6/bmad-bam-platform/skills/`, so the common parent is `<...>/skills/`. But BAM's real `module.yaml` lives at `<...>/bmad-bam-platform/module.yaml` — one level above the common parent. Strategies 2-4 also don't match (no `-setup` skill, multiple skills, no `assets/module.yaml` per skill). Strategy 5 synthesizes a stub from plugin metadata and ignores BAM's real `module.yaml`. Compare with bmad-tea (`external/bmad-tea/`), whose skills span `src/agents/` + `src/workflows/testarch/` so common parent = `src/`, matching `src/module.yaml` — that layout passes Strategy 1 cleanly.
+So a local install reaches PluginResolver. But BAM's layout post-Phase-C (pre-Concern-5) falls into PluginResolver Strategy 5 (synthesized fallback), not Strategy 1 (`plugin-resolver.js:72-99`). Strategy 1 requires `module.yaml` + `module-help.csv` at the common parent of all listed skills. For BAM at the time of this ADR, all 4 skills sat under `src-v6/bmad-bam-platform/skills/`, so the common parent was `<...>/skills/`. But BAM's real `module.yaml` lived at `<...>/bmad-bam-platform/module.yaml` — one level above the common parent. Strategies 2-4 also don't match (no `-setup` skill, multiple skills, no `assets/module.yaml` per skill). Strategy 5 synthesizes a stub from plugin metadata and ignores BAM's real `module.yaml`. Compare with bmad-tea (`external/bmad-tea/`), whose skills span `src/agents/` + `src/workflows/testarch/` so common parent = `src/`, matching `src/module.yaml` — that layout passes Strategy 1 cleanly.
 
 The result is that an automated `bmad install --custom-source $(pwd)` against BAM:
 - ✅ Reads marketplace.json correctly
 - ✅ Copies 4 skill dirs to `_bmad/bmad-bam-platform/<skill>/` via `installFromResolution` (`official-modules.js:344-410`)
 - ✅ Writes a synthesized `module-help.csv` to `_bmad/bmad-bam-platform/module-help.csv` (built from skill `SKILL.md` frontmatter)
-- ❌ Does NOT install BAM's real `module.yaml` — Strategy 5 has `moduleYamlPath: null` and `installFromResolution` never writes `synthesizedModuleYaml` to disk; downstream `resolveInstalledModuleYaml` (`project-root.js:102-`) returns null for BAM (search order misses `src-v6/bmad-bam-platform/module.yaml`); `createModuleDirectories` (`official-modules.js:587-`) returns `emptyResult` because `findModuleSourceByCode` returns `<skill-parent>/` (= `<repo>/src-v6/bmad-bam-platform/skills/`) and `<that>/module.yaml` does not exist. Net effect: `agents:`, `directories:`, `x-bam-*`, `post-install-notes` are all silently inert post-install.
+- ❌ Does NOT install BAM's real `module.yaml` (pre-Concern-5 layout) — Strategy 5 has `moduleYamlPath: null` and `installFromResolution` never writes `synthesizedModuleYaml` to disk; downstream `resolveInstalledModuleYaml` (`project-root.js:102-`) returns null for BAM (search order misses `src-v6/bmad-bam-platform/module.yaml`); `createModuleDirectories` (`official-modules.js:587-`) returns `emptyResult` because `findModuleSourceByCode` returns `<skill-parent>/` (= `<repo>/src-v6/bmad-bam-platform/skills/`) and `<that>/module.yaml` does not exist. Net effect: `agents:`, `directories:`, `x-bam-*`, `post-install-notes` are all silently inert post-install.
 - ⚠️ Partial validation — Tier-2 would catch skill-copy + marketplace.json correctness (PR #2 Bug 1) but NOT module.yaml integrity
 
 Automated Tier-2 PASS-mode is therefore not tractable for v6.0 because of **four** real reasons:
@@ -88,6 +88,8 @@ The existing cp-based tests are NOT rewritten; they remain Tier-1 mechanism chec
 
 This ADR is reconsidered when ANY of these happen:
 1. Concern 5 lands (BAM marketplace layout rearranged so PluginResolver Strategy 1 applies — `module.yaml` + `module-help.csv` at the common parent of all skills, mirroring bmad-tea's `src/` placement). After that, automated Tier-2 PASS-mode via `bmad install --custom-source $(pwd) --directory <tmpdir> --yes` becomes meaningful (full module.yaml exercise, not synthesized fallback).
+
+   **⚡ Trigger #1 fired 2026-05-13:** Concern 5 landed (ADR 008). PR #6 should promote `tests/integration/run-real-install.sh` from SKIP stub to real `bmad install --custom-source` script.
 2. P2.x adds CI infrastructure for `bmad` CLI provisioning + ephemeral tmpdir test-project scaffolding — Tier-2 PASS-mode lands in CI, stays SKIP locally for contributors without `bmad`.
 3. A regression class slips past Tier-1 expanded checks — the gap motivates either more Tier-1 checks or a different Tier-2 design.
 4. BMAD ships a true `--from <path>` API that bypasses the marketplace.json resolver (e.g., direct skill-tree install) — would simplify Tier-2 by removing the Strategy-5 caveat.

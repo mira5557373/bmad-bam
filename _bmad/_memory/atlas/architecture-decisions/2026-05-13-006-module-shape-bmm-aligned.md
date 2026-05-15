@@ -60,3 +60,15 @@ Workflow skills (design-tenancy-model and future P2.2+ workflows) reference Atla
 - **Each workflow skill duplicates fragments (DRY violation)** — rejected; massive duplication; bmad-tea shows the persona-skill-as-canonical-home pattern works without duplication for the heavy content (knowledge fragments).
 - **Replicate per persona-skill (bmad-tea CSV pattern)** — partial precedent: bmad-tea DOES replicate `tea-index.csv` across 9 locations (verified by md5sum). BAM declines this because P2.1 has only one persona (Atlas); replication overhead is unjustified until multiple personas exist. Future P2.2+ modules can revisit if their personas need their own index copies.
 - **Standalone `bmad-bam-standards` skill (fake-skill pattern)** — rejected; introduces a non-invocable "skill" that's just a content holder. Atlas-as-skill is a real persona AND the content home; one skill, two roles. Cleaner.
+
+
+## Refinement note (Concern 5, ADR 008, 2026-05-13)
+
+ADR 008 refines this decision's directory layout. The core "Atlas-as-skill" claim and "everything is a skill" stance from this ADR stand — Atlas remains a real BMAD skill (invocable, marketplace-listed), and shared content lives in its `resources/`. What changes is WHERE that skill lives in source:
+
+- This ADR: `skills/bmad-bam-agent-atlas/`
+- Refined (ADR 008): `1-foundation/bmad-bam-agent-atlas/` (phase-numbered, BMM-canonical)
+
+The `skills/` wrapper is dropped in favor of phase-numbered grouping so PluginResolver Strategy 1 succeeds (common parent of skills = module dir = module.yaml location). Cross-skill content access by explicit path (bmad-tea pattern, this ADR's §"Decision" item 2) is unchanged in semantic, just with new path prefixes (`_bmad/bbp/...` instead of `_bmad/bam-platform/...`).
+
+See ADR 008 for the empirical chain.

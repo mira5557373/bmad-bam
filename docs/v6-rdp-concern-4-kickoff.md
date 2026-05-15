@@ -1,5 +1,7 @@
 # V6 RDP Kickoff — Concern 4: Real-installer test infrastructure
 
+> **Pre-Concern-5 note (added 2026-05-13):** Path references in this document (`_bmad/bam-platform/`, `bam-platform-project-context.md`, `src-v6/.../skills/...`) reflect module state at the time of writing. Post-Concern-5 the module code is `bbp`, the sentinel lives at `{output_folder}/bbp/project-context.md`, and skills are organized by phase dir (`1-foundation/`, `2-modules/`, `9-infrastructure/`); see ADR 008.
+
 This file is for the **human operator** (you) to paste into a fresh Claude Code session on the RDP machine when starting Concern 4 work. Concern 4 is a P2.2-Task-0 follow-up to the alignment refactor that landed in PR #2 (commits `8a48cb7` + `554ca95` + `6a081be`).
 
 ---

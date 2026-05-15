@@ -1,5 +1,7 @@
 # Wave 0 — BAM v6 Smoke Test Implementation Plan
 
+> **Pre-Concern-5 note (added 2026-05-13):** Path references in this document (`_bmad/bam-platform/`, `bam-platform-project-context.md`, `src-v6/.../skills/...`) reflect module state at the time of writing. Post-Concern-5 the module code is `bbp`, the sentinel lives at `{output_folder}/bbp/project-context.md`, and skills are organized by phase dir (`1-foundation/`, `2-modules/`, `9-infrastructure/`); see ADR 008.
+
 > **For agentic workers:** REQUIRED SUB-SKILL: Use superpowers:subagent-driven-development (recommended) or superpowers:executing-plans to implement this plan task-by-task. Steps use checkbox (`- [ ]`) syntax for tracking.
 
 **Goal:** Verify BAM v6's universal-glob activation mechanism works in target BMAD installs; produce a working `bmad-bam-smoke-test` workflow + skeletal `bmad-bam-platform` module; persist the Plan-A/B/C selection to `_bmad/bam/family.json` so subsequent waves know which path to use.
