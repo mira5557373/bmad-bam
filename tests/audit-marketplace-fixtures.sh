@@ -157,6 +157,12 @@ assert_case "bad-fictional-run (check h)" fail "(check h)" \
     "$F/fake-v6-with-fictional-run" \
     ""
 
+# Check (i) fixture — workflow name not in spec §5.X allow-list
+assert_case "bad-unknown-workflow (check i)" fail "(check i)" \
+    "$F/marketplace-bad-unknown-workflow.json" \
+    "$F/fake-v6-with-unknown-workflow" \
+    ""
+
 echo ""
 echo "=== Results: $PASS pass, $FAIL fail ==="
 
