@@ -373,4 +373,4 @@ Treat results older than 18 months as orientation only — the Postgres pooler l
 
 **Quality gate:**
 
-- `QG-M2` checklist (`src-v6/bmad-bam-platform/data/checklists/qg-m2-tenant-isolation.md`) — every schema-per-tenant tenancy-model.md MUST clear QG-M2 before merging to platform main.
+- `QG-M2` checklist (`src-v6/bmad-bam-platform/1-foundation/bmad-bam-agent-atlas/resources/checklists/QG-M2.md`) — every schema-per-tenant tenancy-model.md MUST clear QG-M2 before merging to platform main.

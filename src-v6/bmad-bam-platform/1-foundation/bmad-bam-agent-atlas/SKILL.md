@@ -23,16 +23,21 @@ For structured design output (e.g., a tenancy-model.md design doc + ADR + QG-M2 
 
 ## When referenced by other skills
 
-Other bmad-bam-platform workflow skills (`bmad-bam-design-tenancy-model`, future P2.2+ workflows) reference Atlas's `resources/` by explicit installed path:
+Other bmad-bam-platform workflow skills (`bmad-bam-design-tenancy-model`, future P2.2+ workflows) reference Atlas's `resources/` at runtime via the **tool-aware path-fallback pattern** (per Concern 5 R2 empirical finding: BMAD installs skill content to **tool-specific dirs**, NOT `_bmad/<code>/<skill>/`):
 
 ```
-_bmad/bbp/bmad-bam-agent-atlas/resources/fragments/<name>.md
-_bmad/bbp/bmad-bam-agent-atlas/resources/patterns/<name>.md
-_bmad/bbp/bmad-bam-agent-atlas/resources/checklists/<gate-id>.md
-_bmad/bbp/bmad-bam-agent-atlas/resources/standards/std-<name>.md
+# At runtime, try these paths IN ORDER until the file is found (Read tool):
+.claude/skills/bmad-bam-agent-atlas/resources/<subdir>/<name>.md      # claude-code install (actual file location)
+.cursor/skills/bmad-bam-agent-atlas/resources/<subdir>/<name>.md      # cursor install (actual file location)
+_bmad/bbp/bmad-bam-agent-atlas/resources/<subdir>/<name>.md           # logical/manifest path; recorded in skill-manifest.csv but NOT materialized for tool-specific installs
+
+# <subdir> ∈ { fragments, patterns, checklists, standards }
+# <name>  = the resource leaf (e.g., tenancy-decision-framework, QG-M2, std-frontmatter)
 ```
 
-This follows the bmad-tea pattern (`external/bmad-tea/src/workflows/testarch/.../atdd-checklist-template.md:344` references shared knowledge by path). Universal-glob `**/project-context.md` does NOT auto-load arbitrary `.md` files — it only matches files named `project-context.md`. Cross-skill content access in BAM is by explicit path, not glob.
+The step files in consuming skills (e.g., `bmad-bam-design-tenancy-model/steps/step-02-c-load-options.md`) use the Read tool with this fallback list. This matches BMAD's empirical install behavior — verified at Plan C Round 2 / Round 4 (PR #3): a real `bmad install --custom-source --tools claude-code` run materializes BAM skills at `.claude/skills/`, NOT under `_bmad/<code>/<skill>/`. The `_bmad/bbp/` path is the BMAD skill-manifest logical reference; on disk that directory contains only `config.yaml` + `module-help.csv` after install (no skill subdirectories).
+
+Universal-glob `**/project-context.md` does NOT auto-load arbitrary `.md` files — it only matches files named `project-context.md`. Cross-skill content access in BAM is by explicit path with tool-aware fallback, not glob.
 
 ## Self-loading at activation
 

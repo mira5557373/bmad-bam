@@ -545,7 +545,7 @@ When a query returns content older than 18 months, treat as orientation only. Te
 
 **Quality gate:**
 
-- `QG-M2` checklist (`src-v6/bmad-bam-platform/data/checklists/qg-m2-tenant-isolation.md`) — the gate this fragment's catalogue feeds. Every tenancy-model.md design produced via [[tenancy-decision-framework]] MUST list its required isolation tests (from this catalogue) in §5, and QG-M2 verifies (a) the tests exist, (b) they fail informatively when isolation breaks, (c) they pass on main, and (d) the nightly synthetic-tenant suite is green.
+- `QG-M2` checklist (`src-v6/bmad-bam-platform/1-foundation/bmad-bam-agent-atlas/resources/checklists/QG-M2.md`) — the gate this fragment's catalogue feeds. Every tenancy-model.md design produced via [[tenancy-decision-framework]] MUST list its required isolation tests (from this catalogue) in §5, and QG-M2 verifies (a) the tests exist, (b) they fail informatively when isolation breaks, (c) they pass on main, and (d) the nightly synthetic-tenant suite is green.
 
 **Related decisions:**
 
@@ -562,4 +562,4 @@ When a query returns content older than 18 months, treat as orientation only. Te
 
 - `design-tenancy-model` skill (`src-v6/bmad-bam-platform/2-modules/bmad-bam-design-tenancy-model/`) — primary consumer. `step-05-c-write-design` references this fragment for the §5 isolation-tests catalogue; `step-07-v-verify-completeness` checks that every test type listed in §5 is realized in code.
 - Atlas memory (`_bmad/_memory/atlas/architecture-decisions/`) — every tenancy-model ADR should reference this fragment by id (`tenant-isolation-testing-patterns`) for the testing-strategy paragraph.
-- QG-M2 enforcement (`src-v6/bmad-bam-platform/data/checklists/qg-m2-tenant-isolation.md`) — the checklist consumes this fragment's catalogue directly. Changes here propagate to checklist updates; do not let the checklist drift from the fragment.
+- QG-M2 enforcement (`src-v6/bmad-bam-platform/1-foundation/bmad-bam-agent-atlas/resources/checklists/QG-M2.md`) — the checklist consumes this fragment's catalogue directly. Changes here propagate to checklist updates; do not let the checklist drift from the fragment.

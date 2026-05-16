@@ -443,4 +443,4 @@ Treat results older than 18 months as orientation only — the routing-layer and
 
 **Quality gate:**
 
-- `QG-M2` checklist (`src-v6/bmad-bam-platform/data/checklists/qg-m2-tenant-isolation.md`) — every cell-based tenancy-model.md MUST clear QG-M2 before merging to platform main, and the inter-cell isolation tests must be green, as must each cell's intra-cell test suite.
+- `QG-M2` checklist (`src-v6/bmad-bam-platform/1-foundation/bmad-bam-agent-atlas/resources/checklists/QG-M2.md`) — every cell-based tenancy-model.md MUST clear QG-M2 before merging to platform main, and the inter-cell isolation tests must be green, as must each cell's intra-cell test suite.

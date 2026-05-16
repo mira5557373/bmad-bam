@@ -134,7 +134,9 @@ BAM v6 is a **family of 8 canonical BMAD modules** providing market-leader-depth
 
 ### 3.5 Compatibility matrix + forward compatibility
 
-`bmad-bam-platform/data/compatibility-matrix.csv` is authoritative:
+> **Status note (post-Concern-5 / v0.9):** the `compatibility-matrix.csv` artifact described below is **planned, not yet implemented** in the repo. Its design-of-record is here; the file will land in a future BAM PR alongside the bbd/bba/etc. modules that need cross-module compatibility tracking. Until then, individual module.yaml `x-bam-requires:` blocks carry the BMAD version constraint per-module.
+
+`bmad-bam-platform/1-foundation/bmad-bam-agent-atlas/resources/data/compatibility-matrix.csv` (planned canonical home — Atlas-as-skill owns family-wide data per Phase C convention) will be authoritative:
 
 ```csv
 bam_version,module,module_version,bmad_min,bmad_max,notes
@@ -143,7 +145,7 @@ bam_version,module,module_version,bmad_min,bmad_max,notes
 ...
 ```
 
-Synced to `_bmad/bam/compatibility-matrix.csv` on install.
+Synced to `_bmad/bam/compatibility-matrix.csv` on install (BAM-family cross-module namespace, distinct from per-module `_bmad/<code>/`).
 
 **Forward compatibility policy:**
 - **Minor BMAD upgrade** (e.g., 6.4.0 → 6.5.0): triggers `bmad-bam-smoke-test` re-run automatically
@@ -783,9 +785,9 @@ author: nova
 - `std-adr.md` — ADR template
 - `std-conflict-resolution.md` — conflict-resolution document format
 
-Family-wide standards live in `bmad-bam-platform/data/standards/` and sync to `_bmad/bam/standards/` on install.
+Family-wide standards live in `bmad-bam-platform/1-foundation/bmad-bam-agent-atlas/resources/standards/` (post-Concern-5; Atlas-as-skill is the canonical home for shared platform-module content per Phase C / ADR 006) and sync to `_bmad/bam/standards/` on install.
 
-**Per-module** `data/standards/` only when module extends family-wide standards (e.g., `bmad-bam-trust` extends `std-gate.md` for compliance gates).
+**Per-module** standards (e.g., `bmad-bam-trust` extending `std-gate.md` for compliance gates) live in that module's persona-skill's `resources/standards/` (e.g., `bmad-bam-trust/1-foundation/bmad-bam-agent-<persona>/resources/standards/`).
 
 ### 6.7 Vertical add-on packs (canonical-source + reference model)
 
@@ -1064,7 +1066,7 @@ Each BAM module's `post-install.sh` reads `output_folder` from `_bmad/config.tom
 - Strip `{project-root}/` prefix if present
 - Default to `_bmad-output` if absent
 
-This logic is ported to bash in `bmad-bam-platform/scripts/post-install.sh: resolve_output_folder()`. Other BAM modules SHOULD reuse this same convention.
+This logic is ported to bash in `bmad-bam-platform/9-infrastructure/bmad-bam-finalize/scripts/post-install.sh: resolve_output_folder()` (post-Concern-5; finalize-skill-local per Phase C / ADR 006). Other BAM modules SHOULD reuse this same convention, each shipping their post-install.sh inside the finalize skill of their `9-infrastructure/` phase.
 
 **Verification:** Wave 0's smoke test (`tests/wave-0/run-smoke-test.sh`) and P2.1's real-install test (`tests/p2/run-real-install-test.sh`) both verify the resolver-side mechanism headlessly. The LLM-side activation (Plan C — does Claude actually load the file at activation?) is by-design untestable headlessly (spec §7.3) and requires a manual probe per `tests/p2/PLAN-C-RATIFICATION.md`.
 
@@ -1575,7 +1577,7 @@ BAM module changes during active session: Claude detects via `_bmad/bam/install-
 | 0.5 | 2026-05-12 | **Wave 0 spec-defect patch.** 3 defects fixed against BMAD v6.6.0 empirical reality (PR #1 + remediation surfaced these): (1) §3.4 module.yaml schema corrected — BMAD installer ignores `requires:`/`install:`/`verify:`/`hooks:`; BAM uses `x-bam-*` extension namespace instead; (2) §7.1 namespace clarified — BMAD splits skills across `[agent]` (6) and `[workflow]` (24) namespaces; BAM modules must use the right namespace per skill type; (3) new §7.6 — module activation in real installs requires out-of-band trigger (recommended: npm `postinstall`); BMAD installer does not auto-run `scripts/post-install.sh`. Architectural shape unchanged; ~1500 → ~1560 lines |
 | 0.6 | 2026-05-12 | **§7.6 Path B reframing (drafted but superseded).** P2.1 Task 0 empirically invalidated Path A (npm postinstall runs in BMAD cache dir, not host project; fires only on fresh clone; outputs outside `skillPaths` are discarded). v0.6 demoted Path A to "REJECTED for activation", promoted Path B (manual `bmad-bam-finalize`) as default, reframed Path C (upstream hook) as "not yet available in BMAD 6.6.0". Draft preserved at `docs/v6-spec-patches/v0.6-section-7-6-path-b-default.md`; superseded by v0.7 (sentinel location also realigned). |
 | 0.7 | 2026-05-13 | **§7.6 BMM location alignment (P2.1 Phase B / Concern 1).** Path B retained as the default activation mechanism; sentinel-file LOCATION moved from BAM-invented `_bmad/bam-activation/<module>/project-context.md` to BMM-canonical per-module filename under `{output_folder}/` (default `_bmad-output/`). Eliminates the "survival namespace" concept entirely — BAM's sentinel now lives outside `_bmad/` (just like BMM's `bmad-generate-project-context` output), so BMAD installer's `fs.remove(targetPath)` doesn't touch it. Empirically grounded against BMM (`external/bmad-method/src/bmm-skills/3-solutioning/bmad-generate-project-context/steps/step-02-generate.md:295`) which writes to `{output_folder}/project-context.md`. BAM v0.7 used a per-module filename prefix to avoid colliding with BMM's user-generated file; v0.9 then moved to short-code-named subdirs (see v0.9 row). Universal-glob `**/project-context.md` loads both. Resolver helper `resolve_output_folder()` in `scripts/post-install.sh` ports BMM's `installer.js:1465-1511` logic to bash. ADR 005 records the alignment; ADR 002 (Path A→B selection) annotated with supersession pointer to ADR 005. v0.6 draft marked SUPERSEDED. Architectural shape unchanged; spec §7.6 rewritten. |
-| 0.8 | 2026-05-13 | **§6.1 module shape canonical refactor (P2.1 Phase C / Concern 2).** BAM v6 module structure migrated from BAM-invented (module-root `agents/`, `data/`, `scripts/`) to BMM/bmad-tea canonical (everything is a skill). Atlas is now `skills/bmad-bam-agent-atlas/` — a real BMAD skill, invocable as `bmad run bmad-bam-agent-atlas` AND the canonical home for shared platform-module resources. All fragments + patterns + checklists + standards moved to `bmad-bam-agent-atlas/resources/`; scripts moved into `bmad-bam-finalize/scripts/` (skill-local). Marketplace.json: 6 entries (3 real + 3 module-root dir misuse) → 4 real-skill entries. `module-help.csv` added at module root per BMM convention. `foundational_fragments` array dropped from `bmad-bam-design-tenancy-model/customize.toml` (BAM-invented; zero equivalent in BMM/bmad-tea). §6.1 rewritten verbatim against BMM (`external/bmad-method/src/bmm-skills/`) and bmad-tea (`external/bmad-tea/src/agents/bmad-tea/`) as empirical precedents. ADR 006 records the refactor; depends on ADR 005. After this patch, BAM v6 contains ZERO BAM-invented infrastructure divergences from canonical BMAD. All path references in workflow steps + templates + tests updated atomically. Tests pass (Wave 0 smoke, P2 real-install, design-tenancy-model skill smoke). |
+| 0.8 | 2026-05-13 | **§6.1 module shape canonical refactor (P2.1 Phase C / Concern 2).** BAM v6 module structure migrated from BAM-invented (module-root `agents/`, `data/`, `scripts/`) to BMM/bmad-tea canonical (everything is a skill). Atlas is now `skills/bmad-bam-agent-atlas/` — a real BMAD skill, invocable as `/bmad-bam-agent-atlas` (slash command in Claude Code/Cursor; this v0.8 row originally referenced `bmad run <skill>` which is empirically fictional per Concern 5 R3 / RR1 — only `install`, `status`, `uninstall` exist in `bmad-cli.js`) AND the canonical home for shared platform-module resources. All fragments + patterns + checklists + standards moved to `bmad-bam-agent-atlas/resources/`; scripts moved into `bmad-bam-finalize/scripts/` (skill-local). Marketplace.json: 6 entries (3 real + 3 module-root dir misuse) → 4 real-skill entries. `module-help.csv` added at module root per BMM convention. `foundational_fragments` array dropped from `bmad-bam-design-tenancy-model/customize.toml` (BAM-invented; zero equivalent in BMM/bmad-tea). §6.1 rewritten verbatim against BMM (`external/bmad-method/src/bmm-skills/`) and bmad-tea (`external/bmad-tea/src/agents/bmad-tea/`) as empirical precedents. ADR 006 records the refactor; depends on ADR 005. After this patch, BAM v6 contains ZERO BAM-invented infrastructure divergences from canonical BMAD. All path references in workflow steps + templates + tests updated atomically. Tests pass (Wave 0 smoke, P2 real-install, design-tenancy-model skill smoke). |
 | 0.9 | 2026-05-13 | **§6.1 phase-grouping refactor + §7.1 subdir-sentinel convention + §7.6 sentinel-location update (Concern 5).** BAM module layout migrated from `skills/` wrapper to BMM-canonical phase-numbered grouping (`1-foundation/`, `2-modules/`, `3-integration/`, `4-readiness/`, `9-infrastructure/`). Module code renamed `bam-platform` → `bbp` (BMAD 3-letter convention). Sentinel relocated to subdir form `{output_folder}/bbp/project-context.md`. PluginResolver Strategy 1 now succeeds; real `module.yaml` honored at install time. ADR 008 records the decision; depends on ADRs 005 + 006 + 007. Reserves bbp/bbd/bba/bbr/bbi/bbt/bbo/bbu short-code namespace for future BAM modules. |
 
 ---

@@ -369,7 +369,7 @@ When a query returns content older than 18 months, treat as orientation only. Th
 
 **Quality gate:**
 
-- `QG-M2` checklist (`src-v6/bmad-bam-platform/data/checklists/qg-m2-tenant-isolation.md`) — the gate this fragment's recommendations feed. Every RLS-based tenancy-model.md MUST clear QG-M2 before merging to platform main, and the isolation test suite from [[tenant-isolation-testing-patterns]] must be green.
+- `QG-M2` checklist (`src-v6/bmad-bam-platform/1-foundation/bmad-bam-agent-atlas/resources/checklists/QG-M2.md`) — the gate this fragment's recommendations feed. Every RLS-based tenancy-model.md MUST clear QG-M2 before merging to platform main, and the isolation test suite from [[tenant-isolation-testing-patterns]] must be green.
 
 **Related decisions:**
 

@@ -377,7 +377,7 @@ When a query returns content older than 18 months, treat as orientation only and
 
 **Quality gate:**
 
-- `QG-M2` checklist (`src-v6/bmad-bam-platform/data/checklists/qg-m2-tenant-isolation.md`) — the gate this framework's output feeds. Every output produced via this framework MUST clear QG-M2 before merging to platform main.
+- `QG-M2` checklist (`src-v6/bmad-bam-platform/1-foundation/bmad-bam-agent-atlas/resources/checklists/QG-M2.md`) — the gate this framework's output feeds. Every output produced via this framework MUST clear QG-M2 before merging to platform main.
 
 **Related decisions:**
 

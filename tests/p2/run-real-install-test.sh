@@ -6,8 +6,10 @@
 # 2. Simulate "bmad install bmad-bam-platform" by copying the module's installable
 #    contents into _bmad/bbp/ (this is what BMAD's installFromResolution
 #    does for community modules; see tests/p2/INVESTIGATION-NOTES.md).
-# 3. Simulate "bmad run bmad-bam-finalize" by invoking the bundled
-#    scripts/post-install.sh with $PROJECT_ROOT=$WORK_DIR.
+# 3. Simulate the AI agent invoking /bmad-bam-finalize (slash command in
+#    Claude Code/Cursor; `bmad run <skill>` is NOT a real CLI command —
+#    see Concern 5 R3 / RR1) by invoking the bundled scripts/post-install.sh
+#    directly with $PROJECT_ROOT=$WORK_DIR.
 # 4. Verify the universal-glob sentinel is in place.
 # 5. Invoke probe-llm-context.sh to print manual Plan C verification instructions.
 
@@ -57,8 +59,9 @@ case "$PATH_SELECTED" in
     cp "$SOURCE/module-help.csv" "$WORK_DIR/_bmad/bbp/" 2>/dev/null || true
     echo ">>> module assets copied to _bmad/bbp/ (4 skills, no module-root content dirs)"
 
-    # Simulate "bmad run bmad-bam-finalize" — invoke the underlying script
-    # (now skill-local at _bmad/bbp/bmad-bam-finalize/scripts/post-install.sh)
+    # Simulate the AI agent invoking /bmad-bam-finalize (slash command in
+    # Claude Code/Cursor; not a CLI subcommand) — invoke the underlying script
+    # (skill-local at _bmad/bbp/bmad-bam-finalize/scripts/post-install.sh)
     bash "$WORK_DIR/_bmad/bbp/bmad-bam-finalize/scripts/post-install.sh" "$WORK_DIR"
     echo ">>> finalize script ran"
     ;;
