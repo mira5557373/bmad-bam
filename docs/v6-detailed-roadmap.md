@@ -55,7 +55,7 @@ P10    ░░░░░░░░░░░░░░░░░░░░░░░░�
 - C1: `module-help.csv` 13-column schema fully enumerated + per-column semantics (§19.1)
 - C2: BMM `output-location` resolved-variable convention adopted; per-workflow output mapping (§19.2)
 - C3: Phase-column decoupling — directory structural / module-help.csv lifecycle (§19.3, ADR-011)
-- C4: Multi-context universal-glob isolation — broader BAM glob + isolation test (§19.4, §15)
+- C4: Multi-module sentinel aggregation — empirically re-checked: per-module subdir convention is BMM-compatible already; concern reframed to context-budget growth (§19.4, §6)
 - H1: Workflow chaining DAG via `preceded-by` / `followed-by` (§19.5)
 - H2: BAM follows BMM all-in-skills (no separate `workflows/`) — ADR-012 (§19.6)
 - H3: Menu-code 3-char Z-prefix documented as deliberate BMM-extension — ADR-013 (§19.7)
@@ -279,7 +279,7 @@ BAM_TIER2=1 tests/integration/run-real-install.sh               # PASS
 **Goal:** Build remaining 15 platform skills (skills 2-16 from spec §5.1). Establish QG-F1, QG-M1, refine QG-M2.
 
 **Effort:** ~280-345h (4 sub-waves)
-**ADR range reserved:** ADRs 011-016
+**ADR range reserved:** ADRs 014-018
 **Parallelism:** Can parallel with PX-Migration (no shared files)
 **Persona:** Atlas continues (no introduction cost)
 
@@ -315,9 +315,9 @@ BAM_TIER2=1 tests/integration/run-real-install.sh               # PASS
 - Customize-template overlay for `bmad-create-architecture` (if scope confirms; per §7.2)
 - Marketplace.json: 4 new skill entries
 - **Tier-2 script update:** verify Tier-2's 4-skills check still expects the 4 platform skills (no change in arg yet — still `--modules bbp`)
-- ADR-011 (Wave P3.1 design decisions, dependencies-on-other-decisions: [008, 009, 010])
+- ADR-014 (Wave P3.1 design decisions, dependencies-on-other-decisions: [008, 009, 010])
 - Spec changelog row (v0.10 if scope is substantial; otherwise no bump)
-- INDEX.md row for ADR-011
+- INDEX.md row for ADR-014
 
 **Cross-validation (Claude on PR):**
 - [ ] Universal checklist §4 — all items pass
@@ -355,7 +355,7 @@ BAM_TIER2=1 tests/integration/run-real-install.sh               # PASS
 - QG-M2 refinement (expanded test catalogue)
 - QG-D1 partial (DR dependency on migration; full lands in P10 ops)
 - Cross-reference into QG-C1 (compliance for offboarding) — placeholder for P9 trust
-- ADR-012
+- ADR-015
 
 **Cross-validation:** Same as P3.1, plus:
 - [ ] design-multi-tenant-testing output catalogue consumed by QG-M2 evidence requirements
@@ -384,7 +384,7 @@ BAM_TIER2=1 tests/integration/run-real-install.sh               # PASS
 - ~25 new fragments (provider integration, tax matrices, rate-limit algorithms)
 - ~6-8 new patterns
 - QG-TC4 (Tenant Context continuous) checklist
-- ADR-013, ADR-014
+- ADR-016, ADR-017
 
 **Next:** P3.4 Brownfield.
 
@@ -400,7 +400,7 @@ BAM_TIER2=1 tests/integration/run-real-install.sh               # PASS
 
 **Deliverables:** As P3.1, plus:
 - ~6-8 brownfield-specific fragments (reuses ~60-70% of greenfield by reference)
-- ADR-015
+- ADR-018
 
 **Cross-validation:** Same as P3.1, plus:
 - [ ] analyze-* and plan-* workflows have explicit `brownfield: true` declarations
@@ -434,7 +434,7 @@ BAM_TIER2=1 tests/integration/run-real-install.sh               # PASS
 **Goal:** Build all 14 data module skills per spec §5.2. Establish QG-DA1.
 
 **Effort:** ~260-310h (3 sub-waves)
-**ADR range reserved:** ADRs 016-019
+**ADR range reserved:** ADRs 019-022
 **Parallelism:** Sequential after P3 (Atlas content patterns established)
 **Persona:** Atlas (still) — first wave where cross-module fragment reuse happens
 
@@ -446,7 +446,7 @@ BAM_TIER2=1 tests/integration/run-real-install.sh               # PASS
 - `2-storage/`, `3-data-lifecycle/` placeholder dirs
 - marketplace.json plugin entry for `bmad-bam-data`
 - Module-level smoke-test
-- ADR-016 (data module scaffolding decisions)
+- ADR-019 (data module scaffolding decisions)
 - **Tier-2 script update:** add `bbd` to `--modules` arg + extend skill-existence loop
 
 #### P4.1 — Storage architecture (5 skills, ~95-115h)
@@ -480,7 +480,7 @@ Skills: design-data-export-formats, design-data-residency, design-retention-dele
 - ~5-7 glossary terms
 - QG-DA1 (Data Architecture) checklist
 - Customize-template overlay for `bmad-investigate` (data deep-dives per §7.2)
-- ADRs 016-019
+- ADRs 019-022
 - Spec changelog row for v0.11
 
 **Cross-validation (added vs P3):**
@@ -498,7 +498,7 @@ Skills: design-data-export-formats, design-data-residency, design-retention-dele
 - 14 data skills + module bootstrap PR all merged
 - Cross-module fragment reference verified at Plan C R7
 - QG-DA1 checklist established
-- ADRs 016-019 in INDEX.md
+- ADRs 019-022 in INDEX.md
 - Spec v0.11 changelog row
 
 **Next:** Wave P5 (ai module + Nova).
@@ -520,7 +520,7 @@ Skills: design-data-export-formats, design-data-residency, design-retention-dele
 **Goal:** Build all 27 ai module skills per spec §5.3. Introduce Nova as second persona. Establish QG-M3.
 
 **Effort:** ~450-540h (6+1 sub-waves; largest wave)
-**ADR range reserved:** ADRs 020-027
+**ADR range reserved:** ADRs 023-030
 **Parallelism:** Sequential after P4
 **Persona:** **Nova** 🌟 NEW — "gradient-descent metaphors" per spec §4.1
 
@@ -533,7 +533,7 @@ Skills: design-data-export-formats, design-data-residency, design-retention-dele
 - Initial fragments: ai-runtime-foundations, model-routing-cost-aware (~3-5 fragments to seed)
 - Marketplace.json plugin entry for `bmad-bam-ai`
 - **Tier-2 script update:** `--modules bbp,bbd,bba` + extend skill-existence loop
-- ADR-020 (Nova persona introduction + ai module bootstrap decisions)
+- ADR-023 (Nova persona introduction + ai module bootstrap decisions)
 
 #### P5.1 — Routing & orchestration (4 skills, ~70-85h)
 Skills: design-model-routing, design-agent-orchestration, design-agent-collaboration-protocol, design-tool-execution
@@ -572,7 +572,7 @@ Skills: design-ai-product-roadmap, design-ai-runtime (synthesizes QG-M3), audit-
 - QG-M3 (AI Runtime) checklist — blocking gate
 - QG-S2 (Model/Tool Safety) partial (full lands in P9 trust)
 - Customize-template overlays for `bmad-investigate`, `bmad-validate-prd`, `bmad-design-test-strategy` (per §7.2)
-- ADRs 020-027 (one per sub-wave + bootstrap)
+- ADRs 023-030 (one per sub-wave + bootstrap)
 - Spec changelog row v0.12
 
 **Cross-validation:**
@@ -596,7 +596,7 @@ Skills: design-ai-product-roadmap, design-ai-runtime (synthesizes QG-M3), audit-
 - 27 skills + Nova persona-skill all merged
 - QG-M3 established (blocking)
 - Plan C R8 PASS with all 3 modules installed
-- ADRs 020-027 in INDEX.md
+- ADRs 023-030 in INDEX.md
 - Spec v0.12 changelog row
 
 **Next:** Wave P6 (ux + Iris).
@@ -618,13 +618,13 @@ Skills: design-ai-product-roadmap, design-ai-runtime (synthesizes QG-M3), audit-
 **Goal:** Build all 12 ux module skills per spec §5.8. Introduce Iris as third persona. Establish QG-UX1.
 
 **Effort:** ~210-260h (3+1 sub-waves)
-**ADR range reserved:** ADRs 028-030
+**ADR range reserved:** ADRs 031-033
 **Persona:** **Iris** 🎨 NEW — "theme tokens, accessibility-first" per spec §4.1
 
 #### P6.0 — Iris persona scaffold + module bootstrap (1 PR, ~15-25h)
 - module.yaml with `code: bbu`, `team: bam`
 - Iris persona at `1-foundation/bmad-bam-agent-iris/`
-- ADR-028
+- ADR-031
 
 #### P6.1 — Branding & theme (4 skills, ~65-80h)
 Skills: design-theme-token-architecture, design-accessibility-cohort, design-multi-locale, design-white-label
@@ -651,7 +651,7 @@ Skills: design-empty-state-ai, design-onboarding-ux, design-feature-deprecation-
 - ~7-9 glossary terms
 - QG-UX1 (advisory) checklist
 - Customize-template overlay for `bmad-create-story` (UX considerations per §7.2)
-- ADRs 028-030
+- ADRs 031-033
 - **Tier-2 script update:** `--modules bbp,bbd,bba,bbu`; skill-existence loop adds 12 Iris-related skills
 - Spec changelog row v0.13
 
@@ -664,7 +664,7 @@ Skills: design-empty-state-ai, design-onboarding-ux, design-feature-deprecation-
 **Wave P6 completion definition:**
 - 12 UX skills + Iris persona-skill all merged
 - QG-UX1 established (advisory)
-- ADRs 028-030 in INDEX.md
+- ADRs 034-036 in INDEX.md
 - Spec v0.13 changelog row
 
 **Next:** Wave P11 (cross-family workflows in platform).
@@ -686,7 +686,7 @@ Skills: design-empty-state-ai, design-onboarding-ux, design-feature-deprecation-
 **Goal:** Build all 12 cross-family workflows per spec §5.9, lived in `bmad-bam-platform`. Bridges modules for v6.0 release.
 
 **Effort:** ~150-210h (2 sub-waves)
-**ADR range reserved:** ADRs 031-033
+**ADR range reserved:** ADRs 034-036
 **Parallelism:** Can parallel with P3 (early cross-family skills) OR after P6 (release-critical)
 **Persona:** Atlas (cross-family skills live in platform; no new persona)
 
@@ -719,7 +719,7 @@ Skills: bmad-bam-backup, bmad-bam-restore, bmad-bam-upgrade, bmad-bam-rollback, 
 - ~15-20 patterns
 - ~2-3 anti-patterns
 - ~5-7 glossary terms
-- ADRs 031-033 (one per sub-wave + release-gate orchestrator)
+- ADRs 034-036 (one per sub-wave + release-gate orchestrator)
 - Spec changelog row v0.14 (cross-family complete)
 
 **Cross-validation:**
@@ -766,7 +766,7 @@ Skills: bmad-bam-backup, bmad-bam-restore, bmad-bam-upgrade, bmad-bam-rollback, 
 **Goal:** Build the BAM MCP server per spec §9.5. Stdio transport, fs-permission auth.
 
 **Effort:** ~90-120h (standalone)
-**ADR range reserved:** ADR-034
+**ADR range reserved:** ADR-037
 **When:** AFTER v6.0 release (rag + integration not required for MCP)
 **Parallelism:** Standalone; can parallel with P7
 
@@ -786,7 +786,7 @@ Skills: bmad-bam-backup, bmad-bam-restore, bmad-bam-upgrade, bmad-bam-rollback, 
 - Tool implementations for 8 tools per spec §9.5 table
 - README documenting setup + `.mcp.json` snippet
 - Tests for MCP server (mock + integration)
-- ADR-034 (MCP transport + auth + tool inventory decisions)
+- ADR-037 (MCP transport + auth + tool inventory decisions)
 - Spec changelog row v1.1 (MCP server added)
 - Customize-template overlay (none needed for MCP server itself)
 
@@ -818,7 +818,7 @@ Skills: bmad-bam-backup, bmad-bam-restore, bmad-bam-upgrade, bmad-bam-rollback, 
 **Goal:** 8 rag module skills per spec §5.4. Establish QG-RQ1.
 
 **Effort:** ~150-200h (2 sub-waves)
-**ADR range reserved:** ADRs 035-036
+**ADR range reserved:** ADRs 038-039
 **Persona:** Nova (already introduced in P5)
 
 #### P7.0 — RAG module bootstrap (1 PR, ~10-15h)
@@ -846,7 +846,7 @@ Skills: design-contextual-retrieval, design-chunking, design-knowledge-graph, de
 - ~2-3 anti-patterns
 - ~5-7 glossary terms
 - QG-RQ1 checklist (advisory)
-- ADRs 035-036
+- ADRs 038-039
 
 ---
 
@@ -865,7 +865,7 @@ Skills: design-contextual-retrieval, design-chunking, design-knowledge-graph, de
 **Goal:** 13 integration skills per spec §5.5. Introduce Kai (default arbiter). Establish QG-I1-3.
 
 **Effort:** ~240-300h (3+1 sub-waves)
-**ADR range reserved:** ADRs 037-040
+**ADR range reserved:** ADRs 040-043
 **Persona:** **Kai** 🔗 NEW — "contract attorney with engineering rigor; default arbiter for conflicts" per spec §4.1 + §4.5
 
 #### P8.0 — Kai persona scaffold + module bootstrap (~20-30h)
@@ -893,7 +893,7 @@ Skills: verify-convergence (QG-I1-3), plan-api-versioning, audit-integration, pl
 - ~3-4 anti-patterns
 - ~7-9 glossary terms
 - QG-I1, QG-I2, QG-I3 checklists (all blocking)
-- ADRs 037-040
+- ADRs 040-043
 - Customize-template overlays for module-facade contracts
 
 **Cross-validation:**
@@ -933,7 +933,7 @@ Skills: verify-convergence (QG-I1-3), plan-api-versioning, audit-integration, pl
 **Goal:** 16 trust skills per spec §5.6 + 6-8 vertical add-on packs per spec §6.7. Introduce Cipher. Establish QG-S1, S2 (full), C1-3.
 
 **Effort:** ~300-400h (4+1 sub-waves; +PX-VerticalPacks)
-**ADR range reserved:** ADRs 041-046
+**ADR range reserved:** ADRs 044-049
 **Persona:** **Cipher** 🔐 NEW — "paranoid auditor: assume breach, log everything" per spec §4.1
 
 #### P9.0 — Cipher persona scaffold + module bootstrap (~20-30h)
@@ -966,7 +966,7 @@ Skills: design-residency-controls, design-vulnerability-mgmt, verify-trust-contr
 - ~5-7 anti-patterns
 - ~10-12 glossary terms
 - QG-S1, QG-S2 (full), QG-C1, QG-C2, QG-C3 checklists
-- ADRs 041-046
+- ADRs 044-049
 
 ---
 
@@ -985,7 +985,7 @@ Skills: design-residency-controls, design-vulnerability-mgmt, verify-trust-contr
 **Goal:** 16 ops skills per spec §5.7. Introduce Rune. Establish QG-O1-3, R1-3, D1, DR2, P1 (composite).
 
 **Effort:** ~300-400h (4+1 sub-waves)
-**ADR range reserved:** ADRs 047-052
+**ADR range reserved:** ADRs 050-055
 **Persona:** **Rune** ⚙️ NEW — "YAML + Helm chart fragments, SLO talk, postmortem candor" per spec §4.1
 
 #### P10.0 — Rune persona scaffold + module bootstrap
@@ -1009,7 +1009,7 @@ Skills: design-residency-controls, design-vulnerability-mgmt, verify-trust-contr
 - ~5-7 anti-patterns
 - ~10-12 glossary terms
 - QG-O1, QG-O2, QG-O3, QG-R1, QG-R2, QG-R3, QG-D1, QG-DR2, QG-P1 (P1 composite)
-- ADRs 047-052
+- ADRs 050-055
 
 ---
 
@@ -1037,6 +1037,7 @@ Skills: design-residency-controls, design-vulnerability-mgmt, verify-trust-contr
 **Goal:** Build `bmad-bam-migrate-v2` workflow per spec §13.
 
 **Effort:** ~75-100h
+**ADR range reserved:** ADR-056
 **Parallelism:** Can run in parallel with P3-P4
 
 **Deliverables:**
@@ -1044,6 +1045,7 @@ Skills: design-residency-controls, design-vulnerability-mgmt, verify-trust-contr
 - Migration steps from v3 to v6 mapping per spec §13.1
 - Migration completion checklist per spec §13.2
 - v3 deprecation timeline doc (see §16 of this roadmap)
+- ADR-056 (v3 → v6 migration tooling decisions)
 
 ---
 
@@ -1199,7 +1201,7 @@ Before Claude approves PR for merge:
 | **BMM divergence accumulation** (v4 H6) | All waves | If BAM works around BMM bugs without filing upstream, divergence compounds. Mitigation: upstream contribution pathway in §19.10; quarterly `_bmad/_memory/<persona>/upstream-issues/` review; close obsolete entries when BMAD ships fixes. |
 | **TEA submodule drift** (v4 M2) | All waves | `external/bmad-tea` upstream may evolve patterns BAM should adopt. Mitigation: quarterly sync cadence per §19.12; submodule-bump commit or pin-and-issue (never silent skip). |
 | **BMAD-main forward-compat regression** (v4 M1) | All waves; revealed earliest by CI | BMAD HEAD may break BAM's install pipeline. Mitigation: nightly CI workflow per §19.11 + §14.4; auto-files issue on failure. |
-| **Multi-context glob collision** (v4 C4) | P4+ (each new BAM module adds a context file) | BMM's strict `**/project-context.md` glob doesn't pick up BAM's `bam-*-project-context.md`. Mitigation: BAM core-skills use broader glob per §19.4; isolation test per §15 multi-context section. |
+| **Multi-module sentinel aggregation context-budget growth** (v4 C4, revised) | P4+ (each new BAM module adds a sentinel) | Premise re-checked: BAM uses per-module subdir convention `{output_folder}/<code>/project-context.md`, already matched by BMM strict glob. Real concern: LLM context payload grows linearly with module count. Mitigation: spec §6.10 + §15.11 context-budget guard; aggregation test per §19.4. |
 
 ---
 
@@ -1805,7 +1807,7 @@ Each wave's spec changelog row decision:
 | PX-Migration | 056 | v3 → v6 migration tooling (shifted from 053) |
 | **Reserve 057-099 (L2 clarification):** v6.x patches **+ mid-wave Concern discoveries + post-release bug-fix ADRs**. Non-contiguous allocation OK — pull next-available number when needed. | | |
 
-**Non-sequential ADR allocation (L3):** ADRs are sequential by ID but may land in non-chronological order when parallel waves complete out of order (e.g., PX-Migration ADR 053 may land BEFORE Wave P4's ADRs 016-019 if PX-Migration completes faster). This is acceptable; INDEX.md displays ADRs in numeric order regardless of landing date.
+**Non-sequential ADR allocation (L3):** ADRs are sequential by ID but may land in non-chronological order when parallel waves complete out of order (e.g., PX-Migration ADR 056 may land BEFORE Wave P4's ADRs 019-022 if PX-Migration completes faster). This is acceptable; INDEX.md displays ADRs in numeric order regardless of landing date.
 
 ---
 
@@ -1990,32 +1992,11 @@ If a merged PR turns out to be bad (e.g., breaks at runtime in a Plan C ratifica
    - File ADR documenting the regression + lessons learned (allocate from ADR range 054-099)
    - Re-execute affected sub-wave(s)
 
-### Multi-context universal-glob isolation test (v4 C4)
+### Multi-module sentinel aggregation test (v4 C4, revised)
 
-**Scenario:** BMM + multiple BAM modules co-installed; each emits its own context file in `{output_folder}/`. Risk: BMM's strict glob skips BAM files (correct); BAM core-skill glob misses some BAM files (regression).
+**Empirical correction:** Prior v4 draft assumed flat-prefix sentinels (`bam-project-context.md`); actual canonical is per-module subdir `{output_folder}/<code>/project-context.md`. Test rewritten to match canonical. See §19.4 for full explanation.
 
-**Test:** `tests/wave-0/multi-context-glob-test.sh` (deliverable in Wave P4.0 — first cross-module wave).
-
-```bash
-#!/usr/bin/env bash
-set -euo pipefail
-TMP=$(mktemp -d)
-mkdir -p "$TMP/_bmad-output"
-touch "$TMP/_bmad-output/project-context.md"          # BMM
-touch "$TMP/_bmad-output/bam-project-context.md"      # BAM platform
-touch "$TMP/_bmad-output/bbd-project-context.md"      # BAM data
-touch "$TMP/_bmad-output/bba-project-context.md"      # BAM ai
-
-# Strict glob (BMM-canonical) — should match exactly 1
-strict=$(find "$TMP/_bmad-output" -name "project-context.md" | wc -l)
-[ "$strict" = "1" ] || { echo "FAIL: strict glob"; exit 1; }
-
-# BAM core-skill broader glob — should match all 4 (1 BMM + 3 BAM)
-broad=$(find "$TMP/_bmad-output" -name "*project-context.md" | wc -l)
-[ "$broad" = "4" ] || { echo "FAIL: broad glob"; exit 1; }
-
-echo "OK: multi-context glob isolation preserved"
-```
+**Test:** `tests/wave-0/multi-sentinel-aggregation-test.sh` (deliverable in Wave P4.0 — first cross-module wave). Source canonical at §19.4.
 
 **Per-wave enforcement:** when a new BAM module is introduced (P4+), the test's expected match count increments. Update test atomically with module introduction.
 
@@ -2288,7 +2269,7 @@ module,skill,display-name,menu-code,description,action,args,phase,preceded-by,fo
 
 | BAM workflow | Output | Resolved location | Filename |
 |---|---|---|---|
-| `bmad-bam-finalize` | Project context | `output_folder` | `bam-project-context.md` |
+| `bmad-bam-finalize` | Project context sentinel | `{output_folder}/<code>` (literal path; mixed-convention per BMM precedent) | `project-context.md` (per-module subdir) |
 | `bmad-bam-design-master-architecture` | Architecture doc | `planning_artifacts` | `master-architecture.md` |
 | `bmad-bam-design-tenancy-model` | Tenancy model | `planning_artifacts` | `tenancy-model.md` |
 | `bmad-bam-design-data-schema` | Data schema | `planning_artifacts` | `data-schema.md` |
@@ -2315,24 +2296,48 @@ module,skill,display-name,menu-code,description,action,args,phase,preceded-by,fo
 
 **Consequence:** Directory grouping remains BAM-discoverable; `phase` column interoperates with BMM's expected enum. BMAD installer phase queries work correctly.
 
-### 19.4 Multi-context universal-glob isolation (C4)
+### 19.4 Multi-module sentinel aggregation (C4 — revised after empirical re-check)
 
-**Problem:** When BMM + BAM platform + BAM data co-installed, `{output_folder}/` has three context files: `project-context.md` (BMM), `bam-project-context.md` (BAM platform), `bbd-project-context.md` (BAM data). BMM core skills' strict glob `**/project-context.md` does NOT match `bam-*` files.
+**Empirical correction (2026-05-16, v4 self-validation):** Prior v4 draft of §19.4 assumed BAM emits flat-prefix sentinels (`{output_folder}/bam-project-context.md`). **Actual canonical is per-module subdir:** `{output_folder}/<module-code>/project-context.md` (verified in `src-v6/bmad-bam-platform/module.yaml:34,107` + `module-help.csv:3-4` + `README.md:39`). This IS BMM-compatible already — BMM's strict glob `file:{project-root}/**/project-context.md` matches every module's sentinel (same filename, different subdir).
 
-**BAM core-skill universal-glob (canonical, broader):**
+**Canonical pattern (each module):**
 
-```toml
-[agent]
-persistent_facts = [
-  "file:{project-root}/**/project-context.md",
-  "file:{project-root}/**/bam-project-context.md",
-  "file:{project-root}/**/bb*-project-context.md",
-]
+| Module | Sentinel path | Match by BMM strict glob? |
+|---|---|---|
+| platform | `{output_folder}/bbp/project-context.md` | ✓ |
+| data | `{output_folder}/bbd/project-context.md` | ✓ |
+| ai | `{output_folder}/bba/project-context.md` | ✓ |
+| ux | `{output_folder}/bbu/project-context.md` | ✓ |
+| rag | `{output_folder}/bbr/project-context.md` | ✓ |
+| integration | `{output_folder}/bbi/project-context.md` | ✓ |
+| trust | `{output_folder}/bbt/project-context.md` | ✓ |
+| ops | `{output_folder}/bbo/project-context.md` | ✓ |
+| (BMM's own) | `{output_folder}/project-context.md` | ✓ |
+
+**No broader glob needed.** No flat-prefix files needed. Universal-glob behavior is BMM-canonical; cross-module aggregation is by-design (LLM concatenates all matches).
+
+**Real remaining concern (C4 reframed — DOWNGRADED to MEDIUM):** when multiple BAM modules are installed, the LLM context payload at activation time grows linearly with module count. Each module contributes 1 sentinel + cross-module fragment context. Spec §6.10 context-budget guarding (§15.11 of release-gate) addresses this; not a glob collision issue.
+
+**Test:** `tests/wave-0/multi-sentinel-aggregation-test.sh` (Wave P4.0 deliverable):
+
+```bash
+#!/usr/bin/env bash
+set -euo pipefail
+TMP=$(mktemp -d)
+mkdir -p "$TMP/_bmad-output"/{bbp,bbd,bba}
+touch "$TMP/_bmad-output/project-context.md"          # BMM
+touch "$TMP/_bmad-output/bbp/project-context.md"      # BAM platform
+touch "$TMP/_bmad-output/bbd/project-context.md"      # BAM data
+touch "$TMP/_bmad-output/bba/project-context.md"      # BAM ai
+
+# BMM-canonical strict glob — matches all 4 (BMM + 3 BAM modules)
+matched=$(find "$TMP/_bmad-output" -name "project-context.md" | wc -l)
+[ "$matched" = "4" ] || { echo "FAIL: expected 4 matches, got $matched"; exit 1; }
+echo "OK: BMM strict glob picks up all module sentinels via subdir convention"
+rm -rf "$TMP"
 ```
 
-**Decision:** Each BAM module generates its OWN context file (`bbd-project-context.md`, `bba-project-context.md`, etc.) rather than appending to a shared `bam-project-context.md`. Rationale: modules install independently; per-module context survives partial installs; clean isolation.
-
-**Test:** `tests/wave-0/multi-context-glob-test.sh` (Wave P4.0 deliverable) — see §15.
+**Atlas customize.toml stale comment cleanup (Wave P3.0):** `src-v6/bmad-bam-platform/1-foundation/bmad-bam-agent-atlas/customize.toml:40` references stale `bam-<module>-project-context.md` naming. Replace with canonical `{output_folder}/<code>/project-context.md` reference. Atomic fix in Wave P3.0 prereqs.
 
 ### 19.5 Workflow-chaining DAG via `preceded-by` (H1)
 
@@ -2341,7 +2346,7 @@ persistent_facts = [
 **BAM cross-module workflow DAG (canonical chain to v6.0):**
 
 ```
-bmad-bam-finalize (output: bam-project-context.md)
+bmad-bam-finalize (output: {output_folder}/bbp/project-context.md)
     ↓ preceded-by
 bmad-bam-design-master-architecture (output: master-architecture.md)
     ↓ preceded-by
@@ -2374,11 +2379,11 @@ bmad-bam-verify-production-readiness-final
 
 ### 19.7 Menu-code 3-char Z-prefix extension (H3) — ADR-013
 
-**BMM uses 2-char codes:** `DP`, `WB`, `CR`, `GPC`. Total namespace: 676 codes.
+**BMM uses predominantly 2-char codes** (`DP`, `WB`, `CR`, etc. — 31 of 32 codes verified at `external/bmad-method/src/bmm-skills/module-help.csv`) with rare 3-char exception (`GPC` for `bmad-generate-project-context`).
 
-**BAM uses 3-char Z-prefix codes:** `ZTI`, `ZAH`, `ZRP`. Total namespace: 676 with Z-prefix reserved.
+**BAM uses 3-char Z-prefix codes:** `ZTI`, `ZAH`, `ZRP`. Reserved namespace: 676 codes (Z + 26 × 26).
 
-**Resolution (ADR-013):** **BAM extends BMM's enum.** 3-char Z-prefix codes are a deliberate BAM extension, not an oversight. BMAD installer's menu-code parser accepts 2-3 char codes; collision with BMM impossible due to Z-prefix reservation.
+**Resolution (ADR-013):** **BAM extends BMM's enum.** 3-char codes are already accepted by BMAD's menu-code parser (proven by BMM's `GPC`). BAM's universal Z-prefix is a deliberate convention, not an oversight. Collision with BMM impossible: BMM does not allocate any Z-prefixed code as of BMAD 6.6.0; BAM reserves the entire Z-prefix space.
 
 **Per-module sub-prefix:**
 - `Z` — BAM platform + cross-cutting (current)
@@ -2481,11 +2486,11 @@ All others default to `required: false` (optional/situational).
 
 **BMM:** `bmad run bmad-generate-project-context` → `{output_folder}/project-context.md`.
 
-**BAM:** `bmad-bam-finalize` → `{output_folder}/bam-project-context.md`.
+**BAM:** `bmad-bam-finalize` → `{output_folder}/<module-code>/project-context.md` (per canonical §19.4; e.g., `{output_folder}/bbp/project-context.md` for platform).
 
 **Integration rule:** `bmad-bam-finalize` step-01 SHOULD call `bmad run bmad-generate-project-context` first if `{output_folder}/project-context.md` does not exist. Ensures BMM's context is present before BAM augments.
 
-**Rationale:** BAM's `bam-project-context.md` describes BAM-specific facts (gates, fragments, patterns); BMM's `project-context.md` describes BMM-driven project facts (architecture, PRD, stories). Both contribute to LLM context. Order matters because BAM's content may reference BMM's.
+**Rationale:** BAM's per-module `project-context.md` describes BAM-specific facts (gates, fragments, patterns) for that module; BMM's `project-context.md` describes BMM-driven project facts (architecture, PRD, stories). Both contribute to LLM context via universal-glob. Order matters because BAM's content may reference BMM's.
 
 **Test:** Wave P4+ real-install test verifies both files present after finalize.
 
@@ -2557,7 +2562,7 @@ This v4 builds on v3 by fixing 20 BMM/TEA compatibility gaps surfaced in the thi
 | C1 | CRITICAL | module-help.csv 13-col schema | §19.1, §4 |
 | C2 | CRITICAL | Output-location resolved variables | §19.2, §4, §17 |
 | C3 | CRITICAL | Phase-column decoupling — ADR-011 | §19.3, §13 |
-| C4 | CRITICAL | Multi-context glob isolation + test | §19.4, §15, §6 |
+| C4 | MED (revised from CRITICAL after empirical re-check) | Multi-module sentinel aggregation reframed: per-module subdir convention is BMM-compatible; context-budget growth concern | §19.4, §6 |
 | H1 | HIGH | Workflow chaining DAG | §19.5, §4 |
 | H2 | HIGH | All-in-skills decision — ADR-012 | §19.6, §13 |
 | H3 | HIGH | Menu-code Z-prefix extension — ADR-013 | §19.7, §4, §13 |
