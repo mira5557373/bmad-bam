@@ -44,13 +44,32 @@ post-install-notes: |
 # BMAD's installer reads this list. All other declarations below are loaded by
 # BMAD-side tooling that scans the module's filesystem layout — there is no
 # `install:` or `verify:` key recognised by the BMAD installer in v6.6.0.
-directories:
-  - "{project-root}/_bmad/bam"
-  - "{project-root}/_bmad/bam/install-logs"
-  # NOTE: the sentinel file lives in {output_folder}/ (BMM-aligned per v0.7 §7.6),
-  # NOT inside _bmad/. BMAD's installer creates _bmad-output/ via the core config
-  # flow (see external/bmad-method/tools/installer/core/installer.js:1038), so
-  # the directory is reliably present at finalize time.
+# BAM-family cross-module dirs (_bmad/bam/, _bmad/bam/install-logs/) are
+# created at runtime by 9-infrastructure/bmad-bam-finalize/scripts/post-install.sh's
+# defensive `mkdir -p` (post-install.sh:156). They are NOT declared in this
+# `directories:` block because:
+#
+# 1. BMAD's createModuleDirectories (official-modules.js:587+) only honors
+#    entries matching ^\{name\}$ (variable-reference form like
+#    {planning_artifacts}). Literal paths like {project-root}/_bmad/bam are
+#    silently SKIPPED. Empirically verified Concern 7 / 2026-05-16.
+#
+# 2. BAM-family cross-module dirs (_bmad/bam/) are FIXED conventions, not
+#    user-configurable. BMM uses `directories:` for user-config-driven paths
+#    (e.g., {planning_artifacts}, {implementation_artifacts}); BAM's case
+#    doesn't fit that pattern.
+#
+# 3. post-install.sh's defensive mkdir is the canonical creation site;
+#    making BMAD's installer also try (and fail to) create them would be
+#    redundant misdirection.
+#
+# The sentinel file `{output_folder}/<code>/project-context.md` (per Concern 5
+# / v0.9 §7.6) lives outside `_bmad/`; BMAD's installer creates
+# `_bmad-output/` via the core config flow (installer.js:1038), so the
+# subdir's parent is reliably present at finalize time.
+#
+# See: ADR 009 (Concern 7 — directories: cleanup).
+directories: []
 
 # Agent roster — essence only. Full persona behavior lives in the persona-skill
 # `1-foundation/bmad-bam-agent-atlas/customize.toml` (BMM-canonical phase-grouped

@@ -152,6 +152,14 @@ EOF
 mv -f "$TMP_FILE" "$TARGET_FILE"
 
 # Log install
+#
+# CANONICAL SOURCE OF TRUTH for BAM-family cross-module dirs creation
+# (per Concern 7 / ADR 009 / 2026-05-16). BAM does NOT use BMAD's
+# module.yaml `directories:` declarative key for these dirs because:
+#   - createModuleDirectories (official-modules.js:587+) only honors
+#     {name}-form variable references, not literal paths
+#   - _bmad/bam/ is a fixed BAM-family convention, not user-configurable
+#   - This defensive mkdir is the canonical creation site
 LOG_DIR="$PROJECT_ROOT/_bmad/bam/install-logs"
 mkdir -p "$LOG_DIR"
 echo "[$(date -u +%Y-%m-%dT%H:%M:%SZ)] post-install ran; sentinel=$SENTINEL; output_folder=$OUTPUT_FOLDER_REL; target=$TARGET_FILE" >> "$LOG_DIR/platform-install.log"
