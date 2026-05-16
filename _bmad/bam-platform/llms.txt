@@ -1,0 +1,49 @@
+# BAM v6 — Platform Module — Skills Inventory
+
+Module code: `bmad-bam-platform`
+Generated: 2026-05-16
+Source: `src-v6/bmad-bam-platform/module-help.csv`
+
+## Skills
+
+### `bmad-bam-agent-atlas` — Atlas — Platform Architect (A)
+
+Multi-tenant SaaS platform architect. Discuss tenant isolation, modular monolith decomposition, FinOps, tenant tiering. Invocable for ad-hoc consultations; also canonical home for shared platform-module resources (fragments, patterns, standards, checklists).
+
+- **Phase:** solutioning
+- **Required:** false
+- **Output:** 
+- **SKILL.md:** `src-v6/bmad-bam-platform/1-foundation/bmad-bam-agent-atlas/SKILL.md`
+
+### `bmad-bam-smoke-test` — BAM v6 Activation Smoke Test (S)
+
+Verify the BAM v6 universal-glob activation mechanism end-to-end. Resolver-side checks: literal universal-glob string survives BMAD's three-layer customize merge into target skill's persistent_facts; sentinel file present at {output_folder}/bbp/project-context.md. Run after bmad install or BMAD-version change.
+
+- **Phase:** solutioning
+- **Required:** false
+- **Output:** _bmad/bam/family.json
+- **SKILL.md:** `src-v6/bmad-bam-platform/9-infrastructure/bmad-bam-smoke-test/SKILL.md`
+
+### `bmad-bam-finalize` — BAM v6 Platform Activation Finalizer (F)
+
+Generate (or refresh) the universal-glob sentinel at {output_folder}/bbp/project-context.md so BMAD core skills auto-load BAM v6 platform context at activation. Run once after bmad install bmad-bam-platform.
+
+- **Phase:** solutioning
+- **Required:** true
+- **Output:** {output_folder}/bbp/project-context.md
+- **SKILL.md:** `src-v6/bmad-bam-platform/9-infrastructure/bmad-bam-finalize/SKILL.md`
+
+### `bmad-bam-design-tenancy-model` — Design Tenancy Model (D)
+
+Facilitated design workflow: choose multi-tenant isolation model (RLS / schema-per-tenant / cell-based / hybrid) based on tenant projections, compliance scope, blast-radius tolerance. Output: tenancy-model.md design doc + ADR + QG-M2 partial evidence.
+
+- **Phase:** solutioning
+- **Required:** false
+- **Output:** docs/architecture/
+- **SKILL.md:** `src-v6/bmad-bam-platform/2-modules/bmad-bam-design-tenancy-model/SKILL.md`
+
+## Invocation
+
+Workflows are invoked via the AI agent's slash command in Claude Code / Cursor
+(e.g., `/bmad-bam-<skill-name>`) or natural-language activation. There is no
+`bmad run X` CLI command (see audit check (h) in tests/audit-marketplace.sh).
