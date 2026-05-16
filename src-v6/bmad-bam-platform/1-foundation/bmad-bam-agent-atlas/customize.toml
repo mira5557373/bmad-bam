@@ -37,7 +37,8 @@ activation_steps_append = [
 # Atlas auto-loads its own knowledge here so the persona always has its
 # fragments/patterns/standards in scope when invoked directly. Universal-glob
 # (`file:{project-root}/**/project-context.md`) also loads BAM v6 sentinel files
-# at {output_folder}/bam-<module>-project-context.md per v0.7 spec §7.6.
+# at {output_folder}/<module-code>/project-context.md per v0.7 spec §7.6
+# (e.g., {output_folder}/bbp/project-context.md for the platform module).
 
 persistent_facts = [
   "file:{project-root}/**/project-context.md",

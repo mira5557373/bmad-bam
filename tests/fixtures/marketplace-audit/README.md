@@ -26,6 +26,7 @@ firing, not a fully-clean marketplace that exercises one check in isolation.
 | `marketplace-bad-phase-orphan.json` | FAIL | (d) phase-mode orphan detection |
 | `marketplace-bad-stale-path.json` | FAIL | (g) stale pre-Phase-C path in step file |
 | `marketplace-bad-fictional-run.json` | FAIL | (h) fictional `bmad run X` in SKILL.md |
+| `marketplace-bad-unknown-workflow.json` | FAIL | (i) workflow name not in spec §5.X allow-list |
 
 ## Sentinel — `.no-marketplace`
 

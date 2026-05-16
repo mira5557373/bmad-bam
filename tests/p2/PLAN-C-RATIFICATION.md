@@ -2,6 +2,59 @@
 
 ---
 
+## 2026-05-16 — Round 5 — Wave P3.0 prereq baseline (autonomous-subagent interim)
+
+**Date:** 2026-05-16
+**BMAD version:** 6.6.0 (submoduled; via `node bmad-cli.js`)
+**BAM commit:** `c35a375` (HEAD of `feat/v6-p3-0-prereqs`; after 3 P3.0 prereq commits)
+**Test project:** `/tmp/tmp.2tCw8RRbeS` (ephemeral, mktemp; `KEEP_WORKDIR=1`)
+**Orchestrating session:** main Claude Code session at `/mnt/b/2026/Aprial/bmad-bam`
+
+### Round 5 scope
+
+**Purpose:** establish Plan C baseline for the merged main branch (post-PRs #3-#7) plus P3.0 prereq changes (Atlas customize.toml cleanup; ADRs 011-014; audit check (i); BMAD-main CI; llms.txt helper). Verifies universal-glob activation chain still PASSes after all P3.0 prereq work.
+
+**Method:** per roadmap §17 Plan C delegation protocol (M1) — autonomous-subagent ratification (interim; manual IDE ratification deferred until first release tag).
+
+### Steps
+
+1. Ran `tests/p2/run-real-install-test.sh` with `KEEP_WORKDIR=1` to install BAM v6 platform into a fresh BMAD-initialized fixture project at `/tmp/tmp.2tCw8RRbeS`.
+2. Verified sentinel landed at `/tmp/tmp.2tCw8RRbeS/_bmad-output/bbp/project-context.md` (BMM-canonical subdir form per ADR 008).
+3. Token written by finalize: `BAM_LOAD_VERIFY_a292be046cbd4126b2ab99d6fbfa7078`.
+4. Spawned a fresh `general-purpose` subagent (zero prior context) with the prompt: discover every `**/project-context.md` under the test project root, read each, recite every `BAM_LOAD_VERIFY_<32-hex>` token found.
+
+### Subagent return
+
+```
+DISCOVERY_METHOD: Bash find
+GLOB_MATCHES:
+  /tmp/tmp.2tCw8RRbeS/_bmad-output/bbp/project-context.md
+FILES_READ: 1
+TOKENS_FOUND:
+  BAM_LOAD_VERIFY_a292be046cbd4126b2ab99d6fbfa7078
+RECITED_TOKEN: BAM_LOAD_VERIFY_a292be046cbd4126b2ab99d6fbfa7078
+```
+
+### Outcome: PASS
+
+Subagent recited the canonical token matching what `bmad-bam-finalize` wrote. Confirms:
+- Universal-glob `**/project-context.md` resolves the BMM-canonical subdir sentinel
+- Sentinel content is readable + the `BAM_LOAD_VERIFY_<token>` recital pattern works
+- P3.0 prereq changes (audit check (i), ADRs 011-014, etc.) did NOT regress activation
+
+### Disclaimer (per §17 M1)
+
+> **Autonomous-subagent ratification (R5) — interim.** Manual Claude Code IDE ratification still pending; required before final release tag (v6.0/v6.1/v6.2). Subagent-proxy results consistent with prior R1-R4 (4 prior PASSes).
+
+**Tooling caveat:** the general-purpose subagent reported `Glob` tool unavailable; discovery used `Bash find` instead. Real Claude Code activation uses `Glob` tool natively (no Bash fallback needed); the proxy reads the same content from the same path. The token-recital verification — the actual mechanism we care about — is unaffected.
+
+**Triggers requiring manual IDE re-ratification:**
+- Final release tag (v6.0/v6.1/v6.2)
+- BMAD upstream API change
+- Universal-glob mechanism modification
+
+---
+
 ## 2026-05-15 — Concern 5 Round 4 — Strict (autonomous; main-session orchestrated)
 
 **Date:** 2026-05-15

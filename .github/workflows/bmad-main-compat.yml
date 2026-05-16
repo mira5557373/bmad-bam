@@ -1,0 +1,77 @@
+name: BMAD-main forward-compat
+
+# Nightly check that BAM's install pipeline + audit fixtures still pass
+# against BMAD's main-branch HEAD. Catches upstream API regressions early.
+# Per roadmap v4.2 §19.11 (M1).
+
+on:
+  schedule:
+    # Mondays 06:00 UTC. Adjust if alert noise is unfavorable.
+    - cron: '0 6 * * 1'
+  workflow_dispatch: {}
+
+jobs:
+  test-against-bmad-main:
+    name: Smoke + real-install + fixtures against BMAD HEAD
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      issues: write   # for auto-file-on-failure
+    steps:
+      - name: Checkout BAM (recursive submodules)
+        uses: actions/checkout@v4
+        with:
+          submodules: recursive
+
+      - name: Bump bmad-method submodule to main HEAD
+        run: |
+          cd external/bmad-method
+          git fetch origin main
+          git checkout origin/main
+          echo "BMAD pinned to: $(git rev-parse HEAD)"
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Install BMAD npm deps
+        working-directory: external/bmad-method
+        run: |
+          if [ -f package-lock.json ]; then npm ci; else npm install; fi
+
+      - name: Run wave-0 smoke test
+        run: tests/wave-0/run-smoke-test.sh
+
+      - name: Run P2 real-install test (Tier-2 opt-in)
+        env:
+          BAM_TIER2: "1"
+        run: tests/p2/run-real-install-test.sh
+
+      - name: Run audit-marketplace fixtures (all 13)
+        run: tests/audit-marketplace-fixtures.sh
+
+      - name: Auto-file issue on failure
+        if: failure()
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const sha = context.sha.slice(0, 7);
+            const url = `${context.serverUrl}/${context.repo.owner}/${context.repo.repo}/actions/runs/${context.runId}`;
+            github.rest.issues.create({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              title: `BMAD-main compat failure (${sha})`,
+              body: [
+                `Nightly forward-compat check against BMAD HEAD failed.`,
+                ``,
+                `**Run:** ${url}`,
+                `**BAM SHA:** ${context.sha}`,
+                `**Triage:** open the failing run, identify which step regressed.`,
+                ``,
+                `Per roadmap §19.11 + §14, triage in the next BAM session.`,
+                `If incompatibility is fundamental (not flaky), file as a new`,
+                `Concern via §15 mid-wave discovery protocol.`,
+              ].join('\n'),
+              labels: ['bmad-main-compat', 'priority:high']
+            })

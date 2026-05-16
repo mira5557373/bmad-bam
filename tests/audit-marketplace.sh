@@ -27,6 +27,13 @@
 #       (bmad-cli.js exposes only install/status/uninstall). Lines explaining
 #       the command is fictional (carving markers: "fictional", "NOT a real",
 #       "doesn't exist", "RR1") are carved out.
+#   (i) every BAM workflow skill in marketplace.json maps to a workflow
+#       name listed in spec §5.1-§5.9 of docs/v6-final-architecture.md.
+#       Catches §19.5-style drift bugs (workflow renamed in code but spec
+#       lags, or vice versa). Carve-outs: persona-skills (bmad-bam-agent-*),
+#       v3 plugin entries (./src/*), and known pre-spec infrastructure
+#       workflows (bmad-bam-finalize). Spec-extraction parses §5.X entries
+#       matching `^[0-9]+\. \`<name>\``.
 #
 # Usage:
 #   tests/audit-marketplace.sh                       # default: real marketplace + src-v6
@@ -418,6 +425,67 @@ if [ -d "$V6_ROOT" ]; then
             fi
         done < <(grep -nE "bmad run [a-zA-Z]" "$f" 2>/dev/null || true)
     done < <(scan_g_files)
+fi
+
+# ─── Check (i): workflow-name allow-list (spec §5.1-§5.9) ────────────────
+# Builds allow-list dynamically by parsing spec §5.X entries. Every BAM
+# workflow skill in marketplace.json must map to a name in the allow-list
+# OR be a known carve-out (persona-skill, v3 entry, pre-spec infrastructure).
+SPEC_FILE="$REPO_ROOT/docs/v6-final-architecture.md"
+KNOWN_BAM_INFRA="bmad-bam-finalize"   # pre-v6-catalog platform-MVP workflow
+# Carve-out: workflow names that pre-date the v6 spec catalog. These ship
+# with platform MVP (PR #2 / ADR 003) but aren't listed in spec §5.9 yet.
+# When spec is patched (Wave P3.0 deliverable), this carve-out can shrink.
+
+if [ -f "$SPEC_FILE" ]; then
+    # Extract bare workflow names from spec §5.1-§5.9 numbered lists.
+    ALLOWLIST="$(awk '
+        /^### 5\.[1-9]/ { in_section=1; next }
+        /^### / && !/^### 5\.[1-9]/ { in_section=0 }
+        in_section && /^[0-9]+\. `[a-z][a-z0-9-]*`/ {
+            match($0, /`([^`]+)`/, arr); print arr[1]
+        }
+    ' "$SPEC_FILE" 2>/dev/null | sort -u)"
+
+    if [ -n "$ALLOWLIST" ]; then
+        while IFS= read -r skill; do
+            [ -z "$skill" ] && continue
+            # Carve-out: v3 legacy bundled-content entries + v3 workflows
+            # (v3 BAM workflows live under ./src/workflows/ and predate the
+            # v6 spec catalog — they're a separate v3 plugin in marketplace.json)
+            if [[ "$skill" == "./src/data" || "$skill" == "./src/_config" || \
+                  "$skill" == ./src/workflows/* ]]; then
+                continue
+            fi
+            # Extract leaf dir name (the workflow / persona-skill name)
+            leaf="$(basename "$skill")"
+            # Carve-out: persona-skills (bmad-bam-agent-*) are §4.1 not §5.X
+            if [[ "$leaf" == bmad-bam-agent-* ]]; then
+                continue
+            fi
+            # Carve-out: known pre-spec infrastructure workflows
+            if [[ " $KNOWN_BAM_INFRA " == *" $leaf "* ]]; then
+                continue
+            fi
+            # Carve-out: only validate names matching BAM workflow conventions
+            # per spec §5.0 (verb-prefix: design-/analyze-/plan-/audit-/verify-/
+            # map-/record-/mediate-/refresh-/waive-/release-/bmad-bam-). Names
+            # not matching ANY of these prefixes are out-of-scope for check (i)
+            # (e.g., fixture skill-* dirs, utility skills).
+            case "$leaf" in
+                bmad-bam-*|design-*|analyze-*|plan-*|audit-*|verify-*|map-*|record-*|mediate-*|refresh-*|waive-*|release-*) : ;;
+                *) continue ;;
+            esac
+            # Strip bmad-bam- prefix for spec lookup (spec uses bare names
+            # in §5.1-§5.8; full bmad-bam-* names in §5.9 cross-family).
+            # Try both forms against the allow-list.
+            stripped="${leaf#bmad-bam-}"
+            if ! echo "$ALLOWLIST" | grep -qxF "$leaf" && \
+               ! echo "$ALLOWLIST" | grep -qxF "$stripped"; then
+                emit "skill '$leaf' (from $skill) is not listed in spec §5.1-§5.9 of $SPEC_FILE (check i). Either rename to a spec-listed workflow OR patch spec §5.X to include it. Verified against $(echo "$ALLOWLIST" | wc -l) workflow names extracted from spec."
+            fi
+        done <<<"$LISTED_SKILLS"
+    fi
 fi
 
 # ─── Summary ──────────────────────────────────────────────────────────────

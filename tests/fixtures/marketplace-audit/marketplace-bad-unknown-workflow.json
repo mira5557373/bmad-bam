@@ -1,0 +1,12 @@
+{
+  "name": "audit-fixture", "owner": { "name": "BAM Test Harness" },
+  "description": "BAD — check (i): on-disk fake skill name 'design-master-architecture' is NOT in spec §5.1-§5.9 workflow listings. Catches the §19.5-style drift bug (renamed in code without spec patch).",
+  "plugins": [{
+    "name": "bmad-bam-platform", "source": "./", "version": "0.0.1",
+    "description": "Bad fixture (unknown workflow name).",
+    "author": { "name": "BAM Test Harness" },
+    "skills": [
+      "./tests/fixtures/marketplace-audit/fake-v6-with-unknown-workflow/bam-faux/2-modules/bmad-bam-design-master-architecture"
+    ]
+  }]
+}
