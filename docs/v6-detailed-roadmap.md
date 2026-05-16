@@ -1,7 +1,7 @@
-# BAM v6 — Detailed Wave Roadmap & Cross-Validation Workflow (v3)
+# BAM v6 — Detailed Wave Roadmap & Cross-Validation Workflow (v4)
 
 **Date:** 2026-05-16
-**Version:** v3 (48-gap fix total: 24 in v1→v2, 24 in v2→v3; navigation + resilience + edge cases)
+**Version:** v4 (68-gap fix total: 24 in v1→v2, 24 in v2→v3, 20 BMM/TEA compatibility fixes in v3→v4)
 **Spec source:** `docs/v6-final-architecture.md` v0.9
 **Status of foundation:** PR #3 + #5 + #6 + #7 + chore submodule queued for merge
 **Purpose:** Comprehensive forward plan for all remaining waves with brainstorm scope, deliverables, cross-validation gates, persona introductions, and cross-cutting work assignments. **Nothing missed.**
@@ -49,6 +49,29 @@ P10    ░░░░░░░░░░░░░░░░░░░░░░░░�
 - [§16 v3 deprecation timeline](#16-v3-deprecation-timeline)
 - [§17 §15 Claude consumption validation (release gate)](#17-15-claude-consumption-validation-v60v61v62-release-gate)
 - [§18 Effort tracking sheet template](#18-effort-tracking-sheet-template)
+- [§19 BMM/TEA Compatibility Addendum](#19-bmmtea-compatibility-addendum)
+
+**Changes from v3 (2026-05-16 third self-critique → v4 — BMM/TEA compatibility):**
+- C1: `module-help.csv` 13-column schema fully enumerated + per-column semantics (§19.1)
+- C2: BMM `output-location` resolved-variable convention adopted; per-workflow output mapping (§19.2)
+- C3: Phase-column decoupling — directory structural / module-help.csv lifecycle (§19.3, ADR-011)
+- C4: Multi-context universal-glob isolation — broader BAM glob + isolation test (§19.4, §15)
+- H1: Workflow chaining DAG via `preceded-by` / `followed-by` (§19.5)
+- H2: BAM follows BMM all-in-skills (no separate `workflows/`) — ADR-012 (§19.6)
+- H3: Menu-code 3-char Z-prefix documented as deliberate BMM-extension — ADR-013 (§19.7)
+- H4: `_meta` module-help row + per-module `llms.txt` publication (§19.8)
+- H5: Cross-PERSONA content reference rule (extends cross-module pattern) (§19.9)
+- H6: BMM upstream contribution pathway (§19.10, §6)
+- M1: BMAD-main forward-compat nightly CI workflow (§19.11, §14)
+- M2: TEA submodule sync cadence (quarterly) (§19.12, §14)
+- M3: `args` column convention for skill invocation (§19.13)
+- M4: `required: true/false` per-skill assignment (§19.14)
+- M5: BMM `bmad-generate-project-context` integration in `bmad-bam-finalize` step-01 (§19.15)
+- M6: Skill manifest schema reconciliation prereq for Wave P3 (§19.16)
+- M7: TEA persona-as-workflow-router empirical lineage documented (§19.17)
+- L1: `bmad list-modules` registration release-gate check (§19.18, §17)
+- L2: Recursive workflow invocation pattern (release-gate-orchestrator) (§19.19)
+- L3: `display-name` brevity convention (≤4 words, ≤30 chars) (§19.20)
 
 **Changes from v2 (2026-05-16 second self-critique → v3):**
 - H1: TOC added (above) + visual progress tracker
@@ -1118,6 +1141,21 @@ Claude runs these on **EVERY content PR (Wave P3+):**
 - [ ] Implementation: consuming step file uses Read tool with tool-aware path fallback (`.claude/skills/<persona-skill>/resources/fragments/<name>.md` → `.cursor/skills/...` → `_bmad/<code>/...`).
 - [ ] Wiki-link resolution: at activation time, BAM's MCP server (PX-MCP) resolves wiki-links to actual paths. Until MCP server lands, consuming step files use explicit Read calls with path-fallback list.
 
+### BMM/TEA compatibility (v4 — see §19 for full rules)
+
+- [ ] **`module-help.csv` 13-column header verbatim match** with BMM (§19.1): `module,skill,display-name,menu-code,description,action,args,phase,preceded-by,followed-by,required,output-location,outputs`
+- [ ] **All 13 columns populated per skill row** (no empty cells in `module`, `skill`, `display-name`, `menu-code`, `phase`, `output-location`, `outputs`)
+- [ ] **`output-location` value from BMM enum:** `output_folder` | `planning_artifacts` | `implementation_artifacts` | `project-knowledge` (no BAM-invented values — §19.2)
+- [ ] **`phase` column uses BMM lifecycle enum:** `1-analysis` | `2-planning` | `3-solutioning` | `4-implementation` | `anytime` — NOT the directory name (§19.3)
+- [ ] **`preceded-by` references existing skill name** (or empty); workflow chain has no cycles (§19.5)
+- [ ] **`menu-code` is 3-char Z-prefix** for BAM workflows (no collision with BMM 2-char) (§19.7)
+- [ ] **`display-name` ≤4 words, ≤30 chars** (§19.20)
+- [ ] **`required` boolean populated** per §19.14 per-module table
+- [ ] **`_meta` row present** at top of module-help.csv pointing to `_bmad/<mod>/llms.txt` or `<docs-site>/llms.txt` (§19.8)
+- [ ] **`tools/generate-llms-txt.sh <mod>`** produces a valid `llms.txt` from module-help.csv + SKILL.md headers
+- [ ] **Cross-persona references** use same tool-aware fallback as cross-module (§19.9)
+- [ ] **Module.yaml `agents:` block menu-code matches** module-help.csv menu-code (no drift between manifests)
+
 ---
 
 ## 5. Per-wave PR pre-merge gate
@@ -1158,6 +1196,10 @@ Before Claude approves PR for merge:
 | **Tier-2 runtime growth** (M2) | P5+ (each module adds install time) | Tier-2 current: ~30s. Each new module adds ~10-30s. SLO: <5 min total. Alert >7 min; investigate >10 min. Mitigation: per-wave Tier-2 timing recorded; CI parallel-installs if needed. |
 | **Wave health: effort overrun** (M10) | All waves | Trigger: actual effort >1.5× estimate at 50% completion → re-brainstorm scope. >2× at any point → halt + replan. Recorded in §18 effort tracking sheet. |
 | **Plan C person-availability** (M1) | Release-gate waves | Plan C requires user in real Claude Code IDE. If unavailable >2 weeks at release gate, autonomous-subagent ratification (R1-R4 methodology) is acceptable as interim gate with disclaimer in PLAN-C-RATIFICATION.md. See §17. |
+| **BMM divergence accumulation** (v4 H6) | All waves | If BAM works around BMM bugs without filing upstream, divergence compounds. Mitigation: upstream contribution pathway in §19.10; quarterly `_bmad/_memory/<persona>/upstream-issues/` review; close obsolete entries when BMAD ships fixes. |
+| **TEA submodule drift** (v4 M2) | All waves | `external/bmad-tea` upstream may evolve patterns BAM should adopt. Mitigation: quarterly sync cadence per §19.12; submodule-bump commit or pin-and-issue (never silent skip). |
+| **BMAD-main forward-compat regression** (v4 M1) | All waves; revealed earliest by CI | BMAD HEAD may break BAM's install pipeline. Mitigation: nightly CI workflow per §19.11 + §14.4; auto-files issue on failure. |
+| **Multi-context glob collision** (v4 C4) | P4+ (each new BAM module adds a context file) | BMM's strict `**/project-context.md` glob doesn't pick up BAM's `bam-*-project-context.md`. Mitigation: BAM core-skills use broader glob per §19.4; isolation test per §15 multi-context section. |
 
 ---
 
@@ -1749,18 +1791,19 @@ Each wave's spec changelog row decision:
 
 | Wave | ADRs reserved | Topics |
 |---|---|---|
-| P3 | 011-015 | Foundation, Lifecycle, Commercial, Brownfield, Wave-completion |
-| P4 | 016-019 | Module bootstrap + 3 sub-waves |
-| P5 | 020-027 | Nova introduction + 6 sub-waves + cross-persona |
-| P6 | 028-030 | Iris introduction + sub-waves |
-| P11 | 031-033 | Cross-family sub-waves |
-| PX-MCP | 034 | MCP server design |
-| P7 | 035-036 | RAG sub-waves |
-| P8 | 037-040 | Kai introduction + sub-waves |
-| P9 | 041-046 | Cipher introduction + sub-waves + vertical packs |
-| P10 | 047-052 | Rune introduction + sub-waves |
-| PX-Migration | 053 | v3 → v6 migration tooling |
-| **Reserve 054-099 (L2 clarification):** v6.x patches **+ mid-wave Concern discoveries + post-release bug-fix ADRs**. Non-contiguous allocation OK — pull next-available number when needed. | | |
+| **v4 roadmap (pre-wave-P3)** | **011-013** | **Phase-column decoupling (§19.3), BMM all-in-skills (§19.6), Menu-code 3-char Z-prefix extension (§19.7)** |
+| P3 | 014-018 | Foundation, Lifecycle, Commercial, Brownfield, Wave-completion (shifted from 011-015) |
+| P4 | 019-022 | Module bootstrap + 3 sub-waves (shifted from 016-019) |
+| P5 | 023-030 | Nova introduction + 6 sub-waves + cross-persona (shifted from 020-027) |
+| P6 | 031-033 | Iris introduction + sub-waves (shifted from 028-030) |
+| P11 | 034-036 | Cross-family sub-waves (shifted from 031-033) |
+| PX-MCP | 037 | MCP server design (shifted from 034) |
+| P7 | 038-039 | RAG sub-waves (shifted from 035-036) |
+| P8 | 040-043 | Kai introduction + sub-waves (shifted from 037-040) |
+| P9 | 044-049 | Cipher introduction + sub-waves + vertical packs (shifted from 041-046) |
+| P10 | 050-055 | Rune introduction + sub-waves (shifted from 047-052) |
+| PX-Migration | 056 | v3 → v6 migration tooling (shifted from 053) |
+| **Reserve 057-099 (L2 clarification):** v6.x patches **+ mid-wave Concern discoveries + post-release bug-fix ADRs**. Non-contiguous allocation OK — pull next-available number when needed. | | |
 
 **Non-sequential ADR allocation (L3):** ADRs are sequential by ID but may land in non-chronological order when parallel waves complete out of order (e.g., PX-Migration ADR 053 may land BEFORE Wave P4's ADRs 016-019 if PX-Migration completes faster). This is acceptable; INDEX.md displays ADRs in numeric order regardless of landing date.
 
@@ -1830,6 +1873,51 @@ This roadmap is a doc. It needs maintenance:
 ### Submodule security patch protocol cross-reference (H6)
 
 When a security advisory affects a submodule (e.g., `external/bmad-method`), follow the protocol in §15 "Submodule security patch protocol". The roadmap's existence doesn't auto-block security patches; chore PRs jump priority queue.
+
+### BMAD-main forward-compat CI (v4 M1)
+
+Add `.github/workflows/bmad-main-compat.yml` (deliverable in Wave P3.0):
+
+```yaml
+name: BMAD-main forward-compat
+on:
+  schedule: [{ cron: '0 6 * * 1' }]   # Mondays 6am UTC
+  workflow_dispatch: {}
+jobs:
+  test-against-bmad-main:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with: { submodules: recursive }
+      - run: git -C external/bmad-method checkout main && git pull
+      - run: tests/wave-0/run-smoke-test.sh
+      - run: tests/p2/run-real-install-test.sh
+      - run: tests/audit-marketplace-fixtures.sh
+      - if: failure()
+        uses: actions/github-script@v7
+        with:
+          script: |
+            github.rest.issues.create({
+              owner: context.repo.owner, repo: context.repo.repo,
+              title: `BMAD-main compat failure (${context.sha.slice(0,7)})`,
+              body: `Nightly test against BMAD HEAD failed. See run: ${context.serverUrl}/${context.repo.owner}/${context.repo.repo}/actions/runs/${context.runId}`
+            })
+```
+
+**Triage cadence:** any auto-filed BMAD-main-compat issue gets triaged within the same Claude session that next touches BAM. If incompatibility is fundamental (not a flaky test), file as new Concern via §15 mid-wave discovery protocol.
+
+### TEA submodule sync cadence (v4 M2)
+
+`external/bmad-tea` is a git submodule. Quarterly review protocol (Jan/Apr/Jul/Oct first Monday):
+
+1. `git -C external/bmad-tea fetch && git log HEAD..origin/main`
+2. Review changes; identify patterns BAM could adopt (new persona conventions, new workflow shapes)
+3. If breaking: pin `external/bmad-tea` to current commit, file BAM issue describing breakage
+4. If clean: `git -C external/bmad-tea checkout origin/main` and commit submodule bump
+5. Re-run all tests; verify Atlas's cross-skill reference pattern still works (Concern 2 fix derives from TEA pattern)
+6. Outcome: either submodule-bump commit OR pin-and-issue commit; never silent skip
+
+**Anti-pattern:** Letting submodule drift >6 months without review — TEA precedents may evolve and BAM falls behind unaware.
 
 ---
 
@@ -1902,6 +1990,35 @@ If a merged PR turns out to be bad (e.g., breaks at runtime in a Plan C ratifica
    - File ADR documenting the regression + lessons learned (allocate from ADR range 054-099)
    - Re-execute affected sub-wave(s)
 
+### Multi-context universal-glob isolation test (v4 C4)
+
+**Scenario:** BMM + multiple BAM modules co-installed; each emits its own context file in `{output_folder}/`. Risk: BMM's strict glob skips BAM files (correct); BAM core-skill glob misses some BAM files (regression).
+
+**Test:** `tests/wave-0/multi-context-glob-test.sh` (deliverable in Wave P4.0 — first cross-module wave).
+
+```bash
+#!/usr/bin/env bash
+set -euo pipefail
+TMP=$(mktemp -d)
+mkdir -p "$TMP/_bmad-output"
+touch "$TMP/_bmad-output/project-context.md"          # BMM
+touch "$TMP/_bmad-output/bam-project-context.md"      # BAM platform
+touch "$TMP/_bmad-output/bbd-project-context.md"      # BAM data
+touch "$TMP/_bmad-output/bba-project-context.md"      # BAM ai
+
+# Strict glob (BMM-canonical) — should match exactly 1
+strict=$(find "$TMP/_bmad-output" -name "project-context.md" | wc -l)
+[ "$strict" = "1" ] || { echo "FAIL: strict glob"; exit 1; }
+
+# BAM core-skill broader glob — should match all 4 (1 BMM + 3 BAM)
+broad=$(find "$TMP/_bmad-output" -name "*project-context.md" | wc -l)
+[ "$broad" = "4" ] || { echo "FAIL: broad glob"; exit 1; }
+
+echo "OK: multi-context glob isolation preserved"
+```
+
+**Per-wave enforcement:** when a new BAM module is introduced (P4+), the test's expected match count increments. Update test atomically with module introduction.
+
 ### Submodule security patch protocol (H6 detail)
 
 If `bmad-method` or another submodule ships a security fix during ongoing waves:
@@ -1961,6 +2078,17 @@ Spec §15 documents Claude's expected interaction patterns with installed BAM. T
 11. **§15.11 Context budget guarding:** invoke `bmad-bam-start`. Confirm context-budget check + warning if approaching limits.
 
 12. **§15.12 Hot-reload:** modify a fragment during active session. Confirm Claude detects via watcher + offers session re-init.
+
+13. **(v4 L1) BMAD CLI module registration:** `bmad list-modules` lists all installed BAM modules (display_name match):
+    ```bash
+    bmad list-modules | grep "BAM Platform" || echo "FAIL: platform not registered"
+    bmad list-modules | grep "BAM Data" || echo "FAIL: data not registered"
+    # ...etc per installed module
+    ```
+
+14. **(v4 H4) llms.txt publication:** every installed BAM module has a valid `llms.txt` (either local `_bmad/<mod>/llms.txt` or public URL referenced in module-help.csv `_meta` row). Confirm by reading + checking it lists all skills with menu codes.
+
+15. **(v4 C2) output-location resolution:** representative BAM workflow output lands at BMM-canonical resolved variable (e.g., `bmad-bam-design-tenancy-model` output at `{planning_artifacts}/tenancy-model.md`). No BAM-invented output location.
 
 **Outcome recorded in:** `tests/p2/PLAN-C-RATIFICATION.md` under each release tag's section.
 
@@ -2112,4 +2240,340 @@ This v3 builds on v2 by fixing 24 additional gaps surfaced in the second self-cr
 | L5 | LOW | Effort tracking sheet template | §18 |
 
 **This v3 roadmap addresses all 24 additional gaps. Combined v2+v3 fixes: 48 gaps total.**
+
+---
+
+## 19. BMM/TEA Compatibility Addendum
+
+Consolidated rules for compatibility with BMAD's BMM module (canonical reference at `external/bmad-method/src/bmm-skills/`) and TEA community module (at `external/bmad-tea/`). Addresses 20 gaps surfaced in the third self-critique pass (2026-05-16). Roadmap §3 wave deliverables and §4 universal checklist enforce these rules. Combined v1+v2+v3+v4 fixes: **68 gaps total**.
+
+### 19.1 module-help.csv canonical 13-column schema (C1)
+
+**Empirical reference:** `external/bmad-method/src/bmm-skills/module-help.csv` header row verbatim:
+
+```
+module,skill,display-name,menu-code,description,action,args,phase,preceded-by,followed-by,required,output-location,outputs
+```
+
+| # | Column | Type | Semantics | BAM convention |
+|---|---|---|---|---|
+| 1 | `module` | string | Module display name | `BAM Platform`, `BAM Data`, etc. (matches `module.yaml` `display_name`) |
+| 2 | `skill` | string | Skill folder name | `bmad-bam-design-tenancy-model` etc. (matches dir name) |
+| 3 | `display-name` | string | 2-4 word human label | See §19.20 brevity rule |
+| 4 | `menu-code` | string | 2-3 char invocation code | See §19.7 (BAM uses 3-char Z-prefix) |
+| 5 | `description` | string | One-sentence summary | ≤120 chars; no period |
+| 6 | `action` | string | Sub-action verb (validate/edit/create) | Empty for one-shot workflows |
+| 7 | `args` | string | Bracketed args | `[path]`, `--tier=<id>` etc. — see §19.13 |
+| 8 | `phase` | enum | BMM lifecycle phase | See §19.3 decoupling rule |
+| 9 | `preceded-by` | string | Prerequisite workflow | DAG — see §19.5 |
+| 10 | `followed-by` | string | Typical next workflow | Optional, advisory |
+| 11 | `required` | bool | Required for phase completion | See §19.14 |
+| 12 | `output-location` | enum | BMM resolved variable | See §19.2 |
+| 13 | `outputs` | string | Artifact description | Free-form |
+
+**Per-wave deliverable:** When a module wave (P3, P4, P5, P6, P7, P8, P9, P10) creates `<module>/module-help.csv`, it MUST populate ALL 13 columns for every skill. PR review checks: header matches BMM verbatim; row count = skill count + 1 (`_meta` row); no empty cells in required columns.
+
+### 19.2 Output-location resolved-variable convention (C2)
+
+**Empirical reference:** BMM's `output-location` column uses BMAD-installer-resolved variables.
+
+| Resolved variable | Default path | When to use |
+|---|---|---|
+| `output_folder` | `_bmad-output/` | User-facing context files; sentinels |
+| `planning_artifacts` | `_bmad-output/planning/` (typ.) | Design docs (architecture, tenancy, schema) |
+| `implementation_artifacts` | `_bmad-output/implementation/` | Code-adjacent specs (stories, sprint status) |
+| `project-knowledge` | `_bmad-output/knowledge/` | Long-lived reference docs |
+
+**BAM workflow output mapping (canonical):**
+
+| BAM workflow | Output | Resolved location | Filename |
+|---|---|---|---|
+| `bmad-bam-finalize` | Project context | `output_folder` | `bam-project-context.md` |
+| `bmad-bam-design-master-architecture` | Architecture doc | `planning_artifacts` | `master-architecture.md` |
+| `bmad-bam-design-tenancy-model` | Tenancy model | `planning_artifacts` | `tenancy-model.md` |
+| `bmad-bam-design-data-schema` | Data schema | `planning_artifacts` | `data-schema.md` |
+| `bmad-bam-design-ai-runtime` | AI runtime spec | `planning_artifacts` | `ai-runtime.md` |
+| `bmad-bam-verify-*` | Validation report | `planning_artifacts` | `<gate>-validation-report.md` |
+| `bmad-bam-smoke-test` | Sentinel | `output_folder` | `bam-smoke-sentinel.md` |
+| Vertical-pack workflows | Compliance evidence | `project-knowledge` | `<pack>-evidence-<date>.md` |
+
+**Rule:** No BAM-invented output locations. Every workflow output picks from the BMM enum above. Eliminates spec §8 ambiguity.
+
+### 19.3 Phase-column decoupling (C3) — ADR-011
+
+**Tension:** BMM module-help.csv `phase` column uses lifecycle enum (`1-analysis`, `2-planning`, `3-solutioning`, `4-implementation`, `anytime`). BAM directory structure uses module-specific phases (`1-foundation/`, `2-storage/`, `2-modules/`, `9-infrastructure/`). These taxonomies are semantically different.
+
+**Resolution (ADR-011):** **Decouple.** Directory naming uses BAM-structural; module-help.csv `phase` column uses BMM-lifecycle.
+
+| BAM workflow type | Directory location | module-help.csv `phase` |
+|---|---|---|
+| Persona scaffolding (Atlas SKILL.md etc.) | `<mod>/1-foundation/bmad-bam-agent-<persona>/` | `anytime` |
+| Design workflows (design-tenancy-model etc.) | `<mod>/2-<topic>/bmad-bam-design-*/` | `3-solutioning` |
+| Verification workflows (verify-*) | `<mod>/4-readiness/bmad-bam-verify-*/` | `4-implementation` |
+| Cross-family workflows (P11) | `bmad-bam-platform/2-modules/bmad-bam-*` | `3-solutioning` |
+| Infrastructure (migrate, backup, etc.) | `<mod>/9-infrastructure/bmad-bam-*/` | `anytime` |
+
+**Consequence:** Directory grouping remains BAM-discoverable; `phase` column interoperates with BMM's expected enum. BMAD installer phase queries work correctly.
+
+### 19.4 Multi-context universal-glob isolation (C4)
+
+**Problem:** When BMM + BAM platform + BAM data co-installed, `{output_folder}/` has three context files: `project-context.md` (BMM), `bam-project-context.md` (BAM platform), `bbd-project-context.md` (BAM data). BMM core skills' strict glob `**/project-context.md` does NOT match `bam-*` files.
+
+**BAM core-skill universal-glob (canonical, broader):**
+
+```toml
+[agent]
+persistent_facts = [
+  "file:{project-root}/**/project-context.md",
+  "file:{project-root}/**/bam-project-context.md",
+  "file:{project-root}/**/bb*-project-context.md",
+]
+```
+
+**Decision:** Each BAM module generates its OWN context file (`bbd-project-context.md`, `bba-project-context.md`, etc.) rather than appending to a shared `bam-project-context.md`. Rationale: modules install independently; per-module context survives partial installs; clean isolation.
+
+**Test:** `tests/wave-0/multi-context-glob-test.sh` (Wave P4.0 deliverable) — see §15.
+
+### 19.5 Workflow-chaining DAG via `preceded-by` (H1)
+
+**BMM pattern:** `module-help.csv` `preceded-by` column declares strict order; BMAD's workflow-chain validator catches missing prerequisites.
+
+**BAM cross-module workflow DAG (canonical chain to v6.0):**
+
+```
+bmad-bam-finalize (output: bam-project-context.md)
+    ↓ preceded-by
+bmad-bam-design-master-architecture (output: master-architecture.md)
+    ↓ preceded-by
+bmad-bam-design-tenancy-model (output: tenancy-model.md)
+    ↓ preceded-by  [cross-module: platform → data]
+bmad-bam-design-data-schema (output: data-schema.md)
+    ↓ preceded-by  [cross-module: data → ai]
+bmad-bam-design-ai-runtime (output: ai-runtime.md)
+    ↓ preceded-by  [cross-module: ai → ux]
+bmad-bam-design-ux-shell (output: ux-shell.md)
+    ↓ preceded-by  [release-prep]
+bmad-bam-verify-production-readiness-final
+```
+
+**Implementation:** Each workflow's module-help.csv row sets `preceded-by` to its direct ancestor. BAM-internal Tier-1 audit gains a "check (i) — workflow DAG validation" deliverable in Wave P3 (no cycles + all referenced predecessors exist).
+
+### 19.6 Workflow-vs-Skill structural decision (H2) — ADR-012
+
+**Tension:** BMM puts all workflows in phase-numbered skill dirs (no separate `workflows/`). TEA has `workflows/` AND `agents/` as parallel top-level dirs.
+
+**Resolution (ADR-012):** **BAM follows BMM.** All workflows are skills; persona-as-skill holds shared resources; no separate `workflows/` dir.
+
+**Rationale:**
+- BMM is canonical reference; TEA is pre-consolidation community
+- Concern 2 fix (PR #2) committed BAM to BMM all-in-skills
+- Single discovery path: marketplace.json lists ALL skills uniformly
+- Cross-family workflows (P11) live in `bmad-bam-platform/2-modules/` per spec §5.9 (platform-owned)
+
+**Consequence:** No TEA-style top-level `workflows/` directory in any BAM module.
+
+### 19.7 Menu-code 3-char Z-prefix extension (H3) — ADR-013
+
+**BMM uses 2-char codes:** `DP`, `WB`, `CR`, `GPC`. Total namespace: 676 codes.
+
+**BAM uses 3-char Z-prefix codes:** `ZTI`, `ZAH`, `ZRP`. Total namespace: 676 with Z-prefix reserved.
+
+**Resolution (ADR-013):** **BAM extends BMM's enum.** 3-char Z-prefix codes are a deliberate BAM extension, not an oversight. BMAD installer's menu-code parser accepts 2-3 char codes; collision with BMM impossible due to Z-prefix reservation.
+
+**Per-module sub-prefix:**
+- `Z` — BAM platform + cross-cutting (current)
+- Future modules MAY use sub-prefixes (e.g., `ZA*` = AI, `ZT*` = Trust); decision deferred to Wave P5 brainstorm
+- 3-char preferred; reserved 2-char only if BMM allows (verify before assigning)
+
+### 19.8 `_meta` row + llms.txt publication (H4)
+
+**BMM pattern:** module-help.csv first non-header row is `_meta` pointing to docs:
+
+```
+BMad Method,_meta,,,,,,,,,false,https://docs.bmad-method.org/llms.txt,
+```
+
+**BAM canonical:**
+
+```
+BAM Platform,_meta,,,,,,,,,false,_bmad/bam-platform/llms.txt,
+BAM Data,_meta,,,,,,,,,false,_bmad/bam-data/llms.txt,
+[per module]
+```
+
+**llms.txt content (per module):** Machine-readable summary of all skills (menu-code, output-location, one-line description). Generated automatically from module-help.csv + SKILL.md headers via `tools/generate-llms-txt.sh <module-code>` — **Wave P3 deliverable**.
+
+**Decision:** Until v6.0 release, llms.txt URLs are local file paths (`_bmad/<mod>/llms.txt`). Post-v6.0, public docs site URLs may replace local paths.
+
+### 19.9 Cross-PERSONA content reference (H5)
+
+**Tension:** Cross-MODULE fragment reference is documented (§4); cross-PERSONA reference (e.g., Cipher's workflow citing Atlas's fragment) is not.
+
+**Rule:** Identical to cross-module — use explicit installed paths with tool-aware fallback.
+
+**Examples:**
+- Cipher workflow references Atlas: `_bmad/bam-platform/bmad-bam-agent-atlas/resources/fragments/sentinel.md`
+- Rune workflow references Cipher: `_bmad/bam-trust/bmad-bam-agent-cipher/resources/fragments/audit-trail.md`
+- Iris workflow references Nova: `_bmad/bam-ai/bmad-bam-agent-nova/resources/fragments/llm-eval-strategy.md`
+
+**Tool-aware path fallback (same as §4):**
+1. `.claude/skills/<other-skill>/resources/fragments/<name>.md`
+2. `.cursor/skills/<other-skill>/resources/fragments/<name>.md`
+3. `_bmad/<other-mod>/<other-skill>/resources/fragments/<name>.md`
+
+No new mechanism — same convention extended across personas.
+
+### 19.10 BMM upstream contribution pathway (H6)
+
+**When BAM discovers a BMAD/BMM bug or improvement during v6 build:**
+
+1. **Document in discovering-persona's sidecar:** `_bmad/_memory/<persona>/upstream-issues/<YYYY-MM-DD>-<short>.md`
+2. **Create minimal repro:** isolate from BAM context; show it occurs in vanilla BMAD
+3. **Open BMAD-method issue:** at `https://github.com/bmad-code-org/bmad-method/issues` (verify URL before posting)
+4. **Reference in BAM ADR:** if BAM works around the bug, the workaround ADR cites the upstream issue ID
+5. **PR back if possible:** small fix → direct PR to bmad-method; large fix → propose in issue first
+
+**Cadence:** Quarterly upstream-issues review; close obsolete entries when BMAD ships fixes.
+
+**Anti-pattern:** Permanently working around a BMAD bug without filing upstream — divergence compounds.
+
+### 19.11 BMAD-main forward-compat CI (M1)
+
+See §14 — full GitHub Actions workflow YAML. Cadence: nightly (Mondays 6am UTC); auto-files issue on failure. Triage in next BAM session.
+
+### 19.12 TEA submodule sync cadence (M2)
+
+See §14 — quarterly review (Jan/Apr/Jul/Oct first Monday) protocol.
+
+### 19.13 `args` column convention (M3)
+
+**Common BAM args:**
+
+| Pattern | Use case | Example |
+|---|---|---|
+| `[path]` | Validation workflows take a target path | `bmad-bam-verify-tenancy-model [_bmad-output/planning/tenancy-model.md]` |
+| `--tier=<id>` | Tier-specific design workflows | `bmad-bam-design-tenancy-model --tier=enterprise` |
+| `--tenant=<id>` | Multi-tenant operation workflows | `bmad-bam-tenant-migrate --tenant=t-001` |
+| `--vertical=<pack>` | Vertical-pack-specific compliance | `bmad-bam-verify-compliance --vertical=HIPAA` |
+
+**Rule:** Args are optional; workflows MUST function without args (default behavior). Args are advisory shortcuts. Empty `args` column = no special arg shape.
+
+### 19.14 `required` boolean per skill (M4)
+
+**Rule:** A skill is `required: true` if its absence blocks phase completion.
+
+**Per-module required skills (canonical):**
+
+| Module | Required skills (`required: true`) |
+|---|---|
+| platform | `bmad-bam-design-master-architecture`, `bmad-bam-design-tenancy-model`, `bmad-bam-finalize` |
+| data | `bmad-bam-design-data-schema`, `bmad-bam-design-data-retention` |
+| ai | `bmad-bam-design-ai-runtime`, `bmad-bam-design-ai-safety` |
+| ux | `bmad-bam-design-ux-shell` |
+| rag | `bmad-bam-design-retrieval-architecture` |
+| integration | `bmad-bam-design-module-facades`, `bmad-bam-design-public-api` |
+| trust | `bmad-bam-design-compliance-baseline`, `bmad-bam-verify-trust-controls` |
+| ops | `bmad-bam-design-deployment-topology`, `bmad-bam-verify-production-readiness-final` |
+
+All others default to `required: false` (optional/situational).
+
+### 19.15 BMM `bmad-generate-project-context` integration (M5)
+
+**BMM:** `bmad run bmad-generate-project-context` → `{output_folder}/project-context.md`.
+
+**BAM:** `bmad-bam-finalize` → `{output_folder}/bam-project-context.md`.
+
+**Integration rule:** `bmad-bam-finalize` step-01 SHOULD call `bmad run bmad-generate-project-context` first if `{output_folder}/project-context.md` does not exist. Ensures BMM's context is present before BAM augments.
+
+**Rationale:** BAM's `bam-project-context.md` describes BAM-specific facts (gates, fragments, patterns); BMM's `project-context.md` describes BMM-driven project facts (architecture, PRD, stories). Both contribute to LLM context. Order matters because BAM's content may reference BMM's.
+
+**Test:** Wave P4+ real-install test verifies both files present after finalize.
+
+### 19.16 Skill manifest schema reconciliation (M6)
+
+**Status:** Spec §6.2 names BAM's manifest `bmad-skill-manifest.yaml` with 10 fields. BMM's actual manifest filename and schema must be verified before Wave P3 starts.
+
+**Wave P3.0 prereq:** Read 3 BMM skill manifest files; document filename + schema in roadmap. If BMM uses different filename (e.g., `manifest.yaml`), BAM aligns. If 10-field schema differs, BAM verifies semantic match.
+
+**Risk:** Spec §6.2 may need patching if BMM convention differs from current BAM assumption.
+
+### 19.17 TEA persona-as-workflow-router pattern recognition (M7)
+
+**TEA precedent:** `external/bmad-tea/src/agents/bmad-tea/` is a persona-skill AND has workflows in `src/workflows/` referencing it via cross-skill paths (e.g., `src/workflows/testarch/.../atdd-checklist-template.md:344` → `agents/bmad-tea/resources/knowledge/`).
+
+**BAM application (Concern 2 fix):** `bmad-bam-agent-atlas/` is invocable AND a shared resource. Workflow skills (design-tenancy-model, smoke-test, finalize) reference Atlas's fragments via explicit paths.
+
+**Documentation note:** This pattern's empirical lineage is **TEA → BAM**. Future personas (Nova, Iris, Kai, Cipher, Rune) all inherit. Each persona-skill's customize.toml uses `[agent]` namespace; each workflow-skill's uses `[workflow]`. The `[agent]`/`[workflow]` split is BMM-canonical — preserved verbatim.
+
+### 19.18 `bmad list-modules` registration (L1)
+
+**BMAD CLI:** `bmad list-modules` discovers installed modules via `_bmad/<mod>/module.yaml`.
+
+**Release-gate check (§17 step 13):** After each BAM module install, `bmad list-modules` output must include the module's `display_name`. Per-module:
+
+```bash
+bmad list-modules | grep "BAM Platform" || echo "FAIL: platform not registered"
+bmad list-modules | grep "BAM Data" || echo "FAIL: data not registered"
+# ...etc
+```
+
+### 19.19 Recursive workflow invocation (L2)
+
+**BMM pattern:** Workflows can invoke other workflows (e.g., `bmad-create-story:validate` calls `bmad-create-story` then validation step).
+
+**BAM use case:** `release-gate-orchestrator` (Wave P11.2) invokes in sequence:
+- `bmad-bam-verify-tenancy-model`
+- `bmad-bam-verify-data-isolation`
+- `bmad-bam-verify-ai-safety`
+- `bmad-bam-verify-trust-controls`
+- `bmad-bam-verify-production-readiness-final`
+
+…halting on first failure.
+
+**Implementation:** `release-gate-orchestrator/steps/step-01-c-orchestrate.md` describes the chain in step body; LLM executes each sub-workflow via `bmad run <name>`. No new mechanism — relies on BMM's workflow-invocation primitive.
+
+### 19.20 `display-name` brevity (L3)
+
+**Rule:** `display-name` in module-help.csv is **≤4 words, ≤30 chars**. Skill folder name is the long descriptive identifier; display-name is the human label.
+
+**Examples:**
+
+| Skill folder | Display-name (good) | Display-name (bad) |
+|---|---|---|
+| `bmad-bam-design-tenancy-model` | `Design Tenancy` | `Design Tenancy Model with Isolation` ❌ |
+| `bmad-bam-verify-production-readiness-final` | `Verify Production` | `Verify Production Readiness Final Gate` ❌ |
+| `bmad-bam-finalize` | `Finalize BAM` | `Finalize BAM Module Activation` ❌ |
+
+**Enforcement:** §4 universal checklist item.
+
+---
+
+## v4 self-critique fix log (this version)
+
+This v4 builds on v3 by fixing 20 BMM/TEA compatibility gaps surfaced in the third self-critique pass:
+
+| ID | Severity | Fix | Location |
+|---|---|---|---|
+| C1 | CRITICAL | module-help.csv 13-col schema | §19.1, §4 |
+| C2 | CRITICAL | Output-location resolved variables | §19.2, §4, §17 |
+| C3 | CRITICAL | Phase-column decoupling — ADR-011 | §19.3, §13 |
+| C4 | CRITICAL | Multi-context glob isolation + test | §19.4, §15, §6 |
+| H1 | HIGH | Workflow chaining DAG | §19.5, §4 |
+| H2 | HIGH | All-in-skills decision — ADR-012 | §19.6, §13 |
+| H3 | HIGH | Menu-code Z-prefix extension — ADR-013 | §19.7, §4, §13 |
+| H4 | HIGH | `_meta` row + llms.txt | §19.8, §4, §17 |
+| H5 | HIGH | Cross-persona reference rule | §19.9 |
+| H6 | HIGH | BMM upstream contribution pathway | §19.10, §6 |
+| M1 | MED | BMAD-main forward-compat CI | §19.11, §14 |
+| M2 | MED | TEA submodule sync cadence | §19.12, §14, §6 |
+| M3 | MED | `args` column convention | §19.13 |
+| M4 | MED | `required` boolean per skill | §19.14, §4 |
+| M5 | MED | bmad-generate-project-context integration | §19.15 |
+| M6 | MED | Skill manifest reconciliation (P3 prereq) | §19.16 |
+| M7 | MED | TEA persona-as-workflow-router lineage | §19.17 |
+| L1 | LOW | bmad list-modules registration | §19.18, §17 |
+| L2 | LOW | Recursive workflow invocation | §19.19 |
+| L3 | LOW | `display-name` brevity | §19.20, §4 |
+
+**Combined v1+v2+v3+v4 fixes: 68 gaps total resolved across navigation, resilience, edge cases, and BMM/TEA compatibility. ADRs reserved: 011 (phase decoupling), 012 (all-in-skills), 013 (menu-code extension) — to be authored during Wave P3.0 prereq work.**
 
