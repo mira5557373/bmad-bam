@@ -7,14 +7,14 @@ Three tiers of regression coverage. Each tier catches a different class of bug; 
 | Tier | When | Scripts | What it catches |
 |---|---|---|---|
 | **1 — always run** | Every commit; CI | `tests/audit-marketplace.sh` (6 checks)<br>`tests/audit-marketplace-fixtures.sh` (8 fixture cases)<br>`tests/wave-0/run-smoke-test.sh`<br>`tests/p2/run-real-install-test.sh`<br>`src-v6/bmad-bam-platform/*/*/tests/smoke-test.sh` | Static marketplace consistency (incl. v6 module presence + step file namespace coherence); audit's own check coverage verified via fixtures; resolver-side string merge; cp-based Path B simulation; skill machinery |
-| **2 — deferred** | Manual only in v6.0 | `tests/integration/run-real-install.sh` (always SKIPs) + `tests/integration/MANUAL.md` (runbook) | Real `bmad install` + finalize + sentinel emission — PASS-mode deferred until BMAD ships local-install API or P2.x adds CI infrastructure |
+| **2 — opt-in** | `BAM_TIER2=1` env-var triggers run; default SKIPs | `tests/integration/run-real-install.sh` + `tests/integration/MANUAL.md` (runbook for manual walkthrough) | Real `bmad install --custom-source` + Strategy-1 verification + finalize + sentinel emission. Promoted from SKIP stub to real script 2026-05-16 per ADR 010 (Concern 5 unblocked it). |
 | **3 — manual** | Pre-release / per BMAD upgrade | `tests/p2/lib/probe-llm-context.sh` (instructions; the probe is human-driven) | Plan C — LLM-side activation contract |
 
 ## Why three tiers
 
 **Tier 1 alone is insufficient** for catching install-pipeline regressions in BMAD itself, but expanded checks (a)–(f) catch the two regression classes that PR #2 shipped past the original Tier-1 (marketplace drift + namespace collision in step files).
 
-**Tier 2 PASS-mode is deferred** because BMAD v6.6.0 has no API to install from a local checkout (verified against `external/bmad-method/tools/installer/`). The viable workarounds — cache symlink, bare copy — both trigger destructive `git reset --hard origin/HEAD` against the symlinked/copied target (community-manager.js:292). Until BMAD ships a local-install flag, automated Tier-2 isn't tractable. The manual procedure in `tests/integration/MANUAL.md` covers ad-hoc verification.
+**Tier 2 is opt-in via BAM_TIER2=1** (2026-05-16; promoted from SKIP-only stub per ADR 010). Concern 5 unblocked it: BAM now succeeds at PluginResolver Strategy 1 via `bmad install --custom-source <repo>` (no destructive git ops on the local source; verified at Plan C R4). The script uses the submoduled `external/bmad-method/tools/installer/bmad-cli.js` for self-contained reproducibility. Contributors without BMAD setup are not blocked — default SKIP exit 77 keeps Tier-1 the only mandatory gate.
 
 **Tier 3 alone is insufficient** because it requires a live LLM and a human; cadence is per-release, not per-commit. Spec §7.3 acknowledges this is by-design untestable headlessly.
 
@@ -30,9 +30,10 @@ tests/wave-0/run-smoke-test.sh
 tests/p2/run-real-install-test.sh
 src-v6/bmad-bam-platform/2-modules/bmad-bam-design-tenancy-model/tests/smoke-test.sh
 
-# Tier 2 — always SKIPs in v6.0 (exit 77); manual procedure documented
-tests/integration/run-real-install.sh                    # prints SKIP message; exit 77
-cat tests/integration/MANUAL.md                          # ad-hoc verification procedure
+# Tier 2 — opt-in (default SKIP exit 77; BAM_TIER2=1 enables full run)
+tests/integration/run-real-install.sh                    # default: SKIP message + exit 77
+BAM_TIER2=1 tests/integration/run-real-install.sh        # real bmad install + Strategy-1 verify + finalize + sentinel check
+cat tests/integration/MANUAL.md                          # interactive walkthrough (script-equivalent)
 
 # Tier 3 — manual (follow the instructions the script prints)
 tests/p2/lib/probe-llm-context.sh <project-root> <sentinel-token>
@@ -82,4 +83,6 @@ All test scripts follow POSIX autotest conventions:
 
 ## Future state
 
-When BMAD ships a local-install API (or P2.x adds CI push-and-pin), Tier-2 PASS-mode lands. The transition is local to `tests/integration/run-real-install.sh` — invocation pattern stays the same, the script just stops SKIPping.
+- **CI integration:** add `BAM_TIER2=1` to release-build / merge-gate workflows so Tier-2 runs automatically there. Contributors who don't set the env var still SKIP cleanly.
+- **Tier-3 automation:** when BMAD's installer ships a hook for LLM-side activation verification (or when subagent-driven IDE harnesses mature), Tier-3 could move from manual Plan C ratification to an automated check appended after Tier-2 in CI.
+- **Future BAM modules** (bbd, bba, etc.) inherit Tier-2 coverage by adding their module code to the `--modules` arg — no Tier-2 infrastructure changes needed.

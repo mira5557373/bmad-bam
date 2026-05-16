@@ -1,82 +1,214 @@
 #!/usr/bin/env bash
 # tests/integration/run-real-install.sh
 #
-# Tier-2 real-installer test — DEFERRED in v6.0.
+# Tier-2 real-installer test — automates the Plan C R4 procedure that
+# verified Concern 5's BMM-canonical layout end-to-end.
 #
-# This script always exits 77 (POSIX autotest SKIP). The deferral is NOT
-# because BMAD lacks a local-install API — it does have one:
-#   bmad install --custom-source <local-path>
-# verified at:
-#   external/bmad-method/tools/installer/commands/install.js:36
-#     "--custom-source <sources>  Comma-separated Git URLs or local paths..."
-#   external/bmad-method/tools/installer/modules/custom-module-manager.js:99-110
-#     parseSource() detects /, ./, ../, ~ prefixes as local
-#   external/bmad-method/tools/installer/modules/custom-module-manager.js:326-329
-#     resolveSource() local branch: rootDir=localPath, repoPath=null —
-#     cloneRepo() never invoked, so neither CustomModuleManager.cloneRepo:427
-#     nor CommunityModuleManager:292's `git reset --hard origin/HEAD` can
-#     fire against the local source. (The latter only runs for community-
-#     registry modules anyway — never a custom-source local path.)
+# This script PROMOTED 2026-05-16 from SKIP-77 stub to a real test, per
+# ADR 007 revisit trigger #1 (which fired when Concern 5 landed via PR #3,
+# unblocking real `bmad install --custom-source` against BAM's Strategy-1
+# marketplace layout). See ADR 010 for the promotion decision + design.
 #
-# The reasons Tier-2 PASS-mode is deferred for v6.0:
+# GATING (env-var opt-in by design):
+#   BAM_TIER2=1   → script runs the full procedure
+#   default       → exits 77 (POSIX SKIP) with a brief explanation
 #
-#   1. ~~BAM falls into PluginResolver Strategy 5~~ — RESOLVED 2026-05-13
-#      (Concern 5, ADR 008, PR #3 commit `7d17446`). BAM's marketplace
-#      layout now succeeds at PluginResolver Strategy 1: skills are
-#      grouped under phase-numbered subdirs (1-foundation/, 2-modules/,
-#      9-infrastructure/), so common parent = src-v6/bmad-bam-platform/,
-#      where module.yaml + module-help.csv both live. Real module.yaml
-#      is honored at install time; `agents:`, `directories:`, `x-bam-*`
-#      are no longer inert. → Promotion to PASS-mode is now blocked
-#      only by reasons 2 + 3 below.
+# This keeps the test opt-in for contributors without `bmad` setup, while
+# being CI-friendly: any CI job that sets BAM_TIER2=1 gets full Tier-2
+# coverage.
 #
-#   2. Hard dependency on `bmad` CLI on every contributor/CI machine.
-#      Without it, Tier-2 cannot run; with it gated behind "skip when
-#      missing", green CI would imply more coverage than the install
-#      actually delivers on machines where bmad is absent.
+# WHAT IT DOES (when BAM_TIER2=1):
+#   1. Ensure external/bmad-method/node_modules is installed (one-time per
+#      checkout); abort with exit 75 if external/bmad-method/ is missing.
+#   2. mktemp -d a clean test project root.
+#   3. node external/bmad-method/tools/installer/bmad-cli.js install
+#        --custom-source $REPO_ROOT --modules bbp
+#        --directory $WORK_DIR --tools claude-code --yes
+#   4. Verify Strategy-1 outcome on disk: _bmad/bbp/config.yaml +
+#      _bmad/bbp/module-help.csv exist; 4 BAM skills land at
+#      .claude/skills/bmad-bam-*/ (tool-specific install path, NOT
+#      _bmad/<code>/<skill>/).
+#   5. Run finalize: bash $WORK_DIR/.claude/skills/bmad-bam-finalize/
+#      scripts/post-install.sh $WORK_DIR.
+#   6. Verify sentinel: _bmad-output/bbp/project-context.md exists +
+#      contains exactly one BAM_LOAD_VERIFY_[a-f0-9]{32} token.
+#   7. trap cleanup: rm -rf $WORK_DIR on script exit.
 #
-#   3. CI infrastructure for ephemeral tmpdir-as-project-root
-#      (bmad install --directory <tmpdir>) + bmad-method npm-install
-#      provisioning not yet built. P2.x scope.
+# WHAT IT DOES NOT DO:
+#   - LLM-side glob expansion + recital. That stays Tier-3 manual
+#     (Plan C ratification via real Claude Code IDE session OR autonomous
+#     subagent-proxy per PLAN-C-RATIFICATION.md R1-R4 methodology).
 #
-# A future v6.x Tier-2 PASS-mode would look roughly like:
-#   bmad install --custom-source "$(git rev-parse --show-toplevel)" \
-#                --modules bbp \
-#                --directory "$(mktemp -d)" \
-#                --tools claude-code --yes
-# PR #6 promotes this stub to a real script per ADR 007's trigger #1
-# (marked FIRED 2026-05-13 by Concern 5 landing).
-#
-# In the meantime: Tier-1 (tests/audit-marketplace.sh) catches the
-# regression classes Tier-2 was originally meant to catch (marketplace.json
-# drift + _bmad/<ns>/ namespace collision); tests/integration/MANUAL.md
-# documents the manual procedure for ad-hoc release-time verification.
+# Exit codes:
+#   0   PASS — full procedure succeeded; sentinel verified
+#   1   FAIL — genuine regression; see stderr for which step failed
+#   64  usage error
+#   73  precondition missing (e.g., external/bmad-method/ absent)
+#   75  environment unmet (e.g., node missing, npm install failed)
+#   77  SKIP — BAM_TIER2 != 1 (default; contributor opt-in)
 
 set -euo pipefail
 
-cat <<EOF
-SKIP: Tier-2 real-install PASS-mode is deferred in v6.0.
+REPO_ROOT="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
+REPO_ROOT="$(cd "$REPO_ROOT/.." && pwd)"   # one more level up from tests/
 
-  BMAD v6.6.0 DOES have a local-install API (bmad install --custom-source
-  <path>). The deferral is because:
-    - ~~BAM's layout forces Strategy 5~~ RESOLVED 2026-05-13 (Concern 5,
-      ADR 008): phase-grouped layout now succeeds at Strategy 1.
-    - Hard dep on bmad CLI on every dev/CI machine.
-    - Ephemeral tmpdir CI scaffolding (bmad install --directory) not built.
-    - PR #6 promotes this stub to a real script (ADR 007 trigger #1 FIRED).
+# ─── Gating ──────────────────────────────────────────────────────────────
+if [ "${BAM_TIER2:-0}" != "1" ]; then
+    cat <<EOF
+SKIP: Tier-2 real-install is opt-in (set BAM_TIER2=1 to run).
 
-  See this script's header comment for full empirical evidence chain.
+  This script automates the Plan C R4 procedure (real bmad install +
+  Strategy-1 verification + finalize + sentinel check). It's opt-in to
+  keep contributors without bmad CLI setup unblocked.
 
-  For ad-hoc verification (e.g., before a release), see:
-    tests/integration/MANUAL.md
+  To run:
+    BAM_TIER2=1 tests/integration/run-real-install.sh
 
-  Tier-1 (tests/audit-marketplace.sh) catches the regression classes
-  this Tier-2 was originally meant to catch:
-    - marketplace.json drift (PR #2 Bug 1) → checks (a) + (e)
-    - _bmad/<ns>/ namespace collision in step files (PR #2 Bug 2) → check (f)
-
-  Tier-3 (Plan-C manual LLM probe) covers the LLM-side activation
-  contract; see tests/p2/PLAN-C-RATIFICATION.md.
+  See ADR 010 (Tier-2 promotion) + tests/integration/MANUAL.md for the
+  manual procedure if you want to walk through it interactively.
 EOF
+    exit 77
+fi
 
-exit 77
+echo ">>> Tier-2 real-install (BAM_TIER2=1)"
+echo "    REPO_ROOT = $REPO_ROOT"
+
+# ─── Precondition: external/bmad-method/ exists ──────────────────────────
+BMAD_DIR="$REPO_ROOT/external/bmad-method"
+if [ ! -d "$BMAD_DIR" ]; then
+    echo "FAIL: external/bmad-method/ submodule not present at $BMAD_DIR" >&2
+    echo "      Initialize the submodule: git submodule update --init external/bmad-method" >&2
+    exit 73
+fi
+
+BMAD_CLI_JS="$BMAD_DIR/tools/installer/bmad-cli.js"
+if [ ! -f "$BMAD_CLI_JS" ]; then
+    echo "FAIL: bmad-cli.js not found at $BMAD_CLI_JS" >&2
+    exit 73
+fi
+
+# ─── Precondition: node available ────────────────────────────────────────
+if ! command -v node >/dev/null 2>&1; then
+    echo "FAIL: node not on PATH" >&2
+    echo "      Install Node.js >= 20.0.0 to run Tier-2" >&2
+    exit 75
+fi
+
+# ─── One-time: npm install in external/bmad-method/ ──────────────────────
+if [ ! -d "$BMAD_DIR/node_modules" ]; then
+    echo ">>> Installing BMAD's npm deps (one-time per checkout)..."
+    (cd "$BMAD_DIR" && npm install --no-audit --no-fund --silent 2>&1 | tail -5) || {
+        echo "FAIL: npm install in $BMAD_DIR failed" >&2
+        exit 75
+    }
+fi
+
+# ─── Setup: mktemp test project + trap cleanup ───────────────────────────
+WORK_DIR="$(mktemp -d -t bam-tier2-XXXXXX)"
+trap 'rm -rf "$WORK_DIR"' EXIT
+
+echo ">>> WORK_DIR = $WORK_DIR"
+
+# ─── Step 1: bmad install --custom-source ────────────────────────────────
+echo ">>> Step 1: bmad install --custom-source $REPO_ROOT --modules bbp ..."
+
+# The installer's interactive spinners emit a lot of escape codes;
+# we capture stdout+stderr for the success/fail line scan.
+INSTALL_LOG="$WORK_DIR/install.log"
+if ! node "$BMAD_CLI_JS" install \
+    --directory "$WORK_DIR" \
+    --custom-source "$REPO_ROOT" \
+    --modules bbp \
+    --tools claude-code \
+    --yes >"$INSTALL_LOG" 2>&1; then
+    echo "FAIL: bmad install failed (exit $?)" >&2
+    echo "      Install log tail:" >&2
+    tail -20 "$INSTALL_LOG" >&2
+    exit 1
+fi
+
+# Sanity: install completion banner contains "Installed to: $WORK_DIR/_bmad"
+if ! grep -qF "Installed to: $WORK_DIR/_bmad" "$INSTALL_LOG"; then
+    echo "FAIL: install completion banner missing (expected 'Installed to: $WORK_DIR/_bmad')" >&2
+    tail -20 "$INSTALL_LOG" >&2
+    exit 1
+fi
+echo "    PASS: install completed"
+
+# ─── Step 2: Strategy-1 verification on disk ─────────────────────────────
+echo ">>> Step 2: verify Strategy-1 outcome (_bmad/bbp/ contents)"
+
+if [ ! -d "$WORK_DIR/_bmad/bbp" ]; then
+    echo "FAIL: _bmad/bbp/ not created" >&2
+    exit 1
+fi
+if [ ! -f "$WORK_DIR/_bmad/bbp/config.yaml" ]; then
+    echo "FAIL: _bmad/bbp/config.yaml not created" >&2
+    exit 1
+fi
+if [ ! -f "$WORK_DIR/_bmad/bbp/module-help.csv" ]; then
+    echo "FAIL: _bmad/bbp/module-help.csv not copied" >&2
+    exit 1
+fi
+echo "    PASS: _bmad/bbp/ contains config.yaml + module-help.csv (Strategy-1 confirmed)"
+
+# ─── Step 3: BAM skills materialized at .claude/skills/ ──────────────────
+echo ">>> Step 3: verify BAM skills materialized at tool-specific install dir"
+
+BAM_SKILLS_FOUND=0
+for skill in bmad-bam-agent-atlas bmad-bam-design-tenancy-model bmad-bam-finalize bmad-bam-smoke-test; do
+    if [ -d "$WORK_DIR/.claude/skills/$skill" ]; then
+        BAM_SKILLS_FOUND=$((BAM_SKILLS_FOUND + 1))
+    else
+        echo "FAIL: .claude/skills/$skill not present" >&2
+    fi
+done
+if [ "$BAM_SKILLS_FOUND" -ne 4 ]; then
+    echo "FAIL: expected 4 BAM skills at .claude/skills/, found $BAM_SKILLS_FOUND" >&2
+    exit 1
+fi
+echo "    PASS: all 4 BAM skills installed at .claude/skills/ (tool-specific path; Concern 5 R2 empirical reality)"
+
+# ─── Step 4: Run finalize ─────────────────────────────────────────────────
+echo ">>> Step 4: run finalize (post-install.sh)"
+
+FINALIZE_SCRIPT="$WORK_DIR/.claude/skills/bmad-bam-finalize/scripts/post-install.sh"
+if [ ! -f "$FINALIZE_SCRIPT" ]; then
+    echo "FAIL: finalize script not found at $FINALIZE_SCRIPT" >&2
+    exit 1
+fi
+
+FINALIZE_OUTPUT="$(bash "$FINALIZE_SCRIPT" "$WORK_DIR" 2>&1)"
+echo "    finalize output: $FINALIZE_OUTPUT"
+
+# ─── Step 5: Sentinel verification ───────────────────────────────────────
+echo ">>> Step 5: verify sentinel at {output_folder}/bbp/project-context.md"
+
+SENTINEL_FILE="$WORK_DIR/_bmad-output/bbp/project-context.md"
+if [ ! -f "$SENTINEL_FILE" ]; then
+    echo "FAIL: sentinel file not created at $SENTINEL_FILE" >&2
+    exit 1
+fi
+
+SENTINEL_TOKEN="$(grep -oE 'BAM_LOAD_VERIFY_[a-f0-9]{32}' "$SENTINEL_FILE" | head -1 || true)"
+if [ -z "$SENTINEL_TOKEN" ]; then
+    echo "FAIL: BAM_LOAD_VERIFY_<32hex> token not found in $SENTINEL_FILE" >&2
+    head -30 "$SENTINEL_FILE" >&2
+    exit 1
+fi
+echo "    PASS: sentinel = $SENTINEL_TOKEN"
+
+# ─── Summary ─────────────────────────────────────────────────────────────
+echo ""
+echo ">>> TIER-2 PASS"
+echo "    install pipeline: end-to-end OK"
+echo "    Strategy 1:       confirmed (config.yaml + module-help.csv at _bmad/bbp/)"
+echo "    skill install:    confirmed at .claude/skills/bmad-bam-*/ (4/4)"
+echo "    finalize:         sentinel written"
+echo "    sentinel token:   $SENTINEL_TOKEN"
+echo ""
+echo "    Note: LLM-side glob expansion + recital is Tier-3 (manual);"
+echo "          run Plan C ratification per tests/p2/PLAN-C-RATIFICATION.md"
+echo "          if you also want to verify the activation contract end-to-end."
+
+exit 0

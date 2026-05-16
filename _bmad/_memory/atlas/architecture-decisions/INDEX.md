@@ -11,3 +11,4 @@
 | 2026-05-13-007 | Adopt 3-tier test strategy with Tier-2 PASS-mode deferred (BAM falls into PluginResolver Strategy 5) | accepted | 2026-05-13 |
 | 2026-05-13-008 | Refactor BAM v6 platform-module layout to BMM-canonical (phased grouping + bbp short-code + subdir sentinel) | accepted | 2026-05-13 |
 | 2026-05-16-009 | Drop BAM-invented literal-path directories block; rely on post-install.sh defensive mkdir (Concern 7) | accepted | 2026-05-16 |
+| 2026-05-16-010 | Promote Tier-2 run-real-install.sh from SKIP-77 stub to env-var-opt-in real test (BAM_TIER2=1) | accepted | 2026-05-16 |

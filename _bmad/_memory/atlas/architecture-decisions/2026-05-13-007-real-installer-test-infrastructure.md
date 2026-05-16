@@ -90,6 +90,8 @@ This ADR is reconsidered when ANY of these happen:
 1. Concern 5 lands (BAM marketplace layout rearranged so PluginResolver Strategy 1 applies — `module.yaml` + `module-help.csv` at the common parent of all skills, mirroring bmad-tea's `src/` placement). After that, automated Tier-2 PASS-mode via `bmad install --custom-source $(pwd) --directory <tmpdir> --yes` becomes meaningful (full module.yaml exercise, not synthesized fallback).
 
    **⚡ Trigger #1 fired 2026-05-13:** Concern 5 landed (ADR 008). PR #6 should promote `tests/integration/run-real-install.sh` from SKIP stub to real `bmad install --custom-source` script.
+
+   **✅ Trigger #1 RESOLVED 2026-05-16:** PR #6 landed (ADR 010). `tests/integration/run-real-install.sh` promoted from always-SKIP-77 to env-var-opt-in (`BAM_TIER2=1` triggers real install + Strategy-1 verification + finalize + sentinel check). Tier-2 column in `tests/README.md` updated from "deferred" to "opt-in". Verified end-to-end on 2026-05-16: install succeeded, Strategy 1 confirmed, 4 BAM skills landed at `.claude/skills/`, sentinel emitted with valid 32-hex token.
 2. P2.x adds CI infrastructure for `bmad` CLI provisioning + ephemeral tmpdir test-project scaffolding — Tier-2 PASS-mode lands in CI, stays SKIP locally for contributors without `bmad`.
 3. A regression class slips past Tier-1 expanded checks — the gap motivates either more Tier-1 checks or a different Tier-2 design.
 4. BMAD ships a true `--from <path>` API that bypasses the marketplace.json resolver (e.g., direct skill-tree install) — would simplify Tier-2 by removing the Strategy-5 caveat.

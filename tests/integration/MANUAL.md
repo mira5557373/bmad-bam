@@ -1,16 +1,17 @@
-# Tier-2 manual real-install procedure
+# Tier-2 real-install procedure (manual + automated)
 
-Use this when you want to verify `bmad install bmad-bam-platform` against your local changes before merging. Required: `bmad` CLI on PATH, BMAD 6.6.0+ installed.
+## TL;DR — for most contributors
 
-## Why this is manual
+**Automated** (recommended): `BAM_TIER2=1 tests/integration/run-real-install.sh` runs the full procedure documented below via the submoduled `external/bmad-method/tools/installer/bmad-cli.js`. ~2-3 minutes from clean state. Promoted from SKIP-only stub on 2026-05-16 (ADR 010).
 
-Tier-2 PASS-mode is automatically deferred (`run-real-install.sh` always exits 77 SKIP) for the reasons documented in ADR 007:
+**Manual** (this document): walk through each step interactively. Useful when:
+- You want to inspect intermediate state at each step
+- You're debugging an automated Tier-2 failure
+- You want to ratify Plan C (Tier-3 LLM-side) in the same session
 
-1. BAM's marketplace layout currently resolves via PluginResolver **Strategy 5** (synthesized fallback) — partial validation only.
-2. Hard dependency on `bmad` CLI for every dev/CI machine.
-3. CI scaffolding for ephemeral test-project tmpdir not yet built.
+## What's the same in both?
 
-The procedure below works for manual ad-hoc verification by a contributor who has `bmad` installed locally.
+The script and this manual procedure do exactly the same thing — install BAM from a local checkout, verify Strategy-1 outcome, run finalize, check the sentinel. The script just automates each step + cleans up via `trap`.
 
 ## The empirical truth about local installs
 
