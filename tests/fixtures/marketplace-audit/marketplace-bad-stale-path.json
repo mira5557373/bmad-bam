@@ -1,0 +1,12 @@
+{
+  "name": "audit-fixture", "owner": { "name": "BAM Test Harness" },
+  "description": "BAD — check (g): on-disk fake skill file references pre-Phase-C path 'bmad-bam-platform/data/checklists/qg-m2-tenant-isolation.md'. Use with --v6-root tests/fixtures/marketplace-audit/fake-v6-with-stale-path.",
+  "plugins": [{
+    "name": "bmad-bam-platform", "source": "./", "version": "0.0.1",
+    "description": "Bad fixture (stale pre-Phase-C path in step file).",
+    "author": { "name": "BAM Test Harness" },
+    "skills": [
+      "./tests/fixtures/marketplace-audit/fake-v6-with-stale-path/bam-faux/1-test/skill-stale"
+    ]
+  }]
+}

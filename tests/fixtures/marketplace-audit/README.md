@@ -24,6 +24,8 @@ firing, not a fully-clean marketplace that exercises one check in isolation.
 | `marketplace-bad-unknown-namespace.json` | FAIL | (f) step file unknown namespace |
 | `marketplace-good-phase-numbered.json` | PASS | (b) phase regex + (d) phase-mode scan |
 | `marketplace-bad-phase-orphan.json` | FAIL | (d) phase-mode orphan detection |
+| `marketplace-bad-stale-path.json` | FAIL | (g) stale pre-Phase-C path in step file |
+| `marketplace-bad-fictional-run.json` | FAIL | (h) fictional `bmad run X` in SKILL.md |
 
 ## Sentinel — `.no-marketplace`
 

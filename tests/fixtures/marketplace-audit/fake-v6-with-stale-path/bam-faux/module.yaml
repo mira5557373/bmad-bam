@@ -1,0 +1,3 @@
+code: bam-faux
+name: "Fake v6 module — has stale-path step file"
+description: "Used by check (g) fixture."

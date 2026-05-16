@@ -17,7 +17,16 @@
 #       least one corresponding plugin entry in marketplace.json
 #   (f) step files in v6 skills don't reference unknown `_bmad/<ns>/` paths.
 #       Known prefixes: _bmad/<code>/ from any module.yaml, _bmad/_memory/,
-#       _bmad/bam/, _bmad-output/, _bmad/config.toml.
+#       _bmad/bam/, _bmad-output/, _bmad/config.toml. ENH-0 fixed the file
+#       glob 2026-05-16 to match phase-grouped layout.
+#   (g) active source doesn't reference pre-Phase-C / pre-Concern-5 paths
+#       (bmad-bam-platform/{data,agents,scripts,skills}/). Lines with
+#       explanatory markers ("pre-Phase-C", "stale", "ADR 009", etc.) are
+#       carved out so the audit itself + tracking docs remain clean.
+#   (h) active source doesn't reference fictional `bmad run <skill>` CLI
+#       (bmad-cli.js exposes only install/status/uninstall). Lines explaining
+#       the command is fictional (carving markers: "fictional", "NOT a real",
+#       "doesn't exist", "RR1") are carved out.
 #
 # Usage:
 #   tests/audit-marketplace.sh                       # default: real marketplace + src-v6
@@ -312,7 +321,103 @@ if [ -d "$V6_ROOT" ]; then
                 line="${line/_bmad\/$ns\//}"  # consume to find next
             done
         done < <(grep -nE "_bmad/[a-zA-Z0-9_-]+/" "$md" 2>/dev/null || true)
-    done < <(find "$V6_ROOT" \( -path '*/skills/*/steps/*.md' -o -path '*/skills/*/templates/*' \) -type f 2>/dev/null)
+    done < <(find "$V6_ROOT" -type f \( -path '*/steps/*.md' -o -path '*/templates/*' \) 2>/dev/null)
+    #                                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    # ENH-0 fix (2026-05-16): the prior glob `*/skills/*/steps/*.md` matched
+    # pre-Concern-5 layout only (skills/ wrapper). Post-Concern-5 the layout is
+    # phase-grouped (1-foundation/, 2-modules/, 9-infrastructure/, etc.); the
+    # old glob returned 0 files and check (f) silently scanned nothing.
+    # The new glob matches step files + templates at any depth under V6_ROOT,
+    # which works for both layouts (legacy /skills/ paths still under V6_ROOT;
+    # phase-grouped paths also captured).
+fi
+
+# ─── Check (g): stale pre-Phase-C / pre-Concern-5 paths in active source ──
+# Catches references to dirs that were removed in prior refactors and shouldn't
+# reappear (regression guard for the classes of bug PR #3 polish manually fixed).
+# Pre-Phase-C (Concern 2 dropped these from module root):
+#   bmad-bam-platform/data/        — moved to <persona-skill>/resources/
+#   bmad-bam-platform/agents/      — Atlas became a skill in <persona-skill>/
+#   bmad-bam-platform/scripts/     — moved to <finalize-skill>/scripts/
+# Pre-Concern-5 (Concern 5 dropped):
+#   bmad-bam-platform/skills/<x>/  — phase-grouped now (1-foundation/, etc.)
+#
+# Scope: src-v6/ + marketplace.json. Excludes design docs / tracking notes /
+# historical ADRs / src-v2 — those preserve historical references intentionally.
+#
+# Allowed via line-level carve-out: lines that EXPLAIN the path is stale
+# (containing the marker "pre-Phase-C", "pre-Concern-5", "stale", or
+# "ADR 009" — i.e., documentation about the deprecation itself).
+declare -A G_SEEN
+
+# Glob construction: all runtime-critical file types under V6_ROOT + marketplace.json
+scan_g_files() {
+    find "$V6_ROOT" -type f \
+        \( -name '*.md' -o -name '*.toml' -o -name '*.yaml' \
+           -o -name '*.csv' -o -name '*.sh' -o -name '*.py' \) 2>/dev/null
+    echo "$MARKETPLACE"
+}
+
+if [ -d "$V6_ROOT" ]; then
+    while IFS= read -r f; do
+        [ -z "$f" ] && continue
+        [ -f "$f" ] || continue
+        while IFS= read -r line; do
+            # Carve-out: lines explaining the deprecation
+            if echo "$line" | grep -qE "pre-Phase-C|pre-Concern-5|stale|ADR 009|empirically wrong|silently SKIPPED"; then
+                continue
+            fi
+            if [[ "$line" =~ bmad-bam-platform/(data|agents|scripts|skills)/ ]]; then
+                segment="${BASH_REMATCH[1]}"
+                key="$f|$segment"
+                if [ -z "${G_SEEN[$key]:-}" ]; then
+                    G_SEEN[$key]=1
+                    relative="${f#$REPO_ROOT/}"
+                    emit "stale pre-refactor path in $relative: references 'bmad-bam-platform/$segment/' (check g). Phase C dropped data/agents/scripts/ at module root; Concern 5 dropped the skills/ wrapper. Use the phase-grouped path: bmad-bam-platform/<N-phase>/<skill>/ (or <persona-skill>/resources/<subdir>/ for content)."
+                fi
+            fi
+        done < <(grep -nE "bmad-bam-platform/(data|agents|scripts|skills)/" "$f" 2>/dev/null || true)
+    done < <(scan_g_files)
+fi
+
+# ─── Check (h): fictional `bmad run <skill>` CLI references ──────────────
+# Catches references to the empirically fictional `bmad run` subcommand
+# (BMAD's bmad-cli.js only exposes install/status/uninstall; skills are
+# invoked via AI-agent slash command like /bmad-bam-finalize, not via
+# a bmad run CLI). Per Concern 5 R3 / RR1.
+#
+# Scope: same as check (g).
+#
+# Allowed via line-level carve-out: lines that EXPLAIN the command is
+# fictional (containing markers "NOT a real", "not a real", "fictional",
+# "doesn't exist", "is wrong", "RR1", "empirically wrong", "is fictional",
+# "is NOT a real").
+declare -A H_SEEN
+
+if [ -d "$V6_ROOT" ]; then
+    while IFS= read -r f; do
+        [ -z "$f" ] && continue
+        [ -f "$f" ] || continue
+        while IFS= read -r line; do
+            # Carve-out: lines explaining the command is fictional.
+            # Use specific markers (not just "fictional") to avoid matching
+            # skill names like "skill-fictional" or words like "fictitious".
+            # All markers are case-sensitive multi-word phrases that only
+            # appear in deprecation-explanation contexts.
+            if echo "$line" | grep -qE "NOT a real|not a real|is fictional|are fictional|was fictional|were fictional|fictional CLI|fictional command|fictional subcommand|fictional sub-command|fictional bmad-run|fictional 'bmad run|fictional bmad run|doesn't exist|does not exist|RR1|empirically wrong|is wrong|is NOT a"; then
+                continue
+            fi
+            if [[ "$line" =~ bmad\ run\ [a-zA-Z][a-zA-Z0-9_-]* ]]; then
+                match="${BASH_REMATCH[0]}"
+                key="$f|$match"
+                if [ -z "${H_SEEN[$key]:-}" ]; then
+                    H_SEEN[$key]=1
+                    relative="${f#$REPO_ROOT/}"
+                    emit "fictional CLI ref in $relative: '$match' (check h). 'bmad run <skill>' is NOT a real CLI command — only install/status/uninstall exist in bmad-cli.js (BMAD v6.6.0). Skills are invoked via the AI agent's slash command (e.g., /bmad-bam-finalize in Claude Code/Cursor) or natural-language activation. Per Concern 5 R3 / RR1."
+                fi
+            fi
+        done < <(grep -nE "bmad run [a-zA-Z]" "$f" 2>/dev/null || true)
+    done < <(scan_g_files)
 fi
 
 # ─── Summary ──────────────────────────────────────────────────────────────
