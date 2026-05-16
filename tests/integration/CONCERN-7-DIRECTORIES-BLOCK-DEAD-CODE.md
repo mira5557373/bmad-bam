@@ -1,7 +1,8 @@
 # Concern 7 — module.yaml `directories:` block is dead code in BAM
 
-**Status:** open / backlog. Discovered: Concern 5 brainstorming (PR #4 design phase).
-**Scope:** does not block Concern 5; tracks a separate anti-pattern.
+**Status:** ✅ **RESOLVED 2026-05-16** — ADR 009 (PR #5). Option B selected: drop literal-path entries; rely on post-install.sh's defensive mkdir as canonical creation site. `directories: []` in module.yaml + canonical-source-of-truth comment in post-install.sh.
+**Discovered:** Concern 5 brainstorming (PR #4 design phase).
+**Scope:** standalone follow-up to Concern 5; did not block Concern 5 merge.
 
 ## Summary
 
