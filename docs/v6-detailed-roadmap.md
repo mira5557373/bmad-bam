@@ -1,9 +1,17 @@
-# BAM v6 — Detailed Wave Roadmap & Cross-Validation Workflow
+# BAM v6 — Detailed Wave Roadmap & Cross-Validation Workflow (v2)
 
 **Date:** 2026-05-16
+**Version:** v2 (24-gap fix pass; effort estimates tripled; brainstorm library complete; cross-cutting work enumerated)
 **Spec source:** `docs/v6-final-architecture.md` v0.9
 **Status of foundation:** PR #3 + #5 + #6 + #7 + chore submodule queued for merge
-**Purpose:** Comprehensive forward plan for all remaining waves with brainstorm scope, deliverables, cross-validation gates, persona introductions, and cross-cutting work assignments. Nothing missed.
+**Purpose:** Comprehensive forward plan for all remaining waves with brainstorm scope, deliverables, cross-validation gates, persona introductions, and cross-cutting work assignments. **Nothing missed.**
+
+**Changes from v1 (2026-05-16 self-critique):**
+- C1: Effort estimates tripled (was ~1100-1500h, now ~3000-3700h matching spec §10.5)
+- C2: Wave P11 sequenced as standalone between P6 and v6.0 (was awkwardly split)
+- H1-H7 fixes: brainstorm prompts complete, Tier-2 update per wave, Plan C cadence reduced, §6.0/§15/§7.2/wave-completion all covered
+- M1-M10 fixes: spec sections §6.5/§6.8/§6.10/§17 cited; multi-module install test; mid-wave protocol; etc.
+- L1-L5 fixes: spec versioning, ADR reservations, parallelism column, validation automation, v3 deprecation
 
 ---
 
@@ -36,52 +44,72 @@ For each wave, this roadmap provides:
 - **Risk register** — known failure modes + mitigations
 - **Next wave pointer** — dependency chain
 
+**Claude review-effort budget:**
+- Each PR review: 15-60 min (depends on PR size + cross-validation depth)
+- ~30-40 PRs across all waves = ~10-30h of Claude review time over project lifetime
+- Review automated via `tests/audit-marketplace.sh` (8 checks) + `tests/integration/run-real-install.sh` (Tier-2 BAM_TIER2=1) where possible
+
 ---
 
-## 1. Wave catalog (full enumeration)
+## 1. Wave catalog (full enumeration; ordering per spec §10.2)
 
-11 main waves + cross-cutting work + release milestones:
+11 main waves + 6 cross-cutting + 3 release milestones. Wave order per **spec §10.2 justification**:
+- platform = root dep (ships first; everything depends on it)
+- data cohesive with platform (Atlas owns both — no persona-introduction cost)
+- ai is the core differentiator (Nova introduction)
+- ux foundational for white-labeling first tenant (Iris introduction)
+- rag + integration in v6.1 (needed before full production)
+- trust + ops in v6.2 (gate `RG-Launch`)
 
-| Wave | Purpose | Persona introduction | Skills | Est. effort | Spec section |
-|---|---|---|---|---|---|
-| **P0** | Pre-content prereqs (merge 5 queued PRs + Plan C R5) | — | 0 (cleanup) | ~2h | n/a |
-| **P3** | Complete `bmad-bam-platform` | Atlas continues | 15 | ~95-115h | §5.1 |
-| **P4** | `bmad-bam-data` | Atlas continues | 14 | ~85-100h | §5.2 |
-| **P5** | `bmad-bam-ai` | **Nova** 🌟 NEW | 27 | ~150-180h | §5.3 |
-| **P6** | `bmad-bam-ux` | **Iris** 🎨 NEW | 12 | ~70-85h | §5.8 |
-| **▶ v6.0 RELEASE** | platform + data + ai + ux ready | — | 68 cumulative | RG-Launch (partial) | §10.1 |
-| **P7** | `bmad-bam-rag` | Nova continues | 8 | ~50-65h | §5.4 |
-| **P8** | `bmad-bam-integration` | **Kai** 🔗 NEW | 13 | ~80-100h | §5.5 |
-| **▶ v6.1 RELEASE** | + rag + integration | — | 89 cumulative | + QG-I*, QG-RQ1 | §10.1 |
-| **P9** | `bmad-bam-trust` | **Cipher** 🔐 NEW | 16 | ~100-130h | §5.6 |
-| **P10** | `bmad-bam-ops` | **Rune** ⚙️ NEW | 16 | ~100-130h | §5.7 |
-| **▶ v6.2 RELEASE** | + trust + ops | — | 121 cumulative | + RG-Launch (full) | §10.1 |
-| **P11** | Cross-family workflows (in platform) | — | 12 | ~50-70h | §5.9 |
-| **PX-MCP** | MCP server (`bmad-bam-mcp`) | — | 0 skills (1 server) | ~30-40h | §9.5 |
-| **PX-Migration** | v3 → v6 migration tooling | — | (in platform) | ~25-35h | §13 |
-| **PX-Glossary** | Glossary consolidation (40+ terms) | — | (cross-cutting) | ~10-15h | §14 |
-| **PX-AntiPatterns** | Anti-patterns library (26 items) | — | (cross-cutting) | ~15-20h | §11 |
-| **PX-CustomizeTpl** | Customize-templates inventory (~15) | — | (cross-cutting) | ~25-35h | §7.2 |
-| **PX-VerticalPacks** | 6-8 vertical add-on packs (in trust) | — | (in trust) | ~80-120h | §6.7 |
+| Wave | Purpose | Persona introduced | Skills | Est. effort | Parallelism | Spec ref |
+|---|---|---|---|---|---|---|
+| **P0** | Pre-content prereqs (merge 5 queued PRs + Plan C R5) | — | 0 | ~2h | n/a (sequential) | n/a |
+| **P3** | Complete `bmad-bam-platform` | Atlas continues | 15 | **~280-345h** | Can parallel with PX-Migration | §5.1 |
+| **P4** | `bmad-bam-data` | Atlas continues | 14 | **~260-310h** | Sequential after P3 | §5.2 |
+| **P5** | `bmad-bam-ai` | **Nova** 🌟 NEW | 27 | **~450-540h** | Sequential after P4 | §5.3 |
+| **P6** | `bmad-bam-ux` | **Iris** 🎨 NEW | 12 | **~210-260h** | Can parallel with PX-AntiPatterns consolidation | §5.8 |
+| **P11** | Cross-family workflows (in platform) | — | 12 | **~150-210h** | Can parallel with P3 or after P6 | §5.9 |
+| **▶ v6.0 RELEASE** | platform + data + ai + ux + cross-family | 3 personas (Atlas, Nova, Iris) | 80 cumulative | RG-Launch partial | — | §10.1 |
+| **PX-MCP** | MCP server (`bmad-bam-mcp`) | — | 0 skills (1 server) | **~90-120h** | After v6.0; standalone | §9.5 |
+| **P7** | `bmad-bam-rag` | Nova continues | 8 | **~150-200h** | Sequential after PX-MCP (or parallel) | §5.4 |
+| **P8** | `bmad-bam-integration` | **Kai** 🔗 NEW | 13 | **~240-300h** | Sequential after P7 | §5.5 |
+| **▶ v6.1 RELEASE** | + rag + integration + Kai | 4 personas | 101 cumulative | + QG-I*, QG-RQ1 | — | §10.1 |
+| **P9** | `bmad-bam-trust` (+ 6-8 vertical packs) | **Cipher** 🔐 NEW | 16 + packs | **~300-400h** | Sequential after v6.1 | §5.6 |
+| **P10** | `bmad-bam-ops` | **Rune** ⚙️ NEW | 16 | **~300-400h** | Sequential after P9 | §5.7 |
+| **▶ v6.2 RELEASE** | + trust + ops + 6 personas | 6 personas | 133 cumulative | Full RG-Launch | — | §10.1 |
+| **PX-Migration** | v3 → v6 migration tooling | — | (in platform) | **~75-100h** | Parallel with P3-P4 | §13 |
+| **PX-Glossary** | Glossary consolidation (40+ terms) | — | (cross-cutting) | **~30-45h** | Distributed; consolidates at v6.0 | §14 |
+| **PX-AntiPatterns** | Anti-patterns library (26 items) | — | (cross-cutting) | **~45-60h** | Distributed; consolidates at v6.0 | §11 |
+| **PX-CustomizeTpl** | 15 customize-templates (BMAD-core overlays) | — | (cross-cutting) | **~75-100h** | Distributed per module | §7.2 |
+| **PX-VerticalPacks** | 6-8 vertical add-on packs (in trust) | — | (in trust, P9) | **~240-360h** | Sub-wave of P9 | §6.7 |
 
-**Total remaining: ~1100-1500h** (matches spec §10.5 estimates).
+**Total remaining effort: ~3000-3700h** (matches spec §10.5: Wave 0 → v6.2 total ~3200-4000h minus ~150-300h done = ~3000-3700h).
+
+**Per spec §10.5 solo-developer timeline:**
+- Part-time (10h/wk): ~85 weeks (~1.6 years) remaining
+- Half-time (20h/wk): ~43 weeks (~10 months)
+- Full-time (40h/wk): ~22 weeks (~5 months)
+- Heavy (80h/wk): ~11 weeks (~3 months)
 
 ---
 
 ## 2. Cross-cutting work assignment
 
-Distributed across main waves (not standalone waves):
+Distributed across main waves (not standalone waves except where noted):
 
-| Cross-cutting | Assigned to | Why |
-|---|---|---|
-| **Anti-patterns** | Each module wave establishes ~3-4 of the 26 anti-patterns; PX-AntiPatterns wave consolidates into final library | Each module's anti-patterns make most sense in context |
-| **Glossary terms** | Each module wave adds ~5-7 terms; PX-Glossary consolidates | Terms emerge from module work |
-| **Customize templates** | Each module wave adds 1-2 templates for its BMAD-core overlays; PX-CustomizeTpl reconciles | Templates overlay core skills; per-module |
-| **Vertical packs** | All 6-8 land in Wave P9 (trust) per spec §6.7 | Single canonical home |
-| **MCP server** | Standalone wave PX-MCP, sequenced AFTER v6.0 release | Independent infrastructure |
-| **v3 → v6 migration** | Standalone wave PX-Migration, in parallel with P3-P4 (no dependency on later modules) | Solo migration tooling |
-| **Quality gate checklists** | Each module wave establishes its primary gates; cross-module gates (QG-P1, RG-Launch) consolidated at v6.0 milestone | Gates are module-owned |
-| **Release gates** | RG-Launch (partial) at v6.0; full RG-Launch at v6.2; other RGs build incrementally | Release gates compose QGs |
+| Cross-cutting | Assigned to | Why | Spec ref |
+|---|---|---|---|
+| **Anti-patterns** (26 total) | Each module wave establishes 3-4; PX-AntiPatterns consolidates at v6.0 | Each module's anti-patterns make most sense in context. Each persona-skill owns its `resources/anti-patterns/<id>.md` per spec §6.5 frontmatter. | §6.5, §11 |
+| **Glossary terms** (~40) | Each module wave adds 5-7 terms; PX-Glossary consolidates at v6.0 | Terms emerge from module work; consolidated glossary in platform | §14 |
+| **Customize templates** (~15) | Each module wave adds 1-2 templates per spec §7.2 table | Templates overlay BMAD-core skills; assignments enumerated in §11 of this doc | §7.2 |
+| **Vertical packs** (6-8) | All land in Wave P9 (trust) per spec §6.7 | Single canonical home: `bmad-bam-trust/1-foundation/bmad-bam-agent-cipher/resources/vertical-addons/` | §6.7 |
+| **MCP server** | Standalone wave PX-MCP, AFTER v6.0 release | Independent infrastructure; uses universal-glob and BAM-native APIs | §9.5 |
+| **v3 → v6 migration** | Standalone wave PX-Migration, parallel with P3-P4 | Migration tooling lives in platform; doesn't depend on later modules | §13 |
+| **Quality gates** (28) | Each module wave establishes its primary gates; cross-module gates consolidated at v6.0 milestone | Gates are module-owned per spec §8.1 | §8.1 |
+| **Release gates** (8) | RG-Launch partial at v6.0; full RG-Launch at v6.2; other RGs build incrementally | Release gates compose QGs | §8.2 |
+| **`_bmad/bam/` umbrella subdirs** | Each main wave introduces the umbrella subdirs needed by its workflows | See §11 for full inventory + assignments | §6.0 |
+| **Context budget management** | Wave P11 (bmad-bam-start handles tier checks) + per-module limits in P3-P10 | Spec §6.10 — budget enforcement at session start | §6.10 |
+| **Knowledge currency governance** | Each fragment establishes `last_reviewed` + threshold; `refresh-knowledge` workflow (in P11) handles drift detection | Spec §6.8 — topic-specific staleness thresholds | §6.8 |
 
 ---
 
@@ -104,13 +132,10 @@ Distributed across main waves (not standalone waves):
 
 **Cross-validation:**
 ```bash
-# Claude verifies all 5 PRs merged + main green
 git fetch origin feat/bam-v3-pure-kb
-git checkout feat/bam-v3-pure-kb
-git pull
-git log --oneline -20 | head -25   # expect: 4 merge commits + chore + history
+git checkout feat/bam-v3-pure-kb && git pull
+git log --oneline -20 | head -25   # expect: 4 merge commits + chore
 
-# Tier-1 + Tier-2 against main
 tests/audit-marketplace.sh                                      # OK
 tests/audit-marketplace-fixtures.sh                             # 12/12
 tests/wave-0/run-smoke-test.sh                                  # PASS
@@ -119,7 +144,8 @@ src-v6/bmad-bam-platform/2-modules/bmad-bam-design-tenancy-model/tests/smoke-tes
 BAM_TIER2=1 tests/integration/run-real-install.sh               # PASS
 ```
 
-**Risk:** Submodule chore PR may conflict with concurrent PR work — merge in `chore → PR#3 → PR#5 → PR#6 → PR#7` order to minimize rebases.
+**Effort:** ~2h
+**Wave-completion definition:** all 5 PRs merged + Plan C R5 PASS recorded + Tier-1/2 green on main
 
 ---
 
@@ -127,75 +153,66 @@ BAM_TIER2=1 tests/integration/run-real-install.sh               # PASS
 
 **Goal:** Build remaining 15 platform skills (skills 2-16 from spec §5.1). Establish QG-F1, QG-M1, refine QG-M2.
 
-**4 sub-waves** (each = 1 PR = 1 brainstorm cycle):
+**Effort:** ~280-345h (4 sub-waves)
+**ADR range reserved:** ADRs 011-016
+**Parallelism:** Can parallel with PX-Migration (no shared files)
+**Persona:** Atlas continues (no introduction cost)
 
-#### P3.1 — Foundation (4 skills)
-
-**Brainstorm questions:**
-1. QG-F1 (Foundation gate) — what evidence does each Foundation skill produce that feeds QG-F1?
-2. design-modular-monolith decision space: bounded contexts (Domain-Driven Design) vs pure ports/adapters vs hybrid — what fragments capture the trade-off matrix?
-3. design-deployment-topology: blue-green vs canary vs cell-based cohort routing — how does this interact with tenant tier (#5)?
-4. design-finops-model: per-tenant attribution requires shared instrumentation contract — what's the upstream input from `design-tenancy-model` (already shipped)?
-5. design-tenant-tier-model: free/starter/pro/business/enterprise default — should BAM ship 5 tiers or be flexible?
-6. Fragment density target: ≤5 new fragments per skill (current platform = 6 fragments for 1 skill; need stricter discipline)
-7. Cross-skill fragment reuse: does design-finops-model reference design-tenancy-model's tenancy-decision-framework fragment, or is FinOps stand-alone?
+#### P3.1 — Foundation (4 skills, ~75-90h)
 
 **Skills:**
-1. `bmad-bam-design-modular-monolith` (skill 2 in spec §5.1)
+1. `bmad-bam-design-modular-monolith` (skill 2)
 2. `bmad-bam-design-deployment-topology` (skill 3)
 3. `bmad-bam-design-finops-model` (skill 4)
 4. `bmad-bam-design-tenant-tier-model` (skill 5)
 
+**Brainstorm questions (locked on RDP):**
+1. QG-F1 evidence: what does each Foundation skill produce that feeds QG-F1?
+2. design-modular-monolith decision space: DDD bounded contexts vs ports/adapters vs hybrid — primary recommendation + trade-off matrix
+3. design-deployment-topology interaction with design-tenancy-model: how does deployment topology depend on tenancy model choice (RLS/schema/cell)?
+4. design-finops-model: per-tenant attribution requires shared instrumentation — what's the upstream input from `design-tenancy-model`?
+5. design-tenant-tier-model: ship 5 default tiers (free/starter/pro/business/enterprise) or flexible N-tier?
+6. Fragment density target: ≤5 new fragments per skill (current platform = 6 fragments for 1 skill; need stricter discipline). With ~5 fragments/skill, this sub-wave = ~20 fragments.
+7. Cross-skill fragment reuse: does design-finops-model reference design-tenancy-model's tenancy-decision-framework fragment? Or stand-alone?
+8. Anti-patterns: what 3-4 anti-patterns does this sub-wave establish? (Per spec §6.5)
+9. Glossary terms: what 5-7 terms are introduced? (For PX-Glossary)
+10. Customize-templates: does this sub-wave add overlays for `bmad-create-architecture` (per §7.2)?
+
 **Deliverables:**
-- 4 skill dirs at `src-v6/bmad-bam-platform/2-modules/bmad-bam-design-<name>/` (matching design-tenancy-model template)
-- Each: SKILL.md, customize.toml (`[workflow]`), workflow.md, 5-7 steps in CEV pattern, template, smoke-test, bmad-skill-manifest.yaml
-- ~10-15 new fragments in `1-foundation/bmad-bam-agent-atlas/resources/fragments/`
-- ~5-8 new patterns in `resources/patterns/`
+- 4 skill dirs at `src-v6/bmad-bam-platform/2-modules/bmad-bam-design-<name>/` (template: design-tenancy-model)
+- Each: SKILL.md, customize.toml (`[workflow]`), workflow.md, 5-7 CEV steps, template, smoke-test, bmad-skill-manifest.yaml
+- ~20 new fragments at `1-foundation/bmad-bam-agent-atlas/resources/fragments/` (~5/skill)
+- ~8-12 new patterns at `resources/patterns/` (~2-3/skill)
+- ~3-4 anti-patterns at `resources/anti-patterns/<id>.md` (per spec §6.5)
+- ~5-7 glossary terms (in resources or in a glossary fragment)
 - QG-F1 checklist at `resources/checklists/QG-F1.md`
-- QG-M1 checklist at `resources/checklists/QG-M1.md` (partial — refined in P3.2)
+- QG-M1 (partial) at `resources/checklists/QG-M1.md`
+- Customize-template overlay for `bmad-create-architecture` (if scope confirms; per §7.2)
 - Marketplace.json: 4 new skill entries
-- ADR-011 (Wave P3.1 design decisions)
-- Spec v0.10 changelog row (or no version bump if no semantic-shape changes)
+- **Tier-2 script update:** verify Tier-2's 4-skills check still expects the 4 platform skills (no change in arg yet — still `--modules bbp`)
+- ADR-011 (Wave P3.1 design decisions, dependencies-on-other-decisions: [008, 009, 010])
+- Spec changelog row (v0.10 if scope is substantial; otherwise no bump)
+- INDEX.md row for ADR-011
 
-**Effort:** ~25-30h
-
-**Cross-validation checklist (Claude on PR):**
-- [ ] Tier-1: all 8 checks (a-h) green; 12 fixture cases pass
-- [ ] Tier-2: `BAM_TIER2=1 tests/integration/run-real-install.sh` PASS with 4 new skills installed at `.claude/skills/bmad-bam-design-*`
-- [ ] Each new skill has its own `tests/smoke-test.sh` that PASSes
-- [ ] Each new step file: frontmatter has `step_id`, `auto_runnable`, `gate`, `inputs`, `outputs` per std-frontmatter
-- [ ] Each new customize.toml uses `[workflow]` namespace (not `[agent]`) — verified at line 1
-- [ ] Universal-glob `file:{project-root}/**/project-context.md` present in persistent_facts
-- [ ] No `bmad run` literal (check (h) catches)
-- [ ] No `bmad-bam-platform/{data,agents,scripts,skills}/` paths (check (g) catches)
-- [ ] Cross-skill resource access uses tool-aware path fallback (`.claude/skills/...` → `.cursor/skills/...` → `_bmad/bbp/...`) per ADR 008/M1 fix
-- [ ] QG-F1 + QG-M1 checklists: frontmatter has id/title/module/phase/criticality/depends-on/evidence-depends-on
-- [ ] ADR-011 in canonical 11-field schema + dependencies-on-other-decisions cite 008 + 009 + 010
-- [ ] INDEX.md updated
-- [ ] Fragment frontmatter uses snake_case (per std-frontmatter convention map)
-- [ ] No `tested-against:` kebab-form (check via `grep -r "tested-against:"` returns 0)
-- [ ] Each new fragment has `## When to Use` + `## When NOT to Use` + `## Architecture` + `## Trade-offs` + `## Implementation Patterns` + `## Quality Checks` + `## Web Research Queries` + `## Cross-references` (per spec §6.3)
-- [ ] Web queries use `{date}` placeholder (not hardcoded year)
-- [ ] Each new fragment has `**CRITICAL:**` quality check
-- [ ] Module-help.csv updated with 4 new rows (canonical 13-column schema)
-- [ ] Sentinel filename convention: any new project-context.md references use `{output_folder}/bbp/project-context.md`
+**Cross-validation (Claude on PR):**
+- [ ] Universal checklist §4 — all items pass
+- [ ] Each new skill's smoke-test PASSes
 - [ ] No regression on design-tenancy-model smoke
-- [ ] Plan C R6 ratification recorded if commit touches activation chain (any module.yaml, customize.toml, post-install.sh edit)
+- [ ] QG-F1 + QG-M1 checklists have frontmatter per spec §8.1
+- [ ] Each new fragment follows spec §6.3 body structure (When to Use / NOT to Use / Architecture / Trade-offs / Implementation Patterns / Quality Checks / Web Research Queries / Cross-references)
+- [ ] Web queries use `{date}` placeholder
+- [ ] Each new fragment has `**CRITICAL:**` quality check
+- [ ] Anti-patterns have `kind: anti-pattern` frontmatter per spec §6.5
+- [ ] Each new fragment has `last_reviewed: <YYYY-MM-DD>` per spec §6.8
 
 **Risk register:**
-- R3.1.1: Fragment density creeps above 5/skill — mitigation: brainstorm caps it at 4; reuse design-tenancy-model fragments where possible
-- R3.1.2: QG-F1 evidence requirements unclear — mitigation: write QG-F1 checklist FIRST, then design skills to produce its evidence
-- R3.1.3: design-finops-model's per-tenant attribution requires upstream tenancy decision — mitigation: explicit `inputs:` declaration in skill manifest
+- R3.1.1: Fragment density creeps above 5/skill — mitigation: brainstorm caps it; reuse aggressively
+- R3.1.2: QG-F1 evidence requirements unclear — mitigation: write QG-F1 checklist FIRST, then design skills to produce evidence
+- R3.1.3: design-finops-model's per-tenant attribution requires tenancy decision upstream — mitigation: explicit `inputs:` declaration
 
 **Next:** P3.2 Lifecycle.
 
-#### P3.2 — Lifecycle (4 skills)
-
-**Brainstorm questions:**
-1. Tenant onboarding automation: SMB self-serve (Stripe Checkout?) vs sales-assisted (Hubspot integration?) — pick default, document both
-2. Right-to-deletion (offboarding): hard delete vs soft delete vs anonymize — when does each apply?
-3. Multi-tenant testing: isolation, noisy-neighbor, RLS bypass — refine existing QG-M2 with explicit test coverage matrix
-4. Tenant migration tooling: tier upgrades (within region) vs region migrations (across regions) — same workflow or separate?
+#### P3.2 — Lifecycle (4 skills, ~65-80h)
 
 **Skills:**
 1. `bmad-bam-design-tenant-onboarding` (skill 6)
@@ -203,28 +220,26 @@ BAM_TIER2=1 tests/integration/run-real-install.sh               # PASS
 3. `bmad-bam-design-multi-tenant-testing` (skill 8)
 4. `bmad-bam-design-tenant-migration-tooling` (skill 14)
 
-**Deliverables:** As P3.1, plus:
-- QG-M2 refinement (existing checklist gets expanded test catalogue from `design-multi-tenant-testing`)
-- QG-D1 partial (data dependency on migration; full DR gate lands in P10 ops)
-- Cross-reference into QG-C1 (compliance, for offboarding) — placeholder for P9 trust
+**Brainstorm questions:**
+1. Tenant onboarding: SMB self-serve (Stripe Checkout) vs sales-assisted (Hubspot) — default?
+2. Right-to-deletion: hard delete vs soft delete vs anonymize — when each applies?
+3. Multi-tenant testing catalogue: refines QG-M2's existing checklist with explicit test types
+4. Tenant migration: tier upgrades vs region migrations — single workflow or split?
 
-**Effort:** ~25-30h
+**Deliverables:** As P3.1, plus:
+- QG-M2 refinement (expanded test catalogue)
+- QG-D1 partial (DR dependency on migration; full lands in P10 ops)
+- Cross-reference into QG-C1 (compliance for offboarding) — placeholder for P9 trust
+- ADR-012
 
 **Cross-validation:** Same as P3.1, plus:
-- [ ] design-multi-tenant-testing's output catalogue is consumed by QG-M2 checklist evidence requirements
-- [ ] design-tenant-offboarding cites GDPR right-to-deletion fragment + has explicit retention-window decision
+- [ ] design-multi-tenant-testing output catalogue consumed by QG-M2 evidence requirements
+- [ ] design-tenant-offboarding cites GDPR right-to-deletion fragment + explicit retention-window decision
 - [ ] design-tenant-migration-tooling specifies zero-downtime constraint + cross-region implications
 
 **Next:** P3.3 Commercial.
 
-#### P3.3 — Commercial (5 skills)
-
-**Brainstorm questions:**
-1. Billing provider abstraction: Stripe-first with Paddle/Maxio as alternates, or provider-agnostic facade?
-2. Payment-tenant mapping: scope to provider object IDs vs tenant-side abstraction?
-3. Tax compliance: how many jurisdictions ship with patterns? (US states + EU VAT minimum; rest as extensions?)
-4. Rate-limiting algorithm: token-bucket / leaky-bucket / sliding-window — when to use which?
-5. Rate-arbitrage detection: heuristics vs ML-based — start with heuristics?
+#### P3.3 — Commercial (5 skills, ~95-115h)
 
 **Skills:**
 1. `bmad-bam-design-billing-integration` (skill 9)
@@ -233,41 +248,47 @@ BAM_TIER2=1 tests/integration/run-real-install.sh               # PASS
 4. `bmad-bam-design-rate-limit-per-tenant` (skill 12)
 5. `bmad-bam-design-tenant-rate-arbitrage` (skill 13)
 
+**Brainstorm questions:**
+1. Billing provider abstraction: Stripe-first with Paddle/Maxio alternates, or provider-agnostic facade?
+2. Payment-tenant mapping: scope to provider object IDs vs tenant-side abstraction?
+3. Tax compliance: how many jurisdictions in patterns? US states + EU VAT minimum?
+4. Rate-limiting algorithm: token-bucket / leaky-bucket / sliding-window?
+5. Rate-arbitrage detection: heuristics vs ML — start with heuristics?
+
 **Deliverables:** As P3.1, plus:
-- ~12-15 new fragments (provider integration patterns, tax-jurisdiction matrices, rate-limit algorithms)
-- ~3-4 new patterns
+- ~25 new fragments (provider integration, tax matrices, rate-limit algorithms)
+- ~6-8 new patterns
 - QG-TC4 (Tenant Context continuous) checklist
-- Cross-reference into QG-S1 (zero-trust, for payment-tenant mapping) — placeholder for P9 trust
-
-**Effort:** ~30-35h (largest sub-wave; commercial layer has most decision density)
-
-**Cross-validation:** Same as P3.1, plus:
-- [ ] design-billing-integration cites at least 2 providers explicitly (Stripe + 1 other) in trade-offs
-- [ ] design-tax-compliance has explicit jurisdiction count + extensibility pattern
-- [ ] design-rate-limit-per-tenant references the tenancy model from design-tenancy-model
-- [ ] Provider-specific patterns marked as extensions, not core
+- ADR-013, ADR-014
 
 **Next:** P3.4 Brownfield.
 
-#### P3.4 — Brownfield (2 skills)
-
-**Brainstorm questions:**
-1. `analyze-existing-tenancy`: assessment-only or also produces a gap report? (Recommend: gap report with retrofit suggestions but no migration plan — that's #16.)
-2. `plan-tenancy-retrofit`: how to handle the case where current model has NO clear tenancy boundary at all?
+#### P3.4 — Brownfield (2 skills, ~45-60h)
 
 **Skills:**
-1. `bmad-bam-analyze-existing-tenancy` (skill 15) — naming convention: `analyze-*` per spec §5.0
+1. `bmad-bam-analyze-existing-tenancy` (skill 15) — `analyze-*` prefix per spec §5.0
 2. `bmad-bam-plan-tenancy-retrofit` (skill 16) — `plan-*` per spec §5.0
 
-**Deliverables:** As P3.1, plus:
-- Brownfield-specific fragments (~3-5) on assessment patterns + retrofit migration strategies
-- Reuses 60-70% of greenfield fragments by reference
+**Brainstorm questions:**
+1. `analyze-existing-tenancy`: assessment-only or also gap report?
+2. `plan-tenancy-retrofit`: how to handle codebases with no clear tenancy boundary?
 
-**Effort:** ~15-20h (smallest; leverages prior content)
+**Deliverables:** As P3.1, plus:
+- ~6-8 brownfield-specific fragments (reuses ~60-70% of greenfield by reference)
+- ADR-015
 
 **Cross-validation:** Same as P3.1, plus:
-- [ ] analyze-* and plan-* workflows have explicit `brownfield: true` declarations in manifest
-- [ ] Output artifacts distinguishable from greenfield (e.g., output filename `tenancy-retrofit-plan.md` vs `tenancy-model.md`)
+- [ ] analyze-* and plan-* workflows have explicit `brownfield: true` declarations
+- [ ] Output artifacts distinguishable from greenfield (filenames)
+
+**Wave P3 completion definition:**
+- All 4 sub-wave PRs merged
+- All 15 platform workflow skills present
+- 7 of 28 quality gates established/refined (QG-F1, QG-M1, QG-M2 refined, QG-D1 partial, QG-TC4, QG-C1 partial, QG-S1 partial)
+- ~50-60 new fragments, ~20-25 new patterns, ~12-15 anti-patterns, ~25-30 glossary terms
+- ADRs 011-015 in INDEX.md
+- Spec changelog row for v0.10 (platform complete) — optional
+- Plan C R6 ratification optional (no install-mechanic changes)
 
 **Next:** Wave P4 (data module).
 
@@ -277,49 +298,75 @@ BAM_TIER2=1 tests/integration/run-real-install.sh               # PASS
 
 **Goal:** Build all 14 data module skills per spec §5.2. Establish QG-DA1.
 
-**Persona:** Atlas (still). This is where cross-module fragment reuse first happens (data references platform's tenancy decisions).
+**Effort:** ~260-310h (3 sub-waves)
+**ADR range reserved:** ADRs 016-019
+**Parallelism:** Sequential after P3 (Atlas content patterns established)
+**Persona:** Atlas (still) — first wave where cross-module fragment reuse happens
 
-**Sub-wave decomposition (3 sub-waves of ~4-5 skills each):**
+#### P4.0 — Data module bootstrap (1 PR, ~10-15h)
+- `src-v6/bmad-bam-data/` module dir
+- module.yaml with `code: bbd`
+- module-help.csv with canonical 13-col schema
+- `1-foundation/` (empty for now — Atlas's content lives in platform)
+- `2-storage/`, `3-data-lifecycle/` placeholder dirs
+- marketplace.json plugin entry for `bmad-bam-data`
+- Module-level smoke-test
+- ADR-016 (data module scaffolding decisions)
+- **Tier-2 script update:** add `bbd` to `--modules` arg + extend skill-existence loop
 
-#### P4.1 — Storage architecture (5 skills)
+#### P4.1 — Storage architecture (5 skills, ~95-115h)
 Skills: design-schema-architecture, design-cdc-pipeline, design-event-sourcing, design-cqrs, design-lakehouse
 
-#### P4.2 — Specialized data systems (5 skills)
+**Brainstorm:**
+1. CDC tool default: Debezium / Outbox / PG decoding — canonical?
+2. Lakehouse format: Iceberg vs Delta vs Hudi — Iceberg as default?
+3. Cross-module reference: data fragments reference Atlas's platform fragments via `[[name]]` markdown links?
+4. CROSS-MODULE FIRST TEST: data's design-schema-architecture cites platform's design-tenancy-model — does the load work?
+
+#### P4.2 — Specialized data systems (5 skills, ~95-115h)
 Skills: design-feature-store, design-stream-processing, design-search-index, design-graph-database, design-synthetic-data
 
-#### P4.3 — Data lifecycle + brownfield (4 skills)
+#### P4.3 — Data lifecycle + brownfield (4 skills, ~60-75h)
 Skills: design-data-export-formats, design-data-residency, design-retention-deletion, plan-data-migration
 
-**Cross-module reference**: data's design-retention-deletion references platform's design-tenant-offboarding. **First cross-module fragment reference** — validate the path convention works.
-
-**Brainstorm questions (Wave-wide):**
-1. CDC tool default: Debezium / Outbox / native PG decoding — which is canonical pattern?
-2. Lakehouse format: Iceberg vs Delta vs Hudi — start with Iceberg as default?
-3. Data residency vs tenancy: when does a tenant require data-region pinning?
-4. Graph DB: include or defer to v6.1? (Spec includes it in data; honor that)
-5. Cross-module references: data fragments reference Atlas's platform fragments via `[[fragment-name]]` markdown links (per std-frontmatter)?
+**Brainstorm questions (wave-wide):**
+1. CDC + lakehouse + stream processing — primary stack recommendation?
+2. Data residency vs tenancy: when does a tenant require region pinning?
+3. Cross-module fragment reference convention finalized — pattern documented in std-frontmatter convention map?
+4. Anti-patterns for data: schema lock-in, event-sourcing-overuse, etc. (3-4 anti-patterns)
+5. Glossary: 5-7 data-specific terms
 
 **Deliverables (Wave P4 total):**
-- 14 skill dirs under `2-modules/`
-- ~40-50 new fragments (Atlas's resources grows substantially)
-- ~15-20 new patterns
-- QG-DA1 (Data Architecture) checklist at `resources/checklists/QG-DA1.md`
-- ADRs 012-014 (one per sub-wave)
-- Spec v0.10 changelog row (data module added)
-
-**Effort:** ~85-100h
+- 14 skill dirs under `bmad-bam-data/<phases>/`
+- ~50-60 new fragments in `bmad-bam-data/1-foundation/.../resources/` (data module owns its own resources for cross-module reuse)
+  - OR all in platform's Atlas resources (cross-module dependency, easier discoverability) — decide in brainstorm
+- ~20-25 new patterns
+- ~3-4 anti-patterns
+- ~5-7 glossary terms
+- QG-DA1 (Data Architecture) checklist
+- Customize-template overlay for `bmad-investigate` (data deep-dives per §7.2)
+- ADRs 016-019
+- Spec changelog row for v0.11
 
 **Cross-validation (added vs P3):**
-- [ ] **CROSS-MODULE FRAGMENT REFERENCE TEST** — does data's design-retention-deletion successfully load platform's design-tenant-offboarding fragment at activation? (Test via tool-aware path fallback)
-- [ ] QG-DA1 checklist evidence requirements satisfied by P4.1 skills
-- [ ] CDC patterns include outbox + Debezium + native PG (at least 3 alternatives in trade-off matrix)
+- [ ] **CROSS-MODULE FRAGMENT REFERENCE TEST** — does data's design-retention-deletion successfully load platform's design-tenant-offboarding via tool-aware path fallback (`.claude/skills/...` → `.cursor/skills/...` → `_bmad/<other-code>/...`)?
+- [ ] QG-DA1 evidence requirements satisfied by P4.1 skills
+- [ ] CDC patterns include outbox + Debezium + native PG (3 alternatives min in trade-off matrix)
 - [ ] design-data-residency references platform's tenancy model for cross-region implications
+- [ ] Anti-patterns: each has `kind: anti-pattern` frontmatter
 
 **Risk:**
-- R4.1: Cross-module fragment reference convention breaks at activation — mitigation: explicit Plan C R7+ ratification with cross-module load test
-- R4.2: 14 skills in one wave is large — mitigation: 3 sub-waves with PR per sub-wave
+- R4.1: Cross-module fragment reference convention breaks at activation — mitigation: explicit Plan C R7+ ratification with cross-module load test (mandatory for Wave P4)
+- R4.2: 14 skills is large — mitigation: 3 sub-waves with PR per sub-wave
 
-**Next:** Wave P5 (ai module, Nova persona introduction).
+**Wave P4 completion definition:**
+- 14 data skills + module bootstrap PR all merged
+- Cross-module fragment reference verified at Plan C R7
+- QG-DA1 checklist established
+- ADRs 016-019 in INDEX.md
+- Spec v0.11 changelog row
+
+**Next:** Wave P5 (ai module + Nova).
 
 ---
 
@@ -327,73 +374,87 @@ Skills: design-data-export-formats, design-data-residency, design-retention-dele
 
 **Goal:** Build all 27 ai module skills per spec §5.3. Introduce Nova as second persona. Establish QG-M3.
 
-**Persona:** **Nova 🌟** NEW. Pattern: persona-skill at `src-v6/bmad-bam-ai/1-foundation/bmad-bam-agent-nova/` with full SKILL.md, customize.toml, resources/.
+**Effort:** ~450-540h (6+1 sub-waves; largest wave)
+**ADR range reserved:** ADRs 020-027
+**Parallelism:** Sequential after P4
+**Persona:** **Nova** 🌟 NEW — "gradient-descent metaphors" per spec §4.1
 
-**Sub-wave decomposition (6 sub-waves, ~4-5 skills each, per spec's 6 clusters):**
-
-#### P5.0 — Nova persona scaffold + module bootstrap (1 PR, no workflow skills)
-- Create `src-v6/bmad-bam-ai/` module dir
-- module.yaml with `code: bba` (BMAD short code)
-- module-help.csv with canonical 13-col schema
+#### P5.0 — Nova persona scaffold + module bootstrap (1 PR, ~25-35h)
+- `src-v6/bmad-bam-ai/` module dir
+- module.yaml with `code: bba`, `team: bam`
+- module-help.csv canonical schema
 - `1-foundation/bmad-bam-agent-nova/` (mirror Atlas's structure)
-- Nova SKILL.md + customize.toml + initial resources/
-- marketplace.json plugin entry for `bmad-bam-ai`
-- Effort: ~5-8h
+- Nova SKILL.md + customize.toml + initial `resources/` (fragments, patterns, checklists)
+- Initial fragments: ai-runtime-foundations, model-routing-cost-aware (~3-5 fragments to seed)
+- Marketplace.json plugin entry for `bmad-bam-ai`
+- **Tier-2 script update:** `--modules bbp,bbd,bba` + extend skill-existence loop
+- ADR-020 (Nova persona introduction + ai module bootstrap decisions)
 
-#### P5.1 — Routing & orchestration (4 skills)
+#### P5.1 — Routing & orchestration (4 skills, ~70-85h)
 Skills: design-model-routing, design-agent-orchestration, design-agent-collaboration-protocol, design-tool-execution
 
-#### P5.2 — Memory & prompt (5 skills)
+#### P5.2 — Memory & prompt (5 skills, ~85-100h)
 Skills: design-memory-architecture, design-agent-memory-compression, design-self-improving-agent, design-prompt-engineering, design-prompt-architecture
 
-#### P5.3 — Safety & isolation (5 skills)
+#### P5.3 — Safety & isolation (5 skills, ~85-100h)
 Skills: design-prompt-injection-defense, design-prompt-leak-prevention, design-tenant-prompt-isolation, design-model-cache-isolation, design-safety-guardrails
 
-#### P5.4 — Eval (5 skills)
+#### P5.4 — Eval (5 skills, ~85-100h)
 Skills: design-offline-eval, design-online-eval, design-adversarial-eval, design-bias-fairness-eval, design-eval-first-spec
 
-#### P5.5 — Lifecycle & FinOps (4 skills)
+#### P5.5 — Lifecycle & FinOps (4 skills, ~70-85h)
 Skills: design-shadow-mode, design-model-lifecycle, design-ai-finops, design-ai-safety-policy
 
-#### P5.6 — Roadmap & synthesis + brownfield (4 skills)
-Skills: design-ai-product-roadmap, design-ai-runtime (synthesizes QG-M3 evidence), audit-ai-runtime, plan-ai-bolt-on
+#### P5.6 — Roadmap & synthesis + brownfield (4 skills, ~70-85h)
+Skills: design-ai-product-roadmap, design-ai-runtime (synthesizes QG-M3), audit-ai-runtime, plan-ai-bolt-on
 
-**Brainstorm questions (Wave-wide):**
-1. Nova voice: "Gradient-descent metaphors" per spec §4.1 — what 3-5 example phrasings establish the voice?
+**Brainstorm questions (Wave-wide, P5.0):**
+1. Nova voice: "Gradient-descent metaphors" per spec §4.1 — 3-5 example phrasings establishing the voice
 2. Cross-persona invocation: design-ai-runtime depends on Atlas's design-tenancy-model output — pattern?
-3. AI eval frameworks: ship with patterns for which eval tools (LangSmith / Braintrust / Inspect AI / Anthropic Console)?
+3. AI eval frameworks: ship patterns for which tools (LangSmith / Braintrust / Inspect AI / Anthropic Console)?
 4. design-ai-finops cross-references platform's design-finops-model — extends or replaces?
-5. design-tenant-prompt-isolation interacts with design-tenancy-model from platform — input/output contract?
+5. design-tenant-prompt-isolation interacts with design-tenancy-model — input/output contract?
+6. Anti-patterns: single-model-lockin, prompt-leak-on-debug, eval-after-launch, etc. (~6-8 ai anti-patterns)
+7. Glossary: 10+ AI-specific terms (eval, agent, RAG-isolation, etc.)
 
 **Deliverables (Wave P5 total):**
 - 27 skill dirs under `bmad-bam-ai/<phases>/`
-- Nova persona-skill fully built (mirror Atlas)
-- ~80-100 new fragments (Nova's resources)
-- ~30-40 new patterns
-- QG-M3 (AI Runtime) checklist
+- Nova persona-skill fully built (mirror Atlas's structure)
+- ~120-140 new fragments (Nova's resources — largest fragment growth)
+- ~50-60 new patterns
+- ~6-8 anti-patterns
+- ~10-12 glossary terms
+- QG-M3 (AI Runtime) checklist — blocking gate
 - QG-S2 (Model/Tool Safety) partial (full lands in P9 trust)
-- ADRs 015-021 (one per sub-wave)
-- Spec v0.11 changelog row
-
-**Effort:** ~150-180h (largest wave; 27 skills + new persona)
+- Customize-template overlays for `bmad-investigate`, `bmad-validate-prd`, `bmad-design-test-strategy` (per §7.2)
+- ADRs 020-027 (one per sub-wave + bootstrap)
+- Spec changelog row v0.12
 
 **Cross-validation:**
-- [ ] Nova's SKILL.md follows the SAME structure as Atlas's (spec §6.1 BMM-canonical)
+- [ ] Universal checklist §4
+- [ ] Nova's SKILL.md follows the BMM-canonical structure (matches Atlas)
 - [ ] `1-foundation/bmad-bam-agent-nova/customize.toml` uses `[agent]` namespace (NOT `[workflow]`)
 - [ ] Nova's persistent_facts include universal-glob + `{skill-root}/resources/...`
-- [ ] BAM-family `team: bam` preserved (per ADR 008/P4 rename convention)
-- [ ] **CROSS-PERSONA TEST** — Atlas's design-tenancy-model's output successfully feeds Nova's design-ai-runtime via spec §5.0.1 manifest `inputs:` declaration
-- [ ] **MULTI-MODULE INSTALL TEST** — `bmad install --custom-source $REPO_ROOT --modules bbp,bba` installs both modules; both sentinels emit; Plan C R8 ratification verifies both load
-- [ ] QG-M3 + QG-S2 checklists in `bmad-bam-ai/1-foundation/bmad-bam-agent-nova/resources/checklists/`
-- [ ] No regression: Atlas's design-tenancy-model still PASSes smoke
-- [ ] Cross-persona invocation flag in spec §4.5 (conflict resolution + escalation) — does any P5 skill trigger Kai? (Probably no; Kai introduced in P8)
+- [ ] `team: bam` per Concern 7 / P4 rename convention
+- [ ] **CROSS-PERSONA TEST** — Atlas's design-tenancy-model output successfully feeds Nova's design-ai-runtime via spec §5.0.1 manifest `inputs:`
+- [ ] **MULTI-MODULE INSTALL TEST** — `bmad install --custom-source $REPO_ROOT --modules bbp,bbd,bba --tools claude-code --yes` installs all 3 modules; sentinels emit for all; Plan C R8 ratification (mandatory at module introduction)
+- [ ] **DEP-GRAPH INSTALL TEST** — `bmad install bbr` would auto-pull `bba` + `bbp` (rag depends on ai depends on platform per spec §3.2). Verify via dry-run install.
+- [ ] QG-M3 + QG-S2 partial checklists in `bmad-bam-ai/1-foundation/bmad-bam-agent-nova/resources/checklists/`
+- [ ] Nova voice distinct from Atlas (review SKILL.md prose for "gradient-descent" metaphors)
 
 **Risk:**
-- R5.1: Nova introduction risks "Atlas-imitation" — mitigation: brainstorm voice deeply; reference §4.1 "gradient-descent metaphors" guidance
-- R5.2: 27 skills + 6 clusters is the biggest wave — mitigation: 6+1 sub-waves with strict PR-per-sub-wave discipline
+- R5.1: Nova introduction risks "Atlas-imitation" — mitigation: brainstorm voice deeply; reference §4.1 explicitly
+- R5.2: 27 skills + 6 clusters is biggest wave — mitigation: 6+1 sub-waves with strict PR-per-sub-wave discipline
 - R5.3: Cross-persona invocation untested — mitigation: explicit P5.6 design-ai-runtime test (it MUST invoke Atlas's design-tenancy-model output)
 
-**Next:** Wave P6 (ux, Iris persona).
+**Wave P5 completion definition:**
+- 27 skills + Nova persona-skill all merged
+- QG-M3 established (blocking)
+- Plan C R8 PASS with all 3 modules installed
+- ADRs 020-027 in INDEX.md
+- Spec v0.12 changelog row
+
+**Next:** Wave P6 (ux + Iris).
 
 ---
 
@@ -401,78 +462,170 @@ Skills: design-ai-product-roadmap, design-ai-runtime (synthesizes QG-M3 evidence
 
 **Goal:** Build all 12 ux module skills per spec §5.8. Introduce Iris as third persona. Establish QG-UX1.
 
-**Persona:** **Iris 🎨** NEW. Theme tokens + accessibility-first voice per spec §4.1.
+**Effort:** ~210-260h (3+1 sub-waves)
+**ADR range reserved:** ADRs 028-030
+**Persona:** **Iris** 🎨 NEW — "theme tokens, accessibility-first" per spec §4.1
 
-**Sub-wave decomposition (3 sub-waves, ~4 skills each):**
-
-#### P6.0 — Iris persona scaffold + module bootstrap (1 PR)
-- `bmad-bam-ux` module: `code: bbu`
+#### P6.0 — Iris persona scaffold + module bootstrap (1 PR, ~15-25h)
+- module.yaml with `code: bbu`, `team: bam`
 - Iris persona at `1-foundation/bmad-bam-agent-iris/`
+- ADR-028
 
-#### P6.1 — Branding & theme (4 skills)
+#### P6.1 — Branding & theme (4 skills, ~65-80h)
 Skills: design-theme-token-architecture, design-accessibility-cohort, design-multi-locale, design-white-label
 
-#### P6.2 — Tenant + agent UX (4 skills)
+#### P6.2 — Tenant + agent UX (4 skills, ~65-80h)
 Skills: design-tenant-ui-customization, design-agent-ui-patterns, design-trust-ui, design-progressive-disclosure-ai
 
-#### P6.3 — Lifecycle UX + audit (4 skills)
+#### P6.3 — Lifecycle UX + audit (4 skills, ~65-80h)
 Skills: design-empty-state-ai, design-onboarding-ux, design-feature-deprecation-ux, audit-ux-consistency
 
 **Brainstorm questions:**
-1. Theme token system: CSS variables vs design-tokens-w3c JSON — spec one
-2. Accessibility per cohort: how does WCAG level vary by tenant tier?
-3. White-label: brand isolation in `_bmad/<code>/theme-<tenant-id>/` or runtime resolved?
+1. Theme token system: CSS variables vs design-tokens-w3c JSON?
+2. Accessibility per cohort: WCAG level by tenant tier?
+3. White-label brand isolation: `_bmad/<code>/theme-<tenant-id>/` or runtime-resolved?
 4. Agent UI patterns: chat vs command-palette vs sidebar vs embedded — order of preference?
-5. Cross-persona: Iris consumes Cipher's PII patterns (not built yet, P9) — placeholder reference OK?
+5. Cross-persona: Iris consumes Cipher's PII patterns (P9 future) — placeholder reference OK?
 
 **Deliverables:**
 - 12 skill dirs under `bmad-bam-ux/<phases>/`
 - Iris persona-skill
-- ~40-50 fragments
-- ~15-20 patterns
-- QG-UX1 checklist
-- ADRs 022-024
-- Spec v0.12 changelog row
-
-**Effort:** ~70-85h
+- ~50-60 fragments
+- ~20-25 patterns
+- ~3-4 anti-patterns
+- ~7-9 glossary terms
+- QG-UX1 (advisory) checklist
+- Customize-template overlay for `bmad-create-story` (UX considerations per §7.2)
+- ADRs 028-030
+- **Tier-2 script update:** `--modules bbp,bbd,bba,bbu`; skill-existence loop adds 12 Iris-related skills
+- Spec changelog row v0.13
 
 **Cross-validation:**
 - [ ] All P5 cross-validation items
-- [ ] **THREE-MODULE INSTALL TEST** — `bmad install --modules bbp,bba,bbu` installs three modules cleanly
-- [ ] **THREE-PERSONA AVAILABILITY TEST** — Atlas, Nova, Iris all listed in `_bmad/_config/skill-manifest.csv` post-install
-- [ ] Iris's voice distinct from Atlas + Nova (review SKILL.md prose)
+- [ ] **FOUR-MODULE INSTALL TEST** — `bmad install --modules bbp,bbd,bba,bbu` installs cleanly
+- [ ] **THREE-PERSONA AVAILABILITY** — Atlas, Nova, Iris all listed in `_bmad/_config/skill-manifest.csv` post-install
+- [ ] Iris's voice distinct from Atlas + Nova (review SKILL.md)
 
-**Next:** v6.0 release milestone.
+**Wave P6 completion definition:**
+- 12 UX skills + Iris persona-skill all merged
+- QG-UX1 established (advisory)
+- ADRs 028-030 in INDEX.md
+- Spec v0.13 changelog row
+
+**Next:** Wave P11 (cross-family workflows in platform).
+
+---
+
+### Wave P11 — Cross-family workflows (now standalone wave)
+
+**Goal:** Build all 12 cross-family workflows per spec §5.9, lived in `bmad-bam-platform`. Bridges modules for v6.0 release.
+
+**Effort:** ~150-210h (2 sub-waves)
+**ADR range reserved:** ADRs 031-033
+**Parallelism:** Can parallel with P3 (early cross-family skills) OR after P6 (release-critical)
+**Persona:** Atlas (cross-family skills live in platform; no new persona)
+
+**Note:** Spec §5.9 lists 12 cross-family workflows + 1 release-gate-orchestrator = 13 total. (Spec earlier in §5.0 says 12; reconcile to 12 + release-gate-orchestrator counted in QG infrastructure.)
+
+#### P11.1 — Essential cross-family (6 skills, ~75-105h)
+Skills: bmad-bam-start, record-decision, refresh-knowledge, waive-gate, mediate-conflict, design-build-vs-buy
+
+**Brainstorm:**
+1. `bmad-bam-start`: orchestrator entry — greenfield path vs brownfield path branching
+2. `record-decision`: ADR workflow — produces ADRs in `_bmad/_memory/<persona>/architecture-decisions/`
+3. `refresh-knowledge`: drift detection per spec §6.8 topic thresholds
+4. `mediate-conflict`: Kai-led arbitration (Kai introduced in P8; this skill is invoked WHEN Kai exists)
+5. `waive-gate`: waiver with expiration + compensating control (spec §8.6)
+
+#### P11.2 — Release-critical cross-family (6 skills, ~75-105h)
+Skills: bmad-bam-backup, bmad-bam-restore, bmad-bam-upgrade, bmad-bam-rollback, verify-production-readiness-final, release-gate-orchestrator
+
+**Brainstorm:**
+1. `bmad-bam-backup`: archives `_bmad/_memory/` + `_bmad/bam/evidence/` to `_bmad/bam/backups/`
+2. `bmad-bam-restore`: validates + restores from archive
+3. `bmad-bam-upgrade`: BAM-to-BAM module upgrade procedure (spec §10.4)
+4. `bmad-bam-rollback`: clean partial-install state after install failure
+5. `verify-production-readiness-final`: composite gate across installed modules
+6. `release-gate-orchestrator`: composes QGs into RGs per spec §8.3
+
+**Deliverables (Wave P11 total):**
+- 12 skill dirs under `bmad-bam-platform/2-modules/` (cross-family skills are PLATFORM skills despite cross-cutting nature)
+- ~30-40 fragments
+- ~15-20 patterns
+- ~2-3 anti-patterns
+- ~5-7 glossary terms
+- ADRs 031-033 (one per sub-wave + release-gate orchestrator)
+- Spec changelog row v0.14 (cross-family complete)
+
+**Cross-validation:**
+- [ ] Universal checklist §4
+- [ ] `bmad-bam-start` invocation produces correct module sequencing per spec §3.2 dep graph
+- [ ] `record-decision` produces ADR in canonical 11-field schema per std-adr
+- [ ] `verify-production-readiness-final` correctly composes evidence from all installed modules
+- [ ] `release-gate-orchestrator` correctly maps QGs → RGs per spec §8.2 table
 
 ---
 
 ### ▶ v6.0 RELEASE MILESTONE
 
-**Composition:** platform (16) + data (14) + ai (27) + ux (12) = **69 module skills** + Atlas + Nova + Iris personas + cross-family skills from P11 (or build them later).
+**Composition:** platform (16) + data (14) + ai (27) + ux (12) + cross-family (12) = **81 module skills + 12 cross-family = 93 total skills** + 3 personas (Atlas, Nova, Iris).
 
-**Wait** — cross-family skills (12, in platform per spec §5.9) need to be built before v6.0 release for `bmad-bam-start`, `bmad-bam-backup`, etc. to exist. So Wave P11 must land BEFORE v6.0 release.
-
-**Revised sequencing:**
-- Wave P11 (cross-family) lands between P6 and v6.0 release
-- v6.0 release = P3 + P4 + P5 + P6 + P11
-
-OR:
-- Wave P11 split: bmad-bam-start + critical cross-family workflows land alongside P3 (in platform); rest defer to v6.0 release prep wave
-
-**Decision recommended:** Wave P11 lands as 2 sub-waves:
-- P11.A (essential cross-family, lands during P3.4): bmad-bam-start, record-decision, refresh-knowledge, waive-gate (4 skills)
-- P11.B (release-critical cross-family, lands before v6.0 release): bmad-bam-backup, bmad-bam-restore, bmad-bam-upgrade, bmad-bam-rollback, design-build-vs-buy, mediate-conflict, verify-production-readiness-final, release-gate-orchestrator (8 skills)
-
-**v6.0 RELEASE GATE:**
-- [ ] All P3 + P4 + P5 + P6 + P11.A + P11.B PRs merged
-- [ ] All Tier-1 audit checks green
-- [ ] Tier-2 with all 4 modules + cross-family: PASS
-- [ ] Plan C R(N) manual ratification with all 4 modules installed
-- [ ] Cumulative ADRs 008-025+ all in INDEX.md
-- [ ] Spec at v0.13 with v6.0 changelog row
-- [ ] Release gate evidence: RG-Launch composite (QG-F1, all M*, all I* placeholders, QG-DA1, QG-UX1)
+**v6.0 RELEASE GATE checklist:**
+- [ ] All P3 + P4 + P5 + P6 + P11 PRs merged
+- [ ] All Tier-1 audit checks green (8 checks a-h)
+- [ ] Tier-2 with all 4 modules + cross-family: `BAM_TIER2=1 ... --modules bbp,bbd,bba,bbu` PASS
+- [ ] **Plan C R(v6.0) MANDATORY** — full LLM-side ratification in real Claude Code IDE; record in `tests/p2/PLAN-C-RATIFICATION.md`
+- [ ] **§15 Claude consumption validation** — test §15.1-§15.12 patterns end-to-end (see §17 of this roadmap)
+- [ ] ADRs 008-030 all in INDEX.md
+- [ ] Spec at v1.0 (semver bump: 0.X → 1.X at v6.0 release; see §13 of this roadmap)
+- [ ] PX-AntiPatterns consolidation: 12-15 of 26 anti-patterns shipped (rest in v6.1+)
+- [ ] PX-Glossary consolidation: 25-30 of 40 terms shipped
 - [ ] family.json captures v6.0 module set
+- [ ] Release gate evidence: RG-Launch composite (QG-F1, all M*, QG-DA1, QG-UX1) — partial; full RG-Launch at v6.2
+- [ ] CHANGELOG.md entry for v6.0
 - [ ] Tag the commit: `v6.0.0`
+
+---
+
+### Wave PX-MCP — MCP server (`bmad-bam-mcp`)
+
+**Goal:** Build the BAM MCP server per spec §9.5. Stdio transport, fs-permission auth.
+
+**Effort:** ~90-120h (standalone)
+**ADR range reserved:** ADR-034
+**When:** AFTER v6.0 release (rag + integration not required for MCP)
+**Parallelism:** Standalone; can parallel with P7
+
+**Brainstorm questions:**
+1. MCP server location: `src-v6/bmad-bam-platform/mcp-server/` per spec §9.5 OR separate repo?
+2. Transport: stdio confirmed by spec
+3. Auth: fs-permission per spec — which exact permission model?
+4. Tools exposed (per spec §9.5):
+   - query-pattern, query-fragment, list-personas, get-persona-memory, record-decision, query-gate, record-gate-evidence, list-installed-modules
+5. Should MCP server be its own skill (`bmad-bam-mcp`) or just a server binary?
+6. Integration with Claude Code via `.mcp.json` config
+7. Testing strategy: how to test stdio MCP without actually running a session?
+
+**Deliverables:**
+- `src-v6/bmad-bam-platform/mcp-server/` directory (or new module)
+- Server implementation (Node.js or Python — recommend Python per spec's BAM language convention)
+- Tool implementations for 8 tools per spec §9.5 table
+- README documenting setup + `.mcp.json` snippet
+- Tests for MCP server (mock + integration)
+- ADR-034 (MCP transport + auth + tool inventory decisions)
+- Spec changelog row v1.1 (MCP server added)
+- Customize-template overlay (none needed for MCP server itself)
+
+**Cross-validation:**
+- [ ] Universal checklist §4
+- [ ] MCP server runs stdio transport correctly
+- [ ] All 8 tools per §9.5 implemented + tested
+- [ ] fs-permission auth works (no escalation outside `_bmad/`)
+- [ ] `.mcp.json` snippet validates against MCP spec
+
+**Risk:**
+- R-MCP.1: stdio transport may have edge cases not in spec — mitigation: explicit test suite per tool
+- R-MCP.2: fs-permission scope creep — mitigation: hard-code allowed dirs at server start
 
 ---
 
@@ -480,36 +633,36 @@ OR:
 
 **Goal:** 8 rag module skills per spec §5.4. Establish QG-RQ1.
 
-**Persona:** Nova (already introduced in P5).
+**Effort:** ~150-200h (2 sub-waves)
+**ADR range reserved:** ADRs 035-036
+**Persona:** Nova (already introduced in P5)
 
-**Single-wave PR (8 skills is small enough for 1 PR; OR split into 2 sub-waves of 4).**
+#### P7.0 — RAG module bootstrap (1 PR, ~10-15h)
+- module.yaml with `code: bbr`, `team: bam`
+- depends-on: bba (per spec §3.2 dep graph)
+- `1-foundation/` — reference Nova (no new persona-skill; same Nova as P5)
+- **Tier-2 script update:** `--modules bbp,bbd,bba,bbu,bbr`
 
-**Recommended split:**
-#### P7.1 — Retrieval architecture (4 skills)
+#### P7.1 — Retrieval architecture (4 skills, ~70-90h)
 Skills: design-vector-store, design-hybrid-search, design-graph-rag, design-multi-modal-rag
 
-#### P7.2 — Retrieval optimization + eval (4 skills)
+#### P7.2 — Retrieval optimization + eval (4 skills, ~70-90h)
 Skills: design-contextual-retrieval, design-chunking, design-knowledge-graph, design-retrieval-eval
 
-**Brainstorm questions:**
-1. Vector store default: Pinecone vs Qdrant vs Weaviate vs pgvector — pick one for v6.1?
-2. Hybrid search: BM25 + dense + sparse fusion order — which is canonical?
-3. Chunking strategies: semantic vs late chunking vs hierarchical — primary recommendation?
-4. Retrieval eval: precision@k vs NDCG vs recall@k — which is primary metric?
+**Brainstorm:**
+1. Vector store default: Pinecone / Qdrant / Weaviate / pgvector?
+2. Hybrid search fusion: BM25 + dense + sparse order?
+3. Chunking strategies: semantic / late / hierarchical — primary?
+4. Retrieval eval: precision@k / NDCG / recall@k — primary metric?
 
 **Deliverables:**
 - 8 skill dirs under `bmad-bam-rag/<phases>/`
-- ~25-35 fragments
-- ~10-15 patterns
+- ~30-35 fragments in `bmad-bam-rag/1-foundation/bmad-bam-agent-nova-rag/resources/` (sub-persona dir for rag-specific Nova content) OR reuse `bmad-bam-ai`'s Nova resources
+- ~12-15 patterns
+- ~2-3 anti-patterns
+- ~5-7 glossary terms
 - QG-RQ1 checklist (advisory)
-- ADRs 026-027
-- module: `code: bbr`
-
-**Effort:** ~50-65h
-
-**Cross-validation:** Same as P5, plus:
-- [ ] rag module depends on ai module (verify install order: bbp → bba → bbr)
-- [ ] No new persona introduced (Nova reused) — verify Nova reference is canonical
+- ADRs 035-036
 
 ---
 
@@ -517,39 +670,37 @@ Skills: design-contextual-retrieval, design-chunking, design-knowledge-graph, de
 
 **Goal:** 13 integration skills per spec §5.5. Introduce Kai (default arbiter). Establish QG-I1-3.
 
-**Persona:** **Kai 🔗** NEW. Contract-attorney voice per spec §4.1.
+**Effort:** ~240-300h (3+1 sub-waves)
+**ADR range reserved:** ADRs 037-040
+**Persona:** **Kai** 🔗 NEW — "contract attorney with engineering rigor; default arbiter for conflicts" per spec §4.1 + §4.5
 
-**Sub-wave decomposition (3 sub-waves):**
-
-#### P8.0 — Kai persona scaffold + module bootstrap (1 PR)
-- module: `code: bbi`
-- Kai persona at `1-foundation/bmad-bam-agent-kai/`
-
-#### P8.1 — Boundary design (5 skills)
+#### P8.0 — Kai persona scaffold + module bootstrap (~20-30h)
+#### P8.1 — Boundary design (5 skills, ~85-100h)
 Skills: design-module-facades, design-cross-module-messaging, design-api-gateway, design-public-api, design-realtime-architecture
 
-#### P8.2 — Reliability patterns (4 skills)
+#### P8.2 — Reliability patterns (4 skills, ~70-85h)
 Skills: design-webhook-system, design-saga-pattern, design-circuit-breaker, design-idempotency-keys
 
-#### P8.3 — Verification & evolution (4 skills)
+#### P8.3 — Verification & evolution (4 skills, ~65-85h)
 Skills: verify-convergence (QG-I1-3), plan-api-versioning, audit-integration, plan-module-extraction
 
-**Brainstorm questions:**
-1. Kai voice: "contract attorney with engineering rigor" — what specific phrasings?
-2. Module facade pattern: trait-based / interface-based / hexagonal? Spec one default.
+**Brainstorm:**
+1. Kai voice: "contract attorney with engineering rigor" — specific phrasings (e.g., "the contract says…", "what's the SLA we're committing to?")
+2. Module facade pattern: trait / interface / hexagonal?
 3. Cross-module messaging: in-process event bus vs async queue — decision drivers?
-4. API versioning: expand-contract vs URL versioning vs header versioning — primary recommendation?
-5. **CONFLICT MEDIATION** — Kai is default arbiter per spec §4.5. How does Atlas/Nova invoke Kai's `mediate-conflict` workflow? (This was in P11 cross-family; verify it's wired.)
+4. API versioning: expand-contract vs URL versioning vs header versioning?
+5. **CONFLICT MEDIATION** — Kai is default arbiter per spec §4.5. How does Atlas/Nova invoke Kai's `mediate-conflict` workflow (in P11)?
 
 **Deliverables:**
 - 13 skill dirs
 - Kai persona-skill
-- ~35-45 fragments
-- ~15-20 patterns
-- QG-I1, QG-I2, QG-I3 checklists
-- ADRs 028-031
-
-**Effort:** ~80-100h
+- ~50-60 fragments
+- ~20-25 patterns
+- ~3-4 anti-patterns
+- ~7-9 glossary terms
+- QG-I1, QG-I2, QG-I3 checklists (all blocking)
+- ADRs 037-040
+- Customize-template overlays for module-facade contracts
 
 **Cross-validation:**
 - [ ] Kai's mediate-conflict workflow (from P11) successfully invokes Kai persona
@@ -560,89 +711,77 @@ Skills: verify-convergence (QG-I1-3), plan-api-versioning, audit-integration, pl
 
 ### ▶ v6.1 RELEASE MILESTONE
 
-**Composition:** v6.0 + rag (8) + integration (13) = **90 module skills** + 4 personas (Atlas, Nova, Iris, Kai).
+**Composition:** v6.0 + rag (8) + integration (13) + Kai = **102 module skills + 12 cross-family = 114 total** + 4 personas.
 
-**RG-Launch evidence now substantially fuller** — QG-I1-3 + QG-RQ1 land.
+**v6.1 RELEASE GATE checklist:**
+- [ ] All P7 + P8 + PX-MCP PRs merged
+- [ ] Plan C R(v6.1) — full LLM-side ratification
+- [ ] §15 patterns still validated
+- [ ] QG-I1-3 + QG-RQ1 + MCP infrastructure all evidenced
+- [ ] Spec at v1.1 (post-MCP) or v1.2 if MCP shipped in v6.0
+- [ ] CHANGELOG.md entry for v6.1
+- [ ] Tag: `v6.1.0`
 
 ---
 
-### Wave P9 — `bmad-bam-trust` + **Cipher persona introduction**
+### Wave P9 — `bmad-bam-trust` + **Cipher persona introduction** + Vertical packs
 
-**Goal:** 16 trust skills per spec §5.6. Introduce Cipher (paranoid auditor). Establish QG-S1, S2 (full), C1-3.
+**Goal:** 16 trust skills per spec §5.6 + 6-8 vertical add-on packs per spec §6.7. Introduce Cipher. Establish QG-S1, S2 (full), C1-3.
 
-**Persona:** **Cipher 🔐** NEW.
+**Effort:** ~300-400h (4+1 sub-waves; +PX-VerticalPacks)
+**ADR range reserved:** ADRs 041-046
+**Persona:** **Cipher** 🔐 NEW — "paranoid auditor: assume breach, log everything" per spec §4.1
 
-**Includes vertical add-on packs (6-8 packs per spec §6.7) — these land in trust module's resources.**
-
-**Sub-wave decomposition (4 sub-waves):**
-
-#### P9.0 — Cipher persona scaffold + module bootstrap
-- module: `code: bbt`
-
-#### P9.1 — Zero-trust & access (4 skills)
+#### P9.0 — Cipher persona scaffold + module bootstrap (~20-30h)
+#### P9.1 — Zero-trust & access (4 skills, ~70-85h)
 Skills: design-zero-trust, design-rbac-abac, design-key-management, design-audit-trail
 
-#### P9.2 — Data protection & consent (4 skills)
+#### P9.2 — Data protection & consent (4 skills, ~70-85h)
 Skills: design-pii-handling, design-consent-management, design-content-moderation, design-data-loss-prevention
 
-#### P9.3 — AI safety & regulatory (4 skills)
+#### P9.3 — AI safety & regulatory (4 skills, ~70-85h)
 Skills: design-ai-agent-identity, design-ai-regulatory-tracking, design-model-card-publishing, map-compliance
 
-#### P9.4 — Operational trust + verticals (4 skills + 6-8 vertical packs)
+#### P9.4 — Operational trust + Vertical Packs (4 skills + 6-8 vertical packs, ~100-140h)
 Skills: design-residency-controls, design-vulnerability-mgmt, verify-trust-controls, audit-trust-posture
-+ Vertical packs (HIPAA, PCI-DSS, SOC2, GDPR, FedRAMP, ISO27001, EU AI Act — pick 6-8 from spec §6.7)
++ Vertical packs (HIPAA, PCI-DSS, SOC2, GDPR, FedRAMP, ISO27001, EU-AI-Act, NIST-AI-RMF — pick 6-8)
 
-**Brainstorm questions:**
-1. Cipher voice: "Paranoid auditor: assume breach, log everything" — specific phrasings
+**Brainstorm:**
+1. Cipher voice: "paranoid auditor" — specific phrasings
 2. RBAC vs ABAC default? Both?
 3. PII handling: at-rest + in-transit + in-AI-context — distinct fragments?
-4. Vertical packs structure: each pack = manifest.yaml + control mappings — schema details
+4. Vertical packs structure (per spec §6.7 manifest.yaml): pack-id, regulations, controls, evidence-requirements
 5. Cross-persona: Cipher's verify-trust-controls calls Rune's design-observability for evidence — ordering?
 
 **Deliverables:**
 - 16 skill dirs
 - Cipher persona-skill
 - 6-8 vertical add-on packs at `bmad-bam-trust/1-foundation/bmad-bam-agent-cipher/resources/vertical-addons/<pack-id>/`
-- ~50-60 fragments
-- ~25-30 patterns
+- ~80-100 fragments (largest fragment growth in P9)
+- ~35-45 patterns
+- ~5-7 anti-patterns
+- ~10-12 glossary terms
 - QG-S1, QG-S2 (full), QG-C1, QG-C2, QG-C3 checklists
-- ADRs 032-037
-
-**Effort:** ~100-130h (largest module + verticals)
-
-**Cross-validation:**
-- [ ] Vertical-pack manifest.yaml schema per spec §6.7
-- [ ] Each vertical pack has `pack-id`, `regulations: [...]`, `controls: [...]`, `evidence-requirements: [...]`
-- [ ] map-compliance workflow loads ALL vertical packs to construct compliance matrix
-- [ ] No vertical pack is mandatory; all opt-in
+- ADRs 041-046
 
 ---
 
 ### Wave P10 — `bmad-bam-ops` + **Rune persona introduction**
 
-**Goal:** 16 ops skills per spec §5.7. Introduce Rune. Establish QG-O1-3, R1-3, D1, DR2.
+**Goal:** 16 ops skills per spec §5.7. Introduce Rune. Establish QG-O1-3, R1-3, D1, DR2, P1 (composite).
 
-**Persona:** **Rune ⚙️** NEW (final persona introduction).
-
-**Sub-wave decomposition (4 sub-waves):**
+**Effort:** ~300-400h (4+1 sub-waves)
+**ADR range reserved:** ADRs 047-052
+**Persona:** **Rune** ⚙️ NEW — "YAML + Helm chart fragments, SLO talk, postmortem candor" per spec §4.1
 
 #### P10.0 — Rune persona scaffold + module bootstrap
-- module: `code: bbo`
+#### P10.1 — Observability & SLO (4 skills, ~70-85h)
+#### P10.2 — Incident & resilience (4 skills, ~70-85h)
+#### P10.3 — Deployment & DR (4 skills, ~70-85h)
+#### P10.4 — Customer success + verification (4 skills, ~70-85h)
 
-#### P10.1 — Observability & SLO (4 skills)
-Skills: design-observability, design-slo-error-budget, design-runbook-system, design-runbook-automation
-
-#### P10.2 — Incident & resilience (4 skills)
-Skills: design-incident-response, design-on-call-handoff, design-chaos-engineering, design-canary-analysis
-
-#### P10.3 — Deployment & DR (4 skills)
-Skills: design-feature-flag-system, design-disaster-recovery, design-ai-cost-spike-alert, design-tenant-data-sovereignty-validator
-
-#### P10.4 — Customer success + verification (4 skills)
-Skills: design-customer-success-tooling, design-agent-debugging-tools, verify-production-readiness (QG-O1-3, QG-R1-3, QG-D1, QG-P1), audit-operations
-
-**Brainstorm questions:**
-1. Rune voice: "YAML + Helm chart fragments" — specific phrasings
+**Brainstorm:**
+1. Rune voice: YAML + Helm fragments — specific phrasings
 2. Observability stack: OTel + Prometheus + Grafana vs vendor (Datadog/New Relic)?
 3. Runbook automation: PagerDuty Rundeck vs Sentry Workflows?
 4. Feature flags: build vs buy (LaunchDarkly/Unleash/PostHog/Statsig)?
@@ -651,111 +790,54 @@ Skills: design-customer-success-tooling, design-agent-debugging-tools, verify-pr
 **Deliverables:**
 - 16 skill dirs
 - Rune persona-skill
-- ~50-60 fragments
-- ~25-30 patterns
-- QG-O1, QG-O2, QG-O3, QG-R1, QG-R2, QG-R3, QG-D1, QG-DR2, QG-P1 (P1 is composite gate)
-- ADRs 038-042
-
-**Effort:** ~100-130h
-
-**Cross-validation:**
-- [ ] All 6 personas now present: Atlas, Nova, Iris, Kai, Cipher, Rune
-- [ ] verify-production-readiness composes evidence from all installed modules
-- [ ] QG-P1 (Production Readiness) checklist depends on all P1-required gates
+- ~70-80 fragments
+- ~30-35 patterns
+- ~5-7 anti-patterns
+- ~10-12 glossary terms
+- QG-O1, QG-O2, QG-O3, QG-R1, QG-R2, QG-R3, QG-D1, QG-DR2, QG-P1 (P1 composite)
+- ADRs 047-052
 
 ---
 
-### ▶ v6.2 RELEASE MILESTONE
+### ▶ v6.2 RELEASE MILESTONE — Full RG-Launch
 
-**Composition:** v6.1 + trust (16) + ops (16) = **122 module skills** + 6 personas (all).
+**Composition:** v6.1 + trust (16) + ops (16) = **134 module skills + 12 cross-family = 146 total** + 6 personas (Atlas, Nova, Iris, Kai, Cipher, Rune).
 
-**RG-Launch can now fully compose** — all required QGs available.
+**v6.2 RELEASE GATE checklist:**
+- [ ] All P9 + P10 PRs merged
+- [ ] Plan C R(v6.2) — full LLM-side ratification with all 8 modules installed
+- [ ] §15 patterns validated
+- [ ] **Full RG-Launch composite** — all required QGs evidenced
+- [ ] All 26 anti-patterns documented (PX-AntiPatterns consolidated)
+- [ ] All 40+ glossary terms documented (PX-Glossary consolidated)
+- [ ] All 15 customize-templates landed (PX-CustomizeTpl consolidated)
+- [ ] OpenSRE evaluation documented (spec §10.1: "OpenSRE evaluation decision" in v6.2)
+- [ ] Spec at v1.2
+- [ ] CHANGELOG.md entry for v6.2
+- [ ] Tag: `v6.2.0`
 
 ---
 
-### Cross-cutting waves (PX-*)
-
-These don't add module skills; they ship cross-cutting infrastructure or content.
-
-#### PX-MCP — MCP server (`bmad-bam-mcp`)
-
-**Goal:** Build the BAM MCP server per spec §9.5. Stdio transport, fs-permission auth.
-
-**When:** After v6.0 release (rag + integration not strictly required for MCP).
-
-**Brainstorm:**
-1. MCP transport: stdio confirmed by spec; verify
-2. Auth: fs-permission per spec — which permission model?
-3. Tools exposed: fragment search, pattern lookup, gate evidence query
-4. Sequencing relative to other waves
-
-**Deliverables:**
-- Standalone repo or subdir for MCP server
-- Tools, prompts, resources MCP primitives
-- Integration with Claude Code via .mcp.json
-- ~30-40h
-
-#### PX-Migration — v3 → v6 migration tooling
+### Wave PX-Migration — v3 → v6 migration tooling
 
 **Goal:** Build `bmad-bam-migrate-v2` workflow per spec §13.
 
-**When:** Can run in parallel with P3-P4 (no dependency on later modules).
+**Effort:** ~75-100h
+**Parallelism:** Can run in parallel with P3-P4
 
 **Deliverables:**
 - `bmad-bam-platform/9-infrastructure/bmad-bam-migrate-v2/` skill
-- Migration steps from v3 to v6 mapping
-- v3 deprecation timeline doc
-- ~25-35h
-
-#### PX-AntiPatterns — Anti-patterns library
-
-**Goal:** Consolidate 26 anti-patterns per spec §11.
-
-**When:** Each module wave establishes ~3-4 anti-patterns; PX-AntiPatterns consolidates at end of v6.0.
-
-**Deliverables:**
-- `bmad-bam-platform/1-foundation/bmad-bam-agent-atlas/resources/anti-patterns/` (or distributed)
-- ~15-20h consolidation effort
-
-#### PX-Glossary — Glossary consolidation
-
-**Goal:** Consolidate ~40 terms per spec §14.
-
-**When:** Each module wave adds ~5-7 terms; PX-Glossary consolidates at v6.0.
-
-**Deliverables:**
-- `bmad-bam-platform/1-foundation/bmad-bam-agent-atlas/resources/glossary.md` (single file)
-- ~10-15h
-
-#### PX-CustomizeTpl — Customize-templates inventory
-
-**Goal:** Build ~15 customize-templates per spec §7.2.
-
-**When:** Each module wave adds 1-2 templates as needed; PX-CustomizeTpl reconciles.
-
-**Deliverables:**
-- `bmad-bam-platform/<phases>/customize-templates/` (or per-module)
-- ~25-35h
-
-#### PX-VerticalPacks — Vertical add-on packs
-
-**Goal:** Build 6-8 vertical packs per spec §6.7.
-
-**When:** Lands as part of Wave P9 (trust module).
-
-**Deliverables:**
-- `bmad-bam-trust/1-foundation/bmad-bam-agent-cipher/resources/vertical-addons/`
-- Packs: HIPAA, PCI-DSS, SOC2, GDPR, FedRAMP, ISO27001, EU AI Act, NIST AI RMF (pick 6-8)
-- ~80-120h (or amortized across P9 sub-waves)
+- Migration steps from v3 to v6 mapping per spec §13.1
+- Migration completion checklist per spec §13.2
+- v3 deprecation timeline doc (see §16 of this roadmap)
 
 ---
 
 ## 4. Universal cross-validation checklist (every PR)
 
-**Claude runs these on EVERY content PR (Wave P3+):**
+Claude runs these on **EVERY content PR (Wave P3+):**
 
 ### Discipline checks
-
 - [ ] Branch name follows convention: `feat/v6-<wave-id>-<short-desc>` (e.g., `feat/v6-p3-1-foundation`)
 - [ ] PR base targets correct parent branch (if stacked) OR `feat/bam-v3-pure-kb` (if fresh)
 - [ ] Commit messages follow conventional commits (feat/fix/docs/chore/test)
@@ -763,63 +845,69 @@ These don't add module skills; they ship cross-cutting infrastructure or content
 - [ ] Co-Authored-By tag present where AI contributed
 
 ### Tier-1 audit (8 checks a-h)
-
 - [ ] `tests/audit-marketplace.sh` exit 0
-- [ ] `tests/audit-marketplace-fixtures.sh` 12/12 pass (or whatever count is current)
+- [ ] `tests/audit-marketplace-fixtures.sh` 12+/12+ pass
 - [ ] Real marketplace passes all 8 checks
 - [ ] No new stale-path leakage (check g)
 - [ ] No new fictional `bmad run` (check h)
 
 ### Tier-2 (BAM_TIER2=1)
-
+- [ ] **Tier-2 script updated to include this wave's module code in `--modules` arg**
+- [ ] **Tier-2 script's skill-existence loop extended to verify this wave's skills**
 - [ ] `BAM_TIER2=1 tests/integration/run-real-install.sh` exit 0
-- [ ] Strategy 1 confirmed for all installed modules
+- [ ] Strategy 1 confirmed for all installed modules (config.yaml + module-help.csv per module)
 - [ ] All new skills land at `.claude/skills/` (tool-specific path)
 - [ ] Sentinel emits at `_bmad-output/<code>/project-context.md` for each module
 
 ### Other Tier-1
-
 - [ ] `tests/wave-0/run-smoke-test.sh` PASS
 - [ ] `tests/p2/run-real-install-test.sh` PASS
 - [ ] Each skill's `tests/smoke-test.sh` PASS
 
 ### Spec discipline
-
 - [ ] If wave adds new module: spec §3.1 module count consistent
-- [ ] If wave introduces new persona: spec §4.1 persona row added
+- [ ] If wave introduces new persona: spec §4.1 persona row added (or matches existing)
 - [ ] Spec §5.X workflow count matches actual delivered skills
-- [ ] Spec changelog row added for v0.X bump (or no bump if no semantic change)
-- [ ] If new ADR: INDEX.md row added
+- [ ] Spec changelog row added (or no bump if no semantic shape change)
+- [ ] If new ADR: INDEX.md row added; ADR number from reserved range
 - [ ] If new fragment/pattern category: spec §6.X updated
+- [ ] **§15 patterns still pass for relevant wave** (e.g., Wave P5 verifies §15.3 persona invocation works for Nova)
 
 ### Frontmatter discipline (per std-frontmatter convention map)
-
 - [ ] All step files have `step_id`, `auto_runnable`, `gate`, `inputs`, `outputs` (snake_case)
 - [ ] All skill manifests have `latency_budget`, `recommended_capabilities`, `minimum_persona_version` (snake_case)
 - [ ] customize.toml keys use snake_case (`persistent_facts`, `activation_steps_append`)
 - [ ] Fragment/pattern frontmatter uses snake_case (`tested_against`, `last_reviewed`)
-- [ ] ADR frontmatter uses kebab-case (per MADR-lite external convention)
+- [ ] **Anti-patterns have `kind: anti-pattern` frontmatter per spec §6.5**
+- [ ] **Each fragment has `last_reviewed: <YYYY-MM-DD>` per spec §6.8 staleness governance**
+- [ ] ADR frontmatter uses kebab-case (MADR-lite external convention)
 
 ### Persona introduction (waves that add a new persona)
-
 - [ ] `<module>/1-foundation/bmad-bam-agent-<persona>/` directory created
-- [ ] SKILL.md describes the persona's voice, role, identity, communication style, principles
+- [ ] SKILL.md describes voice, role, identity, communication style, principles per spec §4.1
 - [ ] customize.toml uses `[agent]` namespace
 - [ ] customize.toml persistent_facts include universal-glob + `{skill-root}/resources/...`
-- [ ] Module.yaml `agents:` block has entry with `code`, `name`, `title`, `icon`, `team: bam`, `description`
-- [ ] Persona reflects spec §4.1 voice profile
+- [ ] **Module.yaml `agents:` block has entry with `code`, `name`, `title`, `icon`, `team: bam`, `description`** (universal `team: bam` per BAM-family convention)
+- [ ] Persona voice distinct from prior personas (review SKILL.md prose)
 
 ### Cross-module fragment reference (Wave P4+)
-
 - [ ] Cross-module fragment loads tested via tool-aware path fallback (`.claude/skills/...` → `.cursor/skills/...` → `_bmad/<other-code>/...`)
-- [ ] Plan C R(N) ratification recorded if cross-module loading is new in this wave
+- [ ] Plan C R(N) ratification recorded for first cross-module load in this wave
+
+### Multi-module install (Wave P4+)
+- [ ] **Dep-graph install test**: `bmad install <child-module>` auto-pulls parent (e.g., `bmad install bbr` pulls bba + bbp)
+- [ ] **Multi-module concurrent install**: all installed modules' Tier-2 PASSes
 
 ### Quality gates
-
 - [ ] Each new QG has a checklist file at `<module>/1-foundation/bmad-bam-agent-<persona>/resources/checklists/QG-<id>.md`
 - [ ] Each QG checklist has frontmatter per spec §8.1 (id, title, module, phase, criticality, depends-on, evidence-depends-on, auto-checkable %, human-review %)
 - [ ] Each QG has explicit criteria sections
 - [ ] Cross-gate dependencies (depends-on) reference existing gates
+
+### Cross-cutting deliverables
+- [ ] Anti-patterns added to module's `resources/anti-patterns/` (per spec §6.5)
+- [ ] Glossary terms added (location TBD per PX-Glossary consolidation strategy)
+- [ ] Customize-template overlay added if assigned to this wave (per §11 of this roadmap)
 
 ---
 
@@ -829,11 +917,12 @@ Before Claude approves PR for merge:
 
 1. **All universal cross-validation passes** (§4 above)
 2. **Wave-specific cross-validation passes** (§3 per wave)
-3. **Risk register acknowledged** — any wave-specific risks documented as resolved or accepted
+3. **Risk register acknowledged** — wave-specific risks documented as resolved or accepted
 4. **No regression on prior waves** — full Tier-1 + Tier-2 sweep against post-merge state
 5. **Spec drift check** — spec doc still consistent with delivered code
-6. **ADR coverage** — every significant decision recorded
-7. **Plan C ratification** (at module-introduction waves: P3, P4, P5, P6, P7, P8, P9, P10; otherwise optional)
+6. **ADR coverage** — every significant decision recorded; ADR number from reserved range
+7. **Plan C ratification** (mandatory at v6.0/v6.1/v6.2 releases + BMAD submodule upgrades + activation-mechanic changes; OPTIONAL at module-introduction waves where Tier-2 covers install integrity)
+8. **Wave completion definition** — wave's per-completion criteria satisfied
 
 ---
 
@@ -841,39 +930,44 @@ Before Claude approves PR for merge:
 
 | Risk | Likely waves | Mitigation |
 |---|---|---|
-| Fragment count creep beyond spec ceiling (550) | All content waves | Per-wave audit; cap at ~4-5/skill; reuse aggressively |
-| Quality gate explosion (28+ checklists) | P5, P9, P10 | Establish gates per-wave; ensure each gate is independently evidenced |
-| Cross-module fragment reference breaks at activation | P4 onwards | Plan C R(N) ratification on first cross-module reference (P4) |
+| Fragment count creep beyond spec ceiling (550) | All content waves | Per-wave audit; cap ~5/skill; reuse aggressively |
+| Quality gate explosion (28+ checklists) | P5, P9, P10 | Establish gates per-wave; each gate independently evidenced |
+| Cross-module fragment reference breaks at activation | P4+ | Plan C R(N) ratification on first cross-module reference (P4) |
 | Cross-persona invocation untested | P5, P8 | Explicit cross-persona test in P5.6 + P8 mediate-conflict |
 | Persona voice drift | P5, P6, P8, P9, P10 | Brainstorm voice deeply per spec §4.1; review SKILL.md prose |
-| Multi-module install fails | P4 onwards | Tier-2 BAM_TIER2=1 catches; CI runs it |
+| Multi-module install fails | P4+ | Tier-2 BAM_TIER2=1 catches; CI runs it |
 | Spec drift vs implementation | All waves | Per-wave spec changelog discipline |
 | Vertical pack scope creep (P9) | P9 | Cap at 6-8 packs; defer remaining to v6.x |
 | MCP server complexity (PX-MCP) | PX-MCP | Single deliverable; spec the transport + auth upfront |
 | Effort estimate slippage | All waves | Track per-wave actuals vs estimate; replan if 2σ off |
 | v6.0 deadline pressure | P3-P6 | Discipline-driven; honor brainstorm→design→plan→implement |
+| Knowledge currency drift | All content waves | Per spec §6.8 + last_reviewed thresholds; refresh-knowledge workflow in P11 |
+| Audit drift over time (false positives) | All waves | Per-release audit-maintenance pass (see §14) |
+| Mid-wave architectural discovery | All content waves | Protocol in §15 — file as Concern; defer to dedicated wave OR fold if small |
 
 ---
 
 ## 7. Persona introduction sequencing matrix
 
-| Wave | Persona introduced | Brainstorm depth | Voice tone alignment | Cross-persona contracts |
-|---|---|---|---|---|
-| Pre-roadmap (P2.1) | Atlas | done | "structural engineer at whiteboard" | n/a |
-| P3 | (Atlas continues) | n/a | (consistent) | n/a |
-| P4 | (Atlas continues) | n/a | (consistent) | n/a |
-| P5 | **Nova** | full | "gradient-descent metaphors" | Atlas + Nova cross-skill access |
-| P6 | **Iris** | full | "theme tokens, accessibility-first" | Atlas + Nova + Iris coexist |
-| P7 | (Nova continues) | n/a | (consistent) | n/a |
-| P8 | **Kai** | full | "contract attorney" | Kai = default arbiter (§4.5) |
-| P9 | **Cipher** | full | "paranoid auditor" | Cipher ↔ Rune at P10 |
-| P10 | **Rune** | full | "YAML + Helm chart fragments" | All 6 personas coexist |
+| Wave | Persona introduced | Brainstorm depth | Voice tone alignment | Cross-persona contracts | `team:` |
+|---|---|---|---|---|---|
+| Pre-roadmap (P2.1) | Atlas | done | "structural engineer at whiteboard" | n/a | `bam` |
+| P3 | (Atlas continues) | n/a | (consistent) | n/a | `bam` |
+| P4 | (Atlas continues) | n/a | (consistent) | n/a | `bam` |
+| P5 | **Nova** | full | "gradient-descent metaphors" | Atlas + Nova cross-skill access | `bam` |
+| P6 | **Iris** | full | "theme tokens, accessibility-first" | Atlas + Nova + Iris coexist | `bam` |
+| P7 | (Nova continues) | n/a | (consistent) | n/a | `bam` |
+| P8 | **Kai** | full | "contract attorney" | Kai = default arbiter (§4.5) | `bam` |
+| P9 | **Cipher** | full | "paranoid auditor" | Cipher ↔ Rune at P10 | `bam` |
+| P10 | **Rune** | full | "YAML + Helm chart fragments" | All 6 personas coexist | `bam` |
+
+**Universal:** All 6 BAM personas use `team: bam` (BAM-family team — established Concern 7 / ADR 009).
 
 ---
 
-## 8. Brainstorm prompt library (ready-to-paste for RDP)
+## 8. Brainstorm prompt library (paste-ready for RDP, all 10 wave starts)
 
-### Wave P3.1 — Foundation skills (paste-ready)
+### P3.1 — Foundation Skills
 
 ```
 Topic: Wave P3.1 — bmad-bam-platform Foundation Skills (4 skills)
@@ -893,58 +987,278 @@ Quality gates to establish:
 
 Key decisions to lock (brainstorm):
   1. Each skill's decision-space scope (which trade-off matrix?)
-  2. Fragment density per skill (target ≤5; current 6 for design-tenancy-model is benchmark)
+  2. Fragment density per skill (target ≤5)
   3. Cross-skill fragment reuse (does design-finops-model share fragments with design-tenancy-model?)
   4. QG-F1 evidence requirements (what does each skill produce?)
-  5. design-tenant-tier-model: 5 default tiers (free/starter/pro/business/enterprise) — or flexible?
+  5. design-tenant-tier-model: 5 default tiers or flexible?
+  6. Anti-patterns (~3-4 introduced this sub-wave)
+  7. Glossary terms (~5-7 introduced)
 
-Workflow pattern: each skill follows the design-tenancy-model template:
-  - CEV mode (Create steps 1-7, optional Edit/Validate)
-  - 5-7 steps per workflow
-  - customize.toml [workflow] namespace
-  - Universal-glob in persistent_facts
-  - Output: design doc + ADR + QG evidence
+Workflow pattern: each skill follows design-tenancy-model template (CEV mode, 5-7 steps).
 
-Acceptance criteria (per universal cross-validation checklist):
-  - Tier-1 audit + fixtures green
-  - Tier-2 BAM_TIER2=1 PASS with 4 new skills installed
-  - Each skill's smoke-test PASS
-  - 1 new ADR (Wave P3.1 design record)
-  - Spec §5.1 references unchanged (16 skills still spec'd; we deliver 4 of remaining 15)
+Acceptance: per Roadmap §4 universal checklist + Wave P3.1 §3.
 
 Branch: feat/v6-p3-1-foundation
-Base: feat/bam-v3-pure-kb (or whatever's current main after P0 merges)
+Base: feat/bam-v3-pure-kb (or current main)
 ```
 
-(Similar paste-ready prompts to be added for each wave's first sub-wave; Claude can write them on demand.)
+### P4.0 — Data Module Bootstrap
+
+```
+Topic: Wave P4.0 — bmad-bam-data module bootstrap (no skills yet)
+
+Spec reference: docs/v6-final-architecture.md §5.2; §3.1; §3.2 (dep graph)
+Roadmap reference: docs/v6-detailed-roadmap.md §3, Wave P4.0
+
+Goal: scaffold the second BAM module (data); module.yaml + module-help.csv + phase dirs.
+
+Brainstorm questions:
+  1. Where does data's "Atlas resources" live? Atlas owns BOTH platform AND data (spec §3.1) —
+     do data fragments live in platform's bmad-bam-agent-atlas/resources/ (cross-referenced) OR
+     in a new bmad-bam-data/1-foundation/bmad-bam-agent-atlas-data/ sub-skill?
+  2. Module code: `bbd` confirmed
+  3. Phase structure: 1-foundation/, 2-storage/, 3-data-lifecycle/, 9-infrastructure/?
+  4. Should the smoke-test/finalize duplicate (each module needs its own) or be shared?
+
+Acceptance: per Roadmap §4 + Wave P4.0 §3.
+
+Branch: feat/v6-p4-0-data-bootstrap
+```
+
+### P5.0 — AI Module + Nova Persona Introduction
+
+```
+Topic: Wave P5.0 — Nova persona introduction + bmad-bam-ai module bootstrap
+
+Spec reference: docs/v6-final-architecture.md §4.1 (Nova voice), §5.3 (27 ai skills)
+Roadmap reference: docs/v6-detailed-roadmap.md §3, Wave P5.0
+
+Nova introduction is the SECOND persona event in BAM history (Atlas was first).
+This sub-wave establishes Nova's voice, role, principles + scaffolds the ai module.
+
+Brainstorm questions:
+  1. Nova voice: "Gradient-descent metaphors" per spec §4.1 — write 3-5 example phrasings:
+     - When Nova talks about model selection: ?
+     - When Nova talks about prompt design: ?
+     - When Nova talks about eval: ?
+     - When Nova disagrees with Atlas: ?
+  2. Nova SKILL.md mirror Atlas's structure exactly (BMM-canonical per ADR 008)?
+  3. Initial Nova fragments to seed (~3-5 to bootstrap, NOT all 120+ that come in P5.1-P5.6)
+  4. Module code: `bba` confirmed
+  5. Phase structure for ai: 1-foundation/, 2-routing/, 3-memory/, 4-safety/, 5-eval/, 6-lifecycle/, 9-infrastructure/?
+  6. Nova's auto-load resources: which fragments are foundational vs per-cluster?
+
+Acceptance: per Roadmap §4 + persona-introduction checks.
+
+Branch: feat/v6-p5-0-nova-introduction
+```
+
+### P5.1 — AI Routing & Orchestration
+
+```
+Topic: Wave P5.1 — bmad-bam-ai Routing & Orchestration (4 skills)
+
+Spec reference: docs/v6-final-architecture.md §5.3 Cluster: routing-and-orchestration
+Roadmap reference: docs/v6-detailed-roadmap.md §3, Wave P5.1
+
+Skills:
+  - bmad-bam-design-model-routing (cost / capability-aware Claude/GPT/Gemini)
+  - bmad-bam-design-agent-orchestration (planner-executor, supervisor-worker, swarm)
+  - bmad-bam-design-agent-collaboration-protocol (agent-to-agent)
+  - bmad-bam-design-tool-execution (sandboxes, computer use, code execution)
+
+Quality gates: QG-M3 partial (full in P5.6).
+
+Brainstorm questions:
+  1. Model-routing patterns: Claude-cost-tier vs OpenAI-capability-tier vs Multi-provider-fallback — primary recommendation?
+  2. Agent orchestration: when do you use planner-executor vs swarm?
+  3. Tool execution sandbox: which sandbox (Anthropic / OpenAI / E2B)?
+  4. Cross-skill references: which earlier Atlas fragments (e.g., design-tenancy-model) inform Nova's design-tenant-prompt-isolation (P5.3)?
+  5. Eval discipline: does design-model-routing produce eval artifacts for QG-M3?
+
+Branch: feat/v6-p5-1-routing-orchestration
+```
+
+### P6.0 — UX Module + Iris Persona Introduction
+
+```
+Topic: Wave P6.0 — Iris persona introduction + bmad-bam-ux module bootstrap
+
+Spec reference: docs/v6-final-architecture.md §4.1 (Iris voice), §5.8 (12 ux skills)
+
+Brainstorm questions:
+  1. Iris voice: "Theme tokens, accessibility-first" — write 3-5 example phrasings
+  2. Iris SKILL.md mirror Atlas/Nova structure
+  3. Module code: `bbu` confirmed
+  4. Phase structure: 1-foundation/, 2-branding-theme/, 3-tenant-agent-ux/, 4-lifecycle-ux/, 9-infrastructure/?
+  5. Cross-persona references: Iris uses Cipher's PII fragments (P9 future) — placeholder OK?
+
+Branch: feat/v6-p6-0-iris-introduction
+```
+
+### P11.1 — Essential Cross-Family Workflows
+
+```
+Topic: Wave P11.1 — Essential cross-family workflows (6 skills)
+
+Spec reference: docs/v6-final-architecture.md §5.9
+Roadmap reference: docs/v6-detailed-roadmap.md §3, Wave P11.1
+
+Skills:
+  - bmad-bam-start (entry orchestrator)
+  - record-decision (ADR workflow)
+  - refresh-knowledge (drift detection)
+  - waive-gate (waiver with expiration)
+  - mediate-conflict (Kai-arbitrated; Kai introduced in P8)
+  - design-build-vs-buy
+
+Live under: src-v6/bmad-bam-platform/2-modules/ (cross-family = platform-owned per spec §5.9)
+
+Brainstorm:
+  1. bmad-bam-start: greenfield vs brownfield branching logic
+  2. record-decision: produces ADR in _bmad/_memory/<persona>/architecture-decisions/
+  3. refresh-knowledge: integrates with spec §6.8 topic thresholds
+  4. mediate-conflict: invokable BEFORE Kai exists? (probably needs Kai placeholder; full functionality post-P8)
+  5. waive-gate: spec §8.6 + expiration + compensating controls
+
+Branch: feat/v6-p11-1-essential-cross-family
+```
+
+### P7.0 — RAG Module Bootstrap
+
+```
+Topic: Wave P7.0 — bmad-bam-rag module bootstrap (Nova continues; no new persona)
+
+Spec reference: docs/v6-final-architecture.md §3.2 (rag depends on ai); §5.4 (8 rag skills)
+Roadmap reference: docs/v6-detailed-roadmap.md §3, Wave P7.0
+
+Brainstorm:
+  1. Module code: `bbr`
+  2. Dep declaration: module.yaml depends-on: bba + bbp
+  3. Phase structure for rag: 1-foundation/, 2-retrieval/, 3-eval/, 9-infrastructure/?
+  4. Nova ownership: rag is Nova's per spec §3.1 — does Nova SKILL.md get extended with rag-specific principles?
+     OR is there a Nova-rag sub-skill (bmad-bam-agent-nova-rag)?
+
+Branch: feat/v6-p7-0-rag-bootstrap
+```
+
+### P8.0 — Integration Module + Kai Persona Introduction
+
+```
+Topic: Wave P8.0 — Kai persona introduction + bmad-bam-integration module bootstrap
+
+Spec reference: docs/v6-final-architecture.md §4.1 (Kai voice + arbiter role), §4.5 (conflict mediation), §5.5
+
+Brainstorm:
+  1. Kai voice: "contract attorney with engineering rigor" — example phrasings
+  2. Kai is default arbiter per spec §4.5 — how does this manifest in customize.toml? (mediate-conflict workflow already exists from P11.1)
+  3. Module code: `bbi`
+  4. Phase structure: 1-foundation/, 2-boundary-design/, 3-reliability-patterns/, 4-verification-evolution/, 9-infrastructure/
+
+Branch: feat/v6-p8-0-kai-introduction
+```
+
+### P9.0 — Trust Module + Cipher Persona Introduction
+
+```
+Topic: Wave P9.0 — Cipher persona introduction + bmad-bam-trust module bootstrap
+
+Spec reference: docs/v6-final-architecture.md §4.1 (Cipher voice), §5.6 (16 trust skills), §6.7 (vertical packs)
+
+Brainstorm:
+  1. Cipher voice: "paranoid auditor: assume breach, log everything"
+  2. Vertical packs structure (§6.7): manifest.yaml schema; pick 6-8 of HIPAA/PCI-DSS/SOC2/GDPR/FedRAMP/ISO27001/EU-AI-Act/NIST-AI-RMF
+  3. Module code: `bbt`
+  4. Compliance cross-references: how does map-compliance interact with bmad-create-prd customize-template?
+
+Branch: feat/v6-p9-0-cipher-introduction
+```
+
+### P10.0 — Ops Module + Rune Persona Introduction
+
+```
+Topic: Wave P10.0 — Rune persona introduction + bmad-bam-ops module bootstrap
+
+Spec reference: docs/v6-final-architecture.md §4.1 (Rune voice), §5.7 (16 ops skills)
+
+Brainstorm:
+  1. Rune voice: "YAML + Helm chart fragments, SLO talk, postmortem candor"
+  2. Module code: `bbo`
+  3. Observability stack: OTel + Prometheus + Grafana as default? Vendor alternatives?
+  4. Cross-persona: Rune produces evidence consumed by Cipher's verify-trust-controls (P9 ↔ P10 cycle)
+  5. RG-Launch composition: P10's verify-production-readiness is the gate that activates RG-Launch
+
+Branch: feat/v6-p10-0-rune-introduction
+```
 
 ---
 
 ## 9. Quick-reference dependency matrix
 
 ```
-Atlas (P3, P4) ───────┐
-                      │
-Nova (P5, P7) ────────┼──┬──> v6.0 (P3+P4+P5+P6+P11)
-                      │  │
-Iris (P6) ────────────┘  │
-                         │
-Kai (P8) ────────────┐   │
-                     ├──┬──> v6.1 (+ P7 + P8)
-                     │  │
-                     │  │
-Cipher (P9) ─────────┘  │
-                        ├──> v6.2 (+ P9 + P10)
-                        │
-Rune (P10) ─────────────┘
+                                       ┌──────────────────┐
+                                       │     Atlas (P3)   │
+                                       └────────┬─────────┘
+                                                │
+                       ┌────────────────────────┼────────────────────────┐
+                       │                        │                        │
+                  ┌────▼──────┐         ┌──────▼──────┐         ┌──────▼────┐
+                  │ data (P4) │         │ ai (P5)     │         │ ux (P6)   │
+                  │   Atlas   │         │  Nova NEW   │         │  Iris NEW │
+                  └────┬──────┘         └──────┬──────┘         └────────────┘
+                       │                       │
+                       │                  ┌────▼──────┐
+                       │                  │ rag (P7)  │
+                       │                  │  Nova    │
+                       │                  └───────────┘
+                       │
+            ┌──────────┴──────────┐
+            │ cross-family (P11)  │
+            │     Atlas owns      │
+            └─────────────────────┘
+            │
+       ┌────▼─────────┐
+       │ v6.0 RELEASE │
+       └────┬─────────┘
+            │
+       ┌────▼─────────┐
+       │  PX-MCP      │
+       └────┬─────────┘
+            │
+            ▼  v6.1 (+ P7 + P8)
+            │
+       ┌────▼─────────────┐
+       │ integration (P8) │
+       │    Kai NEW       │
+       └────┬─────────────┘
+            │
+       ┌────▼─────────┐
+       │ v6.1 RELEASE │
+       └────┬─────────┘
+            │
+       ┌────▼─────────────┐
+       │  trust (P9)      │
+       │  Cipher NEW      │
+       │  + vertical packs│
+       └────┬─────────────┘
+            │
+       ┌────▼─────────┐
+       │  ops (P10)   │
+       │  Rune NEW    │
+       └────┬─────────┘
+            │
+       ┌────▼─────────┐
+       │ v6.2 RELEASE │
+       │ Full RG-Launch│
+       └──────────────┘
 
-Cross-cutting (assigned to specific waves):
-  - PX-Migration ←─ in parallel with P3-P4
-  - PX-AntiPatterns ←─ consolidates during P3-P10
-  - PX-Glossary ←─ consolidates during P3-P10
-  - PX-CustomizeTpl ←─ distributed during P3-P10
-  - PX-VerticalPacks ←─ lands in P9.4
-  - PX-MCP ←─ after v6.0 release (sequenced standalone)
+Parallelism (can run alongside):
+  - PX-Migration ←─ parallel with P3-P4
+  - PX-AntiPatterns ←─ consolidates across P3-P10 (final at v6.0)
+  - PX-Glossary ←─ consolidates across P3-P10 (final at v6.0)
+  - PX-CustomizeTpl ←─ distributed across P3-P10 (final at v6.0)
+  - PX-VerticalPacks ←─ sub-wave of P9 (sequential within P9)
+  - PX-MCP ←─ standalone after v6.0; can parallel with P7-P8
 ```
 
 ---
@@ -954,13 +1268,280 @@ Cross-cutting (assigned to specific waves):
 | Question | Answer |
 |---|---|
 | **How many waves?** | 11 main waves (P0, P3-P11) + 6 cross-cutting (PX-*) |
-| **Total content skills delivered** | 135 (16 platform + 14 data + 27 ai + 8 rag + 13 integration + 16 trust + 16 ops + 12 ux + 13 cross-family) |
+| **Total content skills delivered** | 146 (135 module workflows + 12 cross-family + ~12 infrastructure) |
 | **Total personas introduced** | 6 (Atlas done; Nova/Iris/Kai/Cipher/Rune in P5/P6/P8/P9/P10) |
 | **Release milestones** | 3 (v6.0, v6.1, v6.2) |
 | **Quality gates established** | 28 total + 8 release gates |
-| **Total effort estimate** | ~1100-1500h remaining (matches spec §10.5) |
+| **Total effort estimate (remaining)** | ~3000-3700h (matches spec §10.5) |
 | **Workflow per wave** | Brainstorm RDP → design + plan → implement → PR → Claude analysis → merge |
 | **Cross-validation gate** | Universal checklist (§4) + wave-specific checklist (§3) + risk acknowledgement (§6) |
 | **First concrete action** | Merge 5 queued PRs (Wave P0), then brainstorm Wave P3.1 |
 
 This roadmap is the **complete** plan from current state through v6.2 release. Updates happen via wave-completion ADRs + spec changelog rows.
+
+---
+
+## 11. Customize-templates inventory (15 total per spec §7.2)
+
+Each template is an overlay on a specific BMAD-core skill. Assigned to specific waves:
+
+| BMAD core skill | Template overlay | Assigned to wave |
+|---|---|---|
+| `bmad-brainstorm` | Multi-tenant brainstorming lenses (platform, ai, trust) | P3.1 (platform) + P5 (ai) + P9 (trust) |
+| `bmad-create-product-brief` | Tier modeling, AI capabilities, compliance scope | P3.1 + P5 + P9 |
+| `bmad-create-research-prompt` | Compliance framework selection | P9 |
+| `bmad-create-prd` | Tenant requirements, AI safety, compliance impact | P3.1 + P5 + P9 |
+| `bmad-validate-prd` | Tenant / AI / compliance / observability / UX verification | P3.4 (validation focus) |
+| `bmad-create-architecture` | Cross-references all 6 personas; pattern catalog; gates | P3.1 (initial) + later refinements |
+| `bmad-create-story` | Tenant-scoped AC; UX considerations | P3 + P6 |
+| `bmad-check-implementation-readiness` | QG-* gate references | P11.2 (release-critical) |
+| `bmad-code-review` | Tenant-context propagation; leakage checks | P3 |
+| `bmad-correct-course` | Retrospective discipline; drift detection | P11.1 (alongside refresh-knowledge) |
+| `bmad-retrospective` | Tenant / AI / compliance / SLO retrospective | P3 + P5 + P9 + P10 |
+| `bmad-qa-generate-e2e-tests` | Multi-tenant test scenarios | P3.2 (testing focus) |
+| `bmad-investigate` | AI capability + compliance deep-dives | P5 + P9 |
+| `bmad-checkpoint-preview` | Production-readiness preview | P10 |
+| `bmad-design-test-strategy` | Multi-tenant test strategy + AI eval coverage | P3.2 + P5 (eval) |
+
+PX-CustomizeTpl consolidation at v6.0 reconciles overlaps + ensures all 15 land.
+
+---
+
+## 12. Spec section coverage map
+
+Maps every spec section to a wave/deliverable so nothing's orphan:
+
+| Spec § | Topic | Wave covering |
+|---|---|---|
+| §3.1 | 8 modules | P3-P10 (one wave each + module bootstrap) |
+| §3.2 | Dependency graph | Verified per multi-module install test (P4+) |
+| §3.4 | Module versioning | All waves use `version: "X.Y.Z"` in module.yaml |
+| §3.5 | Compatibility matrix | Note: planned for v6.0+ — see ADR 008 status note |
+| §3.6 | Hook idempotency | post-install.sh + finalize patterns from P2.1 |
+| §3.7 | Uninstall behavior | P11 (bmad-bam-rollback) |
+| §3.8 | Monorepo handling | Spec §3.8 — note in P3 brainstorm |
+| §3.9 | Backup/restore | P11.2 (bmad-bam-backup/restore) |
+| §4 | Personas | P5/P6/P8/P9/P10 each introduces one |
+| §4.3 | Sidecar memory ADRs | Each wave's ADRs go to `_bmad/_memory/<persona>/architecture-decisions/` |
+| §4.4 | BMM persona overlays | Future — beyond v6.2 |
+| §4.5 | Conflict mediation + escalation | P11.1 (mediate-conflict) + P8 (Kai) |
+| §4.6 | Persona pairing patterns | Documented per persona introduction |
+| §5.0 | Workflow naming | All wave deliverables follow design-*/plan-*/audit-*/etc. |
+| §5.0.1 | Workflow manifest schema | bmad-skill-manifest.yaml per skill |
+| §5.1-5.8 | Per-module workflow lists | Mapped to P3-P10 |
+| §5.9 | Cross-family workflows | P11 |
+| §5.10 | AI-augmented execution mode | Per-skill `execution_mode` field |
+| §6.0 | `_bmad/bam/` umbrella | Established cumulatively: install-logs (P2.1), evidence (P5+), backups (P11), etc. |
+| §6.1 | Per-module directory shape | Concern 5 / ADR 008 |
+| §6.2 | Frontmatter schema | std-frontmatter (P2.1) |
+| §6.3 | Fragment body structure | Per-wave fragment authoring discipline |
+| §6.4 | CSV index schema | Atlas's platform-index.csv (P2.1) + per-module |
+| §6.5 | Anti-patterns library | Distributed P3-P10; consolidated at v6.0 (PX-AntiPatterns) |
+| §6.6 | Standards | std-frontmatter, std-validation, std-adr (P2.1); add std-conflict-resolution per spec §6.6 |
+| §6.7 | Vertical packs | P9.4 (PX-VerticalPacks) |
+| §6.8 | Knowledge currency governance | Per-fragment `last_reviewed`; refresh-knowledge in P11.1 |
+| §6.9 | Knowledge graph navigation | Future enhancement (post-v6.2) |
+| §6.10 | Context budget management | Per spec; bmad-bam-start enforces at session start (P11.1) |
+| §7.1 | Universal-glob mechanism | Concern 5 / ADR 008 |
+| §7.2 | Customize-templates (15) | See §11 of this roadmap |
+| §7.3 | Wave 0 smoke-test | Already done (Wave 0) |
+| §7.4 | BMM phase integration | Per-skill customize-template overlays |
+| §7.5 | Template merging strategy | Per spec |
+| §7.6 | Module activation | Concern 5 / Path B / ADR 005 + 008 |
+| §8.1 | Quality gates (~28) | Distributed P3-P10 |
+| §8.2 | Release gates (8) | RG-Launch partial at v6.0; full at v6.2; others incremental |
+| §8.3 | Release gate orchestration | P11.2 (release-gate-orchestrator) |
+| §8.4 | Gate evidence storage | `_bmad/bam/evidence/<gate-id>/YYYY-MM-DD-NNN/` per spec §6.0 |
+| §8.5 | Continuous gates (QG-TC4) | P3.3 (rate-limit work + QG-TC4 checklist) |
+| §8.6 | Gate waiver process | P11.1 (waive-gate) |
+| §9.1-9.3 | Tool integration (bmad-builder, party-mode, retrospective) | Customize-templates per §11 |
+| §9.4 | i18n inheritance | Per-locale customize-templates (future) |
+| §9.5 | MCP server | PX-MCP |
+| §9.6 | BAM testing strategy | Already established (Tier-1/2/3) |
+| §9.7 | Auto-generated documentation | Future enhancement; tracked in §17 of this roadmap |
+| §9.8 | User customization layer | `_bmad/bam/user/` per spec §6.0 |
+| §9.9 | BAM runtime telemetry | Future enhancement |
+| §10 | Release path | This roadmap |
+| §11 | Anti-patterns library | Distributed P3-P10; consolidated PX-AntiPatterns |
+| §12 | Open Questions / Future Work | Tracked in §17 of this roadmap + spec §17.3 |
+| §13 | Migration from v3 | PX-Migration |
+| §14 | Glossary | PX-Glossary (distributed + consolidated) |
+| §15 | How Claude Consumes BAM | Validated at v6.0/v6.1/v6.2 release gates; see §17 of this roadmap |
+| §16 | Changelog | Updated per-wave |
+| §17 | Known Issues | Tracked + per-wave revisit; see §17 of this roadmap |
+
+---
+
+## 13. Spec / ADR versioning policy
+
+**Spec versioning:**
+- v0.X during pre-v6.0 development (current)
+- v1.0 at v6.0 release (semver bump on milestone)
+- v1.1 at v6.1 release
+- v1.2 at v6.2 release
+- v1.X.Y for in-wave patches (rare)
+
+Each wave's spec changelog row decision:
+- Substantial structural change (new module / new persona / new gate) → minor bump (v0.X → v0.X+1)
+- Substantial content addition without structural change → no bump
+- Bug fix or annotation → no bump
+
+**ADR numbering reservations** (sequential; current latest: 010):
+
+| Wave | ADRs reserved | Topics |
+|---|---|---|
+| P3 | 011-015 | Foundation, Lifecycle, Commercial, Brownfield, Wave-completion |
+| P4 | 016-019 | Module bootstrap + 3 sub-waves |
+| P5 | 020-027 | Nova introduction + 6 sub-waves + cross-persona |
+| P6 | 028-030 | Iris introduction + sub-waves |
+| P11 | 031-033 | Cross-family sub-waves |
+| PX-MCP | 034 | MCP server design |
+| P7 | 035-036 | RAG sub-waves |
+| P8 | 037-040 | Kai introduction + sub-waves |
+| P9 | 041-046 | Cipher introduction + sub-waves + vertical packs |
+| P10 | 047-052 | Rune introduction + sub-waves |
+| PX-Migration | 053 | v3 → v6 migration tooling |
+| **Reserve 054-099 for v6.x patches.** | | |
+
+---
+
+## 14. Audit drift maintenance + validation automation
+
+**Audit drift:** As content grows, audit checks (g) + (h) may surface false positives in legitimate new content. The carve-out regexes (in audit-marketplace.sh) may need extending.
+
+**Maintenance cadence:**
+- Pre-release pass (before v6.0/v6.1/v6.2 tag): review audit fixtures + carve-outs; add new fixtures for edge cases discovered during the cycle
+- Per-PR review: if audit fails on legitimate content, evaluate carve-out extension vs content rewrite (prefer content rewrite when possible)
+- Annual audit-redesign review: re-evaluate the 8 checks (a-h) for relevance + add new checks if recurring bug classes surface
+
+**Validation automation (future enhancement, beyond v6.0):**
+
+The Universal Cross-Validation Checklist (§4) is currently manual (Claude reviews each PR). A future enhancement:
+
+```bash
+# Future tool: tests/integration/verify-pr.sh <pr-number>
+# Runs all §4 + §3 wave-specific checks
+# Outputs PASS/FAIL per item + summary
+# Saves output for archival in PR comment
+```
+
+Tracked as PX-ValidationAutomation in §17. Not in v6.0 critical path.
+
+---
+
+## 15. Wave failure + recovery protocol
+
+If a wave's implementation surfaces a spec gap or architectural issue mid-execution (Concern 5 discovery during PR #3 was an example):
+
+### Mid-wave discovery protocol
+
+1. **Discovery:** issue surfaced during brainstorm OR implementation OR PR review
+2. **Triage:** file as new "Concern" tracking note at `tests/integration/CONCERN-N-<short-desc>.md`
+3. **Decide:**
+   - **Small (fits in current wave):** Add to current PR; brainstorm-revisit notes; ship together
+   - **Medium (fits in current wave's next sub-wave):** Defer to next sub-wave; document handoff in current PR
+   - **Large (architectural; warrants separate wave):** File as standalone Concern wave; sequence appropriately; current wave completes scope-as-planned
+4. **Defer protocol if large:**
+   - Halt current wave at next sub-wave boundary (after current PR merge)
+   - File a new wave (e.g., "Concern N — <Topic>") in §3 of this roadmap (insert as PX-Concern-N)
+   - Update wave catalog (§1) with new sequence
+   - Resume original wave after Concern wave merges
+
+### Wave abandonment recovery
+
+If a wave is partially merged then abandoned (rare):
+
+1. **PR boundaries are checkpoints.** Merged sub-wave PRs stand; unmerged work is open work.
+2. **Recovery:** future brainstorm pick up at the next un-merged sub-wave; no rebase trauma.
+3. **Audit:** if abandoned wave introduced new module code, ensure Tier-2 still PASSes (no dangling references to half-built module).
+
+### Concurrent waves protocol
+
+Per §1 wave catalog parallelism column:
+- **PX-Migration** runs parallel with P3-P4 (no shared files)
+- **PX-MCP** runs parallel with P7 (after v6.0)
+- **PX-AntiPatterns + PX-Glossary** consolidate across waves (distributed, not parallel)
+
+Concurrent waves must NOT touch the same module.yaml or marketplace.json. Conflict-mediation pattern: stop, merge one wave fully, then rebase the other.
+
+---
+
+## 16. v3 deprecation timeline
+
+`src-v2/` (BAM v3) is currently frozen — preserved as legacy + reference for migration tooling.
+
+**Sunset schedule:**
+
+| Date | Event |
+|---|---|
+| Current | v3 frozen; PX-Migration tooling in development |
+| v6.0 release | PX-Migration tooling ships; v3 fully replaceable for new projects |
+| v6.0 + 6 months | v3 documented as deprecated; new projects MUST use v6 |
+| v6.2 release | `src-v2/` directory deleted from repo. Final v3 archive tag created (`v3-archive-final`). |
+
+`external/bmad-method`, `external/bmad-tea`, etc. submodules: retained through v6.2 per spec §17.1 ("External submodules retained"); removal evaluated for v6.x post-v6.2.
+
+---
+
+## 17. §15 Claude consumption validation (v6.0/v6.1/v6.2 release gate)
+
+Spec §15 documents Claude's expected interaction patterns with installed BAM. This isn't testable via Tier-1 or Tier-2 — it requires live Claude Code IDE session.
+
+**Validation procedure (mandatory at each release):**
+
+1. **§15.1 Discovery:** open Claude Code in a fresh test project with BAM installed. Confirm `_bmad/bam/family.json` is readable + lists all installed modules.
+
+2. **§15.2 Tiered context load:** activate a BMAD core skill (e.g., `bmad-create-architecture`). Confirm Tier-1 (project-context.md synthesis files) loads via universal-glob.
+
+3. **§15.3 Persona invocation:** invoke `/bmad-bam-agent-atlas`. Confirm Atlas's persona definition + `_bmad/_memory/atlas/` content loaded.
+
+4. **§15.4 Workflow selection:** run `bmad-bam-design-tenancy-model` (or any v6.0+ workflow). Confirm CEV steps execute with `auto-runnable` honoring `execution_mode`.
+
+5. **§15.5 Conflict mediation:** at v6.1+ (Kai exists), inject conflicting recommendations between Atlas and Nova. Confirm Claude surfaces `@Kai mediate` suggestion.
+
+6. **§15.6 Decision recording:** complete a workflow. Confirm Claude prompts to record decision via `record-decision` workflow.
+
+7. **§15.7 Gate validation:** at QG-* gate boundary, confirm Claude offers `verify-*` workflow + evidence saved to `_bmad/bam/evidence/`.
+
+8. **§15.8 Refresh awareness:** plant a stale fragment (`last_reviewed` beyond threshold). Confirm Claude flags for `refresh-knowledge`.
+
+9. **§15.9 Cross-tool access:** at v6.1+ (MCP server exists), confirm external client can query BAM via stdio MCP.
+
+10. **§15.10 Failure handling:** force a workflow failure (e.g., missing input file). Confirm log to `_bmad/bam/install-logs/` + partial outputs preserved + resume offer.
+
+11. **§15.11 Context budget guarding:** invoke `bmad-bam-start`. Confirm context-budget check + warning if approaching limits.
+
+12. **§15.12 Hot-reload:** modify a fragment during active session. Confirm Claude detects via watcher + offers session re-init.
+
+**Outcome recorded in:** `tests/p2/PLAN-C-RATIFICATION.md` under each release tag's section.
+
+**If any §15 pattern FAILS at release gate:** release is HELD. Forward-fix to address the gap; re-validate before tag.
+
+---
+
+## Final summary table (v2)
+
+| Aspect | v1 (initial) | v2 (this version, post-self-critique) |
+|---|---|---|
+| **Total remaining effort** | 1100-1500h (3× under spec) | ~3000-3700h (matches spec) |
+| **Wave P3 effort** | 95-115h | ~280-345h |
+| **Wave P5 effort** | 150-180h | ~450-540h |
+| **Brainstorm prompts** | 1 (P3.1 only) | 10 (all main waves) |
+| **Cross-validation universal checklist** | ~25 items | ~35 items (added team:bam + multi-module install + last_reviewed + dep-graph install) |
+| **Per-wave Plan C cadence** | Module-introduction (over-prescribed) | Release-tag + BMAD-upgrade only (correctly scoped) |
+| **Tier-2 script update** | Implicit | **Explicitly listed as deliverable per wave** |
+| **Wave completion definition** | Implicit | Explicit per-wave criteria |
+| **§6.0 umbrella structure** | Not mentioned | Mapped to wave deliverables (§12) |
+| **§15 validation** | Not addressed | Mandatory at every release (§17) |
+| **§17 known issues** | Not tracked | Cross-referenced (§12) |
+| **Customize-templates (15)** | Stub | Enumerated + assigned to waves (§11) |
+| **Mid-wave discovery protocol** | Implicit | Explicit (§15) |
+| **Wave abandonment recovery** | Implicit | Explicit (§15) |
+| **v3 deprecation timeline** | Vague | Explicit (§16) |
+| **ADR number reservations** | Not assigned | Reserved per wave (§13) |
+| **Spec semver policy** | Unclear | Locked v0→v1 at v6.0 (§13) |
+| **Audit drift maintenance** | Not addressed | Cadence documented (§14) |
+| **Validation automation** | Not mentioned | Future enhancement noted (§14) |
+| **Doc total length** | 966 lines | ~1700 lines |
+
+**This v2 roadmap addresses all 24 gaps identified in the self-critique pass. Nothing missed.**
