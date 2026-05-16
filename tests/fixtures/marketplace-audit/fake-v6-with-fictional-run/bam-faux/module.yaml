@@ -1,0 +1,3 @@
+code: bam-faux
+name: "Fake v6 module — has fictional CLI"
+description: "Used by check (h) fixture."

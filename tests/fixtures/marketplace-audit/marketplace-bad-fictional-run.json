@@ -1,0 +1,12 @@
+{
+  "name": "audit-fixture", "owner": { "name": "BAM Test Harness" },
+  "description": "BAD — check (h): on-disk fake skill SKILL.md uses fictional 'bmad run <skill>' CLI ref. Use with --v6-root tests/fixtures/marketplace-audit/fake-v6-with-fictional-run.",
+  "plugins": [{
+    "name": "bmad-bam-platform", "source": "./", "version": "0.0.1",
+    "description": "Bad fixture (fictional bmad run in SKILL.md).",
+    "author": { "name": "BAM Test Harness" },
+    "skills": [
+      "./tests/fixtures/marketplace-audit/fake-v6-with-fictional-run/bam-faux/1-test/skill-fictional"
+    ]
+  }]
+}

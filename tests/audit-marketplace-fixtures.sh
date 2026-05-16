@@ -145,6 +145,18 @@ assert_case "bad-phase-orphan (check d phase)" fail "(check d, phase mode)" \
 # Restore sentinel for other tests
 touch "$SENTINEL_PATH"
 
+# Check (g) fixture — stale pre-Phase-C path (bmad-bam-platform/data/...) in step file
+assert_case "bad-stale-path (check g)" fail "(check g)" \
+    "$F/marketplace-bad-stale-path.json" \
+    "$F/fake-v6-with-stale-path" \
+    ""
+
+# Check (h) fixture — fictional bmad run X in SKILL.md
+assert_case "bad-fictional-run (check h)" fail "(check h)" \
+    "$F/marketplace-bad-fictional-run.json" \
+    "$F/fake-v6-with-fictional-run" \
+    ""
+
 echo ""
 echo "=== Results: $PASS pass, $FAIL fail ==="
 
