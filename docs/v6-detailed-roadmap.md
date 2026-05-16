@@ -1,7 +1,8 @@
-# BAM v6 — Detailed Wave Roadmap & Cross-Validation Workflow (v4)
+# BAM v6 — Detailed Wave Roadmap & Cross-Validation Workflow (v4.2)
 
 **Date:** 2026-05-16
-**Version:** v4 (68-gap fix total: 24 in v1→v2, 24 in v2→v3, 20 BMM/TEA compatibility fixes in v3→v4)
+**Version:** v4.2 (deep-validation patch series — v4.1 fixed ADR renumbering + C4 empirical-correction; v4.2 fixed workflow naming + BMM-manifest empirical finding)
+**Earlier:** v4 (68-gap fix total: 24 in v1→v2, 24 in v2→v3, 20 BMM/TEA compatibility fixes in v3→v4)
 **Spec source:** `docs/v6-final-architecture.md` v0.9
 **Status of foundation:** PR #3 + #5 + #6 + #7 + chore submodule queued for merge
 **Purpose:** Comprehensive forward plan for all remaining waves with brainstorm scope, deliverables, cross-validation gates, persona introductions, and cross-cutting work assignments. **Nothing missed.**
@@ -2224,6 +2225,35 @@ This v3 builds on v2 by fixing 24 additional gaps surfaced in the second self-cr
 
 ---
 
+## v4.1 + v4.2 deep-validation patch series
+
+After v4 landed (2026-05-16), three deep-validation passes against the actual code + BMM/TEA submodules surfaced **6 additional bugs** in my own v4 work. All fixed.
+
+### v4.1 (commit `2293452`) — 3 bugs
+
+| Bug | Type | Fix |
+|---|---|---|
+| ADR renumbering left 14 stale per-wave references | Internal inconsistency | Fixed P3.1-P3.4, P4, P5, P6, PX-MCP per-wave ADR IDs; added PX-Migration ADR-056 reservation |
+| Cascading `replace_all` corrupted P6's range | Tool-use error | P6 corrected to ADRs 031-033 (was double-shifted to 034-036 overlapping P11) |
+| §19.4 C4 "multi-context glob isolation" based on wrong premise | Empirical error | Re-checked against module.yaml; BAM canonical is `{output_folder}/<code>/project-context.md` per-module subdir (BMM-compatible); C4 downgraded CRITICAL → MEDIUM and reframed to context-budget growth |
+
+### v4.2 (this version) — 3 more bugs
+
+| Bug | Type | Fix |
+|---|---|---|
+| §19.5 DAG referenced non-existent workflows (`design-master-architecture`, `design-data-schema`, `design-ux-shell`) | Empirical error | Replaced with spec §5.X-verified names: `design-modular-monolith`, `design-schema-architecture`, `design-agent-ui-patterns`; added "verified against spec" annotation |
+| §19.14 required-skills table had 8+ wrong workflow names (incl. `design-ux-shell` ❌, `design-retrieval-architecture` ❌, `design-deployment-topology` mis-mapped to ops instead of platform) | Empirical error | Full table replaced with spec §5.X-verified names + cross-family row + spec reference column |
+| §19.16 BMM skill manifest treated as unknown ("prereq verification needed") | Empirical error → finding | Empirically resolved: BMM has NO `bmad-skill-manifest.yaml`; uses 2-field SKILL.md frontmatter (`name`+`description`). Spec §6.2's 10-field manifest is BAM-INVENTED. 3 decision options laid out for Wave P3.0; recommended Option (b) keep-BAM-extension. |
+
+**Method lessons:**
+1. Empirical verification against actual code/submodules catches premise errors that pure analysis misses
+2. Workflow naming should be auto-checked against spec §5.X in Tier-1 audit (new check (i) deliverable for Wave P3.0)
+3. `replace_all` is dangerous for cascading range strings; use temp markers or per-line edits
+
+**Combined fix count:** v1+v2+v3+v4 = 68 gaps documented + v4.1+v4.2 = 6 self-validation bugs caught and fixed = **74 total**.
+
+---
+
 ## 19. BMM/TEA Compatibility Addendum
 
 Consolidated rules for compatibility with BMAD's BMM module (canonical reference at `external/bmad-method/src/bmm-skills/`) and TEA community module (at `external/bmad-tea/`). Addresses 20 gaps surfaced in the third self-critique pass (2026-05-16). Roadmap §3 wave deliverables and §4 universal checklist enforce these rules. Combined v1+v2+v3+v4 fixes: **68 gaps total**.
@@ -2270,10 +2300,10 @@ module,skill,display-name,menu-code,description,action,args,phase,preceded-by,fo
 | BAM workflow | Output | Resolved location | Filename |
 |---|---|---|---|
 | `bmad-bam-finalize` | Project context sentinel | `{output_folder}/<code>` (literal path; mixed-convention per BMM precedent) | `project-context.md` (per-module subdir) |
-| `bmad-bam-design-master-architecture` | Architecture doc | `planning_artifacts` | `master-architecture.md` |
-| `bmad-bam-design-tenancy-model` | Tenancy model | `planning_artifacts` | `tenancy-model.md` |
-| `bmad-bam-design-data-schema` | Data schema | `planning_artifacts` | `data-schema.md` |
-| `bmad-bam-design-ai-runtime` | AI runtime spec | `planning_artifacts` | `ai-runtime.md` |
+| `bmad-bam-design-modular-monolith` (spec §5.1 #2) | Modular monolith design | `planning_artifacts` | `modular-monolith.md` |
+| `bmad-bam-design-tenancy-model` (spec §5.1 #1) | Tenancy model | `planning_artifacts` | `tenancy-model.md` |
+| `bmad-bam-design-schema-architecture` (spec §5.2 #1) | Data schema architecture | `planning_artifacts` | `schema-architecture.md` |
+| `bmad-bam-design-ai-runtime` (spec §5.3 #25) | AI runtime spec | `planning_artifacts` | `ai-runtime.md` |
 | `bmad-bam-verify-*` | Validation report | `planning_artifacts` | `<gate>-validation-report.md` |
 | `bmad-bam-smoke-test` | Sentinel | `output_folder` | `bam-smoke-sentinel.md` |
 | Vertical-pack workflows | Compliance evidence | `project-knowledge` | `<pack>-evidence-<date>.md` |
@@ -2343,23 +2373,25 @@ rm -rf "$TMP"
 
 **BMM pattern:** `module-help.csv` `preceded-by` column declares strict order; BMAD's workflow-chain validator catches missing prerequisites.
 
-**BAM cross-module workflow DAG (canonical chain to v6.0):**
+**BAM cross-module workflow DAG (canonical chain to v6.0; workflow names verified against spec §5.X 2026-05-16):**
 
 ```
 bmad-bam-finalize (output: {output_folder}/bbp/project-context.md)
     ↓ preceded-by
-bmad-bam-design-master-architecture (output: master-architecture.md)
+bmad-bam-design-modular-monolith (spec §5.1 #2; output: modular-monolith.md)
     ↓ preceded-by
-bmad-bam-design-tenancy-model (output: tenancy-model.md)
+bmad-bam-design-tenancy-model (spec §5.1 #1; output: tenancy-model.md)
     ↓ preceded-by  [cross-module: platform → data]
-bmad-bam-design-data-schema (output: data-schema.md)
+bmad-bam-design-schema-architecture (spec §5.2 #1; output: schema-architecture.md)
     ↓ preceded-by  [cross-module: data → ai]
-bmad-bam-design-ai-runtime (output: ai-runtime.md)
+bmad-bam-design-ai-runtime (spec §5.3 #25; output: ai-runtime.md)
     ↓ preceded-by  [cross-module: ai → ux]
-bmad-bam-design-ux-shell (output: ux-shell.md)
+bmad-bam-design-agent-ui-patterns (spec §5.8 #6; output: agent-ui-patterns.md)
     ↓ preceded-by  [release-prep]
-bmad-bam-verify-production-readiness-final
+bmad-bam-verify-production-readiness-final (spec §5.9 #12)
 ```
+
+**Validation note:** Each workflow name above is verified against spec §5.X listings. No invented names. Wave P3.0 prereq: extend Tier-1 audit with workflow-name allow-list pulled from spec §5.X.
 
 **Implementation:** Each workflow's module-help.csv row sets `preceded-by` to its direct ancestor. BAM-internal Tier-1 audit gains a "check (i) — workflow DAG validation" deliverable in Wave P3 (no cycles + all referenced predecessors exist).
 
@@ -2467,20 +2499,21 @@ See §14 — quarterly review (Jan/Apr/Jul/Oct first Monday) protocol.
 
 **Rule:** A skill is `required: true` if its absence blocks phase completion.
 
-**Per-module required skills (canonical):**
+**Per-module required skills (canonical; workflow names verified against spec §5.X 2026-05-16):**
 
-| Module | Required skills (`required: true`) |
-|---|---|
-| platform | `bmad-bam-design-master-architecture`, `bmad-bam-design-tenancy-model`, `bmad-bam-finalize` |
-| data | `bmad-bam-design-data-schema`, `bmad-bam-design-data-retention` |
-| ai | `bmad-bam-design-ai-runtime`, `bmad-bam-design-ai-safety` |
-| ux | `bmad-bam-design-ux-shell` |
-| rag | `bmad-bam-design-retrieval-architecture` |
-| integration | `bmad-bam-design-module-facades`, `bmad-bam-design-public-api` |
-| trust | `bmad-bam-design-compliance-baseline`, `bmad-bam-verify-trust-controls` |
-| ops | `bmad-bam-design-deployment-topology`, `bmad-bam-verify-production-readiness-final` |
+| Module | Required skills (`required: true`) | Spec ref |
+|---|---|---|
+| platform | `bmad-bam-design-tenancy-model`, `bmad-bam-design-modular-monolith`, `bmad-bam-finalize` (from §5.9 cross-family) | §5.1 #1, #2 |
+| data | `bmad-bam-design-schema-architecture`, `bmad-bam-design-retention-deletion` | §5.2 #1, #13 |
+| ai | `bmad-bam-design-ai-runtime`, `bmad-bam-design-ai-safety-policy` | §5.3 #25, #23 |
+| ux | `bmad-bam-design-theme-token-architecture`, `bmad-bam-design-agent-ui-patterns` | §5.8 #1, #6 |
+| rag | `bmad-bam-design-vector-store`, `bmad-bam-design-retrieval-eval` | §5.4 #1, #8 |
+| integration | `bmad-bam-design-module-facades`, `bmad-bam-design-public-api`, `bmad-bam-verify-convergence` | §5.5 #1, #4, #10 |
+| trust | `bmad-bam-map-compliance`, `bmad-bam-verify-trust-controls` | §5.6 #12, #15 |
+| ops | `bmad-bam-design-observability`, `bmad-bam-verify-production-readiness` | §5.7 #1, #15 |
+| cross-family | `bmad-bam-start`, `bmad-bam-smoke-test`, `bmad-bam-verify-production-readiness-final`, `release-gate-orchestrator` | §5.9 #1, #2, #12, #13 |
 
-All others default to `required: false` (optional/situational).
+All others default to `required: false` (optional/situational). Note: `design-deployment-topology` is in `bmad-bam-platform` (§5.1 #3), NOT ops — prior v4 draft mis-mapped it. `verify-production-readiness-final` (§5.9 #12, cross-family) and `verify-production-readiness` (§5.7 #15, ops module) are DIFFERENT workflows; both required at their respective scopes.
 
 ### 19.15 BMM `bmad-generate-project-context` integration (M5)
 
@@ -2494,13 +2527,34 @@ All others default to `required: false` (optional/situational).
 
 **Test:** Wave P4+ real-install test verifies both files present after finalize.
 
-### 19.16 Skill manifest schema reconciliation (M6)
+### 19.16 Skill manifest schema reconciliation (M6) — empirically resolved
 
-**Status:** Spec §6.2 names BAM's manifest `bmad-skill-manifest.yaml` with 10 fields. BMM's actual manifest filename and schema must be verified before Wave P3 starts.
+**Empirical finding (2026-05-16, v4.2 self-validation):** Read BMM skills at `external/bmad-method/src/bmm-skills/1-analysis/bmad-agent-analyst/` and `3-solutioning/bmad-create-architecture/`. **BMM has NO `bmad-skill-manifest.yaml` file.** Manifest-equivalent data is minimal YAML frontmatter in `SKILL.md`:
 
-**Wave P3.0 prereq:** Read 3 BMM skill manifest files; document filename + schema in roadmap. If BMM uses different filename (e.g., `manifest.yaml`), BAM aligns. If 10-field schema differs, BAM verifies semantic match.
+```yaml
+---
+name: bmad-create-architecture
+description: 'Create architecture solution design decisions for AI agent consistency. Use when the user says...'
+---
+```
 
-**Risk:** Spec §6.2 may need patching if BMM convention differs from current BAM assumption.
+**Only 2 fields:** `name` + `description`. No `latency_budget`, `recommended_capabilities`, `minimum_persona_version`, `inputs`, `outputs`, `gate`, `dependencies`, etc.
+
+**Consequence:** **Spec §6.2's 10-field `bmad-skill-manifest.yaml` is BAM-invented**, not BMM-canonical. BAM currently has a separate manifest file (e.g., `src-v6/bmad-bam-platform/9-infrastructure/bmad-bam-finalize/bmad-skill-manifest.yaml`); BMM puts the same idea (minimal) inside SKILL.md frontmatter.
+
+**Decision options for Wave P3.0 prereq:**
+
+| Option | Description | Tradeoff |
+|---|---|---|
+| (a) Align to BMM minimal | Move `name`+`description` into SKILL.md frontmatter; drop `bmad-skill-manifest.yaml`. Inputs/outputs/gates/capabilities live in step file frontmatter (BMM convention). | + BMM-canonical. − Loses BAM's richer per-skill metadata. |
+| (b) Keep BAM extension | Keep `bmad-skill-manifest.yaml`; document as BAM extension. Add `name`+`description` to SKILL.md frontmatter too (BMM-required minimum). | + Preserves BAM richness. − Maintains divergence. |
+| (c) Petition BMAD upstream | Propose 10-field manifest to BMM. | + Long-term canonical. − Long lead time. |
+
+**Recommendation:** Option (b) for v6.0 (preserve BAM richness while ensuring BMM-required minimum frontmatter present); option (c) post-v6.0 if BAM contributes to bmad-method upstream.
+
+**ADR allocation:** Pull next-available ADR ID from Wave P3.0's reservation (ADR-014 first slot) for the manifest decision. Track upstream divergence as `_bmad/_memory/atlas/upstream-issues/2026-05-16-bmm-manifest-divergence.md` per §19.10 BMM contribution pathway.
+
+**Spec §6.2 reconciliation:** Patch spec §6.2 in Wave P3.0 to read "BAM extends BMM's minimal SKILL.md frontmatter with a separate `bmad-skill-manifest.yaml` for the additional 8 fields documented herein. BMM-required `name`+`description` ALSO present in SKILL.md frontmatter per BMM canon."
 
 ### 19.17 TEA persona-as-workflow-router pattern recognition (M7)
 
