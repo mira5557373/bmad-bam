@@ -1,5 +1,7 @@
 # P2.1 — bmad-bam-platform MVP Implementation Plan
 
+> **Pre-Concern-5 note (added 2026-05-13):** Path references in this document (`_bmad/bam-platform/`, `bam-platform-project-context.md`, `src-v6/.../skills/...`) reflect module state at the time of writing. Post-Concern-5 the module code is `bbp`, the sentinel lives at `{output_folder}/bbp/project-context.md`, and skills are organized by phase dir (`1-foundation/`, `2-modules/`, `9-infrastructure/`); see ADR 008.
+
 > **For agentic workers:** REQUIRED SUB-SKILL: Use superpowers:subagent-driven-development (recommended) or superpowers:executing-plans to implement this plan task-by-task. Steps use checkbox (`- [ ]`) syntax for tracking.
 
 **Goal:** Promote `bmad-bam-platform` from Wave 0 skeleton to a usable MVP: realize §7.6 activation Path A (npm postinstall) end-to-end in a real BMAD install, promote Atlas from Wave-0 stub to full persona, deliver `design-tenancy-model` as the first invokable CEV workflow producing a real artifact, ratify Plan C (LLM-side activation) per Wave 0's deferred verification.

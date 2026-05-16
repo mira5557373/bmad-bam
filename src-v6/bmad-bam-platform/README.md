@@ -1,38 +1,42 @@
 # bmad-bam-platform
 
-> **Status:** P2.1 MVP (post-Wave-0 + 3 pre-merge alignment phases). One usable workflow + activation mechanism realized + module shape canonical-aligned with BMM.
+> **Status:** P2.2 MVP (post-Wave-0 + Concern 5 layout refactor). One usable workflow + Path B activation + module shape phase-grouped per BMM canonical. Module code: `bbp`.
 
 The platform foundation module of the BAM v6 family. Owns multi-tenant SaaS platform foundation: tenancy isolation, modular monolith decomposition, deployment topology, FinOps, tenant tier modeling, billing/tax/rate-limiting.
 
-## Module structure (BMM-canonical, per v0.8 spec §6.1)
+## Module structure (BMM-canonical phase-grouped, per v0.9 spec §6.1)
 
 ```
 bmad-bam-platform/
-├── module.yaml                          (BMAD module declaration; x-bam-* extensions)
+├── module.yaml                          (BMAD module declaration; code=bbp; x-bam-* extensions)
 ├── module-help.csv                      (BMM convention)
 ├── README.md                            (this file)
-└── skills/
-    ├── bmad-bam-agent-atlas/            (persona-as-skill; canonical home for shared content)
-    │   ├── SKILL.md
-    │   ├── customize.toml
-    │   └── resources/
-    │       ├── platform-index.csv       (fragment index)
-    │       ├── bam-patterns.csv         (pattern index)
-    │       ├── fragments/               (6 fragments)
-    │       ├── patterns/                (3 patterns)
-    │       ├── checklists/              (QG-M2)
-    │       └── standards/               (std-frontmatter, std-validation, std-adr)
-    ├── bmad-bam-smoke-test/             (Wave 0 verification workflow)
-    ├── bmad-bam-finalize/               (Path B activation; ships scripts/post-install.sh)
-    └── bmad-bam-design-tenancy-model/   (first CEV design workflow)
+├── 1-foundation/                        QG-F1 — Atlas + foundation skills
+│   └── bmad-bam-agent-atlas/            persona-as-skill; canonical home for shared content
+│       ├── SKILL.md
+│       ├── customize.toml
+│       └── resources/
+│           ├── platform-index.csv       fragment index
+│           ├── bam-patterns.csv         pattern index
+│           ├── fragments/               6 fragments
+│           ├── patterns/                3 patterns
+│           ├── checklists/              QG-M2
+│           └── standards/               std-frontmatter, std-validation, std-adr
+├── 2-modules/                           QG-M1/M2/M3 — tenant + agent-runtime workflows
+│   └── bmad-bam-design-tenancy-model/   first CEV design workflow
+├── 3-integration/                       QG-I1/I2/I3 — placeholder (future Kai workflows)
+├── 4-readiness/                         QG-P1 — placeholder (future production-readiness)
+└── 9-infrastructure/                    bootstrap + operational (BAM-extension of BMM)
+    ├── bmad-bam-smoke-test/             Wave 0 verification workflow
+    └── bmad-bam-finalize/               Path B activation; ships scripts/post-install.sh
 ```
 
-No module-root `agents/`, `data/`, or `scripts/` directories — BMM canonical pattern.
+Phase-numbered grouping (BMM convention) means the common parent of all listed skills = the module dir itself = `module.yaml` location → PluginResolver Strategy 1 succeeds → real `module.yaml` is read into BMAD's resolution cache at install time. Empirically (Plan C, 2026-05-13): `post-install-notes` displays, `module-help.csv` rows merge into the resolved help catalog, `agents:` block records Atlas's SKILL.md path, `directories:` is partially honored (top-level only), and skills' on-disk content materializes at the tool-specific dir (`.claude/skills/`, `.cursor/skills/`, etc.) — not at `_bmad/<code>/<skill>/`. See ADR 008 for the full empirical chain. No module-root `agents/`, `data/`, or `scripts/` directories.
 
 ## What ships in P2.1
 
-- **Atlas persona-skill (`bmad-bam-agent-atlas`)** — invocable directly (`bmad run bmad-bam-agent-atlas`) AND the canonical home for shared platform-module resources. Other skills reference Atlas's resources by explicit installed path (bmad-tea pattern).
-- **Activation mechanism (§7.6 Path B — selected after Task 0 invalidated Path A)** — BMAD's native `post-install-notes` channel surfaces `bmad-bam-finalize`, a one-shot skill the user invokes after `bmad install bmad-bam-platform` to generate `{output_folder}/bam-platform-project-context.md` (default `_bmad-output/bam-platform-project-context.md`, BMM-aligned per v0.7 spec §7.6) for universal-glob auto-load.
+- **Atlas persona-skill (`bmad-bam-agent-atlas`)** — invocable directly via `/bmad-bam-agent-atlas` (Claude Code/Cursor slash command) or natural-language activation in any BMAD-aware AI agent; also the canonical home for shared platform-module resources. Other skills reference Atlas's resources by explicit installed path (bmad-tea pattern).
+- **Activation mechanism (§7.6 Path B — selected after Task 0 invalidated Path A)** — BMAD's native `post-install-notes` channel surfaces `bmad-bam-finalize`, a one-shot skill the user invokes after `bmad install bmad-bam-platform` to generate `{output_folder}/bbp/project-context.md` (default `_bmad-output/bbp/project-context.md`, BMM-aligned per v0.7 spec §7.6) for universal-glob auto-load.
 - **One complete CEV workflow** — `bmad-bam-design-tenancy-model` (7 steps + template). Produces tenancy-model.md design doc + ADR + partial QG-M2 evidence.
 - **5 supporting fragments** — tenancy-decision-framework, rls-deep-dive, schema-per-tenant, cell-based-architecture, tenant-isolation-testing-patterns (in Atlas's `resources/fragments/`).
 - **3 patterns** — rls-row-level-security, schema-per-tenant-with-pgbouncer, cell-based-with-routing (in Atlas's `resources/patterns/`).
@@ -56,20 +60,22 @@ No module-root `agents/`, `data/`, or `scripts/` directories — BMM canonical p
 bmad install bmad-bam-platform
 ```
 
-After install, BMAD displays `post-install-notes` directing the user to run:
+After install, BMAD displays `post-install-notes` directing the user to invoke the `bmad-bam-finalize` skill in their AI agent:
 
-```bash
-bmad run bmad-bam-finalize
+```text
+Claude Code: /bmad-bam-finalize        (or natural language: "run bmad-bam-finalize")
+Cursor:      /bmad-bam-finalize
+Direct:      bash <project>/.claude/skills/bmad-bam-finalize/scripts/post-install.sh <project>
 ```
 
 This is the Path B activation step that materializes the universal-glob auto-load sentinel into the host project.
 
 ## Use
 
-After finalize, invoke Atlas's workflows via BMAD's standard `bmad run`:
+After finalize, invoke Atlas's workflows via the AI agent's slash command or natural-language trigger:
 
-```bash
-bmad run bmad-bam-design-tenancy-model
+```text
+Claude Code: /bmad-bam-design-tenancy-model
 ```
 
 Runs the design-tenancy-model workflow; produces `docs/architecture/tenancy-model.md` + an ADR + partial QG-M2 evidence.
@@ -77,7 +83,7 @@ Runs the design-tenancy-model workflow; produces `docs/architecture/tenancy-mode
 ## Smoke test
 
 ```bash
-src-v6/bmad-bam-platform/skills/bmad-bam-design-tenancy-model/tests/smoke-test.sh
+src-v6/bmad-bam-platform/2-modules/bmad-bam-design-tenancy-model/tests/smoke-test.sh
 ```
 
 Verifies machinery; doesn't invoke LLM.

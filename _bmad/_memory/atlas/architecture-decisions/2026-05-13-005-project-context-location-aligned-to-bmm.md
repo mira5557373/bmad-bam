@@ -19,6 +19,8 @@ generated-by: claude-opus-4-7
 authored-by: collaborative
 ---
 
+> **Pre-Concern-5 note (added 2026-05-13):** Path references in this ADR (`_bmad/bam-platform/`, `bam-platform-project-context.md`) reflect module state at decision time. Post-Concern-5 the module code is `bbp` and the sentinel is at `{output_folder}/bbp/project-context.md`; see ADR 008.
+
 ## Context
 
 P2.1 originally wrote the activation sentinel to `_bmad/bam-activation/platform/project-context.md` (introduced in F3 polish during P2.1 Wave-0-remediation). That namespace was a BAM-invented "survival namespace" workaround for BMAD's install-time wipe of `_bmad/<module-code>/`.

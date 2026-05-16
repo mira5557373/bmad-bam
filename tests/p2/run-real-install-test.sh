@@ -4,10 +4,12 @@
 # Exercises Path B activation against a real BMAD-initialized fixture project:
 # 1. Copy the fixture to a scratch directory
 # 2. Simulate "bmad install bmad-bam-platform" by copying the module's installable
-#    contents into _bmad/bam-platform/ (this is what BMAD's installFromResolution
+#    contents into _bmad/bbp/ (this is what BMAD's installFromResolution
 #    does for community modules; see tests/p2/INVESTIGATION-NOTES.md).
-# 3. Simulate "bmad run bmad-bam-finalize" by invoking the bundled
-#    scripts/post-install.sh with $PROJECT_ROOT=$WORK_DIR.
+# 3. Simulate the AI agent invoking /bmad-bam-finalize (slash command in
+#    Claude Code/Cursor; `bmad run <skill>` is NOT a real CLI command —
+#    see Concern 5 R3 / RR1) by invoking the bundled scripts/post-install.sh
+#    directly with $PROJECT_ROOT=$WORK_DIR.
 # 4. Verify the universal-glob sentinel is in place.
 # 5. Invoke probe-llm-context.sh to print manual Plan C verification instructions.
 
@@ -42,23 +44,25 @@ case "$PATH_SELECTED" in
     exit 1
     ;;
   B)
-    # Simulate "bmad install bmad-bam-platform" per BMAD-canonical (v0.8 §6.1) shape:
-    # marketplace.json lists only real skills, so installer copies skill dirs flat
-    # into _bmad/bam-platform/<skill-name>/. NO module-root agents/data/scripts/
-    # dirs exist any more (Phase C refactor).
-    mkdir -p "$WORK_DIR/_bmad/bam-platform"
-    # Copy each skill listed in marketplace.json into the install target
-    for skill_dir in "$SOURCE/skills"/*; do
+    # Simulate "bmad install bmad-bam-platform" per BMM-canonical (v0.9 §6.1) shape:
+    # skills live under phase-numbered subdirs (1-foundation/, 2-modules/,
+    # 9-infrastructure/) in source. Real installer flattens them into
+    # _bmad/bbp/<skill-name>/. NO module-root agents/data/scripts/ dirs.
+    mkdir -p "$WORK_DIR/_bmad/bbp"
+    # Walk phase dirs + copy each skill dir into the install target
+    for skill_dir in "$SOURCE"/[0-9]*-*/*; do
+      [ -d "$skill_dir" ] || continue
       skill_name="$(basename "$skill_dir")"
-      cp -a "$skill_dir" "$WORK_DIR/_bmad/bam-platform/$skill_name"
+      cp -a "$skill_dir" "$WORK_DIR/_bmad/bbp/$skill_name"
     done
-    cp "$SOURCE/module.yaml" "$WORK_DIR/_bmad/bam-platform/" 2>/dev/null || true
-    cp "$SOURCE/module-help.csv" "$WORK_DIR/_bmad/bam-platform/" 2>/dev/null || true
-    echo ">>> module assets copied to _bmad/bam-platform/ (4 skills, no module-root content dirs)"
+    cp "$SOURCE/module.yaml" "$WORK_DIR/_bmad/bbp/" 2>/dev/null || true
+    cp "$SOURCE/module-help.csv" "$WORK_DIR/_bmad/bbp/" 2>/dev/null || true
+    echo ">>> module assets copied to _bmad/bbp/ (4 skills, no module-root content dirs)"
 
-    # Simulate "bmad run bmad-bam-finalize" — invoke the underlying script
-    # (now skill-local at _bmad/bam-platform/bmad-bam-finalize/scripts/post-install.sh)
-    bash "$WORK_DIR/_bmad/bam-platform/bmad-bam-finalize/scripts/post-install.sh" "$WORK_DIR"
+    # Simulate the AI agent invoking /bmad-bam-finalize (slash command in
+    # Claude Code/Cursor; not a CLI subcommand) — invoke the underlying script
+    # (skill-local at _bmad/bbp/bmad-bam-finalize/scripts/post-install.sh)
+    bash "$WORK_DIR/_bmad/bbp/bmad-bam-finalize/scripts/post-install.sh" "$WORK_DIR"
     echo ">>> finalize script ran"
     ;;
   *)
@@ -68,11 +72,11 @@ case "$PATH_SELECTED" in
 esac
 
 # Verify the sentinel landed (BMM-aligned location per v0.7 §7.6:
-# {output_folder}/bam-platform-project-context.md outside _bmad/<module-code>/)
+# {output_folder}/bbp/project-context.md outside _bmad/<module-code>/)
 OUTPUT_FOLDER_REL="$(grep -E '^[[:space:]]*output_folder[[:space:]]*=' "$WORK_DIR/_bmad/config.toml" 2>/dev/null | head -1 | sed -E 's/^[[:space:]]*output_folder[[:space:]]*=[[:space:]]*"?([^"#]+)"?.*/\1/' | sed -E 's/[[:space:]]+$//' || echo)"
 OUTPUT_FOLDER_REL="${OUTPUT_FOLDER_REL:-_bmad-output}"
 OUTPUT_FOLDER_REL="${OUTPUT_FOLDER_REL#\{project-root\}/}"
-SENTINEL_FILE="$WORK_DIR/$OUTPUT_FOLDER_REL/bam-platform-project-context.md"
+SENTINEL_FILE="$WORK_DIR/$OUTPUT_FOLDER_REL/bbp/project-context.md"
 
 if [ ! -f "$SENTINEL_FILE" ]; then
     echo "FAIL: $SENTINEL_FILE not generated" >&2

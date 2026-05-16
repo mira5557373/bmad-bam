@@ -1,0 +1,3 @@
+code: bam-faux
+name: "Fake v6 module for audit fixtures"
+description: "Used by check (e) and (f) fixtures. Not a real module."

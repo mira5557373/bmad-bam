@@ -1,0 +1,17 @@
+{
+  "name": "audit-fixture",
+  "owner": { "name": "BAM Test Harness" },
+  "description": "GOOD — exercises check (b) regex with phase-numbered path AND check (d) phase-mode scan (only skill-phased listed; skill-phased-orphan is .no-marketplace-suppressed).",
+  "plugins": [
+    {
+      "name": "bmad-bam-platform-faux",
+      "source": "./",
+      "description": "Phase-numbered layout fixture.",
+      "version": "0.0.1",
+      "author": { "name": "BAM Test Harness" },
+      "skills": [
+        "./tests/fixtures/marketplace-audit/fake-source/1-test-phase/skill-phased"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,12 @@
+{
+  "name": "audit-fixture", "owner": { "name": "BAM Test Harness" },
+  "description": "BAD — check (c): plugin missing version field.",
+  "plugins": [{
+    "name": "bmad-bam-platform", "source": "./",
+    "description": "Bad fixture (no version).",
+    "author": { "name": "BAM Test Harness" },
+    "skills": [
+      "./tests/fixtures/marketplace-audit/fake-source/skills/skill-alpha"
+    ]
+  }]
+}

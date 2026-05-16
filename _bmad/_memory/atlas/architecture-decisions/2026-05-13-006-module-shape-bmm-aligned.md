@@ -19,6 +19,8 @@ generated-by: claude-opus-4-7
 authored-by: collaborative
 ---
 
+> **Invocation-syntax correction (Round-3, 2026-05-13):** Body reference to `bmad run bmad-bam-agent-atlas` reflects aspirational wording at the time of writing. Correct invocation: `/bmad-bam-agent-atlas` in the AI agent (Claude Code/Cursor slash command) or natural-language activation. `bmad run <skill>` is NOT a real BMAD CLI subcommand (verified against bmad-cli.js v6.6.0; only `install`, `status`, `uninstall` exist). The Atlas-as-skill decision stands.
+
 ## Context
 
 BAM v6 module shape (as built in P2.1) had module-root `agents/`, `data/`, and `scripts/` directories. The earlier audit surfaced that BMAD's marketplace mechanism doesn't support module-root content; the RDP workaround listed them as "skills" in marketplace.json — semantic misuse with cosmetic risk if BMAD's skill validator/registry gets stricter.
@@ -60,3 +62,15 @@ Workflow skills (design-tenancy-model and future P2.2+ workflows) reference Atla
 - **Each workflow skill duplicates fragments (DRY violation)** — rejected; massive duplication; bmad-tea shows the persona-skill-as-canonical-home pattern works without duplication for the heavy content (knowledge fragments).
 - **Replicate per persona-skill (bmad-tea CSV pattern)** — partial precedent: bmad-tea DOES replicate `tea-index.csv` across 9 locations (verified by md5sum). BAM declines this because P2.1 has only one persona (Atlas); replication overhead is unjustified until multiple personas exist. Future P2.2+ modules can revisit if their personas need their own index copies.
 - **Standalone `bmad-bam-standards` skill (fake-skill pattern)** — rejected; introduces a non-invocable "skill" that's just a content holder. Atlas-as-skill is a real persona AND the content home; one skill, two roles. Cleaner.
+
+
+## Refinement note (Concern 5, ADR 008, 2026-05-13)
+
+ADR 008 refines this decision's directory layout. The core "Atlas-as-skill" claim and "everything is a skill" stance from this ADR stand — Atlas remains a real BMAD skill (invocable, marketplace-listed), and shared content lives in its `resources/`. What changes is WHERE that skill lives in source:
+
+- This ADR: `skills/bmad-bam-agent-atlas/`
+- Refined (ADR 008): `1-foundation/bmad-bam-agent-atlas/` (phase-numbered, BMM-canonical)
+
+The `skills/` wrapper is dropped in favor of phase-numbered grouping so PluginResolver Strategy 1 succeeds (common parent of skills = module dir = module.yaml location). Cross-skill content access by explicit path (bmad-tea pattern, this ADR's §"Decision" item 2) is unchanged in semantic, just with new path prefixes (`_bmad/bbp/...` instead of `_bmad/bam-platform/...`).
+
+See ADR 008 for the empirical chain.
