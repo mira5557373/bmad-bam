@@ -1,0 +1,71 @@
+---
+name: bmad-bam-design-tenant-migration-tooling
+description: "Design tenant migration playbooks: tier upgrades + region migrations; one skill, axis-flagged."
+module: bmad-bam-platform
+persona: atlas
+version: 0.1.0
+execution_mode:
+  default: assisted
+  alternatives: [manual]
+recommended_capabilities:
+  - extended-thinking
+minimum_persona_version: "0.1.0"
+latency_budget: "90min"
+cluster: lifecycle
+inputs:
+  - artifact: tier-model.json
+    required: true
+    resolver: tool-aware-path-fallback
+    paths_tried:
+      - "{project-root}/docs/architecture/tier-model.json"
+      - "{project-root}/_bmad/bam/evidence/QG-F1/tier-model.json"
+  - artifact: deployment-topology.json
+    required: true
+    resolver: tool-aware-path-fallback
+    paths_tried:
+      - "{project-root}/docs/architecture/deployment-topology.json"
+      - "{project-root}/_bmad/bam/evidence/QG-F1/deployment-topology.json"
+  - artifact: tenancy-decision.json
+    required: true
+    resolver: tool-aware-path-fallback
+    paths_tried:
+      - "{project-root}/docs/architecture/tenancy-decision.json"
+      - "{project-root}/_bmad/bam/evidence/QG-F1/tenancy-decision.json"
+  - artifact: onboarding-flow.json
+    required: false
+    resolver: tool-aware-path-fallback
+    paths_tried:
+      - "{project-root}/_bmad/bam/evidence/QG-M2/onboarding-flow.json"
+      - "{project-root}/docs/architecture/onboarding-flow.json"
+  - artifact: offboarding-policy.json
+    required: false
+    resolver: tool-aware-path-fallback
+    paths_tried:
+      - "{project-root}/_bmad/bam/evidence/QG-M2/offboarding-policy.json"
+      - "{project-root}/docs/architecture/offboarding-policy.json"
+outputs:
+  - artifact: migration-runbook.md
+    location: "{project-root}/docs/architecture/"
+    required: true
+  - artifact: migration-runbook.json
+    location: "{project-root}/_bmad/bam/evidence/QG-D1/"
+    required: true
+    schema_version: "1.0"
+  - artifact: migration-runbook.json
+    location: "{project-root}/_bmad/bam/evidence/QG-M2/"
+    required: true
+    schema_version: "1.0"
+  - artifact: QG-D1-migration-evidence.md
+    location: "{project-root}/_bmad/bam/evidence/QG-D1/"
+    required: true
+  - artifact: QG-M2-migration-evidence-mirror.md
+    location: "{project-root}/_bmad/bam/evidence/QG-M2/"
+    required: true
+gates:
+  - QG-D1
+  - QG-M2
+flags:
+  - name: --migration-axis
+    type: enum
+    values: [tier, region, both]
+    default: both
