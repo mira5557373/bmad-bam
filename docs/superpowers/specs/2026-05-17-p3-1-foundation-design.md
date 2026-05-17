@@ -19,14 +19,23 @@ Ship 4 new platform workflow skills (skills 2-5 from spec §5.1) that complete t
 
 ### 2.1 Skills shipped
 
-| # | Skill | Spec ref | Menu code | Decision recorded |
+| # | Skill | Spec ref | Menu code (Z-prefix per ADR-013) | Decision recorded |
 |---|---|---|---|---|
-| 2 | `bmad-bam-design-modular-monolith` | §5.1 #2 | **MM** | Bounded contexts + ports/adapters |
-| 3 | `bmad-bam-design-deployment-topology` | §5.1 #3 | **DT** | Tenant cohorts + rollout strategy |
-| 4 | `bmad-bam-design-finops-model` | §5.1 #4 | **FM** | Unit economics + per-tenant attribution |
-| 5 | `bmad-bam-design-tenant-tier-model` | §5.1 #5 | **TM** | Tier matrix + transitions |
+| 2 | `bmad-bam-design-modular-monolith` | §5.1 #2 | **ZMM** | Bounded contexts + ports/adapters |
+| 3 | `bmad-bam-design-deployment-topology` | §5.1 #3 | **ZDP** | Tenant cohorts + rollout strategy |
+| 4 | `bmad-bam-design-finops-model` | §5.1 #4 | **ZFM** | Unit economics + per-tenant attribution |
+| 5 | `bmad-bam-design-tenant-tier-model` | §5.1 #5 | **ZTT** | Tier matrix + transitions |
 
-(Existing P2.1 skill `bmad-bam-design-tenancy-model`, code **D**, is the 1st Foundation skill; no rework in P3.1 beyond the JSON-output addition — see §3.R1.)
+**Concurrent migration (P3.1 picks up the deferred P3.0 work per ADR-013):** existing single-char menu codes `A/S/F/D` are migrated to Z-prefix:
+
+| Skill | Old code | New code |
+|---|---|---|
+| `bmad-bam-agent-atlas` | A | **ZAT** |
+| `bmad-bam-smoke-test` | S | **ZST** |
+| `bmad-bam-finalize` | F | **ZFI** |
+| `bmad-bam-design-tenancy-model` | D | **ZTN** |
+
+Total 8 codes post-P3.1 (4 existing migrated + 4 new), all `Z<2 chars>` format per ADR-013.
 
 ### 2.2 Dependency graph
 
@@ -72,6 +81,29 @@ Ship 4 new platform workflow skills (skills 2-5 from spec §5.1) that complete t
 | `finops-model` | `tenancy-decision.json`, `tier-model.json`, `deployment-topology.json` | — |
 
 **Required** = workflow refuses to start with clear diagnostic. **Soft** = workflow prompts user; can proceed with stub defaults.
+
+**Required-input enforcement mechanism (G4 spec):** BMAD's workflow runner does NOT auto-enforce `bmad-skill-manifest.yaml`'s `inputs.required` field — manifest is BAM-extension declarative documentation per ADR-014. Enforcement is implemented in **step-01 of each tightly-coupled skill** as an explicit precondition check:
+
+```bash
+# step-01-c-elicit-context.md (deployment-topology) excerpt:
+TENANCY_JSON="${PROJECT_ROOT}/_bmad/bam/evidence/QG-F1/tenancy-decision.json"
+if [ ! -f "$TENANCY_JSON" ]; then
+    TENANCY_JSON_ALT="${PROJECT_ROOT}/docs/architecture/tenancy-decision.json"
+    if [ ! -f "$TENANCY_JSON_ALT" ]; then
+        cat >&2 <<EOF
+ERROR: tenancy-decision.json not found.
+       This workflow requires bmad-bam-design-tenancy-model to have run first.
+       Searched: $TENANCY_JSON, $TENANCY_JSON_ALT
+EOF
+        exit 64   # POSIX usage error
+    fi
+    TENANCY_JSON="$TENANCY_JSON_ALT"
+fi
+```
+
+Same pattern for `design-finops-model` step-01 (checks 3 required inputs). Path resolution uses Concern-5 tool-aware fallback.
+
+**Sequencing note (G8 spec):** P3.1 sequences tenancy-model BEFORE modular-monolith. This INVERTS canonical DDD ordering (which puts domain modeling before infrastructure including tenancy). BAM deliberately chose this inversion because multi-tenant SaaS practice has shown tenant boundaries materially affect bounded-context shape (tenant-aware billing/auth/notifications are structurally different from tenant-agnostic versions). Acknowledged in ADR-015.
 
 ---
 
@@ -165,7 +197,64 @@ Artifact schema (`tier-model.json`):
 }
 ```
 
-Fields suffixed `_hint` are TENTATIVE — overridable by downstream skills. The `verify-coherence` step (last in finops) checks the final values across all 3 artifacts (tier + deployment + finops) and produces `_bmad/bam/evidence/QG-F1/foundation-coherence.json`.
+Fields suffixed `_hint` are TENTATIVE — overridable by downstream skills. The `verify-coherence` step (last in finops, the 8th step) checks final values across all 3 artifacts and produces `_bmad/bam/evidence/QG-F1/foundation-coherence.json`.
+
+**verify-coherence algorithm (G3 spec):**
+
+```python
+# Pseudocode for step-08 of design-finops-model
+import json
+
+tier = json.load(open("docs/architecture/tier-model.json"))
+deployment = json.load(open("docs/architecture/deployment-topology.json"))
+finops = json.load(open("docs/architecture/finops-baseline.json"))
+
+mismatches = []
+
+for t in tier["tiers"]:
+    tier_id = t["id"]
+
+    # Check rollout_tier_hint vs actual deployment decision
+    hinted = t.get("rollout_tier_hint")
+    actual = deployment["rollout_per_tier"].get(tier_id)
+    if hinted and actual and hinted != actual:
+        mismatches.append({
+            "field": "rollout_tier",
+            "tier_id": tier_id,
+            "hinted_in_tier_model": hinted,
+            "actual_in_deployment": actual,
+            "severity": "warn"  # downstream override is allowed
+        })
+
+    # Check cost_ceiling hint vs actual finops decision
+    hinted_cost = t.get("cost_ceiling_usd_per_month_hint")
+    actual_cost = finops["cost_ceiling_per_tier"].get(tier_id)
+    if hinted_cost is not None and actual_cost is not None:
+        if abs(hinted_cost - actual_cost) / max(hinted_cost, 0.01) > 0.20:  # 20% drift threshold
+            mismatches.append({
+                "field": "cost_ceiling",
+                "tier_id": tier_id,
+                "hinted": hinted_cost,
+                "actual": actual_cost,
+                "drift_pct": round((actual_cost - hinted_cost) / hinted_cost * 100, 1),
+                "severity": "warn"
+            })
+
+result = {
+    "schema_version": "1.0",
+    "verified_at": "<ISO-8601>",
+    "coherent": len([m for m in mismatches if m["severity"] == "error"]) == 0,
+    "mismatches": mismatches,
+}
+
+json.dump(result, open("_bmad/bam/evidence/QG-F1/foundation-coherence.json", "w"), indent=2)
+```
+
+**Failure semantics:**
+- `coherent: true` → QG-F1 C3 auto-criterion passes.
+- `coherent: false` (any `severity: error` mismatch) → C3 fails the gate; user must reconcile by re-running upstream OR documenting explicit override in `decision.md`.
+- Warn-level mismatches (default) → reported in `mismatches[]` but do not fail the gate; logged for reviewer awareness.
+- v6.0 has zero `error`-severity rules (all mismatches are warns); future revisions can promote specific mismatches to errors as patterns emerge.
 
 ### Q6 + R3 — fragment density: 18 fragments total (hard cap, with consolidation)
 
@@ -257,7 +346,8 @@ assumptions:
   - "design-tenancy-model (P2.1) accepts one additional output (tenancy-decision.json) — modification scope is minor (one writer in step-05)"
   - "BMAD's three-layer customize merge accepts customize-template/<bmm-skill>/customize.toml overlays from BAM modules (spec §7.2)"
   - "Workflow inputs declared in bmad-skill-manifest.yaml are honored by Atlas's workflow runner; required-vs-soft distinction is workflow-enforced"
-  - "Menu codes MM/DT/FM/TM do not collide with existing or planned 2-char codes elsewhere in the marketplace"
+  - "Menu codes ZMM/ZDP/ZFM/ZTT (new) and ZAT/ZST/ZFI/ZTN (migrated from A/S/F/D) are unique and conform to ADR-013's `Z<2 chars>` Z-prefix format. P3.0 deferred the migration; P3.1 picks it up."
+  - "Customize-template overlay path convention is `<bam-skill-dir>/customize-template/<bmm-skill-name>/customize.toml` (BAM-internal convention; spec §7.2 does not specify a path; smoke-test verifies BMAD's three-layer merge resolves correctly)"
 dependencies-on-other-decisions:
   - 2026-05-13-006   # Atlas-as-skill (canonical home for fragments)
   - 2026-05-13-008   # BMM-canonical layout + bbp short code + subdir sentinel
@@ -265,14 +355,70 @@ dependencies-on-other-decisions:
   - 2026-05-16-010   # Tier-2 env-var promotion
   - 2026-05-16-011   # Phase column decoupled from directory naming
   - 2026-05-16-012   # No top-level workflows/ dir (all-in-skills)
-  - 2026-05-16-013   # Z-prefix menu codes (this ADR uses 2-char per Q9 lock)
+  - 2026-05-16-013   # Z-prefix menu codes (this ADR ENFORCES per ADR-013; picks up deferred P3.0 migration)
   - 2026-05-16-014   # BAM-extended bmad-skill-manifest.yaml (10 fields)
 generated-by: claude-opus-4-7
 authored-by: collaborative
 ---
 ```
 
-Body sections (Context / Decision / Consequences / Alternatives Considered / Revisit triggers) capture the Q1-Q10 + R1-R12 rationale. Full body drafted at spec-write time.
+### ADR-015 body draft
+
+```markdown
+## Context
+
+Wave P3.1 ships 4 new platform workflow skills (modular-monolith, deployment-topology, finops-model, tenant-tier-model — spec §5.1 #2-5) plus QG-F1 (Foundation, blocking) and QG-M1 (Module Architecture, partial). The 4 skills cover the remaining Foundation-tier decisions after design-tenancy-model (P2.1) — bounded-context decomposition, deployment shape, unit economics, tier matrix. Each produces a structured JSON artifact that QG-F1 verifies. Together the 5 Foundation skills (1 from P2.1 + 4 from P3.1) constitute the "Foundation gate" — every module-level decision (P3.2 Lifecycle, P3.3 Commercial, P3.4 Brownfield) builds on these.
+
+Sequencing follows spec §5.1 ordering: tenancy-model first (load-bearing for everything else), then the 4 P3.1 skills with dependencies as locked per coupling matrix (§2.3 of design doc). Tenancy-first inverts canonical DDD ordering (which puts domain modeling before infrastructure including tenancy), but multi-tenant SaaS practice has shown tenant boundaries materially affect bounded-context shape (e.g., billing-as-tenant-aware-vs-tenant-agnostic is structurally different). The inversion is deliberate.
+
+## Decision
+
+Q1-Q10 + R1-R12 lock-ins (full detail in design spec §3):
+
+- **Q1/R1 — Per-skill evidence:** Each skill writes both `<decision>.md` (human) AND `<decision>.json` (machine contract) — JSON is the canonical input for downstream skills + QG-F1 auto-checks.
+- **Q2 — modular-monolith default:** Hybrid DDD + ports/adapters. Decision matrix scores 4 options.
+- **Q3 — deployment-topology tight coupling:** Required input `tenancy-decision.json`. 4 tier-mapped rollout defaults baked in.
+- **Q4/R1 — finops-model required inputs:** All 3 upstream artifacts (tenancy + tier + deployment). No markdown parsing.
+- **Q5/R2 — tier-model shape:** 5 default tiers + `--custom-tiers N` flag; tentative downstream-contract hints (`rollout_tier_hint`, `cost_ceiling_usd_per_month_hint`, `upgrade_mode`) overridable downstream; `verify-coherence` reconciliation step at end of finops.
+- **Q6/R3 — fragment density:** Hard cap 5/skill; 18 total fragments (4+5+5+4 after consolidation).
+- **Q7 — fragment reuse:** Stand-alone per skill; cross-workflow data via manifest `inputs:`, not cross-skill fragment Reads.
+- **Q8/R4 — anti-patterns:** 4 — tenancy-as-afterthought, deployment-without-cohorts, price-without-cost-attribution, tier-cliff.
+- **Q9/R5 — glossary:** 6 terms in CSV index (rate-arbitrage deferred to P3.3).
+- **Q10/R6 — overlay:** Minimal customize-template overlay for bmad-create-architecture (1 `activation_steps_append` entry + 1 `persistent_facts` entry).
+- **R8 — QG-M1 partial:** Auto-criteria only (C1-C5); human-review deferred to P3.2.
+- **R9 — menu codes:** 3-char Z-prefix per ADR-013 (correcting an earlier 2-char proposal); existing A/S/F/D migrated to ZAT/ZST/ZFI/ZTN.
+- **R12 — ADR dependency chain:** 8 ADRs (006, 008, 009, 010, 011, 012, 013, 014).
+
+**Required-input enforcement (G4 spec):** BMAD's workflow runner does NOT enforce `bmad-skill-manifest.yaml: inputs.required`. Each downstream skill's step-01 implements a precondition check: `[ -f tenancy-decision.json ] || (echo "ERROR: required input tenancy-decision.json not found at expected paths" >&2 && exit 64)`. Path resolution uses Concern-5 tool-aware fallback (`docs/architecture/` → `_bmad/bam/evidence/QG-F1/` → workflow cache dir).
+
+**Customize-template overlay path convention (G6 spec):** `<bam-skill-dir>/customize-template/<bmm-skill-name>/customize.toml`. For P3.1's modular-monolith overlay of bmad-create-architecture: `src-v6/bmad-bam-platform/2-modules/bmad-bam-design-modular-monolith/customize-template/bmad-create-architecture/customize.toml`. This is a BAM-internal convention; spec §7.2 doesn't specify path; smoke-test verifies BMAD's three-layer merge resolves correctly.
+
+## Consequences
+
+- Foundation tier complete after P3.1 lands (5 skills + QG-F1 blocking gate).
+- Menu-code namespace converges to all-Z-prefix per ADR-013 (P3.0 deferral closed out).
+- Future BAM modules adopt the same per-skill JSON-evidence + tool-aware-path patterns established here.
+- QG-M1 stays partial until P3.2 ships lifecycle skills (onboarding/offboarding/migration); P3.2 promotes to blocking.
+- Customize-template overlay convention validated; future modules (data/ai/ux/rag/...) follow.
+- Wave P3 ~25% complete after P3.1 (4 of 16 platform skills + 1 from P2.1 = 5/16 = 31%).
+
+## Alternatives Considered
+
+- **Single rolled-up `foundation.md` artifact (Q1 Approach B):** rejected; would require migrating QG-M2's existing per-file `evidence-depends-on` reference + complicates partial-progress states.
+- **Soft coupling for deployment-topology (Q3 Approach B):** rejected; ungrounded deployment recommendations produced without tenancy decision are misleading.
+- **3 tiers in tier-model (Q5 Approach D):** rejected; contradicts spec §5.1's explicit 5-tier listing.
+- **2-char menu codes (Q9 Approach A):** rejected on Round-2 self-review (G1) — contradicts ADR-013; corrected to 3-char Z-prefix.
+- **No customize-template overlay in P3.1 (Q10 Approach B):** rejected; want to validate §7.2 mechanism with minimal real use early.
+
+## Revisit triggers
+
+- If real-IDE Plan C in any future wave shows fragment-density-creep, revisit Q6 hard cap.
+- If foundation-coherence.json reports persistent mismatches in real projects, revisit Q5's hint-vs-override pattern (escalate to explicit reconciliation workflow).
+- If BMAD upstream changes `bmad-skill-manifest.yaml` schema, revisit ADR-014's BAM-extension stance + this ADR's manifest-input declarations.
+- If PX-Glossary wave defines a different storage format, revisit Q9 CSV-index choice and migrate.
+- If P3.2's lifecycle skills reveal QG-F1 evidence-schema gaps (e.g., need lifecycle-readiness fields), promote ADR-015 to ADR-015-revised.
+- If user-facing customize-template overlay path proves brittle (G6 assumption fails), revisit overlay convention.
+```
 
 ---
 
@@ -306,9 +452,10 @@ status: active
 ```
 
 Auto-checkable criteria (60%):
-- **C1** — Every Foundation skill produced its JSON evidence file (5 files)
-- **C2** — Each JSON validates against its schema (`schema_version` present)
-- **C3** — `foundation-coherence.json` reports `coherent: true` (rollout_tier hints match deployment decisions; cost_ceiling hints match finops decisions)
+- **C0 — Pre-criterion (gate-prerequisite, blocking):** All 5 Foundation skill outputs present (`tenancy-decision.json`, `module-decomposition.json`, `deployment-topology.json`, `tier-model.json`, `finops-baseline.json`). If any missing, gate cannot run — emit "Run skill X before QG-F1" diagnostic.
+- **C1** — Every Foundation skill produced its JSON evidence file (5 files; symmetric to C0 but as standard auto-criterion, recorded in evidence)
+- **C2** — Each JSON validates against its schema (`schema_version` present + required keys)
+- **C3** — `foundation-coherence.json` reports `coherent: true` (per verify-coherence algorithm in §3.R2)
 - **C4** — tenancy-decision.json's `attribution_affordances` block is non-empty
 - **C5** — tier-model.json has either 5 tiers (default) or 3-7 with `custom_tiers_mode: true`
 - **C6** — modular-monolith ADR exists with bounded-contexts enumerated
@@ -327,7 +474,39 @@ Evidence destination: `_bmad/bam/evidence/QG-F1/YYYY-MM-DD-NNN/` with `criteria-
 
 Web Research Queries: `multi-tenant SaaS foundation architecture {date}`, `modular monolith bounded contexts {date}`, `SaaS unit economics {date}`, `tenant tier pricing strategy {date}`.
 
-QG-M1 (partial) — separate file `QG-M1.md` with the same frontmatter shape but only auto-checkable criteria (C1-Cn from module-decomposition); `criticality: partial`. P3.2 promotes to `blocking` when lifecycle skills land.
+### QG-M1 (partial) outline
+
+Path: `1-foundation/bmad-bam-agent-atlas/resources/checklists/QG-M1.md`
+
+Frontmatter:
+
+```yaml
+---
+id: QG-M1
+title: Module Architecture (partial)
+module: bmad-bam-platform
+phase: solutioning
+criticality: partial                    # promoted to `blocking` in P3.2
+depends-on: [QG-F1]
+evidence-depends-on:
+  - QG-F1/module-decomposition.json
+auto-checkable: 100                     # partial gate is auto-only; H-criteria deferred
+human-review: 0
+last_reviewed: 2026-05-17
+version: 0.1.0
+status: partial
+---
+```
+
+Auto-checkable criteria (G5 spec — 5 criteria; H-criteria deferred to P3.2):
+
+- **C1** — `module-decomposition.md` exists at `docs/architecture/`
+- **C2** — `module-decomposition.json` validates against schema: has `schema_version`, `decision` (matrix winner: ddd-pure | ports-pure | hybrid | vertical-slice), `bounded_contexts: [...]` array with ≥2 entries
+- **C3** — Each `bounded_contexts[i]` has `adapter_ports: [...]` array (ports/adapters compliance check); empty array allowed for ddd-pure decision
+- **C4** — No circular dependencies in `bounded_contexts[*].depends_on` graph (parse-time topological-sort check)
+- **C5** — Decision matrix output (recorded in step-03 of design-modular-monolith) scored ≥3 of 4 options against ≥4 of 6 axes
+
+Pass condition: all C1-C5 auto-checks pass. No human-review criteria in v0.1.0 (P3.1 ships partial). P3.2 adds H-criteria when lifecycle skills (onboarding/offboarding/migration) provide evidence for module-evolution review.
 
 ---
 
@@ -468,7 +647,8 @@ QG-F1 (blocking).
 - [ ] 1 glossary CSV at `1-foundation/bmad-bam-agent-atlas/resources/glossary-terms-introduced.csv` (6 terms)
 - [ ] 2 quality-gate checklists: `QG-F1.md` (full, blocking), `QG-M1.md` (partial; auto-criteria only)
 - [ ] 1 customize-template overlay at `.../bmad-bam-design-modular-monolith/customize-template/bmad-create-architecture/customize.toml`
-- [ ] `module-help.csv`: 4 new rows (13 cols each per ADR-014); menu codes MM/DT/FM/TM
+- [ ] `module-help.csv`: 4 NEW rows + 4 EXISTING rows updated for Z-prefix migration; new codes ZMM/ZDP/ZFM/ZTT; migrated codes ZAT/ZST/ZFI/ZTN (per G1 fix)
+- [ ] `module-help.csv` `_meta` row: correct `output-location` from `_bmad/bam-platform/llms.txt` → `_bmad/bbp/llms.txt` (per G7 fix; post-Concern-5 stray from P3.0 llms.txt-generator commit)
 - [ ] `marketplace.json`: 4 new skill entries (paths under `2-modules/`)
 - [ ] `tests/audit-marketplace.sh` check (i) workflow allow-list: add 4 new entries
 - [ ] Tier-2 `tests/integration/run-real-install.sh`: verify the 4 skill paths exist post-install (BAM_TIER2=1 mode)
@@ -515,7 +695,7 @@ All Roadmap §4 items pass. Specific to P3.1:
 - [ ] Each new fragment has `**CRITICAL:**` quality check
 - [ ] Anti-patterns have `kind: anti-pattern` frontmatter per spec §6.5
 - [ ] Each new fragment has `last_reviewed: 2026-05-17`
-- [ ] module-help.csv updated with 4 new rows; menu codes MM/DT/FM/TM unique
+- [ ] module-help.csv updated with 4 NEW rows (ZMM/ZDP/ZFM/ZTT) + 4 EXISTING rows migrated to Z-prefix (ZAT/ZST/ZFI/ZTN); _meta `output-location` corrected to `_bmad/bbp/llms.txt`
 - [ ] marketplace.json regenerated with 4 new skill entries (phase-prefixed paths)
 - [ ] llms.txt regenerated post-changes
 - [ ] customize-template overlay smoke-tested (verify merge resolves correctly)
@@ -589,6 +769,46 @@ Each phase produces one atomic commit (per spec discipline established in PRs #1
 - Customize-template overlay scope — locked at minimal (R6); revisit if scope discussion warrants pre-implementation.
 
 (None of these block writing-plans. All can be deferred.)
+
+---
+
+---
+
+## 13. Module-help.csv row drafts (G10 spec)
+
+### 13.1 New rows (4)
+
+```csv
+BAM Platform,bmad-bam-design-modular-monolith,Modular Monolith Design,ZMM,"Bounded contexts + ports/adapters decomposition. Default: hybrid DDD + hexagonal. Decision matrix scores ddd-pure / ports-pure / hybrid / vertical-slice. Output: module-decomposition.md + .json (QG-F1 + QG-M1 evidence). Invoke via `/bmad-bam-design-modular-monolith`.",invoke-workflow,,solutioning,bmad-bam-design-tenancy-model,bmad-bam-design-deployment-topology,false,docs/architecture/,module-decomposition.md
+BAM Platform,bmad-bam-design-deployment-topology,Deployment Topology Design,ZDP,"Tenant cohorts + rollout strategy (blue-green / canary). Tightly coupled to tenancy choice. 4 tier-mapped defaults baked in. Output: deployment-topology.md + .json (QG-F1 evidence). REQUIRES tenancy-decision.json. Invoke via `/bmad-bam-design-deployment-topology`.",invoke-workflow,,solutioning,bmad-bam-design-tenancy-model,bmad-bam-design-finops-model,false,docs/architecture/,deployment-topology.md
+BAM Platform,bmad-bam-design-finops-model,FinOps Model Design,ZFM,"Unit economics + per-tenant cost attribution. Reads tenancy + tier + deployment artifacts (all required). Last in dep order; runs verify-coherence. Output: finops-baseline.md + .json + foundation-coherence.json (QG-F1 evidence). Invoke via `/bmad-bam-design-finops-model`.",invoke-workflow,,solutioning,"bmad-bam-design-tenancy-model,bmad-bam-design-tenant-tier-model,bmad-bam-design-deployment-topology",,false,docs/architecture/,finops-baseline.md
+BAM Platform,bmad-bam-design-tenant-tier-model,Tenant Tier Model Design,ZTT,"5 default tiers (free/starter/pro/business/enterprise); --custom-tiers N for 3-7-tier projects. Includes downstream-contract hints (rollout_tier_hint, cost_ceiling_usd_per_month_hint, upgrade_mode). Output: tier-model.md + .json (QG-F1 evidence). Invoke via `/bmad-bam-design-tenant-tier-model`.",invoke-workflow,,solutioning,bmad-bam-design-tenancy-model,bmad-bam-design-finops-model,false,docs/architecture/,tier-model.md
+```
+
+### 13.2 Updated rows (4 — Z-prefix migration per G1)
+
+| Existing menu-code | New menu-code | Skill |
+|---|---|---|
+| A | **ZAT** | bmad-bam-agent-atlas |
+| S | **ZST** | bmad-bam-smoke-test |
+| F | **ZFI** | bmad-bam-finalize |
+| D | **ZTN** | bmad-bam-design-tenancy-model |
+
+(Only the `menu-code` column changes for each; other 12 columns unchanged.)
+
+### 13.3 `_meta` row fix (G7)
+
+Current (stale post-Concern-5):
+```
+BAM Platform,_meta,,,,,,,,,false,_bmad/bam-platform/llms.txt,llms.txt
+```
+
+Corrected:
+```
+BAM Platform,_meta,,,,,,,,,false,_bmad/bbp/llms.txt,llms.txt
+```
+
+Per audit check (i) coverage from P3.0 — verify post-P3.1 that audit recognizes ZMM/ZDP/ZFM/ZTT in the workflow allow-list AND that menu-code uniqueness check passes for the 8 Z-prefix codes.
 
 ---
 
