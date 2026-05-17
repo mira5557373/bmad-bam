@@ -1,0 +1,40 @@
+---
+name: bmad-bam-design-multi-tenant-testing
+description: "Generate per-isolation-model test catalogue: isolation, noisy-neighbor, quota, RLS-bypass specs."
+module: bmad-bam-platform
+persona: atlas
+version: 0.1.0
+execution_mode:
+  default: assisted
+  alternatives: [manual]
+recommended_capabilities:
+  - extended-thinking
+minimum_persona_version: "0.1.0"
+latency_budget: "60min"
+cluster: lifecycle
+inputs:
+  - artifact: tenancy-decision.json
+    required: true
+    resolver: tool-aware-path-fallback
+    paths_tried:
+      - "{project-root}/docs/architecture/tenancy-decision.json"
+      - "{project-root}/_bmad/bam/evidence/QG-F1/tenancy-decision.json"
+  - artifact: tier-model.json
+    required: false
+    resolver: tool-aware-path-fallback
+    paths_tried:
+      - "{project-root}/docs/architecture/tier-model.json"
+      - "{project-root}/_bmad/bam/evidence/QG-F1/tier-model.json"
+outputs:
+  - artifact: test-catalogue.md
+    location: "{project-root}/docs/architecture/"
+    required: true
+  - artifact: test-catalogue.json
+    location: "{project-root}/_bmad/bam/evidence/QG-M2/"
+    required: true
+  - artifact: QG-M2-test-catalogue-evidence.md
+    location: "{project-root}/_bmad/bam/evidence/QG-M2/"
+    required: true
+gates:
+  - QG-M2
+flags: []
