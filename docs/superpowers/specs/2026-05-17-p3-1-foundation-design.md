@@ -199,6 +199,89 @@ Artifact schema (`tier-model.json`):
 
 Fields suffixed `_hint` are TENTATIVE — overridable by downstream skills. The `verify-coherence` step (last in finops, the 8th step) checks final values across all 3 artifacts and produces `_bmad/bam/evidence/QG-F1/foundation-coherence.json`.
 
+### JSON schemas for downstream artifacts (Round-3 self-review fix)
+
+These schemas pin field names that `verify-coherence` and `QG-M1` auto-criteria reference. Implementation MUST conform.
+
+#### `module-decomposition.json` (output of `design-modular-monolith`)
+
+```json
+{
+  "schema_version": "1.0",
+  "decided_at": "<ISO-8601>",
+  "decision": "ddd-pure | ports-pure | hybrid | vertical-slice",
+  "bounded_contexts": [
+    {
+      "id": "<kebab-case-name>",
+      "purpose": "<one-sentence>",
+      "adapter_ports": ["<port-name>", "..."],
+      "depends_on": ["<other-context-id>", "..."],
+      "tenant_aware": true
+    }
+  ],
+  "decision_matrix_ref": "_bmad/bam/cache/modular-monolith-design/<date>/decision-matrix.json"
+}
+```
+
+QG-M1 C2-C4 reference: `schema_version`, `decision`, `bounded_contexts[*].{adapter_ports, depends_on}`.
+
+#### `deployment-topology.json` (output of `design-deployment-topology`)
+
+```json
+{
+  "schema_version": "1.0",
+  "decided_at": "<ISO-8601>",
+  "rollout_primitive": "app-canary | per-schema-rollout | per-cell-blue-green | hybrid",
+  "rollout_per_tier": {
+    "free":       "aggressive_canary",
+    "starter":    "canary",
+    "pro":        "canary",
+    "business":   "blue_green_synthetics",
+    "enterprise": "blue_green_pilot"
+  },
+  "tenant_cohort_strategy": "by-tenant-id-hash | by-region | by-tier | by-explicit-list",
+  "rollback_strategy": "<description>",
+  "tenancy_input_ref": "_bmad/bam/evidence/QG-F1/tenancy-decision.json"
+}
+```
+
+`verify-coherence` reads `rollout_per_tier[tier_id]` to compare against `tier-model.json`'s `tier.rollout_tier_hint`.
+
+#### `finops-baseline.json` (output of `design-finops-model`)
+
+```json
+{
+  "schema_version": "1.0",
+  "decided_at": "<ISO-8601>",
+  "unit_economics": {
+    "ltv_estimate_usd": 0,
+    "cac_estimate_usd": 0,
+    "gross_margin_target_pct": 0
+  },
+  "per_tenant_attribution": {
+    "compute": "tenant_id_in_trace_span",
+    "storage": "by_predicate | by_schema | by_cell_then_intra",
+    "network": "tenant_context_header",
+    "third_party": "tenant_aware_client_logging"
+  },
+  "cost_ceiling_per_tier": {
+    "free":       0.50,
+    "starter":    5.00,
+    "pro":        25.00,
+    "business":   125.00,
+    "enterprise": 625.00
+  },
+  "budget_alert_thresholds": [
+    { "tier": "<id>", "alert_at_pct_of_ceiling": 80, "channel": "<slack|email|pagerduty>" }
+  ],
+  "tenancy_input_ref":     "_bmad/bam/evidence/QG-F1/tenancy-decision.json",
+  "tier_input_ref":        "_bmad/bam/evidence/QG-F1/tier-model.json",
+  "deployment_input_ref":  "_bmad/bam/evidence/QG-F1/deployment-topology.json"
+}
+```
+
+`verify-coherence` reads `cost_ceiling_per_tier[tier_id]` to compare against `tier-model.json`'s `tier.cost_ceiling_usd_per_month_hint` (20% drift threshold per algorithm in §3.R2).
+
 **verify-coherence algorithm (G3 spec):**
 
 ```python
@@ -648,7 +731,8 @@ QG-F1 (blocking).
 - [ ] 2 quality-gate checklists: `QG-F1.md` (full, blocking), `QG-M1.md` (partial; auto-criteria only)
 - [ ] 1 customize-template overlay at `.../bmad-bam-design-modular-monolith/customize-template/bmad-create-architecture/customize.toml`
 - [ ] `module-help.csv`: 4 NEW rows + 4 EXISTING rows updated for Z-prefix migration; new codes ZMM/ZDP/ZFM/ZTT; migrated codes ZAT/ZST/ZFI/ZTN (per G1 fix)
-- [ ] `module-help.csv` `_meta` row: correct `output-location` from `_bmad/bam-platform/llms.txt` → `_bmad/bbp/llms.txt` (per G7 fix; post-Concern-5 stray from P3.0 llms.txt-generator commit)
+<!-- G7 retracted on Round-3 self-review: P3.0's tools/generate-llms-txt.sh:16 documents `_bmad/bam-<descriptor>/llms.txt` as the deliberate convention; existing `_bmad/bam-platform/llms.txt` is correct (not a Concern-5 stray). No `_meta` row change in P3.1. -->
+
 - [ ] `marketplace.json`: 4 new skill entries (paths under `2-modules/`)
 - [ ] `tests/audit-marketplace.sh` check (i) workflow allow-list: add 4 new entries
 - [ ] Tier-2 `tests/integration/run-real-install.sh`: verify the 4 skill paths exist post-install (BAM_TIER2=1 mode)
@@ -695,7 +779,7 @@ All Roadmap §4 items pass. Specific to P3.1:
 - [ ] Each new fragment has `**CRITICAL:**` quality check
 - [ ] Anti-patterns have `kind: anti-pattern` frontmatter per spec §6.5
 - [ ] Each new fragment has `last_reviewed: 2026-05-17`
-- [ ] module-help.csv updated with 4 NEW rows (ZMM/ZDP/ZFM/ZTT) + 4 EXISTING rows migrated to Z-prefix (ZAT/ZST/ZFI/ZTN); _meta `output-location` corrected to `_bmad/bbp/llms.txt`
+- [ ] module-help.csv updated: 4 NEW rows (ZMM/ZDP/ZFM/ZTT) + 4 EXISTING rows migrated to Z-prefix (ZAT/ZST/ZFI/ZTN); `_meta` row unchanged (per G7 retraction — output-location is intentionally `_bmad/bam-platform/llms.txt` per generator's `_bmad/bam-<descriptor>/` convention)
 - [ ] marketplace.json regenerated with 4 new skill entries (phase-prefixed paths)
 - [ ] llms.txt regenerated post-changes
 - [ ] customize-template overlay smoke-tested (verify merge resolves correctly)
@@ -724,7 +808,8 @@ Per Roadmap §3 P3.1 ("Plan C R6 ratification optional; no install-mechanic chan
 
 | Component | Effort |
 |---|---|
-| 4 skills (SKILL.md + customize.toml + workflow.md + 5-7 steps + template + smoke-test) | 4 × ~12-15h = 48-60h |
+| 3 skills × 7 steps (modular-monolith, deployment-topology, tier-model) | 3 × ~12-14h = 36-42h |
+| 1 skill × 8 steps (finops-model — +1 verify-coherence step) | 1 × ~14-16h = 14-16h |
 | 18 fragments | 18 × ~1.5h = 27h |
 | 4 anti-patterns | 4 × ~1h = 4h |
 | Glossary CSV | ~1h |
@@ -749,7 +834,7 @@ Suggested phase order (~11 phases for the implementation plan):
 2. **Phase 1:** P2.1 R1 modification — `design-tenancy-model` adds JSON output + "Attribution affordances" template subsection. Smoke-test regression check.
 3. **Phase 2:** Skill scaffolding — 4 skill dirs + SKILL.md + customize.toml + workflow.md (no steps/fragments yet).
 4. **Phase 3:** Atlas resources (18 fragments + 4 anti-patterns + 6-term glossary CSV).
-5. **Phase 4:** modular-monolith skill — full 5-7 steps + template + smoke-test (independent — no required inputs).
+5. **Phase 4:** modular-monolith skill — full 7 steps + template + smoke-test (independent — no required inputs).
 6. **Phase 5:** tier-model skill — full implementation (independent of deployment).
 7. **Phase 6:** deployment-topology skill — full implementation (requires tenancy-decision.json from Phase 1).
 8. **Phase 7:** finops-model skill — full implementation (requires Phase 5 + 6 + 1 outputs); includes `verify-coherence` step.
@@ -796,19 +881,13 @@ BAM Platform,bmad-bam-design-tenant-tier-model,Tenant Tier Model Design,ZTT,"5 d
 
 (Only the `menu-code` column changes for each; other 12 columns unchanged.)
 
-### 13.3 `_meta` row fix (G7)
+### 13.3 `_meta` row — no change (G7 retracted)
 
-Current (stale post-Concern-5):
-```
-BAM Platform,_meta,,,,,,,,,false,_bmad/bam-platform/llms.txt,llms.txt
-```
+Round-3 self-review verified that the existing `_meta` row's `output-location: _bmad/bam-platform/llms.txt` is **deliberate**, not a Concern-5 stray. Evidence: `tools/generate-llms-txt.sh:16` header documents `_bmad/bam-<descriptor>/llms.txt` as the BAM-family naming convention (not aligned with the module install path `_bmad/<short-code>/`). Existing `_bmad/bam-platform/llms.txt` file was generated by P3.0 to this convention. No `_meta` row change in P3.1.
 
-Corrected:
-```
-BAM Platform,_meta,,,,,,,,,false,_bmad/bbp/llms.txt,llms.txt
-```
+### 13.4 Audit check (i) verification post-P3.1
 
-Per audit check (i) coverage from P3.0 — verify post-P3.1 that audit recognizes ZMM/ZDP/ZFM/ZTT in the workflow allow-list AND that menu-code uniqueness check passes for the 8 Z-prefix codes.
+Verify post-merge that audit recognizes ZMM/ZDP/ZFM/ZTT (new) + ZAT/ZST/ZFI/ZTN (migrated) in the workflow allow-list AND that menu-code uniqueness check passes for all 8 Z-prefix codes.
 
 ---
 
