@@ -3,7 +3,15 @@ name: bmad-bam-design-deployment-topology
 description: "Design rollout strategy + tenant cohorts for multi-tenant SaaS deployments."
 module: bmad-bam-platform
 persona: atlas
-execution_mode: facilitated  # human-in-the-loop CEV workflow
+version: 0.1.0
+execution_mode:
+  default: assisted
+  alternatives: [manual]
+recommended_capabilities:
+  - extended-thinking
+minimum_persona_version: "0.1.0"
+latency_budget: "45min"
+cluster: foundation
 inputs:
   - artifact: tenancy-decision.json
     required: true

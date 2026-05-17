@@ -14,6 +14,7 @@ assumptions:
   - "Workflow inputs declared in bmad-skill-manifest.yaml are honored by Atlas's workflow runner; required-vs-soft distinction is workflow-enforced via step-01 precondition checks"
   - "Menu codes ZMM/ZDP/ZFM/ZTT (new) and ZAT/ZST/ZFI/ZTN (migrated from A/S/F/D) are unique and conform to ADR-013's `Z<2 chars>` Z-prefix format. P3.0 deferred the migration; P3.1 picks it up."
   - "Customize-template overlay path convention is `<bam-skill-dir>/customize-template/<bmm-skill-name>/customize.toml` (BAM-internal convention; spec §7.2 does not specify a path; smoke-test verifies BMAD's three-layer merge resolves correctly)"
+  - "`per_tenant_attribution.storage` accepts `mixed` as a 4th value when `tenancy_model: hybrid` (spec §3 schema lists 3 values for non-hybrid cases; `mixed` covers the per-tier override scenario where different tiers use different attribution mechanisms). Validator at `bmad-bam-design-finops-model/steps/step-07-v-verify-completeness.md` enforces the 4-value enum."
 dependencies-on-other-decisions:
   - 2026-05-13-006
   - 2026-05-13-008

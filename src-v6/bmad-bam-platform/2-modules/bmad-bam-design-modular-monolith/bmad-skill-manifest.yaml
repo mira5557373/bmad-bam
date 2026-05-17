@@ -3,7 +3,15 @@ name: bmad-bam-design-modular-monolith
 description: "Decompose a multi-tenant SaaS codebase into bounded contexts with ports/adapters."
 module: bmad-bam-platform
 persona: atlas
-execution_mode: facilitated  # human-in-the-loop CEV workflow
+version: 0.1.0
+execution_mode:
+  default: assisted
+  alternatives: [manual]
+recommended_capabilities:
+  - extended-thinking
+minimum_persona_version: "0.1.0"
+latency_budget: "60min"
+cluster: foundation
 inputs:
   - artifact: tenancy-decision.json
     required: false
