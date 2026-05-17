@@ -53,6 +53,18 @@ Produce a `tier-model.md` design doc (human-readable narrative) and a `tier-mode
    | business | 100 | 500000 | 500 | 625 |
    | enterprise | 1000 | 5000000 | 5000 | 3125 |
 
+   Default `retention_window_days_hint` for the 5-default tiers (P3.2 schema 1.1; consumed by `bmad-bam-design-tenant-lifecycle-policies` to pre-fill grace/retention timers):
+
+   | id | retention_window_days_hint |
+   |---|---|
+   | free | 7 |
+   | starter | 30 |
+   | pro | 30 |
+   | business | 90 |
+   | enterprise | 365 |
+
+   **Custom-tier mode:** When `custom_tiers_mode: true`, `retention_window_days_hint` MUST be elicited from the user per tier — no defaults apply; step-07-v hard-fails if missing.
+
    For custom-N tiers, no defaults — elicit every field from the user.
 
 4. Write the populated narrative to `{project-root}/docs/architecture/tier-model.md` (ensure parent dir via `mkdir -p`).
@@ -61,11 +73,11 @@ Produce a `tier-model.md` design doc (human-readable narrative) and a `tier-mode
    - `{project-root}/docs/architecture/tier-model.json` (human-visible copy alongside narrative)
    - `{project-root}/_bmad/bam/evidence/QG-F1/tier-model.json` (gate-evidence pointer for QG-F1)
 
-   JSON schema (exact, per spec §3.Q5+R2):
+   JSON schema (exact, per spec §3.Q5+R2; **schema_version 1.1** per P3.2 §3.1 — adds optional `retention_window_days_hint` per tier; backwards-compatible with 1.0):
 
    ```json
    {
-     "schema_version": "1.0",
+     "schema_version": "1.1",
      "decided_at": "<ISO-8601 UTC>",
      "tier_count": 5,
      "custom_tiers_mode": false,
@@ -82,6 +94,7 @@ Produce a `tier-model.md` design doc (human-readable narrative) and a `tier-mode
          "features": ["basic_dashboards", "community_support"],
          "rollout_tier_hint": "aggressive_canary",
          "cost_ceiling_usd_per_month_hint": 0.50,
+         "retention_window_days_hint": 7,
          "upgrade_mode": "self_service",
          "upgrade_path": "starter"
        }
@@ -133,6 +146,7 @@ Machine-checkable:
   - `upgrade_mode` ∈ {`self_service`, `sales_assisted`}
   - `upgrade_path` chain is consistent (each non-top tier points to the next; top tier is `null`)
   - `transitions.any_downgrade == "rate_arbitrage_check"`
+  - `retention_window_days_hint` (P3.2 schema 1.1, optional in 5-default mode / required in custom-tier mode): integer in `[0, 36500]` per tier
 
 ## Next step
 

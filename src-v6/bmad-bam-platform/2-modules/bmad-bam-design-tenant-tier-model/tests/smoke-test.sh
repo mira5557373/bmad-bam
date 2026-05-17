@@ -114,4 +114,12 @@ else
     exit 1
 fi
 
+# 12. Step-05 documents retention_window_days_hint field (P3.2 schema 1.1)
+if grep -q "retention_window_days_hint" "$SKILL_DIR/steps/step-05-c-write-design.md"; then
+    echo "    [valid] step-05 documents retention_window_days_hint field (P3.2 schema 1.1)"
+else
+    echo "    [INVALID] step-05 missing retention_window_days_hint documentation" >&2
+    exit 1
+fi
+
 echo ">>> PASS: smoke test"
