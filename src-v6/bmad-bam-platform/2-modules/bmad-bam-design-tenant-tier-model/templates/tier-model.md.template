@@ -1,0 +1,74 @@
+---
+id: tier-model
+title: "{{project_name}} — Tenant Tier Model"
+status: draft
+date: "{{today}}"
+persona: atlas
+workflow_run_id: "{{run_id}}"
+---
+
+# Tenant Tier Model — {{project_name}}
+
+## Decision
+
+**Tier count:** {{tier_count}}
+**Custom tiers mode:** {{custom_tiers_mode}}
+**Final tier ids (low → high):** {{final_tier_ids}}
+**Confidence:** {{confidence}}
+
+## Context
+
+- Target tenant types: {{target_tenant_types}}
+- Pricing strategy: {{pricing_strategy}}
+- Business-model maturity: {{business_model_maturity}}
+- Tenancy model (if available): {{tenancy_model}}
+
+## Rationale
+
+{{rationale_text}}
+
+## Tier matrix
+
+| id | price (USD/mo) | limits (summary) | features (summary) | rollout_tier_hint | cost_ceiling_hint (USD/mo) | upgrade_mode | upgrade_path |
+|---|---|---|---|---|---|---|---|
+| {{tier_1_id}} | {{tier_1_price}} | {{tier_1_limits_summary}} | {{tier_1_features_summary}} | {{tier_1_rollout_hint}} | {{tier_1_cost_ceiling}} | {{tier_1_upgrade_mode}} | {{tier_1_upgrade_path}} |
+| {{tier_2_id}} | {{tier_2_price}} | {{tier_2_limits_summary}} | {{tier_2_features_summary}} | {{tier_2_rollout_hint}} | {{tier_2_cost_ceiling}} | {{tier_2_upgrade_mode}} | {{tier_2_upgrade_path}} |
+
+(Add a row per tier; the row count equals `tier_count`.)
+
+## Limits per tier
+
+| id | seats | api_calls_per_month | storage_gb | compute_hours | extras |
+|---|---|---|---|---|---|
+| {{tier_1_id}} | {{tier_1_seats}} | {{tier_1_api_calls}} | {{tier_1_storage_gb}} | {{tier_1_compute_hours}} | {{tier_1_extra_limits}} |
+| {{tier_2_id}} | {{tier_2_seats}} | {{tier_2_api_calls}} | {{tier_2_storage_gb}} | {{tier_2_compute_hours}} | {{tier_2_extra_limits}} |
+
+(`extras` lists any non-default limit keys the project adds — downstream skills tolerate these.)
+
+## Features per tier
+
+| id | features |
+|---|---|
+| {{tier_1_id}} | {{tier_1_features_full}} |
+| {{tier_2_id}} | {{tier_2_features_full}} |
+
+## Transitions
+
+**Upgrade paths** are encoded in the `upgrade_path` field per tier. The chain is verified by step-07: each non-top tier points to the next-higher tier id; the top tier has `upgrade_path: null`.
+
+**Downgrade policy:** `transitions.any_downgrade = "rate_arbitrage_check"` — every downgrade request is screened against rate-arbitrage abuse (e.g., a tenant repeatedly cycling between tiers to exploit usage-window edges) before the downgrade is processed.
+
+**Upgrade modes:**
+- `self_service` — tenant initiates upgrade via in-app billing UI. Typical for free/starter/pro.
+- `sales_assisted` — sales contact required (procurement, custom contract, DPA). Typical for business/enterprise.
+
+## Quality gate references
+
+- [QG-F1 — Foundation Architecture](../../_bmad/bbp/bmad-bam-agent-atlas/resources/checklists/QG-F1.md) — `tier-model.json` is 1 of 5 required foundation evidence files (criterion C5).
+
+## Next steps
+
+After this design is approved:
+
+1. Run `bmad-bam-design-deployment-topology` — consumes `rollout_tier_hint` from each tier to pre-fill rollout cohorts.
+2. Run `bmad-bam-design-finops-model` — consumes `cost_ceiling_usd_per_month_hint` from each tier to set per-tenant cost alarms + chargeback bands.

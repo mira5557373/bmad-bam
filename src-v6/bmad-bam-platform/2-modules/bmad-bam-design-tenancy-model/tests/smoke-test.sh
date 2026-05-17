@@ -69,4 +69,19 @@ grep -q "{{.*}}" "$SKILL_DIR/templates/tenancy-model.md.template" \
     || { echo "FAIL: template missing placeholders"; exit 1; }
 echo "    [valid] template has placeholders"
 
+# P3.1 retrofit checks (Tasks 1 + 2)
+if grep -q "tenancy-decision\.json" "$SKILL_DIR/steps/step-05-c-write-design.md"; then
+    echo "    [valid] step-05 emits tenancy-decision.json (P3.1 contract per ADR-015)"
+else
+    echo "    [INVALID] step-05 missing tenancy-decision.json output" >&2
+    exit 1
+fi
+
+if grep -q "Attribution affordances" "$SKILL_DIR/templates/tenancy-model.md.template"; then
+    echo "    [valid] template has Attribution affordances subsection rule"
+else
+    echo "    [INVALID] template missing Attribution affordances subsection" >&2
+    exit 1
+fi
+
 echo ">>> PASS: smoke test"

@@ -316,9 +316,9 @@ BAM_TIER2=1 tests/integration/run-real-install.sh               # PASS
 - Customize-template overlay for `bmad-create-architecture` (if scope confirms; per §7.2)
 - Marketplace.json: 4 new skill entries
 - **Tier-2 script update:** verify Tier-2's 4-skills check still expects the 4 platform skills (no change in arg yet — still `--modules bbp`)
-- ADR-014 (Wave P3.1 design decisions, dependencies-on-other-decisions: [008, 009, 010])
+- ADR-015 (Wave P3.1 design decisions, dependencies-on-other-decisions: [006, 008, 009, 010, 011, 012, 013, 014]) — LANDED 2026-05-17
 - Spec changelog row (v0.10 if scope is substantial; otherwise no bump)
-- INDEX.md row for ADR-014
+- INDEX.md row for ADR-015
 
 **Cross-validation (Claude on PR):**
 - [ ] Universal checklist §4 — all items pass
@@ -1790,12 +1790,14 @@ Each wave's spec changelog row decision:
 - Substantial content addition without structural change → no bump
 - Bug fix or annotation → no bump
 
-**ADR numbering reservations** (sequential; current latest: 010):
+**ADR numbering reservations** (sequential; current latest: 015):
 
 | Wave | ADRs reserved | Topics |
 |---|---|---|
 | **v4 roadmap (pre-wave-P3)** | **011-013** | **Phase-column decoupling (§19.3), BMM all-in-skills (§19.6), Menu-code 3-char Z-prefix extension (§19.7)** |
-| P3 | 014-018 | Foundation, Lifecycle, Commercial, Brownfield, Wave-completion (shifted from 011-015) |
+| P3.0 | 014 | BMM manifest reconciliation — LANDED 2026-05-16 |
+| P3.1 | 015 | Foundation Skills design decisions (4 skills + QG-F1 + QG-M1 partial) — LANDED 2026-05-17 |
+| P3 (remaining) | 016-019 | Lifecycle (P3.2), Commercial (P3.3), Brownfield (P3.4), Wave-completion |
 | P4 | 019-022 | Module bootstrap + 3 sub-waves (shifted from 016-019) |
 | P5 | 023-030 | Nova introduction + 6 sub-waves + cross-persona (shifted from 020-027) |
 | P6 | 031-033 | Iris introduction + sub-waves (shifted from 028-030) |

@@ -1,12 +1,12 @@
 # BAM v6 — Platform Module — Skills Inventory
 
 Module code: `bmad-bam-platform`
-Generated: 2026-05-16
+Generated: 2026-05-17
 Source: `src-v6/bmad-bam-platform/module-help.csv`
 
 ## Skills
 
-### `bmad-bam-agent-atlas` — Atlas — Platform Architect (A)
+### `bmad-bam-agent-atlas` — Atlas — Platform Architect (ZAT)
 
 Multi-tenant SaaS platform architect. Discuss tenant isolation, modular monolith decomposition, FinOps, tenant tiering. Invocable for ad-hoc consultations; also canonical home for shared platform-module resources (fragments, patterns, standards, checklists).
 
@@ -15,7 +15,7 @@ Multi-tenant SaaS platform architect. Discuss tenant isolation, modular monolith
 - **Output:** 
 - **SKILL.md:** `src-v6/bmad-bam-platform/1-foundation/bmad-bam-agent-atlas/SKILL.md`
 
-### `bmad-bam-smoke-test` — BAM v6 Activation Smoke Test (S)
+### `bmad-bam-smoke-test` — BAM v6 Activation Smoke Test (ZST)
 
 Verify the BAM v6 universal-glob activation mechanism end-to-end. Resolver-side checks: literal universal-glob string survives BMAD's three-layer customize merge into target skill's persistent_facts; sentinel file present at {output_folder}/bbp/project-context.md. Run after bmad install or BMAD-version change.
 
@@ -24,7 +24,7 @@ Verify the BAM v6 universal-glob activation mechanism end-to-end. Resolver-side 
 - **Output:** _bmad/bam/family.json
 - **SKILL.md:** `src-v6/bmad-bam-platform/9-infrastructure/bmad-bam-smoke-test/SKILL.md`
 
-### `bmad-bam-finalize` — BAM v6 Platform Activation Finalizer (F)
+### `bmad-bam-finalize` — BAM v6 Platform Activation Finalizer (ZFI)
 
 Generate (or refresh) the universal-glob sentinel at {output_folder}/bbp/project-context.md so BMAD core skills auto-load BAM v6 platform context at activation. Run once after bmad install bmad-bam-platform.
 
@@ -33,7 +33,7 @@ Generate (or refresh) the universal-glob sentinel at {output_folder}/bbp/project
 - **Output:** {output_folder}/bbp/project-context.md
 - **SKILL.md:** `src-v6/bmad-bam-platform/9-infrastructure/bmad-bam-finalize/SKILL.md`
 
-### `bmad-bam-design-tenancy-model` — Design Tenancy Model (D)
+### `bmad-bam-design-tenancy-model` — Design Tenancy Model (ZTN)
 
 Facilitated design workflow: choose multi-tenant isolation model (RLS / schema-per-tenant / cell-based / hybrid) based on tenant projections, compliance scope, blast-radius tolerance. Output: tenancy-model.md design doc + ADR + QG-M2 partial evidence.
 
@@ -41,6 +41,42 @@ Facilitated design workflow: choose multi-tenant isolation model (RLS / schema-p
 - **Required:** false
 - **Output:** docs/architecture/
 - **SKILL.md:** `src-v6/bmad-bam-platform/2-modules/bmad-bam-design-tenancy-model/SKILL.md`
+
+### `bmad-bam-design-modular-monolith` — Modular Monolith Design (ZMM)
+
+Bounded contexts + ports/adapters decomposition. Default: hybrid DDD + hexagonal. Decision matrix scores ddd-pure / ports-pure / hybrid / vertical-slice. Output: module-decomposition.md + .json (QG-F1 + QG-M1 evidence). Invoke via `/bmad-bam-design-modular-monolith`.
+
+- **Phase:** solutioning
+- **Required:** false
+- **Output:** docs/architecture/
+- **SKILL.md:** `src-v6/bmad-bam-platform/2-modules/bmad-bam-design-modular-monolith/SKILL.md`
+
+### `bmad-bam-design-deployment-topology` — Deployment Topology Design (ZDP)
+
+Tenant cohorts + rollout strategy (blue-green / canary). Tightly coupled to tenancy choice. 4 tier-mapped defaults baked in. Output: deployment-topology.md + .json (QG-F1 evidence). REQUIRES tenancy-decision.json. Invoke via `/bmad-bam-design-deployment-topology`.
+
+- **Phase:** solutioning
+- **Required:** false
+- **Output:** docs/architecture/
+- **SKILL.md:** `src-v6/bmad-bam-platform/2-modules/bmad-bam-design-deployment-topology/SKILL.md`
+
+### `bmad-bam-design-finops-model` — FinOps Model Design (ZFM)
+
+Unit economics + per-tenant cost attribution. Reads tenancy + tier + deployment artifacts (all required). Last in dep order; runs verify-coherence. Output: finops-baseline.md + .json + foundation-coherence.json (QG-F1 evidence). Invoke via `/bmad-bam-design-finops-model`.
+
+- **Phase:** solutioning
+- **Required:** false
+- **Output:** docs/architecture/
+- **SKILL.md:** `src-v6/bmad-bam-platform/2-modules/bmad-bam-design-finops-model/SKILL.md`
+
+### `bmad-bam-design-tenant-tier-model` — Tenant Tier Model Design (ZTT)
+
+5 default tiers (free/starter/pro/business/enterprise); --custom-tiers N for 3-7-tier projects. Includes downstream-contract hints (rollout_tier_hint, cost_ceiling_usd_per_month_hint, upgrade_mode). Output: tier-model.md + .json (QG-F1 evidence). Invoke via `/bmad-bam-design-tenant-tier-model`.
+
+- **Phase:** solutioning
+- **Required:** false
+- **Output:** docs/architecture/
+- **SKILL.md:** `src-v6/bmad-bam-platform/2-modules/bmad-bam-design-tenant-tier-model/SKILL.md`
 
 ## Invocation
 

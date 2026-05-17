@@ -35,6 +35,17 @@ Greenfield/brownfield: {{greenfield_or_brownfield}}
 
 (Pulled from the matching fragment: rls-deep-dive / schema-per-tenant / cell-based-architecture.)
 
+### Attribution affordances
+
+For machine-readable downstream consumption (per ADR-015 / spec §3.R1), this section MUST enumerate the attribution mechanisms enabled by the chosen tenancy model:
+
+- **Compute:** how tenant-id propagates to compute work (e.g., `tenant_id` in trace-span baggage)
+- **Storage:** how per-tenant storage cost can be measured (`by_predicate` for RLS, `by_schema` for schema-per-tenant, `by_cell_then_intra` for cell-based)
+- **Network:** how tenant-tagged network traffic is identified (e.g., `tenant_context` HTTP header at load balancer)
+- **Third-party:** how external API calls are attributed (e.g., per-tenant API client wrapper logs requests)
+
+The `tenancy-decision.json` companion file encodes these affordances in structured form for direct consumption by `design-finops-model` and `verify-coherence`.
+
 ## Risks + Mitigations
 
 {{risks}}

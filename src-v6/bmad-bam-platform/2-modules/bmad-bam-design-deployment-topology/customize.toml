@@ -1,0 +1,23 @@
+# DO NOT EDIT -- overwritten on every update.
+#
+# Workflow customization surface for bmad-bam-design-deployment-topology. Mirrors
+# the agent customization shape under the [workflow] namespace.
+
+[workflow]
+
+# --- Configurable below. Overrides merge per BMad structural rules: ---
+#   scalars: override wins • arrays (persistent_facts, activation_steps_*): append
+#   arrays-of-tables with `code`/`id`: replace matching items, append new ones.
+
+activation_steps_prepend = []
+activation_steps_append = []
+
+# Persistent facts loaded at every activation of this skill. Per spec §3.Q7,
+# cross-workflow data flows via bmad-skill-manifest.yaml inputs:; this list is
+# only the universal-glob sentinel for project-context discovery.
+persistent_facts = [
+  "file:{project-root}/**/project-context.md",
+]
+
+# No menu items at workflow level; users invoke via /bmad-bam-design-deployment-topology
+# directly. Workflow-internal navigation handled by workflow.md.

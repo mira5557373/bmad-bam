@@ -1,0 +1,69 @@
+---
+id: module-decomposition
+title: "{{project_name}} — Module Decomposition"
+status: draft
+date: "{{today}}"
+persona: atlas
+workflow_run_id: "{{run_id}}"
+---
+
+# Module Decomposition — {{project_name}}
+
+## Decision
+
+**Chosen decomposition:** {{decision}}
+**Confidence:** {{confidence}}
+
+## Context
+
+Domain summary: {{domain_summary}}
+Team size: {{team_size}}
+Codebase status: {{codebase_status}}
+Tenancy model (if available): {{tenancy_model}}
+
+## Rationale
+
+{{rationale_text}}
+
+## Bounded contexts
+
+| id | purpose | adapter_ports | depends_on | tenant_aware |
+|---|---|---|---|---|
+| {{bc_1_id}} | {{bc_1_purpose}} | {{bc_1_adapter_ports}} | {{bc_1_depends_on}} | {{bc_1_tenant_aware}} |
+| {{bc_2_id}} | {{bc_2_purpose}} | {{bc_2_adapter_ports}} | {{bc_2_depends_on}} | {{bc_2_tenant_aware}} |
+
+(Add a row per bounded context. Minimum 2 contexts; step-07 verifies.)
+
+## Adapter port catalog
+
+(Required when `decision` is `ports-pure` or `hybrid`; omit for `ddd-pure`.)
+
+| Port name | Direction | Adapter implementations | Notes |
+|---|---|---|---|
+| {{port_1_name}} | {{port_1_direction}} | {{port_1_adapters}} | {{port_1_notes}} |
+
+Direction = `inbound` (driving the application) or `outbound` (driven by the application).
+
+## Decision matrix scores
+
+| Option | tenant_count | team_size | domain_complexity | migration_cost | test_ergonomics | ai_comprehensibility | weighted_sum |
+|---|---|---|---|---|---|---|---|
+| ddd-pure | {{ddd_pure_scores}} | | | | | | {{ddd_pure_sum}} |
+| ports-pure | {{ports_pure_scores}} | | | | | | {{ports_pure_sum}} |
+| hybrid | {{hybrid_scores}} | | | | | | {{hybrid_sum}} |
+| vertical-slice | {{vertical_slice_scores}} | | | | | | {{vertical_slice_sum}} |
+
+Weights: tenant 0.20, team 0.20, complexity 0.20, migration 0.15, test 0.15, ai 0.10 (sum = 1.0).
+
+## Quality gate references
+
+- [QG-F1 — Foundation Architecture](../../_bmad/bbp/bmad-bam-agent-atlas/resources/checklists/QG-F1.md) — `module-decomposition.json` is 1 of 5 required foundation evidence files.
+- [QG-M1 — Module Boundaries](../../_bmad/bbp/bmad-bam-agent-atlas/resources/checklists/QG-M1.md) — partial evidence emitted by this workflow; full satisfaction requires runtime checks from P3.2 workflows.
+
+## Next steps
+
+After this design is approved:
+
+1. Run `bmad-bam-design-deployment-topology` to map bounded contexts onto deployable units.
+2. Run `bmad-bam-design-tenant-tier-model` to align tier-specific isolation with tenant-aware contexts.
+3. Run `bmad-bam-design-finops-model` to enable per-context + per-tenant cost attribution.

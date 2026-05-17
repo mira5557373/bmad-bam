@@ -1,0 +1,36 @@
+---
+name: bmad-bam-design-tenant-tier-model
+description: "Design the tier matrix (5 default tiers; --custom-tiers 3-7 for non-standard projects)."
+module: bmad-bam-platform
+persona: atlas
+version: 0.1.0
+execution_mode:
+  default: assisted
+  alternatives: [manual]
+recommended_capabilities:
+  - extended-thinking
+minimum_persona_version: "0.1.0"
+latency_budget: "45min"
+cluster: foundation
+inputs:
+  - artifact: tenancy-decision.json
+    required: false
+    resolver: tool-aware-path-fallback
+    paths_tried:
+      - "{project-root}/docs/architecture/tenancy-decision.json"
+      - "{project-root}/_bmad/bam/evidence/QG-F1/tenancy-decision.json"
+outputs:
+  - artifact: tier-model.md
+    location: "{project-root}/docs/architecture/"
+    required: true
+  - artifact: tier-model.json
+    location: "{project-root}/_bmad/bam/evidence/QG-F1/"
+    required: true
+gates:
+  - QG-F1
+flags:
+  - name: --custom-tiers
+    type: integer
+    range: [3, 7]
+    default: 5
+    description: "Number of tiers; default 5 (free/starter/pro/business/enterprise); 3-7 valid range for custom-tier projects"

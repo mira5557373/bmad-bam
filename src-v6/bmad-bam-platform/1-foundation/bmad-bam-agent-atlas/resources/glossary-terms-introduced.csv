@@ -1,0 +1,7 @@
+term,one-sentence-definition,introduced-in-skill,status
+bounded-context,"A cohesive boundary within a domain model where a single ubiquitous language applies (DDD).",bmad-bam-design-modular-monolith,provisional
+tenant-cohort,"A deliberately-defined subset of tenants grouped for rollout, billing, or routing decisions.",bmad-bam-design-deployment-topology,provisional
+per-tenant-cost-attribution,"Mechanism for assigning infrastructure cost (compute, storage, network) to specific tenant identities.",bmad-bam-design-finops-model,provisional
+tier-cliff,"A discontinuity between tiers (price jump, feature jump) that incentivizes user workarounds rather than upgrades.",bmad-bam-design-tenant-tier-model,provisional
+unit-economics,"The per-unit-of-business revenue, cost, and margin model; for SaaS the unit is typically a tenant or seat.",bmad-bam-design-finops-model,provisional
+feature-gating,"The mechanism for enabling/disabling features based on a tenant's tier, role, or other attribute.",bmad-bam-design-tenant-tier-model,provisional

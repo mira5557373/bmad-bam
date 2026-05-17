@@ -1,0 +1,90 @@
+---
+id: finops-baseline
+title: "{{project_name}} — FinOps Baseline"
+status: draft
+date: "{{today}}"
+persona: atlas
+workflow_run_id: "{{run_id}}"
+---
+
+# FinOps Baseline — {{project_name}}
+
+## Decision
+
+**Storage attribution:** {{attribution_storage}}
+**Budgeting strategy:** {{budgeting_strategy}}
+**Confidence:** {{confidence}}
+
+{{rationale_text}}
+
+## Context
+
+- Tenancy model (REQUIRED input): {{tenancy_model}} (from `_bmad/bam/evidence/QG-F1/tenancy-decision.json`)
+- Tier count (REQUIRED input): {{tier_count}} (from `_bmad/bam/evidence/QG-F1/tier-model.json`)
+- Rollout primitive (REQUIRED input): {{rollout_primitive}} (from `_bmad/bam/evidence/QG-F1/deployment-topology.json`)
+- Gross-margin target: {{gross_margin_target_pct}}%
+- Pricing maturity: {{pricing_maturity}}
+- Cloud provider: {{cloud_provider}}
+- Instrumentation maturity: {{instrumentation_maturity}}
+
+## Unit economics
+
+| Metric | Value | Notes |
+|---|---|---|
+| LTV (USD per tenant) | {{ltv_estimate_usd}} | {{ltv_basis_note}} |
+| CAC (USD per tenant) | {{cac_estimate_usd}} | {{cac_basis_note}} |
+| Gross-margin target | {{gross_margin_target_pct}}% | {{margin_basis_note}} |
+| LTV / CAC | {{ltv_over_cac}} | SaaS rule of thumb: ≥ 3 |
+
+(Per `unit-economics-saas` fragment: LTV / CAC ≥ 3 is the working threshold; ratios below 3 indicate either CAC bloat or LTV erosion. Pre-revenue projects use comparable-company benchmarks; established projects use cohort actuals.)
+
+## Per-tenant attribution
+
+| Cost category | Attribution mechanism | Notes |
+|---|---|---|
+| compute | {{attribution_compute}} | Every request span / log line carries `tenant_id`; rolls up to per-tenant compute cost. |
+| storage | {{attribution_storage}} | Tenancy-coupled (see spec §3.R1): RLS → `by_predicate`; schema → `by_schema`; cell → `by_cell_then_intra`; hybrid → `mixed`. |
+| network | {{attribution_network}} | Egress / data-transfer attributed via `X-Tenant-Id` header at the gateway. |
+| third_party | {{attribution_third_party}} | Wrapped client SDKs (OpenAI, Stripe, S3 cross-region) log per-call cost + `tenant_id`. CRITICAL for AI workloads. |
+
+**Coverage target (per `per-tenant-cost-attribution-with-hooks` fragment CRITICAL):** per-tenant cost rollup must reconcile to cloud-bill total within 95%. Unattributed waste indicates an instrumentation gap that becomes a pricing-margin leak at scale.
+
+## Cost ceilings per tier
+
+| tier id | cost ceiling (USD/month) | reconciles to tier-model hint? |
+|---|---|---|
+| {{tier_1_id}} | {{tier_1_ceiling}} | {{tier_1_hint_status}} |
+| {{tier_2_id}} | {{tier_2_ceiling}} | {{tier_2_hint_status}} |
+
+(Add a row per tier id in `cost_ceiling_per_tier`. The `reconciles` column tracks whether each tier's actual ceiling is within 20% of the tier-model.json hint — this is what step-08 verify-coherence reports against.)
+
+## Budget alerts
+
+| tier id | alert at % of ceiling | channel | notes |
+|---|---|---|---|
+| {{tier_1_id}} | {{tier_1_alert_pct}} | {{tier_1_alert_channel}} | {{tier_1_alert_note}} |
+| {{tier_2_id}} | {{tier_2_alert_pct}} | {{tier_2_alert_channel}} | {{tier_2_alert_note}} |
+
+(Per `budget-alerts-and-quotas` fragment: free/starter → email (low-stakes); pro → slack; business/enterprise → pagerduty (white-glove, account team pages before customer impact). Multi-threshold tiers may have ≥ 1 row.)
+
+## Cross-references
+
+This decision depends on 3 REQUIRED upstream Foundation artifacts:
+
+- [`tenancy-decision.json`](./tenancy-decision.md) — drives `per_tenant_attribution.storage` mechanism.
+- [`tier-model.json`](./tier-model.md) — drives `cost_ceiling_per_tier` keys and seeds the hint values.
+- [`deployment-topology.json`](./deployment-topology.md) — informs infra-cost cohort mapping (e.g., per-cell-blue-green doubles infra spend during draining).
+
+The Foundation coherence report (`_bmad/bam/evidence/QG-F1/foundation-coherence.json`) is emitted by step-08 and cross-checks tier-model hints against deployment + finops actuals.
+
+## Quality gate references
+
+- [QG-F1 — Foundation Architecture](../../_bmad/bbp/bmad-bam-agent-atlas/resources/checklists/QG-F1.md) — `finops-baseline.json` is 1 of 5 required foundation evidence files (criterion C4), and `foundation-coherence.json` (emitted by step-08) is the 5th (criterion C3).
+
+## Next steps
+
+After this design is approved, QG-F1 (blocking) can be evaluated. Foundation is complete. Downstream phases:
+
+1. **P3.2 Module skills** — pricing-page work + per-seat / per-resource billing can now safely reference per-tenant cost data.
+2. **Operations** — wire the alert channels (slack / pagerduty / email integrations); confirm the instrumentation hooks land in production telemetry.
+3. **Revisit triggers** — if gross margin slips below `gross_margin_target_pct - 10%` for two consecutive quarters, OR if any upstream Foundation artifact changes, re-run this workflow in Edit mode (revalidates coherence + may revise ceilings).

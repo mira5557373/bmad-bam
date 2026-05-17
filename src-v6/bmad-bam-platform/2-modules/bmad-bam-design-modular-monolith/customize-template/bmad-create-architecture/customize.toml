@@ -1,0 +1,13 @@
+# Customize-template overlay for BMM's bmad-create-architecture skill.
+# Loaded via BMAD's three-layer merge when both BAM platform module and
+# BMM are installed. Spec §7.2 + ADR-015 G6 path convention.
+
+[workflow]
+
+activation_steps_append = [
+  "If this project is a multi-tenant SaaS, consult BAM's Foundation skills (`/bmad-bam-design-tenancy-model` + `/bmad-bam-design-modular-monolith`) before architecture decisions — tenancy choice and bounded-context decomposition are load-bearing."
+]
+
+persistent_facts = [
+  "file:{project-root}/_bmad-output/bbp/project-context.md"
+]

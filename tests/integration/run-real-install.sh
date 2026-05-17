@@ -25,9 +25,11 @@
 #        --custom-source $REPO_ROOT --modules bbp
 #        --directory $WORK_DIR --tools claude-code --yes
 #   4. Verify Strategy-1 outcome on disk: _bmad/bbp/config.yaml +
-#      _bmad/bbp/module-help.csv exist; 4 BAM skills land at
+#      _bmad/bbp/module-help.csv exist; all expected BAM skills land at
 #      .claude/skills/bmad-bam-*/ (tool-specific install path, NOT
-#      _bmad/<code>/<skill>/).
+#      _bmad/<code>/<skill>/). The expected-skills list is read from
+#      .claude-plugin/marketplace.json so it stays in sync as new
+#      Foundation/Lifecycle/Commercial skills ship.
 #   5. Run finalize: bash $WORK_DIR/.claude/skills/bmad-bam-finalize/
 #      scripts/post-install.sh $WORK_DIR.
 #   6. Verify sentinel: _bmad-output/bbp/project-context.md exists +
@@ -155,19 +157,42 @@ echo "    PASS: _bmad/bbp/ contains config.yaml + module-help.csv (Strategy-1 co
 # ─── Step 3: BAM skills materialized at .claude/skills/ ──────────────────
 echo ">>> Step 3: verify BAM skills materialized at tool-specific install dir"
 
+# Source of truth: skills declared under the bmad-bam-platform plugin in
+# .claude-plugin/marketplace.json. Reading the list dynamically keeps this
+# check from going stale as new Foundation/Lifecycle/Commercial skills ship.
+EXPECTED_SKILLS=$(python3 -c "
+import json, sys
+with open('$REPO_ROOT/.claude-plugin/marketplace.json') as f:
+    m = json.load(f)
+for p in m.get('plugins', []):
+    if p.get('name') == 'bmad-bam-platform':
+        for s in p.get('skills', []):
+            # Entries are typically path strings like './src-v6/.../bmad-bam-xyz';
+            # tolerate dict form too for forward-compat.
+            if isinstance(s, str):
+                name = s.rstrip('/').rsplit('/', 1)[-1]
+            else:
+                name = s.get('name') or s.get('path','').rstrip('/').rsplit('/',1)[-1]
+            if name:
+                print(name)
+        sys.exit(0)
+sys.exit('bmad-bam-platform plugin not found in marketplace.json')
+")
+BAM_SKILLS_EXPECTED=$(printf '%s\n' "$EXPECTED_SKILLS" | wc -l | tr -d ' ')
 BAM_SKILLS_FOUND=0
-for skill in bmad-bam-agent-atlas bmad-bam-design-tenancy-model bmad-bam-finalize bmad-bam-smoke-test; do
+while IFS= read -r skill; do
+    [ -z "$skill" ] && continue
     if [ -d "$WORK_DIR/.claude/skills/$skill" ]; then
         BAM_SKILLS_FOUND=$((BAM_SKILLS_FOUND + 1))
     else
         echo "FAIL: .claude/skills/$skill not present" >&2
     fi
-done
-if [ "$BAM_SKILLS_FOUND" -ne 4 ]; then
-    echo "FAIL: expected 4 BAM skills at .claude/skills/, found $BAM_SKILLS_FOUND" >&2
+done <<< "$EXPECTED_SKILLS"
+if [ "$BAM_SKILLS_FOUND" -ne "$BAM_SKILLS_EXPECTED" ]; then
+    echo "FAIL: expected $BAM_SKILLS_EXPECTED BAM skills at .claude/skills/, found $BAM_SKILLS_FOUND" >&2
     exit 1
 fi
-echo "    PASS: all 4 BAM skills installed at .claude/skills/ (tool-specific path; Concern 5 R2 empirical reality)"
+echo "    PASS: all $BAM_SKILLS_FOUND/$BAM_SKILLS_EXPECTED BAM skills installed at .claude/skills/ (tool-specific path; Concern 5 R2 empirical reality)"
 
 # ─── Step 4: Run finalize ─────────────────────────────────────────────────
 echo ">>> Step 4: run finalize (post-install.sh)"
@@ -203,7 +228,7 @@ echo ""
 echo ">>> TIER-2 PASS"
 echo "    install pipeline: end-to-end OK"
 echo "    Strategy 1:       confirmed (config.yaml + module-help.csv at _bmad/bbp/)"
-echo "    skill install:    confirmed at .claude/skills/bmad-bam-*/ (4/4)"
+echo "    skill install:    confirmed at .claude/skills/bmad-bam-*/ ($BAM_SKILLS_FOUND/$BAM_SKILLS_EXPECTED)"
 echo "    finalize:         sentinel written"
 echo "    sentinel token:   $SENTINEL_TOKEN"
 echo ""
