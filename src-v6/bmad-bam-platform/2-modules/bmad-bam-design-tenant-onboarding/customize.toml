@@ -1,0 +1,15 @@
+# DO NOT EDIT -- overwritten on every update.
+#
+# Workflow customization surface for bmad-bam-design-tenant-onboarding. Mirrors
+# the agent customization shape under the [workflow] namespace.
+
+[workflow]
+
+activation_steps_prepend = []
+activation_steps_append = []
+
+# Persistent facts loaded at every activation. Per ADR-015 G6 + Plan A,
+# universal-glob discovers project-context.md regardless of install layout.
+persistent_facts = [
+  "file:{project-root}/**/project-context.md",
+]
