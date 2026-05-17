@@ -14,6 +14,7 @@ assumptions:
   - "Workflow inputs declared in bmad-skill-manifest.yaml are honored by Atlas's workflow runner; required-vs-soft distinction is workflow-enforced via step-01 precondition checks"
   - "Menu codes ZMM/ZDP/ZFM/ZTT (new) and ZAT/ZST/ZFI/ZTN (migrated from A/S/F/D) are unique and conform to ADR-013's `Z<2 chars>` Z-prefix format. P3.0 deferred the migration; P3.1 picks it up."
   - "Customize-template overlay path convention is `<bam-skill-dir>/customize-template/<bmm-skill-name>/customize.toml` (BAM-internal convention; spec §7.2 does not specify a path; smoke-test verifies BMAD's three-layer merge resolves correctly)"
+  - "The customize-template overlay's `persistent_facts` uses a **specific path** (`file:{project-root}/_bmad-output/bbp/project-context.md`) rather than BAM's own Plan-A universal-glob (`file:{project-root}/**/project-context.md`). BMM's `bmad-create-architecture` resolver may not expand `**`; the specific path matches the canonical install location emitted by `bmad-bam-finalize`. Plan-A vs specific-path is a deliberate choice per overlay, not a contradiction — BAM's own customize.toml files (which run inside BAM skills) use the glob to survive non-default install layouts; the overlay (which runs inside a BMM skill) opts for the safer specific path until BMM resolver semantics are empirically verified. Revisit if the specific path drifts from the finalizer's emit path."
   - "`per_tenant_attribution.storage` accepts `mixed` as a 4th value when `tenancy_model: hybrid` (spec §3 schema lists 3 values for non-hybrid cases; `mixed` covers the per-tier override scenario where different tiers use different attribution mechanisms). Validator at `bmad-bam-design-finops-model/steps/step-07-v-verify-completeness.md` enforces the 4-value enum."
 dependencies-on-other-decisions:
   - 2026-05-13-006
@@ -124,6 +125,7 @@ P3.1 sequences tenancy-model BEFORE modular-monolith. This INVERTS canonical DDD
 - If PX-Glossary wave defines a different storage format, revisit Q9 CSV-index choice and migrate.
 - If P3.2's lifecycle skills reveal QG-F1 evidence-schema gaps (e.g., need lifecycle-readiness fields), promote ADR-015 to ADR-015-revised.
 - If user-facing customize-template overlay path proves brittle (G6 assumption fails — e.g., BMM changes resolver semantics), revisit overlay convention.
+- If the canonical sentinel-emit path changes (currently `_bmad-output/bbp/project-context.md`, emitted by `bmad-bam-finalize`), the overlay's specific-path `persistent_facts` entry must follow, OR migrate the overlay to BAM's Plan-A universal-glob once BMM `**` expansion is empirically verified.
 - If 8 Z-prefix codes prove insufficient as more platform skills land (P3.2/P3.3/P3.4 add ~11 more), revisit ADR-013's 3-char format for adequacy.
 
 ## Related work
