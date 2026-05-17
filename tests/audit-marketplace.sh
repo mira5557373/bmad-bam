@@ -431,6 +431,14 @@ fi
 # Builds allow-list dynamically by parsing spec §5.X entries. Every BAM
 # workflow skill in marketplace.json must map to a name in the allow-list
 # OR be a known carve-out (persona-skill, v3 entry, pre-spec infrastructure).
+#
+# P3.1 Foundation skills recognized via dynamic spec extraction (already
+# listed in spec §5.1 #2-5):
+#   - bmad-bam-design-modular-monolith
+#   - bmad-bam-design-deployment-topology
+#   - bmad-bam-design-finops-model
+#   - bmad-bam-design-tenant-tier-model
+# No explicit allow-list addition needed; ensuring these remain in spec.
 SPEC_FILE="$REPO_ROOT/docs/v6-final-architecture.md"
 KNOWN_BAM_INFRA="bmad-bam-finalize"   # pre-v6-catalog platform-MVP workflow
 # Carve-out: workflow names that pre-date the v6 spec catalog. These ship
