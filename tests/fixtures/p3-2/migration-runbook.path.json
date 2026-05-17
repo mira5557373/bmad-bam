@@ -1,0 +1,93 @@
+{
+  "schema_version": "1.0",
+  "decided_at": "2026-05-17T14:23:00Z",
+  "migration_axes": ["tier", "region"],
+  "zero_downtime_required": true,
+  "per_axis": {
+    "tier": {
+      "cohort_plan": {
+        "cohort_selection_method": "rollout_tier_hint_driven",
+        "cohorts": [
+          { "id": "tier_c01", "tier_ids": ["tier_demo"],       "size_estimate": 5,    "rollout_tier_hint": "aggressive_canary" },
+          { "id": "tier_c02", "tier_ids": ["tier_starter"],    "size_estimate": 100,  "rollout_tier_hint": "aggressive_canary" },
+          { "id": "tier_c03", "tier_ids": ["tier_starter"],    "size_estimate": 1000, "rollout_tier_hint": "canary" },
+          { "id": "tier_c04", "tier_ids": ["tier_pro"],        "size_estimate": 500,  "rollout_tier_hint": "canary" },
+          { "id": "tier_c05", "tier_ids": ["tier_pro"],        "size_estimate": 2500, "rollout_tier_hint": "canary" },
+          { "id": "tier_c06", "tier_ids": ["tier_team"],       "size_estimate": 250,  "rollout_tier_hint": "canary" },
+          { "id": "tier_c07", "tier_ids": ["tier_business"],   "size_estimate": 100,  "rollout_tier_hint": "blue_green_synthetics" },
+          { "id": "tier_c08", "tier_ids": ["tier_business"],   "size_estimate": 200,  "rollout_tier_hint": "blue_green_synthetics" },
+          { "id": "tier_c09", "tier_ids": ["tier_enterprise"], "size_estimate": 25,   "rollout_tier_hint": "blue_green_pilot" },
+          { "id": "tier_c10", "tier_ids": ["tier_gov"],        "size_estimate": 10,   "rollout_tier_hint": "blue_green_pilot" }
+        ]
+      },
+      "dry_run_plan": {
+        "dry_run_environment": "canary_tenant",
+        "cadence": "each_cohort"
+      },
+      "rollback_gate": {
+        "rollback_trigger": ["error_rate_above_baseline", "isolation_probe_fail", "p99_latency_breach"],
+        "rollback_method": "blue_green_flip"
+      },
+      "abort_criteria": [
+        { "id": "abort_tier_error_rate",   "metric": "error_rate",            "threshold": "3%",  "window": "5m" },
+        { "id": "abort_tier_isolation",    "metric": "isolation_probe",       "threshold": "any_fail", "window": "1m" },
+        { "id": "abort_tier_p99_latency",  "metric": "p99_latency_ms",        "threshold": "300ms",   "window": "5m" }
+      ],
+      "observability_hooks": [
+        { "id": "obs_tier_error_rate",   "signal": "error_rate",       "alert_threshold": "2%" },
+        { "id": "obs_tier_isolation",    "signal": "isolation_probe",  "alert_threshold": "any_fail" },
+        { "id": "obs_tier_p99_latency",  "signal": "p99_latency_ms",   "alert_threshold": "250ms" }
+      ]
+    },
+    "region": {
+      "cohort_plan": {
+        "cohort_selection_method": "risk_stratified",
+        "cohorts": [
+          { "id": "region_c01", "region_ids": ["us-west-2"],        "size_estimate": 1,    "risk_tier": "canary_low_traffic" },
+          { "id": "region_c02", "region_ids": ["us-west-2"],        "size_estimate": 10,   "risk_tier": "canary_low_traffic" },
+          { "id": "region_c03", "region_ids": ["us-east-2"],        "size_estimate": 100,  "risk_tier": "canary" },
+          { "id": "region_c04", "region_ids": ["us-east-1"],        "size_estimate": 1000, "risk_tier": "primary" },
+          { "id": "region_c05", "region_ids": ["eu-west-1"],        "size_estimate": 500,  "risk_tier": "primary_eu" },
+          { "id": "region_c06", "region_ids": ["eu-central-1"],     "size_estimate": 250,  "risk_tier": "primary_eu" },
+          { "id": "region_c07", "region_ids": ["ap-southeast-1"],   "size_estimate": 100,  "risk_tier": "primary_apac" },
+          { "id": "region_c08", "region_ids": ["ap-northeast-1"],   "size_estimate": 100,  "risk_tier": "primary_apac" },
+          { "id": "region_c09", "region_ids": ["sa-east-1"],        "size_estimate": 50,   "risk_tier": "secondary" },
+          { "id": "region_c10", "region_ids": ["ca-central-1"],     "size_estimate": 50,   "risk_tier": "secondary" }
+        ]
+      },
+      "dry_run_plan": {
+        "dry_run_environment": "shadow",
+        "cadence": "each_cohort"
+      },
+      "rollback_gate": {
+        "rollback_trigger": ["region_latency_breach", "data_replication_lag", "isolation_probe_fail"],
+        "rollback_method": "dual_write_revert"
+      },
+      "abort_criteria": [
+        { "id": "abort_region_latency",        "metric": "region_p99_latency_ms", "threshold": "500ms",  "window": "10m" },
+        { "id": "abort_region_replication",    "metric": "replication_lag_s",     "threshold": "60s",    "window": "5m" },
+        { "id": "abort_region_isolation",      "metric": "isolation_probe",       "threshold": "any_fail", "window": "1m" }
+      ],
+      "observability_hooks": [
+        { "id": "obs_region_latency",       "signal": "region_p99_latency_ms", "alert_threshold": "400ms" },
+        { "id": "obs_region_replication",   "signal": "replication_lag_s",      "alert_threshold": "30s" },
+        { "id": "obs_region_isolation",     "signal": "isolation_probe",        "alert_threshold": "any_fail" }
+      ]
+    }
+  },
+  "references": {
+    "onboarding_hook_ids": [
+      "starter_db_create",
+      "pro_db_create",
+      "team_db_create",
+      "biz_db_create",
+      "ent_db_create"
+    ],
+    "offboarding_policy_ids": [
+      "tier_starter:hard_delete",
+      "tier_pro:anonymize",
+      "tier_enterprise:hard_delete"
+    ]
+  },
+  "references_degraded": false
+}

@@ -1,0 +1,61 @@
+{
+  "schema_version": "1.0",
+  "decided_at": "2026-05-17T14:23:00Z",
+  "tier_count": 5,
+  "custom_tiers_mode": false,
+  "tiers": [
+    {
+      "id": "free",
+      "price_per_month_usd": 0,
+      "limits": { "seats": 1, "api_calls_per_month": 1000, "storage_gb": 1, "compute_hours": 5 },
+      "features": ["basic_dashboards", "community_support"],
+      "rollout_tier_hint": "aggressive_canary",
+      "cost_ceiling_usd_per_month_hint": 0.50,
+      "upgrade_mode": "self_service",
+      "upgrade_path": "starter"
+    },
+    {
+      "id": "starter",
+      "price_per_month_usd": 19,
+      "limits": { "seats": 5, "api_calls_per_month": 10000, "storage_gb": 10, "compute_hours": 25 },
+      "features": ["basic_dashboards", "email_support"],
+      "rollout_tier_hint": "canary",
+      "cost_ceiling_usd_per_month_hint": 5.00,
+      "upgrade_mode": "self_service",
+      "upgrade_path": "pro"
+    },
+    {
+      "id": "pro",
+      "price_per_month_usd": 99,
+      "limits": { "seats": 25, "api_calls_per_month": 100000, "storage_gb": 100, "compute_hours": 125 },
+      "features": ["basic_dashboards", "email_support", "sso"],
+      "rollout_tier_hint": "canary",
+      "cost_ceiling_usd_per_month_hint": 25.00,
+      "upgrade_mode": "self_service",
+      "upgrade_path": "business"
+    },
+    {
+      "id": "business",
+      "price_per_month_usd": 499,
+      "limits": { "seats": 100, "api_calls_per_month": 500000, "storage_gb": 500, "compute_hours": 625 },
+      "features": ["basic_dashboards", "priority_support", "sso", "audit_log"],
+      "rollout_tier_hint": "blue_green_synthetics",
+      "cost_ceiling_usd_per_month_hint": 125.00,
+      "upgrade_mode": "sales_assisted",
+      "upgrade_path": "enterprise"
+    },
+    {
+      "id": "enterprise",
+      "price_per_month_usd": "custom",
+      "limits": { "seats": 1000, "api_calls_per_month": 5000000, "storage_gb": 5000, "compute_hours": 3125 },
+      "features": ["basic_dashboards", "priority_support", "sso", "audit_log", "dpa", "dedicated_csm"],
+      "rollout_tier_hint": "blue_green_pilot",
+      "cost_ceiling_usd_per_month_hint": 625.00,
+      "upgrade_mode": "sales_assisted",
+      "upgrade_path": null
+    }
+  ],
+  "transitions": {
+    "any_downgrade": "rate_arbitrage_check"
+  }
+}

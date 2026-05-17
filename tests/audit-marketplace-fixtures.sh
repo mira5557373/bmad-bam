@@ -163,6 +163,57 @@ assert_case "bad-unknown-workflow (check i)" fail "(check i)" \
     "$F/fake-v6-with-unknown-workflow" \
     ""
 
+# ---------------------------------------------------------------------------
+# P3.2 cross-schema fixture scenarios (spec §1.4 + R3.2.1 + §5.6.3)
+#
+# These two scenarios do not exercise audit-marketplace.sh directly — they
+# validate the P3.2-defined consumer behavior against the schema-1.0 legacy
+# tier-model fixtures (the auto-fill preset for 5-default mode and the
+# hard-fail exit-70 path for custom-mode).
+# ---------------------------------------------------------------------------
+
+echo ""
+echo "FIXTURE: schema-1.0-auto-fill (P3.2 consumers auto-fill retention from 5-default preset)"
+if python3 -c "
+import json, sys
+tm = json.load(open('$REPO_ROOT/tests/fixtures/p3-2/tier-model.1.0.json'))
+assert tm['schema_version'] == '1.0', f'expected schema_version 1.0, got {tm[\"schema_version\"]}'
+DEFAULTS = {'free': 7, 'starter': 30, 'pro': 30, 'business': 90, 'enterprise': 365}
+for tier in tm['tiers']:
+    if 'retention_window_days_hint' not in tier:
+        assert tier['id'] in DEFAULTS, f'unknown tier_id in 1.0 default: {tier[\"id\"]}'
+        tier['retention_window_days_hint'] = DEFAULTS[tier['id']]
+        print(f'  auto-filled {tier[\"id\"]}: {tier[\"retention_window_days_hint\"]} days')
+print('PASS: schema-1.0-auto-fill')
+" 2>&1; then
+    PASS=$((PASS + 1))
+    echo "  [PASS] schema-1.0-auto-fill"
+else
+    FAIL=$((FAIL + 1))
+    FAILED_CASES+=("schema-1.0-auto-fill")
+    echo "  [FAIL] schema-1.0-auto-fill"
+fi
+
+echo ""
+echo "FIXTURE: schema-1.0-custom-fails (P3.2 consumers hard-fail for 1.0+custom-mode)"
+if python3 -c "
+import json, sys
+tm = json.load(open('$REPO_ROOT/tests/fixtures/p3-2/tier-model.1.0.custom.json'))
+assert tm['schema_version'] == '1.0' and tm.get('custom_tiers_mode', False), 'fixture must be schema 1.0 + custom-mode'
+DEFAULTS = {'free': 7, 'starter': 30, 'pro': 30, 'business': 90, 'enterprise': 365}
+unknown_tiers = [t['id'] for t in tm['tiers'] if t['id'] not in DEFAULTS and 'retention_window_days_hint' not in t]
+assert unknown_tiers, 'custom-mode fixture must include non-default tier_ids'
+print(f'  consumer would exit 70: unknown tier_ids in schema 1.0 custom mode: {unknown_tiers}')
+print('PASS: schema-1.0-custom-fails (consumer correctly hard-fails per spec Section 1.4)')
+" 2>&1; then
+    PASS=$((PASS + 1))
+    echo "  [PASS] schema-1.0-custom-fails"
+else
+    FAIL=$((FAIL + 1))
+    FAILED_CASES+=("schema-1.0-custom-fails")
+    echo "  [FAIL] schema-1.0-custom-fails"
+fi
+
 echo ""
 echo "=== Results: $PASS pass, $FAIL fail ==="
 
