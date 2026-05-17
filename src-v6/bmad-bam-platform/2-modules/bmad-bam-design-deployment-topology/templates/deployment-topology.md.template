@@ -1,0 +1,73 @@
+---
+id: deployment-topology
+title: "{{project_name}} — Deployment Topology"
+status: draft
+date: "{{today}}"
+persona: atlas
+workflow_run_id: "{{run_id}}"
+---
+
+# Deployment Topology — {{project_name}}
+
+## Decision
+
+**Rollout primitive:** {{rollout_primitive}}
+**Tenant cohort strategy:** {{tenant_cohort_strategy}}
+**Confidence:** {{confidence}}
+
+## Context
+
+- Tenancy model (REQUIRED input): {{tenancy_model}} (from `_bmad/bam/evidence/QG-F1/tenancy-decision.json`)
+- Target environments: {{target_environments}}
+- Rollback SLA: {{rollback_sla}}
+- CI/CD platform: {{cicd_platform}}
+- Risk tolerance per tier: {{risk_tolerance_per_tier_summary}}
+
+## Tenancy alignment
+
+How `{{rollout_primitive}}` maps to `{{tenancy_model}}`:
+
+{{tenancy_alignment_narrative}}
+
+(One paragraph drawn from the `rollout-strategies-comparison` fragment + the spec §3.Q3 coupling table. Explains why the chosen primitive fits — or where the seams are if the user accepted a sub-optimal fit.)
+
+## Per-tier rollout matrix
+
+| tier id | rollout strategy | risk tolerance (from context) |
+|---|---|---|
+| {{tier_1_id}} | {{tier_1_rollout}} | {{tier_1_risk_tolerance}} |
+| {{tier_2_id}} | {{tier_2_rollout}} | {{tier_2_risk_tolerance}} |
+
+(Add a row per tier id present in `rollout_per_tier`. Step-07 verifies that this set is a superset of tier ids in tier-model.json when that file is available.)
+
+**Allowed rollout strategies (per spec §3.Q3b):**
+- `aggressive_canary` — small fast canary, accept higher noise-to-signal; default for free tier.
+- `canary` — standard canary cadence; default for starter + pro tiers.
+- `blue_green_synthetics` — blue/green with synthetic traffic on green before drain; default for business tier.
+- `blue_green_pilot` — blue/green with named pilot tenants on green; default for enterprise tier.
+
+## Tenant cohort strategy
+
+**Strategy:** {{tenant_cohort_strategy}}
+
+{{tenant_cohort_rationale}}
+
+**Sticky cohort principle (per `tenant-cohort-design` fragment CRITICAL):** Once assigned, a tenant stays in the same cohort across rollouts. This is non-negotiable — cohort drift makes cross-rollout regression analysis impossible. If business reasons require moving a tenant between cohorts, document the move as an explicit event in the deploy log.
+
+## Rollback strategy
+
+**Rollback SLA:** {{rollback_sla}} (from context — maximum time from "bad deploy detected" to "all tenants on prior version")
+
+{{rollback_strategy}}
+
+(Free-text description capturing: detection trigger, owner of the rollback decision, action sequence, data-migration rollback constraints per the `zero-downtime-migrations` fragment, post-rollback comms plan.)
+
+## Quality gate references
+
+- [QG-F1 — Foundation Architecture](../../_bmad/bbp/bmad-bam-agent-atlas/resources/checklists/QG-F1.md) — `deployment-topology.json` is 1 of 5 required foundation evidence files. Step-07 verifies the `rollout_per_tier` × `tier-model.json#tiers[*].id` coherence check (the Phase 7 cross-skill `verify-coherence` step also enforces this).
+
+## Next steps
+
+After this design is approved:
+
+1. Run `bmad-bam-design-finops-model` — REQUIRES this deployment-topology.json as upstream. The finops attribution + budget-alert strategy must align with the cohort strategy chosen here (e.g., `by-region` cohorts pair naturally with per-region cost attribution).
