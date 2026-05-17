@@ -1,0 +1,56 @@
+---
+name: bmad-bam-design-tenant-offboarding
+description: "Design tenant offboarding policy per regulatory profile: GDPR Art 17 erasure + Art 20 export + retention floors."
+module: bmad-bam-platform
+persona: atlas
+version: 0.1.0
+execution_mode:
+  default: assisted
+  alternatives: [manual]
+recommended_capabilities:
+  - extended-thinking
+minimum_persona_version: "0.1.0"
+latency_budget: "75min"
+cluster: lifecycle
+inputs:
+  - artifact: tier-model.json
+    required: true
+    resolver: tool-aware-path-fallback
+    paths_tried:
+      - "{project-root}/docs/architecture/tier-model.json"
+      - "{project-root}/_bmad/bam/evidence/QG-F1/tier-model.json"
+  - artifact: tenancy-decision.json
+    required: true
+    resolver: tool-aware-path-fallback
+    paths_tried:
+      - "{project-root}/docs/architecture/tenancy-decision.json"
+      - "{project-root}/_bmad/bam/evidence/QG-F1/tenancy-decision.json"
+  - artifact: finops-baseline.json
+    required: false
+    resolver: tool-aware-path-fallback
+    paths_tried:
+      - "{project-root}/docs/architecture/finops-baseline.json"
+      - "{project-root}/_bmad/bam/evidence/QG-F1/finops-baseline.json"
+  - artifact: onboarding-flow.json
+    required: false
+    resolver: tool-aware-path-fallback
+    paths_tried:
+      - "{project-root}/_bmad/bam/evidence/QG-M2/onboarding-flow.json"
+      - "{project-root}/docs/architecture/onboarding-flow.json"
+outputs:
+  - artifact: offboarding-policy.md
+    location: "{project-root}/docs/architecture/"
+    required: true
+  - artifact: offboarding-policy.json
+    location: "{project-root}/_bmad/bam/evidence/QG-M2/"
+    required: true
+  - artifact: QG-M2-offboarding-evidence.md
+    location: "{project-root}/_bmad/bam/evidence/QG-M2/"
+    required: true
+gates:
+  - QG-M2
+flags:
+  - name: --regulatory-profile
+    type: enum
+    values: [gdpr_baseline, hipaa, sox_or_pci, none]
+    default: gdpr_baseline
