@@ -223,6 +223,43 @@ if [ -z "$SENTINEL_TOKEN" ]; then
 fi
 echo "    PASS: sentinel = $SENTINEL_TOKEN"
 
+# ─── Step 6: P3.2 Lifecycle skills + QG evidence dir contract ──────────────
+# Wave P3.2 (2026-05-17) added 4 new Lifecycle skills + QG-D1 partial gate.
+# The dynamic skill-list check above (Step 3) already ensures these install;
+# this step makes the P3.2 contract explicit and verifies the evidence-dir
+# pathing matches what the new skills' manifests declare as `outputs.location`.
+echo ">>> Step 6: P3.2 Lifecycle skills + evidence-dir contract"
+
+P32_SKILLS=(
+    bmad-bam-design-tenant-onboarding
+    bmad-bam-design-tenant-offboarding
+    bmad-bam-design-multi-tenant-testing
+    bmad-bam-design-tenant-migration-tooling
+)
+for s in "${P32_SKILLS[@]}"; do
+    if [ ! -d "$WORK_DIR/.claude/skills/$s" ]; then
+        echo "FAIL: P3.2 skill $s not present at .claude/skills/" >&2
+        exit 1
+    fi
+    # Slash-command discovery: a Claude-Code skill is invocable via /<skill-name>
+    # when its dir exists under .claude/skills/. SKILL.md presence is the
+    # discovery sentinel for the slash-command surface.
+    if [ ! -f "$WORK_DIR/.claude/skills/$s/SKILL.md" ]; then
+        echo "FAIL: P3.2 skill $s missing SKILL.md (slash-command discovery sentinel)" >&2
+        exit 1
+    fi
+done
+echo "    PASS: 4 P3.2 Lifecycle skills present + discoverable as slash-commands"
+
+# Evidence dirs for QG-M2 + QG-D1 must be creatable (skill outputs write here).
+# P3.2 skills declare outputs at _bmad/bam/evidence/QG-M2/ and QG-D1/; verify
+# the parent path is writable. Per spec §6.0 the dirs are created on-demand.
+mkdir -p "$WORK_DIR/_bmad/bam/evidence/QG-M2" "$WORK_DIR/_bmad/bam/evidence/QG-D1" || {
+    echo "FAIL: cannot create QG-M2/QG-D1 evidence dirs under $WORK_DIR/_bmad/bam/evidence/" >&2
+    exit 1
+}
+echo "    PASS: QG-M2 + QG-D1 evidence dirs creatable"
+
 # ─── Summary ─────────────────────────────────────────────────────────────
 echo ""
 echo ">>> TIER-2 PASS"
@@ -231,6 +268,7 @@ echo "    Strategy 1:       confirmed (config.yaml + module-help.csv at _bmad/bb
 echo "    skill install:    confirmed at .claude/skills/bmad-bam-*/ ($BAM_SKILLS_FOUND/$BAM_SKILLS_EXPECTED)"
 echo "    finalize:         sentinel written"
 echo "    sentinel token:   $SENTINEL_TOKEN"
+echo "    P3.2 lifecycle:   4 skills + QG-M2/QG-D1 evidence dirs OK"
 echo ""
 echo "    Note: LLM-side glob expansion + recital is Tier-3 (manual);"
 echo "          run Plan C ratification per tests/p2/PLAN-C-RATIFICATION.md"

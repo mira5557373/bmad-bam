@@ -11,6 +11,8 @@
 
 > **Wave 0 outcome (2026-05-12):** BAM v6 selected **Plan A** for activation against BMAD v6.6.0 — the universal-glob string `file:{project-root}/**/project-context.md` survives BMAD's three-layer customize merge into core skills' resolved `agent.persistent_facts`. P2+ inherits this selection from `_bmad/bam/family.json`. See `_bmad/_memory/atlas/architecture-decisions/2026-05-11-001-wave-0-plan-selected.md` (Atlas ADR) and `tests/wave-0/WAVE-0-OUTCOME.md` (run output + Plan-A caveats) for detail. Task 0 mechanism note: BMAD's customize resolver is **Python** (`_bmad/scripts/resolve_customization.py`, requires Python 3.11+); it does string-level TOML merge only — `file:`/glob expansion happens at LLM activation, not in the resolver.
 
+> **P3.2 outcome (2026-05-17):** ADR-016 landed; 4 Lifecycle skills active (tenant-onboarding ZON, tenant-offboarding ZOF, multi-tenant-testing ZMT, tenant-migration-tooling ZTG); QG-M2 refined to v1.1.0 (C6 auto-promote); QG-M1 promoted to blocking v1.0.0; QG-D1 partial v0.1.0 created; Atlas fragments 24→37; anti-patterns 4→8; glossary 6→13; menu codes 8→12. Marketplace bumped to v0.6.0.
+
 ---
 
 ## What is BAM?
