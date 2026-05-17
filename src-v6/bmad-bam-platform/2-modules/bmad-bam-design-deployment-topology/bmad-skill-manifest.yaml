@@ -1,0 +1,28 @@
+---
+name: bmad-bam-design-deployment-topology
+description: "Design rollout strategy + tenant cohorts for multi-tenant SaaS deployments."
+module: bmad-bam-platform
+persona: atlas
+execution_mode: facilitated  # human-in-the-loop CEV workflow
+inputs:
+  - artifact: tenancy-decision.json
+    required: true
+    resolver: tool-aware-path-fallback
+    paths_tried:
+      - "{project-root}/docs/architecture/tenancy-decision.json"
+      - "{project-root}/_bmad/bam/evidence/QG-F1/tenancy-decision.json"
+  - artifact: tier-model.json
+    required: false
+    resolver: tool-aware-path-fallback
+    paths_tried:
+      - "{project-root}/docs/architecture/tier-model.json"
+      - "{project-root}/_bmad/bam/evidence/QG-F1/tier-model.json"
+outputs:
+  - artifact: deployment-topology.md
+    location: "{project-root}/docs/architecture/"
+    required: true
+  - artifact: deployment-topology.json
+    location: "{project-root}/_bmad/bam/evidence/QG-F1/"
+    required: true
+gates:
+  - QG-F1
