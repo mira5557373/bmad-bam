@@ -1,0 +1,38 @@
+---
+name: bmad-bam-design-finops-model
+description: "Establish per-tenant unit economics + cost attribution; verify foundation coherence."
+module: bmad-bam-platform
+persona: atlas
+execution_mode: facilitated  # human-in-the-loop CEV workflow
+inputs:
+  - artifact: tenancy-decision.json
+    required: true
+    resolver: tool-aware-path-fallback
+    paths_tried:
+      - "{project-root}/docs/architecture/tenancy-decision.json"
+      - "{project-root}/_bmad/bam/evidence/QG-F1/tenancy-decision.json"
+  - artifact: tier-model.json
+    required: true
+    resolver: tool-aware-path-fallback
+    paths_tried:
+      - "{project-root}/docs/architecture/tier-model.json"
+      - "{project-root}/_bmad/bam/evidence/QG-F1/tier-model.json"
+  - artifact: deployment-topology.json
+    required: true
+    resolver: tool-aware-path-fallback
+    paths_tried:
+      - "{project-root}/docs/architecture/deployment-topology.json"
+      - "{project-root}/_bmad/bam/evidence/QG-F1/deployment-topology.json"
+outputs:
+  - artifact: finops-baseline.md
+    location: "{project-root}/docs/architecture/"
+    required: true
+  - artifact: finops-baseline.json
+    location: "{project-root}/_bmad/bam/evidence/QG-F1/"
+    required: true
+  - artifact: foundation-coherence.json
+    location: "{project-root}/_bmad/bam/evidence/QG-F1/"
+    required: true
+gates:
+  - QG-F1   # produces 2 evidence files (finops-baseline + foundation-coherence)
+flags: []
