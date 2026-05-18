@@ -175,7 +175,20 @@ print(f"VALID: test-catalogue.json schema 1.0 (model: {project_tenancy_model}, t
       f"universal-isolation: {universal_isolation_count}, rls-bypass-must-have: {rls_bypass_must_have})")
 ```
 
-Emit `_bmad/bam/evidence/QG-M2/QG-M2-test-catalogue-evidence.md` (human narrative) with:
+Emit `_bmad/bam/evidence/QG-M2/QG-M2-test-catalogue-evidence.md` (human narrative) with this frontmatter (C2-I3 — mirrors P3.1 tier-model evidence shape):
+
+```yaml
+---
+gate_id: QG-M2
+verified_at: <ISO 8601 UTC>
+verified_by: atlas
+auto_checkable_pct: 60
+human_review_pct: 40
+result: pass | pass-partial | fail
+---
+```
+
+Body sections:
 - Decision summary (tenancy_model + coverage_profile + total test count + must-have count)
 - Coverage report table (category × severity)
 - Per-category test detail tables (id, name, applies_to, universal, severity, evidence_signature, traceable_to)

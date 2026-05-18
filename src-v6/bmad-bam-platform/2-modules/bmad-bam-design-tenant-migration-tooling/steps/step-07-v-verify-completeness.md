@@ -231,6 +231,20 @@ print(f"VALID: migration-runbook.json schema 1.0 (axes: {axes}, zero_downtime: {
 
 ### Primary: `_bmad/bam/evidence/QG-D1/QG-D1-migration-evidence.md`
 
+Frontmatter (C2-I3 — mirrors P3.1 tier-model evidence shape):
+
+```yaml
+---
+gate_id: QG-D1
+verified_at: <ISO 8601 UTC>
+verified_by: atlas
+auto_checkable_pct: 100
+human_review_pct: 0
+result: pass | pass-partial | fail
+---
+```
+
+
 Human narrative with:
 - Decision summary (active migration_axes; zero_downtime_required; per-axis combinations)
 - Per-axis playbook detail (cohort_plan + dry_run_plan + rollback_gate + abort_criteria + observability_hooks)

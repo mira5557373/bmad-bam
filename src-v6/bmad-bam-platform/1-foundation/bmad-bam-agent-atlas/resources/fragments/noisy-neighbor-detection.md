@@ -164,6 +164,24 @@ The five canonical noisy-neighbor surfaces map to NN-001 through NN-005 in the d
 
 ---
 
+## Implementation Patterns
+
+(M1 polish — explicit Implementation Patterns section per spec §6.3; previously folded inline with Architecture surface enumeration.)
+
+**Pattern 1 — Pool-exhaustion harness.** Spawn N tenants in parallel, each issuing M concurrent queries. Measure pool acquisition wait time per tenant + connection-pool saturation curve. Test asserts: no tenant waits > 200ms when (N × M) < pool_capacity × 0.7.
+
+**Pattern 2 — Rate-limit-window-saturation harness.** One tenant issues `rate_limit_per_second × 10` RPS for 60s while other tenants issue 1 RPS background. Test asserts: background tenants' p99 latency does not degrade > 15%.
+
+**Pattern 3 — Cardinality-overload harness.** Synthesize 10,000+ tenant_ids; issue queries that fan out across tenant_id. Test asserts: planner does not regress past `tenant_cardinality_cap`; metrics emit per-tenant tenant_cardinality_score.
+
+**Pattern 4 — Planner-cache-cliff detection.** Run progressively-larger tenant cohorts (10 → 100 → 1000 → 10000) and measure query plan-time. Test asserts: plan-time growth is sub-linear in tenant count (cache hit rate stays > 80%).
+
+**Pattern 5 — Fair-scheduling validation.** Two tenants A + B at different tier (A=enterprise SLA 99.9%, B=free fair-share). B issues 10× A's load; A is unconstrained. Test asserts: A's p99 latency ≤ enterprise SLA threshold; B may degrade but is not starved (B sees > 0 throughput).
+
+Implementation note: all 5 patterns share the same harness framework (`tests/integration/noisy-neighbor/`); per-pattern code is ~30-50 LOC; harness setup is ~150 LOC and shared.
+
+---
+
 ## Quality Checks
 
 - **CRITICAL:** Per-tier SLA MUST be tested under worst-case lower-tier abuse; enterprise SLA breach is non-negotiable.

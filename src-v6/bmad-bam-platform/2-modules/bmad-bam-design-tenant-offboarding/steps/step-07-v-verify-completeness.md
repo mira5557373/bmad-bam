@@ -129,7 +129,20 @@ if not j.get('tear_down_hooks'):
 print(f"VALID: offboarding-policy.json schema 1.0 (profile: {profile}, tiers: {len(j['per_tier'])}, hooks: {len(seen_hook_ids)})")
 ```
 
-Emit `_bmad/bam/evidence/QG-M2/QG-M2-offboarding-evidence.md` (human narrative) with:
+Emit `_bmad/bam/evidence/QG-M2/QG-M2-offboarding-evidence.md` (human narrative) with this frontmatter (C2-I3 — mirrors P3.1 tier-model evidence shape):
+
+```yaml
+---
+gate_id: QG-M2
+verified_at: <ISO 8601 UTC>
+verified_by: atlas
+auto_checkable_pct: 60
+human_review_pct: 40
+result: pass | pass-partial | fail
+---
+```
+
+Body sections:
 - Decision summary (regulatory_profile + tier count + handoff count)
 - Per-tier policy table (tier / mode / retention / source / post-action)
 - Tear-down hooks catalog

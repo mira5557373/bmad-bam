@@ -125,7 +125,9 @@ for tier in tm.get("tiers", []) if isinstance(tm.get("tiers"), list) else []:
         if 'retention_window_days_hint' not in tier:
             errors.append(
                 f"custom-mode tier {tier.get('id')!r} missing retention_window_days_hint "
-                f"(P3.2 schema 1.1 requires explicit value)"
+                f"— re-run bmad-bam-design-tenant-tier-model post-P3.2 to emit schema 1.1 "
+                f"with explicit retention values per custom tier "
+                f"(rule applies to both schema 1.0 and 1.1 custom-mode; C1-I1 fix)"
             )
     if 'retention_window_days_hint' in tier:
         v = tier['retention_window_days_hint']

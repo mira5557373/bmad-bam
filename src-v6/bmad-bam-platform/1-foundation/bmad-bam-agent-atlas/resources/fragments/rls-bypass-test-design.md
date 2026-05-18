@@ -171,6 +171,32 @@ evidence_signature: pg_class scan: every tenant-scoped table has relrowsecurity 
 
 ---
 
+## Implementation Patterns
+
+(M1 polish — explicit Implementation Patterns section per spec §6.3; previously folded inline with Architecture surface enumeration.)
+
+**Pattern 1 — SECURITY DEFINER discovery query.** CI job runs:
+
+```sql
+SELECT proname, prosrc FROM pg_proc
+WHERE prosecdef = true
+  AND pronamespace IN (SELECT oid FROM pg_namespace WHERE nspname IN ('public', 'app'));
+```
+
+Output is diffed against expected-functions registry; any new function without test entry fails the build.
+
+**Pattern 2 — Role-elevation attempt test.** Each `SECURITY DEFINER` function gets a paired test: connect as low-privilege role, attempt to call the function with `tenant_id` argument different from the session's `tenant_id`. Test asserts: function MUST verify session tenant_id matches argument tenant_id OR raise exception. Required failure mode: matches `/permission denied|RLS policy violation/`.
+
+**Pattern 3 — Function-call escape attempt.** Issue SQL like `SELECT some_security_definer_func() FROM tenant_data WHERE ...` that attempts to read `tenant_data` via the function's RLS bypass. Test asserts: rows returned are filtered correctly by session `tenant_id` (no rows for foreign-tenant queries).
+
+**Pattern 4 — `SET ROLE` / `SET row_security` lint hook.** Application-code grep + lint rule that flags any `SET ROLE` or `SET row_security` statement in source. Test asserts: production source has zero matches.
+
+**Pattern 5 — `pg_roles.rolbypassrls` quarterly audit.** Cron job queries `pg_roles WHERE rolbypassrls = true` and emits report. Test asserts: every role in the result has an owner + business-justification entry in `_bmad/bam/evidence/QG-M2/bypassrls-roster.json`; orphaned roles get revoked.
+
+Implementation note: all 5 patterns require a real Postgres test container (not mock/sqlite); testcontainers-postgres or equivalent. Shared fixture: `tests/integration/rls-bypass/conftest.py`.
+
+---
+
 ## Quality Checks
 
 - **CRITICAL:** Every `SECURITY DEFINER` function reading tenant-scoped tables MUST be tested for tenant-context propagation; missing tests = silently-broken RLS.

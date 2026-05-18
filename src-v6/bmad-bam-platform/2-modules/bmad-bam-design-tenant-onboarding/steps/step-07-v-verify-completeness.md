@@ -59,7 +59,20 @@ for f in j['flows']:
 print(f"VALID: onboarding-flow.json schema 1.0 (flows: {j['flow_count']})")
 ```
 
-Emit `_bmad/bam/evidence/QG-M2/QG-M2-onboarding-evidence.md` (human narrative) with:
+Emit `_bmad/bam/evidence/QG-M2/QG-M2-onboarding-evidence.md` (human narrative) with this frontmatter (C2-I3 — mirrors P3.1 tier-model evidence shape):
+
+```yaml
+---
+gate_id: QG-M2
+verified_at: <ISO 8601 UTC>
+verified_by: atlas
+auto_checkable_pct: 60
+human_review_pct: 40
+result: pass | pass-partial | fail
+---
+```
+
+Body sections:
 - Decision summary
 - Per-tier flow table
 - Schema validation summary

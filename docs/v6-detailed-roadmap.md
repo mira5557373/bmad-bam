@@ -1705,7 +1705,7 @@ Each template is an overlay on a specific BMAD-core skill. Assigned to specific 
 | `bmad-code-review` | Tenant-context propagation; leakage checks | P3 |
 | `bmad-correct-course` | Retrospective discipline; drift detection | P11.1 (alongside refresh-knowledge) |
 | `bmad-retrospective` | Tenant / AI / compliance / SLO retrospective | P3 + P5 + P9 + P10 |
-| `bmad-qa-generate-e2e-tests` | Multi-tenant test scenarios | P3.2 (testing focus) — **LANDED 2026-05-17** (overlay at `src-v6/bmad-bam-platform/customize-templates/bmad-qa-generate-e2e-tests.toml`) |
+| `bmad-qa-generate-e2e-tests` | Multi-tenant test scenarios | P3.2 (testing focus) — **LANDED 2026-05-17** (overlay at `src-v6/bmad-bam-platform/2-modules/bmad-bam-design-multi-tenant-testing/customize-template/bmad-qa-generate-e2e-tests/customize.toml`; B2 path fix) |
 | `bmad-investigate` | AI capability + compliance deep-dives | P5 + P9 |
 | `bmad-checkpoint-preview` | Production-readiness preview | P10 |
 | `bmad-design-test-strategy` | Multi-tenant test strategy + AI eval coverage | P3.2 + P5 (eval) — **DEFERRED per R3.2.6** (BMM upstream skill not yet shipped; BAM overlay deferred — empirically verified 2026-05-17) |
