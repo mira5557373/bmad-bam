@@ -85,6 +85,7 @@ for t in tests:
 # --- ≥1 universal isolation test (per spec §3.4 + QG-M2 C1) ---
 assert universal_isolation_count >= 1, \
     "MUST have ≥1 entry with category: isolation AND universal: true (per spec §3.4 / QG-M2 C1)"
+print(f"[PASS] schema_version + decided_at + {len(tests)} tests with unique ids + closed-enum validation + {universal_isolation_count} universal-isolation (C2-I4)")
 
 # --- coverage_report consistency: counts match tests[] filtered by category × severity ---
 cov = j.get('coverage_report', {})
@@ -109,6 +110,7 @@ if xtc.get('must_have', 0) == 0:
     note = xtc.get('note', '')
     assert 'P5' in note or 'model-cache-isolation' in note, \
         f"cross-tenant-cache.must_have == 0 requires deferral note citing P5 ai; got {note!r}"
+print("[PASS] coverage_report consistency + cross-tenant-cache deferral note (when must_have==0) (C2-I4)")
 
 # --- hybrid_resolution validation ---
 # Read project tenancy_model from upstream (best-effort; tool-aware fallback)
@@ -166,6 +168,7 @@ if applicable_to_rls:
 # --- isolation must_have ≥ 1 (universal-counted entries already verified above; this re-checks coverage_report) ---
 iso_must_have = cov.get('isolation', {}).get('must_have', 0)
 assert iso_must_have >= 1, f"isolation.must_have = {iso_must_have} (must be ≥1 per QG-M2 C1)"
+print(f"[PASS] hybrid_resolution + rls-bypass coverage (when applicable) + isolation.must_have={iso_must_have} (C2-I4)")
 
 # --- Emit WARNs (not exit 70) ---
 for w in warns:

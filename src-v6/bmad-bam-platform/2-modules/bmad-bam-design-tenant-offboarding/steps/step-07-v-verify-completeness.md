@@ -34,12 +34,14 @@ assert re.match(r'^\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}Z$', j['decided_at']), "de
 # --- regulatory_profile closed enum ---
 PROFILES = {"gdpr_baseline", "hipaa", "sox_or_pci", "none"}
 assert j['regulatory_profile'] in PROFILES, f"regulatory_profile must be in {PROFILES}"
+print(f"[PASS] schema_version + decided_at + regulatory_profile ({j['regulatory_profile']})")
 
 # --- MANDATORY invariants (exit 70 if false) ---
 assert j.get('data_export_required') is True, \
     "data_export_required MUST be true (GDPR Art 20 — export before deletion)"
 assert j.get('subject_erasure_fast_path') is True, \
     "subject_erasure_fast_path MUST be true (GDPR Art 17 — erasure fast-path)"
+print("[PASS] mandatory invariants (data_export_required + subject_erasure_fast_path) (C2-I4)")
 
 # --- Regulatory retention floor ---
 FLOORS = {"gdpr_baseline": 0, "hipaa": 2190, "sox_or_pci": 2555, "none": 0}
@@ -85,6 +87,7 @@ for p in j['per_tier']:
             for h in j.get('legal_holds', [])
         )
         assert matched, f"tier {tid}: retention_window_source=legal_hold but no matching legal_holds[] entry"
+print(f"[PASS] {len(j['per_tier'])} per-tier policies valid (profile floor: {floor}d) (C2-I4)")
 
 # --- tear_down_hooks global uniqueness ---
 seen_hook_ids = set()
@@ -95,6 +98,7 @@ for h in j.get('tear_down_hooks', []):
     assert re.match(r'^[a-z][a-z0-9_]*$', h['module']), f"tear_down_hook module {h['module']!r} invalid"
     for dm in h.get('deletion_modes', []):
         assert dm in DELETION_MODES, f"tear_down_hook {hid}: deletion_mode {dm!r} invalid"
+print(f"[PASS] {len(seen_hook_ids)} tear_down_hooks globally unique (C2-I4)")
 
 # --- cross_module_handoffs ordering unique-and-dense (1..N) ---
 orderings = [h['ordering'] for h in j.get('cross_module_handoffs', [])]
@@ -119,6 +123,7 @@ if 'onboarding_hooks_reversed' in j:
         for r in rmap:
             assert r['provisioning_hook_id'] in upstream_hook_ids, \
                 f"reverse_map: provisioning_hook_id {r['provisioning_hook_id']!r} not in upstream onboarding-flow"
+print("[PASS] cross_module_handoffs ordering unique-and-dense + onboarding_hooks_reversed cross-refs (if present) (C2-I4)")
 
 # --- WARN states (not exit 70) ---
 if not j.get('cross_module_handoffs'):

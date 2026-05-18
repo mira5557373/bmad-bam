@@ -79,6 +79,7 @@ assert isinstance(zdr, bool), f"zero_downtime_required must be boolean; got {typ
 # --- references_degraded: boolean (always present) ---
 ref_deg = j.get('references_degraded')
 assert isinstance(ref_deg, bool), f"references_degraded must be boolean; got {type(ref_deg).__name__}"
+print(f"[PASS] schema_version + decided_at + migration_axes={axes} + per_axis keys match + zero_downtime + references_degraded (C2-I4)")
 
 # --- Per-axis 5-sub-field validation ---
 warns = []
@@ -161,6 +162,7 @@ for axis in axes:
     assert isinstance(oh, list), f"per_axis[{axis!r}].observability_hooks must be list"
     if len(oh) == 0:
         warns.append(f"per_axis[{axis!r}].observability_hooks is empty (WARN)")
+print(f"[PASS] all {len(axes)} axis sub-fields valid (cohort_plan + dry_run_plan + rollback_gate + abort_criteria + observability_hooks) + invariant 12 (no cell_failback when zero_downtime) (C2-I4)")
 
 # --- references block + references_degraded consistency ---
 # Read soft-input state from upstream (best-effort)
@@ -218,6 +220,7 @@ h_primary = hashlib.sha256(open(primary_path, 'rb').read()).hexdigest()
 h_mirror = hashlib.sha256(open(mirror_path, 'rb').read()).hexdigest()
 assert h_primary == h_mirror, \
     f"QG-D1 and QG-M2 JSON files are NOT byte-identical (sha256: {h_primary[:12]} vs {h_mirror[:12]})"
+print(f"[PASS] references_degraded consistency + sha256 mirror match ({h_primary[:12]}) (C2-I4)")
 
 # --- Emit WARNs (not exit 70) ---
 for w in warns:

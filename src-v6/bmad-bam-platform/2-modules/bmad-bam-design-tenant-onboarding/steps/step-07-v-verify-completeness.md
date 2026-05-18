@@ -33,6 +33,7 @@ assert re.match(r'^\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}Z$', j['decided_at']), "de
 
 # flow_count consistency
 assert j['flow_count'] == len(j['flows'])
+print(f"[PASS] schema_version + decided_at + flow_count ({j['flow_count']})")
 
 # Per-flow validation
 hook_ids = set()
@@ -55,6 +56,7 @@ for f in j['flows']:
         assert h['id'] not in hook_ids, f"duplicate hook_id {h['id']}"
         hook_ids.add(h['id'])
         assert re.match(r'^[a-z][a-z0-9_]*$', h['module']), f"module {h['module']} invalid"
+print(f"[PASS] all {j['flow_count']} flows valid; {len(hook_ids)} provisioning_hooks globally unique; live_traffic⇒blocking constraint enforced (C2-I4)")
 
 print(f"VALID: onboarding-flow.json schema 1.0 (flows: {j['flow_count']})")
 ```
