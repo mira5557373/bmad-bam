@@ -65,6 +65,14 @@ Emit `_bmad/bam/evidence/QG-M2/QG-M2-onboarding-evidence.md` (human narrative) w
 - Schema validation summary
 - Cross-ref to QG-M2 H2 + C6
 
+Then verify the project-level sidecar ADR exists (C2-I1 fix — mirrors P3.1 tier-model pattern):
+
+```bash
+ADR_DIR="{project-root}/_bmad/_memory/atlas/architecture-decisions"
+ADR_MATCH=$(ls -1 "$ADR_DIR" 2>/dev/null | grep -E '^[0-9]{4}-[0-9]{2}-[0-9]{2}-[0-9]{3}-tenant-onboarding-decision\.md$' | tail -1)
+[ -n "$ADR_MATCH" ] && echo "[PASS] ADR present: $ADR_MATCH" || { echo "[FAIL] tenant-onboarding ADR missing — re-run step-06"; exit 1; }
+```
+
 ## Gate
 
 Machine-checkable.

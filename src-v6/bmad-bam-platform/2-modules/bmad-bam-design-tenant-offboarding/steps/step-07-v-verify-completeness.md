@@ -139,6 +139,14 @@ Emit `_bmad/bam/evidence/QG-M2/QG-M2-offboarding-evidence.md` (human narrative) 
 - Schema validation summary (mandatory-invariant checks all passed; regulatory-floor enforcement applied)
 - Cross-ref to QG-M2 H2 + waiver path
 
+Then verify the project-level sidecar ADR exists (C2-I1 fix — mirrors P3.1 tier-model pattern):
+
+```bash
+ADR_DIR="{project-root}/_bmad/_memory/atlas/architecture-decisions"
+ADR_MATCH=$(ls -1 "$ADR_DIR" 2>/dev/null | grep -E '^[0-9]{4}-[0-9]{2}-[0-9]{2}-[0-9]{3}-tenant-offboarding-decision\.md$' | tail -1)
+[ -n "$ADR_MATCH" ] && echo "[PASS] ADR present: $ADR_MATCH" || { echo "[FAIL] tenant-offboarding ADR missing — re-run step-06"; exit 1; }
+```
+
 ## Gate
 
 Machine-checkable.

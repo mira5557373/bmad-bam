@@ -22,7 +22,7 @@ Read 2 required inputs (tier-model + tenancy-decision) + 2 soft inputs (finops-b
    - On parse failure: exit 65
    - On empty: exit 66
    - Validate schema_version (warn if missing; assume "1.0"); apply auto-fill per Section 1.4 spec rules
-   - schema 1.0 + default tier_id → auto-fill `retention_window_days_hint` from preset (free: 7, starter: 14, pro: 30, business: 30, enterprise: 90)
+   - schema 1.0 + default tier_id → auto-fill `retention_window_days_hint` from canonical preset (free: 7, starter: 30, pro: 30, business: 90, enterprise: 365) — MUST match `bmad-bam-design-tenant-tier-model/steps/step-05-c-write-design.md` defaults table per spec §3.1 (B1 fix; values were drift-bug starter:14/business:30/enterprise:90 pre-polish)
    - schema 1.0 + custom tier_id → exit 70 (must re-run tier-model to schema 1.1 with explicit hint)
    - schema 1.1 → trust explicit `retention_window_days_hint` field
 

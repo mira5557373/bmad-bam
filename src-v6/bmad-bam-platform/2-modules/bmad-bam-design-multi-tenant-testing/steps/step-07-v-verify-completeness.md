@@ -184,6 +184,14 @@ Emit `_bmad/bam/evidence/QG-M2/QG-M2-test-catalogue-evidence.md` (human narrativ
 - Cross-ref to QG-M2 C1 + C5 + H1 + waiver path
 - Forward-references list (warns; e.g., `QG-D1.H1` if cited before QG-D1 ships)
 
+Then verify the project-level sidecar ADR exists (C2-I1 fix — mirrors P3.1 tier-model pattern):
+
+```bash
+ADR_DIR="{project-root}/_bmad/_memory/atlas/architecture-decisions"
+ADR_MATCH=$(ls -1 "$ADR_DIR" 2>/dev/null | grep -E '^[0-9]{4}-[0-9]{2}-[0-9]{2}-[0-9]{3}-multi-tenant-testing-decision\.md$' | tail -1)
+[ -n "$ADR_MATCH" ] && echo "[PASS] ADR present: $ADR_MATCH" || { echo "[FAIL] multi-tenant-testing ADR missing — re-run step-06"; exit 1; }
+```
+
 ## Gate
 
 Machine-checkable.

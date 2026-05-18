@@ -74,7 +74,7 @@ If `onboarding_flow_present == false`: step-05 OMITS the `onboarding_hooks_rever
   "regulatory_retention_floor_days": 0,
   "per_tier_prefill": {
     "free": {"deletion_mode": "soft_delete", "retention_window_days": 7, "retention_window_source": "tier_hint", "post_retention_action": "hard_delete"},
-    "starter": {"deletion_mode": "soft_delete", "retention_window_days": 14, "retention_window_source": "tier_hint", "post_retention_action": "hard_delete"}
+    "starter": {"deletion_mode": "soft_delete", "retention_window_days": 30, "retention_window_source": "tier_hint", "post_retention_action": "hard_delete"}
   },
   "tear_down_hook_templates": {...},
   "hybrid_aware_hooks": {...} | null,

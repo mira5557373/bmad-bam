@@ -251,6 +251,14 @@ Short cross-link narrative (~30-60 lines) with:
 - Removal trigger: "P10 ops ships full DR → this mirror copy + this narrative can be removed; QG-D1 becomes the sole evidence consumer."
 - Schema validation summary (cross-reference to primary)
 
+Then verify the project-level sidecar ADR exists (C2-I1 fix — mirrors P3.1 tier-model pattern):
+
+```bash
+ADR_DIR="{project-root}/_bmad/_memory/atlas/architecture-decisions"
+ADR_MATCH=$(ls -1 "$ADR_DIR" 2>/dev/null | grep -E '^[0-9]{4}-[0-9]{2}-[0-9]{2}-[0-9]{3}-tenant-migration-tooling-decision\.md$' | tail -1)
+[ -n "$ADR_MATCH" ] && echo "[PASS] ADR present: $ADR_MATCH" || { echo "[FAIL] tenant-migration-tooling ADR missing — re-run step-06"; exit 1; }
+```
+
 ## Gate
 
 Machine-checkable.
