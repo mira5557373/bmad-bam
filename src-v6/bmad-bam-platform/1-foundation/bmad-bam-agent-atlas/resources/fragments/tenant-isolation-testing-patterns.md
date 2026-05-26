@@ -4,7 +4,7 @@ title: Tenant Isolation Testing Patterns
 category: tenant-isolation
 kind: fragment
 qg_ref: QG-M2
-last_reviewed: 2026-05-12
+last_reviewed: 2026-05-17
 version: 1.0.0
 status: active
 author: atlas
@@ -546,6 +546,13 @@ When a query returns content older than 18 months, treat as orientation only. Te
 **Quality gate:**
 
 - `QG-M2` checklist (`src-v6/bmad-bam-platform/1-foundation/bmad-bam-agent-atlas/resources/checklists/QG-M2.md`) — the gate this fragment's catalogue feeds. Every tenancy-model.md design produced via [[tenancy-decision-framework]] MUST list its required isolation tests (from this catalogue) in §5, and QG-M2 verifies (a) the tests exist, (b) they fail informatively when isolation breaks, (c) they pass on main, and (d) the nightly synthetic-tenant suite is green.
+
+**P3.2 multi-tenant test catalogue (refresh 2026-05-17):**
+
+- `test-catalogue.json` schema (`docs/superpowers/specs/2026-05-17-p3-2-lifecycle-design.md` §3.4) — the machine contract whose `tests[*]` array operationalizes this fragment's patterns into a per-deployment must-have / should-have / nice-to-have list. The catalogue is emitted by `bmad-bam-design-multi-tenant-testing` (P3.2 commit 4); this fragment supplies the conceptual patterns it instantiates.
+- [[rls-bypass-test-design]] — the per-bypass-surface test specs (`SECURITY DEFINER`, `BYPASSRLS`, `SET ROLE`, `search_path`, missing `WITH CHECK`, missing `FORCE`). The RLS-bypass-tests section of this fragment delegates surface-specific detail to that fragment.
+- [[noisy-neighbor-detection]] — the noisy-neighbor test specs (NN-001..005 in the default catalogue). The noisy-neighbor simulation tests section of this fragment delegates per-surface detail to that fragment.
+- [[isolation-test-evidence-signatures]] — evidence_signature field standards for the test-catalogue.json contract; structural requirements (≥ 20 chars; concrete artifact + bound + scope) for QG-M2 audit-defensible evidence.
 
 **Related decisions:**
 

@@ -1,0 +1,110 @@
+---
+id: offboarding-policy
+title: "{{project_name}} — Tenant Offboarding Policy"
+status: draft
+date: "{{today}}"
+persona: atlas
+workflow_run_id: "{{run_id}}"
+---
+
+# Tenant Offboarding Policy — {{project_name}}
+
+## Decision
+
+**Regulatory profile:** `{{regulatory_profile}}` (chosen via `--regulatory-profile` flag)
+**Tier coverage:** {{tier_ids_csv}}
+**Mandatory invariants:** `data_export_required: true` (GDPR Art 20) + `subject_erasure_fast_path: true` (GDPR Art 17)
+**Retention floor for profile:** `{{regulatory_floor_days}}` days
+
+## Context
+
+- Target tenancy_model: {{tenancy_model}}
+- Hybrid resolution (if hybrid): {{hybrid_resolution}}
+- Tier model schema: {{tier_model_schema_version}}
+- Onboarding-flow upstream: {{onboarding_flow_present_yes_no}} (when yes, see `onboarding_hooks_reversed` block)
+- FinOps baseline upstream: {{finops_baseline_present_yes_no}}
+
+## Why this profile
+
+{{regulatory_profile_rationale}}
+
+## Per-tier policy matrix
+
+| tier_id | deletion_mode | retention_window_days | retention_window_source | post_retention_action | policy_id |
+|---|---|---|---|---|---|
+{{#each per_tier}}
+| {{tier_id}} | {{deletion_mode}} | {{retention_window_days}} | {{retention_window_source}} | {{post_retention_action}} | `{{policy_id}}` |
+{{/each}}
+
+## Per-tier rationale
+
+{{#each per_tier}}
+### {{tier_id}} → `{{deletion_mode}}` (retention: {{retention_window_days}}d)
+
+- **Why this mode:** {{rationale_mode}}
+- **Retention source:** {{retention_window_source}} {{#if (eq retention_window_source 'regulatory_floor')}}(bumped from tier_hint to satisfy {{../regulatory_profile}} floor){{/if}} {{#if (eq retention_window_source 'legal_hold')}}(effective infinite until legal-team release){{/if}}
+- **Post-retention action:** `{{post_retention_action}}`
+
+{{/each}}
+
+## Tear-down hooks
+
+Mechanism-aware ({{tenancy_model}}). Hook IDs are globally unique within this policy.
+
+| id | module | blocking | applies to deletion_modes |
+|---|---|---|---|
+{{#each tear_down_hooks}}
+| `{{id}}` | {{module}} | {{blocking}} | {{deletion_modes_csv}} |
+{{/each}}
+
+## Cross-module handoffs
+
+Ordered execution (1..N, unique + dense). Blocking handoffs MUST complete before deletion proceeds.
+
+| ordering | module | action | blocking |
+|---|---|---|---|
+{{#each cross_module_handoffs}}
+| {{ordering}} | {{module}} | {{action}} | {{blocking}} |
+{{/each}}
+
+## Legal holds
+
+{{#if legal_holds}}
+Holds override per-tier deletion-mode policy. Release requires legal-team sign-off (see `released_by`).
+
+| scope | reason | effective_until | released_by |
+|---|---|---|---|
+{{#each legal_holds}}
+| {{scope}} | {{reason}} | {{effective_until}} | {{released_by}} |
+{{/each}}
+{{else}}
+None active at policy creation time.
+{{/if}}
+
+## Onboarding hooks reversed
+
+{{#if onboarding_hooks_reversed}}
+Symmetric tear-down — each provisioning hook from upstream `onboarding-flow.json` maps to a local tear-down hook.
+
+**Source:** `{{onboarding_hooks_reversed.source_ref}}`
+
+| provisioning_hook_id (upstream) | → | tear_down_hook_id (local) |
+|---|---|---|
+{{#each onboarding_hooks_reversed.reverse_map}}
+| `{{provisioning_hook_id}}` | → | `{{tear_down_hook_id}}` |
+{{/each}}
+{{else}}
+Onboarding-flow upstream NOT present at policy creation time — degraded mode: generic tear-down hooks emitted, no reverse_map. To enable symmetric tear-down, run `bmad-bam-design-tenant-onboarding` first then re-run this skill in Edit mode.
+{{/if}}
+
+## Quality gate references
+
+- [QG-M2 — Tenant Isolation (v1.1.0)](../../_bmad/bbp/bmad-bam-agent-atlas/resources/checklists/QG-M2.md) — `offboarding-policy.json` provides H2 evidence (onboarding/offboarding preserves isolation).
+
+## Next steps
+
+After this policy is approved:
+
+1. Run `bmad-bam-design-multi-tenant-testing` — may pull `tear_down_hooks[]` as test fixtures for tear-down verification.
+2. Run `bmad-bam-design-tenant-migration-tooling` — may consume `tear_down_hooks[]` at source region prior to cohort migration.
+3. Wire tear_down_hooks + cross_module_handoffs into your operational runbook + erasure-request intake flow.

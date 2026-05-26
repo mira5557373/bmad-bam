@@ -353,15 +353,18 @@ BAM_TIER2=1 tests/integration/run-real-install.sh               # PASS
 4. Tenant migration: tier upgrades vs region migrations — single workflow or split?
 
 **Deliverables:** As P3.1, plus:
-- QG-M2 refinement (expanded test catalogue)
-- QG-D1 partial (DR dependency on migration; full lands in P10 ops)
+- QG-M2 refinement (expanded test catalogue) — refined to **v1.1.0** (C6 auto-promote) 2026-05-17
+- QG-D1 partial (DR dependency on migration; full lands in P10 ops) — **v0.1.0** created 2026-05-17
+- QG-M1 promoted to blocking **v1.0.0** 2026-05-17
 - Cross-reference into QG-C1 (compliance for offboarding) — placeholder for P9 trust
-- ADR-015
+- ADR-016 (Wave P3.2 design decisions, dependencies-on-other-decisions: [006, 008, 009, 010, 011, 012, 013, 014, 015]) — LANDED 2026-05-17
 
 **Cross-validation:** Same as P3.1, plus:
-- [ ] design-multi-tenant-testing output catalogue consumed by QG-M2 evidence requirements
-- [ ] design-tenant-offboarding cites GDPR right-to-deletion fragment + explicit retention-window decision
-- [ ] design-tenant-migration-tooling specifies zero-downtime constraint + cross-region implications
+- [x] design-multi-tenant-testing output catalogue consumed by QG-M2 evidence requirements — LANDED 2026-05-17
+- [x] design-tenant-offboarding cites GDPR right-to-deletion fragment + explicit retention-window decision — LANDED 2026-05-17 (tier-model schema 1.1 `retention_window_days_hint`)
+- [x] design-tenant-migration-tooling specifies zero-downtime constraint + cross-region implications — LANDED 2026-05-17 (invariant 12: `zero_downtime_required: true` ⇒ no `cell_failback`)
+
+**Outcome (2026-05-17):** 4 Lifecycle skills active (ZON / ZOF / ZMT / ZTG); marketplace bumped to v0.6.0; 12 menu codes total; Atlas fragments 24→37; anti-patterns 4→8; glossary 6→13.
 
 **Next:** P3.3 Commercial.
 
@@ -1702,10 +1705,10 @@ Each template is an overlay on a specific BMAD-core skill. Assigned to specific 
 | `bmad-code-review` | Tenant-context propagation; leakage checks | P3 |
 | `bmad-correct-course` | Retrospective discipline; drift detection | P11.1 (alongside refresh-knowledge) |
 | `bmad-retrospective` | Tenant / AI / compliance / SLO retrospective | P3 + P5 + P9 + P10 |
-| `bmad-qa-generate-e2e-tests` | Multi-tenant test scenarios | P3.2 (testing focus) |
+| `bmad-qa-generate-e2e-tests` | Multi-tenant test scenarios | P3.2 (testing focus) — **LANDED 2026-05-17** (overlay at `src-v6/bmad-bam-platform/2-modules/bmad-bam-design-multi-tenant-testing/customize-template/bmad-qa-generate-e2e-tests/customize.toml`; B2 path fix) |
 | `bmad-investigate` | AI capability + compliance deep-dives | P5 + P9 |
 | `bmad-checkpoint-preview` | Production-readiness preview | P10 |
-| `bmad-design-test-strategy` | Multi-tenant test strategy + AI eval coverage | P3.2 + P5 (eval) |
+| `bmad-design-test-strategy` | Multi-tenant test strategy + AI eval coverage | P3.2 + P5 (eval) — **DEFERRED per R3.2.6** (BMM upstream skill not yet shipped; BAM overlay deferred — empirically verified 2026-05-17) |
 
 PX-CustomizeTpl consolidation at v6.0 reconciles overlaps + ensures all 15 land.
 
@@ -1773,6 +1776,7 @@ Maps every spec section to a wave/deliverable so nothing's orphan:
 | §15 | How Claude Consumes BAM | Validated at v6.0/v6.1/v6.2 release gates; see §17 of this roadmap |
 | §16 | Changelog | Updated per-wave |
 | §17 | Known Issues | Tracked + per-wave revisit; see §17 of this roadmap |
+| §5.1 (P3.2 workflows) + §8.1 (QG-M2 v1.1.0, QG-M1 v1.0.0, QG-D1 v0.1.0) | Wave P3.2 Lifecycle | **ADR-016 (LANDED 2026-05-17)** — `docs/superpowers/specs/2026-05-17-p3-2-lifecycle-design.md` (full design); ADR map in §13 below |
 
 ---
 
@@ -1790,14 +1794,15 @@ Each wave's spec changelog row decision:
 - Substantial content addition without structural change → no bump
 - Bug fix or annotation → no bump
 
-**ADR numbering reservations** (sequential; current latest: 015):
+**ADR numbering reservations** (sequential; current latest: 016):
 
 | Wave | ADRs reserved | Topics |
 |---|---|---|
 | **v4 roadmap (pre-wave-P3)** | **011-013** | **Phase-column decoupling (§19.3), BMM all-in-skills (§19.6), Menu-code 3-char Z-prefix extension (§19.7)** |
 | P3.0 | 014 | BMM manifest reconciliation — LANDED 2026-05-16 |
 | P3.1 | 015 | Foundation Skills design decisions (4 skills + QG-F1 + QG-M1 partial) — LANDED 2026-05-17 |
-| P3 (remaining) | 016-019 | Lifecycle (P3.2), Commercial (P3.3), Brownfield (P3.4), Wave-completion |
+| P3.2 | 016 | Lifecycle skills design decisions (4 skills + QG-M2 v1.1.0 refine + QG-M1 v1.0.0 promote + QG-D1 v0.1.0 partial) — LANDED 2026-05-17 |
+| P3 (remaining) | 017-019 | Commercial (P3.3), Brownfield (P3.4), Wave-completion |
 | P4 | 019-022 | Module bootstrap + 3 sub-waves (shifted from 016-019) |
 | P5 | 023-030 | Nova introduction + 6 sub-waves + cross-persona (shifted from 020-027) |
 | P6 | 031-033 | Iris introduction + sub-waves (shifted from 028-030) |

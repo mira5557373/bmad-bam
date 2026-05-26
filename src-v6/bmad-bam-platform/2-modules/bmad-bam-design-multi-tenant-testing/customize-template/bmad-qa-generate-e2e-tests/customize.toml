@@ -1,0 +1,13 @@
+# BAM overlay for BMM's bmad-qa-generate-e2e-tests skill.
+# Pinned to BMM v6.6.0 customize.toml schema; refresh if BMM upstream bumps.
+# Workflow customization surface — mirrors the agent customization shape under the [workflow] namespace.
+
+[workflow]
+
+activation_steps_append = [
+  "BAM context: When generating E2E tests, consult test-catalogue.json at _bmad/bam/evidence/QG-M2/ for the per-isolation-model required-test set. Universal-cross-model tests (universal: true) MUST be covered. Per-model tests apply per the project's tenancy_model in tenancy-decision.json. RLS-bypass tests (category: rls-bypass) are MANDATORY when tenancy_model == row-level-security."
+]
+
+persistent_facts = [
+  "file:{project-root}/_bmad-output/bbp/project-context.md"
+]

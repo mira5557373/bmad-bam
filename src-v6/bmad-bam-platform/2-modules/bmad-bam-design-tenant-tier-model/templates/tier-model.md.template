@@ -29,10 +29,10 @@ workflow_run_id: "{{run_id}}"
 
 ## Tier matrix
 
-| id | price (USD/mo) | limits (summary) | features (summary) | rollout_tier_hint | cost_ceiling_hint (USD/mo) | upgrade_mode | upgrade_path |
-|---|---|---|---|---|---|---|---|
-| {{tier_1_id}} | {{tier_1_price}} | {{tier_1_limits_summary}} | {{tier_1_features_summary}} | {{tier_1_rollout_hint}} | {{tier_1_cost_ceiling}} | {{tier_1_upgrade_mode}} | {{tier_1_upgrade_path}} |
-| {{tier_2_id}} | {{tier_2_price}} | {{tier_2_limits_summary}} | {{tier_2_features_summary}} | {{tier_2_rollout_hint}} | {{tier_2_cost_ceiling}} | {{tier_2_upgrade_mode}} | {{tier_2_upgrade_path}} |
+| id | price (USD/mo) | limits (summary) | features (summary) | rollout_tier_hint | cost_ceiling_hint (USD/mo) | retention_days_hint | upgrade_mode | upgrade_path |
+|---|---|---|---|---|---|---|---|---|
+| {{tier_1_id}} | {{tier_1_price}} | {{tier_1_limits_summary}} | {{tier_1_features_summary}} | {{tier_1_rollout_hint}} | {{tier_1_cost_ceiling}} | {{tier_1_retention_days}} | {{tier_1_upgrade_mode}} | {{tier_1_upgrade_path}} |
+| {{tier_2_id}} | {{tier_2_price}} | {{tier_2_limits_summary}} | {{tier_2_features_summary}} | {{tier_2_rollout_hint}} | {{tier_2_cost_ceiling}} | {{tier_2_retention_days}} | {{tier_2_upgrade_mode}} | {{tier_2_upgrade_path}} |
 
 (Add a row per tier; the row count equals `tier_count`.)
 

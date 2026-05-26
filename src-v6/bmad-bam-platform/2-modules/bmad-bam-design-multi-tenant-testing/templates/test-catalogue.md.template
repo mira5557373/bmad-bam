@@ -1,0 +1,126 @@
+---
+id: test-catalogue
+title: "{{project_name}} — Multi-Tenant Test Catalogue"
+status: draft
+date: "{{today}}"
+persona: atlas
+workflow_run_id: "{{run_id}}"
+---
+
+# Multi-Tenant Test Catalogue — {{project_name}}
+
+## Decision
+
+**Tenancy model:** `{{tenancy_model}}`
+**Coverage profile:** `{{coverage_profile}}`
+**Total tests in catalogue:** `{{total_test_count}}` (must-have: `{{must_have_count}}`)
+**Catalogue scope:** This is a **specification** of required tests — names, applicability, severities, evidence signatures, and QG traceability. It is NOT executable test code. Downstream BMM workflow `bmad-qa-generate-e2e-tests` consumes this contract via the BAM overlay shipped under `customize-template/`.
+
+## Context
+
+- Target tenancy_model: {{tenancy_model}}
+- Hybrid resolution (if hybrid): {{hybrid_resolution}}
+- Tier model upstream: {{tier_model_present_yes_no}}
+- Per-tier noisy-neighbor severity (from tier-model when present): {{noisy_neighbor_severity_summary}}
+
+## Coverage report
+
+| category | must-have | should-have | nice-to-have | total | notes |
+|---|---|---|---|---|---|
+{{#each coverage_report}}
+| {{@key}} | {{must_have}} | {{should_have}} | {{nice_to_have}} | {{total}} | {{note}} |
+{{/each}}
+
+**Notes:**
+- `cross-tenant-cache` category ships with `must_have: 0` — deferred to P5 ai (`design-model-cache-isolation`). Should-have / nice-to-have entries here are forward-traceability placeholders only.
+- Universal-cross-model tests (count: `{{universal_isolation_count}}` in `isolation`) apply regardless of tenancy_model; downstream test generators MUST cover them.
+
+## Hybrid resolution
+
+{{#if hybrid_resolution}}
+Per-tier mechanism map. Each tier's isolation tests are selected per its mechanism; per-tier bypass tests are the UNION across all distinct mechanism values.
+
+| tier_id | mechanism |
+|---|---|
+{{#each hybrid_resolution}}
+| {{@key}} | {{this}} |
+{{/each}}
+{{else}}
+Not applicable — tenancy_model is `{{tenancy_model}}` (single mechanism for all tiers).
+{{/if}}
+
+## Per-category test detail
+
+### Isolation tests
+
+Tests assert "X CANNOT happen" — proving negatives. Universal tests apply regardless of mechanism; mechanism-specific isolation tests target the specific primitive (RLS policy, schema search_path, cell routing).
+
+| id | name | applies_to | universal | severity | evidence_signature | traceable_to |
+|---|---|---|---|---|---|---|
+{{#each tests_isolation}}
+| `{{id}}` | `{{name}}` | {{applies_to_csv}} | {{universal}} | {{severity}} | {{evidence_signature}} | {{traceable_to_csv}} |
+{{/each}}
+
+### Noisy-neighbor tests
+
+Tests assert SLA preservation under abnormal-tenant-load. Severity per-tenant-tier comes from tier-model upstream (enterprise: must-have; mid: should-have; entry: nice-to-have) or uniform `should-have` when tier-model absent.
+
+| id | name | applies_to | universal | severity | evidence_signature | traceable_to |
+|---|---|---|---|---|---|---|
+{{#each tests_noisy_neighbor}}
+| `{{id}}` | `{{name}}` | {{applies_to_csv}} | {{universal}} | {{severity}} | {{evidence_signature}} | {{traceable_to_csv}} |
+{{/each}}
+
+### Quota tests
+
+Tests assert per-tenant resource limits (rate, storage, inference, connection pool) enforce + survive restart.
+
+| id | name | applies_to | universal | severity | evidence_signature | traceable_to |
+|---|---|---|---|---|---|---|
+{{#each tests_quota}}
+| `{{id}}` | `{{name}}` | {{applies_to_csv}} | {{universal}} | {{severity}} | {{evidence_signature}} | {{traceable_to_csv}} |
+{{/each}}
+
+### RLS-bypass tests
+
+**Mechanism-specific** — RLS deployments, schema-per-tenant deployments, and cell-based deployments each have distinct attack surfaces. Generic isolation tests do not catch model-specific bypass techniques (e.g., RLS deployment's `SECURITY DEFINER` injection passes a generic cross-tenant SELECT but silently exposes data via a privileged helper function).
+
+| id | name | applies_to | universal | severity | evidence_signature | traceable_to |
+|---|---|---|---|---|---|---|
+{{#each tests_rls_bypass}}
+| `{{id}}` | `{{name}}` | {{applies_to_csv}} | {{universal}} | {{severity}} | {{evidence_signature}} | {{traceable_to_csv}} |
+{{/each}}
+
+### Cross-tenant-cache tests (DEFERRED to P5 ai)
+
+Cache-key collision attacks (KV/CDN cache poisoning across tenants) belong in P5 ai's `design-model-cache-isolation` skill. At this wave the catalogue's `must_have: 0` for this category is a deliberate forward-trace placeholder; should-have / nice-to-have entries are aspirational.
+
+| id | name | applies_to | universal | severity | evidence_signature | traceable_to |
+|---|---|---|---|---|---|---|
+{{#each tests_cross_tenant_cache}}
+| `{{id}}` | `{{name}}` | {{applies_to_csv}} | {{universal}} | {{severity}} | {{evidence_signature}} | {{traceable_to_csv}} |
+{{/each}}
+
+## Quality gate references
+
+- [QG-M2 — Tenant Isolation (v1.1.0)](../../_bmad/bbp/bmad-bam-agent-atlas/resources/checklists/QG-M2.md) — `test-catalogue.json` feeds:
+  - C1 (universal isolation check) — sourced from `coverage_report.isolation.must_have ≥ 1` AND ≥1 entry with `category: isolation` AND `universal: true`
+  - C5 (rls-bypass coverage) — sourced from `coverage_report.rls-bypass.must_have ≥ 1` when tenancy includes row-level-security mechanism
+  - H1 (test-catalogue coverage of mechanism-specific bypass) — sourced from per-mechanism bypass test count
+
+## BMM overlay consumers
+
+This catalogue is consumed by BMM's `bmad-qa-generate-e2e-tests` skill via the BAM customize-template overlay shipped under `bmad-bam-design-multi-tenant-testing/customize-template/bmad-qa-generate-e2e-tests/customize.toml`. The overlay's `activation_steps_append` instructs the BMM skill to:
+
+1. Read `test-catalogue.json` at `_bmad/bam/evidence/QG-M2/`
+2. Cover all `universal: true` tests as a baseline regardless of project's `tenancy_model`
+3. Cover per-model tests selected by `tenancy_model` (or per-tier mechanisms in `hybrid_resolution`)
+4. Treat `rls-bypass` tests as MANDATORY when any mechanism in scope == `row-level-security`
+
+## Next steps
+
+After this catalogue is approved:
+
+1. Run downstream test code generation (BMM `bmad-qa-generate-e2e-tests` with the overlay applied at install time) — produces the actual test files in your repo.
+2. Wire the test catalogue's `tests[].id` set into CI as the must-have gate for QG-M2 sign-off.
+3. Run `bmad-bam-design-tenant-migration-tooling` if migration is in-scope; the migration runbook may pull catalogue tests as smoke-coverage for cohort dry-runs.

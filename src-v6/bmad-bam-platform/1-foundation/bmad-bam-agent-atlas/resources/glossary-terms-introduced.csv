@@ -5,3 +5,10 @@ per-tenant-cost-attribution,"Mechanism for assigning infrastructure cost (comput
 tier-cliff,"A discontinuity between tiers (price jump, feature jump) that incentivizes user workarounds rather than upgrades.",bmad-bam-design-tenant-tier-model,provisional
 unit-economics,"The per-unit-of-business revenue, cost, and margin model; for SaaS the unit is typically a tenant or seat.",bmad-bam-design-finops-model,provisional
 feature-gating,"The mechanism for enabling/disabling features based on a tenant's tier, role, or other attribute.",bmad-bam-design-tenant-tier-model,provisional
+right-to-deletion,"GDPR Art 17 subject-erasure right; tenant or subject can request hard-delete of PII data subject to regulatory retention floors.",bmad-bam-design-tenant-offboarding,provisional
+data-portability,"GDPR Art 20 right; tenant can request machine-readable structured export of their data before erasure or migration.",bmad-bam-design-tenant-offboarding,provisional
+retention-floor,"Regulatory minimum retention window (HIPAA 6y, SOX 7y, PCI 1y) that constrains the timing of deletion or anonymization.",bmad-bam-design-tenant-offboarding,provisional
+anonymization,"Irreversible removal or alteration of PII such that the original subject cannot be re-identified; distinct from pseudonymization which is reversible (latter deferred to PX-Glossary or P9 Trust wave).",bmad-bam-design-tenant-offboarding,provisional
+rls-bypass,"Escape from row-level-security policies via SECURITY DEFINER functions, role-elevation, or function-call escalation; primary RLS-failure mode.",bmad-bam-design-multi-tenant-testing,provisional
+noisy-neighbor,"Tenant whose resource consumption degrades other tenants' SLAs; mitigated via quotas, fair-scheduling, and rate-limiting.",bmad-bam-design-multi-tenant-testing,provisional
+isolation-verification-step,"Mandatory onboarding step that verifies a newly-provisioned tenant cannot read or write to other tenants' data; blocking gate before live traffic.",bmad-bam-design-tenant-onboarding,provisional

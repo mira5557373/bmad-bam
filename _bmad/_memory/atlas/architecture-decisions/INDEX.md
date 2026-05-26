@@ -17,3 +17,4 @@
 | 2026-05-16-013 | Adopt 3-char Z-prefix menu codes as deliberate BMM extension | accepted | 2026-05-16 |
 | 2026-05-16-014 | Keep BAM-extended bmad-skill-manifest.yaml (10 fields) — BMM uses minimal 2-field frontmatter; document divergence | accepted | 2026-05-16 |
 | 2026-05-17-015 | Wave P3.1 Foundation Skills design decisions (4 skills + QG-F1 + QG-M1 partial) | accepted | 2026-05-17 |
+| 2026-05-17-016 | Wave P3.2 Lifecycle Skills design decisions (4 skills + QG-M2 refine + QG-M1 promote + QG-D1 partial) | accepted | 2026-05-17 |

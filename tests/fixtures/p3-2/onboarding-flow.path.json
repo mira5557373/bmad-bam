@@ -1,0 +1,179 @@
+{
+  "schema_version": "1.0",
+  "decided_at": "2026-05-17T14:23:00Z",
+  "flow_count": 7,
+  "defaults_source": {
+    "tier_model_ref": "_bmad/bam/evidence/QG-F1/tier-model.json",
+    "tier_model_schema_version": "1.1"
+  },
+  "flows": [
+    {
+      "tier_id": "tier_demo",
+      "flow_type": "self_serve",
+      "live_traffic": false,
+      "provisioning_mode": "auto",
+      "isolation_verification_step": {
+        "step_name": "verify-isolation-demo",
+        "test_artifact": "demo sandbox runs synthetic-only traffic",
+        "blocking": false,
+        "blocking_rationale": "demo tier; no real customer data"
+      },
+      "provisioning_hooks": [
+        { "id": "demo_seed_data",      "module": "platform", "blocking": true },
+        { "id": "demo_user_create",    "module": "platform", "blocking": true },
+        { "id": "demo_billing_skip",   "module": "billing",  "blocking": false },
+        { "id": "demo_audit_init",     "module": "audit_trail", "blocking": false },
+        { "id": "demo_ai_warmup",      "module": "ai_memory","blocking": false },
+        { "id": "demo_trust_baseline", "module": "trust",    "blocking": false },
+        { "id": "demo_legal_skip",     "module": "legal",    "blocking": false },
+        { "id": "demo_ux_init",        "module": "ux",       "blocking": false },
+        { "id": "demo_ops_register",   "module": "ops",      "blocking": false },
+        { "id": "demo_metrics_init",   "module": "platform", "blocking": false }
+      ]
+    },
+    {
+      "tier_id": "tier_starter",
+      "flow_type": "self_serve",
+      "live_traffic": true,
+      "provisioning_mode": "auto",
+      "isolation_verification_step": {
+        "step_name": "verify-isolation-starter",
+        "test_artifact": "cross-tenant query against tenant_id=new_id returns zero rows",
+        "blocking": true,
+        "blocking_rationale": "no live traffic until isolation verified"
+      },
+      "provisioning_hooks": [
+        { "id": "starter_db_create",      "module": "platform", "blocking": true },
+        { "id": "starter_stripe_create",  "module": "billing",  "blocking": false },
+        { "id": "starter_audit_init",     "module": "audit_trail", "blocking": true },
+        { "id": "starter_ai_index_init",  "module": "ai_memory","blocking": false },
+        { "id": "starter_trust_baseline", "module": "trust",    "blocking": false },
+        { "id": "starter_legal_tos_ack",  "module": "legal",    "blocking": true },
+        { "id": "starter_ux_onboard",     "module": "ux",       "blocking": false },
+        { "id": "starter_ops_register",   "module": "ops",      "blocking": true },
+        { "id": "starter_metrics_init",   "module": "platform", "blocking": false },
+        { "id": "starter_secrets_init",   "module": "platform", "blocking": true }
+      ]
+    },
+    {
+      "tier_id": "tier_pro",
+      "flow_type": "self_serve",
+      "live_traffic": true,
+      "provisioning_mode": "scripted",
+      "isolation_verification_step": {
+        "step_name": "verify-isolation-pro",
+        "test_artifact": "cross-tenant query against tenant_id=new_id returns zero rows + RLS bypass attempt blocked",
+        "blocking": true,
+        "blocking_rationale": "no live traffic until isolation verified"
+      },
+      "provisioning_hooks": [
+        { "id": "pro_db_create",         "module": "platform", "blocking": true },
+        { "id": "pro_stripe_create",     "module": "billing",  "blocking": true },
+        { "id": "pro_audit_init",        "module": "audit_trail", "blocking": true },
+        { "id": "pro_ai_index_init",     "module": "ai_memory","blocking": false },
+        { "id": "pro_trust_baseline",    "module": "trust",    "blocking": true },
+        { "id": "pro_legal_tos_ack",     "module": "legal",    "blocking": true },
+        { "id": "pro_ux_onboard",        "module": "ux",       "blocking": false },
+        { "id": "pro_ops_register",      "module": "ops",      "blocking": true },
+        { "id": "pro_metrics_init",      "module": "platform", "blocking": false },
+        { "id": "pro_secrets_init",      "module": "platform", "blocking": true }
+      ]
+    },
+    {
+      "tier_id": "tier_team",
+      "flow_type": "assisted_signup",
+      "live_traffic": true,
+      "provisioning_mode": "scripted",
+      "isolation_verification_step": {
+        "step_name": "verify-isolation-team",
+        "test_artifact": "cross-tenant query against tenant_id=new_id returns zero rows + RLS bypass attempt blocked",
+        "blocking": true,
+        "blocking_rationale": "no live traffic until isolation verified"
+      },
+      "provisioning_hooks": [
+        { "id": "team_db_create",      "module": "platform", "blocking": true },
+        { "id": "team_stripe_create",  "module": "billing",  "blocking": true },
+        { "id": "team_audit_init",     "module": "audit_trail", "blocking": true },
+        { "id": "team_ai_index_init",  "module": "ai_memory","blocking": true },
+        { "id": "team_trust_baseline", "module": "trust",    "blocking": true },
+        { "id": "team_legal_tos_ack",  "module": "legal",    "blocking": true },
+        { "id": "team_ux_onboard",     "module": "ux",       "blocking": true },
+        { "id": "team_ops_register",   "module": "ops",      "blocking": true },
+        { "id": "team_metrics_init",   "module": "platform", "blocking": false },
+        { "id": "team_secrets_init",   "module": "platform", "blocking": true }
+      ]
+    },
+    {
+      "tier_id": "tier_business",
+      "flow_type": "assisted_signup",
+      "live_traffic": true,
+      "provisioning_mode": "manual",
+      "isolation_verification_step": {
+        "step_name": "verify-isolation-business",
+        "test_artifact": "full isolation matrix executed against new tenant_id; cross-tenant cache probe verified",
+        "blocking": true,
+        "blocking_rationale": "no live traffic until isolation matrix passes"
+      },
+      "provisioning_hooks": [
+        { "id": "biz_db_create",      "module": "platform", "blocking": true },
+        { "id": "biz_stripe_create",  "module": "billing",  "blocking": true },
+        { "id": "biz_audit_init",     "module": "audit_trail", "blocking": true },
+        { "id": "biz_ai_index_init",  "module": "ai_memory","blocking": true },
+        { "id": "biz_trust_baseline", "module": "trust",    "blocking": true },
+        { "id": "biz_legal_dpa",      "module": "legal",    "blocking": true },
+        { "id": "biz_ux_onboard",     "module": "ux",       "blocking": true },
+        { "id": "biz_ops_register",   "module": "ops",      "blocking": true },
+        { "id": "biz_metrics_init",   "module": "platform", "blocking": true },
+        { "id": "biz_secrets_init",   "module": "platform", "blocking": true }
+      ]
+    },
+    {
+      "tier_id": "tier_enterprise",
+      "flow_type": "sales_led",
+      "live_traffic": true,
+      "provisioning_mode": "manual",
+      "isolation_verification_step": {
+        "step_name": "verify-isolation-enterprise",
+        "test_artifact": "full isolation + DR matrix executed; signed evidence narrative attached to deal record",
+        "blocking": true,
+        "blocking_rationale": "no live traffic until executive sign-off captured"
+      },
+      "provisioning_hooks": [
+        { "id": "ent_db_create",      "module": "platform", "blocking": true },
+        { "id": "ent_stripe_invoice", "module": "billing",  "blocking": true },
+        { "id": "ent_audit_init",     "module": "audit_trail", "blocking": true },
+        { "id": "ent_ai_index_init",  "module": "ai_memory","blocking": true },
+        { "id": "ent_trust_baseline", "module": "trust",    "blocking": true },
+        { "id": "ent_legal_msa",      "module": "legal",    "blocking": true },
+        { "id": "ent_ux_onboard",     "module": "ux",       "blocking": true },
+        { "id": "ent_ops_register",   "module": "ops",      "blocking": true },
+        { "id": "ent_metrics_init",   "module": "platform", "blocking": true },
+        { "id": "ent_secrets_init",   "module": "platform", "blocking": true }
+      ]
+    },
+    {
+      "tier_id": "tier_gov",
+      "flow_type": "sales_led",
+      "live_traffic": true,
+      "provisioning_mode": "manual",
+      "isolation_verification_step": {
+        "step_name": "verify-isolation-gov",
+        "test_artifact": "FedRAMP isolation matrix + DR matrix executed; signed evidence narrative attached to ATO record",
+        "blocking": true,
+        "blocking_rationale": "no live traffic until ATO sign-off captured"
+      },
+      "provisioning_hooks": [
+        { "id": "gov_db_create",       "module": "platform", "blocking": true },
+        { "id": "gov_billing_po",      "module": "billing",  "blocking": true },
+        { "id": "gov_audit_init",      "module": "audit_trail", "blocking": true },
+        { "id": "gov_ai_index_init",   "module": "ai_memory","blocking": true },
+        { "id": "gov_trust_baseline",  "module": "trust",    "blocking": true },
+        { "id": "gov_legal_ato",       "module": "legal",    "blocking": true },
+        { "id": "gov_ux_onboard",      "module": "ux",       "blocking": true },
+        { "id": "gov_ops_register",    "module": "ops",      "blocking": true },
+        { "id": "gov_metrics_init",    "module": "platform", "blocking": true },
+        { "id": "gov_secrets_init",    "module": "platform", "blocking": true }
+      ]
+    }
+  ]
+}

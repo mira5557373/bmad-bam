@@ -1,0 +1,65 @@
+---
+id: onboarding-flow
+title: "{{project_name}} — Tenant Onboarding Flow"
+status: draft
+date: "{{today}}"
+persona: atlas
+workflow_run_id: "{{run_id}}"
+---
+
+# Tenant Onboarding Flow — {{project_name}}
+
+## Decision
+
+**Flow count:** {{flow_count}}
+**Tier coverage:** {{tier_ids_csv}}
+
+## Context
+
+- Target tenancy_model: {{tenancy_model}}
+- Hybrid resolution (if hybrid): {{hybrid_resolution}}
+- Tier model schema: {{tier_model_schema_version}}
+
+## Per-tier flow matrix
+
+| tier_id | flow_type | live_traffic | provisioning_mode | isolation_verification_step | provisioning_hooks (count) |
+|---|---|---|---|---|---|
+{{#each flows}}
+| {{tier_id}} | {{flow_type}} | {{live_traffic}} | {{provisioning_mode}} | {{isolation_verification_step.step_name}} | {{provisioning_hooks.length}} |
+{{/each}}
+
+## Isolation-verification step (per flow)
+
+{{#each flows}}
+### {{tier_id}}
+
+- **step_name:** `{{isolation_verification_step.step_name}}`
+- **test_artifact:** {{isolation_verification_step.test_artifact}}
+- **blocking:** {{isolation_verification_step.blocking}}
+- **blocking_rationale:** {{isolation_verification_step.blocking_rationale}}
+
+{{/each}}
+
+## Provisioning hooks
+
+{{#each flows}}
+### {{tier_id}} hooks
+
+| id | module | blocking |
+|---|---|---|
+{{#each provisioning_hooks}}
+| {{id}} | {{module}} | {{blocking}} |
+{{/each}}
+
+{{/each}}
+
+## Quality gate references
+
+- [QG-M2 — Tenant Isolation (v1.1.0)](../../_bmad/bbp/bmad-bam-agent-atlas/resources/checklists/QG-M2.md) — `onboarding-flow.json` provides C6 + H2 + H5 evidence.
+
+## Next steps
+
+After this design is approved:
+
+1. Run `bmad-bam-design-tenant-offboarding` — consumes flow tier_ids + provisioning_hooks for symmetric tear-down.
+2. Run `bmad-bam-design-tenant-migration-tooling` — may consume provisioning_hooks for target-region re-provisioning.

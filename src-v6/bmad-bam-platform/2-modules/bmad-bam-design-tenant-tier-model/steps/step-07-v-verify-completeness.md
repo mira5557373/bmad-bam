@@ -39,6 +39,14 @@ data = json.load(open("{project-root}/docs/architecture/tier-model.json"))
 errors = []
 if "schema_version" not in data:
     errors.append("missing schema_version")
+else:
+    # P3.2: accept both 1.0 (P3.1 backwards-compat) and 1.1 (adds retention_window_days_hint)
+    allowed_schema_versions = {"1.0", "1.1"}
+    if data["schema_version"] not in allowed_schema_versions:
+        errors.append(
+            f"schema_version {data['schema_version']!r} not in {allowed_schema_versions} "
+            f"(P3.2 accepts 1.0 and 1.1)"
+        )
 
 tier_count = data.get("tier_count")
 if not isinstance(tier_count, int) or tier_count not in {3, 4, 5, 6, 7}:
@@ -104,6 +112,30 @@ if not isinstance(transitions, dict):
     errors.append("transitions must be object")
 elif transitions.get("any_downgrade") != "rate_arbitrage_check":
     errors.append(f"transitions.any_downgrade must == 'rate_arbitrage_check'; got {transitions.get('any_downgrade')!r}")
+
+# P3.2 schema 1.1: retention_window_days_hint per tier
+# - custom_tiers_mode: required per tier (no defaults possible)
+# - 5-default mode: optional (consumers auto-fill from preset)
+# - When present: integer in [0, 36500]
+tm = data
+for tier in tm.get("tiers", []) if isinstance(tm.get("tiers"), list) else []:
+    if not isinstance(tier, dict):
+        continue
+    if tm.get('custom_tiers_mode', False):
+        if 'retention_window_days_hint' not in tier:
+            errors.append(
+                f"custom-mode tier {tier.get('id')!r} missing retention_window_days_hint "
+                f"— re-run bmad-bam-design-tenant-tier-model post-P3.2 to emit schema 1.1 "
+                f"with explicit retention values per custom tier "
+                f"(rule applies to both schema 1.0 and 1.1 custom-mode; C1-I1 fix)"
+            )
+    if 'retention_window_days_hint' in tier:
+        v = tier['retention_window_days_hint']
+        if not (isinstance(v, int) and not isinstance(v, bool) and 0 <= v <= 36500):
+            errors.append(
+                f"tier {tier.get('id')!r} retention_window_days_hint={v!r} "
+                f"out of range [0, 36500] or not int"
+            )
 
 if errors:
     print("[FAIL] schema validation:")

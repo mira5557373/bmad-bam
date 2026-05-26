@@ -78,6 +78,42 @@ Unit economics + per-tenant cost attribution. Reads tenancy + tier + deployment 
 - **Output:** docs/architecture/
 - **SKILL.md:** `src-v6/bmad-bam-platform/2-modules/bmad-bam-design-tenant-tier-model/SKILL.md`
 
+### `bmad-bam-design-tenant-onboarding` — Tenant Onboarding Design (ZON)
+
+Design per-tier onboarding flows (self_serve / assisted_signup / sales_led) with mandatory isolation_verification_step. Reads tier-model + tenancy. Output: onboarding-flow.md + .json (QG-M2 evidence). Invoke via /bmad-bam-design-tenant-onboarding.
+
+- **Phase:** solutioning
+- **Required:** false
+- **Output:** docs/architecture/
+- **SKILL.md:** `src-v6/bmad-bam-platform/2-modules/bmad-bam-design-tenant-onboarding/SKILL.md`
+
+### `bmad-bam-design-tenant-offboarding` — Tenant Offboarding Design (ZOF)
+
+Design offboarding: GDPR Art 17 erasure + Art 20 export + retention floors. Flag: --regulatory-profile gdpr_baseline|hipaa|sox_or_pci|none. Reads tier + tenancy. Output: offboarding-policy.md + .json (QG-M2 evidence). Invoke via /bmad-bam-design-tenant-offboarding.
+
+- **Phase:** solutioning
+- **Required:** false
+- **Output:** docs/architecture/
+- **SKILL.md:** `src-v6/bmad-bam-platform/2-modules/bmad-bam-design-tenant-offboarding/SKILL.md`
+
+### `bmad-bam-design-multi-tenant-testing` — Multi-Tenant Testing Catalogue (ZMT)
+
+Generate per-isolation-model test catalogue: isolation / noisy-neighbor / quota / rls-bypass. Reads tenancy. Output: test-catalogue.md + .json (QG-M2 evidence). Ships 1 BMM overlay. Invoke via /bmad-bam-design-multi-tenant-testing.
+
+- **Phase:** solutioning
+- **Required:** false
+- **Output:** docs/architecture/
+- **SKILL.md:** `src-v6/bmad-bam-platform/2-modules/bmad-bam-design-multi-tenant-testing/SKILL.md`
+
+### `bmad-bam-design-tenant-migration-tooling` — Tenant Migration Tooling Design (ZTG)
+
+Design tenant migration playbooks: tier upgrades + region migrations. Flag: --migration-axis tier|region|both. Reads tier + deployment + tenancy. Output: migration-runbook.md + .json (QG-D1 + QG-M2 mirror). Invoke via /bmad-bam-design-tenant-migration-tooling.
+
+- **Phase:** solutioning
+- **Required:** false
+- **Output:** docs/architecture/
+- **SKILL.md:** `src-v6/bmad-bam-platform/2-modules/bmad-bam-design-tenant-migration-tooling/SKILL.md`
+
 ## Invocation
 
 Workflows are invoked via the AI agent's slash command in Claude Code / Cursor

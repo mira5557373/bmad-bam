@@ -1,0 +1,165 @@
+---
+id: migration-runbook
+title: "{{project_name}} — Tenant Migration Runbook"
+status: draft
+date: "{{today}}"
+persona: atlas
+workflow_run_id: "{{run_id}}"
+---
+
+# Tenant Migration Runbook — {{project_name}}
+
+## Decision
+
+**Active migration axes:** `{{migration_axes_csv}}` (selected via `--migration-axis` flag = `{{migration_axis_flag_raw}}`)
+**Zero-downtime required:** `{{zero_downtime_required}}` {{#if zero_downtime_required}}(rollback_method `cell_failback` excluded per spec invariant 12){{/if}}
+**References degraded:** `{{references_degraded}}` {{#if references_degraded}}(at least one soft input was present-but-malformed; downstream consumes generic provisioning/tear-down){{/if}}
+
+## Context
+
+- Tenancy model: `{{tenancy_model}}`
+- Hybrid resolution (if hybrid): {{hybrid_resolution}}
+- Tier count: {{tier_count}}
+- Region count: {{region_count}}
+- Residency zones: {{data_residency_zones_csv}}
+- Onboarding-flow upstream: {{onboarding_flow_present_yes_no}} {{#if onboarding_flow_malformed}}(present but MALFORMED — references_degraded){{/if}}
+- Offboarding-policy upstream: {{offboarding_policy_present_yes_no}} {{#if offboarding_policy_malformed}}(present but MALFORMED — references_degraded){{/if}}
+
+## Per-axis playbook
+
+{{#if has_tier_axis}}
+### Tier-upgrade axis
+
+Tier upgrades move tenants within the same region across a pricing-and-feature boundary. The hard parts are billing proration at upgrade timestamp, feature-flag flip ordering, and schema/data migrations when higher tiers ship additional tables.
+
+**CRITICAL** (per `tenant-tier-upgrade-mechanics.md`): Billing MUST be prorated at upgrade timestamp; full-price-from-day-N is the anti-pattern (`tier-upgrade-without-billing-prorate.md`).
+
+#### Tier-axis cohort plan
+
+- **Cohort selection method:** `{{tier.cohort_plan.cohort_selection_method}}`
+- **Cohort count:** `{{tier.cohort_plan.cohorts.length}}`
+
+| name | size_estimate | billing_prorate |
+|---|---|---|
+{{#each tier.cohort_plan.cohorts}}
+| `{{name}}` | {{size_estimate}} | {{billing_prorate}} |
+{{/each}}
+
+#### Tier-axis dry-run plan
+
+- **Dry-run environment:** `{{tier.dry_run_plan.dry_run_environment}}`
+- **Cadence:** `{{tier.dry_run_plan.cadence}}`
+
+#### Tier-axis rollback gate
+
+- **Rollback method:** `{{tier.rollback_gate.rollback_method}}` {{#if zero_downtime_required}}(verified zero-downtime-compatible per invariant 12){{/if}}
+- **Rollback triggers:**
+{{#each tier.rollback_gate.rollback_trigger}}
+  - {{this}}
+{{/each}}
+
+#### Tier-axis abort criteria
+
+{{#each tier.abort_criteria}}
+- {{this}}
+{{/each}}
+
+#### Tier-axis observability hooks
+
+{{#each tier.observability_hooks}}
+- {{this}}
+{{/each}}
+
+{{/if}}
+
+{{#if has_region_axis}}
+### Region-migration axis
+
+Region migrations move tenants across data-center / cloud-region boundaries. The hard parts are residency consent (BEFORE any boundary crossing), dual-write contracts during the cutover window, DNS / routing cutover, and cross-DC blue-green deployment of the tenant's runtime.
+
+**CRITICAL** (per `region-migration-playbook.md`): Region migration MUST obtain consent BEFORE any data movement crossing residency boundaries (GDPR Art 6 + Schrems II). Consent-then-move-then-finalize is the only legitimate pattern.
+
+#### Region-axis cohort plan
+
+- **Cohort selection method:** `{{region.cohort_plan.cohort_selection_method}}`
+- **Cohort count:** `{{region.cohort_plan.cohorts.length}}`
+
+{{#if (eq region.cohort_plan.cohort_selection_method "risk_stratified")}}
+**Risk-stratified cohort policy** (per `migration-cohort-selection.md` CRITICAL): First cohort MUST be a 1-tenant canary; subsequent cohorts ≥10 tenants only after canary green.
+{{/if}}
+
+| name | size_estimate | residency_change |
+|---|---|---|
+{{#each region.cohort_plan.cohorts}}
+| `{{name}}` | {{size_estimate}} | {{residency_change}} |
+{{/each}}
+
+#### Region-axis dry-run plan
+
+- **Dry-run environment:** `{{region.dry_run_plan.dry_run_environment}}`
+- **Cadence:** `{{region.dry_run_plan.cadence}}`
+
+#### Region-axis rollback gate
+
+- **Rollback method:** `{{region.rollback_gate.rollback_method}}` {{#if zero_downtime_required}}(verified zero-downtime-compatible per invariant 12){{/if}}
+- **Rollback triggers:**
+{{#each region.rollback_gate.rollback_trigger}}
+  - {{this}}
+{{/each}}
+
+#### Region-axis abort criteria
+
+{{#each region.abort_criteria}}
+- {{this}}
+{{/each}}
+
+#### Region-axis observability hooks
+
+{{#each region.observability_hooks}}
+- {{this}}
+{{/each}}
+
+{{/if}}
+
+## References
+
+{{#if references}}
+{{#if references.onboarding_hook_ids}}
+**Onboarding hook IDs** (used by runbook at target region for re-provisioning):
+{{#each references.onboarding_hook_ids}}
+- `{{this}}`
+{{/each}}
+{{/if}}
+
+{{#if references.offboarding_policy_ids}}
+**Offboarding policy IDs** (used by runbook at source region post-cutover):
+{{#each references.offboarding_policy_ids}}
+- `{{this}}`
+{{/each}}
+{{/if}}
+
+{{else}}
+Both soft inputs (`onboarding-flow.json`, `offboarding-policy.json`) were absent at design time — no `references` block emitted. The runbook will use generic provisioning at target + generic tear-down at source. To enable explicit hook + policy references, run `bmad-bam-design-tenant-onboarding` and `bmad-bam-design-tenant-offboarding` first then re-run this skill in Edit mode.
+{{/if}}
+
+{{#if references_degraded}}
+**WARNING — References degraded:** at least one soft input was present-but-malformed at design time (`references_degraded: true`). The runbook proceeds with generic provisioning/tear-down for the malformed input's scope. Investigate the malformed input + re-run this skill in Edit mode once corrected.
+{{/if}}
+
+## Quality gate references
+
+- [QG-D1 — Disaster Recovery (partial; v0.1.0)](../../_bmad/bbp/bmad-bam-agent-atlas/resources/checklists/QG-D1.md) — **primary consumer**; this runbook drives C0 (file presence), C1 (schema validity), C2 (per-axis rollback_gate + abort_criteria), C3 (zero-downtime invariant), C4 (references consistency), C5 (mirror byte-identical to primary)
+- [QG-M2 — Tenant Isolation (v1.1.0)](../../_bmad/bbp/bmad-bam-agent-atlas/resources/checklists/QG-M2.md) — **mirror consumer (H4 partial proxy)**; the byte-identical mirror copy at `_bmad/bam/evidence/QG-M2/migration-runbook.json` serves H4 (migration-safety review) until P10 ops ships full DR. Removal trigger: P10 full DR ship → mirror + H4-narrative can be removed; QG-D1 becomes sole consumer.
+
+## Next steps
+
+After this runbook is approved:
+
+1. Wire `cohort_plan.cohorts[]` into the rollout-orchestration system (per-cohort sign-off gate; dry-run before each cohort if cadence is `each_cohort`).
+2. Wire `rollback_gate.rollback_trigger[]` into the observability stack as alert rules; rollback decision audited automatically when triggers fire.
+3. Wire `abort_criteria[]` into the migration-orchestration system as automatic-abort conditions.
+4. Wire `observability_hooks[]` into dashboards before any cohort migrates.
+5. Run dry-run in the chosen `dry_run_environment` per `cadence` policy.
+6. {{#if has_region_axis}}Obtain residency consent from all tenants in region-axis cohorts BEFORE any cross-boundary data movement (GDPR Art 6 + Schrems II).{{/if}}
+7. {{#if has_tier_axis}}Implement billing-proration logic + audit trail; verify via `billing_prorate_audit` observability hook before first cohort.{{/if}}
+8. Re-run this skill in **Edit mode** when a new axis becomes active OR when cohort/rollback/cadence configuration changes.

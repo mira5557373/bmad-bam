@@ -1,0 +1,19 @@
+# DO NOT EDIT -- overwritten on every update.
+#
+# Workflow customization surface for bmad-bam-design-tenant-offboarding. Mirrors
+# the agent customization shape under the [workflow] namespace.
+
+[workflow]
+
+# --- Configurable below. Overrides merge per BMad structural rules (C2-I2 polish): ---
+#   scalars: override wins • arrays (persistent_facts, activation_steps_*): append
+#   arrays-of-tables with `code`/`id`: replace matching items, append new ones.
+
+activation_steps_prepend = []
+activation_steps_append = []
+
+# Persistent facts loaded at every activation. Per ADR-015 G6 + Plan A,
+# universal-glob discovers project-context.md regardless of install layout.
+persistent_facts = [
+  "file:{project-root}/**/project-context.md",
+]

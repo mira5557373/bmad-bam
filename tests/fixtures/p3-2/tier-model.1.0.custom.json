@@ -1,0 +1,41 @@
+{
+  "schema_version": "1.0",
+  "decided_at": "2026-05-17T14:23:00Z",
+  "tier_count": 3,
+  "custom_tiers_mode": true,
+  "tiers": [
+    {
+      "id": "lite",
+      "price_per_month_usd": 9,
+      "limits": { "seats": 2, "api_calls_per_month": 5000, "storage_gb": 2, "compute_hours": 10 },
+      "features": ["basic_dashboards"],
+      "rollout_tier_hint": "aggressive_canary",
+      "cost_ceiling_usd_per_month_hint": 1.00,
+      "upgrade_mode": "self_service",
+      "upgrade_path": "standard"
+    },
+    {
+      "id": "standard",
+      "price_per_month_usd": 49,
+      "limits": { "seats": 10, "api_calls_per_month": 50000, "storage_gb": 50, "compute_hours": 60 },
+      "features": ["basic_dashboards", "email_support"],
+      "rollout_tier_hint": "canary",
+      "cost_ceiling_usd_per_month_hint": 10.00,
+      "upgrade_mode": "self_service",
+      "upgrade_path": "premium"
+    },
+    {
+      "id": "premium",
+      "price_per_month_usd": 299,
+      "limits": { "seats": 50, "api_calls_per_month": 500000, "storage_gb": 500, "compute_hours": 600 },
+      "features": ["basic_dashboards", "priority_support", "sso"],
+      "rollout_tier_hint": "blue_green_synthetics",
+      "cost_ceiling_usd_per_month_hint": 100.00,
+      "upgrade_mode": "sales_assisted",
+      "upgrade_path": null
+    }
+  ],
+  "transitions": {
+    "any_downgrade": "rate_arbitrage_check"
+  }
+}

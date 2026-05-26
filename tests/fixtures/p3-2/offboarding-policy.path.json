@@ -1,0 +1,127 @@
+{
+  "schema_version": "1.0",
+  "decided_at": "2026-05-17T14:23:00Z",
+  "regulatory_profile": "hipaa",
+  "data_export_required": true,
+  "subject_erasure_fast_path": true,
+  "per_tier": [
+    {
+      "policy_id": "tier_demo:soft_delete",
+      "tier_id": "tier_demo",
+      "deletion_mode": "soft_delete",
+      "retention_window_days": 2190,
+      "retention_window_source": "regulatory_floor",
+      "post_retention_action": "hard_delete"
+    },
+    {
+      "policy_id": "tier_starter:hard_delete",
+      "tier_id": "tier_starter",
+      "deletion_mode": "hard_delete",
+      "retention_window_days": 2190,
+      "retention_window_source": "regulatory_floor",
+      "post_retention_action": "noop"
+    },
+    {
+      "policy_id": "tier_pro:anonymize",
+      "tier_id": "tier_pro",
+      "deletion_mode": "anonymize",
+      "retention_window_days": 2190,
+      "retention_window_source": "regulatory_floor",
+      "post_retention_action": "noop"
+    },
+    {
+      "policy_id": "tier_team:soft_delete",
+      "tier_id": "tier_team",
+      "deletion_mode": "soft_delete",
+      "retention_window_days": 3650,
+      "retention_window_source": "overridden",
+      "post_retention_action": "anonymize"
+    },
+    {
+      "policy_id": "tier_business:anonymize",
+      "tier_id": "tier_business",
+      "deletion_mode": "anonymize",
+      "retention_window_days": 5475,
+      "retention_window_source": "legal_hold",
+      "post_retention_action": "noop"
+    },
+    {
+      "policy_id": "tier_enterprise:hard_delete",
+      "tier_id": "tier_enterprise",
+      "deletion_mode": "hard_delete",
+      "retention_window_days": 7300,
+      "retention_window_source": "tier_hint",
+      "post_retention_action": "noop"
+    },
+    {
+      "policy_id": "tier_gov:anonymize",
+      "tier_id": "tier_gov",
+      "deletion_mode": "anonymize",
+      "retention_window_days": 36500,
+      "retention_window_source": "legal_hold",
+      "post_retention_action": "noop"
+    }
+  ],
+  "legal_holds": [
+    {
+      "id": "lh_clinical_2026_a",
+      "scope": "tier_business",
+      "reason": "active clinical trial — HIPAA-protected PHI retention",
+      "release_condition": "trial_close_or_court_order",
+      "active": true
+    },
+    {
+      "id": "lh_gov_audit_2026_b",
+      "scope": "tier_gov",
+      "reason": "active FedRAMP audit — retention frozen until ATO renewal",
+      "release_condition": "ato_renewal_or_court_order",
+      "active": true
+    },
+    {
+      "id": "lh_litigation_2026_c",
+      "scope": "tier_enterprise",
+      "reason": "pending civil litigation — outside-counsel hold",
+      "release_condition": "litigation_close_or_court_order",
+      "active": true
+    }
+  ],
+  "tear_down_hooks": [
+    { "id": "db_drop_or_anonymize",         "module": "platform",    "blocking": true,  "deletion_modes": ["hard_delete", "anonymize"] },
+    { "id": "stripe_customer_close",        "module": "billing",     "blocking": true,  "deletion_modes": ["hard_delete", "soft_delete", "anonymize"] },
+    { "id": "audit_log_finalize",           "module": "audit_trail", "blocking": true,  "deletion_modes": ["hard_delete", "soft_delete", "anonymize"] },
+    { "id": "ai_memory_purge",              "module": "ai_memory",   "blocking": true,  "deletion_modes": ["hard_delete", "anonymize"] },
+    { "id": "trust_revoke_credentials",     "module": "trust",       "blocking": true,  "deletion_modes": ["hard_delete", "soft_delete", "anonymize"] },
+    { "id": "legal_archive_dpa",            "module": "legal",       "blocking": true,  "deletion_modes": ["hard_delete", "soft_delete", "anonymize"] },
+    { "id": "ux_remove_branding",           "module": "ux",          "blocking": false, "deletion_modes": ["hard_delete", "anonymize"] },
+    { "id": "ops_deregister_routing",       "module": "ops",         "blocking": true,  "deletion_modes": ["hard_delete", "soft_delete", "anonymize"] },
+    { "id": "platform_secrets_revoke",      "module": "platform",    "blocking": true,  "deletion_modes": ["hard_delete", "soft_delete", "anonymize"] },
+    { "id": "platform_metrics_archive",     "module": "platform",    "blocking": false, "deletion_modes": ["hard_delete", "anonymize"] }
+  ],
+  "cross_module_handoffs": [
+    { "module": "billing",     "action": "close_open_invoices",      "blocking": true,  "ordering": 1 },
+    { "module": "billing",     "action": "issue_final_refund",       "blocking": true,  "ordering": 2 },
+    { "module": "legal",       "action": "freeze_dpa_record",        "blocking": true,  "ordering": 3 },
+    { "module": "audit_trail", "action": "finalize_audit_chain",     "blocking": true,  "ordering": 4 },
+    { "module": "trust",       "action": "revoke_credentials",       "blocking": true,  "ordering": 5 },
+    { "module": "ai_memory",   "action": "purge_vector_index",       "blocking": true,  "ordering": 6 },
+    { "module": "ux",          "action": "remove_branding",          "blocking": false, "ordering": 7 },
+    { "module": "ops",         "action": "deregister_routing",       "blocking": true,  "ordering": 8 },
+    { "module": "platform",    "action": "revoke_secrets",           "blocking": true,  "ordering": 9 },
+    { "module": "platform",    "action": "drop_or_anonymize_db",     "blocking": true,  "ordering": 10 }
+  ],
+  "onboarding_hooks_reversed": {
+    "source_ref": "_bmad/bam/evidence/QG-M2/onboarding-flow.json",
+    "reverse_map": [
+      { "provisioning_hook_id": "biz_db_create",      "tear_down_hook_id": "db_drop_or_anonymize" },
+      { "provisioning_hook_id": "biz_stripe_create",  "tear_down_hook_id": "stripe_customer_close" },
+      { "provisioning_hook_id": "biz_audit_init",     "tear_down_hook_id": "audit_log_finalize" },
+      { "provisioning_hook_id": "biz_ai_index_init",  "tear_down_hook_id": "ai_memory_purge" },
+      { "provisioning_hook_id": "biz_trust_baseline", "tear_down_hook_id": "trust_revoke_credentials" },
+      { "provisioning_hook_id": "biz_legal_dpa",      "tear_down_hook_id": "legal_archive_dpa" },
+      { "provisioning_hook_id": "biz_ux_onboard",     "tear_down_hook_id": "ux_remove_branding" },
+      { "provisioning_hook_id": "biz_ops_register",   "tear_down_hook_id": "ops_deregister_routing" },
+      { "provisioning_hook_id": "biz_secrets_init",   "tear_down_hook_id": "platform_secrets_revoke" },
+      { "provisioning_hook_id": "biz_metrics_init",   "tear_down_hook_id": "platform_metrics_archive" }
+    ]
+  }
+}
